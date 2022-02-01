@@ -1,12 +1,6 @@
 package com.tencent.token;
 
-import java.util.Map;
-
-public final class auu
-{
-  public final Map<String, String> a;
-  public boolean b;
-}
+public abstract interface auu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

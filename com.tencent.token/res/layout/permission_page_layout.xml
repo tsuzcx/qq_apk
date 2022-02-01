@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/storage_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:src="@drawable/icon_storage" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/realname_shake_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SD卡" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/text_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="用于应用文件下载、存储" />
+        </LinearLayout>
+        <Button android:textSize="16.0sp" android:gravity="center" android:id="@id/permission_sdcard_toggle" android:background="@drawable/red_btn_bg" android:layout_width="65.0dip" android:layout_height="35.0dip" android:layout_margin="12.0dip" android:text="打开" style="@style/text_view_white" />
+    </LinearLayout>
+</LinearLayout>

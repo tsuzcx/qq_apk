@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.t;
+import oicq.wlogin_sdk.request.u;
 import oicq.wlogin_sdk.tools.util;
 
 public class WloginSigInfo
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<WloginSigInfo> CREATOR = new WloginSigInfo.1();
-  public static final int SIG_RESERVE_LENGTH = 15;
+  public static final int SIG_RESERVE_LENGTH = 16;
   public static final int SIG_RESERVE_VALID_LENGTH = 7;
   public static byte[] _LHSig = new byte[0];
   public static byte[] _QRPUSHSig = new byte[0];
@@ -35,6 +35,7 @@ public class WloginSigInfo
   public byte[] _aqSig = new byte[0];
   public long _aqSig_create_time = 0L;
   public long _create_time = 0L;
+  public byte[] _device_token = new byte[0];
   public byte[] _dpwd = new byte[0];
   public byte[] _en_A1 = new byte[0];
   public int _login_bitmap = 0;
@@ -125,6 +126,7 @@ public class WloginSigInfo
       {
         this._en_A1 = ((byte[])paramArrayOfByte[0].clone());
         this._create_time = paramLong;
+        util.LOGI("update A1 sig", "");
         if ((paramArrayOfByte[1] != null) && (paramArrayOfByte[1].length > 0)) {
           this._noPicSig = ((byte[])paramArrayOfByte[1].clone());
         } else {
@@ -146,7 +148,7 @@ public class WloginSigInfo
   
   public void SetSigInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[][] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 15))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
     {
       if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 7))
       {
@@ -194,7 +196,7 @@ public class WloginSigInfo
         }
         paramArrayOfByte1 = new StringBuilder("set skey ");
         paramArrayOfByte1.append(util.getMaskBytes(paramArrayOfByte9, 2, 2));
-        util.LOGI(paramArrayOfByte1.toString());
+        util.LOGI(paramArrayOfByte1.toString(), "");
         if ((paramArrayOfByte9 != null) && (paramArrayOfByte9.length > 0))
         {
           this._sKey = ((byte[])paramArrayOfByte9.clone());
@@ -313,7 +315,10 @@ public class WloginSigInfo
         {
           this.wtSessionTicket = paramArrayOfByte[13];
           this.wtSessionTicketKey = paramArrayOfByte[14];
-          this.wtSessionTicketCreatTime = t.f();
+          this.wtSessionTicketCreatTime = u.f();
+        }
+        if ((paramArrayOfByte[15] != null) && (paramArrayOfByte[15].length > 0)) {
+          this._device_token = paramArrayOfByte[15];
         }
         return;
       }
@@ -358,7 +363,7 @@ public class WloginSigInfo
   public boolean isWtSessionTicketExpired()
   {
     long l1 = this.wtSessionTicketCreatTime + 2592000L;
-    long l2 = t.f();
+    long l2 = u.f();
     if (l2 > l1) {
       return true;
     }
@@ -434,6 +439,7 @@ public class WloginSigInfo
     this._pt4Token = paramParcel.createByteArray();
     this.wtSessionTicket = paramParcel.createByteArray();
     this.wtSessionTicketKey = paramParcel.createByteArray();
+    this._device_token = paramParcel.createByteArray();
     this.wtSessionTicketCreatTime = paramParcel.readLong();
   }
   
@@ -487,13 +493,13 @@ public class WloginSigInfo
       if (this.wtSessionTicket != null) {
         i = this.wtSessionTicket.length;
       }
-      localObject = String.format((Locale)localObject, "{A1:%d,%d A2:%d pskey:%d,%d pt4token:%d wtST:%d da2:%d}", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this._DA2.length) });
+      localObject = String.format((Locale)localObject, "{A1:%d,%d A2:%d pskey:%d,%d pt4token:%d wtST:%d da2:%d D2:%d,%d %d-%d}", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this._DA2.length), Integer.valueOf(this._D2.length), Integer.valueOf(this._D2Key.length), Long.valueOf(this._D2_create_time), Long.valueOf(this._D2_expire_time) });
       return localObject;
     }
     catch (Exception localException)
     {
-      label145:
-      break label145;
+      label191:
+      break label191;
     }
     return "WloginSigInfo";
   }
@@ -558,6 +564,7 @@ public class WloginSigInfo
     paramParcel.writeByteArray(this._pt4Token);
     paramParcel.writeByteArray(this.wtSessionTicket);
     paramParcel.writeByteArray(this.wtSessionTicketKey);
+    paramParcel.writeByteArray(this._device_token);
     paramParcel.writeLong(this.wtSessionTicketCreatTime);
   }
 }

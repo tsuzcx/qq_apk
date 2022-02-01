@@ -1,13 +1,10 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
+import android.net.NetworkInfo;
 
 public abstract interface auf
 {
-  public abstract WeakReference<Object> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aui paramaui);
-  
-  public abstract void a(JceStruct paramJceStruct, auj paramauj);
+  public abstract NetworkInfo a();
 }
 
 

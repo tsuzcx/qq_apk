@@ -1,10 +1,16 @@
 package com.tencent.token;
 
-public abstract interface rv
+public final class rv
 {
-  public abstract void a();
+  protected long a;
+  public int b;
+  public String c;
+  public String d;
   
-  public abstract void b();
+  public final String toString()
+  {
+    return super.toString();
+  }
 }
 
 

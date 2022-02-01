@@ -1,25 +1,20 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
-final class asr
-  extends BroadcastReceiver
+public abstract interface asr
 {
-  asr(asq paramasq) {}
+  public abstract int a();
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {
-      return;
-    }
-    if (paramContext.equals("com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE")) {
-      this.a.b.sendEmptyMessage(0);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3);
+  
+  public abstract void a(AtomicLong paramAtomicLong, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, AtomicReference paramAtomicReference3);
+  
+  public abstract int b();
 }
 
 

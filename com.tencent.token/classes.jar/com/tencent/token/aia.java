@@ -1,158 +1,44 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
+import java.util.ArrayList;
 
 public final class aia
-  extends ahw
 {
-  public aia(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject)
+  private static byte[] a(int paramInt)
   {
-    super(paramSQLiteDatabase, paramString, paramArrayOfObject, null);
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
   }
   
-  /* Error */
-  public final int b()
+  public static byte[] a(ArrayList<byte[]> paramArrayList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 18	com/tencent/token/aia:d	()V
-    //   4: aload_0
-    //   5: getfield 22	com/tencent/token/ahw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/ahz;
-    //   11: aload_0
-    //   12: getfield 30	com/tencent/token/ahw:b	Ljava/lang/String;
-    //   15: aload_0
-    //   16: getfield 34	com/tencent/token/ahw:e	[Ljava/lang/Object;
-    //   19: aload_0
-    //   20: getfield 38	com/tencent/token/ahw:c	Z
-    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
-    //   26: invokevirtual 46	com/tencent/token/ahz:b	(Ljava/lang/String;[Ljava/lang/Object;I)I
-    //   29: istore_1
-    //   30: aload_0
-    //   31: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   34: iload_1
-    //   35: ireturn
-    //   36: astore_2
-    //   37: goto +10 -> 47
-    //   40: astore_2
-    //   41: aload_0
-    //   42: invokevirtual 50	com/tencent/token/aia:a	()V
-    //   45: aload_2
-    //   46: athrow
-    //   47: aload_0
-    //   48: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   51: aload_2
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	aia
-    //   29	6	1	i	int
-    //   36	1	2	localObject	Object
-    //   40	12	2	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
-    // Exception table:
-    //   from	to	target	type
-    //   4	30	36	finally
-    //   41	47	36	finally
-    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
-  }
-  
-  /* Error */
-  public final long f()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 18	com/tencent/token/aia:d	()V
-    //   4: aload_0
-    //   5: getfield 22	com/tencent/token/ahw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/ahz;
-    //   11: aload_0
-    //   12: getfield 30	com/tencent/token/ahw:b	Ljava/lang/String;
-    //   15: aload_0
-    //   16: getfield 34	com/tencent/token/ahw:e	[Ljava/lang/Object;
-    //   19: aload_0
-    //   20: getfield 38	com/tencent/token/ahw:c	Z
-    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
-    //   26: invokevirtual 55	com/tencent/token/ahz:c	(Ljava/lang/String;[Ljava/lang/Object;I)J
-    //   29: lstore_1
-    //   30: aload_0
-    //   31: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   34: lload_1
-    //   35: lreturn
-    //   36: astore_3
-    //   37: goto +10 -> 47
-    //   40: astore_3
-    //   41: aload_0
-    //   42: invokevirtual 50	com/tencent/token/aia:a	()V
-    //   45: aload_3
-    //   46: athrow
-    //   47: aload_0
-    //   48: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   51: aload_3
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	aia
-    //   29	6	1	l	long
-    //   36	1	3	localObject	Object
-    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
-    // Exception table:
-    //   from	to	target	type
-    //   4	30	36	finally
-    //   41	47	36	finally
-    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
-  }
-  
-  /* Error */
-  public final long g()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 18	com/tencent/token/aia:d	()V
-    //   4: aload_0
-    //   5: getfield 22	com/tencent/token/ahw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/ahz;
-    //   11: aload_0
-    //   12: getfield 30	com/tencent/token/ahw:b	Ljava/lang/String;
-    //   15: aload_0
-    //   16: getfield 34	com/tencent/token/ahw:e	[Ljava/lang/Object;
-    //   19: aload_0
-    //   20: getfield 38	com/tencent/token/ahw:c	Z
-    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
-    //   26: invokevirtual 58	com/tencent/token/ahz:a	(Ljava/lang/String;[Ljava/lang/Object;I)J
-    //   29: lstore_1
-    //   30: aload_0
-    //   31: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   34: lload_1
-    //   35: lreturn
-    //   36: astore_3
-    //   37: goto +10 -> 47
-    //   40: astore_3
-    //   41: aload_0
-    //   42: invokevirtual 50	com/tencent/token/aia:a	()V
-    //   45: aload_3
-    //   46: athrow
-    //   47: aload_0
-    //   48: invokevirtual 48	com/tencent/token/aia:e	()V
-    //   51: aload_3
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	aia
-    //   29	6	1	l	long
-    //   36	1	3	localObject	Object
-    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
-    // Exception table:
-    //   from	to	target	type
-    //   4	30	36	finally
-    //   41	47	36	finally
-    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SQLiteProgram: ");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
+    int m = paramArrayList.size();
+    int i = m * 4 + 4;
+    int k = i;
+    int j = 0;
+    while (j < m)
+    {
+      k += ((byte[])paramArrayList.get(j)).length;
+      j += 1;
+    }
+    byte[] arrayOfByte = new byte[k];
+    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
+    j = 0;
+    while (j < m)
+    {
+      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
+      j += 1;
+    }
+    k = 0;
+    j = i;
+    i = k;
+    while (i < m)
+    {
+      k = ((byte[])paramArrayList.get(i)).length;
+      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
+      j += k;
+      i += 1;
+    }
+    return arrayOfByte;
   }
 }
 

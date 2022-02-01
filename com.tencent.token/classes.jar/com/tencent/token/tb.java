@@ -1,43 +1,66 @@
 package com.tencent.token;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public final class tb
 {
-  public static void a(sx paramsx, byte[] paramArrayOfByte)
+  public List<a> a;
+  
+  public tb(String paramString)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
+    a(paramString);
+  }
+  
+  private void a(String paramString)
+  {
+    this.a = new ArrayList();
+    for (;;)
     {
-      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONArray("uinlist");
+        int i = 0;
+        if (i < paramString.length())
+        {
+          JSONObject localJSONObject = paramString.getJSONObject(i);
+          a locala = new a();
+          locala.a = localJSONObject.getLong("uin");
+          locala.b = localJSONObject.getString("uin_mask");
+          locala.c = localJSONObject.getString("nick");
+          locala.d = localJSONObject.getLong("real_uin");
+          int j = localJSONObject.getInt("is_supper_qq");
+          bool = true;
+          if (j == 1)
+          {
+            locala.e = bool;
+            this.a.add(locala);
+            i += 1;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
         return;
       }
-      paramsx.g = sz.b(paramArrayOfByte, 1);
-      paramsx.h = sz.a(paramArrayOfByte, 5);
-      paramsx.i = paramArrayOfByte[7];
-      paramsx.j = sz.a(paramArrayOfByte, 8);
-      paramsx.k = sz.a(paramArrayOfByte, 10);
-      paramsx.l = ((int)sz.b(paramArrayOfByte, 12));
-      paramsx.m = ((int)sz.b(paramArrayOfByte, 16));
-      paramsx.n = sz.a(paramArrayOfByte, 20);
-      paramsx.o = sz.a(paramArrayOfByte, 22);
-      paramsx.p = sz.a(paramArrayOfByte, 24);
-      paramsx.q = sz.a(paramArrayOfByte, 26);
-      paramsx.r = sz.a(paramArrayOfByte, 28, 64);
-      paramsx.b = ((int)sz.b(paramArrayOfByte, 92));
-      paramsx.c = sz.a(paramArrayOfByte, 96, 256);
-      paramsx.d = ((int)sz.b(paramArrayOfByte, 352));
-      paramsx.e = sz.a(paramArrayOfByte, 356);
-      sz.a(paramsx.t, 0, paramArrayOfByte, 358, paramsx.t.length);
-      int j = paramsx.t.length + 358;
-      int k = paramArrayOfByte.length - 1 - paramsx.s.length - j;
-      int i = j;
-      if (k > 0)
-      {
-        paramsx.f = new byte[k];
-        sz.a(paramsx.f, 0, paramArrayOfByte, j, paramsx.f.length);
-        i = j + paramsx.f.length;
-      }
-      sz.a(paramsx.s, 0, paramArrayOfByte, i, paramsx.s.length);
-      return;
+      boolean bool = false;
     }
+  }
+  
+  public static final class a
+  {
+    public long a;
+    public String b;
+    public String c;
+    public long d;
+    public boolean e;
   }
 }
 

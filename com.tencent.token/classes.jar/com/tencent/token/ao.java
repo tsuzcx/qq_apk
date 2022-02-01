@@ -1,38 +1,41 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
 public final class ao
-  extends ap
+  extends JceStruct
 {
-  private final Object a = new Object();
-  private ExecutorService b = Executors.newFixedThreadPool(2);
-  private volatile Handler c;
+  static ArrayList d;
+  public int a = 0;
+  public int b = 0;
+  public ArrayList c = null;
   
-  public final void a(Runnable paramRunnable)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.b.execute(paramRunnable);
-  }
-  
-  public final void b(Runnable paramRunnable)
-  {
-    if (this.c == null) {
-      synchronized (this.a)
-      {
-        if (this.c == null) {
-          this.c = new Handler(Looper.getMainLooper());
-        }
-      }
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    if (d == null)
+    {
+      d = new ArrayList();
+      d.add(Integer.valueOf(0));
     }
-    this.c.post(paramRunnable);
+    this.c = ((ArrayList)paramJceInputStream.read(d, 2, false));
   }
   
-  public final boolean b()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
+    }
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
+    }
   }
 }
 

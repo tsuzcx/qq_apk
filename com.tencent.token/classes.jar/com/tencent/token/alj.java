@@ -1,61 +1,184 @@
 package com.tencent.token;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public final class alj
 {
-  private static final ThreadLocal<DateFormat> a = new ThreadLocal() {};
-  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
-  private static final DateFormat[] c = new DateFormat[15];
+  public final ald a;
+  public final String b;
+  public final alc c;
+  @Nullable
+  public final alk d;
+  final Map<Class<?>, Object> e;
+  private volatile akp f;
   
-  public static String a(Date paramDate)
+  alj(a parama)
   {
-    return ((DateFormat)a.get()).format(paramDate);
+    this.a = parama.a;
+    this.b = parama.b;
+    this.c = parama.c.a();
+    this.d = parama.d;
+    this.e = alr.a(parama.e);
   }
   
-  public static Date a(String paramString)
+  public final a a()
   {
-    if (paramString.length() == 0) {
-      return null;
+    return new a(this);
+  }
+  
+  @Nullable
+  public final String a(String paramString)
+  {
+    return this.c.a(paramString);
+  }
+  
+  public final akp b()
+  {
+    akp localakp = this.f;
+    if (localakp != null) {
+      return localakp;
     }
-    ParsePosition localParsePosition = new ParsePosition(0);
-    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    if (localParsePosition.getIndex() == paramString.length()) {
-      return localObject;
-    }
-    for (;;)
+    localakp = akp.a(this.c);
+    this.f = localakp;
+    return localakp;
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Request{method=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", tags=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+  
+  public static final class a
+  {
+    ald a;
+    String b;
+    public alc.a c;
+    alk d;
+    Map<Class<?>, Object> e = Collections.emptyMap();
+    
+    public a()
     {
-      int i;
-      synchronized (b)
+      this.b = "GET";
+      this.c = new alc.a();
+    }
+    
+    a(alj paramalj)
+    {
+      this.a = paramalj.a;
+      this.b = paramalj.b;
+      this.d = paramalj.d;
+      Object localObject;
+      if (paramalj.e.isEmpty()) {
+        localObject = Collections.emptyMap();
+      } else {
+        localObject = new LinkedHashMap(paramalj.e);
+      }
+      this.e = ((Map)localObject);
+      this.c = paramalj.c.a();
+    }
+    
+    public final a a(ald paramald)
+    {
+      if (paramald != null)
       {
-        int j = b.length;
-        i = 0;
-        if (i < j)
+        this.a = paramald;
+        return this;
+      }
+      throw new NullPointerException("url == null");
+    }
+    
+    public final a a(String paramString)
+    {
+      if (paramString != null)
+      {
+        Object localObject;
+        if (paramString.regionMatches(true, 0, "ws:", 0, 3))
         {
-          DateFormat localDateFormat = c[i];
-          localObject = localDateFormat;
-          if (localDateFormat == null)
-          {
-            localObject = new SimpleDateFormat(b[i], Locale.US);
-            ((DateFormat)localObject).setTimeZone(akt.g);
-            c[i] = localObject;
-          }
-          localParsePosition.setIndex(0);
-          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-          if (localParsePosition.getIndex() != 0) {
-            return localObject;
-          }
+          localObject = new StringBuilder("http:");
+          ((StringBuilder)localObject).append(paramString.substring(3));
+          localObject = ((StringBuilder)localObject).toString();
         }
         else
         {
-          return null;
+          localObject = paramString;
+          if (paramString.regionMatches(true, 0, "wss:", 0, 4))
+          {
+            localObject = new StringBuilder("https:");
+            ((StringBuilder)localObject).append(paramString.substring(4));
+            localObject = ((StringBuilder)localObject).toString();
+          }
         }
+        return a(ald.d((String)localObject));
       }
-      i += 1;
+      throw new NullPointerException("url == null");
+    }
+    
+    public final a a(String paramString, @Nullable alk paramalk)
+    {
+      if (paramString != null)
+      {
+        if (paramString.length() != 0)
+        {
+          if ((paramalk != null) && (!amj.a(paramString)))
+          {
+            paramalk = new StringBuilder("method ");
+            paramalk.append(paramString);
+            paramalk.append(" must not have a request body.");
+            throw new IllegalArgumentException(paramalk.toString());
+          }
+          if (paramalk == null)
+          {
+            int i;
+            if ((!paramString.equals("POST")) && (!paramString.equals("PUT")) && (!paramString.equals("PATCH")) && (!paramString.equals("PROPPATCH")) && (!paramString.equals("REPORT"))) {
+              i = 0;
+            } else {
+              i = 1;
+            }
+            if (i != 0)
+            {
+              paramalk = new StringBuilder("method ");
+              paramalk.append(paramString);
+              paramalk.append(" must have a request body.");
+              throw new IllegalArgumentException(paramalk.toString());
+            }
+          }
+          this.b = paramString;
+          this.d = paramalk;
+          return this;
+        }
+        throw new IllegalArgumentException("method.length() == 0");
+      }
+      throw new NullPointerException("method == null");
+    }
+    
+    public final a a(String paramString1, String paramString2)
+    {
+      this.c.b(paramString1, paramString2);
+      return this;
+    }
+    
+    public final alj a()
+    {
+      if (this.a != null) {
+        return new alj(this);
+      }
+      throw new IllegalStateException("url == null");
+    }
+    
+    public final a b(String paramString)
+    {
+      this.c.a(paramString);
+      return this;
     }
   }
 }

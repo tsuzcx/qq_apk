@@ -1,32 +1,33 @@
 package com.tencent.token;
 
-public abstract interface aud
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class aud
+  implements aua
 {
-  public abstract int a(String paramString, int paramInt);
+  public atb k = null;
   
-  public abstract long a(String paramString, long paramLong);
+  public void a(int paramInt, az paramaz) {}
   
-  public abstract String a(String paramString);
-  
-  public abstract String a(String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract boolean a(String paramString, boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean b(String paramString, int paramInt);
-  
-  public abstract boolean b(String paramString, long paramLong);
-  
-  public abstract boolean b(String paramString1, String paramString2);
-  
-  public abstract boolean b(String paramString, boolean paramBoolean);
-  
-  public abstract boolean c();
+  public final void a(byte[] paramArrayOfByte)
+  {
+    ba localba = asu.a(paramArrayOfByte);
+    Object localObject = this.k;
+    paramArrayOfByte = null;
+    if ((localObject != null) && (localba != null)) {
+      paramArrayOfByte = localba.c;
+    }
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    paramArrayOfByte = paramArrayOfByte.iterator();
+    while (paramArrayOfByte.hasNext())
+    {
+      localObject = (az)paramArrayOfByte.next();
+      a(localba.a, (az)localObject);
+    }
+  }
 }
 
 

@@ -1,240 +1,91 @@
 package com.tencent.token;
 
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewManager;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.push.PActivity;
+import java.io.PrintStream;
 
-public abstract class qk
+public final class qk
 {
-  protected Context A;
-  protected Handler B;
-  private View a;
-  private int b = 0;
-  long t = -1L;
-  Animation u;
-  public Animation v;
-  boolean w = true;
-  ViewManager x;
-  FrameLayout y;
-  public volatile int z = 0;
+  private static int a = 6;
+  private static PrintStream b;
+  private static byte[] c;
+  private static final String d;
   
-  private void a(int paramInt)
+  static
   {
-    int i = this.b;
-    paramInt = 1 << paramInt | i;
-    if (paramInt != i)
-    {
-      this.b = paramInt;
-      if (this.b == 15) {
-        e();
-      }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("VERSION.RELEASE:[");
+    localStringBuilder2.append(Build.VERSION.RELEASE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.CODENAME:[");
+    localStringBuilder2.append(Build.VERSION.CODENAME);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.INCREMENTAL:[");
+    localStringBuilder2.append(Build.VERSION.INCREMENTAL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] BOARD:[");
+    localStringBuilder2.append(Build.BOARD);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DEVICE:[");
+    localStringBuilder2.append(Build.DEVICE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DISPLAY:[");
+    localStringBuilder2.append(Build.DISPLAY);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] FINGERPRINT:[");
+    localStringBuilder2.append(Build.FINGERPRINT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] HOST:[");
+    localStringBuilder2.append(Build.HOST);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MANUFACTURER:[");
+    localStringBuilder2.append(Build.MANUFACTURER);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MODEL:[");
+    localStringBuilder2.append(yd.a);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] PRODUCT:[");
+    localStringBuilder2.append(Build.PRODUCT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TAGS:[");
+    localStringBuilder2.append(Build.TAGS);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TYPE:[");
+    localStringBuilder2.append(Build.TYPE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] USER:[");
+    localStringBuilder2.append(Build.USER);
+    localStringBuilder2.append("]");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    d = localStringBuilder1.toString();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (a <= 4) {
+      ql.a(b, c, "E/".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
-  private void b()
+  public static void b(String paramString1, String paramString2)
   {
-    Object localObject = new Intent(this.A, PActivity.class);
-    ((Intent)localObject).setFlags(402653184);
-    localObject = PendingIntent.getActivity(this.A, 0, (Intent)localObject, 268435456);
-    try
-    {
-      this.B.removeMessages(65282);
-      this.B.sendEmptyMessageDelayed(65282, 6000L);
-      ((PendingIntent)localObject).send();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      a(3);
+    if (a <= 2) {
+      ql.a(b, c, "I/".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
-  protected void a()
+  public static void c(String paramString1, String paramString2)
   {
-    final WindowManager localWindowManager = (WindowManager)this.A.getSystemService("window");
-    if (localWindowManager == null)
-    {
-      e();
-      return;
-    }
-    this.B.post(new Runnable()
-    {
-      public final void run()
-      {
-        qk.a(qk.this, 0);
-        qk.a(qk.this, 1);
-        if ((Build.VERSION.SDK_INT != 25) && (Build.VERSION.SDK_INT >= 19)) {
-          int i = Build.VERSION.SDK_INT;
-        }
-        qk.a(qk.this, 2);
-        qk.a(qk.this);
-      }
-    });
-  }
-  
-  public final void a(Context paramContext)
-  {
-    ql.d();
-    this.A = paramContext;
-    this.B = new Handler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        qk.this.a(paramAnonymousMessage);
-      }
-    };
-    a();
-  }
-  
-  protected final void a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 65283: 
-      b();
-      return;
-    case 65282: 
-      a(3);
-      return;
-    case 65281: 
-      if ((paramMessage.obj instanceof a))
-      {
-        a.a((a)paramMessage.obj);
-        a(2);
-        return;
-      }
-      break;
-    case 65280: 
-      if ((this.y != null) && (this.a != null))
-      {
-        a(true);
-        return;
-      }
-      break;
+    if (a <= 1) {
+      ql.a(b, c, "D/".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
-  public final void a(ViewManager paramViewManager)
+  public static void d(String paramString1, String paramString2)
   {
-    this.B.removeMessages(65281);
-    this.B.removeMessages(65282);
-    this.B.removeMessages(65283);
-    if (this.z == 0)
-    {
-      this.x = paramViewManager;
-      this.a = g();
-      if (this.a != null)
-      {
-        paramViewManager = h();
-        this.y = new FrameLayout(this.A);
-        this.y.addView(this.a, new FrameLayout.LayoutParams(paramViewManager.width, paramViewManager.height));
-      }
+    if (a <= 0) {
+      ql.a(b, c, "V/".concat(String.valueOf(paramString1)), paramString2);
     }
-    try
-    {
-      this.x.addView(this.y, paramViewManager);
-      if ((this.w) && (this.u != null)) {
-        this.a.startAnimation(this.u);
-      }
-      if (this.t > 0L)
-      {
-        this.B.removeMessages(65280);
-        this.B.sendEmptyMessageDelayed(65280, this.t);
-      }
-      this.z = 4;
-      return;
-    }
-    catch (Throwable paramViewManager)
-    {
-      label177:
-      break label177;
-    }
-    e();
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.B.removeMessages(65281);
-    this.B.removeMessages(65282);
-    if ((this.z != 0) && (this.z != 1) && (this.z != 2))
-    {
-      if (this.w)
-      {
-        Animation localAnimation = this.v;
-        if (localAnimation != null)
-        {
-          localAnimation.setAnimationListener(new Animation.AnimationListener()
-          {
-            public final void onAnimationEnd(Animation paramAnonymousAnimation)
-            {
-              qk.this.x.removeView(qk.this.y);
-              qk.this.y = null;
-            }
-            
-            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-            
-            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-          });
-          this.a.startAnimation(this.v);
-          break label101;
-        }
-      }
-      this.x.removeView(this.y);
-      this.y = null;
-      label101:
-      if ((this.z != 3) && (this.z != 8))
-      {
-        if (paramBoolean)
-        {
-          d();
-          return;
-        }
-        this.z = 2;
-      }
-    }
-  }
-  
-  protected void d()
-  {
-    this.z = 1;
-  }
-  
-  protected void e()
-  {
-    if (this.z != 7) {
-      this.z = 7;
-    }
-    this.B.removeCallbacksAndMessages(null);
-  }
-  
-  protected void f()
-  {
-    this.z = 3;
-  }
-  
-  protected abstract View g();
-  
-  public abstract WindowManager.LayoutParams h();
-  
-  final class a
-    extends FrameLayout
-  {
-    private boolean a;
   }
 }
 

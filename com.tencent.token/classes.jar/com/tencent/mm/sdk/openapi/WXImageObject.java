@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.openapi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import com.tencent.token.pw;
+import com.tencent.token.qk;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
@@ -57,7 +57,7 @@ public class WXImageObject
     }
     for (;;)
     {
-      pw.a("MicroMsg.SDK.WXImageObject", (String)localObject);
+      qk.a("MicroMsg.SDK.WXImageObject", (String)localObject);
       return false;
       localObject = this.imagePath;
       if ((localObject != null) && (((String)localObject).length() > 10240))

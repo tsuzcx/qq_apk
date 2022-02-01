@@ -1,163 +1,289 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.content.res.TypedArray;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.Window.Callback;
 
-public final class gx
-  extends Drawable
+public abstract class gx
+  extends gw
 {
-  private static final float b = (float)Math.toRadians(45.0D);
-  private final Paint a;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
-  private boolean g;
-  private final Path h;
-  private final int i;
-  private boolean j;
-  private float k;
-  private float l;
-  private int m;
+  private static boolean o;
+  private static final boolean p;
+  private static final int[] q = { 16842836 };
+  protected final Context b;
+  public final Window c;
+  protected final Window.Callback d;
+  protected final Window.Callback e;
+  public final gv f;
+  protected ActionBar g;
+  protected MenuInflater h;
+  public boolean i;
+  protected boolean j;
+  protected boolean k;
+  protected boolean l;
+  protected boolean m;
+  public boolean n;
+  private CharSequence r;
+  private boolean s;
   
-  public final void a(float paramFloat)
+  static
   {
-    if (this.k != paramFloat)
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    p = bool;
+    if ((bool) && (!o))
     {
-      this.k = paramFloat;
-      invalidateSelf();
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+      {
+        public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+        {
+          boolean bool = paramAnonymousThrowable instanceof Resources.NotFoundException;
+          int j = 0;
+          int i = j;
+          Object localObject;
+          if (bool)
+          {
+            localObject = paramAnonymousThrowable.getMessage();
+            i = j;
+            if (localObject != null) {
+              if (!((String)localObject).contains("drawable"))
+              {
+                i = j;
+                if (!((String)localObject).contains("Drawable")) {}
+              }
+              else
+              {
+                i = 1;
+              }
+            }
+          }
+          if (i != 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramAnonymousThrowable.getMessage());
+            ((StringBuilder)localObject).append(". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
+            localObject = new Resources.NotFoundException(((StringBuilder)localObject).toString());
+            ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
+            ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
+            this.a.uncaughtException(paramAnonymousThread, (Throwable)localObject);
+            return;
+          }
+          this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+        }
+      });
+      o = true;
     }
   }
   
-  public final void a(boolean paramBoolean)
+  protected gx(Context paramContext, Window paramWindow, gv paramgv)
   {
-    if (this.j != paramBoolean)
+    this.b = paramContext;
+    this.c = paramWindow;
+    this.f = paramgv;
+    this.d = this.c.getCallback();
+    paramWindow = this.d;
+    if (!(paramWindow instanceof b))
     {
-      this.j = paramBoolean;
-      invalidateSelf();
+      this.e = a(paramWindow);
+      this.c.setCallback(this.e);
+      paramContext = jw.a(paramContext, null, q);
+      paramWindow = paramContext.b(0);
+      if (paramWindow != null) {
+        this.c.setBackgroundDrawable(paramWindow);
+      }
+      paramContext.a.recycle();
+      return;
     }
+    throw new IllegalStateException("AppCompat has already installed itself into the Window");
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final ActionBar a()
   {
-    Rect localRect = getBounds();
-    int i2 = this.m;
-    int i1 = 0;
-    int n;
-    if (i2 != 3) {
-      n = i1;
-    }
-    switch (i2)
+    m();
+    return this.g;
+  }
+  
+  Window.Callback a(Window.Callback paramCallback)
+  {
+    return new b(paramCallback);
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.r = paramCharSequence;
+    b(paramCharSequence);
+  }
+  
+  protected abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  
+  protected abstract boolean a(KeyEvent paramKeyEvent);
+  
+  public final MenuInflater b()
+  {
+    if (this.h == null)
     {
-    default: 
-      n = i1;
-      if (dk.e(this) == 1) {
-        n = 1;
-      }
-      break;
-    case 1: 
-      n = 1;
-      break;
-      n = i1;
-      if (dk.e(this) == 0) {
-        n = 1;
-      }
-      break;
-    }
-    float f1 = this.c;
-    float f6 = (float)Math.sqrt(f1 * f1 * 2.0F);
-    float f7 = this.d;
-    float f8 = this.k;
-    float f3 = f7 + (this.e - f7) * f8;
-    float f4 = Math.round((this.l - 0.0F) * f8 + 0.0F);
-    float f9 = b;
-    float f10 = this.k;
-    if (n != 0) {
-      f1 = 0.0F;
-    } else {
-      f1 = -180.0F;
-    }
-    float f2;
-    if (n != 0) {
-      f2 = 180.0F;
-    } else {
-      f2 = 0.0F;
-    }
-    float f5 = this.k;
-    double d1 = (f6 - f7) * f8 + f7;
-    double d2 = (f9 - 0.0F) * f10 + 0.0F;
-    double d3 = Math.cos(d2);
-    Double.isNaN(d1);
-    f6 = (float)Math.round(d3 * d1);
-    d2 = Math.sin(d2);
-    Double.isNaN(d1);
-    f7 = (float)Math.round(d1 * d2);
-    this.h.rewind();
-    f8 = this.f + this.a.getStrokeWidth();
-    f8 += (-this.l - f8) * this.k;
-    f9 = -f3 / 2.0F;
-    this.h.moveTo(f9 + f4, 0.0F);
-    this.h.rLineTo(f3 - f4 * 2.0F, 0.0F);
-    this.h.moveTo(f9, f8);
-    this.h.rLineTo(f6, f7);
-    this.h.moveTo(f9, -f8);
-    this.h.rLineTo(f6, -f7);
-    this.h.close();
-    paramCanvas.save();
-    f3 = this.a.getStrokeWidth();
-    f6 = localRect.height();
-    f4 = this.f;
-    f6 = (int)(f6 - 3.0F * f3 - 2.0F * f4) / 4 * 2;
-    paramCanvas.translate(localRect.centerX(), f6 + (f3 * 1.5F + f4));
-    if (this.g)
-    {
-      if ((this.j ^ n)) {
-        n = -1;
+      m();
+      Object localObject = this.g;
+      if (localObject != null) {
+        localObject = ((ActionBar)localObject).b();
       } else {
-        n = 1;
+        localObject = this.b;
       }
-      paramCanvas.rotate((f1 + (f2 - f1) * f5) * n);
+      this.h = new ht((Context)localObject);
     }
-    else if (n != 0)
+    return this.h;
+  }
+  
+  protected abstract ho b(ho.a parama);
+  
+  public void b(Bundle paramBundle) {}
+  
+  protected abstract void b(CharSequence paramCharSequence);
+  
+  public void d()
+  {
+    this.s = true;
+  }
+  
+  protected abstract void d(int paramInt);
+  
+  public void e()
+  {
+    this.s = false;
+  }
+  
+  protected abstract boolean e(int paramInt);
+  
+  public void h()
+  {
+    this.n = true;
+  }
+  
+  public final gu.a i()
+  {
+    return new a();
+  }
+  
+  public boolean k()
+  {
+    return false;
+  }
+  
+  protected abstract void m();
+  
+  protected final Context n()
+  {
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      localObject1 = ((ActionBar)localObject1).b();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.b;
+    }
+    return localObject2;
+  }
+  
+  protected final CharSequence o()
+  {
+    Window.Callback localCallback = this.d;
+    if ((localCallback instanceof Activity)) {
+      return ((Activity)localCallback).getTitle();
+    }
+    return this.r;
+  }
+  
+  final class a
+    implements gu.a
+  {
+    a() {}
+    
+    public final void a(int paramInt)
     {
-      paramCanvas.rotate(180.0F);
+      ActionBar localActionBar = gx.this.a();
+      if (localActionBar != null) {
+        localActionBar.a(paramInt);
+      }
     }
-    paramCanvas.drawPath(this.h, this.a);
-    paramCanvas.restore();
   }
   
-  public final int getIntrinsicHeight()
+  class b
+    extends hv
   {
-    return this.i;
-  }
-  
-  public final int getIntrinsicWidth()
-  {
-    return this.i;
-  }
-  
-  public final int getOpacity()
-  {
-    return -3;
-  }
-  
-  public final void setAlpha(int paramInt)
-  {
-    if (paramInt != this.a.getAlpha())
+    b(Window.Callback paramCallback)
     {
-      this.a.setAlpha(paramInt);
-      invalidateSelf();
+      super();
     }
-  }
-  
-  public final void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.a.setColorFilter(paramColorFilter);
-    invalidateSelf();
+    
+    public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+    {
+      return (gx.this.a(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
+    }
+    
+    public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+    {
+      return (super.dispatchKeyShortcutEvent(paramKeyEvent)) || (gx.this.a(paramKeyEvent.getKeyCode(), paramKeyEvent));
+    }
+    
+    public void onContentChanged() {}
+    
+    public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+    {
+      if ((paramInt == 0) && (!(paramMenu instanceof id))) {
+        return false;
+      }
+      return super.onCreatePanelMenu(paramInt, paramMenu);
+    }
+    
+    public boolean onMenuOpened(int paramInt, Menu paramMenu)
+    {
+      super.onMenuOpened(paramInt, paramMenu);
+      gx.this.e(paramInt);
+      return true;
+    }
+    
+    public void onPanelClosed(int paramInt, Menu paramMenu)
+    {
+      super.onPanelClosed(paramInt, paramMenu);
+      gx.this.d(paramInt);
+    }
+    
+    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      id localid;
+      if ((paramMenu instanceof id)) {
+        localid = (id)paramMenu;
+      } else {
+        localid = null;
+      }
+      if ((paramInt == 0) && (localid == null)) {
+        return false;
+      }
+      if (localid != null) {
+        localid.k = true;
+      }
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if (localid != null) {
+        localid.k = false;
+      }
+      return bool;
+    }
   }
 }
 

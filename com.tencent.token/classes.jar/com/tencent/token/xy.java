@@ -1,65 +1,144 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import com.tencent.token.global.taiji.CSReportProfile;
-import com.tencent.token.global.taiji.KeyValueProfile;
-import com.tencent.token.global.taiji.SCReportProfile;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.token.global.RqdApplication;
 
 public final class xy
-  implements auc
 {
-  public final void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final auc.a parama)
+  public static int a()
   {
-    CSReportProfile localCSReportProfile = new CSReportProfile();
-    localCSReportProfile.profileID = 4;
-    localCSReportProfile.actionID = 0;
-    localCSReportProfile.param = new ArrayList();
-    Object localObject1;
-    Object localObject2;
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    try
     {
-      localObject1 = paramHashMap.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Integer)((Iterator)localObject1).next();
-        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
-        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
-        localKeyValueProfile.valueType = 3;
-        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
-        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
-      }
+      int i = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
+      return i;
     }
-    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
+    catch (Exception localException)
     {
-      paramHashMap = paramHashMap1.keySet().iterator();
-      while (paramHashMap.hasNext())
-      {
-        localObject1 = (Integer)paramHashMap.next();
-        localObject2 = new KeyValueProfile();
-        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
-        ((KeyValueProfile)localObject2).valueType = 1;
-        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
-        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
-      }
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
     }
-    ya.a.a().a(1053, localCSReportProfile, new SCReportProfile(), 18, new aui()
-    {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, JceStruct paramAnonymousJceStruct)
-      {
-        if ((paramAnonymousInt2 == 0) && (paramAnonymousInt3 == 0)) {
-          parama.a();
-        }
-      }
-    });
+    return 0;
   }
   
-  static final class a
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    private static final xy a = new xy();
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
+      if (paramInt == 0) {
+        localEditor.putBoolean("scan_tip_next_show", paramBoolean);
+      } else {
+        localEditor.putBoolean("scan_tip_next_show_2", paramBoolean);
+      }
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    try
+    {
+      Object localObject = RqdApplication.n();
+      boolean bool = false;
+      localObject = ((Context)localObject).getSharedPreferences("safe_conf_list", 0);
+      if (localObject != null) {
+        bool = true;
+      }
+      xv.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).remove("JSON_LIST");
+      if (paramString2 != null) {
+        ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+      }
+      ((SharedPreferences.Editor)localObject).putInt("conf_type", 2);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      paramString2 = new StringBuilder("getSharedPreferences error=");
+      paramString2.append(paramString1.toString());
+      xv.c(paramString2.toString());
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
+      localEditor.putBoolean("utils_red_dot_show", paramBoolean);
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    try
+    {
+      SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences("sp_name_global", 0);
+      if (paramInt == 0) {
+        return localSharedPreferences.getBoolean("scan_tip_next_show", true);
+      }
+      boolean bool = localSharedPreferences.getBoolean("scan_tip_next_show_2", true);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
+    }
+    return true;
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
+    }
+    return false;
+  }
+  
+  public static boolean c()
+  {
+    try
+    {
+      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
+    }
+    return false;
   }
 }
 

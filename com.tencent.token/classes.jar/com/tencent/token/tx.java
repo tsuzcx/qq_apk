@@ -1,70 +1,44 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.token.utils.UserTask;
 
 public final class tx
-  extends tr
+  extends tw
 {
-  private long d;
-  private String e;
+  static tx a;
   
-  public final String a()
+  private tx()
   {
-    sh.a();
-    this.a.a(104, null, null);
-    return null;
+    super("tbl_safe_msg");
   }
   
-  public final void a(abc paramabc)
+  public static tx a()
   {
-    this.d = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.e = ((String)paramabc.c.get("param.bind.sig"));
+    if (a == null) {
+      a = new tx();
+    }
+    return a;
   }
   
-  public final void a(JSONObject paramJSONObject)
+  public final void a(final byte paramByte, final Handler paramHandler)
   {
-    int i = paramJSONObject.getInt("err");
-    Object localObject;
-    if (i != 0)
+    new UserTask() {}.a(new String[] { "" });
+  }
+  
+  public final xt b(byte paramByte)
+  {
+    xt localxt3 = new xt();
+    xt localxt2 = super.a(paramByte);
+    xt localxt1 = localxt2;
+    if (!localxt2.b())
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((xh)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
-      return;
-    }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      if (paramJSONObject.getInt("seed_available") == 1)
-      {
-        localObject = aao.e(paramJSONObject.getString("seed"));
-        if (localObject != null)
-        {
-          sj.b().c();
-          sj.b().a((byte[])localObject);
-          sj.b().a.a();
-        }
+      localxt1 = localxt2;
+      if (tt.a().c(localxt3.a)) {
+        localxt1 = super.a(paramByte);
       }
-      long l = paramJSONObject.getLong("server_time");
-      sj.b();
-      sj.a(l);
-      paramJSONObject = th.a().d(this.d);
-      if (paramJSONObject != null) {
-        th.a().a(paramJSONObject);
-      }
-      this.a.a = 0;
-      return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    return localxt1;
   }
 }
 

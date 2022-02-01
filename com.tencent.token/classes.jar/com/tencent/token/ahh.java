@@ -1,8 +1,9 @@
 package com.tencent.token;
 
-public abstract interface ahh
-  extends ahi
-{}
+public abstract class ahh<T>
+{
+  public abstract void a(aep paramaep, T paramT);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

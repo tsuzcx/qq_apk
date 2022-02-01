@@ -1,16 +1,12 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-
-public abstract interface ars
+public final class ars
+  extends Exception
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(ArrayList paramArrayList);
-  
-  public abstract int k();
-  
-  public abstract ArrayList l();
+  public ars(String paramString)
+  {
+    super(paramString);
+  }
 }
 
 

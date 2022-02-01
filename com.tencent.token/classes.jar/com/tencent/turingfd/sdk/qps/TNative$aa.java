@@ -11,7 +11,7 @@ public class TNative$aa
 {
   public static native SparseArray<Object> a(SparseArray<Object> paramSparseArray, Context paramContext, Map<String, String> paramMap, int paramInt);
   
-  public static native SparseArray<Object> b(SparseArray<Object> paramSparseArray, byte[] paramArrayOfByte, int paramInt);
+  public static native SparseArray<Object> b(SparseArray<Object> paramSparseArray, byte[] paramArrayOfByte, Map<String, String> paramMap, int paramInt);
   
   public static native SparseArray<Object> c(SparseArray<Object> paramSparseArray, Context paramContext);
   
@@ -24,6 +24,8 @@ public class TNative$aa
   public static native SparseArray<Object> g(SparseArray<Object> paramSparseArray, Context paramContext, Map<String, String> paramMap, int paramInt);
   
   public static native SparseArray<Object> h(SparseArray<Object> paramSparseArray, Context paramContext, Map<String, String> paramMap, int paramInt);
+  
+  public static native SparseArray<Object> i(SparseArray<Object> paramSparseArray, Context paramContext, Map<String, String> paramMap);
   
   public static class bb
     implements ServiceConnection

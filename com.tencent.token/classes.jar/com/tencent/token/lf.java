@@ -1,901 +1,154 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-public abstract class lf
-  implements lh
+public final class lf
 {
-  private static String r = "CommReq";
-  private boolean A = false;
-  protected String a;
-  public List b = null;
-  public b c = new b();
-  protected Map d = null;
-  public int e = 0;
-  public String f = "";
-  public boolean g = false;
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public long o = -1L;
-  public List p = null;
-  public ln q;
-  private String s;
-  private int t = 4096;
-  private int u = 8;
-  private URL v = null;
-  private HttpURLConnection w = null;
-  private InputStream x = null;
-  private long y = -1L;
-  private volatile boolean z = false;
-  
-  private void a(String paramString)
-  {
-    Object localObject = "";
-    HttpURLConnection localHttpURLConnection = this.w;
-    if (localHttpURLConnection != null) {
-      localObject = localHttpURLConnection.getHeaderField("X-Extra-Servers");
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return;
-    }
-    try
-    {
-      boolean bool = "http".equals(new URL(paramString).getProtocol());
-      if (!bool) {
-        return;
-      }
-      if (!paramString.startsWith("http://")) {
-        return;
-      }
-      int i1 = paramString.indexOf("/", 7);
-      if (i1 == -1) {
-        return;
-      }
-      paramString.substring(7, i1);
-      paramString = paramString.substring(i1);
-      localObject = ((String)localObject).split(";");
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        this.p = new ArrayList();
-        int i2 = localObject.length;
-        i1 = 0;
-        while (i1 < i2)
-        {
-          localHttpURLConnection = localObject[i1];
-          List localList = this.p;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("http://");
-          localStringBuilder.append(localHttpURLConnection);
-          localStringBuilder.append(paramString);
-          localList.add(localStringBuilder.toString());
-          i1 += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private void a(Throwable paramThrowable)
-  {
-    paramThrowable.printStackTrace();
-    lo.a(r, "handleException:", paramThrowable);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramThrowable.getClass().getName());
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramThrowable);
-    this.f = localStringBuilder.toString();
-    int i1;
-    if (this.z) {
-      i1 = -66;
-    }
-    for (;;)
-    {
-      this.e = i1;
-      return;
-      if (!lj.f()) {
-        i1 = -15;
-      } else if (lj.h()) {
-        i1 = -52;
-      } else if (!lt.a()) {
-        i1 = -16;
-      } else {
-        i1 = b(paramThrowable);
-      }
-    }
-  }
-  
-  private static int b(Throwable paramThrowable)
-  {
-    try
-    {
-      boolean bool = paramThrowable.getMessage().contains("Permission");
-      if (bool) {
-        return -71;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label17:
-      break label17;
-    }
-    if (!(paramThrowable instanceof Exception)) {
-      return -70;
-    }
-    if (paramThrowable != null)
-    {
-      if ((paramThrowable instanceof SocketTimeoutException)) {
-        return -25;
-      }
-      if ((paramThrowable instanceof UnknownHostException)) {
-        return -29;
-      }
-      if ((paramThrowable instanceof ConnectException)) {
-        return -24;
-      }
-      if ((paramThrowable instanceof SocketException)) {
-        return -26;
-      }
-      if ((paramThrowable instanceof IOException)) {
-        return -27;
-      }
-    }
-    return -48;
-  }
-  
-  private static long b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("/");
-      if ((paramString != null) && (paramString.length == 2)) {
-        try
-        {
-          long l1 = Long.valueOf(paramString[1]).longValue();
-          return l1;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
-    return -1L;
-  }
-  
-  private static long c(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        long l1 = Long.valueOf(paramString).longValue();
-        return l1;
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return -1L;
-  }
-  
-  private void g()
-  {
-    if (this.c.a.size() > 0) {
-      this.w.addRequestProperty("Range", this.c.toString());
-    }
-    int i2 = 0;
-    int i1 = 0;
-    Object localObject = this.d;
-    if (localObject != null)
-    {
-      localObject = ((Map)localObject).keySet().iterator();
-      for (;;)
-      {
-        i2 = i1;
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)this.d.get(str1);
-        this.w.addRequestProperty(str1, str2);
-        if ("User-Agent".equalsIgnoreCase(str1)) {
-          i1 = 1;
-        }
-      }
-    }
-    if (i2 == 0) {
-      this.w.addRequestProperty("User-Agent", "HalleyService/2.0");
-    }
-  }
-  
-  public final String a()
-  {
-    return lx.a(this.s, false);
-  }
-  
-  /* Error */
-  public final void a(lg paramlg)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_0
-    //   2: getfield 81	com/tencent/token/lf:w	Ljava/net/HttpURLConnection;
-    //   5: invokevirtual 315	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   8: putfield 83	com/tencent/token/lf:x	Ljava/io/InputStream;
-    //   11: aload_0
-    //   12: getfield 61	com/tencent/token/lf:c	Lcom/tencent/token/lf$b;
-    //   15: astore 20
-    //   17: aload 20
-    //   19: getfield 260	com/tencent/token/lf$b:a	Ljava/util/List;
-    //   22: invokeinterface 264 1 0
-    //   27: ifne +9 -> 36
-    //   30: aconst_null
-    //   31: astore 20
-    //   33: goto +491 -> 524
-    //   36: aload 20
-    //   38: getfield 260	com/tencent/token/lf$b:a	Ljava/util/List;
-    //   41: iconst_0
-    //   42: invokeinterface 318 2 0
-    //   47: checkcast 8	com/tencent/token/lf$a
-    //   50: astore 20
-    //   52: goto +472 -> 524
-    //   55: aload_0
-    //   56: getfield 99	com/tencent/token/lf:o	J
-    //   59: lstore 5
-    //   61: goto +31 -> 92
-    //   64: aload 20
-    //   66: getfield 320	com/tencent/token/lf$a:b	J
-    //   69: aload 20
-    //   71: getfield 322	com/tencent/token/lf$a:a	J
-    //   74: lsub
-    //   75: lstore 5
-    //   77: aload 20
-    //   79: getfield 320	com/tencent/token/lf$a:b	J
-    //   82: ldc2_w 96
-    //   85: lcmp
-    //   86: ifne +6 -> 92
-    //   89: goto -34 -> 55
-    //   92: aload_0
-    //   93: getfield 71	com/tencent/token/lf:t	I
-    //   96: newarray byte
-    //   98: astore 20
-    //   100: iconst_1
-    //   101: istore 18
-    //   103: lconst_0
-    //   104: lstore 15
-    //   106: lconst_0
-    //   107: lstore_3
-    //   108: lconst_0
-    //   109: lstore 7
-    //   111: iconst_1
-    //   112: istore 17
-    //   114: lload 5
-    //   116: lstore 13
-    //   118: lload 15
-    //   120: lload 13
-    //   122: lcmp
-    //   123: ifge +289 -> 412
-    //   126: aload_0
-    //   127: getfield 324	com/tencent/token/lf:q	Lcom/tencent/token/ln;
-    //   130: invokeinterface 327 1 0
-    //   135: istore 19
-    //   137: iload 19
-    //   139: ifeq +39 -> 178
-    //   142: lload 7
-    //   144: lstore 5
-    //   146: aload_0
-    //   147: invokevirtual 329	com/tencent/token/lf:e	()V
-    //   150: aload_0
-    //   151: getfield 103	com/tencent/token/lf:y	J
-    //   154: lstore 7
-    //   156: lload_3
-    //   157: lload 5
-    //   159: lsub
-    //   160: lstore 5
-    //   162: lload 7
-    //   164: lstore_3
-    //   165: lload_3
-    //   166: lload 5
-    //   168: invokestatic 335	java/lang/Math:max	(JJ)J
-    //   171: lstore_3
-    //   172: aload_0
-    //   173: lload_3
-    //   174: putfield 103	com/tencent/token/lf:y	J
-    //   177: return
-    //   178: iload 18
-    //   180: ifne +10 -> 190
-    //   183: lload 7
-    //   185: lstore 5
-    //   187: goto -41 -> 146
-    //   190: aload_0
-    //   191: getfield 71	com/tencent/token/lf:t	I
-    //   194: istore_2
-    //   195: iload_2
-    //   196: i2l
-    //   197: lstore 5
-    //   199: lload 7
-    //   201: lstore 9
-    //   203: lload 7
-    //   205: lstore 11
-    //   207: lload 5
-    //   209: lload 13
-    //   211: lload 15
-    //   213: lsub
-    //   214: invokestatic 338	java/lang/Math:min	(JJ)J
-    //   217: l2i
-    //   218: istore_2
-    //   219: lload 7
-    //   221: lstore 5
-    //   223: lload 15
-    //   225: lconst_0
-    //   226: lcmp
-    //   227: ifne +16 -> 243
-    //   230: lload 7
-    //   232: lstore 9
-    //   234: lload 7
-    //   236: lstore 11
-    //   238: invokestatic 343	android/os/SystemClock:elapsedRealtime	()J
-    //   241: lstore 5
-    //   243: lload 5
-    //   245: lstore 9
-    //   247: lload 5
-    //   249: lstore 11
-    //   251: aload_0
-    //   252: getfield 83	com/tencent/token/lf:x	Ljava/io/InputStream;
-    //   255: aload 20
-    //   257: iconst_0
-    //   258: iload_2
-    //   259: invokevirtual 349	java/io/InputStream:read	([BII)I
-    //   262: istore_2
-    //   263: lload 15
-    //   265: lconst_0
-    //   266: lcmp
-    //   267: ifne +22 -> 289
-    //   270: lload 5
-    //   272: lstore 9
-    //   274: lload 5
-    //   276: lstore 11
-    //   278: invokestatic 343	android/os/SystemClock:elapsedRealtime	()J
-    //   281: lstore 7
-    //   283: lload 7
-    //   285: lstore_3
-    //   286: goto +3 -> 289
-    //   289: iload_2
-    //   290: iconst_m1
-    //   291: if_icmpeq +31 -> 322
-    //   294: aload_0
-    //   295: getfield 324	com/tencent/token/lf:q	Lcom/tencent/token/ln;
-    //   298: invokeinterface 327 1 0
-    //   303: ifne +229 -> 532
-    //   306: aload_1
-    //   307: aload 20
-    //   309: iload_2
-    //   310: iload 17
-    //   312: invokeinterface 354 4 0
-    //   317: istore 18
-    //   319: goto +213 -> 532
-    //   322: aload_0
-    //   323: bipush 194
-    //   325: putfield 65	com/tencent/token/lf:e	I
-    //   328: new 170	java/lang/StringBuilder
-    //   331: dup
-    //   332: ldc_w 356
-    //   335: invokespecial 357	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   338: astore_1
-    //   339: aload_1
-    //   340: lload 15
-    //   342: invokevirtual 360	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   345: pop
-    //   346: aload_1
-    //   347: ldc_w 362
-    //   350: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   353: pop
-    //   354: aload_1
-    //   355: lload 13
-    //   357: invokevirtual 360	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   360: pop
-    //   361: aload_0
-    //   362: aload_1
-    //   363: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   366: putfield 69	com/tencent/token/lf:f	Ljava/lang/String;
-    //   369: goto -223 -> 146
-    //   372: astore_1
-    //   373: goto +130 -> 503
-    //   376: astore_1
-    //   377: goto +32 -> 409
-    //   380: astore_1
-    //   381: lload 9
-    //   383: lstore 5
-    //   385: goto +118 -> 503
-    //   388: astore_1
-    //   389: lload 11
-    //   391: lstore 5
-    //   393: goto +60 -> 453
-    //   396: astore_1
-    //   397: lload 7
-    //   399: lstore 5
-    //   401: goto +102 -> 503
-    //   404: astore_1
-    //   405: lload 7
-    //   407: lstore 5
-    //   409: goto +44 -> 453
-    //   412: aload_0
-    //   413: invokevirtual 329	com/tencent/token/lf:e	()V
-    //   416: aload_0
-    //   417: getfield 103	com/tencent/token/lf:y	J
-    //   420: lstore 5
-    //   422: lload_3
-    //   423: lload 7
-    //   425: lsub
-    //   426: lstore 7
-    //   428: lload 5
-    //   430: lstore_3
-    //   431: lload 7
-    //   433: lstore 5
-    //   435: goto -270 -> 165
-    //   438: astore_1
-    //   439: lconst_0
-    //   440: lstore_3
-    //   441: lconst_0
-    //   442: lstore 5
-    //   444: goto +59 -> 503
-    //   447: astore_1
-    //   448: lconst_0
-    //   449: lstore 5
-    //   451: lconst_0
-    //   452: lstore_3
-    //   453: aload_0
-    //   454: aload_1
-    //   455: invokespecial 364	com/tencent/token/lf:a	(Ljava/lang/Throwable;)V
-    //   458: lload_3
-    //   459: lstore 7
-    //   461: lload 5
-    //   463: lconst_0
-    //   464: lcmp
-    //   465: ifeq +17 -> 482
-    //   468: lload_3
-    //   469: lstore 7
-    //   471: lload_3
-    //   472: lconst_0
-    //   473: lcmp
-    //   474: ifne +8 -> 482
-    //   477: invokestatic 343	android/os/SystemClock:elapsedRealtime	()J
-    //   480: lstore 7
-    //   482: aload_0
-    //   483: invokevirtual 329	com/tencent/token/lf:e	()V
-    //   486: aload_0
-    //   487: getfield 103	com/tencent/token/lf:y	J
-    //   490: lload 7
-    //   492: lload 5
-    //   494: lsub
-    //   495: invokestatic 335	java/lang/Math:max	(JJ)J
-    //   498: lstore_3
-    //   499: goto -327 -> 172
-    //   502: astore_1
-    //   503: aload_0
-    //   504: invokevirtual 329	com/tencent/token/lf:e	()V
-    //   507: aload_0
-    //   508: aload_0
-    //   509: getfield 103	com/tencent/token/lf:y	J
-    //   512: lload_3
-    //   513: lload 5
-    //   515: lsub
-    //   516: invokestatic 335	java/lang/Math:max	(JJ)J
-    //   519: putfield 103	com/tencent/token/lf:y	J
-    //   522: aload_1
-    //   523: athrow
-    //   524: aload 20
-    //   526: ifnonnull -462 -> 64
-    //   529: goto -474 -> 55
-    //   532: iload 17
-    //   534: ifeq +9 -> 543
-    //   537: iconst_0
-    //   538: istore 17
-    //   540: goto +3 -> 543
-    //   543: lload 15
-    //   545: iload_2
-    //   546: i2l
-    //   547: ladd
-    //   548: lstore 15
-    //   550: lload 5
-    //   552: lstore 7
-    //   554: goto -436 -> 118
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	557	0	this	lf
-    //   0	557	1	paramlg	lg
-    //   194	352	2	i1	int
-    //   107	406	3	l1	long
-    //   59	492	5	l2	long
-    //   109	444	7	l3	long
-    //   201	181	9	l4	long
-    //   205	185	11	l5	long
-    //   116	240	13	l6	long
-    //   104	445	15	l7	long
-    //   112	427	17	bool1	boolean
-    //   101	217	18	bool2	boolean
-    //   135	3	19	bool3	boolean
-    //   15	510	20	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   294	319	372	finally
-    //   322	369	372	finally
-    //   294	319	376	java/lang/Throwable
-    //   322	369	376	java/lang/Throwable
-    //   207	219	380	finally
-    //   238	243	380	finally
-    //   251	263	380	finally
-    //   278	283	380	finally
-    //   207	219	388	java/lang/Throwable
-    //   238	243	388	java/lang/Throwable
-    //   251	263	388	java/lang/Throwable
-    //   278	283	388	java/lang/Throwable
-    //   126	137	396	finally
-    //   190	195	396	finally
-    //   126	137	404	java/lang/Throwable
-    //   190	195	404	java/lang/Throwable
-    //   0	30	438	finally
-    //   36	52	438	finally
-    //   55	61	438	finally
-    //   64	77	438	finally
-    //   77	89	438	finally
-    //   92	100	438	finally
-    //   0	30	447	java/lang/Throwable
-    //   36	52	447	java/lang/Throwable
-    //   55	61	447	java/lang/Throwable
-    //   64	77	447	java/lang/Throwable
-    //   77	89	447	java/lang/Throwable
-    //   92	100	447	java/lang/Throwable
-    //   453	458	502	finally
-    //   477	482	502	finally
-  }
-  
-  public final String b()
-  {
-    String str = "";
-    List localList = this.b;
-    Object localObject = str;
-    if (localList != null)
-    {
-      localObject = str;
-      if (localList.size() > 0)
-      {
-        localObject = this.b;
-        localObject = (String)((List)localObject).get(((List)localObject).size() - 1);
-      }
-    }
-    return lx.a((String)localObject, false);
-  }
-  
-  public final String c()
-  {
-    Object localObject = this.b;
-    if ((localObject != null) && (((List)localObject).size() != 0))
-    {
-      localObject = new StringBuilder();
-      int i2 = this.b.size();
-      int i1 = 0;
-      while (i1 < i2 - 1)
-      {
-        ((StringBuilder)localObject).append(lx.a((String)this.b.get(i1), false));
-        ((StringBuilder)localObject).append("-");
-        i1 += 1;
-      }
-      return ((StringBuilder)localObject).toString();
-    }
-    return "";
-  }
-  
-  public final void d()
-  {
-    if (TextUtils.isEmpty(this.s)) {
-      this.s = this.a;
-    }
-    e();
-    int i1 = 0;
-    if (i1 < this.u)
-    {
-      if (this.q.a()) {
-        return;
-      }
-      this.e = 0;
-      this.f = "";
-    }
-    for (;;)
-    {
-      try
-      {
-        this.v = new URL(this.s);
-        Object localObject = lj.c();
-        if (localObject != null) {}
-        try
-        {
-          localObject = (HttpURLConnection)this.v.openConnection((Proxy)localObject);
-          this.w = ((HttpURLConnection)localObject);
-          continue;
-          localObject = (HttpURLConnection)this.v.openConnection();
-          continue;
-          this.w.setConnectTimeout(le.c());
-          this.w.setReadTimeout(le.d());
-          this.w.setUseCaches(false);
-          localObject = this.w;
-          int i3 = 1;
-          i2 = 1;
-          ((HttpURLConnection)localObject).setDoInput(true);
-          this.w.setInstanceFollowRedirects(false);
-          g();
-          try
-          {
-            int i4 = this.w.getResponseCode();
-            this.A = true;
-            if ((i4 != 200) && (i4 != 206)) {
-              if (i4 != 307) {
-                if ((i4 == 413) || (i4 == 500)) {}
-              }
-            }
-            switch (i4)
-            {
-            case 301: 
-              this.e = i4;
-              break;
-              if ((!lj.d()) || (this.g)) {
-                continue;
-              }
-              if (this.c.a() <= 0) {
-                break label878;
-              }
-              if (i2 == 0) {
-                continue;
-              }
-              this.e = -59;
-              break;
-            case 302: 
-            case 303: 
-              localObject = this.w.getHeaderField("location");
-              if (TextUtils.isEmpty((CharSequence)localObject))
-              {
-                this.e = -58;
-                localObject = "location:".concat(String.valueOf(localObject));
-                this.f = ((String)localObject);
-                break;
-              }
-              this.s = ((String)localObject);
-              if (this.b == null) {
-                this.b = new ArrayList();
-              }
-              this.b.add(localObject);
-              this.s = ((String)localObject);
-              a((String)localObject);
-              this.e = -57;
-              break;
-              this.i = this.w.getHeaderField("Content-Type");
-              localObject = this.i;
-              if (TextUtils.isEmpty((CharSequence)localObject)) {
-                break label888;
-              }
-              localObject = ((String)localObject).toLowerCase();
-              if ((((String)localObject).startsWith("text/html")) || (((String)localObject).startsWith("text/vnd.wap.wml"))) {
-                break label883;
-              }
-              if (!((String)localObject).startsWith("text/webviewhtml")) {
-                break label888;
-              }
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            a(localThrowable);
-            break label798;
-          }
-          if (i2 != 0)
-          {
-            this.e = -11;
-            localObject = this.s;
-            continue;
-          }
-          this.j = this.w.getHeaderField("Content-Range");
-          this.k = this.w.getHeaderField("Content-Length");
-          if (this.c.a() <= 0) {
-            break label893;
-          }
-          i2 = i3;
-          if (i2 != 0)
-          {
-            if (!TextUtils.isEmpty(this.j))
-            {
-              this.o = b(this.j);
-              if (this.o == -1L)
-              {
-                this.e = -54;
-                localObject = new StringBuilder("content-range header:");
-                ((StringBuilder)localObject).append(this.j);
-                localObject = ((StringBuilder)localObject).toString();
-              }
-            }
-            else
-            {
-              this.e = -53;
-              break label798;
-            }
-          }
-          else
-          {
-            if (TextUtils.isEmpty(this.k)) {
-              continue;
-            }
-            this.o = c(this.k);
-            if (this.o == -1L)
-            {
-              this.e = -56;
-              localObject = new StringBuilder("content-range header:");
-              ((StringBuilder)localObject).append(this.k);
-              localObject = ((StringBuilder)localObject).toString();
-              continue;
-            }
-          }
-          this.m = this.w.getHeaderField("etag");
-          this.n = this.w.getHeaderField("Last-Modified");
-          this.l = this.w.getHeaderField("Content-Disposition");
-          break label798;
-          this.e = -55;
-        }
-        catch (IOException localIOException)
-        {
-          a(localIOException);
-          localIOException.printStackTrace();
-        }
-        if (i1 != 0) {
-          break label836;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        this.e = -51;
-        this.f = localMalformedURLException.getMessage();
-        localMalformedURLException.printStackTrace();
-      }
-      label798:
-      if (this.A) {
-        try
-        {
-          this.h = InetAddress.getByName(this.v.getHost()).getHostAddress();
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-      label836:
-      if (this.e == -57)
-      {
-        i1 += 1;
-        break;
-      }
-      if ((i1 >= this.u) && (this.e == -57)) {
-        this.e = -1;
-      }
-      return;
-      continue;
-      label878:
-      int i2 = 0;
-      continue;
-      label883:
-      i2 = 1;
-      continue;
-      label888:
-      i2 = 0;
-      continue;
-      label893:
-      i2 = 0;
-    }
-  }
-  
-  public final void e()
-  {
-    HttpURLConnection localHttpURLConnection = this.w;
-    if (localHttpURLConnection != null) {}
-    try
-    {
-      localHttpURLConnection.disconnect();
-      this.x.close();
-      label20:
-      this.w = null;
-      this.x = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label20;
-    }
-  }
-  
-  public final void f()
-  {
-    this.z = true;
-  }
-  
   public static final class a
   {
-    public long a = 0L;
-    public long b = 0L;
-    
-    public a(long paramLong1, long paramLong2)
-    {
-      this.a = paramLong1;
-      this.b = paramLong2;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((this.a == paramObject.a) && (this.b == paramObject.b)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder("[");
-      localStringBuilder.append(this.a);
-      localStringBuilder.append(",");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
-    }
+    public static final int action_bar = 2131165240;
+    public static final int action_bar_activity_content = 2131165241;
+    public static final int action_bar_container = 2131165242;
+    public static final int action_bar_root = 2131165243;
+    public static final int action_bar_spinner = 2131165244;
+    public static final int action_bar_subtitle = 2131165245;
+    public static final int action_bar_title = 2131165246;
+    public static final int action_container = 2131165247;
+    public static final int action_context_bar = 2131165248;
+    public static final int action_divider = 2131165249;
+    public static final int action_image = 2131165250;
+    public static final int action_menu_divider = 2131165251;
+    public static final int action_menu_presenter = 2131165252;
+    public static final int action_mode_bar = 2131165253;
+    public static final int action_mode_bar_stub = 2131165254;
+    public static final int action_mode_close_button = 2131165255;
+    public static final int action_text = 2131165256;
+    public static final int actions = 2131165257;
+    public static final int activity_chooser_view_content = 2131165262;
+    public static final int add = 2131165268;
+    public static final int alertTitle = 2131165279;
+    public static final int async = 2131165293;
+    public static final int blocking = 2131165321;
+    public static final int bottom = 2131165325;
+    public static final int buttonPanel = 2131165355;
+    public static final int checkbox = 2131165387;
+    public static final int chronometer = 2131165389;
+    public static final int contentPanel = 2131165423;
+    public static final int custom = 2131165431;
+    public static final int customPanel = 2131165432;
+    public static final int decor_content_parent = 2131165438;
+    public static final int default_activity_button = 2131165439;
+    public static final int edit_query = 2131165470;
+    public static final int end = 2131165473;
+    public static final int expand_activities_button = 2131165482;
+    public static final int expanded_menu = 2131165483;
+    public static final int forever = 2131165522;
+    public static final int home = 2131165596;
+    public static final int icon = 2131165600;
+    public static final int icon_group = 2131165601;
+    public static final int image = 2131165604;
+    public static final int info = 2131165619;
+    public static final int italic = 2131165629;
+    public static final int left = 2131165673;
+    public static final int line1 = 2131165678;
+    public static final int line3 = 2131165680;
+    public static final int listMode = 2131165682;
+    public static final int list_item = 2131165684;
+    public static final int message = 2131165754;
+    public static final int multiply = 2131165784;
+    public static final int none = 2131165795;
+    public static final int normal = 2131165796;
+    public static final int notification_background = 2131165797;
+    public static final int notification_main_column = 2131165798;
+    public static final int notification_main_column_container = 2131165799;
+    public static final int parentPanel = 2131165826;
+    public static final int progress_circular = 2131165862;
+    public static final int progress_horizontal = 2131165863;
+    public static final int radio = 2131165910;
+    public static final int right = 2131165951;
+    public static final int right_icon = 2131165952;
+    public static final int right_side = 2131165954;
+    public static final int screen = 2131165984;
+    public static final int scrollIndicatorDown = 2131165986;
+    public static final int scrollIndicatorUp = 2131165987;
+    public static final int scrollView = 2131165988;
+    public static final int search_badge = 2131165991;
+    public static final int search_bar = 2131165992;
+    public static final int search_button = 2131165993;
+    public static final int search_close_btn = 2131165994;
+    public static final int search_edit_frame = 2131165995;
+    public static final int search_go_btn = 2131165996;
+    public static final int search_mag_icon = 2131165997;
+    public static final int search_plate = 2131165998;
+    public static final int search_src_text = 2131165999;
+    public static final int search_voice_btn = 2131166000;
+    public static final int select_dialog_listview = 2131166010;
+    public static final int shortcut = 2131166032;
+    public static final int spacer = 2131166046;
+    public static final int split_action_bar = 2131166047;
+    public static final int src_atop = 2131166066;
+    public static final int src_in = 2131166067;
+    public static final int src_over = 2131166068;
+    public static final int start = 2131166069;
+    public static final int submenuarrow = 2131166086;
+    public static final int submit_area = 2131166087;
+    public static final int tabMode = 2131166094;
+    public static final int tag_transition_group = 2131166099;
+    public static final int tcaptcha_container = 2131166101;
+    public static final int tcaptcha_indicator_layout = 2131166102;
+    public static final int text = 2131166103;
+    public static final int text2 = 2131166105;
+    public static final int textSpacerNoButtons = 2131166106;
+    public static final int textSpacerNoTitle = 2131166107;
+    public static final int time = 2131166126;
+    public static final int title = 2131166154;
+    public static final int titleDividerNoCustom = 2131166155;
+    public static final int title_template = 2131166164;
+    public static final int top = 2131166190;
+    public static final int topPanel = 2131166191;
+    public static final int uniform = 2131166246;
+    public static final int up = 2131166248;
+    public static final int wrap_content = 2131166376;
   }
   
   public static final class b
   {
-    List a = new ArrayList();
-    
-    public final int a()
-    {
-      return this.a.size();
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder("bytes=");
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        lf.a locala = (lf.a)localIterator.next();
-        localStringBuilder.append(locala.a);
-        localStringBuilder.append("-");
-        if (locala.b != -1L) {
-          localStringBuilder.append(locala.b);
-        }
-        localStringBuilder.append(",");
-      }
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      return localStringBuilder.toString();
-    }
+    public static final int abc_action_bar_title_item = 2131296256;
+    public static final int abc_action_bar_up_container = 2131296257;
+    public static final int abc_action_menu_item_layout = 2131296258;
+    public static final int abc_action_menu_layout = 2131296259;
+    public static final int abc_action_mode_bar = 2131296260;
+    public static final int abc_action_mode_close_item_material = 2131296261;
+    public static final int abc_activity_chooser_view = 2131296262;
+    public static final int abc_activity_chooser_view_list_item = 2131296263;
+    public static final int abc_alert_dialog_button_bar_material = 2131296264;
+    public static final int abc_alert_dialog_material = 2131296265;
+    public static final int abc_alert_dialog_title_material = 2131296266;
+    public static final int abc_dialog_title_material = 2131296267;
+    public static final int abc_expanded_menu_layout = 2131296268;
+    public static final int abc_list_menu_item_checkbox = 2131296269;
+    public static final int abc_list_menu_item_icon = 2131296270;
+    public static final int abc_list_menu_item_layout = 2131296271;
+    public static final int abc_list_menu_item_radio = 2131296272;
+    public static final int abc_popup_menu_header_item_layout = 2131296273;
+    public static final int abc_popup_menu_item_layout = 2131296274;
+    public static final int abc_screen_content_include = 2131296275;
+    public static final int abc_screen_simple = 2131296276;
+    public static final int abc_screen_simple_overlay_action_mode = 2131296277;
+    public static final int abc_screen_toolbar = 2131296278;
+    public static final int abc_search_dropdown_item_icons_2line = 2131296279;
+    public static final int abc_search_view = 2131296280;
+    public static final int abc_select_dialog_material = 2131296281;
+    public static final int abc_tooltip = 2131296282;
+    public static final int notification_action = 2131296397;
+    public static final int notification_action_tombstone = 2131296398;
+    public static final int notification_template_custom_big = 2131296399;
+    public static final int notification_template_icon_group = 2131296400;
+    public static final int notification_template_part_chronometer = 2131296401;
+    public static final int notification_template_part_time = 2131296402;
+    public static final int select_dialog_item_material = 2131296447;
+    public static final int select_dialog_multichoice_material = 2131296448;
+    public static final int select_dialog_singlechoice_material = 2131296449;
+    public static final int support_simple_spinner_dropdown_item = 2131296468;
+    public static final int tcaptcha_popup = 2131296469;
   }
 }
 

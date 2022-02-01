@@ -1,201 +1,183 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.ui.UtilsGameProtectActivity;
-import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.utils.UserTask;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.utils.SDKUtil;
+import java.lang.reflect.Method;
 
 public final class yl
-  extends BaseAdapter
+  implements avb
 {
-  public boolean a = true;
-  public View b;
-  a c = new a();
-  private UtilsGameProtectActivity d;
-  private LayoutInflater e;
-  private ListView f;
-  private Handler g;
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
+  private boolean c;
   
-  public yl(UtilsGameProtectActivity paramUtilsGameProtectActivity, ListView paramListView, Handler paramHandler)
+  public yl(String paramString)
   {
-    this.d = paramUtilsGameProtectActivity;
-    this.e = LayoutInflater.from(paramUtilsGameProtectActivity);
-    this.f = paramListView;
-    this.g = paramHandler;
-  }
-  
-  public static void a()
-  {
-    int j = ti.a().d.b();
-    int i = 0;
-    while (i < j)
+    try
     {
-      ss localss = ti.a().b(i);
-      if (localss != null) {
-        localss.e = false;
-      }
-      i += 1;
+      this.a = RqdApplication.n().getSharedPreferences(paramString, 0);
+      return;
     }
-  }
-  
-  public final void a(b paramb, boolean paramBoolean)
-  {
-    if ((paramb != null) && (paramb.f != null))
+    catch (Exception paramString)
     {
-      Object localObject = this.d;
-      if (localObject != null)
-      {
-        if (((UtilsGameProtectActivity)localObject).isFinishing()) {
-          return;
-        }
-        localObject = paramb.f;
-        TextView localTextView = paramb.b;
-        SwitchButton localSwitchButton = paramb.d;
-        ProgressBar localProgressBar = paramb.c;
-        paramb = paramb.e;
-        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramb != null))
-        {
-          if (localObject == null) {
-            return;
-          }
-          StringBuilder localStringBuilder = new StringBuilder("game protect: ");
-          localStringBuilder.append(((ss)localObject).b);
-          localStringBuilder.append(", ");
-          localStringBuilder.append(localTextView.getText());
-          xj.c(localStringBuilder.toString());
-          if ((paramBoolean) && (!((ss)localObject).b.equals(localTextView.getText()))) {
-            return;
-          }
-          if (((ss)localObject).f) {
-            paramb.setVisibility(0);
-          } else {
-            paramb.setVisibility(4);
-          }
-          if ((!((ss)localObject).e) && (ti.a().d()))
-          {
-            localProgressBar.setVisibility(4);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(true);
-            localSwitchButton.a(true ^ ((ss)localObject).c, false);
-          }
-          else
-          {
-            localProgressBar.setVisibility(0);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(false);
-          }
-          if ((!ti.a().d()) && (!this.d.mIsIniting)) {
-            this.d.queryGameProtectStatus();
-          }
-          localTextView.setText(((ss)localObject).b);
-          return;
-        }
-        return;
-      }
+      paramString.printStackTrace();
     }
   }
   
-  public final int getCount()
+  private static boolean a(SharedPreferences.Editor paramEditor)
   {
-    if (this.a) {
-      return ti.a().d.c();
-    }
-    return ti.a().d.b();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ss localss = ti.a().b(paramInt);
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.e.inflate(2131296477, paramViewGroup, false);
-    }
-    paramView = new StringBuilder("game protect getview: ");
-    paramView.append(localss.a);
-    xj.c(paramView.toString());
-    paramView = new b(localView, localss);
-    paramView.d.setTag(paramView);
-    paramView.d.setOnCheckedChangeListener(this.c);
-    a(paramView, false);
-    return localView;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    a() {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
+    try
     {
-      paramCompoundButton = (yl.b)paramCompoundButton.getTag();
-      if (paramCompoundButton == null) {
-        return;
-      }
-      Object localObject = paramCompoundButton.f;
-      View localView = paramCompoundButton.a;
-      if ((localObject != null) && (localView != null) && (ti.a().d()))
-      {
-        if (paramBoolean != ((ss)localObject).c) {
-          return;
-        }
-        if (((ss)localObject).e) {
-          return;
-        }
-        ((ss)localObject).e = true;
-        yl.this.a(paramCompoundButton, false);
-        localObject = yl.this;
-        com.tencent.token.ui.UtilsLoginProtectActivity.mNeedRefreshLoginProtect = true;
-        com.tencent.token.ui.AccountPageActivity.mNeedRefreshEval = true;
-        new yl.1((yl)localObject, paramCompoundButton).a(new ss[0]);
-        return;
-      }
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
+    return paramEditor.commit();
+  }
+  
+  private SharedPreferences.Editor d()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
+  }
+  
+  public final int a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
+    }
+    return 0;
+  }
+  
+  public final long a(String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
+    }
+    return 0L;
+  }
+  
+  public final String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, null);
+    }
+    return null;
+  }
+  
+  public final String a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
+    }
+    return null;
+  }
+  
+  public final void a()
+  {
+    if (this.a != null) {
+      a(d().clear());
     }
   }
   
-  final class b
+  public final boolean a(String paramString, boolean paramBoolean)
   {
-    View a;
-    TextView b;
-    ProgressBar c;
-    SwitchButton d;
-    ImageView e;
-    ss f;
-    
-    b(View paramView, ss paramss)
-    {
-      this.a = paramView;
-      this$1 = this.a;
-      if (yl.this == null) {
-        return;
-      }
-      this.f = paramss;
-      this.d = ((SwitchButton)yl.this.findViewById(2131165558));
-      this.b = ((TextView)this.a.findViewById(2131166231));
-      this.c = ((ProgressBar)this.a.findViewById(2131165560));
-      this.e = ((ImageView)this.a.findViewById(2131166232));
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean(paramString, paramBoolean);
     }
+    return false;
+  }
+  
+  public final void b()
+  {
+    this.c = true;
+  }
+  
+  public final boolean b(String paramString)
+  {
+    if (this.a != null) {
+      return a(d().remove(paramString));
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, int paramInt)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putInt(paramString, paramInt);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, long paramLong)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putLong(paramString, paramLong);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString1, String paramString2)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putString(paramString1, paramString2);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putBoolean(paramString, paramBoolean);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean c()
+  {
+    this.c = false;
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
+    }
+    return true;
   }
 }
 

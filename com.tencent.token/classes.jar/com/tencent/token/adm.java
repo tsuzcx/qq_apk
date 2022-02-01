@@ -1,41 +1,63 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
+import android.app.Activity;
+import com.tencent.turingfd.sdk.qps.Grapefruit;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public final class adm
-  implements ado
+public class adm
 {
-  public adm(aha paramaha) {}
+  public static List<ado> a = new ArrayList();
+  public static adr b;
+  public static Set<String> c = new HashSet();
+  public static final ado d = new a();
+  public static adr e = new b();
   
-  public final int a()
+  public final class a
+    implements ado
   {
-    return ((adt)this.a).d;
-  }
-  
-  public final String b()
-  {
-    return ((adt)this.a).b;
-  }
-  
-  public final String c()
-  {
-    String str2 = ((adt)this.a).g;
-    Object localObject1 = agp.a;
-    String str1 = "";
-    localObject1 = str1;
-    if (!TextUtils.isEmpty(str2)) {}
-    try
+    public final void a(String paramString, int paramInt1, int paramInt2, Grapefruit paramGrapefruit)
     {
-      String str3 = str2.substring(0, 2);
-      str2 = str2.substring(2);
-      localObject1 = str1;
-      if (Integer.parseInt(str3, 16) == 1) {
-        localObject1 = agp.a(str2);
+      Iterator localIterator = adm.a.iterator();
+      while (localIterator.hasNext())
+      {
+        ado localado = (ado)localIterator.next();
+        if (localado != null) {
+          localado.a(paramString, paramInt1, paramInt2, paramGrapefruit);
+        }
       }
-      return localObject1;
     }
-    finally {}
-    return "";
+  }
+  
+  public final class b
+    implements adr
+  {
+    public final void a(Activity paramActivity)
+    {
+      Object localObject = adm.b;
+      if (localObject != null) {
+        ((adr)localObject).a(paramActivity);
+      }
+      int i;
+      if (adm.c.contains(paramActivity.getClass().getName())) {
+        i = 100;
+      } else {
+        i = 999;
+      }
+      localObject = adn.a();
+      paramActivity.getApplicationContext();
+      ((adn)localObject).a(paramActivity.getClass().getName(), i, adm.d);
+    }
+    
+    public final void b(Activity paramActivity)
+    {
+      adn localadn = adn.a();
+      paramActivity.getApplicationContext();
+      localadn.a(paramActivity.getClass().getName());
+    }
   }
 }
 

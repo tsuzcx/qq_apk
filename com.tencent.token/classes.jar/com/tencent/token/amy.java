@@ -1,312 +1,383 @@
 package com.tencent.token;
 
-import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class amy
-  implements Serializable, Comparable<amy>
+final class amy
+  implements Closeable
 {
-  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  public static final amy b = a(new byte[0]);
-  final byte[] c;
-  transient int d;
-  transient String e;
+  static final Logger a = Logger.getLogger(amv.class.getName());
+  final anv b;
+  final boolean c;
+  final amu.a d;
+  private final a e;
   
-  amy(byte[] paramArrayOfByte)
+  amy(anv paramanv, boolean paramBoolean)
   {
-    this.c = paramArrayOfByte;
+    this.b = paramanv;
+    this.c = paramBoolean;
+    this.e = new a(this.b);
+    this.d = new amu.a(this.e);
   }
   
-  private static int a(char paramChar)
+  private static int a(int paramInt, byte paramByte, short paramShort)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return paramChar - '0';
+    short s = paramInt;
+    if ((paramByte & 0x8) != 0) {
+      s = paramInt - 1;
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return paramChar - 'a' + 10;
+    if (paramShort <= s) {
+      return (short)(s - paramShort);
     }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return paramChar - 'A' + 10;
-    }
-    throw new IllegalArgumentException("Unexpected hex digit: ".concat(String.valueOf(paramChar)));
+    throw amv.b("PROTOCOL_ERROR padding %s > remaining length %s", new Object[] { Short.valueOf(paramShort), Integer.valueOf(s) });
   }
   
-  public static amy a(String paramString)
+  static int a(anv paramanv)
   {
-    if (paramString != null)
-    {
-      amy localamy = new amy(paramString.getBytes(ann.a));
-      localamy.e = paramString;
-      return localamy;
-    }
-    throw new IllegalArgumentException("s == null");
+    int i = paramanv.f();
+    int j = paramanv.f();
+    return paramanv.f() & 0xFF | (i & 0xFF) << 16 | (j & 0xFF) << 8;
   }
   
-  public static amy a(byte... paramVarArgs)
+  private List<amt> a(int paramInt1, short paramShort, byte paramByte, int paramInt2)
   {
-    if (paramVarArgs != null) {
-      return new amy((byte[])paramVarArgs.clone());
-    }
-    throw new IllegalArgumentException("data == null");
+    a locala = this.e;
+    locala.d = paramInt1;
+    locala.a = paramInt1;
+    locala.e = paramShort;
+    locala.b = paramByte;
+    locala.c = paramInt2;
+    this.d.a();
+    return this.d.b();
   }
   
-  public static amy b(String paramString)
+  private void a()
   {
-    if (paramString.length() % 2 == 0)
-    {
-      byte[] arrayOfByte = new byte[paramString.length() / 2];
-      int i = 0;
-      while (i < arrayOfByte.length)
-      {
-        int j = i * 2;
-        arrayOfByte[i] = ((byte)((a(paramString.charAt(j)) << 4) + a(paramString.charAt(j + 1))));
-        i += 1;
-      }
-      return a(arrayOfByte);
-    }
-    throw new IllegalArgumentException("Unexpected hex string: ".concat(String.valueOf(paramString)));
+    this.b.h();
+    this.b.f();
   }
   
-  private amy c(String paramString)
+  public final boolean a(boolean paramBoolean, b paramb)
   {
+    short s1 = 0;
+    short s2 = 0;
+    short s3 = 0;
+    boolean bool = false;
     try
     {
-      paramString = a(MessageDigest.getInstance(paramString).digest(this.c));
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new AssertionError(paramString);
-    }
-  }
-  
-  public byte a(int paramInt)
-  {
-    return this.c[paramInt];
-  }
-  
-  public amy a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 >= 0)
-    {
-      Object localObject = this.c;
-      if (paramInt2 <= localObject.length)
+      this.b.a(9L);
+      int k = a(this.b);
+      if ((k >= 0) && (k <= 16384))
       {
-        int i = paramInt2 - paramInt1;
-        if (i >= 0)
-        {
-          if ((paramInt1 == 0) && (paramInt2 == localObject.length)) {
-            return this;
-          }
-          localObject = new byte[i];
-          System.arraycopy(this.c, paramInt1, localObject, 0, i);
-          return new amy((byte[])localObject);
+        byte b1 = (byte)(this.b.f() & 0xFF);
+        if ((paramBoolean) && (b1 != 4)) {
+          throw amv.b("Expected a SETTINGS frame but was %s", new Object[] { Byte.valueOf(b1) });
         }
-        throw new IllegalArgumentException("endIndex < beginIndex");
+        byte b2 = (byte)(this.b.f() & 0xFF);
+        int j = this.b.h() & 0x7FFFFFFF;
+        if (a.isLoggable(Level.FINE)) {
+          a.fine(amv.a(true, j, k, b1, b2));
+        }
+        int i;
+        Object localObject;
+        switch (b1)
+        {
+        default: 
+          this.b.g(k);
+          return true;
+        case 8: 
+          if (k == 4)
+          {
+            long l = this.b.h() & 0x7FFFFFFF;
+            if (l != 0L)
+            {
+              paramb.a(j, l);
+              return true;
+            }
+            throw amv.b("windowSizeIncrement was 0", new Object[] { Long.valueOf(l) });
+          }
+          throw amv.b("TYPE_WINDOW_UPDATE length !=4: %s", new Object[] { Integer.valueOf(k) });
+        case 7: 
+          if (k >= 8)
+          {
+            if (j == 0)
+            {
+              i = this.b.h();
+              j = this.b.h();
+              k -= 8;
+              if (ams.a(j) != null)
+              {
+                localObject = anw.b;
+                if (k > 0) {
+                  this.b.c(k);
+                }
+                paramb.a(i);
+                return true;
+              }
+              throw amv.b("TYPE_GOAWAY unexpected error code: %d", new Object[] { Integer.valueOf(j) });
+            }
+            throw amv.b("TYPE_GOAWAY streamId != 0", new Object[0]);
+          }
+          throw amv.b("TYPE_GOAWAY length < 8: %s", new Object[] { Integer.valueOf(k) });
+        case 6: 
+          if (k == 8)
+          {
+            if (j == 0)
+            {
+              i = this.b.h();
+              j = this.b.h();
+              paramBoolean = bool;
+              if ((b2 & 0x1) != 0) {
+                paramBoolean = true;
+              }
+              paramb.a(paramBoolean, i, j);
+              return true;
+            }
+            throw amv.b("TYPE_PING streamId != 0", new Object[0]);
+          }
+          throw amv.b("TYPE_PING length != 8: %s", new Object[] { Integer.valueOf(k) });
+        case 5: 
+          if (j != 0)
+          {
+            if ((b2 & 0x8) != 0) {
+              s1 = (short)(this.b.f() & 0xFF);
+            }
+            paramb.a(this.b.h() & 0x7FFFFFFF, a(a(k - 4, b2, s1), s1, b2, j));
+            return true;
+          }
+          throw amv.b("PROTOCOL_ERROR: TYPE_PUSH_PROMISE streamId == 0", new Object[0]);
+        case 4: 
+          if (j == 0)
+          {
+            if ((b2 & 0x1) != 0)
+            {
+              if (k == 0) {
+                return true;
+              }
+              throw amv.b("FRAME_SIZE_ERROR ack frame should be empty!", new Object[0]);
+            }
+            if (k % 6 == 0)
+            {
+              localObject = new and();
+              j = 0;
+              while (j < k)
+              {
+                int m = this.b.g() & 0xFFFF;
+                int n = this.b.h();
+                i = m;
+                switch (m)
+                {
+                default: 
+                  i = m;
+                  break;
+                case 5: 
+                  if ((n >= 16384) && (n <= 16777215)) {
+                    i = m;
+                  } else {
+                    throw amv.b("PROTOCOL_ERROR SETTINGS_MAX_FRAME_SIZE: %s", new Object[] { Integer.valueOf(n) });
+                  }
+                  break;
+                case 4: 
+                  i = 7;
+                  if (n < 0) {
+                    throw amv.b("PROTOCOL_ERROR SETTINGS_INITIAL_WINDOW_SIZE > 2^31 - 1", new Object[0]);
+                  }
+                  break;
+                case 3: 
+                  i = 4;
+                  break;
+                case 2: 
+                  i = m;
+                  if (n != 0) {
+                    if (n == 1) {
+                      i = m;
+                    } else {
+                      throw amv.b("PROTOCOL_ERROR SETTINGS_ENABLE_PUSH != 0 or 1", new Object[0]);
+                    }
+                  }
+                  break;
+                }
+                ((and)localObject).a(i, n);
+                j += 6;
+              }
+              paramb.a((and)localObject);
+              return true;
+            }
+            throw amv.b("TYPE_SETTINGS length %% 6 != 0: %s", new Object[] { Integer.valueOf(k) });
+          }
+          throw amv.b("TYPE_SETTINGS streamId != 0", new Object[0]);
+        case 3: 
+          if (k == 4)
+          {
+            if (j != 0)
+            {
+              i = this.b.h();
+              localObject = ams.a(i);
+              if (localObject != null)
+              {
+                paramb.a(j, (ams)localObject);
+                return true;
+              }
+              throw amv.b("TYPE_RST_STREAM unexpected error code: %d", new Object[] { Integer.valueOf(i) });
+            }
+            throw amv.b("TYPE_RST_STREAM streamId == 0", new Object[0]);
+          }
+          throw amv.b("TYPE_RST_STREAM length: %d != 4", new Object[] { Integer.valueOf(k) });
+        case 2: 
+          if (k == 5)
+          {
+            if (j != 0)
+            {
+              a();
+              return true;
+            }
+            throw amv.b("TYPE_PRIORITY streamId == 0", new Object[0]);
+          }
+          throw amv.b("TYPE_PRIORITY length: %d != 5", new Object[] { Integer.valueOf(k) });
+        case 1: 
+          if (j != 0)
+          {
+            if ((b2 & 0x1) != 0) {
+              paramBoolean = true;
+            } else {
+              paramBoolean = false;
+            }
+            s1 = s2;
+            if ((b2 & 0x8) != 0) {
+              s1 = (short)(this.b.f() & 0xFF);
+            }
+            i = k;
+            if ((b2 & 0x20) != 0)
+            {
+              a();
+              i = k - 5;
+            }
+            paramb.a(paramBoolean, j, a(a(i, b2, s1), s1, b2, j));
+            return true;
+          }
+          throw amv.b("PROTOCOL_ERROR: TYPE_HEADERS streamId == 0", new Object[0]);
+        }
+        if (j != 0)
+        {
+          if ((b2 & 0x1) != 0) {
+            paramBoolean = true;
+          } else {
+            paramBoolean = false;
+          }
+          if ((b2 & 0x20) != 0) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (i == 0)
+          {
+            s1 = s3;
+            if ((b2 & 0x8) != 0) {
+              s1 = (short)(this.b.f() & 0xFF);
+            }
+            i = a(k, b2, s1);
+            paramb.a(paramBoolean, j, this.b, i);
+            this.b.g(s1);
+            return true;
+          }
+          throw amv.b("PROTOCOL_ERROR: FLAG_COMPRESSED without SETTINGS_COMPRESS_DATA", new Object[0]);
+        }
+        throw amv.b("PROTOCOL_ERROR: TYPE_DATA streamId == 0", new Object[0]);
       }
-      localObject = new StringBuilder("endIndex > length(");
-      ((StringBuilder)localObject).append(this.c.length);
-      ((StringBuilder)localObject).append(")");
-      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+      throw amv.b("FRAME_SIZE_ERROR: %s", new Object[] { Integer.valueOf(k) });
     }
-    throw new IllegalArgumentException("beginIndex < 0");
-  }
-  
-  public String a()
-  {
-    String str = this.e;
-    if (str != null) {
-      return str;
-    }
-    str = new String(this.c, ann.a);
-    this.e = str;
-    return str;
-  }
-  
-  void a(amv paramamv)
-  {
-    byte[] arrayOfByte = this.c;
-    paramamv.b(arrayOfByte, 0, arrayOfByte.length);
-  }
-  
-  public boolean a(int paramInt1, amy paramamy, int paramInt2, int paramInt3)
-  {
-    return paramamy.a(0, this.c, 0, paramInt3);
-  }
-  
-  public boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 >= 0)
-    {
-      byte[] arrayOfByte = this.c;
-      if ((paramInt1 <= arrayOfByte.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (ann.a(arrayOfByte, paramInt1, paramArrayOfByte, paramInt2, paramInt3))) {
-        return true;
-      }
-    }
+    catch (IOException paramb) {}
     return false;
   }
   
-  public String b()
+  public final void close()
   {
-    return amu.a(this.c);
+    this.b.close();
   }
   
-  public amy c()
+  static final class a
+    implements aoj
   {
-    return c("SHA-1");
-  }
-  
-  public amy d()
-  {
-    return c("SHA-256");
-  }
-  
-  public String e()
-  {
-    byte[] arrayOfByte = this.c;
-    char[] arrayOfChar1 = new char[arrayOfByte.length * 2];
-    int k = arrayOfByte.length;
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    int a;
+    byte b;
+    int c;
+    int d;
+    short e;
+    private final anv f;
+    
+    a(anv paramanv)
     {
-      int m = arrayOfByte[i];
-      int n = j + 1;
-      char[] arrayOfChar2 = a;
-      arrayOfChar1[j] = arrayOfChar2[(m >> 4 & 0xF)];
-      j = n + 1;
-      arrayOfChar1[n] = arrayOfChar2[(m & 0xF)];
-      i += 1;
+      this.f = paramanv;
     }
-    return new String(arrayOfChar1);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {
-      return true;
-    }
-    if ((paramObject instanceof amy))
+    
+    public final long a(ant paramant, long paramLong)
     {
-      paramObject = (amy)paramObject;
-      int i = paramObject.g();
-      byte[] arrayOfByte = this.c;
-      if ((i == arrayOfByte.length) && (paramObject.a(0, arrayOfByte, 0, arrayOfByte.length))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public amy f()
-  {
-    int i = 0;
-    for (;;)
-    {
-      byte[] arrayOfByte = this.c;
-      if (i >= arrayOfByte.length) {
-        break;
-      }
-      int k = arrayOfByte[i];
-      if ((k >= 65) && (k <= 90))
+      int i;
+      byte b1;
+      do
       {
-        arrayOfByte = (byte[])arrayOfByte.clone();
-        int j = i + 1;
-        arrayOfByte[i] = ((byte)(k + 32));
-        i = j;
-        while (i < arrayOfByte.length)
-        {
-          j = arrayOfByte[i];
-          if ((j >= 65) && (j <= 90)) {
-            arrayOfByte[i] = ((byte)(j + 32));
-          }
-          i += 1;
+        i = this.d;
+        if (i != 0) {
+          break label203;
         }
-        return new amy(arrayOfByte);
+        this.f.g(this.e);
+        this.e = 0;
+        if ((this.b & 0x4) != 0) {
+          return -1L;
+        }
+        i = this.c;
+        int j = amy.a(this.f);
+        this.d = j;
+        this.a = j;
+        b1 = (byte)(this.f.f() & 0xFF);
+        this.b = ((byte)(this.f.f() & 0xFF));
+        if (amy.a.isLoggable(Level.FINE)) {
+          amy.a.fine(amv.a(true, this.c, this.a, b1, this.b));
+        }
+        this.c = (this.f.h() & 0x7FFFFFFF);
+        if (b1 != 9) {
+          break;
+        }
+      } while (this.c == i);
+      throw amv.b("TYPE_CONTINUATION streamId changed", new Object[0]);
+      throw amv.b("%s != TYPE_CONTINUATION", new Object[] { Byte.valueOf(b1) });
+      label203:
+      paramLong = this.f.a(paramant, Math.min(paramLong, i));
+      if (paramLong == -1L) {
+        return -1L;
       }
-      i += 1;
+      this.d = ((int)(this.d - paramLong));
+      return paramLong;
     }
-    return this;
-  }
-  
-  public int g()
-  {
-    return this.c.length;
-  }
-  
-  public byte[] h()
-  {
-    return (byte[])this.c.clone();
-  }
-  
-  public int hashCode()
-  {
-    int i = this.d;
-    if (i != 0) {
-      return i;
-    }
-    i = Arrays.hashCode(this.c);
-    this.d = i;
-    return i;
-  }
-  
-  public String toString()
-  {
-    if (this.c.length == 0) {
-      return "[size=0]";
-    }
-    Object localObject2 = a();
-    int k = ((String)localObject2).length();
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    
+    public final aok a()
     {
-      if (j == 64) {
-        break label104;
-      }
-      int m = ((String)localObject2).codePointAt(i);
-      if (((Character.isISOControl(m)) && (m != 10) && (m != 13)) || (m == 65533))
-      {
-        i = -1;
-        break label104;
-      }
-      j += 1;
-      i += Character.charCount(m);
+      return this.f.a();
     }
-    i = ((String)localObject2).length();
-    label104:
-    if (i == -1)
-    {
-      if (this.c.length <= 64)
-      {
-        localObject1 = new StringBuilder("[hex=");
-        ((StringBuilder)localObject1).append(e());
-        ((StringBuilder)localObject1).append("]");
-        return ((StringBuilder)localObject1).toString();
-      }
-      localObject1 = new StringBuilder("[size=");
-      ((StringBuilder)localObject1).append(this.c.length);
-      ((StringBuilder)localObject1).append(" hex=");
-      ((StringBuilder)localObject1).append(a(0, 64).e());
-      ((StringBuilder)localObject1).append("…]");
-      return ((StringBuilder)localObject1).toString();
-    }
-    Object localObject1 = ((String)localObject2).substring(0, i).replace("\\", "\\\\").replace("\n", "\\n").replace("\r", "\\r");
-    if (i < ((String)localObject2).length())
-    {
-      localObject2 = new StringBuilder("[size=");
-      ((StringBuilder)localObject2).append(this.c.length);
-      ((StringBuilder)localObject2).append(" text=");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append("…]");
-      return ((StringBuilder)localObject2).toString();
-    }
-    localObject2 = new StringBuilder("[text=");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append("]");
-    return ((StringBuilder)localObject2).toString();
+    
+    public final void close() {}
+  }
+  
+  static abstract interface b
+  {
+    public abstract void a(int paramInt);
+    
+    public abstract void a(int paramInt, long paramLong);
+    
+    public abstract void a(int paramInt, ams paramams);
+    
+    public abstract void a(int paramInt, List<amt> paramList);
+    
+    public abstract void a(and paramand);
+    
+    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+    
+    public abstract void a(boolean paramBoolean, int paramInt1, anv paramanv, int paramInt2);
+    
+    public abstract void a(boolean paramBoolean, int paramInt, List<amt> paramList);
   }
 }
 

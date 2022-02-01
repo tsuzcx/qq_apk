@@ -1,42 +1,17 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-
 public final class ox
 {
-  public static final class a
-    extends on
+  public static byte[] a(int paramInt)
   {
-    public String c;
-    public String d = "";
-    public int e = 0;
-    public String f = "";
-    
-    public final int a()
+    byte[] arrayOfByte = new byte[4];
+    int i = 0;
+    while (i < 4)
     {
-      return 28;
+      arrayOfByte[i] = ((byte)(paramInt >> i * 8 & 0xFF));
+      i += 1;
     }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.a(paramBundle);
-      paramBundle.putString("_launch_wxminiprogram_username", this.c);
-      paramBundle.putString("_launch_wxminiprogram_path", this.d);
-      paramBundle.putString("_launch_wxminiprogram_extData", this.f);
-      paramBundle.putInt("_launch_wxminiprogram_type", this.e);
-    }
-    
-    public final boolean b()
-    {
-      if (pn.a(this.c)) {
-        return false;
-      }
-      int i = this.e;
-      if (i >= 0) {
-        return i <= 2;
-      }
-      return false;
-    }
+    return arrayOfByte;
   }
 }
 

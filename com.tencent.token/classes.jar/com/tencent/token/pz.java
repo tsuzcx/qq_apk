@@ -1,183 +1,77 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Build.VERSION;
-import java.util.List;
+import java.security.MessageDigest;
 
 public final class pz
 {
-  private static final int a = 17;
-  
-  public static String a(List<b> paramList)
+  public static final String a(byte[] paramArrayOfByte)
   {
-    Object localObject1 = "";
-    if (paramList.size() <= 0) {
-      return "";
-    }
-    int i = 0;
-    while (i < paramList.size())
+    char[] arrayOfChar = new char[16];
+    char[] tmp8_6 = arrayOfChar;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 97;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 98;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 99;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 100;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 101;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 102;
+    tmp92_86;
+    for (;;)
     {
-      Object localObject2 = localObject1;
-      if (paramList.get(i) != null)
+      Object localObject;
+      int k;
+      int i;
+      int j;
+      try
       {
-        localObject2 = localObject1;
-        if (((b)paramList.get(i)).a.length() == a)
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("<mac ");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("macDbm=\"");
-          ((StringBuilder)localObject2).append(((b)paramList.get(i)).b);
-          ((StringBuilder)localObject2).append("\"");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(">");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(((b)paramList.get(i)).a);
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("</mac>");
-          localObject2 = ((StringBuilder)localObject2).toString();
-        }
+        localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).update(paramArrayOfByte);
+        paramArrayOfByte = ((MessageDigest)localObject).digest();
+        k = paramArrayOfByte.length;
+        localObject = new char[k * 2];
+        i = 0;
+        j = 0;
       }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localObject1;
-  }
-  
-  public static List<a> a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 5)
-    {
-      new qc();
-      return qc.a(paramContext);
-    }
-    new qa();
-    return qa.a(paramContext);
-  }
-  
-  public static String b(List<a> paramList)
-  {
-    String str = "";
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      int i = 0;
-      while (i < paramList.size())
+      catch (Exception paramArrayOfByte)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("<cell ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("mcc=\"");
-        localStringBuilder.append(((a)paramList.get(i)).a);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("mnc=\"");
-        localStringBuilder.append(((a)paramList.get(i)).b);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("lac=\"");
-        localStringBuilder.append(((a)paramList.get(i)).c);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("type=\"");
-        localStringBuilder.append(((a)paramList.get(i)).e);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("stationId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).f);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("networkId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).g);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("systemId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).h);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("dbm=\"");
-        localStringBuilder.append(((a)paramList.get(i)).i);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(" >");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(((a)paramList.get(i)).d);
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("</cell>");
-        str = localStringBuilder.toString();
+        continue;
+      }
+      paramArrayOfByte = new String((char[])localObject);
+      return paramArrayOfByte;
+      return null;
+      while (i < k)
+      {
+        int m = paramArrayOfByte[i];
+        int n = j + 1;
+        localObject[j] = arrayOfChar[(m >>> 4 & 0xF)];
+        j = n + 1;
+        localObject[n] = arrayOfChar[(m & 0xF)];
         i += 1;
       }
-      return str;
-    }
-    return "";
-  }
-  
-  public static final class a
-  {
-    public String a;
-    public String b;
-    public String c;
-    public String d;
-    public String e;
-    public String f;
-    public String g;
-    public String h;
-    public String i;
-    
-    public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      this.a = paramString1;
-      this.b = paramString2;
-      this.c = paramString3;
-      this.e = paramString6;
-      this.d = paramString4;
-      this.f = paramString7;
-      this.g = paramString8;
-      this.h = paramString9;
-      this.i = paramString5;
-    }
-  }
-  
-  public static final class b
-  {
-    public String a;
-    public String b;
-    
-    public b(String paramString1, String paramString2)
-    {
-      this.a = paramString1;
-      this.b = paramString2;
     }
   }
 }

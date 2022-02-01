@@ -1,76 +1,78 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wg
-  extends tr
+  extends ud
 {
-  public String d;
-  private int e;
-  private String f;
+  public static String d;
+  public static String e;
+  private long f;
+  private String g;
+  private int h;
+  private int i;
+  private String j;
+  private int k;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((String)paramabc.c.get("param.barcode.url"));
+    this.f = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.g = ((String)paramabm.c.get("param.mbmobile.mobile"));
+    this.h = ((Integer)paramabm.c.get("param.mbmoible.ismobile")).intValue();
+    this.i = ((Integer)paramabm.c.get("param.scene.id")).intValue();
+    this.j = ((String)paramabm.c.get("param.mbmoible.areacode"));
+    this.k = paramabm.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int m = paramJSONObject.getInt("err");
+    if (m != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(m, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      StringBuilder localStringBuilder = new StringBuilder("json");
-      localStringBuilder.append(paramJSONObject.toString());
-      xj.a(localStringBuilder.toString());
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.c)
+      xv.a("ProtoGetSMSChannel result =".concat(String.valueOf(paramJSONObject)));
+      m = paramJSONObject.getInt("seq_id");
+      if (m != this.k)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
+        paramJSONObject.append(m);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xj.c(paramJSONObject.toString());
+        paramJSONObject.append(this.k);
+        xv.c(paramJSONObject.toString());
         return;
       }
-      this.e = paramJSONObject.getInt("malicious_id");
-      this.f = paramJSONObject.getString("malicious_desc");
+      d = paramJSONObject.getString("sms_port");
+    }
+    try
+    {
+      e = paramJSONObject.getString("sms_up_code");
+      label150:
       this.a.a = 0;
       return;
+      xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.n().getString(2131493069));
+      return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
+    catch (Exception paramJSONObject)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.e;
-      localMessage.obj = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      break label150;
     }
   }
 }

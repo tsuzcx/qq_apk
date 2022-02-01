@@ -3,8 +3,8 @@ package btmsdkobf;
 import android.content.Context;
 import android.os.Process;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aqf;
-import com.tencent.token.auo;
+import com.tencent.token.ard;
+import com.tencent.token.avm;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.io.ByteArrayInputStream;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class cd
 {
-  private static aqf hw;
+  private static ard hw;
   private static String hx;
   private static boolean hy = false;
   
@@ -112,12 +112,12 @@ public class cd
     return cp.a(paramArrayOfByte, paramJceStruct, false);
   }
   
-  private static aqf a(Context paramContext, boolean paramBoolean, cs.b paramb, String paramString, cl paramcl)
+  private static ard a(Context paramContext, boolean paramBoolean, cs.b paramb, String paramString, cl paramcl)
   {
     if (paramcl == null) {
       return null;
     }
-    aqf localaqf = new aqf();
+    ard localard = new ard();
     if (paramb != null) {
       paramb = paramb.ir;
     } else {
@@ -126,13 +126,13 @@ public class cd
     if (paramBoolean) {
       paramb = "";
     }
-    localaqf.e = paramb;
-    localaqf.f = bc.o().getBuildNo();
-    localaqf.a = e(paramContext);
-    localaqf.g = NetworkUtil.getNetType();
-    localaqf.b = aV();
+    localard.e = paramb;
+    localard.f = bc.o().getBuildNo();
+    localard.a = e(paramContext);
+    localard.g = NetworkUtil.getNetType();
+    localard.b = aV();
     paramContext = new StringBuilder("[ip_list][conn_monitor]checkSharkfin(), apn=");
-    paramContext.append(localaqf.a);
+    paramContext.append(localard.a);
     paramContext.append(" isWifi=");
     if (ei.om == 3) {
       paramBoolean = true;
@@ -141,12 +141,12 @@ public class cd
     }
     paramContext.append(paramBoolean);
     paramContext.append(" authType=");
-    paramContext.append(localaqf.b);
+    paramContext.append(localard.b);
     eh.f("ConverterUtil", paramContext.toString());
-    localaqf.c = paramString;
-    localaqf.h = paramcl.aI();
-    localaqf.i = paramcl.aM();
-    localaqf.j = paramcl.bn();
+    localard.c = paramString;
+    localard.h = paramcl.aI();
+    localard.i = paramcl.aM();
+    localard.j = paramcl.bn();
     if (hx == null)
     {
       int i = Process.myPid();
@@ -160,54 +160,54 @@ public class cd
       paramb.append(i);
       hx = paramb.toString();
     }
-    localaqf.d = hx;
-    return localaqf;
+    localard.d = hx;
+    return localard;
   }
   
-  private static void a(aqf paramaqf, String paramString)
+  private static void a(ard paramard, String paramString)
   {
-    if (paramaqf == null)
+    if (paramard == null)
     {
-      paramaqf = new StringBuilder("[shark_v4]");
-      paramaqf.append(paramString);
-      paramaqf.append(": null");
-      eh.f("ConverterUtil", paramaqf.toString());
+      paramard = new StringBuilder("[shark_v4]");
+      paramard.append(paramString);
+      paramard.append(": null");
+      eh.f("ConverterUtil", paramard.toString());
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("[shark_v4]");
     localStringBuilder.append(paramString);
     localStringBuilder.append(": sharkfin.buildno: ");
-    localStringBuilder.append(paramaqf.f);
+    localStringBuilder.append(paramard.f);
     localStringBuilder.append(" sharkfin.apn: ");
-    localStringBuilder.append(paramaqf.a);
+    localStringBuilder.append(paramard.a);
     localStringBuilder.append(" sharkfin.netType: ");
-    localStringBuilder.append(paramaqf.g);
+    localStringBuilder.append(paramard.g);
     localStringBuilder.append(" sharkfin.authType: ");
-    localStringBuilder.append(paramaqf.b);
+    localStringBuilder.append(paramard.b);
     localStringBuilder.append(" sharkfin.guid: ");
-    localStringBuilder.append(paramaqf.c);
+    localStringBuilder.append(paramard.c);
     localStringBuilder.append(" sharkfin.ext1: ");
-    localStringBuilder.append(paramaqf.d);
+    localStringBuilder.append(paramard.d);
     localStringBuilder.append(" sharkfin.accountId: ");
-    localStringBuilder.append(paramaqf.h);
+    localStringBuilder.append(paramard.h);
     localStringBuilder.append(" sharkfin.bootType: ");
-    localStringBuilder.append(paramaqf.i);
+    localStringBuilder.append(paramard.i);
     localStringBuilder.append(" sharkfin.wsGuid: ");
-    localStringBuilder.append(paramaqf.j);
+    localStringBuilder.append(paramard.j);
     eh.f("ConverterUtil", localStringBuilder.toString());
   }
   
-  private static boolean a(aqf paramaqf1, aqf paramaqf2)
+  private static boolean a(ard paramard1, ard paramard2)
   {
-    if ((paramaqf1 == null) && (paramaqf2 == null)) {
+    if ((paramard1 == null) && (paramard2 == null)) {
       return true;
     }
-    if (paramaqf1 != null)
+    if (paramard1 != null)
     {
-      if (paramaqf2 == null) {
+      if (paramard2 == null) {
         return false;
       }
-      if ((paramaqf1.a == paramaqf2.a) && (paramaqf1.b == paramaqf2.b) && (a(paramaqf1.c, paramaqf2.c)) && (a(paramaqf1.d, paramaqf2.d)) && (a(paramaqf1.e, paramaqf2.e)) && (paramaqf1.f == paramaqf2.f) && (paramaqf1.g == paramaqf2.g) && (paramaqf1.h == paramaqf2.h) && (paramaqf1.i == paramaqf2.i) && (a(paramaqf1.j, paramaqf2.j))) {
+      if ((paramard1.a == paramard2.a) && (paramard1.b == paramard2.b) && (a(paramard1.c, paramard2.c)) && (a(paramard1.d, paramard2.d)) && (a(paramard1.e, paramard2.e)) && (paramard1.f == paramard2.f) && (paramard1.g == paramard2.g) && (paramard1.h == paramard2.h) && (paramard1.i == paramard2.i) && (a(paramard1.j, paramard2.j))) {
         return true;
       }
     }
@@ -333,7 +333,7 @@ public class cd
       if ((paramInt & 0x2) == 0) {
         try
         {
-          paramContext = auo.b(paramArrayOfByte2, paramArrayOfByte1);
+          paramContext = avm.b(paramArrayOfByte2, paramArrayOfByte1);
         }
         catch (Exception paramContext)
         {
@@ -536,7 +536,7 @@ public class cd
       }
       try
       {
-        paramArrayOfByte1 = auo.b(paramArrayOfByte1, paramArrayOfByte2);
+        paramArrayOfByte1 = avm.b(paramArrayOfByte1, paramArrayOfByte2);
         return paramArrayOfByte1;
       }
       catch (Throwable paramArrayOfByte1)
@@ -669,7 +669,7 @@ public class cd
       }
       try
       {
-        paramArrayOfByte1 = auo.a(paramArrayOfByte1, paramArrayOfByte2);
+        paramArrayOfByte1 = avm.a(paramArrayOfByte1, paramArrayOfByte2);
         return paramArrayOfByte1;
       }
       catch (Throwable paramArrayOfByte1)

@@ -1,63 +1,44 @@
 package com.tencent.token;
 
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
+import java.io.InputStream;
+import java.nio.channels.ReadableByteChannel;
 
-public class anv<T>
+public abstract interface anv
+  extends aoj, ReadableByteChannel
 {
-  private static final Interpolator f = new LinearInterpolator();
-  public final T a;
-  public final T b;
-  final Interpolator c;
-  public final float d;
-  public Float e;
-  private final aus g;
-  private float h;
-  private float i;
+  public abstract void a(long paramLong);
   
-  final float a()
-  {
-    if (this.h == 1.4E-45F) {
-      this.h = ((this.d - (float)this.g.h) / this.g.b());
-    }
-    return this.h;
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  final boolean a(float paramFloat)
-  {
-    return (paramFloat >= a()) && (paramFloat <= b());
-  }
+  public abstract ant b();
   
-  final float b()
-  {
-    if (this.i == 1.4E-45F)
-    {
-      float f1;
-      if (this.e == null) {
-        f1 = 1.0F;
-      } else {
-        f1 = a() + (this.e.floatValue() - this.d) / this.g.b();
-      }
-      this.i = f1;
-    }
-    return this.i;
-  }
+  public abstract anw c(long paramLong);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("Keyframe{startValue=");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(", endValue=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", startFrame=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(", endFrame=");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(", interpolator=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
-  }
+  public abstract boolean c();
+  
+  public abstract InputStream d();
+  
+  public abstract String d(long paramLong);
+  
+  public abstract byte f();
+  
+  public abstract byte[] f(long paramLong);
+  
+  public abstract short g();
+  
+  public abstract void g(long paramLong);
+  
+  public abstract int h();
+  
+  public abstract short i();
+  
+  public abstract int j();
+  
+  public abstract long k();
+  
+  public abstract String n();
+  
+  public abstract long q();
 }
 
 

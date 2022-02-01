@@ -115,34 +115,43 @@ public class WtloginMsfListener
     }
   }
   
+  private Object sendDataByReflectMqq(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    Class localClass1 = Class.forName("mqq.manager.TicketManager");
+    if (TicketMgr == null)
+    {
+      Object localObject2 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
+      Object localObject3 = Class.forName("mqq.app.BaseActivity");
+      Class localClass2 = Class.forName("mqq.app.AppRuntime");
+      Object localObject1 = ((Class)localObject2).getMethod("getApplication", new Class[0]);
+      Method localMethod = ((Class)localObject2).getMethod("waitAppRuntime", new Class[] { localObject3 });
+      localObject2 = localClass2.getMethod("getManager", new Class[] { Integer.TYPE });
+      localObject3 = localClass2.getField("TICKET_MANAGER");
+      localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
+      if (localObject1 != null)
+      {
+        localObject1 = localMethod.invoke(localObject1, new Object[] { null });
+        if (localObject1 != null) {
+          TicketMgr = ((Method)localObject2).invoke(localObject1, new Object[] { ((Field)localObject3).get(localClass2) });
+        }
+      }
+    }
+    return localClass1.getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(paramLong), this.uin, this.serviceCmd, paramArrayOfByte.clone(), Integer.valueOf(paramInt) });
+  }
+  
   private int sendRPCData(byte[] arg1, int paramInt)
   {
     long l = allocateSeq();
     util.LOGI("sendRPCData seq: ".concat(String.valueOf(l)), "");
     try
     {
-      Class localClass1 = Class.forName("mqq.manager.TicketManager");
-      if (TicketMgr == null)
-      {
-        Object localObject3 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
-        Object localObject4 = Class.forName("mqq.app.BaseActivity");
-        Class localClass2 = Class.forName("mqq.app.AppRuntime");
-        Object localObject2 = ((Class)localObject3).getMethod("getApplication", new Class[0]);
-        Method localMethod = ((Class)localObject3).getMethod("waitAppRuntime", new Class[] { localObject4 });
-        localObject3 = localClass2.getMethod("getManager", new Class[] { Integer.TYPE });
-        localObject4 = localClass2.getField("TICKET_MANAGER");
-        localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
-        if (localObject2 != null)
-        {
-          localObject2 = localMethod.invoke(localObject2, new Object[] { null });
-          if (localObject2 != null) {
-            TicketMgr = ((Method)localObject3).invoke(localObject2, new Object[] { ((Field)localObject4).get(localClass2) });
-          }
-        }
+      if (WtloginHelper.getWtDataSender() == null) {
+        paramInt = Integer.parseInt(sendDataByReflectMqq(???, paramInt, l).toString());
+      } else {
+        paramInt = WtloginHelper.getWtDataSender().a(l, this.uin, this.serviceCmd, (byte[])???.clone(), paramInt);
       }
-      int i = Integer.valueOf(localClass1.getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(l), this.uin, this.serviceCmd, ???.clone(), Integer.valueOf(paramInt) }).toString()).intValue();
-      paramInt = i;
-      if (i == 0) {
+      int i = paramInt;
+      if (paramInt == 0) {
         synchronized (__SyncCB)
         {
           __cbs.put(Long.valueOf(l), this);
@@ -150,12 +159,12 @@ public class WtloginMsfListener
           return 99;
         }
       }
-      return paramInt;
+      return i;
     }
     catch (Exception ???)
     {
       util.printException(???, this.uin);
-      paramInt = -1000;
+      i = -1000;
     }
   }
   
@@ -235,9 +244,9 @@ public class WtloginMsfListener
   public int SendData(byte[] paramArrayOfByte, int paramInt)
   {
     Object localObject;
-    if (!t.ar)
+    if (!u.ax)
     {
-      localObject = t.l();
+      localObject = u.m();
       util.LOGI("mqq process: ".concat(String.valueOf(localObject)), "");
       if (!((String)localObject).endsWith(":MSF")) {
         return sendRPCData(paramArrayOfByte, paramInt);

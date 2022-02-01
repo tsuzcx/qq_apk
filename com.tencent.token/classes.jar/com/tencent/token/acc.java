@@ -1,16 +1,35 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.qps.Guava;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public final class acc
 {
-  public static final Object a = new Object();
-  public static Guava b = new Guava();
+  public static final acc a = new acc();
   
-  static
+  public static String a(int paramInt)
   {
-    new AtomicBoolean(false);
+    if (paramInt != 4)
+    {
+      if (paramInt != 8)
+      {
+        if (paramInt != 16)
+        {
+          if (paramInt != 32)
+          {
+            switch (paramInt)
+            {
+            default: 
+              return "-";
+            case 2: 
+              return "D";
+            }
+            return "V";
+          }
+          return "A";
+        }
+        return "E";
+      }
+      return "W";
+    }
+    return "I";
   }
 }
 

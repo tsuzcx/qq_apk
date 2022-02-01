@@ -1,30 +1,27 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.FreezeStatusResult;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wf
-  extends tr
+  extends ud
 {
   private long d;
   private int e;
-  private FreezeStatusResult f;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -32,10 +29,11 @@ public final class wf
     int i = paramJSONObject.getInt("err");
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -46,30 +44,25 @@ public final class wf
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        si.a();
-        paramJSONObject.append(si.b());
-        xj.c(paramJSONObject.toString());
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
         return;
       }
-      xj.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
-      this.f = new FreezeStatusResult(paramJSONObject);
       this.a.a = 0;
+      QQUser localQQUser = tt.a().c(this.d);
+      if (localQQUser == null)
+      {
+        this.a.a(10000, null, null);
+        return;
+      }
+      localQQUser.mRealUin = paramJSONObject.getLong("real_uin");
+      localQQUser.mMobileMask = paramJSONObject.getString("mobile");
+      localQQUser.verify_sms = paramJSONObject.optInt("verify_sms");
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

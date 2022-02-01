@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
-import com.tencent.token.xf;
-import com.tencent.token.xj;
+import com.tencent.token.xr;
+import com.tencent.token.xv;
 
 public class FindPasswdH5Activity
   extends EmbedWebBaseActivity
@@ -17,13 +17,13 @@ public class FindPasswdH5Activity
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     paramBundle = getIntent().getStringExtra("captcha_sig");
-    xj.a("captcha_sig=".concat(String.valueOf(paramBundle)));
-    switch (xf.a())
+    xv.a("captcha_sig=".concat(String.valueOf(paramBundle)));
+    switch (xr.a())
     {
     default: 
       localWebView = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493444));
+      localStringBuilder.append(getResources().getString(2131493452));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       localWebView.loadUrl(localStringBuilder.toString());
@@ -31,7 +31,7 @@ public class FindPasswdH5Activity
     case 3: 
       localWebView = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493261));
+      localStringBuilder.append(getResources().getString(2131493263));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       localWebView.loadUrl(localStringBuilder.toString());
@@ -39,7 +39,7 @@ public class FindPasswdH5Activity
     case 2: 
       localWebView = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493114));
+      localStringBuilder.append(getResources().getString(2131493116));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       localWebView.loadUrl(localStringBuilder.toString());
@@ -47,7 +47,7 @@ public class FindPasswdH5Activity
     case 1: 
       localWebView = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493444));
+      localStringBuilder.append(getResources().getString(2131493452));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       localWebView.loadUrl(localStringBuilder.toString());
@@ -55,7 +55,7 @@ public class FindPasswdH5Activity
     }
     WebView localWebView = this.mWebView;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getString(2131493604));
+    localStringBuilder.append(getResources().getString(2131493612));
     localStringBuilder.append("&key=");
     localStringBuilder.append(paramBundle);
     localWebView.loadUrl(localStringBuilder.toString());

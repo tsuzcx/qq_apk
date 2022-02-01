@@ -3,7 +3,7 @@ package btmsdkobf;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.token.aqo;
+import com.tencent.token.arm;
 import com.tmsdk.base.utils.NetworkUtil;
 
 public class cx
@@ -138,7 +138,7 @@ public class cx
   
   public static boolean y(String paramString)
   {
-    if (aqo.d != NetworkUtil.getNetworkType()) {
+    if (arm.d != NetworkUtil.getNetworkType()) {
       return false;
     }
     eh.f("SharkHelper", "[detect_conn]needWifiApprove(), from: ".concat(String.valueOf(paramString)));

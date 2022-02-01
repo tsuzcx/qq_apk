@@ -1,296 +1,102 @@
 package com.tencent.token;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.database.Cursor;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Bundle;
 
 public final class po
-  implements SharedPreferences
 {
-  private final ContentResolver a;
-  private final String[] b = { "_id", "key", "type", "value" };
-  private final HashMap<String, Object> c = new HashMap();
-  private a d = null;
+  public int a;
+  public String b;
+  public String c;
+  public byte[] d;
+  public b e = null;
+  public String f;
+  public String g;
+  public String h;
   
-  public po(Context paramContext)
+  public po()
   {
-    this.a = paramContext.getContentResolver();
+    this((byte)0);
   }
   
-  private Object a(String paramString)
+  private po(byte paramByte) {}
+  
+  public final int a()
   {
-    for (;;)
+    b localb = this.e;
+    if (localb == null) {
+      return 0;
+    }
+    return localb.a();
+  }
+  
+  public static final class a
+  {
+    public static po a(Bundle paramBundle)
     {
-      try
-      {
-        Cursor localCursor = this.a.query(qg.b.a, this.b, "key = ?", new String[] { paramString }, null);
-        if (localCursor == null) {
-          return null;
-        }
-        int i = localCursor.getColumnIndex("type");
-        int j = localCursor.getColumnIndex("value");
-        if (localCursor.moveToFirst())
+      po localpo = new po();
+      localpo.a = paramBundle.getInt("_wxobject_sdkVer");
+      localpo.b = paramBundle.getString("_wxobject_title");
+      localpo.c = paramBundle.getString("_wxobject_description");
+      localpo.d = paramBundle.getByteArray("_wxobject_thumbdata");
+      localpo.f = paramBundle.getString("_wxobject_mediatagname");
+      localpo.g = paramBundle.getString("_wxobject_message_action");
+      localpo.h = paramBundle.getString("_wxobject_message_ext");
+      Object localObject2 = paramBundle.getString("_wxobject_identifier_");
+      "pathOldToNew, oldPath = ".concat(String.valueOf(localObject2));
+      Object localObject1 = localObject2;
+      if (localObject2 != null) {
+        if (((String)localObject2).length() == 0)
         {
-          paramString = qg.a.a(localCursor.getInt(i), localCursor.getString(j));
-          localCursor.close();
-          return paramString;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      paramString = null;
-    }
-  }
-  
-  public final boolean contains(String paramString)
-  {
-    return a(paramString) != null;
-  }
-  
-  public final SharedPreferences.Editor edit()
-  {
-    if (this.d == null) {
-      this.d = new a(this.a);
-    }
-    return this.d;
-  }
-  
-  public final Map<String, ?> getAll()
-  {
-    try
-    {
-      Object localObject1 = this.a.query(qg.b.a, this.b, null, null, null);
-      if (localObject1 == null) {
-        return null;
-      }
-      int i = ((Cursor)localObject1).getColumnIndex("key");
-      int j = ((Cursor)localObject1).getColumnIndex("type");
-      int k = ((Cursor)localObject1).getColumnIndex("value");
-      while (((Cursor)localObject1).moveToNext())
-      {
-        Object localObject2 = qg.a.a(((Cursor)localObject1).getInt(j), ((Cursor)localObject1).getString(k));
-        this.c.put(((Cursor)localObject1).getString(i), localObject2);
-      }
-      ((Cursor)localObject1).close();
-      localObject1 = this.c;
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return this.c;
-  }
-  
-  public final boolean getBoolean(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && ((paramString instanceof Boolean))) {
-      return ((Boolean)paramString).booleanValue();
-    }
-    return paramBoolean;
-  }
-  
-  public final float getFloat(String paramString, float paramFloat)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && ((paramString instanceof Float))) {
-      return ((Float)paramString).floatValue();
-    }
-    return paramFloat;
-  }
-  
-  public final int getInt(String paramString, int paramInt)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && ((paramString instanceof Integer))) {
-      return ((Integer)paramString).intValue();
-    }
-    return paramInt;
-  }
-  
-  public final long getLong(String paramString, long paramLong)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && ((paramString instanceof Long))) {
-      return ((Long)paramString).longValue();
-    }
-    return paramLong;
-  }
-  
-  public final String getString(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1);
-    if ((paramString1 != null) && ((paramString1 instanceof String))) {
-      return (String)paramString1;
-    }
-    return paramString2;
-  }
-  
-  public final Set<String> getStringSet(String paramString, Set<String> paramSet)
-  {
-    return null;
-  }
-  
-  public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
-  
-  public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
-  
-  static final class a
-    implements SharedPreferences.Editor
-  {
-    private Map<String, Object> a = new HashMap();
-    private Set<String> b = new HashSet();
-    private boolean c = false;
-    private ContentResolver d;
-    
-    public a(ContentResolver paramContentResolver)
-    {
-      this.d = paramContentResolver;
-    }
-    
-    public final void apply() {}
-    
-    public final SharedPreferences.Editor clear()
-    {
-      this.c = true;
-      return this;
-    }
-    
-    public final boolean commit()
-    {
-      ContentValues localContentValues = new ContentValues();
-      if (this.c)
-      {
-        this.d.delete(qg.b.a, null, null);
-        this.c = false;
-      }
-      Object localObject1 = this.b.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        this.d.delete(qg.b.a, "key = ?", new String[] { localObject2 });
-      }
-      Object localObject2 = this.a.entrySet().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-        Object localObject3 = localEntry.getValue();
-        if (localObject3 == null) {}
-        int i;
-        for (localObject1 = "unresolve failed, null value";; localObject1 = ((StringBuilder)localObject1).toString())
-        {
-          pw.a("MicroMsg.SDK.PluginProvider.Resolver", (String)localObject1);
-          i = 0;
-          break;
-          if ((localObject3 instanceof Integer))
-          {
-            i = 1;
-            break;
-          }
-          if ((localObject3 instanceof Long))
-          {
-            i = 2;
-            break;
-          }
-          if ((localObject3 instanceof String))
-          {
-            i = 3;
-            break;
-          }
-          if ((localObject3 instanceof Boolean))
-          {
-            i = 4;
-            break;
-          }
-          if ((localObject3 instanceof Float))
-          {
-            i = 5;
-            break;
-          }
-          if ((localObject3 instanceof Double))
-          {
-            i = 6;
-            break;
-          }
-          localObject1 = new StringBuilder("unresolve failed, unknown type=");
-          ((StringBuilder)localObject1).append(localObject3.getClass().toString());
-        }
-        if (i == 0)
-        {
-          i = 0;
+          localObject1 = localObject2;
         }
         else
         {
-          localContentValues.put("type", Integer.valueOf(i));
-          localContentValues.put("value", localObject3.toString());
-          i = 1;
-        }
-        if (i != 0) {
-          this.d.update(qg.b.a, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
+          int i = ((String)localObject2).lastIndexOf('.');
+          if (i == -1)
+          {
+            "pathOldToNew fail, invalid pos, oldPath = ".concat(String.valueOf(localObject2));
+            localObject1 = localObject2;
+          }
+          else
+          {
+            localObject1 = new StringBuilder("com.tencent.mm.opensdk.modelmsg");
+            ((StringBuilder)localObject1).append(((String)localObject2).substring(i));
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
         }
       }
-      return true;
+      if (localObject1 != null)
+      {
+        if (((String)localObject1).length() <= 0) {
+          return localpo;
+        }
+        try
+        {
+          localpo.e = ((po.b)Class.forName((String)localObject1).newInstance());
+          localpo.e.b(paramBundle);
+          return localpo;
+        }
+        catch (Exception paramBundle)
+        {
+          localObject2 = new StringBuilder("get media object from bundle failed: unknown ident ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(", ex = ");
+          ((StringBuilder)localObject2).append(paramBundle.getMessage());
+        }
+      }
+      return localpo;
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract int a();
     
-    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-    {
-      this.a.put(paramString, Boolean.valueOf(paramBoolean));
-      this.b.remove(paramString);
-      return this;
-    }
+    public abstract void a(Bundle paramBundle);
     
-    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-    {
-      this.a.put(paramString, Float.valueOf(paramFloat));
-      this.b.remove(paramString);
-      return this;
-    }
+    public abstract void b(Bundle paramBundle);
     
-    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
-    {
-      this.a.put(paramString, Integer.valueOf(paramInt));
-      this.b.remove(paramString);
-      return this;
-    }
-    
-    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
-    {
-      this.a.put(paramString, Long.valueOf(paramLong));
-      this.b.remove(paramString);
-      return this;
-    }
-    
-    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
-    {
-      this.a.put(paramString1, paramString2);
-      this.b.remove(paramString1);
-      return this;
-    }
-    
-    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
-    {
-      return null;
-    }
-    
-    public final SharedPreferences.Editor remove(String paramString)
-    {
-      this.b.add(paramString);
-      return this;
-    }
+    public abstract boolean b();
   }
 }
 

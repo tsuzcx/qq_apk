@@ -1,45 +1,26 @@
 package com.tencent.token;
 
-public final class qr
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
+
+final class qr
+  extends PhoneStateListener
 {
-  public static int a()
-  {
-    return qw.a.a().a("pgd_sp").a("t_t_s", 2);
-  }
+  qr(qq paramqq) {}
   
-  public static void a(int paramInt)
+  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    qw.a.a().a("pgd_sp").b("t_t_s", paramInt);
-  }
-  
-  public static void a(long paramLong)
-  {
-    qw.a.a().a("pgd_sp").b("f_w_m_t", paramLong);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    qw.a.a().a("pgd_sp").b("fg_v", paramBoolean);
-  }
-  
-  public static int b()
-  {
-    return qw.a.a().a("pgd_sp").a("pg5s", 0);
-  }
-  
-  public static void b(int paramInt)
-  {
-    qw.a.a().a("pgd_sp").b("f_w_c", paramInt);
-  }
-  
-  public static void c(int paramInt)
-  {
-    qw.a.a().a("pgd_sp").b("pg5s", paramInt);
-  }
-  
-  public static boolean c()
-  {
-    return qw.a.a().a("pgd_sp").a("fg_v", true);
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    if (qq.a(this.a) == 2) {
+      qq.a(paramSignalStrength.getCdmaDbm());
+    }
+    if (qq.a(this.a) == 1) {
+      qq.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+    }
+    if (qq.b(this.a) != null) {
+      qq.b(this.a).listen(qq.c(this.a), 0);
+    }
   }
 }
 

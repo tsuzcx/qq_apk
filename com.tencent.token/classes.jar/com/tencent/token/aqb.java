@@ -1,23 +1,62 @@
 package com.tencent.token;
 
-public final class aqb
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+
+final class aqb
+  extends apz
 {
-  public static abstract class a
+  private final Paint g = new Paint(3);
+  private final Rect h = new Rect();
+  private final Rect i = new Rect();
+  private final float j;
+  
+  aqb(avt paramavt, aqc paramaqc, float paramFloat)
   {
-    public abstract void a();
-    
-    public abstract void a(int paramInt1, int paramInt2);
+    super(paramavt, paramaqc);
+    this.j = paramFloat;
   }
   
-  public static abstract class b {}
-  
-  public static final class c
+  private Bitmap c()
   {
-    public int a = -1;
-    public int b = 0;
-    public long c = -1L;
-    public String d = null;
-    public String e;
+    String str = this.c.g;
+    return this.b.a(str);
+  }
+  
+  public final void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    paramMatrix = c();
+    if (paramMatrix != null)
+    {
+      paramRectF.set(paramRectF.left, paramRectF.top, Math.min(paramRectF.right, paramMatrix.getWidth()), Math.min(paramRectF.bottom, paramMatrix.getHeight()));
+      this.a.mapRect(paramRectF);
+    }
+  }
+  
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.g.setColorFilter(paramColorFilter);
+  }
+  
+  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    Bitmap localBitmap = c();
+    if (localBitmap == null) {
+      return;
+    }
+    this.g.setAlpha(paramInt);
+    paramCanvas.save();
+    paramCanvas.concat(paramMatrix);
+    this.h.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+    this.i.set(0, 0, (int)(localBitmap.getWidth() * this.j), (int)(localBitmap.getHeight() * this.j));
+    paramCanvas.drawBitmap(localBitmap, this.h, this.i, this.g);
+    paramCanvas.restore();
   }
 }
 

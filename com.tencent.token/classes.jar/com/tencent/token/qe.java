@@ -1,32 +1,17 @@
 package com.tencent.token;
 
-import java.util.TimeZone;
-
 public final class qe
 {
-  private static final long[] a = { 300L, 200L, 300L, 200L };
-  private static final TimeZone b = TimeZone.getTimeZone("GMT");
-  private static final char[] c = { 9, 10, 13 };
-  private static final char[] d = { 60, 62, 34, 39, 38 };
-  private static final String[] e = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;" };
-  
-  public static String a(String paramString)
+  public static byte[] a(String paramString1, String paramString2)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString1 != null) {
+      localStringBuffer.append(paramString1);
     }
-    return str;
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0);
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return (paramString == null) || (paramString.length() <= 0);
+    localStringBuffer.append(553910273);
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append("mMcShCsTr");
+    return ow.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 

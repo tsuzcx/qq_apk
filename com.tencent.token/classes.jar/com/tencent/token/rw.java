@@ -1,276 +1,357 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.support.v4.content.FileProvider;
+import android.widget.Toast;
+import com.tencent.halley.downloader.DownloaderFactory;
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
 import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.TMSDKBaseContext;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class rw
+public final class rw
 {
-  private static rw c;
-  private final String A = "conch_update_cloud_cmd_id";
-  private final String B = "conch_update_cloud_conchseqno";
-  private final String C = "conch_update_cloud_task_for_active";
-  private final String D = "meri_silent_update_switch_user";
-  private final String E = "meri_silent_update_switch_cloud";
-  private final String F = "meri_silent_update";
-  private final String G = "meri_silent_update_url";
-  private final String H = "meri_silent_update_msg_title";
-  private final String I = "meri_silent_update_msg";
-  private final String J = "meri_silent_update_msg_type";
-  private final String K = "meri_silent_update_msg_ask_type";
-  private final String L = "meri_silent_update_show_insatll_dlg";
-  private final String M = "meri_silent_update_next_notify_time";
-  private final String N = "meri_silent_update_show_insatll_notice";
-  private final String O = "is_need_report_go_browser";
-  private final String P = "auto_install_under_root";
-  private final String Q = "has_click_update_tip_in_main_page";
-  private final String R = "silent_download_time_control";
-  private final String S = "qqpim_download_position_show";
-  private final String T = "kiawl";
-  public ru a = new rs(RqdApplication.p(), "updateConfig");
-  final String b = "huagp";
-  private final String d = "meri_lastest_version_p";
-  private final String e = "meri_lastest_version_c";
-  private final String f = "meri_lastest_version_h";
-  private final String g = "meri_lastest_build";
-  private final String h = "meri_lastest_version_code";
-  private final String i = "meri_lastest_featrue";
-  private final String j = "meri_lastest_size";
-  private final String k = "meri_lastest_url";
-  private final String l = "meri_patch_url";
-  private final String m = "meri_need_show_update_dialog";
-  private final String n = "meri_update_start_time";
-  private final String o = "meri_update_end_time";
-  private final String p = "meri_update_url_type";
-  private final String q = "meri_update_market";
-  private final String r = "meri_update_msg_type";
-  private final String s = "meri_update_msg_title";
-  private final String t = "meri_update_process";
-  private final String u = "meri_update_need_show";
-  private final String v = "meri_update_remind_time";
-  private final String w = "meri_update_cycle_time";
-  private final String x = "meri_update_show_dialog_count";
-  private final String y = "conch_update_cloud_task_id";
-  private final String z = "conch_update_cloud_task_seqno";
-  
-  public static rw a()
+  Map<String, a> a = new ConcurrentHashMap();
+  mo b = new mo()
   {
-    if (c == null) {
-      try
+    public final void a() {}
+    
+    public final void a(mn paramAnonymousmn) {}
+    
+    public final void b(mn paramAnonymousmn) {}
+    
+    public final void c(mn paramAnonymousmn) {}
+    
+    public final void d(mn paramAnonymousmn) {}
+    
+    public final void e(mn paramAnonymousmn) {}
+    
+    public final void f(mn paramAnonymousmn)
+    {
+      if (paramAnonymousmn != null)
       {
-        if (c == null) {
-          c = new rw();
+        rw localrw = rw.this;
+        rw.a locala = (rw.a)localrw.a.get(paramAnonymousmn.c());
+        if (locala != null)
+        {
+          rw.a(paramAnonymousmn, locala);
+          StringBuilder localStringBuilder = new StringBuilder("progressChangedCallback: [");
+          localStringBuilder.append(rw.b(paramAnonymousmn));
+          localStringBuilder.append("]");
+          paramAnonymousmn = localrw.b().iterator();
+          while (paramAnonymousmn.hasNext()) {
+            ((rw.c)paramAnonymousmn.next()).a(locala);
+          }
         }
       }
-      finally {}
     }
-    return c;
-  }
+    
+    public final void g(mn paramAnonymousmn)
+    {
+      if (paramAnonymousmn != null) {
+        rw.this.a(paramAnonymousmn);
+      }
+    }
+    
+    public final void h(mn paramAnonymousmn)
+    {
+      if (paramAnonymousmn != null) {
+        rw.this.a(paramAnonymousmn);
+      }
+    }
+    
+    public final void i(mn paramAnonymousmn)
+    {
+      if (paramAnonymousmn != null) {
+        rw.this.a(paramAnonymousmn);
+      }
+    }
+  };
+  private mm c = null;
+  private Map<String, mn> d = new ConcurrentHashMap();
+  private List<c> e = new ArrayList();
   
-  public final void a(int paramInt)
+  public static String a()
   {
-    this.a.b("meri_update_url_type", paramInt);
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      Object localObject = zw.a("token_download");
+      if (localObject != null) {
+        return ((File)localObject).getAbsolutePath();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("token_download");
+      return ((StringBuilder)localObject).toString();
+    }
+    return RqdApplication.n().getFilesDir().getAbsolutePath();
   }
   
-  public final void a(long paramLong)
+  private static String a(DownloaderTaskStatus paramDownloaderTaskStatus)
   {
-    this.a.b("meri_update_end_time", paramLong);
+    switch (2.a[paramDownloaderTaskStatus.ordinal()])
+    {
+    default: 
+      return "";
+    case 7: 
+      return "DELETED";
+    case 6: 
+      return "PAUSED";
+    case 5: 
+      return "FAILED";
+    case 4: 
+      return "COMPLETE";
+    case 3: 
+      return "DOWNLOADING";
+    case 2: 
+      return "STARTED";
+    }
+    return "PENDING";
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static void a(Context paramContext, File paramFile)
   {
-    this.a.a();
-    this.a.b("conch_update_cloud_task_id", paramLong1);
-    this.a.b("conch_update_cloud_task_seqno", paramLong2);
-    this.a.b("conch_update_cloud_cmd_id", paramInt1);
-    this.a.b("conch_update_cloud_conchseqno", paramInt2);
-    this.a.b();
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setFlags(1);
+    localIntent.addFlags(268435456);
+    StringBuilder localStringBuilder;
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(".FileProvider");
+      localIntent.setDataAndType(FileProvider.a(paramContext, localStringBuilder.toString(), paramFile), "application/vnd.android.package-archive");
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder("file://");
+      localStringBuilder.append(paramFile.toString());
+      localIntent.setDataAndType(Uri.parse(localStringBuilder.toString()), "application/vnd.android.package-archive");
+    }
+    paramContext.startActivity(localIntent);
   }
   
-  public final void a(String paramString)
+  static void a(mn parammn, a parama)
   {
-    this.a.b("meri_update_market", paramString);
+    if (parammn != null)
+    {
+      if (parama == null) {
+        return;
+      }
+      parama.e = parammn.g();
+      parama.f = parammn.d();
+      parama.b = parammn.b();
+      return;
+    }
   }
   
-  public final void a(boolean paramBoolean)
+  static String b(mn parammn)
   {
-    this.a.b("huagp", paramBoolean);
+    int i = parammn.m();
+    String str = parammn.n();
+    return String.format("status=%s per=%d saveName=%s uniquekey=%s errorcode=%d error=%s", new Object[] { a(parammn.d()), Integer.valueOf(parammn.g()), parammn.j(), parammn.b(), Integer.valueOf(i), str });
   }
   
-  public final void b(int paramInt)
+  private static boolean c()
   {
-    this.a.b("meri_lastest_version_p", paramInt);
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.n().getSystemService("connectivity")).getActiveNetworkInfo();
+    return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
   }
   
-  public final void b(long paramLong)
+  private void e(a parama)
   {
-    this.a.b("meri_update_cycle_time", paramLong);
+    this.a.remove(parama.c);
+    this.d.remove(parama.c);
   }
   
-  public final void b(String paramString)
+  public final a a(String paramString)
   {
-    this.a.b("meri_lastest_featrue", paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return (a)this.a.get(paramString);
   }
   
-  public final void b(boolean paramBoolean)
-  {
-    this.a.b("meri_silent_update", paramBoolean);
-  }
-  
-  public final boolean b()
-  {
-    return this.a.a("huagp", false);
-  }
-  
-  public final long c()
-  {
-    return this.a.a("meri_update_end_time", 0L);
-  }
-  
-  public final void c(int paramInt)
-  {
-    this.a.b("meri_lastest_version_c", paramInt);
-  }
-  
-  public final void c(long paramLong)
+  public final void a(Context paramContext)
   {
     try
     {
-      throw new Exception();
+      lp.a(paramContext, "0M100WJ33N1CQ08O", "999001", TMSDKBaseContext.getGuid());
+      this.c = DownloaderFactory.getDownloader();
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      localException.printStackTrace();
-      this.a.b("meri_update_remind_time", paramLong);
+      paramContext.printStackTrace();
     }
   }
   
-  public final void c(String paramString)
+  final void a(mn parammn)
   {
-    this.a.b("meri_lastest_url", paramString);
+    a locala = (a)this.a.get(parammn.c());
+    if (locala == null) {
+      return;
+    }
+    a(parammn, locala);
+    Object localObject = new StringBuilder("stateChangedCallback: [");
+    ((StringBuilder)localObject).append(b(parammn));
+    ((StringBuilder)localObject).append("]");
+    localObject = b();
+    switch (2.a[parammn.d().ordinal()])
+    {
+    default: 
+    case 6: 
+      parammn = ((List)localObject).iterator();
+      while (parammn.hasNext()) {
+        ((c)parammn.next()).b(locala);
+      }
+      return;
+    case 5: 
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((c)((Iterator)localObject).next()).c(locala);
+      }
+      this.c.b(parammn);
+    case 7: 
+      e(locala);
+      return;
+    case 4: 
+      parammn = ((List)localObject).iterator();
+      while (parammn.hasNext()) {
+        ((c)parammn.next()).d(locala);
+      }
+      e(locala);
+      return;
+    }
   }
   
-  public final void c(boolean paramBoolean)
+  public final void a(c paramc)
   {
-    this.a.b("meri_update_need_show", paramBoolean);
+    synchronized (this.e)
+    {
+      this.e.add(0, paramc);
+      return;
+    }
   }
   
-  public final int d()
+  public final boolean a(a parama)
   {
-    return this.a.a("meri_lastest_version_p", 0);
+    if (a(parama.c) != null) {
+      return false;
+    }
+    return new File(a(), parama.d).exists();
   }
   
-  public final void d(int paramInt)
+  final List<c> b()
   {
-    this.a.b("meri_lastest_version_h", paramInt);
+    synchronized (this.e)
+    {
+      ArrayList localArrayList = new ArrayList(this.e);
+      return localArrayList;
+    }
   }
   
-  public final void d(String paramString)
+  public final void b(a parama)
   {
-    this.a.b("meri_update_msg_title", paramString);
+    parama = (mn)this.d.get(parama.c);
+    if (parama != null) {
+      parama.k();
+    }
   }
   
-  public final int e()
+  public final void b(c paramc)
   {
-    return this.a.a("meri_lastest_version_c", 0);
+    synchronized (this.e)
+    {
+      this.e.remove(paramc);
+      return;
+    }
   }
   
-  public final void e(int paramInt)
+  public final void c(a parama)
   {
-    this.a.b("meri_lastest_build", paramInt);
+    if (this.c == null) {
+      return;
+    }
+    if (!c())
+    {
+      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
+      return;
+    }
+    e(parama);
+    try
+    {
+      mn localmn = this.c.a(parama.a, parama.c, a(), parama.d, this.b);
+      this.c.a(localmn);
+      this.a.put(parama.c, parama);
+      this.d.put(parama.c, localmn);
+      return;
+    }
+    catch (Exception parama)
+    {
+      parama.printStackTrace();
+    }
   }
   
-  public final void e(String paramString)
+  public final void d(a parama)
   {
-    this.a.b("meri_silent_update_url", paramString);
+    if (!c())
+    {
+      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
+      return;
+    }
+    parama = (mn)this.d.get(parama.c);
+    if (parama != null) {
+      try
+      {
+        parama.l();
+        return;
+      }
+      catch (DownloaderAddTaskException parama)
+      {
+        parama.printStackTrace();
+      }
+    }
   }
   
-  public final int f()
+  public static final class a
   {
-    return this.a.a("meri_lastest_version_h", 0);
+    public String a;
+    public String b;
+    public String c;
+    public String d;
+    public int e;
+    public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
   }
   
-  public final void f(int paramInt)
+  public static final class b
   {
-    this.a.b("meri_lastest_version_code", paramInt);
+    private static rw a = new rw();
   }
   
-  public final void f(String paramString)
+  public static abstract interface c
   {
-    this.a.b("meri_silent_update_msg_title", paramString);
-  }
-  
-  public final int g()
-  {
-    return this.a.a("meri_lastest_build", 0);
-  }
-  
-  public final void g(int paramInt)
-  {
-    this.a.b("meri_lastest_size", paramInt);
-  }
-  
-  public final void g(String paramString)
-  {
-    this.a.b("meri_silent_update_msg", paramString);
-  }
-  
-  public final int h()
-  {
-    return this.a.a("meri_lastest_size", -1);
-  }
-  
-  public final void h(int paramInt)
-  {
-    this.a.b("meri_update_msg_type", paramInt);
-  }
-  
-  public final long i()
-  {
-    return this.a.a("conch_update_cloud_task_id", 0L);
-  }
-  
-  public final void i(int paramInt)
-  {
-    this.a.b("meri_silent_update_msg_type", paramInt);
-  }
-  
-  public final String j()
-  {
-    return this.a.a("meri_update_msg_title", "");
-  }
-  
-  public final void j(int paramInt)
-  {
-    this.a.b("meri_silent_update_msg_ask_type", paramInt);
-  }
-  
-  public final void k()
-  {
-    this.a.b("meri_silent_update_show_insatll_dlg", false);
-  }
-  
-  public final void k(int paramInt)
-  {
-    this.a.b("meri_update_process", paramInt);
-  }
-  
-  public final boolean l()
-  {
-    return this.a.a("meri_silent_update_show_insatll_dlg", false);
-  }
-  
-  public final void m()
-  {
-    this.a.b("meri_silent_update_show_insatll_notice", false);
-  }
-  
-  public final long n()
-  {
-    return this.a.a("meri_update_cycle_time", 604800000L);
-  }
-  
-  public final long o()
-  {
-    return this.a.a("meri_update_remind_time", 0L);
+    public abstract void a(rw.a parama);
+    
+    public abstract void b(rw.a parama);
+    
+    public abstract void c(rw.a parama);
+    
+    public abstract void d(rw.a parama);
   }
 }
 

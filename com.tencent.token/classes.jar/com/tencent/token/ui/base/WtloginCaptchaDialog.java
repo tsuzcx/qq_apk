@@ -20,14 +20,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aap;
+import com.tencent.token.aaz;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.sg;
-import com.tencent.token.sg.3;
+import com.tencent.token.ss;
+import com.tencent.token.ss.5;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xj;
-import com.tencent.token.yv;
+import com.tencent.token.xv;
+import com.tencent.token.zh;
 import java.util.Timer;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
@@ -36,7 +36,7 @@ public class WtloginCaptchaDialog
   extends Dialog
 {
   private static Handler g;
-  sg a;
+  ss a;
   @SuppressLint({"HandlerLeak"})
   Handler b = new Handler()
   {
@@ -47,12 +47,12 @@ public class WtloginCaptchaDialog
         if (WtloginCaptchaDialog.a() == null) {
           return;
         }
-        ((yv)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
+        ((zh)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
         Object localObject = new StringBuilder("wtlogin : ret=");
         ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
         ((StringBuilder)localObject).append(", what=");
         ((StringBuilder)localObject).append(paramAnonymousMessage.what);
-        xj.c(((StringBuilder)localObject).toString());
+        xv.c(((StringBuilder)localObject).toString());
         int i = paramAnonymousMessage.what;
         StringBuilder localStringBuilder;
         if (i != 4104)
@@ -64,7 +64,7 @@ public class WtloginCaptchaDialog
           case 4100: 
             localObject = new StringBuilder("K_MSGCODE_REFRESH_PICTURE ret=");
             ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
-            xj.b(((StringBuilder)localObject).toString());
+            xv.b(((StringBuilder)localObject).toString());
             WtloginCaptchaDialog.f(WtloginCaptchaDialog.this);
             return;
           }
@@ -93,17 +93,17 @@ public class WtloginCaptchaDialog
           }
           if (i == -1000)
           {
-            WtloginCaptchaDialog.this.a(2131493103);
+            WtloginCaptchaDialog.this.a(2131493105);
             return;
           }
           if (i == 8192)
           {
-            WtloginCaptchaDialog.this.a(2131493551);
+            WtloginCaptchaDialog.this.a(2131493559);
             return;
           }
           if (i == 2)
           {
-            WtloginCaptchaDialog.this.a(2131493554);
+            WtloginCaptchaDialog.this.a(2131493562);
             WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.c(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
             WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).setVisibility(0);
             WtloginCaptchaDialog.e(WtloginCaptchaDialog.this).setText("");
@@ -111,7 +111,7 @@ public class WtloginCaptchaDialog
           }
           if (i == 1)
           {
-            WtloginCaptchaDialog.this.a(2131493549);
+            WtloginCaptchaDialog.this.a(2131493557);
             WtloginCaptchaDialog.this.dismiss();
             WtloginCaptchaDialog.b();
             WtloginCaptchaDialog.b(WtloginCaptchaDialog.this);
@@ -123,13 +123,13 @@ public class WtloginCaptchaDialog
             {
               localObject = WtloginCaptchaDialog.this;
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493555));
+              localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493563));
               localStringBuilder.append(":");
               localStringBuilder.append(paramAnonymousMessage.getData().getString("loginerror"));
               ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
               return;
             }
-            WtloginCaptchaDialog.this.a(2131493555);
+            WtloginCaptchaDialog.this.a(2131493563);
             return;
           }
           WtloginCaptchaDialog.this.dismiss();
@@ -140,13 +140,13 @@ public class WtloginCaptchaDialog
         {
           localObject = WtloginCaptchaDialog.this;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493555));
+          localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493563));
           localStringBuilder.append(":");
           localStringBuilder.append(paramAnonymousMessage.getData().getString("exception"));
           ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
           return;
         }
-        WtloginCaptchaDialog.this.a(2131493555);
+        WtloginCaptchaDialog.this.a(2131493563);
         return;
       }
     }
@@ -175,7 +175,7 @@ public class WtloginCaptchaDialog
     if (localObject == null) {
       return;
     }
-    localObject = aap.a((byte[])localObject);
+    localObject = aaz.a((byte[])localObject);
     this.h.setImageBitmap((Bitmap)localObject);
   }
   
@@ -221,19 +221,19 @@ public class WtloginCaptchaDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      this.a = sg.a(RqdApplication.p());
-      setContentView(2131296508);
+      this.a = ss.a(RqdApplication.n());
+      setContentView(2131296521);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
-      ((ViewGroup.MarginLayoutParams)findViewById(2131165360).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-      this.i = findViewById(2131165831);
-      this.d = ((EditText)findViewById(2131165362));
+      ((ViewGroup.MarginLayoutParams)findViewById(2131165368).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      this.i = findViewById(2131165864);
+      this.d = ((EditText)findViewById(2131165370));
       paramBundle = this.d;
       if (paramBundle != null) {
         paramBundle.clearFocus();
       }
-      this.h = ((ImageView)findViewById(2131165361));
-      this.f = ((Button)findViewById(2131165364));
+      this.h = ((ImageView)findViewById(2131165369));
+      this.f = ((Button)findViewById(2131165372));
       this.f.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -249,7 +249,7 @@ public class WtloginCaptchaDialog
           {
             ((InputMethodManager)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getSystemService("input_method")).hideSoftInputFromWindow(WtloginCaptchaDialog.this.getWindow().peekDecorView().getWindowToken(), 0);
             Object localObject = paramAnonymousView.trim();
-            ((yv)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492986, null);
+            ((zh)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492987, null);
             paramAnonymousView = WtloginCaptchaDialog.this.a;
             String str = WtloginCaptchaDialog.c(WtloginCaptchaDialog.this);
             localObject = ((String)localObject).getBytes();
@@ -260,14 +260,14 @@ public class WtloginCaptchaDialog
               paramAnonymousView.a.CheckPictureAndGetSt(str, (byte[])localObject, new WUserSigInfo());
               paramAnonymousView.b = localHandler;
               paramAnonymousView.c = new Timer();
-              paramAnonymousView.c.schedule(new sg.3(paramAnonymousView), 30000L);
+              paramAnonymousView.c.schedule(new ss.5(paramAnonymousView), 30000L);
             }
             return;
           }
-          WtloginCaptchaDialog.this.a(2131493032);
+          WtloginCaptchaDialog.this.a(2131493033);
         }
       });
-      this.e = ((TextView)findViewById(2131165359));
+      this.e = ((TextView)findViewById(2131165367));
       this.e.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)

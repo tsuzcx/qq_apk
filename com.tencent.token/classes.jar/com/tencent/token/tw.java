@@ -1,78 +1,118 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class tw
-  extends tr
+public class tw
 {
-  public static int d = -1;
-  public static int e = -1;
-  private long f;
-  private int g;
+  public static byte c = 1;
+  public static byte d = 2;
+  public static byte e = 3;
+  public abi f = null;
   
-  public final String a()
+  protected tw(String paramString)
   {
-    sh.a();
-    this.a.a(104, null, null);
-    return null;
+    this.f = new abi(paramString);
   }
   
-  public final void a(abc paramabc)
+  final xt a(byte paramByte)
   {
-    this.f = ((Long)paramabc.c.get("param.realuin")).longValue();
-  }
-  
-  public final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    final xt localxt = new xt();
+    tt.a();
+    final QQUser localQQUser = tt.a(localxt);
+    if (localQQUser == null)
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
+      xv.a(localxt.b() ^ true);
+      return localxt;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    Object localObject = ss.a(RqdApplication.n()).a(localQQUser.mRealUin);
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = aay.a((byte[])localObject);
+    }
+    rt.a().h();
+    System.currentTimeMillis();
+    long l = aaz.a(2, localQQUser.mUin);
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    rt.a().a(paramByte, 0, 2, localQQUser.mUin, (String)localObject, l, new rt.a()
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.g = paramJSONObject.getInt("need_idcard_detect");
-      if (this.g == 1) {
-        try
-        {
-          d = paramJSONObject.getInt("displayangle");
-          e = paramJSONObject.getInt("imageangle");
-          paramJSONObject = new StringBuilder("plain angle=");
-          paramJSONObject.append(d);
-          paramJSONObject.append(",angel2=");
-          paramJSONObject.append(e);
-          xj.a(paramJSONObject.toString());
+      public final void a(rv paramAnonymousrv)
+      {
+        Object localObject = new xt();
+        ((xt)localObject).a = paramAnonymousrv.b;
+        ((xt)localObject).c = paramAnonymousrv.d;
+        ((xt)localObject).b = paramAnonymousrv.d;
+        if (paramAnonymousrv.b == 0) {
+          try
+          {
+            localObject = new JSONObject(paramAnonymousrv.c);
+            long l = ((JSONObject)localObject).getLong("uin");
+            if (l != localQQUser.mUin)
+            {
+              paramAnonymousrv = localxt;
+              localObject = new StringBuilder("uin not match=");
+              ((StringBuilder)localObject).append(l);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append(localQQUser.mUin);
+              paramAnonymousrv.a(10000, ((StringBuilder)localObject).toString(), null);
+              localCountDownLatch.countDown();
+              return;
+            }
+            tw.this.f.e = l;
+            paramAnonymousrv = localxt;
+            localObject = tw.this.f.a((JSONObject)localObject, l, this.d);
+            paramAnonymousrv.a = ((xt)localObject).a;
+            paramAnonymousrv.b = ((xt)localObject).b;
+            paramAnonymousrv.c = ((xt)localObject).c;
+            paramAnonymousrv.d = ((xt)localObject).d;
+            paramAnonymousrv.e = ((xt)localObject).e;
+            tt.a().g();
+          }
+          catch (JSONException paramAnonymousrv)
+          {
+            localObject = localxt;
+            StringBuilder localStringBuilder = new StringBuilder("JSONException:");
+            localStringBuilder.append(paramAnonymousrv.toString());
+            ((xt)localObject).a(10020, localStringBuilder.toString(), null);
+          }
         }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        localCountDownLatch.countDown();
       }
-      this.a.a = 0;
-      return;
+    });
+    try
+    {
+      localCountDownLatch.await();
+      return localxt;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return localxt;
   }
   
-  public final void b()
+  public final void a(long paramLong)
   {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.g;
-      localMessage.sendToTarget();
-      this.b.e = true;
+    this.f.e = paramLong;
+  }
+  
+  public final boolean c()
+  {
+    abi localabi = this.f;
+    QQUser localQQUser = tt.a().k.b();
+    if (localQQUser != null) {
+      return localQQUser.mUin == localabi.e;
     }
+    return false;
+  }
+  
+  public final void d()
+  {
+    this.f.d = 0;
   }
 }
 

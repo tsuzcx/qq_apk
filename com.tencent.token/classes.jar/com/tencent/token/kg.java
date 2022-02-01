@@ -1,56 +1,25 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
 
-public class kg
-  implements ail
+public final class kg
+  extends JceStruct
 {
-  private static asn b;
-  private long a = 0L;
+  public long a = 0L;
+  public long b = 0L;
   
-  public kg()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (b == null) {
-      try
-      {
-        if (b == null) {
-          b = new asn();
-        }
-        return;
-      }
-      finally {}
-    }
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, true);
   }
   
-  public final aij a(int paramInt1, int paramInt2)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    return b.a(paramInt1, paramInt2);
-  }
-  
-  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aii paramaii)
-  {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramaii);
-  }
-  
-  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aii paramaii, long paramLong)
-  {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramaii, paramLong);
-  }
-  
-  public final void a()
-  {
-    asg.a(5);
-  }
-  
-  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, aij paramaij)
-  {
-    b.a(paramInt1, paramJceStruct, paramInt2, paramaij);
-  }
-  
-  public final void b()
-  {
-    asg.b(1);
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
   }
 }
 

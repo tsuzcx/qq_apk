@@ -1,93 +1,80 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.turingfd.sdk.qps.Almond;
+import android.text.TextUtils;
+import com.tencent.turingfd.sdk.qps.Grapefruit;
+import com.tencent.turingfd.sdk.qps.Guava;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
 
 public final class aeq
 {
-  public static long a = TimeUnit.DAYS.toMillis(1L);
-  public static long b = TimeUnit.HOURS.toMillis(1L);
-  public adh c;
-  public Context d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public long i;
-  public long j;
+  public String a;
+  public int b;
+  public Grapefruit c;
   
-  public aeq(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public aeq(String paramString, int paramInt, Grapefruit paramGrapefruit)
   {
-    this.d = paramContext;
-    this.c = new adh(paramInt1);
-    this.i = TimeUnit.SECONDS.toMillis(paramInt3);
-    this.h = paramInt4;
-    this.e = paramInt1;
-    this.g = paramInt5;
-    this.f = paramInt2;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramGrapefruit;
   }
   
-  public aeq(Context paramContext, Almond paramAlmond, int paramInt1, int paramInt2)
+  private static String a(String paramString)
   {
-    this.d = paramContext;
-    this.j = paramAlmond.c;
-    this.c = new adh(paramInt1);
-    paramContext = paramAlmond.h.iterator();
-    while (paramContext.hasNext())
-    {
-      Long localLong = (Long)paramContext.next();
-      this.c.a(localLong);
+    String str = paramString;
+    if (paramString.indexOf(".") > 0) {
+      str = paramString.replaceAll("0+?$", "").replaceAll("[.]$", "");
     }
-    this.i = paramAlmond.d;
-    this.h = paramAlmond.e;
-    this.e = paramInt1;
-    this.g = paramAlmond.b;
-    this.f = paramInt2;
+    return str;
   }
   
-  public final boolean a()
+  private static String a(String paramString1, String paramString2, String paramString3)
   {
-    long l2 = System.currentTimeMillis();
-    long l3 = this.j;
-    long l1 = this.i;
-    l2 = Math.abs(l2 - l3);
-    boolean bool = true;
-    int k;
-    if (l2 > l1) {
-      k = 1;
-    } else {
-      k = 0;
+    String str = paramString3;
+    if (!TextUtils.isEmpty(paramString3)) {
+      str = paramString3.replace(paramString1, paramString2);
     }
-    if (k != 0)
+    return str;
+  }
+  
+  public final String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject2 = this.a;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    localStringBuilder.append(a("&", "%0A", a(",", "%54", a("_", "%5F", a(";", "%3B", a(":", "%3A", (String)localObject1))))));
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("_");
+    localObject1 = this.c;
+    if (localObject1 == null) {
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append(((Grapefruit)localObject1).b);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.c.c);
+    localStringBuilder.append(":");
+    localObject1 = this.c.d.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      if (this.c.b.size() < this.f) {
-        return true;
+      localObject2 = (Guava)((Iterator)localObject1).next();
+      localStringBuilder.append(((Guava)localObject2).a);
+      localStringBuilder.append(",");
+      localStringBuilder.append(a(String.format("%.5f", new Object[] { Float.valueOf(((Guava)localObject2).b) })));
+      localStringBuilder.append(",");
+      localStringBuilder.append(a(String.format("%.5f", new Object[] { Float.valueOf(((Guava)localObject2).c) })));
+      localStringBuilder.append(",");
+      localStringBuilder.append(a(String.format("%.5f", new Object[] { Float.valueOf(((Guava)localObject2).d) })));
+      localStringBuilder.append(",");
+      localStringBuilder.append(a(String.format("%.5f", new Object[] { Float.valueOf(((Guava)localObject2).e) })));
+      if (((Iterator)localObject1).hasNext()) {
+        localStringBuilder.append(";");
       }
-      Object localObject = (Long)this.c.b.getFirst();
-      if ((Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) < a) && (this.c.b.size() >= this.e)) {
-        k = 0;
-      } else {
-        k = 1;
-      }
-      if (k != 0)
-      {
-        localObject = this.c;
-        k = ((adh)localObject).b.size();
-        int m = this.f;
-        localObject = (Long)((adh)localObject).b.get(k - m);
-        if (Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) >= b) {}
-      }
-      else
-      {
-        bool = false;
-      }
-      return bool;
     }
-    return false;
+    return localStringBuilder.toString();
   }
 }
 

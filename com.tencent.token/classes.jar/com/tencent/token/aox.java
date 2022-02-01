@@ -1,22 +1,20 @@
 package com.tencent.token;
 
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
+import java.util.List;
+
 public final class aox
+  extends aou<PointF>
 {
-  final int a;
-  final aoo b;
-  final aol c;
+  private final PointF c = new PointF();
+  private final float[] d = new float[2];
+  private aow e;
+  private PathMeasure f;
   
-  public static enum a
+  public aox(List<? extends aot<PointF>> paramList)
   {
-    public static final int a = 1;
-    public static final int b = 2;
-    public static final int c = 3;
-    public static final int d = 4;
-    
-    public static int[] a()
-    {
-      return (int[])e.clone();
-    }
+    super(paramList);
   }
 }
 

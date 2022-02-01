@@ -1,11 +1,10 @@
 package com.tencent.token;
 
-import android.util.Pair;
-import com.qq.taf.jce.JceStruct;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
 public abstract interface aij
 {
-  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
+  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
 }
 
 

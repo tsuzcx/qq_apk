@@ -1,94 +1,73 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.net.wifi.WifiManager.LocalOnlyHotspotCallback;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import java.util.List;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import com.tencent.wcdb.FileUtils;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
+import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteDatabase.a;
+import com.tencent.wcdb.database.SQLiteGlobal;
+import java.io.File;
 
 public final class ajf
 {
-  static WifiManager a;
+  static {}
   
-  @SuppressLint({"MissingPermission"})
-  public static WifiInfo a()
+  public static SQLiteDatabase a(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, SQLiteDatabase.a parama, aij paramaij)
   {
-    boolean bool = kx.a();
-    Object localObject = new StringBuilder("getConnectionInfo, isAllow:[");
-    ((StringBuilder)localObject).append(bool);
-    ((StringBuilder)localObject).append("]");
-    if (!bool) {
-      return null;
-    }
-    aji.a("[API]WifiManagerInvoke_");
-    localObject = a.getConnectionInfo();
-    if (localObject != null)
+    if (paramString.charAt(0) == File.separatorChar)
     {
-      StringBuilder localStringBuilder = new StringBuilder("getConnectionInfo,WifiInfo-getMacAddress:[");
-      localStringBuilder.append(((WifiInfo)localObject).getMacAddress());
-      localStringBuilder.append("]");
-      aji.a("[API]WifiManagerInvoke_");
+      paramContext = new File(paramString.substring(0, paramString.lastIndexOf(File.separatorChar)));
+      paramString = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
     }
-    return localObject;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(WifiManager.LocalOnlyHotspotCallback paramLocalOnlyHotspotCallback, Handler paramHandler)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 26)
+    else
     {
-      aji.a("[API]WifiManagerInvoke_");
-      a.startLocalOnlyHotspot(paramLocalOnlyHotspotCallback, paramHandler);
+      if (paramContext == null) {
+        break label289;
+      }
+      paramContext = paramContext.getApplicationInfo().dataDir;
+      if (paramContext != null) {
+        paramContext = new File(paramContext);
+      } else {
+        paramContext = null;
+      }
+      File localFile = new File(paramContext, "databases");
+      paramContext = localFile;
+      if (localFile.getPath().equals("databases")) {
+        paramContext = new File("/data/system");
+      }
+      if (paramString.indexOf(File.separatorChar) >= 0) {
+        break label254;
+      }
+      paramString = new File(paramContext, paramString);
     }
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static List<ScanResult> b()
-  {
-    boolean bool = kx.a();
-    StringBuilder localStringBuilder = new StringBuilder("getScanResults, isAllow:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    if (!bool) {
-      return null;
+    if ((!paramContext.isDirectory()) && (paramContext.mkdir())) {
+      FileUtils.setPermissions(paramContext.getPath(), 505, -1, -1);
     }
-    aji.a("[API]WifiManagerInvoke_");
-    return a.getScanResults();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static List<WifiConfiguration> c()
-  {
-    boolean bool = kx.a();
-    StringBuilder localStringBuilder = new StringBuilder("getConfiguredNetworks, isAllow:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    if (!bool) {
-      return null;
+    if ((paramInt & 0x8) != 0) {
+      i = 805306368;
+    } else {
+      i = 268435456;
     }
-    aji.a("[API]WifiManagerInvoke_");
-    return a.getConfiguredNetworks();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean d()
-  {
-    boolean bool = kx.a();
-    StringBuilder localStringBuilder = new StringBuilder("startScan, isAllow:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    if (!bool) {
-      return false;
+    paramContext = SQLiteDatabase.a(paramString.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, parama, i, paramaij);
+    paramString = paramString.getPath();
+    int i = 432;
+    if ((paramInt & 0x1) != 0) {
+      i = 436;
     }
-    aji.a("[API]WifiManagerInvoke_");
-    return a.startScan();
+    int j = i;
+    if ((paramInt & 0x2) != 0) {
+      j = i | 0x2;
+    }
+    FileUtils.setPermissions(paramString, j, -1, -1);
+    return paramContext;
+    label254:
+    paramContext = new StringBuilder("File ");
+    paramContext.append(paramString);
+    paramContext.append(" contains a path separator");
+    throw new IllegalArgumentException(paramContext.toString());
+    label289:
+    throw new RuntimeException("Not supported in system context");
   }
 }
 

@@ -1,18 +1,10 @@
 package com.tencent.token;
 
-public final class aji
+import com.qq.taf.jce.JceStruct;
+
+public abstract interface aji
 {
-  public static boolean a = true;
-  
-  public static void a(String paramString)
-  {
-    if (a)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("EP_SP_");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("_[System]");
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
 }
 
 

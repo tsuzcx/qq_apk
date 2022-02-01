@@ -1,35 +1,73 @@
 package com.tencent.turingfd.sdk.qps;
 
-import com.tencent.token.agd;
-import com.tencent.token.age;
-import java.util.ArrayList;
+import com.tencent.token.afb;
+import com.tencent.token.afd;
+import com.tencent.token.afj;
 
 public final class Grape
-  extends final
+  extends Orion
+  implements Cloneable
 {
-  public static ArrayList<Grapefruit> a;
-  public long b = 0L;
+  public static Gooseberry a = new Gooseberry();
   public int c = 0;
-  public ArrayList<Grapefruit> d = null;
+  public Gooseberry d = null;
+  public long e = 0L;
   
-  public final void a(agd paramagd)
+  public final void a(afb paramafb)
   {
-    this.b = paramagd.a(this.b, 0, true);
-    this.c = paramagd.a(this.c, 1, true);
-    if (a == null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      a = localArrayList;
-      localArrayList.add(new Grapefruit());
-    }
-    this.d = ((ArrayList)paramagd.a(a, 2, true));
+    this.c = paramafb.a(this.c, 0, true);
+    this.d = ((Gooseberry)paramafb.a(a, 1, false));
+    this.e = paramafb.a(this.e, 2, true);
   }
   
-  public final void a(age paramage)
+  public final void a(afd paramafd)
   {
-    paramage.a(this.b, 0);
-    paramage.a(this.c, 1);
-    paramage.a(this.d, 2);
+    paramafd.a(this.c, 0);
+    Gooseberry localGooseberry = this.d;
+    if (localGooseberry != null) {
+      paramafd.a(localGooseberry, 1);
+    }
+    paramafd.a(this.e, 2);
+  }
+  
+  public final Object clone()
+  {
+    try
+    {
+      Object localObject = super.clone();
+      return localObject;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label7:
+      break label7;
+    }
+    if (b) {
+      return null;
+    }
+    throw new AssertionError();
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {
+      return false;
+    }
+    paramObject = (Grape)paramObject;
+    return (afj.a(this.c, paramObject.c)) && (this.d.equals(paramObject.d)) && (afj.a(this.e, paramObject.e));
+  }
+  
+  public final int hashCode()
+  {
+    try
+    {
+      throw new Exception("");
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 0;
   }
 }
 

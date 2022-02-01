@@ -2,7 +2,7 @@ package btmsdkobf;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.token.aqo;
+import com.tencent.token.arm;
 import com.tmsdk.base.utils.NetworkUtil;
 import com.tmsdk.base.utils.SDKUtil;
 import java.io.IOException;
@@ -610,12 +610,12 @@ public class ca
       try
       {
         localObject = NetworkUtil.getNetworkType();
-        if (aqo.b == localObject)
+        if (arm.b == localObject)
         {
           eh.g(TAG, "[http_control]start() no network");
           return -220000;
         }
-        if (aqo.e == localObject)
+        if (arm.e == localObject)
         {
           this.hd = ((HttpURLConnection)paramString.openConnection(new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(NetworkUtil.getProxyHost(), NetworkUtil.getProxyPort()))));
         }
@@ -695,7 +695,7 @@ public class ca
       if (m < k)
       {
         Object localObject = NetworkUtil.getNetworkType();
-        if (aqo.b == localObject)
+        if (arm.b == localObject)
         {
           eh.g(TAG, "[http_control]sendData() no network");
           return -220000;

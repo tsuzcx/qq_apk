@@ -1,394 +1,310 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.app.PendingIntent;
-import android.location.Criteria;
-import android.location.GnssMeasurementsEvent.Callback;
-import android.location.GnssNavigationMessage.Callback;
-import android.location.GnssStatus.Callback;
-import android.location.GpsStatus;
-import android.location.GpsStatus.Listener;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.location.OnNmeaMessageListener;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import java.util.List;
+import android.os.Process;
+import com.tencent.wcdb.CursorWindow;
+import com.tencent.wcdb.database.SQLiteConnection;
+import com.tencent.wcdb.database.SQLiteConnectionPool;
 
 public final class aiz
 {
-  static LocationManager a;
+  public SQLiteConnection a;
+  private final SQLiteConnectionPool c;
+  private int d;
+  private int e;
+  private a f;
+  private a g;
   
-  @SuppressLint({"MissingPermission"})
-  public static GpsStatus a(GpsStatus paramGpsStatus)
+  public aiz(SQLiteConnectionPool paramSQLiteConnectionPool)
   {
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getGpsStatus(paramGpsStatus);
-  }
-  
-  public static List<String> a()
-  {
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getAllProviders();
-  }
-  
-  public static List<String> a(Criteria paramCriteria, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getProviders(paramCriteria, paramBoolean);
-  }
-  
-  public static List<String> a(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getProviders(paramBoolean);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(double paramDouble1, double paramDouble2, float paramFloat, long paramLong, PendingIntent paramPendingIntent)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.addProximityAlert(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(long paramLong, float paramFloat, Criteria paramCriteria, PendingIntent paramPendingIntent)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(long paramLong, float paramFloat, Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
-  }
-  
-  public static void a(PendingIntent paramPendingIntent)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.removeUpdates(paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(Criteria paramCriteria, PendingIntent paramPendingIntent)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestSingleUpdate(paramCriteria, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestSingleUpdate(paramCriteria, paramLocationListener, paramLooper);
-  }
-  
-  public static void a(LocationListener paramLocationListener)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.removeUpdates(paramLocationListener);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(String paramString, long paramLong, float paramFloat, PendingIntent paramPendingIntent)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("requestLocationUpdates, 4provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestLocationUpdates(paramString, paramLong, paramFloat, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("requestLocationUpdates, 1provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("requestLocationUpdates, 2provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(String paramString, PendingIntent paramPendingIntent)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("requestSingleUpdate, 3provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestSingleUpdate(paramString, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static void a(String paramString, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("requestSingleUpdate, 1provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    a.requestSingleUpdate(paramString, paramLocationListener, paramLooper);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GnssMeasurementsEvent.Callback paramCallback)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = a.registerGnssMeasurementsCallback(paramCallback);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManagerInvoke_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GnssMeasurementsEvent.Callback paramCallback, Handler paramHandler)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = a.registerGnssMeasurementsCallback(paramCallback, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManagerInvoke_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GnssNavigationMessage.Callback paramCallback, Handler paramHandler)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = a.registerGnssNavigationMessageCallback(paramCallback, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssNavigationMessageCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManagerInvoke_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GnssStatus.Callback paramCallback)
-  {
-    if (!kx.b()) {
-      return false;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
+    if (paramSQLiteConnectionPool != null)
     {
-      aji.a("[API]LocationManagerInvoke_");
-      return a.registerGnssStatusCallback(paramCallback);
+      this.c = paramSQLiteConnectionPool;
+      return;
     }
-    return false;
+    throw new IllegalArgumentException("connectionPool must not be null");
   }
   
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GnssStatus.Callback paramCallback, Handler paramHandler)
+  private void a(a parama)
   {
-    if (!kx.b()) {
-      return false;
+    parama.a = this.f;
+    parama.c = null;
+    this.f = parama;
+  }
+  
+  private void b(int paramInt, aje paramaje)
+  {
+    if (paramaje != null) {
+      paramaje.a();
     }
-    if (Build.VERSION.SDK_INT >= 24)
+    if (this.g == null) {
+      a(null, paramInt, paramaje);
+    }
+    try
     {
-      aji.a("[API]LocationManagerInvoke_");
-      return a.registerGnssStatusCallback(paramCallback, paramHandler);
+      if (this.g == null) {
+        this.a.a("BEGIN EXCLUSIVE;", null, paramaje);
+      }
+      paramaje = e();
+      paramaje.a = this.g;
+      this.g = paramaje;
+      return;
+      return;
     }
-    return false;
+    finally
+    {
+      if (this.g == null) {
+        b();
+      }
+    }
   }
   
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(GpsStatus.Listener paramListener)
+  private void b(aje paramaje)
   {
-    if (!kx.b()) {
-      return false;
+    if (paramaje != null) {
+      paramaje.a();
     }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.addGpsStatusListener(paramListener);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(OnNmeaMessageListener paramOnNmeaMessageListener)
-  {
-    boolean bool2 = kx.b();
-    boolean bool1 = false;
-    if (!bool2) {
-      return false;
-    }
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool1 = a.addNmeaListener(paramOnNmeaMessageListener);
-    }
-    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
-    paramOnNmeaMessageListener.append(bool1);
-    paramOnNmeaMessageListener.append("]");
-    aji.a("[API]LocationManagerInvoke_");
-    return bool1;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static boolean a(OnNmeaMessageListener paramOnNmeaMessageListener, Handler paramHandler)
-  {
-    if (!kx.b()) {
-      return false;
-    }
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = a.addNmeaListener(paramOnNmeaMessageListener, paramHandler);
+    a locala = this.g;
+    int i;
+    if ((locala.d) && (!locala.e)) {
+      i = 1;
     } else {
-      bool = false;
+      i = 0;
     }
-    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
-    paramOnNmeaMessageListener.append(bool);
-    paramOnNmeaMessageListener.append("]");
-    aji.a("[API]LocationManagerInvoke_");
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("isProviderEnabled, provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return false;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.isProviderEnabled(paramString);
-  }
-  
-  public static LocationProvider b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProvider, name:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getProvider(paramString);
-  }
-  
-  public static String b(Criteria paramCriteria, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getBestProvider, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return null;
-    }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getBestProvider(paramCriteria, paramBoolean);
-  }
-  
-  public static void b(GnssStatus.Callback paramCallback)
-  {
-    if (!kx.b()) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
+    this.g = locala.a;
+    a(locala);
+    locala = this.g;
+    if (locala != null)
     {
-      aji.a("[API]LocationManagerInvoke_");
-      a.unregisterGnssStatusCallback(paramCallback);
-    }
-  }
-  
-  public static void b(GpsStatus.Listener paramListener)
-  {
-    if (!kx.b()) {
+      if (i == 0)
+      {
+        locala.e = true;
+        return;
+      }
       return;
     }
-    aji.a("[API]LocationManagerInvoke_");
-    a.removeGpsStatusListener(paramListener);
+    if (i != 0) {}
+    try
+    {
+      this.a.a("COMMIT;", null, paramaje);
+      break label96;
+      this.a.a("ROLLBACK;", null, paramaje);
+      label96:
+      return;
+    }
+    finally
+    {
+      b();
+    }
   }
   
-  @SuppressLint({"MissingPermission"})
-  public static Location c(String paramString)
+  private boolean b(String paramString, int paramInt, aje paramaje)
   {
-    StringBuilder localStringBuilder = new StringBuilder("getLastKnownLocation, provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    if (!kx.b()) {
-      return null;
+    if (paramaje != null) {
+      paramaje.a();
     }
-    aji.a("[API]LocationManagerInvoke_");
-    return a.getLastKnownLocation(paramString);
+    switch (aik.b(paramString))
+    {
+    default: 
+      return false;
+    case 6: 
+      a(paramaje);
+      return true;
+    case 5: 
+      a();
+      a(paramaje);
+      return true;
+    }
+    a(paramInt, paramaje);
+    return true;
+  }
+  
+  private void c()
+  {
+    if (this.g != null) {
+      return;
+    }
+    throw new IllegalStateException("Cannot perform this operation because there is no current transaction.");
+  }
+  
+  private void d()
+  {
+    a locala = this.g;
+    if (locala != null)
+    {
+      if (!locala.d) {
+        return;
+      }
+      throw new IllegalStateException("Cannot perform this operation because the transaction has already been marked successful.  The only thing you can do now is call endTransaction().");
+    }
+  }
+  
+  private a e()
+  {
+    a locala = this.f;
+    if (locala != null)
+    {
+      this.f = locala.a;
+      locala.a = null;
+      locala.d = false;
+      locala.e = false;
+    }
+    else
+    {
+      locala = new a((byte)0);
+    }
+    locala.b = 2;
+    locala.c = null;
+    return locala;
+  }
+  
+  public final int a(String paramString, Object[] paramArrayOfObject, CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, aje paramaje)
+  {
+    if (paramString != null)
+    {
+      if (paramCursorWindow != null)
+      {
+        if (b(paramString, paramInt3, paramaje))
+        {
+          paramCursorWindow.a();
+          return 0;
+        }
+        a(paramString, paramInt3, paramaje);
+        try
+        {
+          paramInt1 = this.a.a(paramString, paramArrayOfObject, paramCursorWindow, paramInt1, paramInt2, paramBoolean, paramaje);
+          return paramInt1;
+        }
+        finally
+        {
+          b();
+        }
+      }
+      throw new IllegalArgumentException("window must not be null.");
+    }
+    throw new IllegalArgumentException("sql must not be null.");
+  }
+  
+  public final long a(String paramString, Object[] paramArrayOfObject, int paramInt)
+  {
+    if (paramString != null)
+    {
+      if (b(paramString, paramInt, null)) {
+        return 0L;
+      }
+      a(paramString, paramInt, null);
+      try
+      {
+        long l = this.a.a(paramString, paramArrayOfObject);
+        return l;
+      }
+      finally
+      {
+        b();
+      }
+    }
+    throw new IllegalArgumentException("sql must not be null.");
+  }
+  
+  public final void a()
+  {
+    c();
+    d();
+    this.g.d = true;
+  }
+  
+  public final void a(int paramInt, aje paramaje)
+  {
+    d();
+    b(paramInt, paramaje);
+  }
+  
+  public final void a(aje paramaje)
+  {
+    c();
+    if ((!b) && (this.a == null)) {
+      throw new AssertionError();
+    }
+    b(paramaje);
+  }
+  
+  public final void a(String paramString, int paramInt, aje paramaje)
+  {
+    if (this.a == null)
+    {
+      this.a = this.c.a(paramString, paramInt, paramaje);
+      this.d = paramInt;
+      this.a.a(Thread.currentThread(), Process.myTid());
+    }
+    this.e += 1;
+  }
+  
+  public final int b(String paramString, Object[] paramArrayOfObject, int paramInt)
+  {
+    if (paramString != null)
+    {
+      if (b(paramString, paramInt, null)) {
+        return 0;
+      }
+      a(paramString, paramInt, null);
+      try
+      {
+        paramInt = this.a.b(paramString, paramArrayOfObject);
+        return paramInt;
+      }
+      finally
+      {
+        b();
+      }
+    }
+    throw new IllegalArgumentException("sql must not be null.");
+  }
+  
+  public final void b()
+  {
+    int i = this.e - 1;
+    this.e = i;
+    if (i == 0) {
+      try
+      {
+        this.a.a(null, 0);
+        this.c.a(this.a);
+        return;
+      }
+      finally
+      {
+        this.a = null;
+      }
+    }
+  }
+  
+  public final long c(String paramString, Object[] paramArrayOfObject, int paramInt)
+  {
+    if (paramString != null)
+    {
+      if (b(paramString, paramInt, null)) {
+        return 0L;
+      }
+      a(paramString, paramInt, null);
+      try
+      {
+        long l = this.a.c(paramString, paramArrayOfObject);
+        return l;
+      }
+      finally
+      {
+        b();
+      }
+    }
+    throw new IllegalArgumentException("sql must not be null.");
+  }
+  
+  static final class a
+  {
+    public a a;
+    public int b;
+    public ajd c;
+    public boolean d;
+    public boolean e;
   }
 }
 

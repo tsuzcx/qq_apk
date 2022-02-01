@@ -1,78 +1,143 @@
 package com.tencent.token;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
-public final class to
+public class to
+  implements th
 {
-  private static to b;
-  private HashMap<String, Class<? extends tr>> a = new HashMap();
+  public long a = 0L;
+  public tm b = null;
+  private Handler d = null;
+  private aki e = null;
   
-  private to()
+  public to()
   {
-    a(tn.class);
-  }
-  
-  public static tr a(String paramString)
-  {
-    if (b == null) {
-      b = new to();
-    }
-    return b.b(paramString);
-  }
-  
-  private void a(Class<?> paramClass)
-  {
-    paramClass = paramClass.getDeclaredFields();
-    if (paramClass == null) {
+    try
+    {
+      this.e = akh.a();
+      if ((!c) && (this.e == null)) {
+        throw new AssertionError();
+      }
+      this.b = new tm(this);
+      this.b.a = this.e;
       return;
     }
-    int j = paramClass.length;
-    int i = 0;
-    while (i < j)
+    catch (Exception localException)
     {
-      Object localObject2 = paramClass[i];
-      try
-      {
-        Object localObject1 = ((Field)localObject2).get(null);
-        if ((localObject1 instanceof String))
-        {
-          localObject1 = (String)localObject1;
-          localObject2 = (tt)((Field)localObject2).getAnnotation(tt.class);
-          if ((localObject1 != null) && (localObject2 != null))
-          {
-            localObject2 = ((tt)localObject2).a();
-            if (localObject2 == null) {
-              xj.c("protocol mapping definition in ProtocolConstant is error:".concat(String.valueOf(localObject1)));
-            } else {
-              this.a.put(localObject1, localObject2);
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      i += 1;
+      localException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder("RESULT_ERROR!!!");
+      localStringBuilder.append(localException.getMessage());
+      xv.c(localStringBuilder.toString());
     }
   }
   
-  private tr b(String paramString)
+  public final void a()
   {
-    paramString = (Class)this.a.get(paramString);
-    if (paramString != null) {
-      try
-      {
-        paramString = (tr)paramString.newInstance();
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
     }
-    return null;
+    localHandler.sendEmptyMessage(10);
+  }
+  
+  public final void a(int paramInt)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("serTime", paramInt);
+    localMessage.what = 13;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 9;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 14;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(12);
+  }
+  
+  public final void b(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 11;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ucSmsPort", paramString);
+    localMessage.what = 1;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void c()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(15);
+  }
+  
+  public final void c(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 2;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
   }
 }
 

@@ -46,9 +46,9 @@ public class ErrorView
   {
     int i;
     if (this.f) {
-      i = 2131296325;
+      i = 2131296330;
     } else {
-      i = 2131296324;
+      i = 2131296329;
     }
     this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
     this.c = this.b.inflate(i, null);

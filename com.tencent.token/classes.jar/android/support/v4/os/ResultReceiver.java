@@ -5,8 +5,8 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.token.du;
-import com.tencent.token.du.a;
+import com.tencent.token.ei;
+import com.tencent.token.ei.a;
 
 public class ResultReceiver
   implements Parcelable
@@ -14,11 +14,11 @@ public class ResultReceiver
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
   final boolean a = false;
   final Handler b = null;
-  du c;
+  ei c;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.c = du.a.a(paramParcel.readStrongBinder());
+    this.c = ei.a.a(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -40,7 +40,7 @@ public class ResultReceiver
   }
   
   final class a
-    extends du.a
+    extends ei.a
   {
     a() {}
     

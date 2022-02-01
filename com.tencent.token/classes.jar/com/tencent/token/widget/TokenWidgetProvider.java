@@ -7,8 +7,8 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.sb;
-import com.tencent.token.xj;
+import com.tencent.token.so;
+import com.tencent.token.xv;
 
 public class TokenWidgetProvider
   extends AppWidgetProvider
@@ -18,9 +18,9 @@ public class TokenWidgetProvider
     paramArrayOfInt = AppWidgetManager.getInstance(paramContext).getAppWidgetIds(new ComponentName(paramContext, TokenWidgetProvider.class));
     Object localObject = new StringBuilder("widget_big num=");
     ((StringBuilder)localObject).append(paramArrayOfInt.length);
-    xj.a(((StringBuilder)localObject).toString());
-    sb.a().a(System.currentTimeMillis(), 13);
-    sb.a().a(paramContext);
+    xv.a(((StringBuilder)localObject).toString());
+    so.a().a(System.currentTimeMillis(), 13);
+    so.a().a(paramContext);
     if (paramArrayOfInt.length <= 0)
     {
       paramArrayOfInt = new Intent(paramContext, TokenService.class);
@@ -32,9 +32,9 @@ public class TokenWidgetProvider
   
   public void onEnabled(Context paramContext)
   {
-    xj.a("widget enabled");
-    sb.a().a(System.currentTimeMillis(), 7);
-    sb.a().a(paramContext);
+    xv.a("widget enabled");
+    so.a().a(System.currentTimeMillis(), 7);
+    so.a().a(paramContext);
     super.onEnabled(paramContext);
   }
   

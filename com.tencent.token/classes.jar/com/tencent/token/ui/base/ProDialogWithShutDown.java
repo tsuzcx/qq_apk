@@ -35,18 +35,18 @@ public class ProDialogWithShutDown
     if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296400);
+      setContentView(2131296413);
       getWindow().setBackgroundDrawableResource(2131099877);
       if (this.e)
       {
-        paramBundle = (TextView)findViewById(2131165826);
+        paramBundle = (TextView)findViewById(2131165859);
         localObject = this.d;
         if ((localObject != null) && (((String)localObject).length() > 0)) {
           paramBundle.setText(this.d);
         }
       }
-      ((ImageView)findViewById(2131165824)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
-      this.b = ((ImageView)findViewById(2131165825));
+      ((ImageView)findViewById(2131165857)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165858));
       this.b.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)

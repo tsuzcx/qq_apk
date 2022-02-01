@@ -1,7 +1,7 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.av.a;
-import com.tencent.token.ay;
+import com.tencent.token.bj.a;
+import com.tencent.token.bm;
 
 public class FullLifecycleObserverAdapter
   implements GenericLifecycleObserver
@@ -13,7 +13,7 @@ public class FullLifecycleObserverAdapter
     this.a = paramFullLifecycleObserver;
   }
   
-  public final void a(ay paramay, av.a parama)
+  public final void a(bm parambm, bj.a parama)
   {
     switch (1.a[parama.ordinal()])
     {

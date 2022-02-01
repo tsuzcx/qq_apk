@@ -1,32 +1,31 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 
-final class arf
-  implements aii
+public final class arf
+  extends JceStruct
 {
-  int a = 0;
-  final int b = 3;
+  public String a = "";
+  public String b = "";
+  public int c = 0;
+  public int d = 0;
   
-  arf(aso paramaso) {}
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    paramJceStruct = new StringBuilder("_Cmd_SCHeartBeat : ");
-    paramJceStruct.append(paramInt2);
-    paramJceStruct.append("  retCode : ");
-    paramJceStruct.append(paramInt3);
-    if (paramInt3 == 0)
-    {
-      this.c.c = 0;
-      this.a = 0;
-      return;
-    }
-    this.a += 1;
-    new StringBuilder("心跳包失败 ： ").append(this.a);
-    if (this.a < 3) {
-      this.c.d();
-    }
+    this.a = paramJceInputStream.readString(0, true);
+    this.b = paramJceInputStream.readString(1, true);
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.read(this.d, 3, true);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
   }
 }
 

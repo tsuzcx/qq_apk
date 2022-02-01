@@ -1,1156 +1,1107 @@
 package com.tencent.token;
 
-import java.io.Closeable;
 import java.io.IOException;
+import java.lang.ref.Reference;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Proxy.Type;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 public final class alz
-  implements Closeable
+  extends amx.b
 {
-  private static final ExecutorService t = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), akt.a("OkHttp Http2Connection", true));
-  final boolean a;
-  final b b;
-  final Map<Integer, amb> c = new LinkedHashMap();
-  final String d;
-  int e;
-  int f;
-  boolean g;
-  final ame h;
-  boolean i;
-  long j = 0L;
-  long k;
-  amf l = new amf();
-  final amf m = new amf();
-  boolean n = false;
-  final Socket o;
-  final amc p;
-  final d q;
-  final Set<Integer> r = new LinkedHashSet();
-  private final ScheduledExecutorService u;
-  private final ExecutorService v;
+  public final aln a;
+  public Socket b;
+  public alb c;
+  amx d;
+  anv e;
+  anu f;
+  public boolean g;
+  public int h;
+  public int i = 1;
+  public final List<Reference<amd>> j = new ArrayList();
+  public long k = 9223372036854775807L;
+  private final aku m;
+  private Socket n;
+  private alh o;
   
-  alz(a parama)
+  public alz(aku paramaku, aln paramaln)
   {
-    this.h = parama.f;
-    this.a = parama.g;
-    this.b = parama.e;
-    int i1;
-    if (parama.g) {
-      i1 = 1;
-    } else {
-      i1 = 2;
-    }
-    this.f = i1;
-    if (parama.g) {
-      this.f += 2;
-    }
-    if (parama.g) {
-      this.l.a(7, 16777216);
-    }
-    this.d = parama.b;
-    this.u = new ScheduledThreadPoolExecutor(1, akt.a(akt.a("OkHttp %s Writer", new Object[] { this.d }), false));
-    if (parama.h != 0) {
-      this.u.scheduleAtFixedRate(new c(false, 0, 0), parama.h, parama.h, TimeUnit.MILLISECONDS);
-    }
-    this.v = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), akt.a(akt.a("OkHttp %s Push Observer", new Object[] { this.d }), true));
-    this.m.a(7, 65535);
-    this.m.a(5, 16384);
-    this.k = this.m.b();
-    this.o = parama.a;
-    this.p = new amc(parama.d, this.a);
-    this.q = new d(new ama(parama.c, this.a));
+    this.m = paramaku;
+    this.a = paramaln;
   }
   
-  private void a(alu paramalu)
+  private void a(int paramInt)
   {
-    synchronized (this.p)
-    {
-      try
-      {
-        if (this.g) {
-          return;
-        }
-        this.g = true;
-        int i1 = this.e;
-        this.p.a(i1, paramalu, akt.a);
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  static boolean c(int paramInt)
-  {
-    return (paramInt != 0) && ((paramInt & 0x1) == 0);
-  }
-  
-  public final int a()
-  {
-    try
-    {
-      amf localamf = this.m;
-      if ((localamf.a & 0x10) != 0)
-      {
-        int i1 = localamf.b[4];
-        return i1;
-      }
-      return 2147483647;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  final amb a(int paramInt)
-  {
-    try
-    {
-      amb localamb = (amb)this.c.get(Integer.valueOf(paramInt));
-      return localamb;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  final amb a(List<alv> paramList, boolean paramBoolean)
-  {
-    boolean bool = paramBoolean ^ true;
-    for (;;)
-    {
-      synchronized (this.p)
-      {
-        try
-        {
-          if (this.f > 1073741823) {
-            a(alu.e);
-          }
-          if (!this.g)
-          {
-            int i2 = this.f;
-            this.f += 2;
-            amb localamb = new amb(i2, this, bool, false, paramList);
-            if ((!paramBoolean) || (this.k == 0L)) {
-              break label178;
-            }
-            if (localamb.b == 0L)
-            {
-              break label178;
-              if (localamb.a()) {
-                this.c.put(Integer.valueOf(i2), localamb);
-              }
-              this.p.a(bool, i2, paramList);
-              if (i1 != 0) {
-                this.p.b();
-              }
-              return localamb;
-            }
-          }
-          else
-          {
-            throw new alt();
-          }
-        }
-        finally {}
-      }
-      int i1 = 0;
-      continue;
-      label178:
-      i1 = 1;
-    }
-  }
-  
-  final void a(final int paramInt, final long paramLong)
-  {
-    try
-    {
-      this.u.execute(new aks("OkHttp Window Update %s stream %d", new Object[] { this.d, Integer.valueOf(paramInt) })
-      {
-        public final void b()
-        {
-          try
-          {
-            alz.this.p.a(paramInt, paramLong);
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            label19:
-            break label19;
-          }
-          alz.a(alz.this);
-        }
-      });
-      return;
-    }
-    catch (RejectedExecutionException localRejectedExecutionException) {}
-  }
-  
-  final void a(final int paramInt, final alu paramalu)
-  {
-    try
-    {
-      this.u.execute(new aks("OkHttp %s stream %d", new Object[] { this.d, Integer.valueOf(paramInt) })
-      {
-        public final void b()
-        {
-          try
-          {
-            alz.this.b(paramInt, paramalu);
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            label16:
-            break label16;
-          }
-          alz.a(alz.this);
-        }
-      });
-      return;
-    }
-    catch (RejectedExecutionException paramalu) {}
+    this.b.setSoTimeout(0);
+    amx.a locala = new amx.a().a(this.b, this.a.a.a.b, this.e, this.f);
+    locala.e = this;
+    locala.h = paramInt;
+    this.d = locala.a();
+    this.d.c();
   }
   
   /* Error */
-  public final void a(int paramInt, boolean paramBoolean, amv paramamv, long paramLong)
+  private void a(int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: lload 4
-    //   2: lstore 8
-    //   4: lload 4
-    //   6: lconst_0
-    //   7: lcmp
-    //   8: ifne +15 -> 23
-    //   11: aload_0
-    //   12: getfield 209	com/tencent/token/alz:p	Lcom/tencent/token/amc;
-    //   15: iload_2
-    //   16: iload_1
+    //   0: aload_0
+    //   1: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   4: getfield 107	com/tencent/token/aln:b	Ljava/net/Proxy;
+    //   7: astore_3
+    //   8: aload_0
+    //   9: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   12: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   15: astore 4
     //   17: aload_3
-    //   18: iconst_0
-    //   19: invokevirtual 314	com/tencent/token/amc:a	(ZILcom/tencent/token/amv;I)V
-    //   22: return
-    //   23: lload 8
-    //   25: lconst_0
-    //   26: lcmp
-    //   27: ifle +161 -> 188
-    //   30: aload_0
-    //   31: monitorenter
-    //   32: aload_0
-    //   33: getfield 195	com/tencent/token/alz:k	J
-    //   36: lconst_0
-    //   37: lcmp
-    //   38: ifgt +37 -> 75
-    //   41: aload_0
-    //   42: getfield 118	com/tencent/token/alz:c	Ljava/util/Map;
-    //   45: iload_1
-    //   46: invokestatic 253	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   49: invokeinterface 318 2 0
-    //   54: ifeq +10 -> 64
-    //   57: aload_0
-    //   58: invokevirtual 321	java/lang/Object:wait	()V
-    //   61: goto -29 -> 32
-    //   64: new 323	java/io/IOException
-    //   67: dup
-    //   68: ldc_w 325
-    //   71: invokespecial 328	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   74: athrow
-    //   75: lload 8
+    //   18: invokevirtual 113	java/net/Proxy:type	()Ljava/net/Proxy$Type;
+    //   21: getstatic 119	java/net/Proxy$Type:DIRECT	Ljava/net/Proxy$Type;
+    //   24: if_acmpeq +28 -> 52
+    //   27: aload_3
+    //   28: invokevirtual 113	java/net/Proxy:type	()Ljava/net/Proxy$Type;
+    //   31: getstatic 122	java/net/Proxy$Type:HTTP	Ljava/net/Proxy$Type;
+    //   34: if_acmpne +6 -> 40
+    //   37: goto +15 -> 52
+    //   40: new 57	java/net/Socket
+    //   43: dup
+    //   44: aload_3
+    //   45: invokespecial 125	java/net/Socket:<init>	(Ljava/net/Proxy;)V
+    //   48: astore_3
+    //   49: goto +12 -> 61
+    //   52: aload 4
+    //   54: getfield 128	com/tencent/token/akm:c	Ljavax/net/SocketFactory;
+    //   57: invokevirtual 134	javax/net/SocketFactory:createSocket	()Ljava/net/Socket;
+    //   60: astore_3
+    //   61: aload_0
+    //   62: aload_3
+    //   63: putfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   66: aload_0
+    //   67: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   70: iload_2
+    //   71: invokevirtual 60	java/net/Socket:setSoTimeout	(I)V
+    //   74: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
     //   77: aload_0
-    //   78: getfield 195	com/tencent/token/alz:k	J
-    //   81: invokestatic 334	java/lang/Math:min	(JJ)J
-    //   84: l2i
-    //   85: aload_0
-    //   86: getfield 209	com/tencent/token/alz:p	Lcom/tencent/token/amc;
-    //   89: getfield 335	com/tencent/token/amc:a	I
-    //   92: invokestatic 338	java/lang/Math:min	(II)I
-    //   95: istore 6
-    //   97: aload_0
-    //   98: getfield 195	com/tencent/token/alz:k	J
-    //   101: lstore 4
-    //   103: iload 6
-    //   105: i2l
-    //   106: lstore 10
-    //   108: aload_0
-    //   109: lload 4
-    //   111: lload 10
-    //   113: lsub
-    //   114: putfield 195	com/tencent/token/alz:k	J
-    //   117: aload_0
-    //   118: monitorexit
-    //   119: lload 8
-    //   121: lload 10
-    //   123: lsub
-    //   124: lstore 8
-    //   126: aload_0
-    //   127: getfield 209	com/tencent/token/alz:p	Lcom/tencent/token/amc;
-    //   130: astore 12
-    //   132: iload_2
-    //   133: ifeq +16 -> 149
-    //   136: lload 8
-    //   138: lconst_0
-    //   139: lcmp
-    //   140: ifne +9 -> 149
-    //   143: iconst_1
-    //   144: istore 7
-    //   146: goto +6 -> 152
-    //   149: iconst_0
-    //   150: istore 7
-    //   152: aload 12
-    //   154: iload 7
-    //   156: iload_1
-    //   157: aload_3
-    //   158: iload 6
-    //   160: invokevirtual 314	com/tencent/token/amc:a	(ZILcom/tencent/token/amv;I)V
-    //   163: goto -140 -> 23
-    //   166: astore_3
-    //   167: goto +17 -> 184
-    //   170: invokestatic 344	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   173: invokevirtual 347	java/lang/Thread:interrupt	()V
-    //   176: new 349	java/io/InterruptedIOException
-    //   179: dup
-    //   180: invokespecial 350	java/io/InterruptedIOException:<init>	()V
-    //   183: athrow
-    //   184: aload_0
-    //   185: monitorexit
-    //   186: aload_3
-    //   187: athrow
-    //   188: return
-    //   189: astore_3
-    //   190: goto -20 -> 170
+    //   78: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   81: aload_0
+    //   82: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   85: getfield 144	com/tencent/token/aln:c	Ljava/net/InetSocketAddress;
+    //   88: iload_1
+    //   89: invokevirtual 147	com/tencent/token/anl:a	(Ljava/net/Socket;Ljava/net/InetSocketAddress;I)V
+    //   92: aload_0
+    //   93: aload_0
+    //   94: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   97: invokestatic 152	com/tencent/token/aoc:b	(Ljava/net/Socket;)Lcom/tencent/token/aoj;
+    //   100: invokestatic 155	com/tencent/token/aoc:a	(Lcom/tencent/token/aoj;)Lcom/tencent/token/anv;
+    //   103: putfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   106: aload_0
+    //   107: aload_0
+    //   108: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   111: invokestatic 158	com/tencent/token/aoc:a	(Ljava/net/Socket;)Lcom/tencent/token/aoi;
+    //   114: invokestatic 161	com/tencent/token/aoc:a	(Lcom/tencent/token/aoi;)Lcom/tencent/token/anu;
+    //   117: putfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   120: return
+    //   121: astore_3
+    //   122: ldc 163
+    //   124: aload_3
+    //   125: invokevirtual 167	java/lang/NullPointerException:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 173	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   131: ifne +4 -> 135
+    //   134: return
+    //   135: new 175	java/io/IOException
+    //   138: dup
+    //   139: aload_3
+    //   140: invokespecial 178	java/io/IOException:<init>	(Ljava/lang/Throwable;)V
+    //   143: athrow
+    //   144: astore_3
+    //   145: new 180	java/lang/StringBuilder
+    //   148: dup
+    //   149: ldc 182
+    //   151: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   154: astore 4
+    //   156: aload 4
+    //   158: aload_0
+    //   159: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   162: getfield 144	com/tencent/token/aln:c	Ljava/net/InetSocketAddress;
+    //   165: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   168: pop
+    //   169: new 102	java/net/ConnectException
+    //   172: dup
+    //   173: aload 4
+    //   175: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokespecial 193	java/net/ConnectException:<init>	(Ljava/lang/String;)V
+    //   181: astore 4
+    //   183: aload 4
+    //   185: aload_3
+    //   186: invokevirtual 197	java/net/ConnectException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   189: pop
+    //   190: aload 4
+    //   192: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	193	0	this	alz
-    //   0	193	1	paramInt	int
-    //   0	193	2	paramBoolean	boolean
-    //   0	193	3	paramamv	amv
-    //   0	193	4	paramLong	long
-    //   95	64	6	i1	int
-    //   144	11	7	bool	boolean
-    //   2	135	8	l1	long
-    //   106	16	10	l2	long
-    //   130	23	12	localamc	amc
+    //   0	193	1	paramInt1	int
+    //   0	193	2	paramInt2	int
+    //   7	56	3	localObject1	Object
+    //   121	19	3	localNullPointerException	java.lang.NullPointerException
+    //   144	42	3	localConnectException	java.net.ConnectException
+    //   15	176	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   32	61	166	finally
-    //   64	75	166	finally
-    //   75	103	166	finally
-    //   108	119	166	finally
-    //   170	184	166	finally
-    //   184	186	166	finally
-    //   32	61	189	java/lang/InterruptedException
-    //   64	75	189	java/lang/InterruptedException
+    //   92	120	121	java/lang/NullPointerException
+    //   74	92	144	java/net/ConnectException
   }
   
-  final void a(long paramLong)
+  /* Error */
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    try
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   4: ifnonnull +1541 -> 1545
+    //   7: aload_0
+    //   8: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   11: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   14: getfield 204	com/tencent/token/akm:f	Ljava/util/List;
+    //   17: astore 13
+    //   19: new 206	com/tencent/token/aly
+    //   22: dup
+    //   23: aload 13
+    //   25: invokespecial 209	com/tencent/token/aly:<init>	(Ljava/util/List;)V
+    //   28: astore 17
+    //   30: aload_0
+    //   31: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   34: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   37: getfield 212	com/tencent/token/akm:i	Ljavax/net/ssl/SSLSocketFactory;
+    //   40: ifnonnull +109 -> 149
+    //   43: aload 13
+    //   45: getstatic 217	com/tencent/token/akv:d	Lcom/tencent/token/akv;
+    //   48: invokeinterface 222 2 0
+    //   53: ifeq +79 -> 132
+    //   56: aload_0
+    //   57: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   60: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   63: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   66: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   69: astore 13
+    //   71: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
+    //   74: aload 13
+    //   76: invokevirtual 225	com/tencent/token/anl:b	(Ljava/lang/String;)Z
+    //   79: ifeq +6 -> 85
+    //   82: goto +88 -> 170
+    //   85: new 180	java/lang/StringBuilder
+    //   88: dup
+    //   89: ldc 227
+    //   91: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   94: astore 14
+    //   96: aload 14
+    //   98: aload 13
+    //   100: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: aload 14
+    //   106: ldc 232
+    //   108: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: pop
+    //   112: new 234	com/tencent/token/amb
+    //   115: dup
+    //   116: new 236	java/net/UnknownServiceException
+    //   119: dup
+    //   120: aload 14
+    //   122: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokespecial 237	java/net/UnknownServiceException:<init>	(Ljava/lang/String;)V
+    //   128: invokespecial 240	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   131: athrow
+    //   132: new 234	com/tencent/token/amb
+    //   135: dup
+    //   136: new 236	java/net/UnknownServiceException
+    //   139: dup
+    //   140: ldc 242
+    //   142: invokespecial 237	java/net/UnknownServiceException:<init>	(Ljava/lang/String;)V
+    //   145: invokespecial 240	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   148: athrow
+    //   149: aload_0
+    //   150: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   153: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   156: getfield 244	com/tencent/token/akm:e	Ljava/util/List;
+    //   159: getstatic 248	com/tencent/token/alh:e	Lcom/tencent/token/alh;
+    //   162: invokeinterface 222 2 0
+    //   167: ifne +1360 -> 1527
+    //   170: aconst_null
+    //   171: astore 15
+    //   173: iconst_0
+    //   174: istore 7
+    //   176: aload_0
+    //   177: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   180: invokevirtual 251	com/tencent/token/aln:a	()Z
+    //   183: ifeq +401 -> 584
+    //   186: new 253	com/tencent/token/alj$a
+    //   189: dup
+    //   190: invokespecial 254	com/tencent/token/alj$a:<init>	()V
+    //   193: aload_0
+    //   194: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   197: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   200: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   203: invokevirtual 257	com/tencent/token/alj$a:a	(Lcom/tencent/token/ald;)Lcom/tencent/token/alj$a;
+    //   206: ldc_w 259
+    //   209: aload_0
+    //   210: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   213: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   216: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   219: iconst_1
+    //   220: invokestatic 264	com/tencent/token/alr:a	(Lcom/tencent/token/ald;Z)Ljava/lang/String;
+    //   223: invokevirtual 267	com/tencent/token/alj$a:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/alj$a;
+    //   226: ldc_w 269
+    //   229: ldc_w 271
+    //   232: invokevirtual 267	com/tencent/token/alj$a:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/alj$a;
+    //   235: ldc_w 273
+    //   238: ldc_w 275
+    //   241: invokevirtual 267	com/tencent/token/alj$a:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/alj$a;
+    //   244: invokevirtual 278	com/tencent/token/alj$a:a	()Lcom/tencent/token/alj;
+    //   247: astore 13
+    //   249: aload 13
+    //   251: getfield 281	com/tencent/token/alj:a	Lcom/tencent/token/ald;
+    //   254: astore 14
+    //   256: aload_0
+    //   257: iload_1
+    //   258: iload_2
+    //   259: invokespecial 283	com/tencent/token/alz:a	(II)V
+    //   262: new 180	java/lang/StringBuilder
+    //   265: dup
+    //   266: ldc_w 285
+    //   269: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   272: astore 16
+    //   274: aload 16
+    //   276: aload 14
+    //   278: iconst_1
+    //   279: invokestatic 264	com/tencent/token/alr:a	(Lcom/tencent/token/ald;Z)Ljava/lang/String;
+    //   282: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: pop
+    //   286: aload 16
+    //   288: ldc_w 287
+    //   291: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: aload 16
+    //   297: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   300: astore 16
+    //   302: new 289	com/tencent/token/amq
+    //   305: dup
+    //   306: aconst_null
+    //   307: aconst_null
+    //   308: aload_0
+    //   309: getfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   312: aload_0
+    //   313: getfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   316: invokespecial 292	com/tencent/token/amq:<init>	(Lcom/tencent/token/alg;Lcom/tencent/token/amd;Lcom/tencent/token/anv;Lcom/tencent/token/anu;)V
+    //   319: astore 14
+    //   321: aload_0
+    //   322: getfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   325: invokeinterface 297 1 0
+    //   330: astore 18
+    //   332: iload_2
+    //   333: i2l
+    //   334: lstore 9
+    //   336: aload 18
+    //   338: lload 9
+    //   340: getstatic 303	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   343: invokevirtual 308	com/tencent/token/aok:a	(JLjava/util/concurrent/TimeUnit;)Lcom/tencent/token/aok;
+    //   346: pop
+    //   347: aload_0
+    //   348: getfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   351: invokeinterface 311 1 0
+    //   356: astore 18
+    //   358: iload_3
+    //   359: i2l
+    //   360: lstore 9
+    //   362: aload 18
+    //   364: lload 9
+    //   366: getstatic 303	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   369: invokevirtual 308	com/tencent/token/aok:a	(JLjava/util/concurrent/TimeUnit;)Lcom/tencent/token/aok;
+    //   372: pop
+    //   373: aload 14
+    //   375: aload 13
+    //   377: getfield 314	com/tencent/token/alj:c	Lcom/tencent/token/alc;
+    //   380: aload 16
+    //   382: invokevirtual 317	com/tencent/token/amq:a	(Lcom/tencent/token/alc;Ljava/lang/String;)V
+    //   385: aload 14
+    //   387: invokevirtual 319	com/tencent/token/amq:b	()V
+    //   390: aload 14
+    //   392: iconst_0
+    //   393: invokevirtual 322	com/tencent/token/amq:a	(Z)Lcom/tencent/token/all$a;
+    //   396: astore 16
+    //   398: aload 16
+    //   400: aload 13
+    //   402: putfield 327	com/tencent/token/all$a:a	Lcom/tencent/token/alj;
+    //   405: aload 16
+    //   407: invokevirtual 330	com/tencent/token/all$a:a	()Lcom/tencent/token/all;
+    //   410: astore 13
+    //   412: aload 13
+    //   414: invokestatic 335	com/tencent/token/ami:a	(Lcom/tencent/token/all;)J
+    //   417: lstore 11
+    //   419: lload 11
+    //   421: lstore 9
+    //   423: lload 11
+    //   425: ldc2_w 336
+    //   428: lcmp
+    //   429: ifne +6 -> 435
+    //   432: lconst_0
+    //   433: lstore 9
+    //   435: aload 14
+    //   437: lload 9
+    //   439: invokevirtual 340	com/tencent/token/amq:a	(J)Lcom/tencent/token/aoj;
+    //   442: astore 14
+    //   444: aload 14
+    //   446: ldc_w 341
+    //   449: getstatic 303	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   452: invokestatic 344	com/tencent/token/alr:a	(Lcom/tencent/token/aoj;ILjava/util/concurrent/TimeUnit;)Z
+    //   455: pop
+    //   456: aload 14
+    //   458: invokeinterface 349 1 0
+    //   463: aload 13
+    //   465: getfield 353	com/tencent/token/all:c	I
+    //   468: istore 6
+    //   470: iload 6
+    //   472: sipush 200
+    //   475: if_icmpeq +58 -> 533
+    //   478: iload 6
+    //   480: sipush 407
+    //   483: if_icmpeq +39 -> 522
+    //   486: new 180	java/lang/StringBuilder
+    //   489: dup
+    //   490: ldc_w 355
+    //   493: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   496: astore 14
+    //   498: aload 14
+    //   500: aload 13
+    //   502: getfield 353	com/tencent/token/all:c	I
+    //   505: invokevirtual 358	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   508: pop
+    //   509: new 175	java/io/IOException
+    //   512: dup
+    //   513: aload 14
+    //   515: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokespecial 359	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   521: athrow
+    //   522: new 175	java/io/IOException
+    //   525: dup
+    //   526: ldc_w 361
+    //   529: invokespecial 359	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   532: athrow
+    //   533: aload_0
+    //   534: getfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   537: invokeinterface 364 1 0
+    //   542: invokevirtual 368	com/tencent/token/ant:c	()Z
+    //   545: ifeq +28 -> 573
+    //   548: aload_0
+    //   549: getfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   552: invokeinterface 369 1 0
+    //   557: invokevirtual 368	com/tencent/token/ant:c	()Z
+    //   560: ifeq +13 -> 573
+    //   563: aload_0
+    //   564: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   567: ifnonnull +23 -> 590
+    //   570: goto +428 -> 998
+    //   573: new 175	java/io/IOException
+    //   576: dup
+    //   577: ldc_w 371
+    //   580: invokespecial 359	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   583: athrow
+    //   584: aload_0
+    //   585: iload_1
+    //   586: iload_2
+    //   587: invokespecial 283	com/tencent/token/alz:a	(II)V
+    //   590: aload_0
+    //   591: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   594: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   597: getfield 212	com/tencent/token/akm:i	Ljavax/net/ssl/SSLSocketFactory;
+    //   600: ifnonnull +66 -> 666
+    //   603: aload_0
+    //   604: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   607: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   610: getfield 244	com/tencent/token/akm:e	Ljava/util/List;
+    //   613: getstatic 248	com/tencent/token/alh:e	Lcom/tencent/token/alh;
+    //   616: invokeinterface 222 2 0
+    //   621: ifeq +27 -> 648
+    //   624: aload_0
+    //   625: aload_0
+    //   626: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   629: putfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   632: aload_0
+    //   633: getstatic 248	com/tencent/token/alh:e	Lcom/tencent/token/alh;
+    //   636: putfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   639: aload_0
+    //   640: iload 4
+    //   642: invokespecial 373	com/tencent/token/alz:a	(I)V
+    //   645: goto +353 -> 998
+    //   648: aload_0
+    //   649: aload_0
+    //   650: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   653: putfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   656: aload_0
+    //   657: getstatic 375	com/tencent/token/alh:b	Lcom/tencent/token/alh;
+    //   660: putfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   663: goto +335 -> 998
+    //   666: aload_0
+    //   667: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   670: getfield 68	com/tencent/token/aln:a	Lcom/tencent/token/akm;
+    //   673: astore 16
+    //   675: aload 16
+    //   677: getfield 212	com/tencent/token/akm:i	Ljavax/net/ssl/SSLSocketFactory;
+    //   680: astore 13
+    //   682: aload 13
+    //   684: aload_0
+    //   685: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   688: aload 16
+    //   690: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   693: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   696: aload 16
+    //   698: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   701: getfield 376	com/tencent/token/ald:c	I
+    //   704: iconst_1
+    //   705: invokevirtual 381	javax/net/ssl/SSLSocketFactory:createSocket	(Ljava/net/Socket;Ljava/lang/String;IZ)Ljava/net/Socket;
+    //   708: checkcast 383	javax/net/ssl/SSLSocket
+    //   711: astore 14
+    //   713: aload 14
+    //   715: astore 13
+    //   717: aload 17
+    //   719: aload 14
+    //   721: invokevirtual 386	com/tencent/token/aly:a	(Ljavax/net/ssl/SSLSocket;)Lcom/tencent/token/akv;
+    //   724: astore 19
+    //   726: aload 14
+    //   728: astore 13
+    //   730: aload 19
+    //   732: getfield 388	com/tencent/token/akv:f	Z
+    //   735: ifeq +28 -> 763
+    //   738: aload 14
+    //   740: astore 13
+    //   742: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
+    //   745: aload 14
+    //   747: aload 16
+    //   749: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   752: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   755: aload 16
+    //   757: getfield 244	com/tencent/token/akm:e	Ljava/util/List;
+    //   760: invokevirtual 391	com/tencent/token/anl:a	(Ljavax/net/ssl/SSLSocket;Ljava/lang/String;Ljava/util/List;)V
+    //   763: aload 14
+    //   765: astore 13
+    //   767: aload 14
+    //   769: invokevirtual 394	javax/net/ssl/SSLSocket:startHandshake	()V
+    //   772: aload 14
+    //   774: astore 13
+    //   776: aload 14
+    //   778: invokevirtual 398	javax/net/ssl/SSLSocket:getSession	()Ljavax/net/ssl/SSLSession;
+    //   781: astore 20
+    //   783: aload 14
+    //   785: astore 13
+    //   787: aload 20
+    //   789: invokestatic 403	com/tencent/token/alb:a	(Ljavax/net/ssl/SSLSession;)Lcom/tencent/token/alb;
+    //   792: astore 18
+    //   794: aload 14
+    //   796: astore 13
+    //   798: aload 16
+    //   800: getfield 406	com/tencent/token/akm:j	Ljavax/net/ssl/HostnameVerifier;
+    //   803: aload 16
+    //   805: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   808: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   811: aload 20
+    //   813: invokeinterface 412 3 0
+    //   818: ifeq +258 -> 1076
+    //   821: aload 14
+    //   823: astore 13
+    //   825: aload 16
+    //   827: getfield 415	com/tencent/token/akm:k	Lcom/tencent/token/aks;
+    //   830: aload 16
+    //   832: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   835: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   838: aload 18
+    //   840: getfield 417	com/tencent/token/alb:b	Ljava/util/List;
+    //   843: invokevirtual 422	com/tencent/token/aks:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   846: aload 14
+    //   848: astore 13
+    //   850: aload 19
+    //   852: getfield 388	com/tencent/token/akv:f	Z
+    //   855: ifeq +706 -> 1561
+    //   858: aload 14
+    //   860: astore 13
+    //   862: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
+    //   865: aload 14
+    //   867: invokevirtual 425	com/tencent/token/anl:a	(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+    //   870: astore 16
+    //   872: goto +3 -> 875
+    //   875: aload 14
+    //   877: astore 13
+    //   879: aload_0
+    //   880: aload 14
+    //   882: putfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   885: aload 14
+    //   887: astore 13
+    //   889: aload_0
+    //   890: aload_0
+    //   891: getfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   894: invokestatic 152	com/tencent/token/aoc:b	(Ljava/net/Socket;)Lcom/tencent/token/aoj;
+    //   897: invokestatic 155	com/tencent/token/aoc:a	(Lcom/tencent/token/aoj;)Lcom/tencent/token/anv;
+    //   900: putfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   903: aload 14
+    //   905: astore 13
+    //   907: aload_0
+    //   908: aload_0
+    //   909: getfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   912: invokestatic 158	com/tencent/token/aoc:a	(Ljava/net/Socket;)Lcom/tencent/token/aoi;
+    //   915: invokestatic 161	com/tencent/token/aoc:a	(Lcom/tencent/token/aoi;)Lcom/tencent/token/anu;
+    //   918: putfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   921: aload 14
+    //   923: astore 13
+    //   925: aload_0
+    //   926: aload 18
+    //   928: putfield 427	com/tencent/token/alz:c	Lcom/tencent/token/alb;
+    //   931: aload 16
+    //   933: ifnull +17 -> 950
+    //   936: aload 14
+    //   938: astore 13
+    //   940: aload 16
+    //   942: invokestatic 430	com/tencent/token/alh:a	(Ljava/lang/String;)Lcom/tencent/token/alh;
+    //   945: astore 16
+    //   947: goto +12 -> 959
+    //   950: aload 14
+    //   952: astore 13
+    //   954: getstatic 375	com/tencent/token/alh:b	Lcom/tencent/token/alh;
+    //   957: astore 16
+    //   959: aload 14
+    //   961: astore 13
+    //   963: aload_0
+    //   964: aload 16
+    //   966: putfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   969: aload 14
+    //   971: ifnull +11 -> 982
+    //   974: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
+    //   977: aload 14
+    //   979: invokevirtual 433	com/tencent/token/anl:b	(Ljavax/net/ssl/SSLSocket;)V
+    //   982: aload_0
+    //   983: getfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   986: getstatic 435	com/tencent/token/alh:d	Lcom/tencent/token/alh;
+    //   989: if_acmpne +9 -> 998
+    //   992: aload_0
+    //   993: iload 4
+    //   995: invokespecial 373	com/tencent/token/alz:a	(I)V
+    //   998: aload_0
+    //   999: getfield 51	com/tencent/token/alz:a	Lcom/tencent/token/aln;
+    //   1002: invokevirtual 251	com/tencent/token/aln:a	()Z
+    //   1005: ifeq +31 -> 1036
+    //   1008: aload_0
+    //   1009: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   1012: ifnull +6 -> 1018
+    //   1015: goto +21 -> 1036
+    //   1018: new 234	com/tencent/token/amb
+    //   1021: dup
+    //   1022: new 437	java/net/ProtocolException
+    //   1025: dup
+    //   1026: ldc_w 439
+    //   1029: invokespecial 440	java/net/ProtocolException:<init>	(Ljava/lang/String;)V
+    //   1032: invokespecial 240	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   1035: athrow
+    //   1036: aload_0
+    //   1037: getfield 95	com/tencent/token/alz:d	Lcom/tencent/token/amx;
+    //   1040: ifnull +35 -> 1075
+    //   1043: aload_0
+    //   1044: getfield 49	com/tencent/token/alz:m	Lcom/tencent/token/aku;
+    //   1047: astore 13
+    //   1049: aload 13
+    //   1051: monitorenter
+    //   1052: aload_0
+    //   1053: aload_0
+    //   1054: getfield 95	com/tencent/token/alz:d	Lcom/tencent/token/amx;
+    //   1057: invokevirtual 443	com/tencent/token/amx:a	()I
+    //   1060: putfield 38	com/tencent/token/alz:i	I
+    //   1063: aload 13
+    //   1065: monitorexit
+    //   1066: return
+    //   1067: astore 14
+    //   1069: aload 13
+    //   1071: monitorexit
+    //   1072: aload 14
+    //   1074: athrow
+    //   1075: return
+    //   1076: aload 14
+    //   1078: astore 13
+    //   1080: aload 18
+    //   1082: getfield 417	com/tencent/token/alb:b	Ljava/util/List;
+    //   1085: iconst_0
+    //   1086: invokeinterface 447 2 0
+    //   1091: checkcast 449	java/security/cert/X509Certificate
+    //   1094: astore 18
+    //   1096: aload 14
+    //   1098: astore 13
+    //   1100: new 180	java/lang/StringBuilder
+    //   1103: dup
+    //   1104: ldc_w 451
+    //   1107: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1110: astore 19
+    //   1112: aload 14
+    //   1114: astore 13
+    //   1116: aload 19
+    //   1118: aload 16
+    //   1120: getfield 73	com/tencent/token/akm:a	Lcom/tencent/token/ald;
+    //   1123: getfield 78	com/tencent/token/ald:b	Ljava/lang/String;
+    //   1126: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1129: pop
+    //   1130: aload 14
+    //   1132: astore 13
+    //   1134: aload 19
+    //   1136: ldc_w 453
+    //   1139: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1142: pop
+    //   1143: aload 14
+    //   1145: astore 13
+    //   1147: aload 19
+    //   1149: aload 18
+    //   1151: invokestatic 456	com/tencent/token/aks:a	(Ljava/security/cert/Certificate;)Ljava/lang/String;
+    //   1154: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1157: pop
+    //   1158: aload 14
+    //   1160: astore 13
+    //   1162: aload 19
+    //   1164: ldc_w 458
+    //   1167: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1170: pop
+    //   1171: aload 14
+    //   1173: astore 13
+    //   1175: aload 19
+    //   1177: aload 18
+    //   1179: invokevirtual 462	java/security/cert/X509Certificate:getSubjectDN	()Ljava/security/Principal;
+    //   1182: invokeinterface 467 1 0
+    //   1187: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1190: pop
+    //   1191: aload 14
+    //   1193: astore 13
+    //   1195: aload 19
+    //   1197: ldc_w 469
+    //   1200: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1203: pop
+    //   1204: aload 14
+    //   1206: astore 13
+    //   1208: aload 19
+    //   1210: aload 18
+    //   1212: invokestatic 474	com/tencent/token/anp:a	(Ljava/security/cert/X509Certificate;)Ljava/util/List;
+    //   1215: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1218: pop
+    //   1219: aload 14
+    //   1221: astore 13
+    //   1223: new 476	javax/net/ssl/SSLPeerUnverifiedException
+    //   1226: dup
+    //   1227: aload 19
+    //   1229: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1232: invokespecial 477	javax/net/ssl/SSLPeerUnverifiedException:<init>	(Ljava/lang/String;)V
+    //   1235: athrow
+    //   1236: astore 16
+    //   1238: goto +16 -> 1254
+    //   1241: astore 13
+    //   1243: aconst_null
+    //   1244: astore 14
+    //   1246: goto +51 -> 1297
+    //   1249: astore 16
+    //   1251: aconst_null
+    //   1252: astore 14
+    //   1254: aload 14
+    //   1256: astore 13
+    //   1258: aload 16
+    //   1260: invokestatic 480	com/tencent/token/alr:a	(Ljava/lang/AssertionError;)Z
+    //   1263: ifeq +17 -> 1280
+    //   1266: aload 14
+    //   1268: astore 13
+    //   1270: new 175	java/io/IOException
+    //   1273: dup
+    //   1274: aload 16
+    //   1276: invokespecial 178	java/io/IOException:<init>	(Ljava/lang/Throwable;)V
+    //   1279: athrow
+    //   1280: aload 14
+    //   1282: astore 13
+    //   1284: aload 16
+    //   1286: athrow
+    //   1287: astore 16
+    //   1289: aload 13
+    //   1291: astore 14
+    //   1293: aload 16
+    //   1295: astore 13
+    //   1297: aload 14
+    //   1299: ifnull +11 -> 1310
+    //   1302: invokestatic 141	com/tencent/token/anl:c	()Lcom/tencent/token/anl;
+    //   1305: aload 14
+    //   1307: invokevirtual 433	com/tencent/token/anl:b	(Ljavax/net/ssl/SSLSocket;)V
+    //   1310: aload 14
+    //   1312: invokestatic 483	com/tencent/token/alr:a	(Ljava/net/Socket;)V
+    //   1315: aload 13
+    //   1317: athrow
+    //   1318: astore 13
+    //   1320: goto +5 -> 1325
+    //   1323: astore 13
+    //   1325: aload_0
+    //   1326: getfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   1329: invokestatic 483	com/tencent/token/alr:a	(Ljava/net/Socket;)V
+    //   1332: aload_0
+    //   1333: getfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   1336: invokestatic 483	com/tencent/token/alr:a	(Ljava/net/Socket;)V
+    //   1339: aload_0
+    //   1340: aconst_null
+    //   1341: putfield 55	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   1344: aload_0
+    //   1345: aconst_null
+    //   1346: putfield 136	com/tencent/token/alz:n	Ljava/net/Socket;
+    //   1349: aload_0
+    //   1350: aconst_null
+    //   1351: putfield 80	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   1354: aload_0
+    //   1355: aconst_null
+    //   1356: putfield 82	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   1359: aload_0
+    //   1360: aconst_null
+    //   1361: putfield 427	com/tencent/token/alz:c	Lcom/tencent/token/alb;
+    //   1364: aload_0
+    //   1365: aconst_null
+    //   1366: putfield 202	com/tencent/token/alz:o	Lcom/tencent/token/alh;
+    //   1369: aload_0
+    //   1370: aconst_null
+    //   1371: putfield 95	com/tencent/token/alz:d	Lcom/tencent/token/amx;
+    //   1374: aload 15
+    //   1376: ifnonnull +17 -> 1393
+    //   1379: new 234	com/tencent/token/amb
+    //   1382: dup
+    //   1383: aload 13
+    //   1385: invokespecial 240	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   1388: astore 15
+    //   1390: goto +20 -> 1410
+    //   1393: aload 15
+    //   1395: getfield 486	com/tencent/token/amb:a	Ljava/io/IOException;
+    //   1398: aload 13
+    //   1400: invokestatic 489	com/tencent/token/alr:a	(Ljava/lang/Throwable;Ljava/lang/Throwable;)V
+    //   1403: aload 15
+    //   1405: aload 13
+    //   1407: putfield 491	com/tencent/token/amb:b	Ljava/io/IOException;
+    //   1410: iload 5
+    //   1412: ifeq +112 -> 1524
+    //   1415: aload 17
+    //   1417: iconst_1
+    //   1418: putfield 493	com/tencent/token/aly:b	Z
+    //   1421: iload 7
+    //   1423: istore 6
+    //   1425: aload 17
+    //   1427: getfield 495	com/tencent/token/aly:a	Z
+    //   1430: ifeq +86 -> 1516
+    //   1433: iload 7
+    //   1435: istore 6
+    //   1437: aload 13
+    //   1439: instanceof 437
+    //   1442: ifne +74 -> 1516
+    //   1445: iload 7
+    //   1447: istore 6
+    //   1449: aload 13
+    //   1451: instanceof 497
+    //   1454: ifne +62 -> 1516
+    //   1457: aload 13
+    //   1459: instanceof 499
+    //   1462: istore 8
+    //   1464: iload 8
+    //   1466: ifeq +18 -> 1484
+    //   1469: iload 7
+    //   1471: istore 6
+    //   1473: aload 13
+    //   1475: invokevirtual 503	java/io/IOException:getCause	()Ljava/lang/Throwable;
+    //   1478: instanceof 505
+    //   1481: ifne +35 -> 1516
+    //   1484: iload 7
+    //   1486: istore 6
+    //   1488: aload 13
+    //   1490: instanceof 476
+    //   1493: ifne +23 -> 1516
+    //   1496: iload 8
+    //   1498: ifne +15 -> 1513
+    //   1501: iload 7
+    //   1503: istore 6
+    //   1505: aload 13
+    //   1507: instanceof 507
+    //   1510: ifeq +6 -> 1516
+    //   1513: iconst_1
+    //   1514: istore 6
+    //   1516: iload 6
+    //   1518: ifeq +6 -> 1524
+    //   1521: goto -1348 -> 173
+    //   1524: aload 15
+    //   1526: athrow
+    //   1527: new 234	com/tencent/token/amb
+    //   1530: dup
+    //   1531: new 236	java/net/UnknownServiceException
+    //   1534: dup
+    //   1535: ldc_w 509
+    //   1538: invokespecial 237	java/net/UnknownServiceException:<init>	(Ljava/lang/String;)V
+    //   1541: invokespecial 240	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   1544: athrow
+    //   1545: new 511	java/lang/IllegalStateException
+    //   1548: dup
+    //   1549: ldc_w 513
+    //   1552: invokespecial 514	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   1555: athrow
+    //   1556: astore 13
+    //   1558: goto -233 -> 1325
+    //   1561: aconst_null
+    //   1562: astore 16
+    //   1564: goto -689 -> 875
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1567	0	this	alz
+    //   0	1567	1	paramInt1	int
+    //   0	1567	2	paramInt2	int
+    //   0	1567	3	paramInt3	int
+    //   0	1567	4	paramInt4	int
+    //   0	1567	5	paramBoolean	boolean
+    //   468	1049	6	i1	int
+    //   174	1328	7	i2	int
+    //   1462	35	8	bool	boolean
+    //   334	104	9	l1	long
+    //   417	7	11	l2	long
+    //   1241	1	13	localObject2	Object
+    //   1256	60	13	localObject3	Object
+    //   1318	1	13	localIOException1	IOException
+    //   1323	183	13	localIOException2	IOException
+    //   1556	1	13	localIOException3	IOException
+    //   94	884	14	localObject4	Object
+    //   1067	153	14	localObject5	Object
+    //   1244	67	14	localObject6	Object
+    //   171	1354	15	localamb	amb
+    //   272	847	16	localObject7	Object
+    //   1236	1	16	localAssertionError1	java.lang.AssertionError
+    //   1249	36	16	localAssertionError2	java.lang.AssertionError
+    //   1287	7	16	localObject8	Object
+    //   1562	1	16	localObject9	Object
+    //   28	1398	17	localaly	aly
+    //   330	881	18	localObject10	Object
+    //   724	504	19	localObject11	Object
+    //   781	31	20	localSSLSession	javax.net.ssl.SSLSession
+    // Exception table:
+    //   from	to	target	type
+    //   1052	1066	1067	finally
+    //   1069	1072	1067	finally
+    //   717	726	1236	java/lang/AssertionError
+    //   730	738	1236	java/lang/AssertionError
+    //   742	763	1236	java/lang/AssertionError
+    //   767	772	1236	java/lang/AssertionError
+    //   776	783	1236	java/lang/AssertionError
+    //   787	794	1236	java/lang/AssertionError
+    //   798	821	1236	java/lang/AssertionError
+    //   825	846	1236	java/lang/AssertionError
+    //   850	858	1236	java/lang/AssertionError
+    //   862	872	1236	java/lang/AssertionError
+    //   879	885	1236	java/lang/AssertionError
+    //   889	903	1236	java/lang/AssertionError
+    //   907	921	1236	java/lang/AssertionError
+    //   925	931	1236	java/lang/AssertionError
+    //   940	947	1236	java/lang/AssertionError
+    //   954	959	1236	java/lang/AssertionError
+    //   963	969	1236	java/lang/AssertionError
+    //   1080	1096	1236	java/lang/AssertionError
+    //   1100	1112	1236	java/lang/AssertionError
+    //   1116	1130	1236	java/lang/AssertionError
+    //   1134	1143	1236	java/lang/AssertionError
+    //   1147	1158	1236	java/lang/AssertionError
+    //   1162	1171	1236	java/lang/AssertionError
+    //   1175	1191	1236	java/lang/AssertionError
+    //   1195	1204	1236	java/lang/AssertionError
+    //   1208	1219	1236	java/lang/AssertionError
+    //   1223	1236	1236	java/lang/AssertionError
+    //   682	713	1241	finally
+    //   682	713	1249	java/lang/AssertionError
+    //   717	726	1287	finally
+    //   730	738	1287	finally
+    //   742	763	1287	finally
+    //   767	772	1287	finally
+    //   776	783	1287	finally
+    //   787	794	1287	finally
+    //   798	821	1287	finally
+    //   825	846	1287	finally
+    //   850	858	1287	finally
+    //   862	872	1287	finally
+    //   879	885	1287	finally
+    //   889	903	1287	finally
+    //   907	921	1287	finally
+    //   925	931	1287	finally
+    //   940	947	1287	finally
+    //   954	959	1287	finally
+    //   963	969	1287	finally
+    //   1080	1096	1287	finally
+    //   1100	1112	1287	finally
+    //   1116	1130	1287	finally
+    //   1134	1143	1287	finally
+    //   1147	1158	1287	finally
+    //   1162	1171	1287	finally
+    //   1175	1191	1287	finally
+    //   1195	1204	1287	finally
+    //   1208	1219	1287	finally
+    //   1223	1236	1287	finally
+    //   1258	1266	1287	finally
+    //   1270	1280	1287	finally
+    //   1284	1287	1287	finally
+    //   362	419	1318	java/io/IOException
+    //   435	470	1318	java/io/IOException
+    //   486	522	1318	java/io/IOException
+    //   522	533	1318	java/io/IOException
+    //   533	570	1318	java/io/IOException
+    //   573	584	1318	java/io/IOException
+    //   584	590	1318	java/io/IOException
+    //   590	645	1318	java/io/IOException
+    //   648	663	1318	java/io/IOException
+    //   666	682	1318	java/io/IOException
+    //   974	982	1318	java/io/IOException
+    //   982	998	1318	java/io/IOException
+    //   1302	1310	1318	java/io/IOException
+    //   1310	1318	1318	java/io/IOException
+    //   176	332	1323	java/io/IOException
+    //   336	358	1556	java/io/IOException
+  }
+  
+  public final void a(amx paramamx)
+  {
+    synchronized (this.m)
     {
-      this.j += paramLong;
-      if (this.j >= this.l.b() / 2)
-      {
-        a(0, this.j);
-        this.j = 0L;
-      }
+      this.i = paramamx.a();
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  final void a(aks paramaks)
+  public final void a(amz paramamz)
   {
-    try
-    {
-      if (!d()) {
-        this.v.execute(paramaks);
-      }
-      return;
-    }
-    finally
-    {
-      paramaks = finally;
-      throw paramaks;
-    }
+    paramamz.a(ams.e);
   }
   
-  final void a(alu paramalu1, alu paramalu2)
+  public final boolean a()
   {
-    if ((!s) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
-    amb[] arrayOfamb = null;
-    try
+    return this.d != null;
+  }
+  
+  public final boolean a(akm paramakm, @Nullable aln paramaln)
+  {
+    if (this.j.size() < this.i)
     {
-      a(paramalu1);
-      paramalu1 = null;
-    }
-    catch (IOException paramalu1) {}
-    try
-    {
-      if (!this.c.isEmpty())
-      {
-        arrayOfamb = (amb[])this.c.values().toArray(new amb[this.c.size()]);
-        this.c.clear();
+      if (this.g) {
+        return false;
       }
-      Object localObject = paramalu1;
-      if (arrayOfamb != null)
+      if (!alp.a.a(this.a.a, paramakm)) {
+        return false;
+      }
+      if (paramakm.a.b.equals(this.a.a.a.b)) {
+        return true;
+      }
+      if (this.d == null) {
+        return false;
+      }
+      if (paramaln == null) {
+        return false;
+      }
+      if (paramaln.b.type() != Proxy.Type.DIRECT) {
+        return false;
+      }
+      if (this.a.b.type() != Proxy.Type.DIRECT) {
+        return false;
+      }
+      if (!this.a.c.equals(paramaln.c)) {
+        return false;
+      }
+      if (paramaln.a.j != anp.a) {
+        return false;
+      }
+      if (!a(paramakm.a)) {
+        return false;
+      }
+    }
+    try
+    {
+      paramakm.k.a(paramakm.a.b, this.c.b);
+      return true;
+    }
+    catch (SSLPeerUnverifiedException paramakm) {}
+    return false;
+    return false;
+  }
+  
+  public final boolean a(ald paramald)
+  {
+    if (paramald.c != this.a.a.a.c) {
+      return false;
+    }
+    if (!paramald.b.equals(this.a.a.a.b))
+    {
+      if (this.c != null)
       {
-        int i2 = arrayOfamb.length;
-        int i1 = 0;
-        for (;;)
-        {
-          localObject = paramalu1;
-          if (i1 >= i2) {
-            break;
-          }
-          localObject = arrayOfamb[i1];
-          try
-          {
-            ((amb)localObject).a(paramalu2);
-            localObject = paramalu1;
-          }
-          catch (IOException localIOException)
-          {
-            localObject = paramalu1;
-            if (paramalu1 != null) {
-              localObject = localIOException;
-            }
-          }
-          i1 += 1;
-          paramalu1 = (alu)localObject;
+        anp localanp = anp.a;
+        if (anp.a(paramald.b, (X509Certificate)this.c.b.get(0))) {
+          return true;
         }
       }
-      try
-      {
-        this.p.close();
-        paramalu1 = (alu)localObject;
-      }
-      catch (IOException paramalu2)
-      {
-        paramalu1 = (alu)localObject;
-        if (localObject == null) {
-          paramalu1 = paramalu2;
-        }
-      }
-      try
-      {
-        this.o.close();
-      }
-      catch (IOException paramalu1) {}
-      this.u.shutdown();
-      this.v.shutdown();
-      if (paramalu1 == null) {
-        return;
-      }
-      throw paramalu1;
+      return false;
     }
-    finally {}
+    return true;
   }
   
-  final amb b(int paramInt)
+  public final boolean a(boolean paramBoolean)
   {
+    if ((!this.b.isClosed()) && (!this.b.isInputShutdown()))
+    {
+      if (this.b.isOutputShutdown()) {
+        return false;
+      }
+      amx localamx = this.d;
+      if (localamx != null) {
+        return !localamx.d();
+      }
+      if (!paramBoolean) {}
+    }
     try
     {
-      amb localamb = (amb)this.c.remove(Integer.valueOf(paramInt));
-      notifyAll();
-      return localamb;
+      int i1 = this.b.getSoTimeout();
+      try
+      {
+        this.b.setSoTimeout(1);
+        paramBoolean = this.e.c();
+        return !paramBoolean;
+      }
+      finally
+      {
+        this.b.setSoTimeout(i1);
+      }
+      return true;
     }
-    finally
+    catch (SocketTimeoutException localSocketTimeoutException)
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  final void b()
-  {
-    try
-    {
-      alu localalu = alu.b;
-      a(localalu, localalu);
-      return;
+      return true;
     }
     catch (IOException localIOException) {}
+    return false;
+    return false;
   }
   
-  final void b(int paramInt, alu paramalu)
+  public final String toString()
   {
-    this.p.a(paramInt, paramalu);
-  }
-  
-  public final void c()
-  {
-    this.p.a();
-    this.p.b(this.l);
-    int i1 = this.l.b();
-    if (i1 != 65535) {
-      this.p.a(0, i1 - 65535);
+    StringBuilder localStringBuilder = new StringBuilder("Connection{");
+    localStringBuilder.append(this.a.a.a.b);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.a.a.a.c);
+    localStringBuilder.append(", proxy=");
+    localStringBuilder.append(this.a.b);
+    localStringBuilder.append(" hostAddress=");
+    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(" cipherSuite=");
+    Object localObject = this.c;
+    if (localObject != null) {
+      localObject = ((alb)localObject).a;
+    } else {
+      localObject = "none";
     }
-    new Thread(this.q).start();
-  }
-  
-  public final void close()
-  {
-    a(alu.a, alu.f);
-  }
-  
-  public final boolean d()
-  {
-    try
-    {
-      boolean bool = this.g;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static final class a
-  {
-    Socket a;
-    String b;
-    amx c;
-    amw d;
-    public alz.b e = alz.b.l;
-    ame f = ame.a;
-    boolean g = true;
-    public int h;
-    
-    public final a a(Socket paramSocket, String paramString, amx paramamx, amw paramamw)
-    {
-      this.a = paramSocket;
-      this.b = paramString;
-      this.c = paramamx;
-      this.d = paramamw;
-      return this;
-    }
-    
-    public final alz a()
-    {
-      return new alz(this);
-    }
-  }
-  
-  public static abstract class b
-  {
-    public static final b l = new b()
-    {
-      public final void a(amb paramAnonymousamb)
-      {
-        paramAnonymousamb.a(alu.e);
-      }
-    };
-    
-    public void a(alz paramalz) {}
-    
-    public abstract void a(amb paramamb);
-  }
-  
-  final class c
-    extends aks
-  {
-    final boolean a;
-    final int c;
-    final int d;
-    
-    c(boolean paramBoolean, int paramInt1, int paramInt2)
-    {
-      super(new Object[] { alz.this.d, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.a = paramBoolean;
-      this.c = paramInt1;
-      this.d = paramInt2;
-    }
-    
-    public final void b()
-    {
-      alz localalz = alz.this;
-      boolean bool1 = this.a;
-      int i = this.c;
-      int j = this.d;
-      if (!bool1) {
-        try
-        {
-          boolean bool2 = localalz.i;
-          localalz.i = true;
-          if (bool2)
-          {
-            localalz.b();
-            return;
-          }
-        }
-        finally {}
-      }
-      try
-      {
-        localalz.p.a(bool1, i, j);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        label75:
-        break label75;
-      }
-      localalz.b();
-    }
-  }
-  
-  final class d
-    extends aks
-    implements ama.b
-  {
-    final ama a;
-    
-    d(ama paramama)
-    {
-      super(new Object[] { alz.this.d });
-      this.a = paramama;
-    }
-    
-    public final void a(int paramInt)
-    {
-      synchronized (alz.this)
-      {
-        amb[] arrayOfamb = (amb[])alz.this.c.values().toArray(new amb[alz.this.c.size()]);
-        alz.this.g = true;
-        int j = arrayOfamb.length;
-        int i = 0;
-        while (i < j)
-        {
-          ??? = arrayOfamb[i];
-          if ((???.c > paramInt) && (???.b()))
-          {
-            ???.c(alu.e);
-            alz.this.b(???.c);
-          }
-          i += 1;
-        }
-        return;
-      }
-    }
-    
-    public final void a(int paramInt, long paramLong)
-    {
-      if (paramInt == 0) {
-        synchronized (alz.this)
-        {
-          alz localalz = alz.this;
-          localalz.k += paramLong;
-          alz.this.notifyAll();
-          return;
-        }
-      }
-      ??? = alz.this.a(paramInt);
-      if (??? != null) {
-        try
-        {
-          ((amb)???).a(paramLong);
-          return;
-        }
-        finally {}
-      }
-    }
-    
-    public final void a(int paramInt, alu paramalu)
-    {
-      if (alz.c(paramInt))
-      {
-        localObject = alz.this;
-        ((alz)localObject).a(new alz.6((alz)localObject, "OkHttp %s Push Reset[%s]", new Object[] { ((alz)localObject).d, Integer.valueOf(paramInt) }, paramInt, paramalu));
-        return;
-      }
-      Object localObject = alz.this.b(paramInt);
-      if (localObject != null) {
-        ((amb)localObject).c(paramalu);
-      }
-    }
-    
-    public final void a(int paramInt, List<alv> paramList)
-    {
-      synchronized (alz.this)
-      {
-        if (???.r.contains(Integer.valueOf(paramInt)))
-        {
-          ???.a(paramInt, alu.b);
-          return;
-        }
-        ???.r.add(Integer.valueOf(paramInt));
-      }
-    }
-    
-    public final void a(final amf paramamf)
-    {
-      int k;
-      int j;
-      int i;
-      synchronized (alz.this)
-      {
-        k = alz.this.m.b();
-        amf localamf = alz.this.m;
-        j = 0;
-        i = 0;
-        if (i < 10)
-        {
-          if (paramamf.a(i)) {
-            localamf.a(i, paramamf.b[i]);
-          }
-          i += 1;
-        }
-      }
-      try
-      {
-        alz.b(alz.this).execute(new aks("OkHttp %s ACK Settings", new Object[] { alz.this.d })
-        {
-          public final void b()
-          {
-            try
-            {
-              alz.this.p.a(paramamf);
-              return;
-            }
-            catch (IOException localIOException)
-            {
-              label18:
-              break label18;
-            }
-            alz.a(alz.this);
-          }
-        });
-        i = alz.this.m.b();
-        paramamf = null;
-        if ((i != -1) && (i != k))
-        {
-          long l2 = i - k;
-          if (!alz.this.n) {
-            alz.this.n = true;
-          }
-          l1 = l2;
-          if (!alz.this.c.isEmpty())
-          {
-            paramamf = (amb[])alz.this.c.values().toArray(new amb[alz.this.c.size()]);
-            l1 = l2;
-          }
-          alz.e().execute(new aks("OkHttp %s settings", new Object[] { alz.this.d })
-          {
-            public final void b()
-            {
-              alz.this.b.a(alz.this);
-            }
-          });
-          if ((paramamf != null) && (l1 != 0L))
-          {
-            k = paramamf.length;
-            i = j;
-            while (i < k) {
-              synchronized (paramamf[i])
-              {
-                ???.a(l1);
-                i += 1;
-              }
-            }
-          }
-          return;
-          paramamf = finally;
-          throw paramamf;
-        }
-      }
-      catch (RejectedExecutionException paramamf)
-      {
-        for (;;)
-        {
-          continue;
-          long l1 = 0L;
-        }
-      }
-    }
-    
-    public final void a(boolean paramBoolean, int paramInt1, int paramInt2)
-    {
-      if (paramBoolean) {
-        synchronized (alz.this)
-        {
-          alz.c(alz.this);
-          alz.this.notifyAll();
-          return;
-        }
-      }
-      try
-      {
-        alz.b(alz.this).execute(new alz.c(alz.this, true, paramInt1, paramInt2));
-        return;
-      }
-      catch (RejectedExecutionException localRejectedExecutionException) {}
-    }
-    
-    public final void a(boolean paramBoolean, int paramInt1, amx paramamx, int paramInt2)
-    {
-      long l;
-      if (alz.c(paramInt1))
-      {
-        alz localalz = alz.this;
-        localObject = new amv();
-        l = paramInt2;
-        paramamx.a(l);
-        paramamx.a((amv)localObject, l);
-        if (((amv)localObject).b == l)
-        {
-          localalz.a(new alz.5(localalz, "OkHttp %s Push Data[%s]", new Object[] { localalz.d, Integer.valueOf(paramInt1) }, paramInt1, (amv)localObject, paramInt2, paramBoolean));
-          return;
-        }
-        paramamx = new StringBuilder();
-        paramamx.append(((amv)localObject).b);
-        paramamx.append(" != ");
-        paramamx.append(paramInt2);
-        throw new IOException(paramamx.toString());
-      }
-      Object localObject = alz.this.a(paramInt1);
-      if (localObject == null)
-      {
-        alz.this.a(paramInt1, alu.b);
-        localObject = alz.this;
-        l = paramInt2;
-        ((alz)localObject).a(l);
-        paramamx.g(l);
-        return;
-      }
-      if ((!amb.l) && (Thread.holdsLock(localObject))) {
-        throw new AssertionError();
-      }
-      ((amb)localObject).g.a(paramamx, paramInt2);
-      if (paramBoolean) {
-        ((amb)localObject).e();
-      }
-    }
-    
-    public final void a(boolean paramBoolean, int paramInt, final List<alv> paramList)
-    {
-      boolean bool2 = alz.c(paramInt);
-      boolean bool1 = true;
-      if (bool2) {
-        ??? = alz.this;
-      }
-      for (;;)
-      {
-        amb localamb;
-        try
-        {
-          ((alz)???).a(new alz.4((alz)???, "OkHttp %s Push Headers[%s]", new Object[] { ((alz)???).d, Integer.valueOf(paramInt) }, paramInt, paramList, paramBoolean));
-          return;
-        }
-        catch (RejectedExecutionException paramList) {}
-        synchronized (alz.this)
-        {
-          localamb = alz.this.a(paramInt);
-          if (localamb == null)
-          {
-            if (alz.this.g) {
-              return;
-            }
-            if (paramInt <= alz.this.e) {
-              return;
-            }
-            if (paramInt % 2 == alz.this.f % 2) {
-              return;
-            }
-            paramList = new amb(paramInt, alz.this, false, paramBoolean, paramList);
-            alz.this.e = paramInt;
-            alz.this.c.put(Integer.valueOf(paramInt), paramList);
-            alz.e().execute(new aks("OkHttp %s stream %d", new Object[] { alz.this.d, Integer.valueOf(paramInt) })
-            {
-              public final void b()
-              {
-                try
-                {
-                  alz.this.b.a(paramList);
-                  return;
-                }
-                catch (IOException localIOException1)
-                {
-                  amn localamn = amn.c();
-                  StringBuilder localStringBuilder = new StringBuilder("Http2Connection.Listener failure for ");
-                  localStringBuilder.append(alz.this.d);
-                  localamn.a(4, localStringBuilder.toString(), localIOException1);
-                  try
-                  {
-                    paramList.a(alu.b);
-                    return;
-                  }
-                  catch (IOException localIOException2) {}
-                }
-              }
-            });
-            return;
-          }
-          if ((!amb.l) && (Thread.holdsLock(localamb))) {
-            throw new AssertionError();
-          }
-          try
-          {
-            localamb.f = true;
-            if (localamb.e == null)
-            {
-              localamb.e = paramList;
-              bool1 = localamb.a();
-              localamb.notifyAll();
-            }
-            else
-            {
-              ??? = new ArrayList();
-              ((List)???).addAll(localamb.e);
-              ((List)???).add(null);
-              ((List)???).addAll(paramList);
-              localamb.e = ((List)???);
-            }
-            if (!bool1) {
-              localamb.d.b(localamb.c);
-            }
-            if (paramBoolean) {
-              localamb.e();
-            }
-            return;
-          }
-          finally {}
-        }
-      }
-    }
-    
-    /* Error */
-    public final void b()
-    {
-      // Byte code:
-      //   0: getstatic 318	com/tencent/token/alu:c	Lcom/tencent/token/alu;
-      //   3: astore_3
-      //   4: getstatic 318	com/tencent/token/alu:c	Lcom/tencent/token/alu;
-      //   7: astore 5
-      //   9: aload_3
-      //   10: astore_1
-      //   11: aload_3
-      //   12: astore_2
-      //   13: aload_0
-      //   14: getfield 35	com/tencent/token/alz$d:a	Lcom/tencent/token/ama;
-      //   17: astore 4
-      //   19: aload_3
-      //   20: astore_1
-      //   21: aload_3
-      //   22: astore_2
-      //   23: aload 4
-      //   25: getfield 322	com/tencent/token/ama:c	Z
-      //   28: ifeq +35 -> 63
-      //   31: aload_3
-      //   32: astore_1
-      //   33: aload_3
-      //   34: astore_2
-      //   35: aload 4
-      //   37: iconst_1
-      //   38: aload_0
-      //   39: invokevirtual 325	com/tencent/token/ama:a	(ZLcom/tencent/token/ama$b;)Z
-      //   42: ifeq +6 -> 48
-      //   45: goto +100 -> 145
-      //   48: aload_3
-      //   49: astore_1
-      //   50: aload_3
-      //   51: astore_2
-      //   52: ldc_w 327
-      //   55: iconst_0
-      //   56: anewarray 27	java/lang/Object
-      //   59: invokestatic 332	com/tencent/token/alx:b	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/IOException;
-      //   62: athrow
-      //   63: aload_3
-      //   64: astore_1
-      //   65: aload_3
-      //   66: astore_2
-      //   67: aload 4
-      //   69: getfield 335	com/tencent/token/ama:b	Lcom/tencent/token/amx;
-      //   72: getstatic 338	com/tencent/token/alx:a	Lcom/tencent/token/amy;
-      //   75: invokevirtual 342	com/tencent/token/amy:g	()I
-      //   78: i2l
-      //   79: invokeinterface 345 3 0
-      //   84: astore 4
-      //   86: aload_3
-      //   87: astore_1
-      //   88: aload_3
-      //   89: astore_2
-      //   90: getstatic 348	com/tencent/token/ama:a	Ljava/util/logging/Logger;
-      //   93: getstatic 354	java/util/logging/Level:FINE	Ljava/util/logging/Level;
-      //   96: invokevirtual 360	java/util/logging/Logger:isLoggable	(Ljava/util/logging/Level;)Z
-      //   99: ifeq +31 -> 130
-      //   102: aload_3
-      //   103: astore_1
-      //   104: aload_3
-      //   105: astore_2
-      //   106: getstatic 348	com/tencent/token/ama:a	Ljava/util/logging/Logger;
-      //   109: ldc_w 362
-      //   112: iconst_1
-      //   113: anewarray 27	java/lang/Object
-      //   116: dup
-      //   117: iconst_0
-      //   118: aload 4
-      //   120: invokevirtual 364	com/tencent/token/amy:e	()Ljava/lang/String;
-      //   123: aastore
-      //   124: invokestatic 369	com/tencent/token/akt:a	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-      //   127: invokevirtual 372	java/util/logging/Logger:fine	(Ljava/lang/String;)V
-      //   130: aload_3
-      //   131: astore_1
-      //   132: aload_3
-      //   133: astore_2
-      //   134: getstatic 338	com/tencent/token/alx:a	Lcom/tencent/token/amy;
-      //   137: aload 4
-      //   139: invokevirtual 375	com/tencent/token/amy:equals	(Ljava/lang/Object;)Z
-      //   142: ifeq +58 -> 200
-      //   145: aload_3
-      //   146: astore_1
-      //   147: aload_3
-      //   148: astore_2
-      //   149: aload_0
-      //   150: getfield 35	com/tencent/token/alz$d:a	Lcom/tencent/token/ama;
-      //   153: iconst_0
-      //   154: aload_0
-      //   155: invokevirtual 325	com/tencent/token/ama:a	(ZLcom/tencent/token/ama$b;)Z
-      //   158: ifne -13 -> 145
-      //   161: aload_3
-      //   162: astore_1
-      //   163: aload_3
-      //   164: astore_2
-      //   165: getstatic 377	com/tencent/token/alu:a	Lcom/tencent/token/alu;
-      //   168: astore_3
-      //   169: aload_3
-      //   170: astore_1
-      //   171: aload_3
-      //   172: astore_2
-      //   173: getstatic 379	com/tencent/token/alu:f	Lcom/tencent/token/alu;
-      //   176: astore 4
-      //   178: aload_0
-      //   179: getfield 23	com/tencent/token/alz$d:c	Lcom/tencent/token/alz;
-      //   182: astore_2
-      //   183: aload 4
-      //   185: astore_1
-      //   186: aload_2
-      //   187: aload_3
-      //   188: aload_1
-      //   189: invokevirtual 382	com/tencent/token/alz:a	(Lcom/tencent/token/alu;Lcom/tencent/token/alu;)V
-      //   192: aload_0
-      //   193: getfield 35	com/tencent/token/alz$d:a	Lcom/tencent/token/ama;
-      //   196: invokestatic 385	com/tencent/token/akt:a	(Ljava/io/Closeable;)V
-      //   199: return
-      //   200: aload_3
-      //   201: astore_1
-      //   202: aload_3
-      //   203: astore_2
-      //   204: ldc_w 387
-      //   207: iconst_1
-      //   208: anewarray 27	java/lang/Object
-      //   211: dup
-      //   212: iconst_0
-      //   213: aload 4
-      //   215: invokevirtual 389	com/tencent/token/amy:a	()Ljava/lang/String;
-      //   218: aastore
-      //   219: invokestatic 332	com/tencent/token/alx:b	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/IOException;
-      //   222: athrow
-      //   223: astore_2
-      //   224: goto +29 -> 253
-      //   227: aload_2
-      //   228: astore_1
-      //   229: getstatic 132	com/tencent/token/alu:b	Lcom/tencent/token/alu;
-      //   232: astore_3
-      //   233: aload_3
-      //   234: astore_1
-      //   235: getstatic 132	com/tencent/token/alu:b	Lcom/tencent/token/alu;
-      //   238: astore_2
-      //   239: aload_0
-      //   240: getfield 23	com/tencent/token/alz$d:c	Lcom/tencent/token/alz;
-      //   243: astore 4
-      //   245: aload_2
-      //   246: astore_1
-      //   247: aload 4
-      //   249: astore_2
-      //   250: goto -64 -> 186
-      //   253: aload_0
-      //   254: getfield 23	com/tencent/token/alz$d:c	Lcom/tencent/token/alz;
-      //   257: aload_1
-      //   258: aload 5
-      //   260: invokevirtual 382	com/tencent/token/alz:a	(Lcom/tencent/token/alu;Lcom/tencent/token/alu;)V
-      //   263: aload_0
-      //   264: getfield 35	com/tencent/token/alz$d:a	Lcom/tencent/token/ama;
-      //   267: invokestatic 385	com/tencent/token/akt:a	(Ljava/io/Closeable;)V
-      //   270: aload_2
-      //   271: athrow
-      //   272: astore_1
-      //   273: goto -46 -> 227
-      //   276: astore_1
-      //   277: goto -85 -> 192
-      //   280: astore_1
-      //   281: goto -18 -> 263
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	284	0	this	d
-      //   10	248	1	localObject1	Object
-      //   272	1	1	localIOException1	IOException
-      //   276	1	1	localIOException2	IOException
-      //   280	1	1	localIOException3	IOException
-      //   12	192	2	localObject2	Object
-      //   223	5	2	localObject3	Object
-      //   238	33	2	localObject4	Object
-      //   3	231	3	localalu1	alu
-      //   17	231	4	localObject5	Object
-      //   7	252	5	localalu2	alu
-      // Exception table:
-      //   from	to	target	type
-      //   13	19	223	finally
-      //   23	31	223	finally
-      //   35	45	223	finally
-      //   52	63	223	finally
-      //   67	86	223	finally
-      //   90	102	223	finally
-      //   106	130	223	finally
-      //   134	145	223	finally
-      //   149	161	223	finally
-      //   165	169	223	finally
-      //   173	178	223	finally
-      //   204	223	223	finally
-      //   229	233	223	finally
-      //   235	239	223	finally
-      //   13	19	272	java/io/IOException
-      //   23	31	272	java/io/IOException
-      //   35	45	272	java/io/IOException
-      //   52	63	272	java/io/IOException
-      //   67	86	272	java/io/IOException
-      //   90	102	272	java/io/IOException
-      //   106	130	272	java/io/IOException
-      //   134	145	272	java/io/IOException
-      //   149	161	272	java/io/IOException
-      //   165	169	272	java/io/IOException
-      //   173	178	272	java/io/IOException
-      //   204	223	272	java/io/IOException
-      //   178	183	276	java/io/IOException
-      //   186	192	276	java/io/IOException
-      //   239	245	276	java/io/IOException
-      //   253	263	280	java/io/IOException
-    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(" protocol=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,40 +1,13 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
 
-public final class kx
+public abstract interface kx
 {
-  public static kv a;
-  public static Context b;
+  public abstract HandlerThread a();
   
-  public static void a(Context paramContext, long paramLong)
-  {
-    b = ajh.f.a.a(paramContext, paramLong);
-  }
-  
-  public static boolean a()
-  {
-    kv localkv = a;
-    if (localkv != null) {
-      return localkv.a();
-    }
-    return true;
-  }
-  
-  public static boolean b()
-  {
-    kv localkv = a;
-    if (localkv != null) {
-      return localkv.b();
-    }
-    return false;
-  }
-  
-  public static final class a
-  {
-    public Object a = null;
-    public boolean b = false;
-  }
+  public abstract Handler b();
 }
 
 

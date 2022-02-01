@@ -12,8 +12,8 @@ import com.tencent.token.ui.base.DualMsgShowDialog;
 import com.tencent.token.ui.base.DualMsgView;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.xh;
-import com.tencent.token.xj;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
 
 public class GetBarcodeVerifyMsgActivity
   extends BaseActivity
@@ -27,7 +27,7 @@ public class GetBarcodeVerifyMsgActivity
     }
   };
   private DualMsgShowDialog mDualMsgShowDialog = null;
-  private UserTask<String, String, xh> mGetDualMsgTask = null;
+  private UserTask<String, String, xt> mGetDualMsgTask = null;
   private ProgressBar mPreparePro;
   private TextView mPrepareText;
   private boolean mQueryingDualMsg = false;
@@ -64,7 +64,7 @@ public class GetBarcodeVerifyMsgActivity
   
   private void showDualMsgExpireDlg()
   {
-    showUserDialog(2131492986, getString(2131493092), 2131493040, new DialogInterface.OnClickListener()
+    showUserDialog(2131492987, getString(2131493094), 2131493041, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -76,16 +76,16 @@ public class GetBarcodeVerifyMsgActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296353);
-    this.mPreparePro = ((ProgressBar)findViewById(2131165815));
-    this.mPrepareText = ((TextView)findViewById(2131165816));
-    this.mPrepareText.setText(2131493096);
+    setContentView(2131296358);
+    this.mPreparePro = ((ProgressBar)findViewById(2131165842));
+    this.mPrepareText = ((TextView)findViewById(2131165843));
+    this.mPrepareText.setText(2131493098);
     if ((getIntent() != null) && (getIntent().getBundleExtra("com.tencent.input_param") != null))
     {
       this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
       paramBundle = new StringBuilder(", aq verify: ");
       paramBundle.append(this.mAqVerifyBarcodeContent);
-      xj.a(paramBundle.toString());
+      xv.a(paramBundle.toString());
       hideTitle();
       return;
     }

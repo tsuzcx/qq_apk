@@ -1,240 +1,60 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicReference;
-import javax.crypto.Cipher;
-
-public final class arz
+public class arz
 {
-  volatile long a;
-  private final String b = "RsaKeyCertifier";
-  private asd c;
-  private Object d = new Object();
-  private asa e;
+  public static final int ERR_NETWORK_CLIENTPROTOCOLEXCEPTION = -110000;
+  public static final int ERR_NETWORK_COM = -10000;
+  public static final int ERR_NETWORK_CON_TIMEOUT = -20000;
+  public static final int ERR_NETWORK_EXCEPTION = -150000;
+  public static final int ERR_NETWORK_ILLEGALACCESSERROR = -80000;
+  public static final int ERR_NETWORK_ILLEGALSTATEEXCEPTION = -90000;
+  public static final int ERR_NETWORK_IOEXCEPTION = -140000;
+  public static final int ERR_NETWORK_NEED_WIFIAPPROVEMENT = -160000;
+  public static final int ERR_NETWORK_NOT_OUR_SERVER = -170000;
+  public static final int ERR_NETWORK_PROTOCOLEXCEPTION = -100000;
+  public static final int ERR_NETWORK_RECEIVER_FAILED = -40000;
+  public static final int ERR_NETWORK_RECV_TIMEOUT = -50000;
+  public static final int ERR_NETWORK_REDIRECT = -60000;
+  public static final int ERR_NETWORK_SEND_FAILED = -30000;
+  public static final int ERR_NETWORK_SOCKETEXCEPTION = -120000;
+  public static final int ERR_NETWORK_SOCKETTIMEOUTEXCEPTION = -130000;
+  public static final int ERR_NETWORK_SOCKET_CLOSED = -190000;
+  public static final int ERR_NETWORK_SOCKET_NO_CONNECTION = -180000;
+  public static final int ERR_NETWORK_UNKNOWN = -200000;
+  public static final int ERR_NETWORK_UNKNOWNHOSTEXCEPTION = -70000;
+  public static final int ERR_NONE = 0;
+  public static final int ERR_NORMAL_CLOUDCMD_DONT_CONNECT = -7;
+  public static final int ERR_NORMAL_DATA = -5;
+  public static final int ERR_NORMAL_ILLEGAL_ARGUMENT = -10;
+  public static final int ERR_NORMAL_MORTAL = -9;
+  public static final int ERR_NORMAL_NEED_WIFI_APPROVEMENT = -6;
+  public static final int ERR_NORMAL_NETWORK_FAILD = -3;
+  public static final int ERR_NORMAL_NORESP = -8;
+  public static final int ERR_NORMAL_NO_CONNECT = -2;
+  public static final int ERR_NORMAL_TIMEOUT = -4;
+  public static final int ERR_NORMAL_UNKNOWN = -1;
+  public static final int ERR_SHARK_DECODE = -300;
+  public static final int ERR_SHARK_DECODE_JCE = -400;
+  public static final int ERR_SHARK_FREQUECY_DEFENCE = -700;
+  public static final int ERR_SHARK_GET_SHARK = -600;
+  public static final int ERR_SHARK_GUID_FAILED = -200;
+  public static final int ERR_SHARK_NO_RESP = -500;
+  public static final int ERR_SHARK_RSAKEY_FAILED = -100;
+  public static final String SHARK_OCEAN = "ocean";
   
-  public arz(asd arg1)
+  public static final int filterNetworkCode(int paramInt)
   {
-    this.c = ???;
-    this.e = new asa();
-    synchronized (this.d)
-    {
-      b(this.c.a.c());
-      a(this.c.a.d());
-      this.a = 0L;
-      ??? = new StringBuilder("load() mEncodeKey: ");
-      ???.append(c());
-      ???.append(" mSessionId: ");
-      ???.append(a());
-      ??? = new StringBuilder("[ocean]info: Refh: sessionId|");
-      ???.append(a());
-      ???.append("|encodeKey|");
-      ???.append(c());
-      return;
-    }
+    return paramInt % 1000000 - filterSharkCode(paramInt) - filterNormalCode(paramInt);
   }
   
-  private void a(String paramString)
+  public static final int filterNormalCode(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    synchronized (this.d)
-    {
-      this.e.a = paramString;
-      return;
-    }
+    return paramInt % 20;
   }
   
-  private void b(String paramString)
+  public static final int filterSharkCode(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    synchronized (this.d)
-    {
-      this.e.b = paramString;
-      return;
-    }
-  }
-  
-  private static byte[] c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      Object localObject = ati.a("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDb49jFnNqMDLdl87UtY5jOMqqdMuvQg65Zuva3Qm1tORQGBuM04u7fqygA64XbOx9e/KPNkDNDmqS8SlsAPL1fV2lqM/phgV0NY62TJqSR+PLngwJd2rhYR8wQ1N0JE+R59a5c08EGsd6axStjHsVu2+evCf/SWU9Y/oQpEtOjGwIDAQAB");
-      localObject = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject));
-      Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-      localCipher.init(1, (Key)localObject);
-      paramString = localCipher.doFinal(paramString.getBytes());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  final String a()
-  {
-    synchronized (this.d)
-    {
-      if (this.e.a == null) {
-        return "";
-      }
-      String str = this.e.a;
-      return str;
-    }
-  }
-  
-  public final boolean a(AtomicReference paramAtomicReference)
-  {
-    if (paramAtomicReference != null)
-    {
-      ??? = new asa();
-      ((asa)???).a = a();
-      ((asa)???).b = c();
-      paramAtomicReference.set(???);
-    }
-    paramAtomicReference = new Random();
-    ??? = new StringBuffer();
-    int i = 0;
-    while (i < 16)
-    {
-      ((StringBuffer)???).append("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(paramAtomicReference.nextInt(62)));
-      i += 1;
-    }
-    b(((StringBuffer)???).toString());
-    paramAtomicReference = new ae();
-    ??? = c(c());
-    if (??? != null)
-    {
-      paramAtomicReference.a = ((byte[])???);
-      new StringBuilder("updataRsaKey() reqRSA.enc: ").append(aqx.a(paramAtomicReference.a));
-      ??? = new ai();
-      ((ai)???).b = this.c.b.a();
-      ((ai)???).a = 152;
-      ((ai)???).d = arq.a(paramAtomicReference);
-      paramAtomicReference = new ArrayList();
-      paramAtomicReference.add(???);
-      ??? = new AtomicReference();
-      if (this.c.a(true, false, false, null, paramAtomicReference, (AtomicReference)???) != 0) {
-        return false;
-      }
-      paramAtomicReference = (ArrayList)((AtomicReference)???).get();
-      if (paramAtomicReference == null) {
-        return false;
-      }
-      if (paramAtomicReference.size() <= 0) {
-        return false;
-      }
-      paramAtomicReference = (al)paramAtomicReference.get(0);
-      if (paramAtomicReference == null) {
-        return false;
-      }
-      ??? = new StringBuilder("updataRsaKey() rs.seqNo: ");
-      ((StringBuilder)???).append(paramAtomicReference.b);
-      ((StringBuilder)???).append(" rs.cmd: ");
-      ((StringBuilder)???).append(paramAtomicReference.a);
-      ((StringBuilder)???).append(" rs.retCode: ");
-      ((StringBuilder)???).append(paramAtomicReference.d);
-      ((StringBuilder)???).append(" rs.dataRetCode: ");
-      ((StringBuilder)???).append(paramAtomicReference.e);
-      if (1 == paramAtomicReference.d) {
-        return false;
-      }
-      if (paramAtomicReference.e != 0)
-      {
-        new StringBuilder("updataRsaKey() rs.dataRetCode: ").append(paramAtomicReference.e);
-        return false;
-      }
-      ??? = paramAtomicReference.f;
-      if (??? == null) {
-        return false;
-      }
-      new StringBuilder("updataRsaKey() rs.data.length: ").append(paramAtomicReference.f.length);
-      paramAtomicReference = new af();
-    }
-    try
-    {
-      ??? = arq.b((byte[])???);
-      if (??? == null) {
-        paramAtomicReference = null;
-      } else {
-        paramAtomicReference = arw.a((byte[])???, paramAtomicReference);
-      }
-      if (paramAtomicReference == null) {
-        return false;
-      }
-      paramAtomicReference = (af)paramAtomicReference;
-      if ((!TextUtils.isEmpty(c())) && (!TextUtils.isEmpty(paramAtomicReference.a))) {
-        i = 0;
-      } else {
-        i = 1;
-      }
-      if (i != 0) {
-        return false;
-      }
-      ??? = new StringBuilder("[ocean]info: Chgd befor: sessionId|");
-      ((StringBuilder)???).append(a());
-      ((StringBuilder)???).append("|encodeKey|");
-      ((StringBuilder)???).append(c());
-      synchronized (this.d)
-      {
-        String str = c();
-        if (!TextUtils.isEmpty(str))
-        {
-          b(str);
-          this.c.a.a(c());
-        }
-        str = paramAtomicReference.a;
-        if (!TextUtils.isEmpty(str))
-        {
-          a(str);
-          this.c.a.b(a());
-        }
-        ??? = new StringBuilder("updataRsaKey() mEncodeKey: ");
-        ((StringBuilder)???).append(c());
-        ((StringBuilder)???).append(" mSessionId: ");
-        ((StringBuilder)???).append(paramAtomicReference.a);
-        ??? = new StringBuilder("[ocean]info: Chgd after: sessionId|");
-        ((StringBuilder)???).append(paramAtomicReference.a);
-        ((StringBuilder)???).append("|encodeKey|");
-        ((StringBuilder)???).append(c());
-        return true;
-      }
-      throw new RuntimeException("dyKey is null");
-    }
-    catch (Exception paramAtomicReference) {}
-    return false;
-  }
-  
-  public final asa b()
-  {
-    asa localasa = new asa();
-    localasa.a = this.e.a;
-    localasa.b = this.e.b;
-    return localasa;
-  }
-  
-  final String c()
-  {
-    synchronized (this.d)
-    {
-      if (this.e.b == null) {
-        return "";
-      }
-      String str = this.e.b;
-      return str;
-    }
+    return paramInt % 10000 - filterNormalCode(paramInt);
   }
 }
 

@@ -1,18 +1,41 @@
 package com.tencent.token;
 
-public abstract interface adp
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+public final class adp
+  extends ahh<Time>
 {
-  public abstract String a();
+  public static final ahk a = new a();
+  public final DateFormat b = new SimpleDateFormat("hh:mm:ss a");
   
-  public abstract String b();
+  public final void a(aep paramaep, Object paramObject)
+  {
+    paramObject = (Time)paramObject;
+    if (paramObject == null) {
+      paramObject = null;
+    }
+    try
+    {
+      paramObject = this.b.format(paramObject);
+      paramaep.b(paramObject);
+      return;
+    }
+    finally {}
+  }
   
-  public abstract String c();
-  
-  public abstract String d();
-  
-  public abstract String e();
-  
-  public abstract String f();
+  public final class a
+    implements ahk
+  {
+    public final <T> ahh<T> a(ahx paramahx, aek<T> paramaek)
+    {
+      if (paramaek.a == Time.class) {
+        return new adp();
+      }
+      return null;
+    }
+  }
 }
 
 

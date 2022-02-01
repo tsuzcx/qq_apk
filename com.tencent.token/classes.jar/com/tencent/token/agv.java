@@ -1,20 +1,18 @@
 package com.tencent.token;
 
-public abstract class agv
-  implements Runnable
+public final class agv
+  extends ahu
 {
-  public abstract void a();
+  public static final agv a = new agv();
   
-  public void run()
+  public final boolean equals(Object paramObject)
   {
-    try
-    {
-      System.currentTimeMillis();
-      a();
-      return;
-    }
-    finally {}
-    return;
+    return (this == paramObject) || ((paramObject instanceof agv));
+  }
+  
+  public final int hashCode()
+  {
+    return agv.class.hashCode();
   }
 }
 

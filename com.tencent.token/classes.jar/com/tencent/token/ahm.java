@@ -1,25 +1,29 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.wcdb.CursorWindow;
+import java.lang.reflect.Type;
 
-public abstract interface ahm
-  extends IInterface
+public final class ahm
+  implements acj<T>
 {
-  public abstract int a(ahn paramahn);
+  public final ack a = ack.a();
   
-  public abstract Bundle a(Bundle paramBundle);
+  public ahm(Class paramClass, Type paramType) {}
   
-  public abstract CursorWindow a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract Bundle c();
+  public final T a()
+  {
+    try
+    {
+      Object localObject = this.a.b(this.b);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Unable to invoke no-args constructor for ");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(". Registering an InstanceCreator with Gson for this type may fix this problem.");
+      throw new RuntimeException(localStringBuilder.toString(), localException);
+    }
+  }
 }
 
 

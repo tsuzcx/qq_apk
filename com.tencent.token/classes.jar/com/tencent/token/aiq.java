@@ -1,28 +1,54 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
+import java.io.Closeable;
 
-public final class aiq
-  extends ahv
+public abstract class aiq
+  implements Closeable
 {
-  Context a;
+  private int a = 1;
   
-  aiq(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
+  protected abstract void c();
+  
+  public void close()
   {
-    super(paramContext, str, paramString.getBytes(), paramSQLiteCipherSpec, new aio());
-    this.a = paramContext;
+    e();
   }
   
-  protected final void finalize()
+  public final void d()
   {
     try
     {
-      b();
-      return;
+      if (this.a > 0)
+      {
+        this.a += 1;
+        return;
+      }
+      throw new IllegalStateException("attempt to re-open an already-closed object: ".concat(String.valueOf(this)));
     }
-    catch (Exception localException) {}
-    return;
+    finally {}
+  }
+  
+  public final void e()
+  {
+    for (;;)
+    {
+      try
+      {
+        int j = this.a;
+        i = 1;
+        j -= 1;
+        this.a = j;
+        if (j == 0)
+        {
+          if (i != 0) {
+            c();
+          }
+          return;
+        }
+      }
+      finally {}
+      int i = 0;
+    }
   }
 }
 

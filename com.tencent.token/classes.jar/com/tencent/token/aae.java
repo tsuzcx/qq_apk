@@ -1,72 +1,131 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Environment;
-import android.widget.ImageView;
-import com.tencent.token.global.RqdApplication;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileFilter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.util.regex.Pattern;
 
 public final class aae
-  extends AsyncTask<String, Integer, Uri>
 {
-  private ImageView a;
-  
-  public aae(ImageView paramImageView)
+  public static String a()
   {
-    this.a = paramImageView;
-  }
-  
-  private static Uri a(String... paramVarArgs)
-  {
-    paramVarArgs = paramVarArgs[0];
     try
     {
-      xj.b("path".concat(String.valueOf(paramVarArgs)));
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(abj.b(paramVarArgs));
-      ((StringBuilder)localObject1).append(paramVarArgs.substring(paramVarArgs.lastIndexOf(".")));
-      Object localObject2 = ((StringBuilder)localObject1).toString();
-      localObject1 = RqdApplication.b().getExternalCacheDir();
-      aaj.a = (File)localObject1;
-      if (localObject1 == null) {
-        aaj.a = new File(Environment.getExternalStorageDirectory(), "cache");
-      }
-      if (!aaj.a.exists()) {
-        aaj.a.mkdirs();
-      }
-      if (!aaj.a.exists()) {
-        return null;
-      }
-      localObject1 = new File(aaj.a, (String)localObject2);
-      if (((File)localObject1).exists())
-      {
-        StringBuilder localStringBuilder = new StringBuilder("exists");
-        localStringBuilder.append(paramVarArgs);
-        localStringBuilder.append("name");
-        localStringBuilder.append((String)localObject2);
-        xj.b(localStringBuilder.toString());
-        return Uri.fromFile((File)localObject1);
-      }
-      xj.b("fromnet".concat(String.valueOf(paramVarArgs)));
-      paramVarArgs = new ajn().a(paramVarArgs);
-      if (paramVarArgs != null)
-      {
-        localObject2 = new FileOutputStream((File)localObject1);
-        ((FileOutputStream)localObject2).write(paramVarArgs, 0, paramVarArgs.length);
-        ((FileOutputStream)localObject2).close();
-        paramVarArgs = Uri.fromFile((File)localObject1);
-        return paramVarArgs;
-      }
-      return null;
+      String str = new java.io.BufferedReader(new java.io.FileReader("/proc/cpuinfo")).readLine().split(":\\s+", 2)[1];
+      return str;
     }
-    catch (Exception paramVarArgs)
+    catch (Exception localException)
     {
-      paramVarArgs.printStackTrace();
+      localException.printStackTrace();
     }
-    return null;
+    return aah.a;
+  }
+  
+  public static String b()
+  {
+    str1 = aah.a;
+    try
+    {
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      while (i < 100)
+      {
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
+        }
+        if (str2.indexOf("Serial") >= 0)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
+        i += 1;
+      }
+      return str1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public static String c()
+  {
+    str1 = aah.a;
+    try
+    {
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      while (i < 100)
+      {
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
+        }
+        if (str2.indexOf("Hardware") >= 0)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
+        i += 1;
+      }
+      return str1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public static int d()
+  {
+    try
+    {
+      int i = new File("/sys/devices/system/cpu/").listFiles(new a()).length;
+      return i;
+    }
+    catch (Exception localException)
+    {
+      label23:
+      break label23;
+    }
+    return 1;
+  }
+  
+  public static String e()
+  {
+    String str1 = "";
+    String str2;
+    try
+    {
+      InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
+      byte[] arrayOfByte = new byte[24];
+      while (localInputStream.read(arrayOfByte) != -1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(new String(arrayOfByte));
+        str1 = localStringBuilder.toString();
+      }
+      localInputStream.close();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      str2 = aah.a;
+    }
+    return str2.trim();
+  }
+  
+  final class a
+    implements FileFilter
+  {
+    public final boolean accept(File paramFile)
+    {
+      return Pattern.matches("cpu[0-9]", paramFile.getName());
+    }
   }
 }
 

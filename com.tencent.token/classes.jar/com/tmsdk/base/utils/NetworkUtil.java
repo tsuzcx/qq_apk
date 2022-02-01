@@ -10,7 +10,7 @@ import android.os.Build.VERSION;
 import btmsdkobf.bc;
 import btmsdkobf.eg;
 import btmsdkobf.ei;
-import com.tencent.token.aqo;
+import com.tencent.token.arm;
 
 public class NetworkUtil
 {
@@ -75,7 +75,7 @@ public class NetworkUtil
     return 1;
   }
   
-  public static aqo getNetworkType()
+  public static arm getNetworkType()
   {
     String str;
     try
@@ -88,20 +88,20 @@ public class NetworkUtil
       str = null;
     }
     if (str == null) {
-      return aqo.b;
+      return arm.b;
     }
     if (str.getType() == 1) {
-      return aqo.d;
+      return arm.d;
     }
     if (str.getType() == 0)
     {
       str = getProxyHost();
       if ((str != null) && (str.length() > 0) && (getProxyPort() > 0)) {
-        return aqo.e;
+        return arm.e;
       }
-      return aqo.f;
+      return arm.f;
     }
-    return aqo.f;
+    return arm.f;
   }
   
   public static String getProxyHost()

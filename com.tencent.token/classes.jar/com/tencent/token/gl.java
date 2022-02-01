@@ -1,246 +1,144 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegateImplV9;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.View;
-import android.view.Window;
-import android.view.Window.Callback;
+import android.widget.ImageView;
 
-class gl
-  extends AppCompatDelegateImplV9
+public final class gl
 {
-  boolean o = true;
-  private int w = -100;
-  private boolean x;
-  private b y;
+  static final b a = new a();
   
-  gl(Context paramContext, Window paramWindow, gh paramgh)
+  static
   {
-    super(paramContext, paramWindow, paramgh);
-  }
-  
-  private void t()
-  {
-    if (this.y == null) {
-      this.y = new b(gq.a(this.b));
-    }
-  }
-  
-  private boolean u()
-  {
-    PackageManager localPackageManager;
-    if ((this.x) && ((this.b instanceof Activity))) {
-      localPackageManager = this.b.getPackageManager();
-    }
-    try
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      int i = localPackageManager.getActivityInfo(new ComponentName(this.b, this.b.getClass()), 0).configChanges;
-      return (i & 0x200) == 0;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
-    return true;
-  }
-  
-  public final View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return null;
-  }
-  
-  Window.Callback a(Window.Callback paramCallback)
-  {
-    return new a(paramCallback);
-  }
-  
-  public final void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if ((paramBundle != null) && (this.w == -100)) {
-      this.w = paramBundle.getInt("appcompat:local_night_mode", -100);
+      a = new c();
+      return;
     }
   }
   
-  public final void b(Bundle paramBundle)
+  public static ColorStateList a(ImageView paramImageView)
   {
-    super.b(paramBundle);
-    int i = this.w;
-    if (i != -100) {
-      paramBundle.putInt("appcompat:local_night_mode", i);
-    }
+    return a.a(paramImageView);
   }
   
-  public final void d()
+  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
   {
-    super.d();
-    k();
+    a.a(paramImageView, paramColorStateList);
   }
   
-  public final void e()
+  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
   {
-    super.e();
-    b localb = this.y;
-    if (localb != null) {
-      localb.a();
-    }
+    a.a(paramImageView, paramMode);
   }
   
-  int f(int paramInt)
+  public static PorterDuff.Mode b(ImageView paramImageView)
   {
-    if (paramInt != -100)
+    return a.b(paramImageView);
+  }
+  
+  static class a
+    implements gl.b
+  {
+    public ColorStateList a(ImageView paramImageView)
     {
-      if (paramInt != 0) {
-        return paramInt;
-      }
-      t();
-      b localb = this.y;
-      localb.b = localb.a.a();
-      if (localb.b) {
-        return 2;
-      }
-      return 1;
-    }
-    return -1;
-  }
-  
-  public final void h()
-  {
-    super.h();
-    b localb = this.y;
-    if (localb != null) {
-      localb.a();
-    }
-  }
-  
-  public final boolean k()
-  {
-    int i = this.w;
-    if (i == -100) {
-      i = gi.a;
-    }
-    int j = f(i);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Object localObject;
-    if (j != -1)
-    {
-      localObject = this.b.getResources();
-      Configuration localConfiguration = ((Resources)localObject).getConfiguration();
-      int k = localConfiguration.uiMode;
-      if (j == 2) {
-        j = 32;
-      } else {
-        j = 16;
-      }
-      bool1 = bool2;
-      if ((k & 0x30) != j)
-      {
-        if (u())
-        {
-          ((Activity)this.b).recreate();
-        }
-        else
-        {
-          localConfiguration = new Configuration(localConfiguration);
-          DisplayMetrics localDisplayMetrics = ((Resources)localObject).getDisplayMetrics();
-          localConfiguration.uiMode = (j | localConfiguration.uiMode & 0xFFFFFFCF);
-          ((Resources)localObject).updateConfiguration(localConfiguration, localDisplayMetrics);
-          if (Build.VERSION.SDK_INT < 26) {
-            if (Build.VERSION.SDK_INT >= 24) {
-              gn.c((Resources)localObject);
-            } else if (Build.VERSION.SDK_INT >= 23) {
-              gn.b((Resources)localObject);
-            } else if (Build.VERSION.SDK_INT >= 21) {
-              gn.a((Resources)localObject);
-            }
-          }
-        }
-        bool1 = true;
-      }
-    }
-    if (i == 0)
-    {
-      t();
-      localObject = this.y;
-      ((b)localObject).a();
-      if (((b)localObject).c == null) {
-        ((b)localObject).c = new gl.b.1((b)localObject);
-      }
-      if (((b)localObject).d == null)
-      {
-        ((b)localObject).d = new IntentFilter();
-        ((b)localObject).d.addAction("android.intent.action.TIME_SET");
-        ((b)localObject).d.addAction("android.intent.action.TIMEZONE_CHANGED");
-        ((b)localObject).d.addAction("android.intent.action.TIME_TICK");
-      }
-      ((b)localObject).e.b.registerReceiver(((b)localObject).c, ((b)localObject).d);
-    }
-    this.x = true;
-    return bool1;
-  }
-  
-  class a
-    extends gj.b
-  {
-    a(Window.Callback paramCallback)
-    {
-      super(paramCallback);
-    }
-    
-    final ActionMode a(ActionMode.Callback paramCallback)
-    {
-      paramCallback = new he.a(gl.this.b, paramCallback);
-      ha localha = gl.this.a(paramCallback);
-      if (localha != null) {
-        return paramCallback.b(localha);
+      if ((paramImageView instanceof gr)) {
+        return ((gr)paramImageView).getSupportImageTintList();
       }
       return null;
     }
     
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+    public void a(ImageView paramImageView, ColorStateList paramColorStateList)
     {
-      if (gl.this.o) {
-        return a(paramCallback);
+      if ((paramImageView instanceof gr)) {
+        ((gr)paramImageView).setSupportImageTintList(paramColorStateList);
       }
-      return super.onWindowStartingActionMode(paramCallback);
+    }
+    
+    public void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      if ((paramImageView instanceof gr)) {
+        ((gr)paramImageView).setSupportImageTintMode(paramMode);
+      }
+    }
+    
+    public PorterDuff.Mode b(ImageView paramImageView)
+    {
+      if ((paramImageView instanceof gr)) {
+        return ((gr)paramImageView).getSupportImageTintMode();
+      }
+      return null;
     }
   }
   
-  final class b
+  static abstract interface b
   {
-    gq a;
-    boolean b;
-    BroadcastReceiver c;
-    IntentFilter d;
+    public abstract ColorStateList a(ImageView paramImageView);
     
-    b(gq paramgq)
+    public abstract void a(ImageView paramImageView, ColorStateList paramColorStateList);
+    
+    public abstract void a(ImageView paramImageView, PorterDuff.Mode paramMode);
+    
+    public abstract PorterDuff.Mode b(ImageView paramImageView);
+  }
+  
+  static final class c
+    extends gl.a
+  {
+    public final ColorStateList a(ImageView paramImageView)
     {
-      this.a = paramgq;
-      this.b = paramgq.a();
+      return paramImageView.getImageTintList();
     }
     
-    final void a()
+    public final void a(ImageView paramImageView, ColorStateList paramColorStateList)
     {
-      if (this.c != null)
+      paramImageView.setImageTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
       {
-        gl.this.b.unregisterReceiver(this.c);
-        this.c = null;
+        paramColorStateList = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramColorStateList != null) && (i != 0))
+        {
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramColorStateList);
+        }
       }
+    }
+    
+    public final void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      paramImageView.setImageTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramMode = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramMode);
+        }
+      }
+    }
+    
+    public final PorterDuff.Mode b(ImageView paramImageView)
+    {
+      return paramImageView.getImageTintMode();
     }
   }
 }

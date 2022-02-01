@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import com.tencent.token.en;
-import com.tencent.token.fa;
-import com.tencent.token.gs.f;
+import com.tencent.token.fb;
+import com.tencent.token.fo;
+import com.tencent.token.hg.f;
 
 public class AlertDialogLayout
   extends LinearLayoutCompat
@@ -63,7 +63,7 @@ public class AlertDialogLayout
           if (i < 0) {
             paramInt2 = i2 & 0x800007;
           }
-          paramInt2 = en.a(paramInt2, fa.c(this)) & 0x7;
+          paramInt2 = fb.a(paramInt2, fo.c(this)) & 0x7;
           if (paramInt2 != 1)
           {
             if (paramInt2 != 5) {
@@ -107,13 +107,13 @@ public class AlertDialogLayout
       if (((View)localObject2).getVisibility() != 8)
       {
         k = ((View)localObject2).getId();
-        if (k == gs.f.topPanel)
+        if (k == hg.f.topPanel)
         {
           localObject5 = localObject2;
           localObject6 = localObject1;
           localObject7 = localObject3;
         }
-        else if (k == gs.f.buttonPanel)
+        else if (k == hg.f.buttonPanel)
         {
           localObject5 = localObject4;
           localObject6 = localObject2;
@@ -121,7 +121,7 @@ public class AlertDialogLayout
         }
         else
         {
-          if ((k != gs.f.contentPanel) && (k != gs.f.customPanel))
+          if ((k != hg.f.contentPanel) && (k != hg.f.customPanel))
           {
             i = j;
             break label777;
@@ -162,7 +162,7 @@ public class AlertDialogLayout
       ((View)localObject1).measure(paramInt1, 0);
       for (localObject2 = localObject1;; localObject2 = ((ViewGroup)localObject2).getChildAt(0))
       {
-        i = fa.e((View)localObject2);
+        i = fo.e((View)localObject2);
         if (i > 0) {
           break label311;
         }

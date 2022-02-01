@@ -1,11 +1,11 @@
 package com.tencent.wcdb.repair;
 
-import com.tencent.token.ahd;
-import com.tencent.token.aie.a;
+import com.tencent.token.aid;
+import com.tencent.token.aje.a;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
 
 public class RepairKit
-  implements aie.a
+  implements aje.a
 {
   private long a;
   private b b;
@@ -71,7 +71,7 @@ public class RepairKit
   }
   
   static class RepairCursor
-    extends ahd
+    extends aid
   {
     long i;
     

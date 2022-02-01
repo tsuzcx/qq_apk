@@ -1,44 +1,120 @@
 package com.tencent.token;
 
+import java.net.ProtocolException;
+
 public final class amf
+  implements ale
 {
-  int a;
-  final int[] b = new int[10];
+  private final boolean a;
   
-  final int a()
+  public amf(boolean paramBoolean)
   {
-    if ((this.a & 0x2) != 0) {
-      return this.b[1];
-    }
-    return -1;
+    this.a = paramBoolean;
   }
   
-  final amf a(int paramInt1, int paramInt2)
+  public final all a(ale.a parama)
   {
-    if (paramInt1 >= 0)
+    parama = (amk)parama;
+    amg localamg = parama.b;
+    amd localamd = parama.a;
+    alz localalz = (alz)parama.c;
+    alj localalj = parama.d;
+    long l = System.currentTimeMillis();
+    localamg.a(localalj);
+    boolean bool = amj.a(localalj.b);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    parama = localObject2;
+    if (bool)
     {
-      int[] arrayOfInt = this.b;
-      if (paramInt1 >= arrayOfInt.length) {
-        return this;
+      parama = localObject2;
+      if (localalj.d != null)
+      {
+        if ("100-continue".equalsIgnoreCase(localalj.a("Expect")))
+        {
+          localamg.a();
+          localObject1 = localamg.a(true);
+        }
+        if (localObject1 == null)
+        {
+          parama = aoc.a(new a(localamg.a(localalj, localalj.d.b())));
+          localalj.d.a(parama);
+          parama.close();
+          parama = (ale.a)localObject1;
+        }
+        else
+        {
+          parama = (ale.a)localObject1;
+          if (!localalz.a())
+          {
+            localamd.d();
+            parama = (ale.a)localObject1;
+          }
+        }
       }
-      this.a = (1 << paramInt1 | this.a);
-      arrayOfInt[paramInt1] = paramInt2;
-      return this;
     }
-    return this;
+    localamg.b();
+    localObject1 = parama;
+    if (parama == null) {
+      localObject1 = localamg.a(false);
+    }
+    ((all.a)localObject1).a = localalj;
+    ((all.a)localObject1).e = localamd.b().c;
+    ((all.a)localObject1).k = l;
+    ((all.a)localObject1).l = System.currentTimeMillis();
+    parama = ((all.a)localObject1).a();
+    int j = parama.c;
+    int i = j;
+    if (j == 100)
+    {
+      parama = localamg.a(false);
+      parama.a = localalj;
+      parama.e = localamd.b().c;
+      parama.k = l;
+      parama.l = System.currentTimeMillis();
+      parama = parama.a();
+      i = parama.c;
+    }
+    if ((this.a) && (i == 101))
+    {
+      parama = parama.a();
+      parama.g = alr.c;
+      parama = parama.a();
+    }
+    else
+    {
+      localObject1 = parama.a();
+      ((all.a)localObject1).g = localamg.a(parama);
+      parama = ((all.a)localObject1).a();
+    }
+    if (("close".equalsIgnoreCase(parama.a.a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
+      localamd.d();
+    }
+    if (((i != 204) && (i != 205)) || (parama.g.a() <= 0L)) {
+      return parama;
+    }
+    localObject1 = new StringBuilder("HTTP ");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" had non-zero Content-Length: ");
+    ((StringBuilder)localObject1).append(parama.g.a());
+    throw new ProtocolException(((StringBuilder)localObject1).toString());
   }
   
-  final boolean a(int paramInt)
+  static final class a
+    extends anx
   {
-    return (1 << paramInt & this.a) != 0;
-  }
-  
-  final int b()
-  {
-    if ((this.a & 0x80) != 0) {
-      return this.b[7];
+    long a;
+    
+    a(aoi paramaoi)
+    {
+      super();
     }
-    return 65535;
+    
+    public final void a_(ant paramant, long paramLong)
+    {
+      super.a_(paramant, paramLong);
+      this.a += paramLong;
+    }
   }
 }
 

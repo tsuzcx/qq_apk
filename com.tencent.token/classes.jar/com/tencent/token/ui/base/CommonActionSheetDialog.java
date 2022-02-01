@@ -30,8 +30,8 @@ public class CommonActionSheetDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296316);
-    this.c = ((LinearLayout)findViewById(2131165255));
+    setContentView(2131296320);
+    this.c = ((LinearLayout)findViewById(2131165260));
     setCanceledOnTouchOutside(true);
     paramBundle = getWindow();
     paramBundle.setBackgroundDrawableResource(2131099877);
@@ -45,7 +45,7 @@ public class CommonActionSheetDialog
       if (j < 2) {
         return;
       }
-      paramBundle = (Button)findViewById(2131165253);
+      paramBundle = (Button)findViewById(2131165258);
       paramBundle.setText(this.d[0]);
       paramBundle.setOnClickListener(new View.OnClickListener()
       {
@@ -54,7 +54,7 @@ public class CommonActionSheetDialog
           CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(0);
         }
       });
-      paramBundle = (Button)findViewById(2131165254);
+      paramBundle = (Button)findViewById(2131165259);
       paramBundle.setText(this.d[1]);
       paramBundle.setOnClickListener(new View.OnClickListener()
       {

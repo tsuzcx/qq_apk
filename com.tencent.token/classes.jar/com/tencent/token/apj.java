@@ -1,23 +1,19 @@
 package com.tencent.token;
 
-import java.util.List;
-
 public final class apj
+  extends apr<Integer, Integer>
 {
-  final List<aoz> a;
-  final double b;
-  private final char c;
-  private final String d;
-  private final String e;
-  
-  public static int a(char paramChar, String paramString1, String paramString2)
+  private apj()
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    super(Integer.valueOf(100));
   }
   
-  public final int hashCode()
+  public final aou<Integer> a()
   {
-    return a(this.c, this.e, this.d);
+    if (!super.b()) {
+      return new apb(this.b);
+    }
+    return new aoo(this.a);
   }
 }
 

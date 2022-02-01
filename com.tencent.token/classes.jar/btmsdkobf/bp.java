@@ -2,8 +2,8 @@ package btmsdkobf;
 
 import android.content.Context;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aum;
-import com.tencent.token.auo;
+import com.tencent.token.avk;
+import com.tencent.token.avm;
 
 public class bp
 {
@@ -18,12 +18,12 @@ public class bp
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return auo.b(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return auo.a(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static Context getAppContext()
@@ -91,10 +91,10 @@ public class bp
     catch (Throwable paramString) {}
   }
   
-  public static boolean sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aum paramaum, long paramLong)
+  public static boolean sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, avk paramavk, long paramLong)
   {
     if (paramJceStruct1 != null) {
-      if (paramaum == null) {
+      if (paramavk == null) {
         return false;
       }
     }

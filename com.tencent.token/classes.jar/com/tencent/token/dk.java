@@ -1,214 +1,34 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import java.lang.reflect.Method;
-import org.xmlpull.v1.XmlPullParser;
-
-public final class dk
+public final class dk<D>
 {
-  private static Method a;
-  private static boolean b;
-  private static Method c;
-  private static boolean d;
+  public int a;
+  public a<D> b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
   
-  public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
+  public static String a(D paramD)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.setHotspot(paramFloat1, paramFloat2);
-    }
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    ep.a(paramD, localStringBuilder);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
-  public static void a(Drawable paramDrawable, int paramInt)
+  public final String toString()
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTint(paramInt);
-      return;
-    }
-    if ((paramDrawable instanceof dl)) {
-      ((dl)paramDrawable).setTint(paramInt);
-    }
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    ep.a(this, localStringBuilder);
+    localStringBuilder.append(" id=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
-  public static void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, ColorStateList paramColorStateList)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTintList(paramColorStateList);
-      return;
-    }
-    if ((paramDrawable instanceof dl)) {
-      ((dl)paramDrawable).setTintList(paramColorStateList);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, Resources.Theme paramTheme)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.applyTheme(paramTheme);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
-      return;
-    }
-    paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
-  }
-  
-  public static void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTintMode(paramMode);
-      return;
-    }
-    if ((paramDrawable instanceof dl)) {
-      ((dl)paramDrawable).setTintMode(paramMode);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      paramDrawable.setAutoMirrored(paramBoolean);
-    }
-  }
-  
-  public static boolean a(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.isAutoMirrored();
-    }
-    return false;
-  }
-  
-  public static int b(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.getAlpha();
-    }
-    return 0;
-  }
-  
-  public static boolean b(Drawable paramDrawable, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable.setLayoutDirection(paramInt);
-    }
-    if ((Build.VERSION.SDK_INT < 17) || (!b)) {}
-    try
-    {
-      Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-      a = localMethod;
-      localMethod.setAccessible(true);
-      label55:
-      b = true;
-      localMethod = a;
-      if (localMethod != null) {}
-      try
-      {
-        localMethod.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
-        return true;
-      }
-      catch (Exception paramDrawable)
-      {
-        label86:
-        break label86;
-      }
-      a = null;
-      return false;
-      return false;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label55;
-    }
-  }
-  
-  public static boolean c(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramDrawable.canApplyTheme();
-    }
-    return false;
-  }
-  
-  public static Drawable d(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      if (!(paramDrawable instanceof dl)) {
-        return new dp(paramDrawable);
-      }
-      return paramDrawable;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      if (!(paramDrawable instanceof dl)) {
-        return new do(paramDrawable);
-      }
-      return paramDrawable;
-    }
-    if (!(paramDrawable instanceof dl)) {
-      return new dn(paramDrawable);
-    }
-    return paramDrawable;
-  }
-  
-  public static int e(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable.getLayoutDirection();
-    }
-    if ((Build.VERSION.SDK_INT < 17) || (!d)) {}
-    try
-    {
-      Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-      c = localMethod;
-      localMethod.setAccessible(true);
-      label48:
-      d = true;
-      localMethod = c;
-      if (localMethod != null) {}
-      try
-      {
-        int i = ((Integer)localMethod.invoke(paramDrawable, new Object[0])).intValue();
-        return i;
-      }
-      catch (Exception paramDrawable)
-      {
-        label78:
-        break label78;
-      }
-      c = null;
-      return 0;
-      return 0;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label48;
-    }
-  }
+  public static abstract interface a<D> {}
 }
 
 

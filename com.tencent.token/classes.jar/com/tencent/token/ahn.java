@@ -1,94 +1,139 @@
 package com.tencent.token;
 
-import android.net.Uri;
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.turingfd.sdk.qps.switch;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentNavigableMap;
 
-public abstract interface ahn
-  extends IInterface
+public final class ahn
 {
-  public abstract void a(boolean paramBoolean, Uri paramUri);
+  public final Map<Type, agu<?>> a;
+  public final aeh b = aeh.a();
   
-  public static abstract class a
-    extends Binder
-    implements ahn
+  public ahn(Map<Type, agu<?>> paramMap)
   {
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-    {
-      if (paramInt1 != 1)
-      {
-        if (paramInt1 != 1598968902) {
-          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-        }
-        paramParcel2.writeString("com.tencent.wcdb.IContentObserver");
-        return true;
-      }
-      paramParcel1.enforceInterface("com.tencent.wcdb.IContentObserver");
-      boolean bool;
-      if (paramParcel1.readInt() != 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      if (paramParcel1.readInt() != 0) {
-        paramParcel1 = (Uri)Uri.CREATOR.createFromParcel(paramParcel1);
-      } else {
-        paramParcel1 = null;
-      }
-      a(bool, paramParcel1);
-      return true;
+    this.a = paramMap;
+  }
+  
+  public final <T> acj<T> a(aek<T> paramaek)
+  {
+    final Type localType = paramaek.b;
+    Class localClass2 = paramaek.a;
+    paramaek = (agu)this.a.get(localType);
+    if (paramaek != null) {
+      return new a(paramaek, localType);
     }
-    
-    static final class a
-      implements ahn
+    paramaek = (agu)this.a.get(localClass2);
+    if (paramaek != null) {
+      return new b(paramaek, localType);
+    }
+    Class localClass1 = null;
+    try
     {
-      private IBinder a;
-      
-      a(IBinder paramIBinder)
-      {
-        this.a = paramIBinder;
+      paramaek = localClass2.getDeclaredConstructor(new Class[0]);
+      if (!paramaek.isAccessible()) {
+        this.b.a(paramaek);
       }
-      
-      public final void a(boolean paramBoolean, Uri paramUri)
-      {
-        Parcel localParcel = Parcel.obtain();
-        for (;;)
+      paramaek = new agt(paramaek);
+    }
+    catch (NoSuchMethodException paramaek)
+    {
+      label107:
+      break label107;
+    }
+    paramaek = null;
+    if (paramaek != null) {
+      return paramaek;
+    }
+    if (Collection.class.isAssignableFrom(localClass2))
+    {
+      if (SortedSet.class.isAssignableFrom(localClass2)) {
+        paramaek = new agy();
+      } else if (EnumSet.class.isAssignableFrom(localClass2)) {
+        paramaek = new ahs(localType);
+      } else if (Set.class.isAssignableFrom(localClass2)) {
+        paramaek = new ahy();
+      } else if (Queue.class.isAssignableFrom(localClass2)) {
+        paramaek = new ahj();
+      } else {
+        paramaek = new aho();
+      }
+    }
+    else
+    {
+      paramaek = localClass1;
+      if (Map.class.isAssignableFrom(localClass2)) {
+        if (ConcurrentNavigableMap.class.isAssignableFrom(localClass2))
         {
-          try
+          paramaek = new ahw();
+        }
+        else if (ConcurrentMap.class.isAssignableFrom(localClass2))
+        {
+          paramaek = new ahv();
+        }
+        else if (SortedMap.class.isAssignableFrom(localClass2))
+        {
+          paramaek = new agz();
+        }
+        else
+        {
+          if ((localType instanceof ParameterizedType))
           {
-            localParcel.writeInterfaceToken("com.tencent.wcdb.IContentObserver");
-            if (paramBoolean)
+            paramaek = ((ParameterizedType)localType).getActualTypeArguments()[0];
+            paramaek.getClass();
+            paramaek = switch.a(paramaek);
+            localClass1 = switch.b(paramaek);
+            paramaek.hashCode();
+            if (!String.class.isAssignableFrom(localClass1))
             {
-              i = 1;
-              localParcel.writeInt(i);
-              if (paramUri != null)
-              {
-                localParcel.writeInt(1);
-                paramUri.writeToParcel(localParcel, 0);
-              }
-              else
-              {
-                localParcel.writeInt(0);
-              }
-              this.a.transact(1, localParcel, null, 1);
-              return;
+              paramaek = new ahc();
+              break label363;
             }
           }
-          finally
-          {
-            localParcel.recycle();
-          }
-          int i = 0;
+          paramaek = new ahd();
         }
       }
-      
-      public final IBinder asBinder()
-      {
-        return this.a;
-      }
+    }
+    label363:
+    if (paramaek != null) {
+      return paramaek;
+    }
+    return new ahm(localClass2, localType);
+  }
+  
+  public final String toString()
+  {
+    return this.a.toString();
+  }
+  
+  public final class a
+    implements acj<T>
+  {
+    public a(Type paramType) {}
+    
+    public final T a()
+    {
+      return ahn.this.a();
+    }
+  }
+  
+  public final class b
+    implements acj<T>
+  {
+    public b(Type paramType) {}
+    
+    public final T a()
+    {
+      return ahn.this.a();
     }
   }
 }

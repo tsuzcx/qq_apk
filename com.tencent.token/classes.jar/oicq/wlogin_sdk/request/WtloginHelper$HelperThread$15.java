@@ -10,17 +10,20 @@ class WtloginHelper$HelperThread$15
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    if (WtloginHelper.access$200(this.this$1.mHelper) == null)
     {
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
-    WtloginHelper.access$100(this.this$1.mHelper).onQuickLogin(this.this$1.mUserAccount, this.this$1.quickLoginParam, this.val$ret, localErrMsg);
+    async_context localasync_context = u.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = localasync_context._last_err_msg;
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$800(this.this$1, localasync_context, this.val$ret);
+    WtloginHelper.access$200(this.this$1.mHelper).onQuickLogin(this.this$1.mUserAccount, this.this$1.quickLoginParam, this.val$ret, localErrMsg);
   }
 }
 

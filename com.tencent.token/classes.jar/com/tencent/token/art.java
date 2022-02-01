@@ -1,20 +1,38 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
+import android.content.Context;
+import android.os.Handler;
+import java.util.concurrent.ConcurrentHashMap;
+import tmsdk.common.c.a.b;
 
-public abstract interface art
+public final class art
 {
-  public abstract int a();
+  private static art d;
+  private static Object e = new Object();
+  public Context a = arn.a();
+  public ConcurrentHashMap b = new ConcurrentHashMap();
+  private Handler c = null;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static art a()
+  {
+    if (d == null) {
+      synchronized (e)
+      {
+        if (d == null) {
+          d = new art();
+        }
+      }
+    }
+    return d;
+  }
   
-  public abstract void a(long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3);
-  
-  public abstract void a(AtomicLong paramAtomicLong, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, AtomicReference paramAtomicReference3);
-  
-  public abstract int b();
+  public final void a(String paramString)
+  {
+    paramString = (b)this.b.remove(paramString);
+    if (paramString != null) {
+      this.a.unregisterReceiver(paramString);
+    }
+  }
 }
 
 

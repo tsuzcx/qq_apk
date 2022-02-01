@@ -1,131 +1,124 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Rect;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
-import android.widget.HeaderViewListAdapter;
-import android.widget.ListAdapter;
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.animation.Interpolator;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-abstract class hu
-  implements AdapterView.OnItemClickListener, hw, ia
+public final class hu
 {
-  Rect e;
-  
-  protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
+  final ArrayList<fr> a = new ArrayList();
+  fs b;
+  boolean c;
+  private long d = -1L;
+  private Interpolator e;
+  private final ft f = new ft()
   {
-    int j = 0;
-    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i3 = paramListAdapter.getCount();
-    Object localObject1 = paramViewGroup;
-    paramViewGroup = null;
-    int i = 0;
-    int m = 0;
-    while (j < i3)
+    private boolean b = false;
+    private int c = 0;
+    
+    public final void a(View paramAnonymousView)
     {
-      int n = paramListAdapter.getItemViewType(j);
-      int k = m;
-      if (n != m)
+      if (this.b) {
+        return;
+      }
+      this.b = true;
+      if (hu.this.b != null) {
+        hu.this.b.a(null);
+      }
+    }
+    
+    public final void b(View paramAnonymousView)
+    {
+      int i = this.c + 1;
+      this.c = i;
+      if (i == hu.this.a.size())
       {
-        paramViewGroup = null;
-        k = n;
+        if (hu.this.b != null) {
+          hu.this.b.b(null);
+        }
+        this.c = 0;
+        this.b = false;
+        hu.this.c = false;
       }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new FrameLayout(paramContext);
-      }
-      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
-      paramViewGroup.measure(i1, i2);
-      m = paramViewGroup.getMeasuredWidth();
-      if (m >= paramInt) {
-        return paramInt;
-      }
-      n = i;
-      if (m > i) {
-        n = m;
-      }
-      j += 1;
-      m = k;
-      localObject1 = localObject2;
-      i = n;
     }
-    return i;
+  };
+  
+  public final hu a(Interpolator paramInterpolator)
+  {
+    if (!this.c) {
+      this.e = paramInterpolator;
+    }
+    return this;
   }
   
-  protected static ho a(ListAdapter paramListAdapter)
+  public final hu a(fr paramfr)
   {
-    if ((paramListAdapter instanceof HeaderViewListAdapter)) {
-      return (ho)((HeaderViewListAdapter)paramListAdapter).getWrappedAdapter();
+    if (!this.c) {
+      this.a.add(paramfr);
     }
-    return (ho)paramListAdapter;
+    return this;
   }
   
-  protected static boolean b(hp paramhp)
+  public final hu a(fr paramfr1, fr paramfr2)
   {
-    int j = paramhp.size();
-    int i = 0;
-    while (i < j)
+    this.a.add(paramfr1);
+    paramfr2.b(paramfr1.a());
+    this.a.add(paramfr2);
+    return this;
+  }
+  
+  public final hu a(fs paramfs)
+  {
+    if (!this.c) {
+      this.b = paramfs;
+    }
+    return this;
+  }
+  
+  public final void a()
+  {
+    if (this.c) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      MenuItem localMenuItem = paramhp.getItem(i);
-      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
-        return true;
+      fr localfr = (fr)localIterator.next();
+      long l = this.d;
+      if (l >= 0L) {
+        localfr.a(l);
       }
-      i += 1;
+      Interpolator localInterpolator = this.e;
+      if (localInterpolator != null) {
+        localfr.a(localInterpolator);
+      }
+      if (this.b != null) {
+        localfr.a(this.f);
+      }
+      localfr.c();
     }
-    return false;
+    this.c = true;
   }
   
-  public abstract void a(int paramInt);
-  
-  public final void a(Context paramContext, hp paramhp) {}
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(PopupWindow.OnDismissListener paramOnDismissListener);
-  
-  public abstract void a(hp paramhp);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public final boolean b(hr paramhr)
+  public final void b()
   {
-    return false;
-  }
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public final boolean c(hr paramhr)
-  {
-    return false;
-  }
-  
-  protected boolean f()
-  {
-    return true;
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = (ListAdapter)paramAdapterView.getAdapter();
-    paramAdapterView = a(paramView).b;
-    paramView = (MenuItem)paramView.getItem(paramInt);
-    if (f()) {
-      paramInt = 0;
-    } else {
-      paramInt = 4;
+    if (!this.c) {
+      return;
     }
-    paramAdapterView.a(paramView, this, paramInt);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((fr)localIterator.next()).b();
+    }
+    this.c = false;
+  }
+  
+  public final hu c()
+  {
+    if (!this.c) {
+      this.d = 250L;
+    }
+    return this;
   }
 }
 

@@ -8,7 +8,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.sa;
+import com.tencent.token.sn;
 
 public class LoginMsgRightLetterView
   extends View
@@ -24,11 +24,11 @@ public class LoginMsgRightLetterView
   {
     super(paramContext, paramAttributeSet);
     this.d = paramContext.getResources().getDimension(2131034251);
-    this.e = sa.a().f;
+    this.e = sn.a().f;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);
-    this.b.setColor(paramContext.getResources().getColor(2130968690));
+    this.b.setColor(paramContext.getResources().getColor(2130968691));
   }
   
   public LoginMsgRightLetterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)

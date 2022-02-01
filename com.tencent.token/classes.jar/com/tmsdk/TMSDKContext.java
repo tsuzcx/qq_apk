@@ -4,13 +4,13 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aam;
-import com.tencent.token.aao;
-import com.tencent.token.ado;
-import com.tencent.token.afw;
+import com.tencent.token.aaw;
+import com.tencent.token.aay;
+import com.tencent.token.ael;
+import com.tencent.token.agn;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.xf;
-import com.tencent.token.xq;
+import com.tencent.token.xr;
+import com.tencent.token.yc;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
@@ -145,12 +145,12 @@ public class TMSDKContext
       {
         public final int getBuildNo()
         {
-          return xf.d();
+          return xr.d();
         }
         
         public final String getChannel()
         {
-          String str = aao.k();
+          String str = aay.k();
           if ("0000".equals(str)) {
             return "999001";
           }
@@ -159,12 +159,12 @@ public class TMSDKContext
         
         public final String getDeviceId1()
         {
-          return aao.b(this.val$aContext);
+          return aay.l();
         }
         
         public final String getDeviceId2()
         {
-          return aao.c(this.val$aContext);
+          return aay.c(this.val$aContext);
         }
         
         public final String getDeviceId3()
@@ -175,15 +175,15 @@ public class TMSDKContext
         public final String getDeviceId4()
         {
           
-          if (!xq.a) {
+          if (!yc.a) {
             return "";
           }
           long l = System.currentTimeMillis();
-          Object localObject2 = afw.a(RqdApplication.p());
+          Object localObject2 = agn.a(RqdApplication.n());
           Object localObject1 = "";
-          if (((ado)localObject2).a() == 0)
+          if (((ael)localObject2).a() == 0)
           {
-            localObject2 = ((ado)localObject2).c();
+            localObject2 = ((ael)localObject2).c();
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               localObject1 = "";
@@ -203,7 +203,7 @@ public class TMSDKContext
         
         public final String getOpenIdTicket()
         {
-          return xq.b();
+          return yc.b();
         }
         
         public final int getProductId()
@@ -228,7 +228,7 @@ public class TMSDKContext
         
         public final String getVersion()
         {
-          return aam.b;
+          return aaw.b;
         }
         
         public final boolean isAllowAndroidID()

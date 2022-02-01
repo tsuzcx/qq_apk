@@ -1,8 +1,23 @@
 package com.tencent.token;
 
+import android.graphics.Path;
+
 public final class apm
+  extends apr<apw, Path>
 {
-  public static ats a;
+  private final Path c;
+  
+  public final aoq<?, Path> c()
+  {
+    if (!super.b())
+    {
+      apw localapw = (apw)this.b;
+      this.c.reset();
+      awb.a(localapw, this.c);
+      return new apb(this.c);
+    }
+    return new aoz(this.a);
+  }
 }
 
 

@@ -2,115 +2,44 @@ package com.tencent.token;
 
 public final class xj
 {
-  private static String a()
+  public static int a(byte[] paramArrayOfByte, int paramInt, xi paramxi)
   {
-    String str = "";
-    Object localObject = new Throwable().getStackTrace();
-    if (localObject.length > 2)
-    {
-      str = localObject[2];
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(str.getFileName());
-      ((StringBuilder)localObject).append(":");
-      ((StringBuilder)localObject).append(str.getLineNumber());
-      ((StringBuilder)localObject).append("|");
-      localObject = ((StringBuilder)localObject).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(str.getMethodName());
-      localStringBuilder.append("()] ");
-      str = localStringBuilder.toString();
+    if (paramInt <= 42) {
+      return -1;
     }
-    return str;
-  }
-  
-  private static void a(int paramInt, String paramString1, String paramString2)
-  {
-    abu.a().a(paramInt, paramString1, paramString2);
-  }
-  
-  public static void a(String paramString)
-  {
-    String str = paramString;
-    if (abu.a().d)
+    if ((paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramInt - 1)] == 3))
     {
-      str = a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str);
-      localStringBuilder.append(paramString);
-      str = localStringBuilder.toString();
-    }
-    boolean bool = abu.a().c;
-    a(2, "TokenLog", str);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    String str = paramString2;
-    if (abu.a().d)
-    {
-      str = a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str);
-      localStringBuilder.append(paramString2);
-      str = localStringBuilder.toString();
-    }
-    boolean bool = abu.a().c;
-    a(2, paramString1, str);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      String str;
-      if (abu.a().d)
-      {
-        str = a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("assert failed");
-        str = localStringBuilder.toString();
+      paramxi.a = tl.a(paramArrayOfByte, 1);
+      if (paramxi.a != paramInt) {
+        return -3;
       }
-      else
-      {
-        str = "assert failed";
-      }
-      paramBoolean = abu.a().c;
-      a(16, "TokenLog", str);
+      paramxi.b = tl.a(paramArrayOfByte, 3);
+      paramxi.c = tl.b(paramArrayOfByte, 5);
+      xi.d = tl.b(paramArrayOfByte, 9);
+      paramxi.e = tl.a(paramArrayOfByte, 13);
+      paramxi.f = tl.a(paramArrayOfByte, 15);
+      paramxi.g = tl.a(paramArrayOfByte, 17);
+      paramxi.h = tl.b(paramArrayOfByte, 19);
+      paramxi.i = paramArrayOfByte[23];
+      paramxi.j = paramArrayOfByte[24];
+      tl.b(paramArrayOfByte, 25, xi.k, 16);
+      paramArrayOfByte = new StringBuilder("socket parse msg head: totallen[");
+      paramArrayOfByte.append(paramxi.a);
+      paramArrayOfByte.append("] msgtype[");
+      paramArrayOfByte.append(paramxi.b);
+      paramArrayOfByte.append("] seq[");
+      paramArrayOfByte.append(paramxi.c);
+      paramArrayOfByte.append("] traceID[");
+      paramArrayOfByte.append(xi.d);
+      paramArrayOfByte.append("] version[");
+      paramArrayOfByte.append(paramxi.g);
+      paramArrayOfByte.append("] echo[");
+      paramArrayOfByte.append(xi.k);
+      paramArrayOfByte.append("]");
+      xv.a(paramArrayOfByte.toString());
+      return 0;
     }
-  }
-  
-  public static void b(String paramString)
-  {
-    String str = paramString;
-    if (abu.a().d)
-    {
-      str = a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str);
-      localStringBuilder.append(paramString);
-      str = localStringBuilder.toString();
-    }
-    boolean bool = abu.a().c;
-    a(4, "TokenLog", str);
-  }
-  
-  public static void c(String paramString)
-  {
-    String str = paramString;
-    if (abu.a().d)
-    {
-      str = a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str);
-      localStringBuilder.append(paramString);
-      str = localStringBuilder.toString();
-    }
-    boolean bool = abu.a().c;
-    a(16, "TokenLog", str);
+    return -2;
   }
 }
 

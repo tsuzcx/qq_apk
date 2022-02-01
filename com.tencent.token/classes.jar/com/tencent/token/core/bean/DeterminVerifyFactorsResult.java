@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xj;
+import com.tencent.token.xv;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class DeterminVerifyFactorsResult
   public boolean isAddAccountFlag;
   private int mCanVerify;
   private int mHaveMobile;
-  private int mIsZzb;
+  public int mIsZzb;
   private int mMobileAppear;
   public String mMobileMask;
   private int mMobileUp;
@@ -58,7 +58,7 @@ public class DeterminVerifyFactorsResult
     this.mVerifyTypeList = new ArrayList();
     Object localObject = new StringBuilder("DeterminVerifyFactorsResult jsonObject=");
     ((StringBuilder)localObject).append(paramJSONObject.toString());
-    xj.a(((StringBuilder)localObject).toString());
+    xv.a(((StringBuilder)localObject).toString());
     s_SourceId = 0;
     this.mCanVerify = paramJSONObject.getInt("can_verify");
     this.mScene = paramJSONObject.optInt("scene");
@@ -113,15 +113,10 @@ public class DeterminVerifyFactorsResult
   
   public final boolean c()
   {
-    return this.mIsZzb == 1;
-  }
-  
-  public final boolean d()
-  {
     return this.mMobileAppear == 1;
   }
   
-  public final boolean e()
+  public final boolean d()
   {
     return this.mMobileUp == 1;
   }

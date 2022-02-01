@@ -4,8 +4,8 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import com.tencent.token.aw;
-import com.tencent.token.bg;
+import com.tencent.token.bk;
+import com.tencent.token.bu;
 
 public class ProcessLifecycleOwnerInitializer
   extends ContentProvider
@@ -27,8 +27,8 @@ public class ProcessLifecycleOwnerInitializer
   
   public boolean onCreate()
   {
-    aw.a(getContext());
-    bg.a(getContext());
+    bk.a(getContext());
+    bu.a(getContext());
     return true;
   }
   

@@ -1,73 +1,126 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class tq
-  extends tr
+public class tq
 {
-  private long d;
-  private int[] e;
-  private int[] f;
-  private String g;
-  private int h;
+  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
+  protected List<sy> b = new ArrayList();
+  protected long c;
+  private int d;
   
-  protected final String a()
+  protected tq(int paramInt)
   {
-    sh.a();
-    this.a.a(10000, null, null);
+    this.d = paramInt;
+  }
+  
+  public final sy a(int paramInt)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    int i = b();
+    if (paramInt >= 0)
+    {
+      if (paramInt >= i) {
+        return null;
+      }
+      return (sy)this.b.get(paramInt);
+    }
     return null;
   }
   
-  protected final void a(abc paramabc)
+  public final xt a(sy paramsy, int paramInt)
   {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.e = ((int[])paramabc.c.get("param.mbinfo.id"));
-    this.f = ((int[])paramabc.c.get("param.mbinfo.val"));
-    this.g = ((String)paramabc.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramabc.c.get("param.common.seq")).intValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    xt localxt = new xt();
+    new akl();
+    tt.a();
+    if (paramsy == null)
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
+      localxt.a(10023, null, null);
+      return localxt;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Object localObject = new AtomicReference(null);
+    rt.a().a(paramsy.c, paramsy.b, paramsy.a, paramsy.d, paramInt, paramsy.c, this.d, new rt.a()
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xj.b("ProtoSetServiceStatusV2:".concat(String.valueOf(paramJSONObject)));
-      paramJSONObject.getLong("uin");
-      if (paramJSONObject.getInt("seq_id") != this.h)
+      public final void a(rv paramAnonymousrv)
       {
-        this.a.a(10030, null, null);
-        return;
+        this.a.set(paramAnonymousrv);
+        localCountDownLatch.countDown();
       }
-      this.a.a = 0;
-      return;
+    });
+    try
+    {
+      localCountDownLatch.await();
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    catch (InterruptedException paramsy)
+    {
+      paramsy.printStackTrace();
+    }
+    paramsy = (rv)((AtomicReference)localObject).get();
+    if (paramsy == null)
+    {
+      localxt.a(-789, null, null);
+      return localxt;
+    }
+    try
+    {
+      paramInt = paramsy.b;
+      if (paramInt != 0)
+      {
+        paramsy = paramsy.d;
+        localxt.a(paramInt, paramsy, paramsy);
+        return localxt;
+      }
+      paramsy = paramsy.c;
+      if (paramsy != null)
+      {
+        new JSONObject(paramsy);
+        tt.a().g();
+        localxt.a = 0;
+        return localxt;
+      }
+      xv.c("parseJSON error decodeData");
+      localxt.a(10022, RqdApplication.n().getString(2131493069), null);
+      return localxt;
+    }
+    catch (Exception paramsy)
+    {
+      localObject = new StringBuilder("unknown err: ");
+      ((StringBuilder)localObject).append(paramsy.toString());
+      xv.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(paramsy.toString());
+      localxt.a(10021, ((StringBuilder)localObject).toString(), null);
+      return localxt;
+    }
+    catch (JSONException paramsy)
+    {
+      localObject = new StringBuilder("parse json failed: ");
+      ((StringBuilder)localObject).append(paramsy.toString());
+      xv.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(paramsy.toString());
+      localxt.a(10020, ((StringBuilder)localObject).toString(), null);
+    }
+    return localxt;
   }
   
-  protected final void b()
+  public final int b()
   {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
+    List localList = this.b;
+    if (localList == null) {
+      return 0;
     }
+    return localList.size();
   }
 }
 

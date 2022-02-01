@@ -1,11 +1,14 @@
 package com.tencent.token;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.TreeMap;
 
 public final class agz
+  implements acj<T>
 {
-  public static final Set<String> a = new LinkedHashSet();
+  public final T a()
+  {
+    return new TreeMap();
+  }
 }
 
 

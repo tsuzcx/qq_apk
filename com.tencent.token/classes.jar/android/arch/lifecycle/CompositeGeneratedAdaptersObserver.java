@@ -1,23 +1,23 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.au;
-import com.tencent.token.av.a;
-import com.tencent.token.ay;
-import com.tencent.token.bc;
+import com.tencent.token.bi;
+import com.tencent.token.bj.a;
+import com.tencent.token.bm;
+import com.tencent.token.bq;
 
 public class CompositeGeneratedAdaptersObserver
   implements GenericLifecycleObserver
 {
-  private final au[] a;
+  private final bi[] a;
   
-  public CompositeGeneratedAdaptersObserver(au[] paramArrayOfau)
+  public CompositeGeneratedAdaptersObserver(bi[] paramArrayOfbi)
   {
-    this.a = paramArrayOfau;
+    this.a = paramArrayOfbi;
   }
   
-  public final void a(ay paramay, av.a parama)
+  public final void a(bm parambm, bj.a parama)
   {
-    new bc();
+    new bq();
   }
 }
 

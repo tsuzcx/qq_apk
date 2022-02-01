@@ -1,123 +1,278 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RadialGradient;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.ViewParent;
 
 public final class fq
-  extends ImageView
 {
-  public Animation.AnimationListener a;
-  int b;
+  static final c a = new c();
   
-  public fq(Context paramContext)
+  static
   {
-    super(paramContext);
-    float f = getContext().getResources().getDisplayMetrics().density;
-    int i = (int)(1.75F * f);
-    int j = (int)(0.0F * f);
-    this.b = ((int)(3.5F * f));
-    if (a())
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      paramContext = new ShapeDrawable(new OvalShape());
-      fa.a(this, f * 4.0F);
+      a = new b();
+      return;
     }
-    else
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      paramContext = new ShapeDrawable(new a(this.b));
-      setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.b, j, i, 503316480);
-      i = this.b;
-      setPadding(i, i, i, i);
-    }
-    paramContext.getPaint().setColor(-328966);
-    fa.a(this, paramContext);
-  }
-  
-  private static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 21;
-  }
-  
-  public final void onAnimationEnd()
-  {
-    super.onAnimationEnd();
-    Animation.AnimationListener localAnimationListener = this.a;
-    if (localAnimationListener != null) {
-      localAnimationListener.onAnimationEnd(getAnimation());
+      a = new a();
+      return;
     }
   }
   
-  public final void onAnimationStart()
+  public static void a(ViewParent paramViewParent, View paramView, int paramInt)
   {
-    super.onAnimationStart();
-    Animation.AnimationListener localAnimationListener = this.a;
-    if (localAnimationListener != null) {
-      localAnimationListener.onAnimationStart(getAnimation());
+    if ((paramViewParent instanceof fj))
+    {
+      ((fj)paramViewParent).c(paramInt);
+      return;
+    }
+    if (paramInt == 0) {
+      a.a(paramViewParent, paramView);
     }
   }
   
-  protected final void onMeasure(int paramInt1, int paramInt2)
+  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    super.onMeasure(paramInt1, paramInt2);
-    if (!a()) {
-      setMeasuredDimension(getMeasuredWidth() + this.b * 2, getMeasuredHeight() + this.b * 2);
+    if ((paramViewParent instanceof fj))
+    {
+      ((fj)paramViewParent).d(paramInt5);
+      return;
+    }
+    if (paramInt5 == 0) {
+      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public final void setBackgroundColor(int paramInt)
+  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if ((getBackground() instanceof ShapeDrawable)) {
-      ((ShapeDrawable)getBackground()).getPaint().setColor(paramInt);
+    if ((paramViewParent instanceof fj))
+    {
+      ((fj)paramViewParent).a(paramInt1, paramInt2, paramArrayOfInt, paramInt3);
+      return;
+    }
+    if (paramInt3 == 0) {
+      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramArrayOfInt);
     }
   }
   
-  final class a
-    extends OvalShape
+  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
   {
-    private RadialGradient b;
-    private Paint c = new Paint();
+    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2);
+  }
+  
+  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+  {
+    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2, paramBoolean);
+  }
+  
+  public static boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
+  {
+    if ((paramViewParent instanceof fj)) {
+      return ((fj)paramViewParent).b(paramInt2);
+    }
+    if (paramInt2 == 0) {
+      return a.a(paramViewParent, paramView1, paramView2, paramInt1);
+    }
+    return false;
+  }
+  
+  public static void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
+  {
+    if ((paramViewParent instanceof fj))
+    {
+      ((fj)paramViewParent).a(paramView2, paramInt1);
+      return;
+    }
+    if (paramInt2 == 0) {
+      a.b(paramViewParent, paramView1, paramView2, paramInt1);
+    }
+  }
+  
+  static class a
+    extends fq.c
+  {}
+  
+  static final class b
+    extends fq.a
+  {
+    public final void a(ViewParent paramViewParent, View paramView)
+    {
+      try
+      {
+        paramViewParent.onStopNestedScroll(paramView);
+        return;
+      }
+      catch (AbstractMethodError paramView)
+      {
+        label8:
+        break label8;
+      }
+      paramView = new StringBuilder("ViewParent ");
+      paramView.append(paramViewParent);
+      paramView.append(" does not implement interface method onStopNestedScroll");
+    }
     
-    a(int paramInt)
+    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      fq.this.b = paramInt;
-      a((int)rect().width());
+      try
+      {
+        paramViewParent.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+        return;
+      }
+      catch (AbstractMethodError paramView)
+      {
+        label15:
+        break label15;
+      }
+      paramView = new StringBuilder("ViewParent ");
+      paramView.append(paramViewParent);
+      paramView.append(" does not implement interface method onNestedScroll");
     }
     
-    private void a(int paramInt)
+    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
     {
-      float f1 = paramInt / 2;
-      float f2 = fq.this.b;
-      Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-      this.b = new RadialGradient(f1, f1, f2, new int[] { 1023410176, 0 }, null, localTileMode);
-      this.c.setShader(this.b);
+      try
+      {
+        paramViewParent.onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+        return;
+      }
+      catch (AbstractMethodError paramView)
+      {
+        label13:
+        break label13;
+      }
+      paramView = new StringBuilder("ViewParent ");
+      paramView.append(paramViewParent);
+      paramView.append(" does not implement interface method onNestedPreScroll");
     }
     
-    public final void draw(Canvas paramCanvas, Paint paramPaint)
+    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
     {
-      int j = fq.this.getWidth();
-      int i = fq.this.getHeight();
-      j /= 2;
-      float f1 = j;
-      float f2 = i / 2;
-      paramCanvas.drawCircle(f1, f2, f1, this.c);
-      paramCanvas.drawCircle(f1, f2, j - fq.this.b, paramPaint);
+      try
+      {
+        boolean bool = paramViewParent.onNestedPreFling(paramView, paramFloat1, paramFloat2);
+        return bool;
+      }
+      catch (AbstractMethodError paramView)
+      {
+        label15:
+        break label15;
+      }
+      paramView = new StringBuilder("ViewParent ");
+      paramView.append(paramViewParent);
+      paramView.append(" does not implement interface method onNestedPreFling");
+      return false;
     }
     
-    protected final void onResize(float paramFloat1, float paramFloat2)
+    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
     {
-      super.onResize(paramFloat1, paramFloat2);
-      a((int)paramFloat1);
+      try
+      {
+        paramBoolean = paramViewParent.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
+        return paramBoolean;
+      }
+      catch (AbstractMethodError paramView)
+      {
+        label17:
+        break label17;
+      }
+      paramView = new StringBuilder("ViewParent ");
+      paramView.append(paramViewParent);
+      paramView.append(" does not implement interface method onNestedFling");
+      return false;
+    }
+    
+    public final boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
+    {
+      try
+      {
+        boolean bool = paramViewParent.onStartNestedScroll(paramView1, paramView2, paramInt);
+        return bool;
+      }
+      catch (AbstractMethodError paramView1)
+      {
+        label15:
+        break label15;
+      }
+      paramView1 = new StringBuilder("ViewParent ");
+      paramView1.append(paramViewParent);
+      paramView1.append(" does not implement interface method onStartNestedScroll");
+      return false;
+    }
+    
+    public final void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
+    {
+      try
+      {
+        paramViewParent.onNestedScrollAccepted(paramView1, paramView2, paramInt);
+        return;
+      }
+      catch (AbstractMethodError paramView1)
+      {
+        label11:
+        break label11;
+      }
+      paramView1 = new StringBuilder("ViewParent ");
+      paramView1.append(paramViewParent);
+      paramView1.append(" does not implement interface method onNestedScrollAccepted");
+    }
+  }
+  
+  static class c
+  {
+    public void a(ViewParent paramViewParent, View paramView)
+    {
+      if ((paramViewParent instanceof fi)) {
+        ((fi)paramViewParent).onStopNestedScroll(paramView);
+      }
+    }
+    
+    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      if ((paramViewParent instanceof fi)) {
+        ((fi)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      }
+    }
+    
+    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
+    {
+      if ((paramViewParent instanceof fi)) {
+        ((fi)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+      }
+    }
+    
+    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
+    {
+      if ((paramViewParent instanceof fi)) {
+        return ((fi)paramViewParent).onNestedPreFling(paramView, paramFloat1, paramFloat2);
+      }
+      return false;
+    }
+    
+    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      if ((paramViewParent instanceof fi)) {
+        return ((fi)paramViewParent).onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
+      }
+      return false;
+    }
+    
+    public boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
+    {
+      if ((paramViewParent instanceof fi)) {
+        return ((fi)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt);
+      }
+      return false;
+    }
+    
+    public void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
+    {
+      if ((paramViewParent instanceof fi)) {
+        ((fi)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt);
+      }
     }
   }
 }

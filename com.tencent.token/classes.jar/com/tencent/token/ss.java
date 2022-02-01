@@ -1,331 +1,653 @@
 package com.tencent.token;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import btmsdkobf.ea;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Timer;
+import java.util.TimerTask;
+import oicq.wlogin_sdk.listener.PrivacyListener;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginHelper.QuickLoginParam;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 
 public final class ss
 {
-  public int a;
-  public String b;
-  public boolean c;
-  public int d;
+  public static String g = new String("");
+  public static int h = 2101344;
+  private static ss k;
+  public WtloginHelper a = new WtloginHelper(paramContext, new PrivacyListener()
+  {
+    public final String getAndroidID(Context paramAnonymousContext)
+    {
+      return xw.b(paramAnonymousContext);
+    }
+    
+    public final String getBssid(Context paramAnonymousContext)
+    {
+      return null;
+    }
+    
+    public final String getDeviceModel()
+    {
+      return xw.a();
+    }
+    
+    public final String getImsi(Context paramAnonymousContext)
+    {
+      return xw.a(paramAnonymousContext);
+    }
+    
+    public final String getMac(Context paramAnonymousContext)
+    {
+      return ea.j(paramAnonymousContext);
+    }
+    
+    public final String getSsid(Context paramAnonymousContext)
+    {
+      return null;
+    }
+  });
+  public Handler b;
+  public Timer c;
+  public String d;
   public boolean e = false;
-  public boolean f = false;
-  public boolean g = false;
-  public Object h = null;
-  protected List<ss> i = null;
-  
-  private void a(ss paramss)
+  public xt f;
+  public WtloginListener i = new WtloginListener()
   {
-    if (this.i == null) {
-      this.i = new ArrayList();
-    }
-    this.i.add(paramss);
-  }
-  
-  public final boolean a(JSONObject paramJSONObject)
-  {
-    for (;;)
+    private void a(int paramAnonymousInt, ErrMsg arg2, String paramAnonymousString, long paramAnonymousLong)
     {
-      try
+      if (paramAnonymousInt != 0)
       {
-        this.a = paramJSONObject.getInt("id");
-        this.b = paramJSONObject.getString("name");
-        if (paramJSONObject.getInt("value") != 0)
+        ss.this.f.a(paramAnonymousInt, ???.getMessage(), ???.getMessage());
+        ss.this.f.d = ???;
+      }
+      else
+      {
+        ??? = ss.b(ss.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong, 64);
+        if ((ss.this.f != null) && (??? != null))
         {
-          bool = true;
-          this.c = bool;
-          this.d = paramJSONObject.getInt("type");
-          try
-          {
-            if (paramJSONObject.getInt("is_more") != 0) {
-              break label253;
-            }
-            bool = false;
-            this.g = bool;
+          ss.this.f.d = ???._sig;
+          ss.this.f.a = 0;
+        }
+      }
+      ss.c(ss.this);
+      synchronized (ss.g)
+      {
+        ss.g.notifyAll();
+        return;
+      }
+    }
+    
+    public final void OnCheckPictureAndGetSt(String paramAnonymousString, byte[] arg2, WUserSigInfo paramAnonymousWUserSigInfo, int paramAnonymousInt, ErrMsg paramAnonymousErrMsg)
+    {
+      int i = ss.d(ss.this);
+      ss.e(ss.this);
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onCheckPictureAndGetSt, handler is null");
+          return;
+        }
+        paramAnonymousWUserSigInfo = ss.a(ss.this).obtainMessage(4099);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt;
+        if (paramAnonymousInt != 0)
+        {
+          paramAnonymousString = new Bundle();
+          paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousWUserSigInfo.setData(paramAnonymousString);
+        }
+        else
+        {
+          if (i != 0) {
+            paramAnonymousString = ss.b(ss.this).GetLocalTicket(paramAnonymousString, ss.i(ss.this), i);
+          } else {
+            paramAnonymousString = ss.b(ss.this).GetLocalTicket(paramAnonymousString, ss.i(ss.this), 64);
           }
-          catch (JSONException localJSONException)
+          if (paramAnonymousString != null)
           {
-            localJSONException.printStackTrace();
+            paramAnonymousWUserSigInfo.obj = paramAnonymousString._sig;
+            paramAnonymousString = new Bundle();
+            paramAnonymousString.putLong("appid", ss.i(ss.this));
+            paramAnonymousWUserSigInfo.setData(paramAnonymousString);
           }
         }
-        int j;
-        Object localObject2;
-        Object localObject1;
-        bool = false;
+        ss.a(ss.this).sendMessage(paramAnonymousWUserSigInfo);
+        ss.a(ss.this, null);
+        return;
       }
-      catch (JSONException paramJSONObject)
+    }
+    
+    public final void OnCloseCode(String arg1, byte[] paramAnonymousArrayOfByte1, long paramAnonymousLong, WUserSigInfo paramAnonymousWUserSigInfo, byte[] paramAnonymousArrayOfByte2, int paramAnonymousInt)
+    {
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onCloseCode, handler is null");
+          return;
+        }
+        paramAnonymousWUserSigInfo = ss.a(ss.this).obtainMessage(4102);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt;
+        Bundle localBundle = new Bundle();
+        localBundle.putByteArray("appname", paramAnonymousArrayOfByte1);
+        localBundle.putLong("scantime", paramAnonymousLong);
+        localBundle.putByteArray("scanerror", paramAnonymousArrayOfByte2);
+        paramAnonymousWUserSigInfo.setData(localBundle);
+        ss.a(ss.this).sendMessage(paramAnonymousWUserSigInfo);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void OnException(ErrMsg paramAnonymousErrMsg, int paramAnonymousInt, WUserSigInfo arg3)
+    {
+      ??? = new StringBuilder("Wtlogin exception ");
+      ???.append(paramAnonymousErrMsg.getMessage());
+      xv.c(???.toString());
+      ss.e(ss.this);
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onVerifyCode, handler is null");
+          return;
+        }
+        Message localMessage = ss.a(ss.this).obtainMessage(4104);
+        localMessage.arg1 = paramAnonymousInt;
+        Bundle localBundle = new Bundle();
+        localBundle.putString("exception", paramAnonymousErrMsg.getMessage());
+        localMessage.setData(localBundle);
+        ss.a(ss.this).sendMessage(localMessage);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void OnGetStWithPasswd(String paramAnonymousString1, long paramAnonymousLong1, int paramAnonymousInt1, long paramAnonymousLong2, String arg7, WUserSigInfo paramAnonymousWUserSigInfo, int paramAnonymousInt2, ErrMsg paramAnonymousErrMsg)
+    {
+      paramAnonymousInt1 = ss.d(ss.this);
+      ss.e(ss.this);
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.h(ss.this))
+        {
+          a(paramAnonymousInt2, paramAnonymousErrMsg, paramAnonymousString1, paramAnonymousLong1);
+          return;
+        }
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onGetStWithPasswd, handler is null");
+          return;
+        }
+        paramAnonymousWUserSigInfo = new StringBuilder();
+        paramAnonymousWUserSigInfo.append(this);
+        paramAnonymousWUserSigInfo.append("getMessage----");
+        paramAnonymousWUserSigInfo.append(paramAnonymousErrMsg.getMessage());
+        paramAnonymousWUserSigInfo.append("\ndwAppid");
+        paramAnonymousWUserSigInfo.append(paramAnonymousLong1);
+        xv.c(paramAnonymousWUserSigInfo.toString());
+        paramAnonymousWUserSigInfo = new StringBuilder();
+        paramAnonymousWUserSigInfo.append(this);
+        paramAnonymousWUserSigInfo.append("getOtherinfo----");
+        paramAnonymousWUserSigInfo.append(paramAnonymousErrMsg.getOtherinfo());
+        paramAnonymousWUserSigInfo.append("\ndwAppid");
+        paramAnonymousWUserSigInfo.append(paramAnonymousLong1);
+        xv.c(paramAnonymousWUserSigInfo.toString());
+        paramAnonymousWUserSigInfo = ss.a(ss.this).obtainMessage(4098);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt2;
+        if (paramAnonymousInt2 != 0)
+        {
+          paramAnonymousString1 = new Bundle();
+          paramAnonymousString1.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousString1.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
+          paramAnonymousWUserSigInfo.setData(paramAnonymousString1);
+        }
+        else
+        {
+          if (paramAnonymousInt1 != 0) {
+            paramAnonymousString1 = ss.b(ss.this).GetLocalTicket(paramAnonymousString1, ss.i(ss.this), paramAnonymousInt1);
+          } else {
+            paramAnonymousString1 = ss.b(ss.this).GetLocalTicket(paramAnonymousString1, ss.i(ss.this), 64);
+          }
+          if (paramAnonymousString1 != null) {
+            paramAnonymousWUserSigInfo.obj = paramAnonymousString1._sig;
+          }
+        }
+        ss.a(ss.this).sendMessage(paramAnonymousWUserSigInfo);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void OnGetStWithoutPasswd(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt1, long paramAnonymousLong3, WUserSigInfo arg9, int paramAnonymousInt2, ErrMsg paramAnonymousErrMsg)
+    {
+      paramAnonymousInt1 = ss.d(ss.this);
+      ss.e(ss.this);
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.h(ss.this))
+        {
+          a(paramAnonymousInt2, paramAnonymousErrMsg, paramAnonymousString, paramAnonymousLong1);
+          return;
+        }
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onGetStWithoutPasswd, handler is null");
+          return;
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("getMessage----");
+        ((StringBuilder)localObject).append(paramAnonymousErrMsg.getMessage());
+        ((StringBuilder)localObject).append("\ndwSrcAppid");
+        ((StringBuilder)localObject).append(paramAnonymousLong1);
+        xv.c(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("getOtherinfo----");
+        ((StringBuilder)localObject).append(paramAnonymousErrMsg.getOtherinfo());
+        ((StringBuilder)localObject).append("\ndwSrcAppid");
+        ((StringBuilder)localObject).append(paramAnonymousLong1);
+        xv.c(((StringBuilder)localObject).toString());
+        localObject = ss.a(ss.this).obtainMessage(4097);
+        ((Message)localObject).arg1 = paramAnonymousInt2;
+        if (paramAnonymousInt2 != 0)
+        {
+          paramAnonymousString = new Bundle();
+          paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousString.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
+          ((Message)localObject).setData(paramAnonymousString);
+        }
+        else
+        {
+          if (paramAnonymousInt1 != 0) {
+            paramAnonymousString = ss.b(ss.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, paramAnonymousInt1);
+          } else {
+            paramAnonymousString = ss.b(ss.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, 64);
+          }
+          if (paramAnonymousString != null) {
+            ((Message)localObject).obj = paramAnonymousString._sig;
+          }
+        }
+        ss.a(ss.this).sendMessage((Message)localObject);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void OnInit(int paramAnonymousInt)
+    {
+      xv.b("Wtlogin init result ".concat(String.valueOf(paramAnonymousInt)));
+    }
+    
+    public final void OnRefreshPictureData(String arg1, WUserSigInfo paramAnonymousWUserSigInfo, byte[] paramAnonymousArrayOfByte, int paramAnonymousInt, ErrMsg paramAnonymousErrMsg)
+    {
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onRefreshPictureData, handler is null");
+          return;
+        }
+        paramAnonymousWUserSigInfo = ss.a(ss.this).obtainMessage(4100);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt;
+        if (paramAnonymousInt != 0)
+        {
+          paramAnonymousArrayOfByte = new Bundle();
+          paramAnonymousArrayOfByte.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousWUserSigInfo.setData(paramAnonymousArrayOfByte);
+        }
+        ss.a(ss.this).sendMessage(paramAnonymousWUserSigInfo);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void OnVerifyCode(String arg1, byte[] paramAnonymousArrayOfByte1, long paramAnonymousLong, List<byte[]> paramAnonymousList, WUserSigInfo paramAnonymousWUserSigInfo, byte[] paramAnonymousArrayOfByte2, int paramAnonymousInt)
+    {
+      synchronized (ss.f(ss.this))
+      {
+        ss.g(ss.this).cancel();
+        if (ss.a(ss.this) == null)
+        {
+          xv.c("onVerifyCode, handler is null");
+          return;
+        }
+        paramAnonymousList = ss.a(ss.this).obtainMessage(4101);
+        paramAnonymousList.arg1 = paramAnonymousInt;
+        paramAnonymousWUserSigInfo = new Bundle();
+        paramAnonymousWUserSigInfo.putByteArray("appname", paramAnonymousArrayOfByte1);
+        paramAnonymousWUserSigInfo.putLong("scantime", paramAnonymousLong);
+        paramAnonymousWUserSigInfo.putByteArray("scanerror", paramAnonymousArrayOfByte2);
+        paramAnonymousList.setData(paramAnonymousWUserSigInfo);
+        ss.a(ss.this).sendMessage(paramAnonymousList);
+        ss.a(ss.this, null);
+        return;
+      }
+    }
+    
+    public final void onQuickLogin(String paramAnonymousString, WtloginHelper.QuickLoginParam paramAnonymousQuickLoginParam, int paramAnonymousInt, ErrMsg paramAnonymousErrMsg)
+    {
+      for (;;)
       {
         try
         {
-          paramJSONObject = paramJSONObject.getJSONArray("child");
-          if (paramJSONObject != null)
+          paramAnonymousErrMsg = new StringBuilder("onQuickLogin");
+          paramAnonymousErrMsg.append(paramAnonymousInt);
+          paramAnonymousErrMsg.append("mUIHandler!=null:");
+          if (ss.a(ss.this) != null)
           {
-            j = 0;
-            if (j < paramJSONObject.length())
+            bool = true;
+            paramAnonymousErrMsg.append(bool);
+            xv.a(paramAnonymousErrMsg.toString());
+            if (paramAnonymousInt != 0)
             {
-              localObject2 = paramJSONObject.getJSONObject(j);
-              if (localObject2 == null) {
-                break label258;
+              if (true == util.shouldKick(paramAnonymousInt)) {
+                ss.b(ss.this).ClearUserLoginData(paramAnonymousString, 523005419L);
               }
-              bool = true;
-              xj.a(bool);
-              localObject1 = new ss();
-              if (!((ss)localObject1).a((JSONObject)localObject2))
-              {
-                xj.c("child json parse error: ".concat(String.valueOf(j)));
-                return false;
-              }
-              a((ss)localObject1);
-              localObject2 = new StringBuilder("add child: ");
-              ((StringBuilder)localObject2).append(j);
-              ((StringBuilder)localObject2).append(":");
-              ((StringBuilder)localObject2).append(((ss)localObject1).b);
-              xj.b(((StringBuilder)localObject2).toString());
-              j += 1;
-              continue;
             }
+            else
+            {
+              paramAnonymousQuickLoginParam = ss.a(paramAnonymousQuickLoginParam.userSigInfo);
+              if (ss.a(ss.this) != null)
+              {
+                paramAnonymousErrMsg = ss.a(ss.this).obtainMessage(4109);
+                paramAnonymousErrMsg.arg1 = paramAnonymousInt;
+                Bundle localBundle = new Bundle();
+                localBundle.putByteArray("sig", paramAnonymousQuickLoginParam);
+                localBundle.putString("uin", paramAnonymousString);
+                paramAnonymousErrMsg.setData(localBundle);
+                ss.a(ss.this).sendMessage(paramAnonymousErrMsg);
+                ss.a(ss.this, null);
+              }
+            }
+            return;
           }
-          return true;
         }
-        catch (JSONException paramJSONObject)
+        catch (Exception paramAnonymousString)
         {
-          return true;
+          paramAnonymousString.printStackTrace();
+          return;
         }
-        paramJSONObject = paramJSONObject;
-        localObject1 = new StringBuilder("JSONException: ");
-        ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
-        xj.c(((StringBuilder)localObject1).toString());
-        return false;
+        boolean bool = false;
       }
-      continue;
-      label253:
-      boolean bool = true;
-      continue;
-      label258:
-      bool = false;
     }
+  };
+  private Object j;
+  private long l;
+  private int m;
+  private int n = 1;
+  
+  private ss(Context paramContext)
+  {
+    this.a.SetTimeOut(5000);
+    util.LOGCAT_OUT = false;
+    this.a.SetListener(this.i);
+    this.a.SetImgType(4);
+    this.c = new Timer();
+    this.j = new Object();
+    this.f = new xt();
   }
   
-  public final boolean b(JSONObject paramJSONObject)
+  public static ss a(Context paramContext)
   {
-    for (;;)
+    if (k == null) {
+      k = new ss(paramContext);
+    }
+    return k;
+  }
+  
+  private static byte[] a(int paramInt, byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
+    util.int16_to_buf(arrayOfByte, 0, paramInt);
+    util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte.length);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(WUserSigInfo paramWUserSigInfo)
+  {
+    return WtloginHelper.GetTicketSig(paramWUserSigInfo, 64);
+  }
+  
+  private static WtloginHelper.QuickLoginParam b()
+  {
+    WtloginHelper.QuickLoginParam localQuickLoginParam = new WtloginHelper.QuickLoginParam();
+    localQuickLoginParam.sigMap = 192;
+    localQuickLoginParam.appid = 523005419L;
+    return localQuickLoginParam;
+  }
+  
+  public final int a(Activity paramActivity, Handler paramHandler)
+  {
+    try
     {
-      try
+      this.a.quickLogin(paramActivity, 523005419L, this.n, aaw.b, b());
+      this.b = paramHandler;
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public final int a(final Activity paramActivity, final Handler paramHandler, final String paramString)
+  {
+    ace.a(paramActivity, "即将离开QQ安全中心，打开QQ登录网页", new aib.a()
+    {
+      public final void a(boolean paramAnonymousBoolean)
       {
-        this.a = paramJSONObject.getInt("id");
-        this.b = paramJSONObject.getString("name");
-        if (paramJSONObject.getInt("value") != 0)
-        {
-          bool = true;
-          this.c = bool;
+        if (!paramAnonymousBoolean) {
+          return;
         }
-        int j;
-        Object localObject2;
-        Object localObject1;
-        bool = false;
+        try
+        {
+          WtloginHelper.QuickLoginParam localQuickLoginParam = new WtloginHelper.QuickLoginParam();
+          localQuickLoginParam.sigMap = 192;
+          localQuickLoginParam.appid = this.a;
+          localQuickLoginParam.userAccount = paramString;
+          localQuickLoginParam.forceWebLogin = true;
+          localQuickLoginParam.isUserAccountLocked = true;
+          ss.b(ss.this).quickLogin(paramActivity, this.a, ss.j(ss.this), aaw.b, localQuickLoginParam);
+          ss.a(ss.this, paramHandler);
+          return;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
-      catch (JSONException paramJSONObject)
+    });
+    return -1;
+  }
+  
+  public final int a(String paramString, Handler paramHandler)
+  {
+    if (this.b == null)
+    {
+      this.c.cancel();
+      this.a.RefreshPictureData(paramString, new WUserSigInfo());
+      this.b = paramHandler;
+      return 0;
+    }
+    return -1;
+  }
+  
+  public final int a(String paramString, Handler paramHandler, long paramLong)
+  {
+    try
+    {
+      this.l = paramLong;
+      Handler localHandler = this.b;
+      if (localHandler == null)
       {
         try
         {
-          paramJSONObject = paramJSONObject.getJSONArray("child");
-          if (paramJSONObject != null)
-          {
-            j = 0;
-            if (j < paramJSONObject.length())
-            {
-              localObject2 = paramJSONObject.getJSONObject(j);
-              if (localObject2 == null) {
-                break label214;
-              }
-              bool = true;
-              xj.a(bool);
-              localObject1 = new ss();
-              if (!((ss)localObject1).b((JSONObject)localObject2))
-              {
-                xj.c("child json parse error: ".concat(String.valueOf(j)));
-                return false;
-              }
-              a((ss)localObject1);
-              localObject2 = new StringBuilder("add child: ");
-              ((StringBuilder)localObject2).append(j);
-              ((StringBuilder)localObject2).append(":");
-              ((StringBuilder)localObject2).append(((ss)localObject1).b);
-              xj.b(((StringBuilder)localObject2).toString());
-              j += 1;
-              continue;
-            }
-          }
-          return true;
+          this.c.cancel();
         }
-        catch (JSONException paramJSONObject)
+        catch (Exception localException)
         {
-          return true;
+          localException.printStackTrace();
         }
-        paramJSONObject = paramJSONObject;
-        localObject1 = new StringBuilder("JSONException: ");
-        ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
-        xj.c(((StringBuilder)localObject1).toString());
-        return false;
+        this.a.GetStWithoutPasswd(paramString, paramLong, paramLong, this.n, h, new WUserSigInfo());
+        this.b = paramHandler;
+        this.c = new Timer();
+        this.c.schedule(new TimerTask()
+        {
+          public final void run()
+          {
+            ss.this.i.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
+          }
+        }, 30000L);
+        return 0;
       }
-      continue;
-      label214:
-      boolean bool = false;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
   }
   
-  /* Error */
-  public final boolean c(JSONObject paramJSONObject)
+  public final int a(String paramString, Handler paramHandler, long paramLong, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: ldc 49
-    //   4: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   7: putfield 57	com/tencent/token/ss:a	I
-    //   10: aload_0
-    //   11: aload_1
-    //   12: ldc 59
-    //   14: invokevirtual 63	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   17: putfield 65	com/tencent/token/ss:b	Ljava/lang/String;
-    //   20: aload_1
-    //   21: ldc 67
-    //   23: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   26: ifeq +202 -> 228
-    //   29: iconst_1
-    //   30: istore_3
-    //   31: goto +3 -> 34
-    //   34: aload_0
-    //   35: iload_3
-    //   36: putfield 69	com/tencent/token/ss:c	Z
-    //   39: aload_1
-    //   40: ldc 75
-    //   42: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   45: ifne +188 -> 233
-    //   48: iconst_0
-    //   49: istore_3
-    //   50: goto +3 -> 53
-    //   53: aload_0
-    //   54: iload_3
-    //   55: putfield 29	com/tencent/token/ss:g	Z
-    //   58: aload_1
-    //   59: ldc 80
-    //   61: invokevirtual 84	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   64: astore_1
-    //   65: aload_1
-    //   66: ifnull +125 -> 191
-    //   69: iconst_0
-    //   70: istore_2
-    //   71: iload_2
-    //   72: aload_1
-    //   73: invokevirtual 90	org/json/JSONArray:length	()I
-    //   76: if_icmpge +115 -> 191
-    //   79: aload_1
-    //   80: iload_2
-    //   81: invokevirtual 94	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   84: astore 5
-    //   86: aload 5
-    //   88: ifnull +150 -> 238
-    //   91: iconst_1
-    //   92: istore_3
-    //   93: goto +3 -> 96
-    //   96: iload_3
-    //   97: invokestatic 99	com/tencent/token/xj:a	(Z)V
-    //   100: new 2	com/tencent/token/ss
-    //   103: dup
-    //   104: invokespecial 100	com/tencent/token/ss:<init>	()V
-    //   107: astore 4
-    //   109: aload 4
-    //   111: aload 5
-    //   113: invokevirtual 148	com/tencent/token/ss:c	(Lorg/json/JSONObject;)Z
-    //   116: ifne +17 -> 133
-    //   119: ldc 104
-    //   121: iload_2
-    //   122: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   125: invokevirtual 113	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   128: invokestatic 116	com/tencent/token/xj:c	(Ljava/lang/String;)V
-    //   131: iconst_0
-    //   132: ireturn
-    //   133: aload_0
-    //   134: aload 4
-    //   136: invokespecial 118	com/tencent/token/ss:a	(Lcom/tencent/token/ss;)V
-    //   139: new 120	java/lang/StringBuilder
-    //   142: dup
-    //   143: ldc 122
-    //   145: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   148: astore 5
-    //   150: aload 5
-    //   152: iload_2
-    //   153: invokevirtual 128	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   156: pop
-    //   157: aload 5
-    //   159: ldc 130
-    //   161: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: pop
-    //   165: aload 5
-    //   167: aload 4
-    //   169: getfield 65	com/tencent/token/ss:b	Ljava/lang/String;
-    //   172: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: pop
-    //   176: aload 5
-    //   178: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 139	com/tencent/token/xj:b	(Ljava/lang/String;)V
-    //   184: iload_2
-    //   185: iconst_1
-    //   186: iadd
-    //   187: istore_2
-    //   188: goto -117 -> 71
-    //   191: iconst_1
-    //   192: ireturn
-    //   193: astore_1
-    //   194: new 120	java/lang/StringBuilder
-    //   197: dup
-    //   198: ldc 141
-    //   200: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   203: astore 4
-    //   205: aload 4
-    //   207: aload_1
-    //   208: invokevirtual 144	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   211: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   214: pop
-    //   215: aload 4
-    //   217: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 116	com/tencent/token/xj:c	(Ljava/lang/String;)V
-    //   223: iconst_0
-    //   224: ireturn
-    //   225: astore_1
-    //   226: iconst_1
-    //   227: ireturn
-    //   228: iconst_0
-    //   229: istore_3
-    //   230: goto -196 -> 34
-    //   233: iconst_1
-    //   234: istore_3
-    //   235: goto -182 -> 53
-    //   238: iconst_0
-    //   239: istore_3
-    //   240: goto -144 -> 96
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	243	0	this	ss
-    //   0	243	1	paramJSONObject	JSONObject
-    //   70	118	2	j	int
-    //   30	210	3	bool	boolean
-    //   107	109	4	localObject1	Object
-    //   84	93	5	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	29	193	org/json/JSONException
-    //   34	48	193	org/json/JSONException
-    //   53	58	193	org/json/JSONException
-    //   58	65	225	org/json/JSONException
-    //   71	86	225	org/json/JSONException
-    //   96	131	225	org/json/JSONException
-    //   133	184	225	org/json/JSONException
+    this.b = null;
+    this.m = paramInt;
+    return a(paramString, paramHandler, paramLong);
+  }
+  
+  public final int a(String paramString, byte[] paramArrayOfByte, Handler paramHandler)
+  {
+    if (this.b == null)
+    {
+      this.c.cancel();
+      WtloginHelper localWtloginHelper = this.a;
+      WUserSigInfo localWUserSigInfo = new WUserSigInfo();
+      localWtloginHelper.VerifyCode(paramString, 523005419L, true, paramArrayOfByte, new int[0], 1, localWUserSigInfo);
+      this.b = paramHandler;
+      this.c = new Timer();
+      try
+      {
+        this.c.schedule(new TimerTask()
+        {
+          public final void run()
+          {
+            ss.this.i.OnVerifyCode(null, null, 0L, null, new WUserSigInfo(), null, 8192);
+          }
+        }, 30000L);
+        return 0;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return 0;
+      }
+    }
+    return -1;
+  }
+  
+  public final int a(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString2, Handler paramHandler)
+  {
+    if (this.b == null)
+    {
+      this.c.cancel();
+      if (paramArrayOfByte2 == null)
+      {
+        paramArrayOfByte2 = new ArrayList();
+        paramArrayOfByte2.add(a(8, paramString2.getBytes()));
+      }
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(a(1, paramArrayOfByte2));
+        localArrayList.add(a(8, paramString2.getBytes()));
+        paramArrayOfByte2 = localArrayList;
+      }
+      this.a.CloseCode(paramString1, 523005419L, paramArrayOfByte1, 1, paramArrayOfByte2, new WUserSigInfo());
+      this.b = paramHandler;
+      this.c = new Timer();
+      try
+      {
+        this.c.schedule(new TimerTask()
+        {
+          public final void run()
+          {
+            ss.this.i.OnCloseCode(null, null, 0L, new WUserSigInfo(), null, 8192);
+          }
+        }, 30000L);
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      return 0;
+    }
+    return -1;
+  }
+  
+  public final long a()
+  {
+    String str = this.d;
+    if (str != null) {
+      return this.a.GetAppidFromUrl(str);
+    }
+    return 0L;
+  }
+  
+  public final WloginSimpleInfo a(String paramString)
+  {
+    WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
+    this.a.GetBasicUserInfo(paramString, localWloginSimpleInfo);
+    return localWloginSimpleInfo;
+  }
+  
+  public final void a(Intent paramIntent)
+  {
+    this.a.onQuickLoginActivityResultData(b(), paramIntent);
+  }
+  
+  public final boolean a(String paramString, long paramLong)
+  {
+    return this.a.IsNeedLoginWithPasswd(paramString, paramLong).booleanValue();
+  }
+  
+  public final byte[] a(long paramLong)
+  {
+    Ticket localTicket = this.a.GetLocalTicket(String.valueOf(paramLong), 523005419L, 64);
+    if (localTicket != null) {
+      return localTicket._sig;
+    }
+    return null;
+  }
+  
+  public final boolean b(String paramString)
+  {
+    return this.a.ClearUserLoginData(paramString, 523005419L).booleanValue();
+  }
+  
+  public final byte[] c(String paramString)
+  {
+    return this.a.GetPictureData(paramString);
   }
 }
 

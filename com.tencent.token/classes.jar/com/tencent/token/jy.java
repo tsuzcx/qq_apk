@@ -1,74 +1,18 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.os.Build.VERSION;
+import android.view.View;
 
 public final class jy
-  extends JceStruct
 {
-  static byte[] p;
-  public long a = 0L;
-  public long b = 0L;
-  public String c = "";
-  public int d = 0;
-  public long e = 0L;
-  public int f = 0;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public byte[] k = null;
-  public String l = "";
-  public long m = 0L;
-  public long n = 0L;
-  public String o = "";
-  
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public static void a(View paramView, CharSequence paramCharSequence)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, true);
-    this.d = paramJceInputStream.read(this.d, 3, true);
-    this.e = paramJceInputStream.read(this.e, 4, true);
-    this.f = paramJceInputStream.read(this.f, 5, true);
-    this.g = paramJceInputStream.readString(6, true);
-    this.h = paramJceInputStream.readString(7, true);
-    this.i = paramJceInputStream.readString(8, true);
-    this.j = paramJceInputStream.readString(9, true);
-    if (p == null)
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
-      p = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      paramView.setTooltipText(paramCharSequence);
+      return;
     }
-    this.k = ((byte[])paramJceInputStream.read(p, 10, true));
-    this.l = paramJceInputStream.readString(11, true);
-    this.m = paramJceInputStream.read(this.m, 12, false);
-    this.n = paramJceInputStream.read(this.n, 13, false);
-    this.o = paramJceInputStream.readString(14, false);
-  }
-  
-  public final void writeTo(JceOutputStream paramJceOutputStream)
-  {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    paramJceOutputStream.write(this.d, 3);
-    paramJceOutputStream.write(this.e, 4);
-    paramJceOutputStream.write(this.f, 5);
-    paramJceOutputStream.write(this.g, 6);
-    paramJceOutputStream.write(this.h, 7);
-    paramJceOutputStream.write(this.i, 8);
-    paramJceOutputStream.write(this.j, 9);
-    paramJceOutputStream.write(this.k, 10);
-    paramJceOutputStream.write(this.l, 11);
-    paramJceOutputStream.write(this.m, 12);
-    paramJceOutputStream.write(this.n, 13);
-    String str = this.o;
-    if (str != null) {
-      paramJceOutputStream.write(str, 14);
-    }
+    jz.a(paramView, paramCharSequence);
   }
 }
 

@@ -1,113 +1,142 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.utils.UserTask;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class tm
-  extends rz
+  implements akk
 {
-  static tm f;
-  int a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  private final String g = "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2";
-  private final String h = "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt";
-  private int i;
+  aki a = null;
+  private tn b = null;
+  private int c = 0;
+  private th d = null;
   
-  public static tm a()
+  public tm(th paramth)
   {
-    if (f == null) {
-      f = new tm();
+    this.d = paramth;
+    this.b = new tn();
+  }
+  
+  private static String a(tj paramtj)
+  {
+    if ((paramtj.c != null) && (paramtj.c.length() != 0)) {
+      return paramtj.c;
     }
-    return f;
-  }
-  
-  public final xh a(int paramInt)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final xh a(String paramString, int paramInt)
-  {
-    xh localxh = new xh();
-    th localth = th.a();
-    if ((localth != null) && (localth.k.b() != null))
+    Object localObject = new StringBuilder("其它错误：");
+    ((StringBuilder)localObject).append(paramtj.b);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = paramtj.b;
+    switch (i)
     {
-      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      Object localObject = new AtomicReference(null);
-      rf.a().a(localth.k.b().mUin, this.i, paramInt, paramString, new rf.a()
+    default: 
+      switch (i)
       {
-        public final void a(ri paramAnonymousri)
-        {
-          this.a.set(paramAnonymousri);
-          localCountDownLatch.countDown();
-        }
-      });
-      try
-      {
-        localCountDownLatch.await();
+      default: 
+        localObject = new StringBuilder("其它错误：");
+        ((StringBuilder)localObject).append(paramtj.b);
+        xv.b(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder("其它错误：");
+        ((StringBuilder)localObject).append(paramtj.b);
+        return ((StringBuilder)localObject).toString();
+      case 101: 
+        xv.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
       }
-      catch (InterruptedException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      paramString = (ri)((AtomicReference)localObject).get();
-      if (paramString == null)
-      {
-        localxh.a(-349, null, null);
-        return localxh;
-      }
-      try
-      {
-        paramInt = paramString.b;
-        if (paramInt != 0)
-        {
-          paramString = paramString.d;
-          localxh.a(paramInt, paramString, paramString);
-          return localxh;
-        }
-        new JSONObject(paramString.c);
-        localxh.a = 0;
-        return localxh;
-      }
-      catch (Exception paramString)
-      {
-        localObject = new StringBuilder("unknown err: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xj.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localxh.a(10021, ((StringBuilder)localObject).toString(), null);
-        return localxh;
-      }
-      catch (JSONException paramString)
-      {
-        localObject = new StringBuilder("parse json failed: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xj.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localxh.a(10020, ((StringBuilder)localObject).toString(), null);
-        return localxh;
-      }
+      xv.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    case 9: 
+      xv.b("已经到令牌的最大绑定个数");
+      return "已经到令牌的最大绑定个数";
+    case 8: 
+      xv.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 7: 
+      xv.b("客户端输入错误");
+      return "客户端输入错误";
+    case 6: 
+      xv.b("还没有密保手机");
+      return "还没有密保手机";
+    case 5: 
+      xv.b("密保手机不正确");
+      return "密保手机不正确";
+    case 4: 
+      xv.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 3: 
+      xv.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 2: 
+      xv.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 1: 
+      xv.b("短信没有到达");
+      return "短信没有到达";
     }
-    localxh.a(110, null, null);
-    return localxh;
+    return localObject;
   }
   
-  public final void a(final int paramInt, final Handler paramHandler)
+  public final void a()
   {
-    if (paramHandler == null) {
+    this.d.c();
+  }
+  
+  public final void a(byte[] paramArrayOfByte)
+  {
+    int i;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
+      i = tl.a(paramArrayOfByte, 20);
+    } else {
+      i = -1;
+    }
+    if (i == -1) {
       return;
     }
-    new UserTask() {}.a(new String[] { "" });
+    Object localObject = new tj();
+    switch (i)
+    {
+    case 103: 
+    case 104: 
+    default: 
+      return;
+    case 106: 
+      tn.a((tj)localObject, paramArrayOfByte);
+      if (((tj)localObject).b == 0)
+      {
+        tt.a().h();
+        this.d.b();
+        return;
+      }
+      this.d.b(((tj)localObject).b, a((tj)localObject));
+      return;
+    case 105: 
+      tn.a((tj)localObject, paramArrayOfByte);
+      if (((tj)localObject).b == 0)
+      {
+        tt.a().h();
+        this.d.a();
+        return;
+      }
+      this.d.a(((tj)localObject).b, a((tj)localObject));
+      return;
+    case 102: 
+      localObject = new ti();
+      tn.a((tj)localObject, paramArrayOfByte);
+      ((ti)localObject).a = tl.a(((ti)localObject).f, 0, 32);
+      if (((ti)localObject).b == 0)
+      {
+        this.d.b(((ti)localObject).a);
+        return;
+      }
+      this.d.c(a((tj)localObject));
+      return;
+    }
+    tn.a((tj)localObject, paramArrayOfByte);
+    if (((tj)localObject).b == 0)
+    {
+      paramArrayOfByte = new StringBuilder("服务器时间:");
+      paramArrayOfByte.append(((tj)localObject).d);
+      xv.b(paramArrayOfByte.toString());
+      this.d.a(((tj)localObject).d);
+      return;
+    }
+    this.d.a(a((tj)localObject));
   }
 }
 

@@ -1,50 +1,41 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.CommonImgResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
 import java.util.HashMap;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class vd
-  extends tr
+  extends ud
 {
-  private String d;
-  private CommonImgResult e;
+  public String[] d;
+  public long e;
+  public List<DeterminVerifyFactorsResult.QuesInfoItem> f;
   
   public final String a()
   {
-    return this.d;
+    st.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((String)paramabc.c.get("param.common.img.url"));
+    this.e = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.f = ((List)paramabm.c.get("param.qqquestion"));
+    this.d = ((String[])paramabm.c.get("param.qqquestionanswer"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    paramJSONObject = (Bitmap)paramJSONObject.get("img");
-    if ((paramJSONObject != null) && (paramJSONObject.getWidth() != 0) && (paramJSONObject.getHeight() != 0))
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      this.a.a = 0;
-      this.e = new CommonImgResult(this.d, paramJSONObject);
+      paramJSONObject = paramJSONObject.getString("info");
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
-    this.a.a(104, null, null);
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    this.a.a = 0;
   }
 }
 

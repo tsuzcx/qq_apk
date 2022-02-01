@@ -1,38 +1,11 @@
 package com.tencent.token;
 
-public final class asf
-  implements aru
+import java.util.Comparator;
+
+final class asf
+  implements Comparator
 {
-  private Object a = new Object();
-  private int b = 1;
-  
-  public final int a()
-  {
-    synchronized (this.a)
-    {
-      int i = this.b;
-      this.b += 1;
-      return i;
-    }
-  }
-  
-  public final int b()
-  {
-    synchronized (this.a)
-    {
-      int i = this.b;
-      return i;
-    }
-  }
-  
-  public final void c()
-  {
-    synchronized (this.a)
-    {
-      this.b += 1;
-      return;
-    }
-  }
+  asf(atm paramatm) {}
 }
 
 

@@ -2,10 +2,10 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.aai;
-import com.tencent.token.aal;
-import com.tencent.token.abu;
-import com.tencent.token.xj;
+import com.tencent.token.aas;
+import com.tencent.token.aav;
+import com.tencent.token.acb;
+import com.tencent.token.xv;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class ConfigResult
     ((StringBuilder)localObject).append(this.schemaKey);
     ((StringBuilder)localObject).append("schemaTimeout=");
     ((StringBuilder)localObject).append(this.schemaTimeout);
-    xj.b(((StringBuilder)localObject).toString());
+    xv.b(((StringBuilder)localObject).toString());
     this.so_param_ids = paramJSONObject.optString("so_param_ids");
     this.so_param_values = paramJSONObject.optString("so_param_values");
     this.mFaceRecognitionParamResult = new FaceRecognitionParamResult(paramJSONObject);
@@ -122,15 +122,15 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 2: 
-                abu.a(48);
+                acb.a(48);
                 break;
-                abu.a(48);
+                acb.a(48);
                 break;
               case 1: 
-                abu.a(60);
+                acb.a(60);
                 break;
               case 0: 
-                abu.a(63);
+                acb.a(63);
                 try
                 {
                   if (paramJSONObject.has("upload_date")) {
@@ -138,13 +138,13 @@ public class ConfigResult
                   }
                   if (this.uploadDate >= 0)
                   {
-                    aal.b("debug.file.uploadfiledate", this.uploadDate).commit();
+                    aav.b("debug.file.uploadfiledate", this.uploadDate).commit();
                     paramJSONObject = new StringBuilder("log file upload date=");
                     paramJSONObject.append(this.uploadDate);
-                    xj.a(paramJSONObject.toString());
-                    paramJSONObject = new File(abu.b(), "upload.file");
+                    xv.a(paramJSONObject.toString());
+                    paramJSONObject = new File(acb.b(), "upload.file");
                     if (paramJSONObject.exists()) {
-                      aai.a(paramJSONObject);
+                      aas.a(paramJSONObject);
                     }
                   }
                   return;

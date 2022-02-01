@@ -1,39 +1,37 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ui.StartPwdDigitSelActivity;
-import com.tencent.token.ui.StartPwdDigitVerifyActivity;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.BaseActivity;
 import java.util.List;
-import java.util.Map;
 
 public final class yu
   extends BaseAdapter
 {
-  private Context a;
-  private LayoutInflater b;
-  private List<Map<String, Object>> c;
+  private List<QQUser> a;
+  private BaseActivity b;
+  private LayoutInflater c;
   
-  public yu(Context paramContext, List<Map<String, Object>> paramList)
+  public yu(BaseActivity paramBaseActivity, List<QQUser> paramList)
   {
-    this.a = paramContext;
-    this.b = LayoutInflater.from(paramContext);
-    this.c = paramList;
+    this.c = LayoutInflater.from(paramBaseActivity);
+    this.b = paramBaseActivity;
+    this.a = paramList;
   }
   
   public final int getCount()
   {
-    return this.c.size();
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
   }
   
   public final Object getItem(int paramInt)
@@ -48,80 +46,41 @@ public final class yu
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewGroup = paramView;
+    View localView = paramView;
     if (paramView == null) {
-      paramViewGroup = this.b.inflate(2131296439, null);
+      localView = this.c.inflate(2131296336, paramViewGroup, false);
     }
-    ((TextView)paramViewGroup.findViewById(2131165994)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
-    paramViewGroup.setOnClickListener(new a(paramInt));
-    paramViewGroup.setOnTouchListener(new b());
-    return paramViewGroup;
-  }
-  
-  final class a
-    implements View.OnClickListener
-  {
-    public final int a = 0;
-    public final int b = 1;
-    private int d = 0;
-    
-    public a(int paramInt)
+    paramViewGroup = (TextView)localView.findViewById(2131166115);
+    paramView = (ImageView)localView.findViewById(2131166009);
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      this.d = paramInt;
-    }
-    
-    public final void onClick(View paramView)
-    {
-      paramView = new StringBuilder("conf modify onClick=");
-      paramView.append(this.d);
-      xj.a(paramView.toString());
-      paramView = (StartPwdDigitSelActivity)yu.a(yu.this);
-      paramView.finish();
-      switch (this.d)
+      localObject = (QQUser)((List)localObject).get(paramInt);
+      if (localObject != null)
       {
-      default: 
-        return;
-      case 1: 
-        localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
-        localBundle = new Bundle();
-        localBundle.putInt("enter_type", 3);
-        localIntent.putExtra("com.tencent.input_param", localBundle);
-        paramView.startActivity(localIntent);
-        return;
-      }
-      Intent localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("enter_type", 2);
-      localIntent.putExtra("com.tencent.input_param", localBundle);
-      paramView.startActivity(localIntent);
-    }
-  }
-  
-  final class b
-    implements View.OnTouchListener
-  {
-    b() {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      paramView = (TextView)paramView.findViewById(2131165994);
-      int i = yu.a(yu.this).getResources().getColor(2130968657);
-      int j = yu.a(yu.this).getResources().getColor(2130968665);
-      int k = paramMotionEvent.getAction();
-      if (k != 3) {
-        switch (k)
-        {
-        default: 
-          break;
-        case 0: 
-          paramView.setTextColor(j);
-          break;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((QQUser)localObject).mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(aay.e(((QQUser)localObject).mRealUin));
+        localStringBuilder.append(")");
+        paramViewGroup.setText(localStringBuilder.toString());
+        paramViewGroup = aaz.f();
+        if ((paramViewGroup != null) && (paramViewGroup.mUin == ((QQUser)localObject).mUin)) {
+          paramView.setVisibility(0);
+        } else {
+          paramView.setVisibility(4);
         }
-      } else {
-        paramView.setTextColor(i);
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            aaz.b(this.a.mRealUin);
+            yu.this.notifyDataSetChanged();
+          }
+        });
       }
-      return false;
     }
+    return localView;
   }
 }
 

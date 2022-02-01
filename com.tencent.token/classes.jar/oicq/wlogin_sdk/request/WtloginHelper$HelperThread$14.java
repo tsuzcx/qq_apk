@@ -10,17 +10,23 @@ class WtloginHelper$HelperThread$14
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    if (WtloginHelper.access$200(this.this$1.mHelper) == null)
     {
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
-    WtloginHelper.access$100(this.this$1.mHelper).onQuickLogin(this.this$1.mUserAccount, this.this$1.quickLoginParam, this.val$ret, localErrMsg);
+    Object localObject = u.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = ((async_context)localObject)._last_err_msg;
+    WtloginHelper.HelperThread.access$700(this.this$1, (async_context)localObject);
+    WtloginHelper.HelperThread.access$800(this.this$1, (async_context)localObject, this.val$ret);
+    localObject = new StringBuilder("onQuickLogin ret=");
+    ((StringBuilder)localObject).append(this.val$ret);
+    util.LOGI(((StringBuilder)localObject).toString(), this.this$1.mUserAccount);
+    WtloginHelper.access$200(this.this$1.mHelper).onQuickLogin(this.this$1.mUserAccount, this.this$1.quickLoginParam, this.val$ret, localErrMsg);
   }
 }
 

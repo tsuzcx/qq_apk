@@ -1,85 +1,50 @@
 package com.tencent.token;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wp
-  extends tr
+  extends ud
 {
-  public long d;
-  private int e;
-  private int f;
-  private int g;
+  private a d;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this);
-    localStringBuilder.append("sessId null ");
-    xj.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(abc paramabc)
-  {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramabc.c.get("param.common.seq")).intValue();
-    this.f = ((Integer)paramabc.c.get("param.set_supercode")).intValue();
-  }
+  public final void a(abm paramabm) {}
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    Object localObject;
     if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = new StringBuilder("error");
-      ((StringBuilder)localObject).append(paramJSONObject);
-      ((StringBuilder)localObject).append(",error code =");
-      ((StringBuilder)localObject).append(i);
-      xj.a(((StringBuilder)localObject).toString());
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((xh)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append("--data:");
-      ((StringBuilder)localObject).append(new String(paramJSONObject));
-      xj.a(((StringBuilder)localObject).toString());
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      if (paramJSONObject.getInt("seq_id") != this.e)
+      i = paramJSONObject.getInt("seq_id");
+      if (this.c != i)
       {
         this.a.a(10030, null, null);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this);
-        ((StringBuilder)localObject).append("parseJSON error seq is wrong seq=");
-        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
-        ((StringBuilder)localObject).append(",right = ");
-        ((StringBuilder)localObject).append(this.e);
-        xj.c(((StringBuilder)localObject).toString());
         return;
       }
-      this.g = paramJSONObject.optInt("config_val_ret");
-      this.a.a = 0;
-      return;
+      this.d = new a();
+      this.d.a = paramJSONObject.getInt("is_have_msg");
+      if (this.d.a == 1)
+      {
+        this.d.b = paramJSONObject.getString("content");
+        this.d.c = paramJSONObject.getLong("uin");
+      }
+      this.a.a(this.d.b);
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
   }
   
   public final void b()
@@ -88,10 +53,17 @@ public final class wp
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.arg2 = this.g;
+      localMessage.obj = this.d;
       localMessage.sendToTarget();
       this.b.e = true;
     }
+  }
+  
+  public static final class a
+  {
+    public int a;
+    public String b;
+    public long c;
   }
 }
 

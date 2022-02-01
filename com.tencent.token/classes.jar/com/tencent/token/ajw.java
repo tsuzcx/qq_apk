@@ -1,146 +1,167 @@
 package com.tencent.token;
 
-import java.lang.ref.Reference;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Handler;
+import com.oasisfeng.condom.CondomContext;
+import epsysproxy.l;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public final class ajw
+  extends ContextWrapper
 {
-  static final Executor a = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), akt.a("OkHttp ConnectionPool", true));
-  final int b = 5;
-  final Runnable c = new Runnable()
+  public static Context a;
+  CondomContext b = null;
+  long c = 0L;
+  private HashMap<BroadcastReceiver, BroadcastReceiver> d = new HashMap();
+  
+  public ajw(Context paramContext, CondomContext paramCondomContext, long paramLong)
   {
-    public final void run()
+    super(paramContext);
+    a = paramContext;
+    this.b = paramCondomContext;
+    this.c = paramLong;
+  }
+  
+  private void a(final BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
+  {
+    try
     {
-      for (;;)
+      Object localObject1 = new StringBuilder("registerReceiver:[");
+      ((StringBuilder)localObject1).append(paramIntentFilter.countActions());
+      ((StringBuilder)localObject1).append("]");
+      localObject1 = paramIntentFilter.actionsIterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        long l1 = ajw.this.a(System.nanoTime());
-        if (l1 == -1L) {
-          return;
-        }
-        long l2;
-        if (l1 > 0L) {
-          l2 = l1 / 1000000L;
-        }
-        try
+        localObject2 = (String)((Iterator)localObject1).next();
+        StringBuilder localStringBuilder = new StringBuilder("registerReceiver, ac:[");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append("]");
+      }
+      if (akf.f.a.a != null)
+      {
+        localObject1 = akf.f.a.a;
+        localObject2 = ((lk)localObject1).a("registerReceiver");
+        localObject1 = paramIntentFilter;
+        if (localObject2 != null)
         {
-          synchronized (ajw.this)
-          {
-            ajw.this.wait(l2, (int)(l1 - 1000000L * l2));
+          localObject1 = paramIntentFilter;
+          if (((ll.a)localObject2).a != null) {
+            localObject1 = (IntentFilter)((ll.a)localObject2).a;
           }
         }
-        catch (InterruptedException localInterruptedException)
+        paramIntentFilter = ((IntentFilter)localObject1).actionsIterator();
+        while (paramIntentFilter.hasNext())
         {
-          label65:
-          break label65;
+          localObject1 = (String)paramIntentFilter.next();
+          localObject2 = new StringBuilder("registerReceiver, 22 ac:[");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("]");
         }
       }
-      throw localObject;
+      return;
     }
-  };
-  final Deque<alb> d = new ArrayDeque();
-  final alc e = new alc();
-  boolean f;
-  private final long h;
-  
-  public ajw()
-  {
-    this(TimeUnit.MINUTES);
-  }
-  
-  private ajw(TimeUnit paramTimeUnit)
-  {
-    this.h = paramTimeUnit.toNanos(5L);
-  }
-  
-  final long a(long paramLong)
-  {
-    for (;;)
+    finally
     {
-      int j;
-      int k;
-      try
-      {
-        Iterator localIterator = this.d.iterator();
-        long l1 = -9223372036854775808L;
-        Object localObject1 = null;
-        int i = 0;
-        j = 0;
-        if (localIterator.hasNext())
-        {
-          alb localalb = (alb)localIterator.next();
-          List localList = localalb.j;
-          k = 0;
-          if (k < localList.size())
-          {
-            Object localObject3 = (Reference)localList.get(k);
-            if (((Reference)localObject3).get() != null)
-            {
-              k += 1;
-              continue;
-            }
-            localObject3 = (alf.a)localObject3;
-            Object localObject4 = new StringBuilder("A connection to ");
-            ((StringBuilder)localObject4).append(localalb.a.a.a);
-            ((StringBuilder)localObject4).append(" was leaked. Did you forget to close a response body?");
-            localObject4 = ((StringBuilder)localObject4).toString();
-            amn.c().a((String)localObject4, ((alf.a)localObject3).a);
-            localList.remove(k);
-            localalb.g = true;
-            if (!localList.isEmpty()) {
-              continue;
-            }
-            localalb.k = (paramLong - this.h);
-            k = 0;
-          }
-          else
-          {
-            k = localList.size();
-            break label351;
-            k = i + 1;
-            long l2 = paramLong - localalb.k;
-            i = k;
-            if (l2 <= l1) {
-              continue;
-            }
-            localObject1 = localalb;
-            l1 = l2;
-            i = k;
-          }
-        }
-        else
-        {
-          if ((l1 < this.h) && (i <= this.b))
-          {
-            if (i > 0)
-            {
-              paramLong = this.h;
-              return paramLong - l1;
-            }
-            if (j > 0)
-            {
-              paramLong = this.h;
-              return paramLong;
-            }
-            this.f = false;
-            return -1L;
-          }
-          this.d.remove(localObject1);
-          akt.a(localObject1.b);
-          return 0L;
-        }
+      paramIntentFilter.getMessage();
+      paramIntentFilter = new a(paramBroadcastReceiver);
+      if (this.d.containsKey(paramBroadcastReceiver)) {
+        unregisterReceiver((BroadcastReceiver)this.d.remove(paramBroadcastReceiver));
       }
-      finally {}
-      label351:
-      if (k > 0) {
-        j += 1;
-      }
+      this.d.put(paramBroadcastReceiver, paramIntentFilter);
+    }
+  }
+  
+  public final Context getApplicationContext()
+  {
+    Context localContext = this.b.getApplicationContext();
+    if ((localContext != null) && ((localContext instanceof Application))) {
+      return new l((Application)localContext, this.c);
+    }
+    return localContext;
+  }
+  
+  public final PackageManager getPackageManager()
+  {
+    if (ll.a()) {
+      return super.getPackageManager();
+    }
+    if ((this.c & 0x2) != 0L) {
+      return this.b.getPackageManager();
+    }
+    return super.getPackageManager();
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    return this.b.getSystemService(paramString);
+  }
+  
+  public final Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
+  {
+    if (paramBroadcastReceiver != null)
+    {
+      a(paramBroadcastReceiver, paramIntentFilter);
+      return this.b.registerReceiver((BroadcastReceiver)this.d.get(paramBroadcastReceiver), paramIntentFilter);
+    }
+    return this.b.registerReceiver(paramBroadcastReceiver, paramIntentFilter);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public final Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter, int paramInt)
+  {
+    if (paramBroadcastReceiver != null)
+    {
+      a(paramBroadcastReceiver, paramIntentFilter);
+      return this.b.registerReceiver((BroadcastReceiver)this.d.get(paramBroadcastReceiver), paramIntentFilter, paramInt);
+    }
+    return this.b.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramInt);
+  }
+  
+  public final Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter, String paramString, Handler paramHandler)
+  {
+    if (paramBroadcastReceiver != null)
+    {
+      a(paramBroadcastReceiver, paramIntentFilter);
+      return this.b.registerReceiver((BroadcastReceiver)this.d.get(paramBroadcastReceiver), paramIntentFilter, paramString, paramHandler);
+    }
+    return this.b.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramString, paramHandler);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public final Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter, String paramString, Handler paramHandler, int paramInt)
+  {
+    if (paramBroadcastReceiver != null)
+    {
+      a(paramBroadcastReceiver, paramIntentFilter);
+      return this.b.registerReceiver((BroadcastReceiver)this.d.get(paramBroadcastReceiver), paramIntentFilter, paramString, paramHandler, paramInt);
+    }
+    return this.b.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramString, paramHandler, paramInt);
+  }
+  
+  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
+  {
+    if ((paramBroadcastReceiver != null) && (this.d.containsKey(paramBroadcastReceiver))) {
+      this.b.unregisterReceiver((BroadcastReceiver)this.d.remove(paramBroadcastReceiver));
+    }
+  }
+  
+  final class a
+    extends BroadcastReceiver
+  {
+    a(BroadcastReceiver paramBroadcastReceiver) {}
+    
+    public final void onReceive(Context paramContext, Intent paramIntent)
+    {
+      paramBroadcastReceiver.onReceive(ajw.this, paramIntent);
     }
   }
 }

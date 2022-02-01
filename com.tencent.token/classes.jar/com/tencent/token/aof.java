@@ -1,93 +1,95 @@
 package com.tencent.token;
 
-import android.graphics.Matrix;
-import android.graphics.PointF;
+import javax.annotation.Nullable;
 
-public final class aof
+final class aof
 {
-  final anw<Integer> a;
-  private final Matrix b = new Matrix();
-  private final anw<PointF> c;
-  private final ans<?, PointF> d;
-  private final anw<apk> e;
-  private final anw<Float> f;
-  private final ans<?, Float> g;
-  private final ans<?, Float> h;
+  final byte[] a;
+  int b;
+  int c;
+  boolean d;
+  boolean e;
+  aof f;
+  aof g;
   
-  public aof(aor paramaor)
+  aof()
   {
-    this.c = paramaor.a.a();
-    this.d = paramaor.b.c();
-    this.e = paramaor.c.a();
-    this.f = paramaor.d.a();
-    this.a = paramaor.e.a();
-    if (paramaor.f != null) {
-      this.g = paramaor.f.a();
-    } else {
-      this.g = null;
-    }
-    if (paramaor.g != null)
+    this.a = new byte[8192];
+    this.e = true;
+    this.d = false;
+  }
+  
+  aof(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.a = paramArrayOfByte;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = true;
+    this.e = false;
+  }
+  
+  final aof a()
+  {
+    this.d = true;
+    return new aof(this.a, this.b, this.c);
+  }
+  
+  public final aof a(aof paramaof)
+  {
+    paramaof.g = this;
+    paramaof.f = this.f;
+    this.f.g = paramaof;
+    this.f = paramaof;
+    return paramaof;
+  }
+  
+  public final void a(aof paramaof, int paramInt)
+  {
+    if (paramaof.e)
     {
-      this.h = paramaor.g.a();
+      int i = paramaof.c;
+      if (i + paramInt > 8192) {
+        if (!paramaof.d)
+        {
+          int j = paramaof.b;
+          if (i + paramInt - j <= 8192)
+          {
+            byte[] arrayOfByte = paramaof.a;
+            System.arraycopy(arrayOfByte, j, arrayOfByte, 0, i - j);
+            paramaof.c -= paramaof.b;
+            paramaof.b = 0;
+          }
+          else
+          {
+            throw new IllegalArgumentException();
+          }
+        }
+        else
+        {
+          throw new IllegalArgumentException();
+        }
+      }
+      System.arraycopy(this.a, this.b, paramaof.a, paramaof.c, paramInt);
+      paramaof.c += paramInt;
+      this.b += paramInt;
       return;
     }
-    this.h = null;
+    throw new IllegalArgumentException();
   }
   
-  public final Matrix a()
+  @Nullable
+  public final aof b()
   {
-    this.b.reset();
-    Object localObject = (PointF)this.d.a();
-    if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
-      this.b.preTranslate(((PointF)localObject).x, ((PointF)localObject).y);
+    aof localaof1 = this.f;
+    if (localaof1 == this) {
+      localaof1 = null;
     }
-    float f1 = ((Float)this.f.a()).floatValue();
-    if (f1 != 0.0F) {
-      this.b.preRotate(f1);
-    }
-    localObject = (apk)this.e.a();
-    if ((((apk)localObject).a != 1.0F) || (((apk)localObject).b != 1.0F)) {
-      this.b.preScale(((apk)localObject).a, ((apk)localObject).b);
-    }
-    localObject = (PointF)this.c.a();
-    if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
-      this.b.preTranslate(-((PointF)localObject).x, -((PointF)localObject).y);
-    }
-    return this.b;
-  }
-  
-  public final void a(ans.a parama)
-  {
-    this.c.a(parama);
-    this.d.a(parama);
-    this.e.a(parama);
-    this.f.a(parama);
-    this.a.a(parama);
-    ans localans = this.g;
-    if (localans != null) {
-      localans.a(parama);
-    }
-    localans = this.h;
-    if (localans != null) {
-      localans.a(parama);
-    }
-  }
-  
-  public final void a(apb paramapb)
-  {
-    paramapb.a(this.c);
-    paramapb.a(this.d);
-    paramapb.a(this.e);
-    paramapb.a(this.f);
-    paramapb.a(this.a);
-    ans localans = this.g;
-    if (localans != null) {
-      paramapb.a(localans);
-    }
-    localans = this.h;
-    if (localans != null) {
-      paramapb.a(localans);
-    }
+    aof localaof2 = this.g;
+    localaof2.f = this.f;
+    this.f.g = localaof2;
+    this.f = null;
+    this.g = null;
+    return localaof1;
   }
 }
 

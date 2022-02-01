@@ -1,108 +1,58 @@
 package com.tencent.token;
 
-import android.support.v7.view.menu.ListMenuItemView;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
 
-public final class ho
-  extends BaseAdapter
+public abstract class ho
 {
-  static final int a = gs.g.abc_popup_menu_item_layout;
-  public hp b;
-  boolean c;
-  private int d = -1;
-  private final boolean e;
-  private final LayoutInflater f;
+  Object c;
+  boolean d;
   
-  public ho(hp paramhp, LayoutInflater paramLayoutInflater, boolean paramBoolean)
+  public abstract MenuInflater a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(CharSequence paramCharSequence);
+  
+  public void a(boolean paramBoolean)
   {
-    this.e = paramBoolean;
-    this.f = paramLayoutInflater;
-    this.b = paramhp;
-    a();
+    this.d = paramBoolean;
   }
   
-  private void a()
+  public abstract Menu b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CharSequence paramCharSequence);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract CharSequence f();
+  
+  public abstract CharSequence g();
+  
+  public boolean h()
   {
-    hr localhr = this.b.j;
-    if (localhr != null)
-    {
-      ArrayList localArrayList = this.b.j();
-      int j = localArrayList.size();
-      int i = 0;
-      while (i < j)
-      {
-        if ((hr)localArrayList.get(i) == localhr)
-        {
-          this.d = i;
-          return;
-        }
-        i += 1;
-      }
-    }
-    this.d = -1;
+    return false;
   }
   
-  public final hr a(int paramInt)
-  {
-    ArrayList localArrayList;
-    if (this.e) {
-      localArrayList = this.b.j();
-    } else {
-      localArrayList = this.b.h();
-    }
-    int j = this.d;
-    int i = paramInt;
-    if (j >= 0)
-    {
-      i = paramInt;
-      if (paramInt >= j) {
-        i = paramInt + 1;
-      }
-    }
-    return (hr)localArrayList.get(i);
-  }
+  public abstract View i();
   
-  public final int getCount()
+  public static abstract interface a
   {
-    ArrayList localArrayList;
-    if (this.e) {
-      localArrayList = this.b.j();
-    } else {
-      localArrayList = this.b.h();
-    }
-    if (this.d < 0) {
-      return localArrayList.size();
-    }
-    return localArrayList.size() - 1;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.f.inflate(a, paramViewGroup, false);
-    }
-    paramView = (hx.a)localView;
-    if (this.c) {
-      ((ListMenuItemView)localView).setForceShowIcon(true);
-    }
-    paramView.a(a(paramInt));
-    return localView;
-  }
-  
-  public final void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
+    public abstract void a(ho paramho);
+    
+    public abstract boolean a(ho paramho, Menu paramMenu);
+    
+    public abstract boolean a(ho paramho, MenuItem paramMenuItem);
+    
+    public abstract boolean b(ho paramho, Menu paramMenu);
   }
 }
 

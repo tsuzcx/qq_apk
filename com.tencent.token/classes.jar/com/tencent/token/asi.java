@@ -1,28 +1,21 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 final class asi
+  extends Handler
 {
-  public long a;
-  public int b;
-  public JceStruct c;
-  public JceStruct d;
-  public int e;
-  public aii f;
-  public int g;
-  public aik h;
-  public long i = -1L;
-  
-  asi(asg paramasg, long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aii paramaii)
+  asi(atm paramatm, Looper paramLooper)
   {
-    this.a = paramLong;
-    this.b = paramInt1;
-    this.c = paramJceStruct1;
-    this.d = paramJceStruct2;
-    this.e = paramInt2;
-    this.f = paramaii;
-    this.h = new aik();
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    atm.a(this.a, paramMessage.what);
   }
 }
 

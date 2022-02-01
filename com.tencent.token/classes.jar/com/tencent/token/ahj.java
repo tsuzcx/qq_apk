@@ -1,10 +1,14 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
+import java.util.ArrayDeque;
 
-public abstract interface ahj
+public final class ahj
+  implements acj<T>
 {
-  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
+  public final T a()
+  {
+    return new ArrayDeque();
+  }
 }
 
 

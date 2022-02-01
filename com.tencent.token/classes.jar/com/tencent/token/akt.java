@@ -1,864 +1,254 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.IDN;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+import java.util.TreeMap;
 
 public final class akt
 {
-  public static final byte[] a = new byte[0];
-  public static final String[] b = new String[0];
-  public static final ako c = ako.a(a);
-  public static final akm d;
-  public static final Charset e;
-  public static final Charset f;
-  public static final TimeZone g;
-  public static final Comparator<String> h;
-  private static final amy i;
-  private static final amy j;
-  private static final amy k;
-  private static final amy l;
-  private static final amy m;
-  private static final Charset n;
-  private static final Charset o;
-  private static final Charset p;
-  private static final Charset q;
-  private static final Method r;
-  private static final Pattern s;
+  public static final akt A;
+  public static final akt B;
+  public static final akt C;
+  public static final akt D;
+  public static final akt E;
+  public static final akt F;
+  public static final akt G;
+  public static final akt H;
+  public static final akt I;
+  public static final akt J;
+  public static final akt K;
+  public static final akt L;
+  public static final akt M;
+  public static final akt N;
+  public static final akt O;
+  public static final akt P;
+  public static final akt Q;
+  public static final akt R;
+  public static final akt S;
+  public static final akt T;
+  public static final akt U;
+  public static final akt V;
+  public static final akt W;
+  public static final akt X;
+  public static final akt Y;
+  public static final akt Z;
+  static final Comparator<String> a = new Comparator() {};
+  public static final akt aA = a("TLS_ECDH_RSA_WITH_NULL_SHA");
+  public static final akt aB = a("TLS_ECDH_RSA_WITH_RC4_128_SHA");
+  public static final akt aC = a("TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final akt aD = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA");
+  public static final akt aE = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA");
+  public static final akt aF = a("TLS_ECDHE_RSA_WITH_NULL_SHA");
+  public static final akt aG = a("TLS_ECDHE_RSA_WITH_RC4_128_SHA");
+  public static final akt aH = a("TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final akt aI = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
+  public static final akt aJ = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA");
+  public static final akt aK = a("TLS_ECDH_anon_WITH_NULL_SHA");
+  public static final akt aL = a("TLS_ECDH_anon_WITH_RC4_128_SHA");
+  public static final akt aM = a("TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA");
+  public static final akt aN = a("TLS_ECDH_anon_WITH_AES_128_CBC_SHA");
+  public static final akt aO = a("TLS_ECDH_anon_WITH_AES_256_CBC_SHA");
+  public static final akt aP = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final akt aQ = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final akt aR = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final akt aS = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final akt aT = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256");
+  public static final akt aU = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384");
+  public static final akt aV = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256");
+  public static final akt aW = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384");
+  public static final akt aX = a("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final akt aY = a("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final akt aZ = a("TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final akt aa;
+  public static final akt ab;
+  public static final akt ac;
+  public static final akt ad;
+  public static final akt ae;
+  public static final akt af;
+  public static final akt ag;
+  public static final akt ah;
+  public static final akt ai;
+  public static final akt aj;
+  public static final akt ak;
+  public static final akt al;
+  public static final akt am;
+  public static final akt an;
+  public static final akt ao;
+  public static final akt ap;
+  public static final akt aq;
+  public static final akt ar;
+  public static final akt as;
+  public static final akt at;
+  public static final akt au;
+  public static final akt av;
+  public static final akt aw;
+  public static final akt ax;
+  public static final akt ay;
+  public static final akt az;
+  public static final akt b;
+  public static final akt ba = a("TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final akt bb = a("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256");
+  public static final akt bc = a("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
+  public static final akt bd = a("TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256");
+  public static final akt be = a("TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384");
+  public static final akt bf = a("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA");
+  public static final akt bg = a("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA");
+  public static final akt bh = a("TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final akt bi = a("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final akt bj = a("TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256");
+  private static final Map<String, akt> bl = new TreeMap(a);
+  public static final akt c;
+  public static final akt d;
+  public static final akt e;
+  public static final akt f;
+  public static final akt g;
+  public static final akt h;
+  public static final akt i;
+  public static final akt j;
+  public static final akt k;
+  public static final akt l;
+  public static final akt m;
+  public static final akt n;
+  public static final akt o;
+  public static final akt p;
+  public static final akt q;
+  public static final akt r;
+  public static final akt s;
+  public static final akt t;
+  public static final akt u;
+  public static final akt v;
+  public static final akt w;
+  public static final akt x;
+  public static final akt y;
+  public static final akt z;
+  final String bk;
   
   static
   {
-    Object localObject = a;
-    int i1 = localObject.length;
-    if (localObject != null)
+    b = a("SSL_RSA_WITH_NULL_MD5");
+    c = a("SSL_RSA_WITH_NULL_SHA");
+    d = a("SSL_RSA_EXPORT_WITH_RC4_40_MD5");
+    e = a("SSL_RSA_WITH_RC4_128_MD5");
+    f = a("SSL_RSA_WITH_RC4_128_SHA");
+    g = a("SSL_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    h = a("SSL_RSA_WITH_DES_CBC_SHA");
+    i = a("SSL_RSA_WITH_3DES_EDE_CBC_SHA");
+    j = a("SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA");
+    k = a("SSL_DHE_DSS_WITH_DES_CBC_SHA");
+    l = a("SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA");
+    m = a("SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    n = a("SSL_DHE_RSA_WITH_DES_CBC_SHA");
+    o = a("SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA");
+    p = a("SSL_DH_anon_EXPORT_WITH_RC4_40_MD5");
+    q = a("SSL_DH_anon_WITH_RC4_128_MD5");
+    r = a("SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA");
+    s = a("SSL_DH_anon_WITH_DES_CBC_SHA");
+    t = a("SSL_DH_anon_WITH_3DES_EDE_CBC_SHA");
+    u = a("TLS_KRB5_WITH_DES_CBC_SHA");
+    v = a("TLS_KRB5_WITH_3DES_EDE_CBC_SHA");
+    w = a("TLS_KRB5_WITH_RC4_128_SHA");
+    x = a("TLS_KRB5_WITH_DES_CBC_MD5");
+    y = a("TLS_KRB5_WITH_3DES_EDE_CBC_MD5");
+    z = a("TLS_KRB5_WITH_RC4_128_MD5");
+    A = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA");
+    B = a("TLS_KRB5_EXPORT_WITH_RC4_40_SHA");
+    C = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5");
+    D = a("TLS_KRB5_EXPORT_WITH_RC4_40_MD5");
+    E = a("TLS_RSA_WITH_AES_128_CBC_SHA");
+    F = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA");
+    G = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA");
+    H = a("TLS_DH_anon_WITH_AES_128_CBC_SHA");
+    I = a("TLS_RSA_WITH_AES_256_CBC_SHA");
+    J = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA");
+    K = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA");
+    L = a("TLS_DH_anon_WITH_AES_256_CBC_SHA");
+    M = a("TLS_RSA_WITH_NULL_SHA256");
+    N = a("TLS_RSA_WITH_AES_128_CBC_SHA256");
+    O = a("TLS_RSA_WITH_AES_256_CBC_SHA256");
+    P = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA256");
+    Q = a("TLS_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    R = a("TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA");
+    S = a("TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    T = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA256");
+    U = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA256");
+    V = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA256");
+    W = a("TLS_DH_anon_WITH_AES_128_CBC_SHA256");
+    X = a("TLS_DH_anon_WITH_AES_256_CBC_SHA256");
+    Y = a("TLS_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    Z = a("TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA");
+    aa = a("TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    ab = a("TLS_PSK_WITH_RC4_128_SHA");
+    ac = a("TLS_PSK_WITH_3DES_EDE_CBC_SHA");
+    ad = a("TLS_PSK_WITH_AES_128_CBC_SHA");
+    ae = a("TLS_PSK_WITH_AES_256_CBC_SHA");
+    af = a("TLS_RSA_WITH_SEED_CBC_SHA");
+    ag = a("TLS_RSA_WITH_AES_128_GCM_SHA256");
+    ah = a("TLS_RSA_WITH_AES_256_GCM_SHA384");
+    ai = a("TLS_DHE_RSA_WITH_AES_128_GCM_SHA256");
+    aj = a("TLS_DHE_RSA_WITH_AES_256_GCM_SHA384");
+    ak = a("TLS_DHE_DSS_WITH_AES_128_GCM_SHA256");
+    al = a("TLS_DHE_DSS_WITH_AES_256_GCM_SHA384");
+    am = a("TLS_DH_anon_WITH_AES_128_GCM_SHA256");
+    an = a("TLS_DH_anon_WITH_AES_256_GCM_SHA384");
+    ao = a("TLS_EMPTY_RENEGOTIATION_INFO_SCSV");
+    ap = a("TLS_FALLBACK_SCSV");
+    aq = a("TLS_ECDH_ECDSA_WITH_NULL_SHA");
+    ar = a("TLS_ECDH_ECDSA_WITH_RC4_128_SHA");
+    as = a("TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    at = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA");
+    au = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA");
+    av = a("TLS_ECDHE_ECDSA_WITH_NULL_SHA");
+    aw = a("TLS_ECDHE_ECDSA_WITH_RC4_128_SHA");
+    ax = a("TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    ay = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA");
+    az = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA");
+  }
+  
+  private akt(String paramString)
+  {
+    if (paramString != null)
     {
-      a(localObject.length, i1);
-      d = new akm.1(i1, (byte[])localObject);
-      i = amy.b("efbbbf");
-      j = amy.b("feff");
-      k = amy.b("fffe");
-      l = amy.b("0000ffff");
-      m = amy.b("ffff0000");
-      e = Charset.forName("UTF-8");
-      f = Charset.forName("ISO-8859-1");
-      n = Charset.forName("UTF-16BE");
-      o = Charset.forName("UTF-16LE");
-      p = Charset.forName("UTF-32BE");
-      q = Charset.forName("UTF-32LE");
-      g = TimeZone.getTimeZone("GMT");
-      h = new Comparator() {};
+      this.bk = paramString;
+      return;
     }
+    throw new NullPointerException();
+  }
+  
+  public static akt a(String paramString)
+  {
     try
     {
-      localObject = Throwable.class.getDeclaredMethod("addSuppressed", new Class[] { Throwable.class });
-    }
-    catch (Exception localException)
-    {
-      label179:
-      break label179;
-    }
-    localObject = null;
-    r = (Method)localObject;
-    s = Pattern.compile("([0-9a-fA-F]*:[0-9a-fA-F:.]*)|([\\d.]+)");
-    return;
-    throw new NullPointerException("content == null");
-  }
-  
-  public static int a(char paramChar)
-  {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return paramChar - '0';
-    }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return paramChar - 'a' + 10;
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return paramChar - 'A' + 10;
-    }
-    return -1;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2)
-  {
-    while (paramInt1 < paramInt2)
-    {
-      switch (paramString.charAt(paramInt1))
+      akt localakt2 = (akt)bl.get(paramString);
+      akt localakt1 = localakt2;
+      if (localakt2 == null)
       {
-      default: 
-        return paramInt1;
+        localakt1 = new akt(paramString);
+        bl.put(paramString, localakt1);
       }
-      paramInt1 += 1;
+      return localakt1;
     }
-    return paramInt2;
+    finally {}
   }
   
-  public static int a(String paramString, int paramInt1, int paramInt2, char paramChar)
+  static List<akt> a(String... paramVarArgs)
   {
-    while (paramInt1 < paramInt2)
-    {
-      if (paramString.charAt(paramInt1) == paramChar) {
-        return paramInt1;
-      }
-      paramInt1 += 1;
-    }
-    return paramInt2;
-  }
-  
-  public static int a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    while (paramInt1 < paramInt2)
-    {
-      if (paramString2.indexOf(paramString1.charAt(paramInt1)) != -1) {
-        return paramInt1;
-      }
-      paramInt1 += 1;
-    }
-    return paramInt2;
-  }
-  
-  public static int a(String paramString, TimeUnit paramTimeUnit)
-  {
-    if (paramTimeUnit != null)
-    {
-      long l1 = paramTimeUnit.toMillis(60L);
-      if (l1 <= 2147483647L)
-      {
-        if (l1 == 0L)
-        {
-          paramTimeUnit = new StringBuilder();
-          paramTimeUnit.append(paramString);
-          paramTimeUnit.append(" too small.");
-          throw new IllegalArgumentException(paramTimeUnit.toString());
-        }
-        return (int)l1;
-      }
-      paramTimeUnit = new StringBuilder();
-      paramTimeUnit.append(paramString);
-      paramTimeUnit.append(" too large.");
-      throw new IllegalArgumentException(paramTimeUnit.toString());
-    }
-    throw new NullPointerException("unit == null");
-  }
-  
-  public static int a(Comparator<String> paramComparator, String[] paramArrayOfString, String paramString)
-  {
-    int i2 = paramArrayOfString.length;
+    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
+    int i2 = paramVarArgs.length;
     int i1 = 0;
     while (i1 < i2)
     {
-      if (paramComparator.compare(paramArrayOfString[i1], paramString) == 0) {
-        return i1;
-      }
+      localArrayList.add(a(paramVarArgs[i1]));
       i1 += 1;
     }
-    return -1;
+    return Collections.unmodifiableList(localArrayList);
   }
   
-  public static AssertionError a(String paramString, Exception paramException)
+  public final String toString()
   {
-    paramString = new AssertionError(paramString);
-    try
-    {
-      paramString.initCause(paramException);
-      return paramString;
-    }
-    catch (IllegalStateException paramException) {}
-    return paramString;
-  }
-  
-  public static String a(akf paramakf, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramakf.b.contains(":"))
-    {
-      localObject = new StringBuilder("[");
-      ((StringBuilder)localObject).append(paramakf.b);
-      ((StringBuilder)localObject).append("]");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    else
-    {
-      localObject = paramakf.b;
-    }
-    if ((!paramBoolean) && (paramakf.c == akf.a(paramakf.a))) {
-      return localObject;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramakf.c);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    boolean bool;
-    if (paramString.contains(":"))
-    {
-      bool = paramString.startsWith("[");
-      int i7 = 0;
-      if ((bool) && (paramString.endsWith("]"))) {
-        localObject = d(paramString, 1, paramString.length() - 1);
-      } else {
-        localObject = d(paramString, 0, paramString.length());
-      }
-      if (localObject == null) {
-        return null;
-      }
-      Object localObject = ((InetAddress)localObject).getAddress();
-      if (localObject.length == 16)
-      {
-        int i1 = 0;
-        int i3 = -1;
-        int i4;
-        int i5;
-        for (int i2 = 0; i1 < localObject.length; i2 = i5)
-        {
-          i4 = i1;
-          while ((i4 < 16) && (localObject[i4] == 0) && (localObject[(i4 + 1)] == 0)) {
-            i4 += 2;
-          }
-          int i8 = i4 - i1;
-          int i6 = i3;
-          i5 = i2;
-          if (i8 > i2)
-          {
-            i6 = i3;
-            i5 = i2;
-            if (i8 >= 4)
-            {
-              i5 = i8;
-              i6 = i1;
-            }
-          }
-          i1 = i4 + 2;
-          i3 = i6;
-        }
-        paramString = new amv();
-        i1 = i7;
-        while (i1 < localObject.length) {
-          if (i1 == i3)
-          {
-            paramString.b(58);
-            i4 = i1 + i2;
-            i1 = i4;
-            if (i4 == 16)
-            {
-              paramString.b(58);
-              i1 = i4;
-            }
-          }
-          else
-          {
-            if (i1 > 0) {
-              paramString.b(58);
-            }
-            paramString.i((localObject[i1] & 0xFF) << 8 | localObject[(i1 + 1)] & 0xFF);
-            i1 += 2;
-          }
-        }
-        return paramString.m();
-      }
-      localObject = new StringBuilder("Invalid IPv6 address: '");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("'");
-      throw new AssertionError(((StringBuilder)localObject).toString());
-    }
-    try
-    {
-      paramString = IDN.toASCII(paramString).toLowerCase(Locale.US);
-      if (paramString.isEmpty()) {
-        return null;
-      }
-      bool = d(paramString);
-      if (bool) {
-        return null;
-      }
-      return paramString;
-    }
-    catch (IllegalArgumentException paramString) {}
-    return null;
-  }
-  
-  public static String a(String paramString, Object... paramVarArgs)
-  {
-    return String.format(Locale.US, paramString, paramVarArgs);
-  }
-  
-  public static <T> List<T> a(List<T> paramList)
-  {
-    return Collections.unmodifiableList(new ArrayList(paramList));
-  }
-  
-  public static <T> List<T> a(T... paramVarArgs)
-  {
-    return Collections.unmodifiableList(Arrays.asList((Object[])paramVarArgs.clone()));
-  }
-  
-  public static <K, V> Map<K, V> a(Map<K, V> paramMap)
-  {
-    if (paramMap.isEmpty()) {
-      return Collections.emptyMap();
-    }
-    return Collections.unmodifiableMap(new LinkedHashMap(paramMap));
-  }
-  
-  public static ThreadFactory a(String paramString, final boolean paramBoolean)
-  {
-    new ThreadFactory()
-    {
-      public final Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, akt.this);
-        paramAnonymousRunnable.setDaemon(paramBoolean);
-        return paramAnonymousRunnable;
-      }
-    };
-  }
-  
-  public static X509TrustManager a()
-  {
-    try
-    {
-      Object localObject = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      ((TrustManagerFactory)localObject).init(null);
-      localObject = ((TrustManagerFactory)localObject).getTrustManagers();
-      if ((localObject.length == 1) && ((localObject[0] instanceof X509TrustManager))) {
-        return (X509TrustManager)localObject[0];
-      }
-      StringBuilder localStringBuilder = new StringBuilder("Unexpected default trust managers:");
-      localStringBuilder.append(Arrays.toString((Object[])localObject));
-      throw new IllegalStateException(localStringBuilder.toString());
-    }
-    catch (GeneralSecurityException localGeneralSecurityException)
-    {
-      throw a("No System TLS", localGeneralSecurityException);
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2)
-  {
-    if (((paramLong2 | 0L) >= 0L) && (0L <= paramLong1) && (paramLong1 - 0L >= paramLong2)) {
-      return;
-    }
-    throw new ArrayIndexOutOfBoundsException();
-  }
-  
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (RuntimeException paramCloseable)
-    {
-      throw paramCloseable;
-      return;
-    }
-    catch (Exception paramCloseable) {}
-  }
-  
-  public static void a(Throwable paramThrowable1, Throwable paramThrowable2)
-  {
-    Method localMethod = r;
-    if (localMethod != null) {}
-    try
-    {
-      localMethod.invoke(paramThrowable1, new Object[] { paramThrowable2 });
-      return;
-    }
-    catch (InvocationTargetException|IllegalAccessException paramThrowable1) {}
-    return;
-  }
-  
-  public static void a(Socket paramSocket)
-  {
-    if (paramSocket != null) {}
-    try
-    {
-      paramSocket.close();
-      return;
-    }
-    catch (RuntimeException paramSocket)
-    {
-      throw paramSocket;
-    }
-    catch (AssertionError paramSocket)
-    {
-      if (a(paramSocket)) {
-        return;
-      }
-      throw paramSocket;
-      return;
-    }
-    catch (Exception paramSocket) {}
-  }
-  
-  /* Error */
-  public static boolean a(anl paramanl, int paramInt, TimeUnit paramTimeUnit)
-  {
-    // Byte code:
-    //   0: invokestatic 435	java/lang/System:nanoTime	()J
-    //   3: lstore 5
-    //   5: aload_0
-    //   6: invokeinterface 440 1 0
-    //   11: invokevirtual 445	com/tencent/token/anm:f_	()Z
-    //   14: ifeq +19 -> 33
-    //   17: aload_0
-    //   18: invokeinterface 440 1 0
-    //   23: invokevirtual 447	com/tencent/token/anm:c	()J
-    //   26: lload 5
-    //   28: lsub
-    //   29: lstore_3
-    //   30: goto +7 -> 37
-    //   33: ldc2_w 448
-    //   36: lstore_3
-    //   37: aload_0
-    //   38: invokeinterface 440 1 0
-    //   43: lload_3
-    //   44: aload_2
-    //   45: iload_1
-    //   46: i2l
-    //   47: invokevirtual 452	java/util/concurrent/TimeUnit:toNanos	(J)J
-    //   50: invokestatic 458	java/lang/Math:min	(JJ)J
-    //   53: lload 5
-    //   55: ladd
-    //   56: invokevirtual 461	com/tencent/token/anm:a	(J)Lcom/tencent/token/anm;
-    //   59: pop
-    //   60: new 280	com/tencent/token/amv
-    //   63: dup
-    //   64: invokespecial 281	com/tencent/token/amv:<init>	()V
-    //   67: astore_2
-    //   68: aload_0
-    //   69: aload_2
-    //   70: ldc2_w 462
-    //   73: invokeinterface 466 4 0
-    //   78: ldc2_w 467
-    //   81: lcmp
-    //   82: ifeq +10 -> 92
-    //   85: aload_2
-    //   86: invokevirtual 470	com/tencent/token/amv:p	()V
-    //   89: goto -21 -> 68
-    //   92: lload_3
-    //   93: ldc2_w 448
-    //   96: lcmp
-    //   97: ifne +16 -> 113
-    //   100: aload_0
-    //   101: invokeinterface 440 1 0
-    //   106: invokevirtual 473	com/tencent/token/anm:g_	()Lcom/tencent/token/anm;
-    //   109: pop
-    //   110: goto +17 -> 127
-    //   113: aload_0
-    //   114: invokeinterface 440 1 0
-    //   119: lload 5
-    //   121: lload_3
-    //   122: ladd
-    //   123: invokevirtual 461	com/tencent/token/anm:a	(J)Lcom/tencent/token/anm;
-    //   126: pop
-    //   127: iconst_1
-    //   128: ireturn
-    //   129: astore_2
-    //   130: lload_3
-    //   131: ldc2_w 448
-    //   134: lcmp
-    //   135: ifne +16 -> 151
-    //   138: aload_0
-    //   139: invokeinterface 440 1 0
-    //   144: invokevirtual 473	com/tencent/token/anm:g_	()Lcom/tencent/token/anm;
-    //   147: pop
-    //   148: goto +17 -> 165
-    //   151: aload_0
-    //   152: invokeinterface 440 1 0
-    //   157: lload 5
-    //   159: lload_3
-    //   160: ladd
-    //   161: invokevirtual 461	com/tencent/token/anm:a	(J)Lcom/tencent/token/anm;
-    //   164: pop
-    //   165: aload_2
-    //   166: athrow
-    //   167: lload_3
-    //   168: ldc2_w 448
-    //   171: lcmp
-    //   172: ifne +16 -> 188
-    //   175: aload_0
-    //   176: invokeinterface 440 1 0
-    //   181: invokevirtual 473	com/tencent/token/anm:g_	()Lcom/tencent/token/anm;
-    //   184: pop
-    //   185: goto +17 -> 202
-    //   188: aload_0
-    //   189: invokeinterface 440 1 0
-    //   194: lload 5
-    //   196: lload_3
-    //   197: ladd
-    //   198: invokevirtual 461	com/tencent/token/anm:a	(J)Lcom/tencent/token/anm;
-    //   201: pop
-    //   202: iconst_0
-    //   203: ireturn
-    //   204: astore_2
-    //   205: goto -38 -> 167
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	paramanl	anl
-    //   0	208	1	paramInt	int
-    //   0	208	2	paramTimeUnit	TimeUnit
-    //   29	168	3	l1	long
-    //   3	192	5	l2	long
-    // Exception table:
-    //   from	to	target	type
-    //   60	68	129	finally
-    //   68	89	129	finally
-    //   60	68	204	java/io/InterruptedIOException
-    //   68	89	204	java/io/InterruptedIOException
-  }
-  
-  public static boolean a(anl paramanl, TimeUnit paramTimeUnit)
-  {
-    try
-    {
-      boolean bool = a(paramanl, 100, paramTimeUnit);
-      return bool;
-    }
-    catch (IOException paramanl)
-    {
-      label10:
-      break label10;
-    }
-    return false;
-  }
-  
-  public static boolean a(AssertionError paramAssertionError)
-  {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
-  }
-  
-  public static String[] a(Comparator<? super String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i3 = paramArrayOfString1.length;
-    int i1 = 0;
-    while (i1 < i3)
-    {
-      String str = paramArrayOfString1[i1];
-      int i4 = paramArrayOfString2.length;
-      int i2 = 0;
-      while (i2 < i4)
-      {
-        if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0)
-        {
-          localArrayList.add(str);
-          break;
-        }
-        i2 += 1;
-      }
-      i1 += 1;
-    }
-    return (String[])localArrayList.toArray(new String[localArrayList.size()]);
-  }
-  
-  public static String[] a(String[] paramArrayOfString, String paramString)
-  {
-    String[] arrayOfString = new String[paramArrayOfString.length + 1];
-    System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramArrayOfString.length);
-    arrayOfString[(arrayOfString.length - 1)] = paramString;
-    return arrayOfString;
-  }
-  
-  public static int b(String paramString)
-  {
-    int i2 = paramString.length();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      int i3 = paramString.charAt(i1);
-      if (i3 > 31)
-      {
-        if (i3 >= 127) {
-          return i1;
-        }
-        i1 += 1;
-      }
-      else
-      {
-        return i1;
-      }
-    }
-    return -1;
-  }
-  
-  public static int b(String paramString, int paramInt1, int paramInt2)
-  {
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      switch (paramString.charAt(paramInt2))
-      {
-      default: 
-        return paramInt2 + 1;
-      }
-      paramInt2 -= 1;
-    }
-    return paramInt1;
-  }
-  
-  public static boolean b(Comparator<String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    if ((paramArrayOfString1 != null) && (paramArrayOfString2 != null) && (paramArrayOfString1.length != 0))
-    {
-      if (paramArrayOfString2.length == 0) {
-        return false;
-      }
-      int i3 = paramArrayOfString1.length;
-      int i1 = 0;
-      while (i1 < i3)
-      {
-        String str = paramArrayOfString1[i1];
-        int i4 = paramArrayOfString2.length;
-        int i2 = 0;
-        while (i2 < i4)
-        {
-          if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0) {
-            return true;
-          }
-          i2 += 1;
-        }
-        i1 += 1;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public static String c(String paramString, int paramInt1, int paramInt2)
-  {
-    paramInt1 = a(paramString, paramInt1, paramInt2);
-    return paramString.substring(paramInt1, b(paramString, paramInt1, paramInt2));
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return s.matcher(paramString).matches();
-  }
-  
-  @Nullable
-  private static InetAddress d(String paramString, int paramInt1, int paramInt2)
-  {
-    byte[] arrayOfByte = new byte[16];
-    int i3 = paramInt1;
-    int i1 = 0;
-    int i2 = -1;
-    paramInt1 = -1;
-    while (i3 < paramInt2)
-    {
-      if (i1 == 16) {
-        return null;
-      }
-      int i4 = i3 + 2;
-      int i6;
-      if ((i4 <= paramInt2) && (paramString.regionMatches(i3, "::", 0, 2)))
-      {
-        if (i2 != -1) {
-          return null;
-        }
-        paramInt1 = i1 + 2;
-        if (i4 == paramInt2)
-        {
-          i2 = paramInt1;
-          break label465;
-        }
-        i2 = paramInt1;
-        i1 = i4;
-        i3 = paramInt1;
-        paramInt1 = i1;
-      }
-      else if (i1 != 0)
-      {
-        if (paramString.regionMatches(i3, ":", 0, 1))
-        {
-          paramInt1 = i3 + 1;
-          i3 = i1;
-        }
-        else
-        {
-          if (paramString.regionMatches(i3, ".", 0, 1))
-          {
-            i6 = i1 - 2;
-            i4 = i6;
-            i3 = paramInt1;
-            for (;;)
-            {
-              i5 = 0;
-              if (i3 >= paramInt2) {
-                break;
-              }
-              if (i4 == 16)
-              {
-                paramInt1 = i5;
-                break label332;
-              }
-              paramInt1 = i3;
-              if (i4 != i6)
-              {
-                if (paramString.charAt(i3) != '.')
-                {
-                  paramInt1 = i5;
-                  break label332;
-                }
-                paramInt1 = i3 + 1;
-              }
-              i3 = paramInt1;
-              i5 = 0;
-              while (i3 < paramInt2)
-              {
-                int i7 = paramString.charAt(i3);
-                if ((i7 < 48) || (i7 > 57)) {
-                  break;
-                }
-                if ((i5 == 0) && (paramInt1 != i3))
-                {
-                  paramInt1 = 0;
-                  break label332;
-                }
-                i5 = i5 * 10 + i7 - 48;
-                if (i5 > 255)
-                {
-                  paramInt1 = 0;
-                  break label332;
-                }
-                i3 += 1;
-              }
-              if (i3 - paramInt1 == 0)
-              {
-                paramInt1 = 0;
-                break label332;
-              }
-              arrayOfByte[i4] = ((byte)i5);
-              i4 += 1;
-            }
-            if (i4 != i6 + 4) {
-              paramInt1 = 0;
-            } else {
-              paramInt1 = 1;
-            }
-            label332:
-            if (paramInt1 == 0) {
-              return null;
-            }
-            paramInt1 = i1 + 2;
-            break label465;
-          }
-          return null;
-        }
-      }
-      else
-      {
-        paramInt1 = i3;
-        i3 = i1;
-      }
-      i1 = paramInt1;
-      i4 = 0;
-      while (i1 < paramInt2)
-      {
-        i5 = a(paramString.charAt(i1));
-        if (i5 == -1) {
-          break;
-        }
-        i4 = (i4 << 4) + i5;
-        i1 += 1;
-      }
-      int i5 = i1 - paramInt1;
-      if (i5 != 0)
-      {
-        if (i5 > 4) {
-          return null;
-        }
-        i6 = i3 + 1;
-        arrayOfByte[i3] = ((byte)(i4 >>> 8 & 0xFF));
-        i5 = i6 + 1;
-        arrayOfByte[i6] = ((byte)(i4 & 0xFF));
-        i3 = i1;
-        i1 = i5;
-      }
-      else
-      {
-        return null;
-      }
-    }
-    paramInt1 = i1;
-    label465:
-    if (paramInt1 != 16)
-    {
-      if (i2 == -1) {
-        return null;
-      }
-      paramInt2 = paramInt1 - i2;
-      System.arraycopy(arrayOfByte, i2, arrayOfByte, 16 - paramInt2, paramInt2);
-      Arrays.fill(arrayOfByte, i2, 16 - paramInt1 + i2, (byte)0);
-    }
-    try
-    {
-      paramString = InetAddress.getByAddress(arrayOfByte);
-      return paramString;
-    }
-    catch (UnknownHostException paramString)
-    {
-      label521:
-      break label521;
-    }
-    throw new AssertionError();
-  }
-  
-  private static boolean d(String paramString)
-  {
-    int i1 = 0;
-    while (i1 < paramString.length())
-    {
-      int i2 = paramString.charAt(i1);
-      if (i2 > 31)
-      {
-        if (i2 >= 127) {
-          return true;
-        }
-        if (" #%/:?@[\\]".indexOf(i2) != -1) {
-          return true;
-        }
-        i1 += 1;
-      }
-      else
-      {
-        return true;
-      }
-    }
-    return false;
+    return this.bk;
   }
 }
 

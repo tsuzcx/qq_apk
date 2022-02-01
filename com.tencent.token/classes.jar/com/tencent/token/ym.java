@@ -1,102 +1,42 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
+import btmsdkobf.bx;
+import btmsdkobf.cj;
+import btmsdkobf.cm;
+import btmsdkobf.dj;
+import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
 
 public final class ym
-  extends BaseAdapter
+  implements avd
 {
-  private Context a;
-  private ArrayList<sr> b;
-  private int c = 0;
-  
-  public ym(Context paramContext, ArrayList<sr> paramArrayList)
+  public final WeakReference<Object> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, final avg paramavg)
   {
-    this.a = paramContext;
-    this.b = paramArrayList;
-  }
-  
-  public final int getCount()
-  {
-    return this.b.size();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    if (paramView == null)
+    bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
     {
-      paramView = new a();
-      localObject = LayoutInflater.from(this.a).inflate(2131296360, paramViewGroup, false);
-      paramView.d = ((View)localObject).findViewById(2131165615);
-      paramView.a = ((TextView)((View)localObject).findViewById(2131166168));
-      paramView.b = ((ImageView)((View)localObject).findViewById(2131165613));
-      paramView.c = ((ImageView)((View)localObject).findViewById(2131165614));
-      paramView.e = ((RelativeLayout)((View)localObject).findViewById(2131165739));
-      ((View)localObject).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    else
-    {
-      paramViewGroup = (a)paramView.getTag();
-    }
-    Object localObject = (sr)this.b.get(paramInt);
-    if ((localObject != null) && (((sr)localObject).f))
-    {
-      if (!TextUtils.isEmpty(((sr)localObject).c)) {
-        paramViewGroup.a.setText(((sr)localObject).c);
-      }
-      paramViewGroup.d.setOnClickListener(((sr)localObject).a);
-      if (((sr)localObject).b > 0) {
-        paramViewGroup.b.setImageResource(((sr)localObject).b);
-      } else {
-        new aae(paramViewGroup.b).execute(new String[] { ((sr)localObject).g });
-      }
-      if (((sr)localObject).d)
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        paramViewGroup.c.setVisibility(0);
-        return paramView;
+        paramavg.a(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousJceStruct);
       }
-      paramViewGroup.c.setVisibility(4);
-      paramViewGroup = paramViewGroup.e;
-      if (((sr)localObject).e) {
-        paramInt = i;
-      } else {
-        paramInt = 8;
-      }
-      paramViewGroup.setVisibility(paramInt);
-    }
-    return paramView;
+    }, 0L);
+    return null;
   }
   
-  final class a
+  public final void a(JceStruct paramJceStruct, final avh paramavh)
   {
-    TextView a;
-    ImageView b;
-    ImageView c;
-    View d;
-    RelativeLayout e;
-    
-    a() {}
+    bx.ar().a(13560, paramJceStruct, 2, new cm()
+    {
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      {
+        paramavh.a(paramAnonymousLong, paramAnonymousInt2, paramAnonymousJceStruct);
+        throw new NullPointerException();
+      }
+    });
+  }
+  
+  static final class a
+  {
+    private static final ym a = new ym();
   }
 }
 

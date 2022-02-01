@@ -8,31 +8,31 @@ import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
-import com.tencent.token.ez;
-import com.tencent.token.fp;
-import com.tencent.token.gs.a;
-import com.tencent.token.ii;
-import com.tencent.token.ip;
-import com.tencent.token.ir;
+import com.tencent.token.fn;
+import com.tencent.token.gd;
+import com.tencent.token.hg.a;
+import com.tencent.token.iw;
+import com.tencent.token.jd;
 import com.tencent.token.jf;
+import com.tencent.token.jt;
 
 public class AppCompatButton
   extends Button
-  implements ez, fp
+  implements fn, gd
 {
-  private final ii b = new ii(this);
-  private final ip c;
+  private final iw b = new iw(this);
+  private final jd c;
   
   public AppCompatButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gs.a.buttonStyle);
+    this(paramContext, paramAttributeSet, hg.a.buttonStyle);
   }
   
   public AppCompatButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jf.a(paramContext), paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
     this.b.a(paramAttributeSet, paramInt);
-    this.c = ip.a(this);
+    this.c = jd.a(this);
     this.c.a(paramAttributeSet, paramInt);
     this.c.a();
   }
@@ -42,11 +42,11 @@ public class AppCompatButton
     super.drawableStateChanged();
     Object localObject = this.b;
     if (localObject != null) {
-      ((ii)localObject).d();
+      ((iw)localObject).d();
     }
     localObject = this.c;
     if (localObject != null) {
-      ((ip)localObject).a();
+      ((jd)localObject).a();
     }
   }
   
@@ -55,9 +55,9 @@ public class AppCompatButton
     if (a) {
       return super.getAutoSizeMaxTextSize();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.d);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.d);
     }
     return -1;
   }
@@ -67,9 +67,9 @@ public class AppCompatButton
     if (a) {
       return super.getAutoSizeMinTextSize();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.c);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.c);
     }
     return -1;
   }
@@ -79,9 +79,9 @@ public class AppCompatButton
     if (a) {
       return super.getAutoSizeStepGranularity();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.b);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.b);
     }
     return -1;
   }
@@ -91,9 +91,9 @@ public class AppCompatButton
     if (a) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return localip.b.e;
+    jd localjd = this.c;
+    if (localjd != null) {
+      return localjd.b.e;
     }
     return new int[0];
   }
@@ -107,27 +107,27 @@ public class AppCompatButton
       }
       return 0;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return localip.b.a;
+    jd localjd = this.c;
+    if (localjd != null) {
+      return localjd.b.a;
     }
     return 0;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.b();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.c();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
@@ -147,9 +147,9 @@ public class AppCompatButton
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ip localip = this.c;
-    if (localip != null) {
-      localip.b();
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.b();
     }
   }
   
@@ -168,9 +168,9 @@ public class AppCompatButton
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -181,9 +181,9 @@ public class AppCompatButton
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramArrayOfInt, paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramArrayOfInt, paramInt);
     }
   }
   
@@ -194,9 +194,9 @@ public class AppCompatButton
       super.setAutoSizeTextTypeWithDefaults(paramInt);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt);
     }
   }
   
@@ -212,42 +212,42 @@ public class AppCompatButton
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramInt);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
   public void setSupportAllCaps(boolean paramBoolean)
   {
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramBoolean);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramBoolean);
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramColorStateList);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramMode);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramContext, paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
   
@@ -258,9 +258,9 @@ public class AppCompatButton
       super.setTextSize(paramInt, paramFloat);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt, paramFloat);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt, paramFloat);
     }
   }
 }

@@ -1,8 +1,16 @@
 package com.tencent.token;
 
-public abstract interface kw
+public final class kw
 {
-  public abstract kx.a a(String paramString);
+  public static void a(Runnable paramRunnable, String paramString)
+  {
+    new Thread(paramRunnable, paramString).start();
+  }
+  
+  public static void b(Runnable paramRunnable, String paramString)
+  {
+    new Thread(paramRunnable, paramString).start();
+  }
 }
 
 

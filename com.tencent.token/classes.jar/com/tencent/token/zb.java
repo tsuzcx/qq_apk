@@ -1,71 +1,106 @@
 package com.tencent.token;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
+import com.tencent.token.ui.UtilsMbInfoActivity;
+import com.tencent.token.ui.UtilsMbInfoItemActivity;
+import com.tencent.token.ui.UtilsModSetMobileStep1Activity;
+import java.util.ArrayList;
 
 public final class zb
-  extends Drawable
+  extends BaseAdapter
 {
-  private Paint a = new Paint();
-  private Bitmap b;
-  private final int c = 100;
-  private float d;
-  private int e = 0;
-  private float f;
-  private float g;
-  private float h;
+  private UtilsMbInfoActivity a;
+  private LayoutInflater b;
   
-  public zb(Activity paramActivity)
+  public zb(UtilsMbInfoActivity paramUtilsMbInfoActivity)
   {
-    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2131100064);
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    this.d = localDisplayMetrics.density;
-    float f1 = this.d;
-    this.f = (286.0F * f1);
-    this.g = (f1 * 442.0F);
-    this.h = (this.f / 100.0F);
-    this.a.setColor(paramActivity.getResources().getColor(2130968740));
-    this.a.setAntiAlias(true);
-    this.a.setFilterBitmap(true);
+    this.a = paramUtilsMbInfoActivity;
+    this.b = LayoutInflater.from(paramUtilsMbInfoActivity);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int getCount()
   {
-    this.e %= 100;
-    int i = this.e;
-    if (i != 99)
-    {
-      float f1 = this.h;
-      float f2 = i;
-      paramCanvas.drawBitmap(this.b, 0.0F, f1 * f2, this.a);
+    MbInfoResult localMbInfoResult = abh.a().c();
+    if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
+      return localMbInfoResult.mMbInfoItems.size();
     }
-    else
-    {
-      Bitmap localBitmap = this.b;
-      paramCanvas.drawBitmap(localBitmap, 0.0F, this.f - localBitmap.getHeight(), this.a);
-    }
-    this.e += 1;
-    invalidateSelf();
-  }
-  
-  public final int getOpacity()
-  {
     return 0;
   }
   
-  public final void setAlpha(int paramInt) {}
+  public final Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(final int paramInt, final View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.b.inflate(2131296501, paramViewGroup, false);
+    }
+    paramView = abh.a().c();
+    if ((paramView == null) && (!this.a.mIsIniting))
+    {
+      this.a.getMbInfo();
+      return localView;
+    }
+    if ((paramView != null) && (paramView.mMbInfoItems != null))
+    {
+      if (paramView.mMbInfoItems.size() <= paramInt) {
+        return localView;
+      }
+      paramView = (MbInfoResult.MbInfoItem)paramView.mMbInfoItems.get(paramInt);
+      paramViewGroup = (TextView)localView.findViewById(2131166279);
+      TextView localTextView1 = (TextView)localView.findViewById(2131166278);
+      TextView localTextView2 = (TextView)localView.findViewById(2131166280);
+      if (paramView.mName != null) {
+        paramViewGroup.setText(paramView.mName);
+      }
+      if (paramView.mDesc != null) {
+        localTextView1.setText(paramView.mDesc);
+      }
+      if (paramView.mOpName != null) {
+        localTextView2.setText(paramView.mOpName);
+      }
+      localView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          if ((paramView.mId == 51) && (paramView.mDetail.mBtnType == 1))
+          {
+            paramAnonymousView = new Intent(zb.a(zb.this), UtilsModSetMobileStep1Activity.class);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(zb.a(zb.this).getResources().getString(2131493581));
+            localStringBuilder.append(paramView.mName);
+            paramAnonymousView.putExtra("title", localStringBuilder.toString());
+            paramAnonymousView.putExtra("op_type", 1);
+            paramAnonymousView.putExtra("position", paramInt);
+            zb.a(zb.this).startActivity(paramAnonymousView);
+            return;
+          }
+          paramAnonymousView = new Intent(zb.a(zb.this), UtilsMbInfoItemActivity.class);
+          paramAnonymousView.putExtra("position", paramInt);
+          zb.a(zb.this).startActivity(paramAnonymousView);
+        }
+      });
+    }
+    return localView;
+  }
 }
 
 

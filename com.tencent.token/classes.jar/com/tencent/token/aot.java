@@ -1,41 +1,61 @@
 package com.tencent.token;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
-abstract class aot<V, O>
-  implements aos<O>
+public class aot<T>
 {
-  final List<anv<V>> a;
-  final V b;
+  private static final Interpolator f = new LinearInterpolator();
+  public final T a;
+  public final T b;
+  final Interpolator c;
+  public final float d;
+  public Float e;
+  private final avq g;
+  private float h;
+  private float i;
   
-  aot(V paramV)
+  final float a()
   {
-    this(Collections.emptyList(), paramV);
+    if (this.h == 1.4E-45F) {
+      this.h = ((this.d - (float)this.g.h) / this.g.b());
+    }
+    return this.h;
   }
   
-  private aot(List<anv<V>> paramList, V paramV)
+  final boolean a(float paramFloat)
   {
-    this.a = paramList;
-    this.b = paramV;
+    return (paramFloat >= a()) && (paramFloat <= b());
   }
   
-  public boolean b()
+  final float b()
   {
-    return !this.a.isEmpty();
+    if (this.i == 1.4E-45F)
+    {
+      float f1;
+      if (this.e == null) {
+        f1 = 1.0F;
+      } else {
+        f1 = a() + (this.e.floatValue() - this.d) / this.g.b();
+      }
+      this.i = f1;
+    }
+    return this.i;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=");
+    StringBuilder localStringBuilder = new StringBuilder("Keyframe{startValue=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", endValue=");
     localStringBuilder.append(this.b);
-    if (!this.a.isEmpty())
-    {
-      localStringBuilder.append(", values=");
-      localStringBuilder.append(Arrays.toString(this.a.toArray()));
-    }
+    localStringBuilder.append(", startFrame=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", endFrame=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", interpolator=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }

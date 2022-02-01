@@ -22,9 +22,9 @@ public class LoginMsgMenuDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296364);
-      this.b = ((Button)findViewById(2131165733));
-      this.c = ((Button)findViewById(2131165732));
+      setContentView(2131296372);
+      this.b = ((Button)findViewById(2131165750));
+      this.c = ((Button)findViewById(2131165749));
       this.b.setOnClickListener(this.e);
       this.c.setOnClickListener(this.d);
       setCanceledOnTouchOutside(true);

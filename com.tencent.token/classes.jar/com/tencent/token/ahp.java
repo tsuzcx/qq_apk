@@ -1,6 +1,13 @@
 package com.tencent.token;
 
-public abstract interface ahp {}
+import java.lang.annotation.Annotation;
+
+public @interface ahp
+{
+  Class<?> a();
+  
+  boolean b() default true;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

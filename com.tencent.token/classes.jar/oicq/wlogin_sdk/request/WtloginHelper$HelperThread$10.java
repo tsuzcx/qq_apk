@@ -7,11 +7,11 @@ class WtloginHelper$HelperThread$10
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    WtloginHelper.access$100(this.this$1.mHelper).OnRequestTransport(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.val$ret);
+    WtloginHelper.access$200(this.this$1.mHelper).OnRequestTransport(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.val$ret);
   }
 }
 

@@ -1,17 +1,10 @@
 package com.tencent.token;
 
+import android.os.Build;
+
 public final class yd
 {
-  public float a;
-  public float b;
-  public float c;
-  
-  public yd(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
+  public static String a = Build.MODEL;
 }
 
 

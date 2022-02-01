@@ -1,194 +1,98 @@
 package com.tencent.token;
 
-import android.content.res.Resources.Theme;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.Region;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 
-abstract class bv
-  extends Drawable
-  implements dl
+public final class bv
+  extends Fragment
 {
-  Drawable b;
+  a a;
   
-  public void applyTheme(Resources.Theme paramTheme)
+  public static void a(Activity paramActivity)
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
+    paramActivity = paramActivity.getFragmentManager();
+    if (paramActivity.findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
     {
-      dk.a(localDrawable, paramTheme);
-      return;
+      paramActivity.beginTransaction().add(new bv(), "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag").commit();
+      paramActivity.executePendingTransactions();
     }
   }
   
-  public void clearColorFilter()
+  private void a(bj.a parama)
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
+    Object localObject = getActivity();
+    if ((localObject instanceof bo))
     {
-      localDrawable.clearColorFilter();
+      ((bo)localObject).a().a(parama);
       return;
     }
-    super.clearColorFilter();
-  }
-  
-  public ColorFilter getColorFilter()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
+    if ((localObject instanceof bm))
     {
-      if (Build.VERSION.SDK_INT >= 21) {
-        return localDrawable.getColorFilter();
+      localObject = ((bm)localObject).getLifecycle();
+      if ((localObject instanceof bn)) {
+        ((bn)localObject).a(parama);
       }
-      return null;
-    }
-    return null;
-  }
-  
-  public Drawable getCurrent()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getCurrent();
-    }
-    return super.getCurrent();
-  }
-  
-  public int getMinimumHeight()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getMinimumHeight();
-    }
-    return super.getMinimumHeight();
-  }
-  
-  public int getMinimumWidth()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getMinimumWidth();
-    }
-    return super.getMinimumWidth();
-  }
-  
-  public boolean getPadding(Rect paramRect)
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getPadding(paramRect);
-    }
-    return super.getPadding(paramRect);
-  }
-  
-  public int[] getState()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getState();
-    }
-    return super.getState();
-  }
-  
-  public Region getTransparentRegion()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.getTransparentRegion();
-    }
-    return super.getTransparentRegion();
-  }
-  
-  public void jumpToCurrentState()
-  {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      localDrawable.jumpToCurrentState();
-      return;
     }
   }
   
-  protected void onBoundsChange(Rect paramRect)
+  static bv b(Activity paramActivity)
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      localDrawable.setBounds(paramRect);
-      return;
-    }
-    super.onBoundsChange(paramRect);
+    return (bv)paramActivity.getFragmentManager().findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag");
   }
   
-  protected boolean onLevelChange(int paramInt)
+  public final void onActivityCreated(Bundle paramBundle)
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.setLevel(paramInt);
-    }
-    return super.onLevelChange(paramInt);
+    super.onActivityCreated(paramBundle);
+    a(bj.a.ON_CREATE);
   }
   
-  public void setChangingConfigurations(int paramInt)
+  public final void onDestroy()
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      localDrawable.setChangingConfigurations(paramInt);
-      return;
-    }
-    super.setChangingConfigurations(paramInt);
+    super.onDestroy();
+    a(bj.a.ON_DESTROY);
+    this.a = null;
   }
   
-  public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
+  public final void onPause()
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      localDrawable.setColorFilter(paramInt, paramMode);
-      return;
-    }
-    super.setColorFilter(paramInt, paramMode);
+    super.onPause();
+    a(bj.a.ON_PAUSE);
   }
   
-  public void setFilterBitmap(boolean paramBoolean)
+  public final void onResume()
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      localDrawable.setFilterBitmap(paramBoolean);
-      return;
+    super.onResume();
+    a locala = this.a;
+    if (locala != null) {
+      locala.b();
     }
+    a(bj.a.ON_RESUME);
   }
   
-  public void setHotspot(float paramFloat1, float paramFloat2)
+  public final void onStart()
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      dk.a(localDrawable, paramFloat1, paramFloat2);
+    super.onStart();
+    a locala = this.a;
+    if (locala != null) {
+      locala.a();
     }
+    a(bj.a.ON_START);
   }
   
-  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void onStop()
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null)
-    {
-      dk.a(localDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-    }
+    super.onStop();
+    a(bj.a.ON_STOP);
   }
   
-  public boolean setState(int[] paramArrayOfInt)
+  static abstract interface a
   {
-    Drawable localDrawable = this.b;
-    if (localDrawable != null) {
-      return localDrawable.setState(paramArrayOfInt);
-    }
-    return super.setState(paramArrayOfInt);
+    public abstract void a();
+    
+    public abstract void b();
   }
 }
 

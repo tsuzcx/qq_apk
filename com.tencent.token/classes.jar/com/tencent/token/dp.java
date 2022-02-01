@@ -1,134 +1,73 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Outline;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.InsetDrawable;
-import android.graphics.drawable.RippleDrawable;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.util.TypedValue;
+import org.xmlpull.v1.XmlPullParser;
 
-final class dp
-  extends do
+public final class dp
 {
-  private static Method d;
-  
-  dp(Drawable paramDrawable)
+  public static float a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt, float paramFloat)
   {
-    super(paramDrawable);
-    d();
-  }
-  
-  dp(dn.a parama, Resources paramResources)
-  {
-    super(parama, paramResources);
-    d();
-  }
-  
-  private static void d()
-  {
-    if (d == null) {}
-    try
-    {
-      d = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
-      return;
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramFloat;
     }
-    catch (Exception localException) {}
-    return;
+    return paramTypedArray.getFloat(paramInt, paramFloat);
   }
   
-  final dn.a b()
+  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
   {
-    return new a(this.b);
-  }
-  
-  protected final boolean c()
-  {
-    if (Build.VERSION.SDK_INT == 21)
-    {
-      Drawable localDrawable = this.c;
-      return ((localDrawable instanceof GradientDrawable)) || ((localDrawable instanceof DrawableContainer)) || ((localDrawable instanceof InsetDrawable)) || ((localDrawable instanceof RippleDrawable));
+    if (!a(paramXmlPullParser, paramString)) {
+      return 0;
     }
-    return false;
+    return paramTypedArray.getResourceId(paramInt, 0);
   }
   
-  public final Rect getDirtyBounds()
+  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
   {
-    return this.c.getDirtyBounds();
-  }
-  
-  public final void getOutline(Outline paramOutline)
-  {
-    this.c.getOutline(paramOutline);
-  }
-  
-  public final void setHotspot(float paramFloat1, float paramFloat2)
-  {
-    this.c.setHotspot(paramFloat1, paramFloat2);
-  }
-  
-  public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.c.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public final boolean setState(int[] paramArrayOfInt)
-  {
-    if (super.setState(paramArrayOfInt))
-    {
-      invalidateSelf();
-      return true;
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramInt2;
     }
-    return false;
+    return paramTypedArray.getInt(paramInt1, paramInt2);
   }
   
-  public final void setTint(int paramInt)
+  public static TypedArray a(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, int[] paramArrayOfInt)
   {
-    if (c())
-    {
-      super.setTint(paramInt);
-      return;
+    if (paramTheme == null) {
+      return paramResources.obtainAttributes(paramAttributeSet, paramArrayOfInt);
     }
-    this.c.setTint(paramInt);
+    return paramTheme.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt, 0, 0);
   }
   
-  public final void setTintList(ColorStateList paramColorStateList)
+  public static TypedValue a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString)
   {
-    if (c())
-    {
-      super.setTintList(paramColorStateList);
-      return;
+    if (!a(paramXmlPullParser, paramString)) {
+      return null;
     }
-    this.c.setTintList(paramColorStateList);
+    return paramTypedArray.peekValue(0);
   }
   
-  public final void setTintMode(PorterDuff.Mode paramMode)
+  public static boolean a(XmlPullParser paramXmlPullParser, String paramString)
   {
-    if (c())
-    {
-      super.setTintMode(paramMode);
-      return;
-    }
-    this.c.setTintMode(paramMode);
+    return paramXmlPullParser.getAttributeValue("http://schemas.android.com/apk/res/android", paramString) != null;
   }
   
-  static final class a
-    extends dn.a
+  public static int b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
   {
-    a(dn.a parama)
-    {
-      super();
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramInt2;
     }
-    
-    public final Drawable newDrawable(Resources paramResources)
-    {
-      return new dp(this, paramResources);
+    return paramTypedArray.getColor(paramInt1, paramInt2);
+  }
+  
+  public static String b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
+  {
+    if (!a(paramXmlPullParser, paramString)) {
+      return null;
     }
+    return paramTypedArray.getString(paramInt);
   }
 }
 

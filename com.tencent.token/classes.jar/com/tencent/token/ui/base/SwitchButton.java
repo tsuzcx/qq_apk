@@ -17,7 +17,7 @@ import android.view.ViewParent;
 import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.token.utils.ImageCache;
-import com.tencent.token.yz;
+import com.tencent.token.zl;
 
 public class SwitchButton
   extends CheckBox
@@ -84,17 +84,17 @@ public class SwitchButton
     }
     if (this.c == null)
     {
-      this.c = BitmapFactory.decodeResource(paramAttributeSet, 2131100153);
+      this.c = BitmapFactory.decodeResource(paramAttributeSet, 2131100158);
       g.b("key_switch_button_bottom", this.c);
     }
     if (this.e == null)
     {
-      this.e = BitmapFactory.decodeResource(paramAttributeSet, 2131100154);
+      this.e = BitmapFactory.decodeResource(paramAttributeSet, 2131100159);
       g.b("key_switch_button_normal", this.e);
     }
     if (this.f == null)
     {
-      this.f = BitmapFactory.decodeResource(paramAttributeSet, 2131100155);
+      this.f = BitmapFactory.decodeResource(paramAttributeSet, 2131100160);
       g.b("key_switch_button_mask", this.f);
     }
     paramContext = this.e;
@@ -335,7 +335,7 @@ public class SwitchButton
         return;
       }
       SwitchButton.b(SwitchButton.this);
-      yz.a(this);
+      zl.a(this);
     }
   }
 }

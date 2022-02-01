@@ -1,33 +1,57 @@
 package com.tencent.token;
 
-import android.content.Context;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 
-public final class adu
-  extends Thread
+public final class adu<T>
+  extends ahh<T>
 {
-  public adu(agr paramagr) {}
+  public final ahx a;
+  public final ahh<T> b;
+  public final Type c;
   
-  public final void run()
+  public adu(ahx paramahx, ahh<T> paramahh, Type paramType)
   {
-    Object localObject = this.a;
-    abz.a();
-    localObject = ((agr)localObject).c;
-    aeq localaeq = abz.a((Context)localObject, 100, 0, 0);
-    adz.c = localaeq;
-    if (localaeq == null) {
-      adz.c = new aeq((Context)localObject, 0, 0, 0, 0, 100);
+    this.a = paramahx;
+    this.b = paramahh;
+    this.c = paramType;
+  }
+  
+  public final void a(aep paramaep, T paramT)
+  {
+    ahh localahh = this.b;
+    Object localObject2 = this.c;
+    Object localObject1 = localObject2;
+    if (paramT != null) {
+      if ((localObject2 != Object.class) && (!(localObject2 instanceof TypeVariable)))
+      {
+        localObject1 = localObject2;
+        if (!(localObject2 instanceof Class)) {}
+      }
+      else
+      {
+        localObject1 = paramT.getClass();
+      }
     }
-    aek.b.getClass();
-    localaeq = abz.a((Context)localObject, 999, (int)aek.a((Context)localObject, "mm_max_day_cnt", 20L, 1L), (int)aek.a((Context)localObject, "mm_max_hour_cnt", 3L, 1L));
-    adz.a = localaeq;
-    if (localaeq == null) {
-      adz.a = new aeq((Context)localObject, (int)aek.a((Context)localObject, "mm_max_day_cnt", 20L, 1L), (int)aek.a((Context)localObject, "mm_max_hour_cnt", 3L, 1L), 30, 3, 999);
+    if (localObject1 != this.c)
+    {
+      localahh = this.a.a(new aek((Type)localObject1));
+      if ((localahh instanceof adj.a))
+      {
+        localObject2 = this.b;
+        localObject1 = localObject2;
+        if (!(localObject2 instanceof adj.a)) {}
+      }
+      else
+      {
+        localObject1 = localahh;
+      }
     }
-    localaeq = abz.a((Context)localObject, 998, 3, 1);
-    adz.b = localaeq;
-    if (localaeq == null) {
-      adz.b = new aeq((Context)localObject, 3, 1, 3600, 3, 998);
+    else
+    {
+      localObject1 = localahh;
     }
+    ((ahh)localObject1).a(paramaep, paramT);
   }
 }
 

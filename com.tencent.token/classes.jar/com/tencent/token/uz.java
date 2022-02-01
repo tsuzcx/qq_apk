@@ -1,89 +1,80 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
-import org.json.JSONException;
+import java.net.URLEncoder;
+import oicq.wlogin_sdk.request.WtloginHelper;
 import org.json.JSONObject;
 
 public final class uz
-  extends tr
+  extends ud
 {
-  private long d;
-  private int e;
-  private int f;
-  private String g;
-  private int h;
-  private int i;
-  
   public final String a()
   {
-    sh.a();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      int i = su.b + 1;
+      su.b = i;
+      localJSONObject.put("seq_id", i);
+      localObject = tg.b();
+      localJSONObject.put("rmd_ver", ((tg)localObject).g);
+      localJSONObject.put("rmd_times", ((tg)localObject).h);
+      localJSONObject.put("rmd_last_time", ((tg)localObject).i);
+      localJSONObject.put("config_ver", tu.a().h.b);
+      localJSONObject.put("channel_id", aay.k());
+      localJSONObject.put("wtsdk_guid", aay.a(ss.a(RqdApplication.n()).a.GetGuid()));
+      localJSONObject.put("device_name", URLEncoder.encode(aaz.x()));
+      localJSONObject.put("release_tag", xr.a);
+      aay.b(localJSONObject.toString().getBytes());
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      Object localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      xv.c(((StringBuilder)localObject).toString());
+    }
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
-  {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.g = ((String)paramabc.c.get("param.wtlogin.a2"));
-    this.f = ((Integer)paramabc.c.get("param.factor.type")).intValue();
-  }
+  public final void a(abm paramabm) {}
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j != 0)
+    int i = paramJSONObject.getInt("err");
+    Object localObject;
+    if (i != 0)
     {
-      a(j, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((xt)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      j = paramJSONObject.getInt("seq_id");
-      if (j != this.e)
+      xv.c(paramJSONObject.toString());
+      if (paramJSONObject.has("new_config"))
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
-        paramJSONObject.append(",right = ");
-        si.a();
-        paramJSONObject.append(si.b());
-        xj.c(paramJSONObject.toString());
-        return;
+        localObject = paramJSONObject.getJSONObject("new_config");
+        tu.a().h.a((JSONObject)localObject);
       }
-      xj.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
-      try
-      {
-        this.h = paramJSONObject.getInt("sign_status");
-        this.i = paramJSONObject.getInt("auto_melt_time");
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
+      if (paramJSONObject.has("update")) {
+        tg.b().a(paramJSONObject.optJSONObject("update"));
       }
       this.a.a = 0;
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.h;
-      localMessage.obj = Integer.valueOf(this.i);
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

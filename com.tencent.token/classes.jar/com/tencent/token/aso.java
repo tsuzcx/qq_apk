@@ -1,480 +1,237 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
-import android.util.SparseArray;
 import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import tmsdk.common.d.a.c.j;
+import tmsdk.common.tcc.TccCryptor;
 
-public class aso
-  extends atf
-  implements ass, asy
+public final class aso
 {
-  private static Object B = new Object();
-  private static aso C = null;
-  private Handler A = null;
-  AtomicInteger a = new AtomicInteger(0);
-  public ate b = null;
-  int c = 0;
-  ki d = null;
-  boolean e = false;
-  HandlerThread f = null;
-  Handler g = null;
-  SparseArray h = new SparseArray();
-  SparseArray i = new SparseArray();
-  private Object l = new Object();
-  private Object m = new Object();
-  private j n = j.a();
-  private Context o = null;
-  private ad p = new ad();
-  private final long q = -1L;
-  private long r = 180000L;
-  private AtomicInteger s = new AtomicInteger(0);
-  private ars t;
-  private aij u;
-  private aii v = new arf(this);
-  private aii w = new arg(this);
-  private asz x = new asz(new arh(this));
-  private Handler y = new ari(this, Looper.getMainLooper());
-  private aro z = null;
-  
-  private aso()
+  @Deprecated
+  public static JceStruct a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, JceStruct paramJceStruct)
   {
-    this.b.b.c = this;
-    this.b.a(this.r);
-    this.z = new aro(this, this.o);
-    j localj = this.n;
-    synchronized (localj.a)
+    if (paramArrayOfByte2 != null)
     {
-      new StringBuilder("添加网络监听 : ").append(getClass().getName());
-      localj.a.add(this);
-      int i1 = (int)System.currentTimeMillis();
-      int k = i1;
-      if (i1 < 0) {
-        k = -i1;
+      if (paramArrayOfByte2.length == 0) {
+        return null;
       }
-      this.s.set(k / 100);
-      this.A = new ark(this, this.o.getMainLooper());
-      if (!j)
-      {
-        if (30000L < this.r) {
-          return;
-        }
-        throw new AssertionError();
+      paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2);
+      if (paramArrayOfByte1 == null) {
+        return null;
       }
-      return;
+      return asu.a(paramArrayOfByte1, paramJceStruct);
     }
+    return null;
   }
   
-  public static aso a()
+  public static byte[] a(JceStruct paramJceStruct)
   {
-    if (C == null) {
-      synchronized (B)
-      {
-        if (C == null) {
-          C = new aso();
-        }
-      }
-    }
-    return C;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
-  {
-    this.A.removeMessages(paramInt3);
-    synchronized (this.m)
-    {
-      Object localObject1 = (arp)this.i.get(paramInt3);
-      if (localObject1 == null) {
-        return;
-      }
-      this.i.remove(paramInt3);
-      if (arb.filterNetworkCode(paramInt1) == -50000)
-      {
-        ??? = new StringBuilder("这个超时了 refSeqNo : ");
-        ((StringBuilder)???).append(paramInt3);
-        ((StringBuilder)???).append(" retCode : ");
-        ((StringBuilder)???).append(paramInt1);
-      }
-      else
-      {
-        ??? = new StringBuilder("onRecvCallBack : refSeqNo : ");
-        ((StringBuilder)???).append(paramInt3);
-        ((StringBuilder)???).append(" retCode : ");
-        ((StringBuilder)???).append(paramInt1);
-      }
-      paramArrayOfByte = new asb(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, (arp)localObject1);
-      paramInt1 = ((arp)localObject1).c & 0x18;
-      if (paramInt1 != 8)
-      {
-        if (paramInt1 != 16)
-        {
-          kh.a();
-          ki.b(new arm(this, paramArrayOfByte), "tcp run callback on thread");
-          return;
-        }
-        b(paramArrayOfByte);
-        return;
-      }
-      localObject1 = Message.obtain();
-      ((Message)localObject1).obj = paramArrayOfByte;
-      ((Message)localObject1).what = 1;
-      this.y.sendMessage((Message)localObject1);
-      return;
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, JceStruct arg3, aii paramaii)
-  {
-    paramaii = new arp(paramInt1, paramaii, ???);
-    synchronized (this.m)
-    {
-      this.i.append(paramInt2, paramaii);
-      return;
-    }
-  }
-  
-  private void a(long paramLong)
-  {
-    this.b.a(paramLong);
-  }
-  
-  private void a(asc paramasc)
-  {
-    if ((paramasc != null) && (paramasc.f != null))
-    {
-      if (paramasc.f.a == null) {
-        return;
-      }
-      Object localObject = arw.a(paramasc.e, paramasc.f.b);
-      localObject = paramasc.f.a.a(paramasc.a, paramasc.d, (JceStruct)localObject);
-      if ((localObject != null) && (((Pair)localObject).first != null) && (((Pair)localObject).second != null))
-      {
-        ac localac = new ac();
-        localac.a = ((Integer)((Pair)localObject).first).intValue();
-        localac.b = arw.a((JceStruct)((Pair)localObject).second);
-        a(this.k, 655, 32, paramasc.b, paramasc.c, localac, null, null, -1L);
-      }
-      return;
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.e = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
-  {
-    synchronized (this.l)
-    {
-      Object localObject2 = (ArrayList)this.h.get(paramInt4);
-      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
-      {
-        localObject2 = (ArrayList)((ArrayList)localObject2).clone();
-        ??? = ((List)localObject2).iterator();
-        while (((Iterator)???).hasNext())
-        {
-          Object localObject3 = (arx)((Iterator)???).next();
-          localObject2 = new asc(paramInt3, paramInt4, paramArrayOfByte, paramInt1, paramInt2, (arx)localObject3);
-          int k = ((arx)localObject3).c & 0x18;
-          if (k != 8)
-          {
-            if (k != 16)
-            {
-              kh.a();
-              ki.b(new arn(this, (asc)localObject2), "tcp run push on thread");
-            }
-            else
-            {
-              a((asc)localObject2);
-            }
-          }
-          else
-          {
-            localObject3 = Message.obtain();
-            ((Message)localObject3).obj = localObject2;
-            ((Message)localObject3).what = 2;
-            this.y.sendMessage((Message)localObject3);
-          }
-        }
-        return;
-      }
-      return;
-    }
-  }
-  
-  private static void b(asb paramasb)
-  {
-    if (paramasb.f != null)
-    {
-      if (paramasb.f.a == null) {
-        return;
-      }
-      JceStruct localJceStruct = arq.a(null, paramasb.e, paramasb.f.b);
-      if (localJceStruct == null) {
-        localJceStruct = paramasb.f.b;
-      }
-      paramasb.f.a.a(paramasb.c, paramasb.d, paramasb.a, paramasb.b, localJceStruct);
-      return;
-    }
-  }
-  
-  private void g()
-  {
-    try
-    {
-      this.b.a(false, this);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void h()
-  {
-    aro localaro = this.z;
-    if (localaro != null) {
-      localaro.removeMessages(0);
-    }
-  }
-  
-  private void i()
-  {
-    if (this.e) {
-      return;
-    }
-    a(true);
-    this.f = new HandlerThread("sendHandlerThread");
-    this.f.start();
-    this.g = new arl(this, this.f.getLooper());
-  }
-  
-  private void j()
-  {
-    if (!this.e) {
-      return;
-    }
-    a(false);
-    this.f.quit();
-    this.f = null;
-    this.g = null;
-  }
-  
-  final aij a(int paramInt)
-  {
-    synchronized (this.l)
-    {
-      Object localObject2 = (ArrayList)this.h.get(paramInt);
-      if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
-      {
-        this.h.remove(paramInt);
-        localObject2 = ((arx)((ArrayList)localObject2).get(0)).a;
-        return localObject2;
-      }
+    paramJceStruct = a(asu.a(paramJceStruct));
+    if (paramJceStruct == null) {
       return null;
     }
+    return paramJceStruct;
   }
   
-  final WeakReference a(asd paramasd, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, aii paramaii, long paramLong)
+  /* Error */
+  static byte[] a(byte[] paramArrayOfByte)
   {
-    if (aqz.a())
-    {
-      paramaii.a(0, 0, -7, 0, paramJceStruct2);
+    // Byte code:
+    //   0: new 27	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 31	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_1
+    //   8: new 33	java/util/zip/DeflaterOutputStream
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 36	java/util/zip/DeflaterOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   16: astore_2
+    //   17: aload_2
+    //   18: aload_0
+    //   19: invokevirtual 40	java/util/zip/DeflaterOutputStream:write	([B)V
+    //   22: aload_2
+    //   23: invokevirtual 43	java/util/zip/DeflaterOutputStream:finish	()V
+    //   26: aload_1
+    //   27: invokevirtual 47	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   30: astore_0
+    //   31: aload_1
+    //   32: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   35: aload_2
+    //   36: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
+    //   39: aload_0
+    //   40: areturn
+    //   41: astore_1
+    //   42: aload_1
+    //   43: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   46: aload_0
+    //   47: areturn
+    //   48: astore_0
+    //   49: goto +26 -> 75
+    //   52: astore_0
+    //   53: aload_0
+    //   54: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   57: aload_1
+    //   58: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   61: aload_2
+    //   62: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
+    //   65: goto +8 -> 73
+    //   68: astore_0
+    //   69: aload_0
+    //   70: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   73: aconst_null
+    //   74: areturn
+    //   75: aload_1
+    //   76: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   79: aload_2
+    //   80: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
+    //   83: goto +8 -> 91
+    //   86: astore_1
+    //   87: aload_1
+    //   88: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   91: aload_0
+    //   92: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	93	0	paramArrayOfByte	byte[]
+    //   7	25	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   41	35	1	localIOException1	java.io.IOException
+    //   86	2	1	localIOException2	java.io.IOException
+    //   16	64	2	localDeflaterOutputStream	java.util.zip.DeflaterOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   31	39	41	java/io/IOException
+    //   17	31	48	finally
+    //   53	57	48	finally
+    //   17	31	52	java/io/IOException
+    //   57	65	68	java/io/IOException
+    //   75	83	86	java/io/IOException
+  }
+  
+  @Deprecated
+  public static byte[] a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
       return null;
     }
-    if (paramasd != null) {
-      this.k = paramasd;
-    }
-    if (this.k == null)
-    {
-      paramaii.a(0, 0, -9, 0, paramJceStruct2);
+    paramJceStruct = a(paramJceStruct);
+    if (paramJceStruct == null) {
       return null;
     }
-    if (!this.e) {
-      i();
-    }
-    byte[] arrayOfByte = arq.a(null, paramJceStruct1);
-    paramJceStruct1 = new ai();
-    paramJceStruct1.a = paramInt1;
-    paramJceStruct1.b = paramasd.b.a();
-    paramJceStruct1.c = paramInt3;
-    paramJceStruct1.d = arrayOfByte;
-    boolean bool;
-    if (paramInt1 == 999) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    if (paramaii != null) {
-      a(paramInt2, paramJceStruct1.b, paramJceStruct2, paramaii);
-    }
-    paramasd = new aik();
-    paramasd.a(0);
-    paramJceStruct2 = new ary(paramJceStruct1, paramInt2, bool, paramasd);
-    paramJceStruct2.a = paramInt4;
-    paramJceStruct2.f = paramLong;
-    this.x.a(paramJceStruct2);
-    new StringBuilder("ClientSashimi seqNO : ").append(paramJceStruct1.b);
-    if (paramLong > 0L)
-    {
-      paramJceStruct1 = paramJceStruct2.b;
-      if ((paramJceStruct1 != null) && (paramJceStruct1 != null))
-      {
-        paramInt1 = paramJceStruct1.b;
-        paramJceStruct1 = new StringBuilder("对 seqNo : ");
-        paramJceStruct1.append(paramInt1);
-        paramJceStruct1.append(" 的回包计时");
-        this.A.sendEmptyMessageDelayed(paramInt1, paramLong);
+    return TccCryptor.encrypt(paramJceStruct, paramArrayOfByte);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (paramArrayOfByte2 != null) {
+      if (paramArrayOfByte2.length == 0) {
+        return null;
       }
     }
-    this.g.sendEmptyMessage(0);
-    return new WeakReference(paramasd);
-  }
-  
-  final WeakReference a(asd paramasd, int paramInt, aii paramaii, long paramLong)
-  {
-    return a(paramasd, paramInt, 0, 0, 0, null, null, paramaii, paramLong);
-  }
-  
-  final void a(int paramInt1, int paramInt2, JceStruct paramJceStruct, aij paramaij)
-  {
-    arx localarx = new arx(paramInt1, paramaij, paramJceStruct);
-    synchronized (this.l)
-    {
-      paramaij = (ArrayList)this.h.get(paramInt2);
-      paramJceStruct = paramaij;
-      if (paramaij == null)
-      {
-        paramJceStruct = new ArrayList();
-        this.h.append(paramInt2, paramJceStruct);
-      }
-      paramJceStruct.add(localarx);
-      return;
-    }
-  }
-  
-  public final void a(int paramInt, al paramal)
-  {
-    Object localObject = paramal.f;
-    int k = paramal.a;
-    StringBuilder localStringBuilder = new StringBuilder("onRecv cmdId : ");
-    localStringBuilder.append(k);
-    localStringBuilder.append(" seqNo: ");
-    localStringBuilder.append(paramal.b);
-    if (k == 10655)
-    {
-      localObject = (ad)arq.a(null, (byte[])localObject, this.p);
-      new StringBuilder("onRecvPush ECmd.Cmd_SCPush, push.cmd: ").append(((ad)localObject).a);
-      k = paramal.b;
-      b(k, paramInt, k, ((ad)localObject).a, ((ad)localObject).b);
-      return;
-    }
-    a(paramal.d, paramal.e, paramal.c, k, (byte[])localObject);
-  }
-  
-  public final void a(ars paramars)
-  {
-    ate localate = this.b;
-    if (localate != null) {
-      localate.a(false);
-    }
-    this.t = paramars;
-    this.u = new arj(this);
-    a(0, 10001, new aa(), this.u);
-    paramars = this.t;
-    if (paramars == null) {
-      return;
-    }
-    paramars.k();
-    paramars = this.t.l();
-    if ((paramars != null) && (paramars.size() > 0))
-    {
-      localate = this.b;
-      if (localate != null)
-      {
-        localate.d.a.clear();
-        paramars = paramars.iterator();
-        while (paramars.hasNext())
-        {
-          int k = ((Integer)paramars.next()).intValue();
-          this.b.a(k);
-        }
-      }
-    }
-  }
-  
-  public final void b()
-  {
     try
     {
-      this.b.a(false, this);
-      this.b.a(true, this);
-      return;
+      paramArrayOfByte1 = TccCryptor.decrypt(paramArrayOfByte2, paramArrayOfByte1);
+      if (paramArrayOfByte1 == null) {
+        return null;
+      }
+      return b(paramArrayOfByte1);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    catch (Exception paramArrayOfByte1) {}
+    return null;
+    return null;
   }
   
-  final void c()
+  /* Error */
+  static byte[] b(byte[] paramArrayOfByte)
   {
-    h();
-    this.n.b(this.o);
-    g();
-    j();
-    this.x.b();
-    this.b.a();
-    this.a.set(0);
-  }
-  
-  final boolean d()
-  {
-    if (this.a.get() <= 0) {
-      return false;
-    }
-    h();
-    if (!this.b.b())
-    {
-      this.z.sendEmptyMessageDelayed(0, 10000L);
-      return false;
-    }
-    a(this.k, 998, this.w, 10000L);
-    return true;
-  }
-  
-  public final void e()
-  {
-    a(this.k, 999, this.v, 30000L);
-  }
-  
-  public final void f()
-  {
-    d();
+    // Byte code:
+    //   0: new 71	java/io/ByteArrayInputStream
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
+    //   8: astore_0
+    //   9: new 75	java/util/zip/InflaterInputStream
+    //   12: dup
+    //   13: aload_0
+    //   14: invokespecial 78	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: astore_2
+    //   18: new 27	java/io/ByteArrayOutputStream
+    //   21: dup
+    //   22: invokespecial 31	java/io/ByteArrayOutputStream:<init>	()V
+    //   25: astore_3
+    //   26: aload_2
+    //   27: invokevirtual 82	java/util/zip/InflaterInputStream:read	()I
+    //   30: istore_1
+    //   31: iload_1
+    //   32: iconst_m1
+    //   33: if_icmpeq +11 -> 44
+    //   36: aload_3
+    //   37: iload_1
+    //   38: invokevirtual 85	java/io/ByteArrayOutputStream:write	(I)V
+    //   41: goto -15 -> 26
+    //   44: aload_3
+    //   45: invokevirtual 47	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   48: astore 4
+    //   50: aload_0
+    //   51: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
+    //   54: aload_2
+    //   55: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
+    //   58: aload_3
+    //   59: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   62: aload 4
+    //   64: areturn
+    //   65: astore_0
+    //   66: aload_0
+    //   67: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   70: aload 4
+    //   72: areturn
+    //   73: astore 4
+    //   75: goto +32 -> 107
+    //   78: astore 4
+    //   80: aload 4
+    //   82: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   85: aload_0
+    //   86: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
+    //   89: aload_2
+    //   90: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
+    //   93: aload_3
+    //   94: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   97: goto +8 -> 105
+    //   100: astore_0
+    //   101: aload_0
+    //   102: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   105: aconst_null
+    //   106: areturn
+    //   107: aload_0
+    //   108: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
+    //   111: aload_2
+    //   112: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
+    //   115: aload_3
+    //   116: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
+    //   119: goto +8 -> 127
+    //   122: astore_0
+    //   123: aload_0
+    //   124: invokevirtual 54	java/io/IOException:printStackTrace	()V
+    //   127: aload 4
+    //   129: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	130	0	paramArrayOfByte	byte[]
+    //   30	8	1	i	int
+    //   17	95	2	localInflaterInputStream	java.util.zip.InflaterInputStream
+    //   25	91	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   48	23	4	arrayOfByte	byte[]
+    //   73	1	4	localObject	Object
+    //   78	50	4	localIOException	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   50	62	65	java/io/IOException
+    //   26	31	73	finally
+    //   36	41	73	finally
+    //   44	50	73	finally
+    //   80	85	73	finally
+    //   26	31	78	java/io/IOException
+    //   36	41	78	java/io/IOException
+    //   44	50	78	java/io/IOException
+    //   85	97	100	java/io/IOException
+    //   107	119	122	java/io/IOException
   }
 }
 

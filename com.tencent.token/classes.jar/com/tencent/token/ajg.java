@@ -1,422 +1,153 @@
 package com.tencent.token;
 
-import android.net.DhcpInfo;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.net.wifi.WifiManager.LocalOnlyHotspotCallback;
-import android.net.wifi.WifiManager.MulticastLock;
-import android.net.wifi.WifiManager.WifiLock;
-import android.net.wifi.WifiManager.WpsCallback;
-import android.net.wifi.WpsInfo;
-import android.net.wifi.hotspot2.PasspointConfiguration;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import java.net.InetAddress;
-import java.util.List;
+import android.annotation.SuppressLint;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class ajg
-  extends kq
+public class ajg<K, V>
 {
-  private WifiManager a;
+  private final LinkedHashMap<K, V> a;
+  public int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  public ajg(WifiManager paramWifiManager)
+  public ajg(int paramInt)
   {
-    super(paramWifiManager);
-    this.a = paramWifiManager;
+    if (paramInt > 0)
+    {
+      this.b = paramInt;
+      this.a = new LinkedHashMap(0, 0.75F, true);
+      return;
+    }
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
-  public int addNetwork(WifiConfiguration paramWifiConfiguration)
+  public final V a(K paramK, V paramV)
   {
-    int i = this.a.addNetwork(paramWifiConfiguration);
-    StringBuilder localStringBuilder = new StringBuilder("addNetwork:[");
-    localStringBuilder.append(paramWifiConfiguration.SSID);
-    localStringBuilder.append("][");
-    localStringBuilder.append(paramWifiConfiguration.preSharedKey);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(i);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return i;
+    if ((paramK != null) && (paramV != null)) {
+      try
+      {
+        this.d += 1;
+        this.c += 1;
+        paramK = this.a.put(paramK, paramV);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        a(this.b);
+        return paramK;
+      }
+      finally {}
+    }
+    throw new NullPointerException("key == null || value == null");
   }
   
-  public void addOrUpdatePasspointConfiguration(PasspointConfiguration paramPasspointConfiguration)
+  public final void a()
   {
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.addOrUpdatePasspointConfiguration(paramPasspointConfiguration);
+    a(-1);
+  }
+  
+  public final void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if ((this.c >= 0) && ((!this.a.isEmpty()) || (this.c == 0)))
+        {
+          if ((this.c > paramInt) && (!this.a.isEmpty()))
+          {
+            localObject1 = null;
+            if (this.a.entrySet().iterator().hasNext()) {
+              localObject1 = (Map.Entry)this.a.entrySet().iterator().next();
+            }
+            if (localObject1 == null) {
+              return;
+            }
+            Object localObject3 = ((Map.Entry)localObject1).getKey();
+            localObject1 = ((Map.Entry)localObject1).getValue();
+            this.a.remove(localObject3);
+            this.c -= 1;
+            this.e += 1;
+            a(localObject1);
+            continue;
+          }
+          return;
+        }
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getClass().getName());
+        ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
+        throw new IllegalStateException(((StringBuilder)localObject1).toString());
+      }
+      finally {}
     }
   }
   
-  public void cancelWps(WifiManager.WpsCallback paramWpsCallback)
+  protected void a(V paramV) {}
+  
+  public final V b(K paramK)
   {
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.a.cancelWps(paramWpsCallback);
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.get(paramK);
+        if (paramK != null)
+        {
+          this.f += 1;
+          return paramK;
+        }
+        this.g += 1;
+        return null;
+      }
+      finally {}
     }
+    throw new NullPointerException("key == null");
   }
   
-  public WifiManager.MulticastLock createMulticastLock(String paramString)
+  public final V c(K paramK)
   {
-    StringBuilder localStringBuilder = new StringBuilder("createMulticastLock, tag:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return this.a.createMulticastLock(paramString);
-  }
-  
-  public WifiManager.WifiLock createWifiLock(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("createWifiLock, lockType:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]tag:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return this.a.createWifiLock(paramInt, paramString);
-  }
-  
-  public WifiManager.WifiLock createWifiLock(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("createWifiLock, tag:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return this.a.createWifiLock(paramString);
-  }
-  
-  public boolean disableNetwork(int paramInt)
-  {
-    boolean bool = this.a.disableNetwork(paramInt);
-    StringBuilder localStringBuilder = new StringBuilder("disableNetwork, netId:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean disconnect()
-  {
-    boolean bool = this.a.disconnect();
-    StringBuilder localStringBuilder = new StringBuilder("disconnect:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean enableNetwork(int paramInt, boolean paramBoolean)
-  {
-    boolean bool = this.a.enableNetwork(paramInt, paramBoolean);
-    StringBuilder localStringBuilder = new StringBuilder("enableNetwork, netId:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]attemptConnect:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public List<WifiConfiguration> getConfiguredNetworks()
-  {
-    aji.a("[API]WifiManager_");
-    return this.a.getConfiguredNetworks();
-  }
-  
-  public WifiInfo getConnectionInfo()
-  {
-    aji.a("[API]WifiManager_");
-    return this.a.getConnectionInfo();
-  }
-  
-  public DhcpInfo getDhcpInfo()
-  {
-    aji.a("[API]WifiManager_");
-    return this.a.getDhcpInfo();
-  }
-  
-  public List<PasspointConfiguration> getPasspointConfigurations()
-  {
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getPasspointConfigurations();
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.remove(paramK);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        return paramK;
+      }
+      finally {}
     }
-    return null;
+    throw new NullPointerException("key == null");
   }
   
-  public List<ScanResult> getScanResults()
+  @SuppressLint({"DefaultLocale"})
+  public final String toString()
   {
-    aji.a("[API]WifiManager_");
-    return this.a.getScanResults();
-  }
-  
-  public int getWifiState()
-  {
-    int i = this.a.getWifiState();
-    StringBuilder localStringBuilder = new StringBuilder("getWifiState:[");
-    localStringBuilder.append(i);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return i;
-  }
-  
-  public boolean is5GHzBandSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.is5GHzBandSupported();
-    } else {
-      bool = false;
+    for (;;)
+    {
+      try
+      {
+        i = this.f + this.g;
+        if (i != 0)
+        {
+          i = this.f * 100 / i;
+          String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
+          return str;
+        }
+      }
+      finally {}
+      int i = 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder("is5GHzBandSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isDeviceToApRttSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.isDeviceToApRttSupported();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isDeviceToApRttSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isEnhancedPowerReportingSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.isEnhancedPowerReportingSupported();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isEnhancedPowerReportingSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isP2pSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.isP2pSupported();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isP2pSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isPreferredNetworkOffloadSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.isPreferredNetworkOffloadSupported();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isPreferredNetworkOffloadSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isScanAlwaysAvailable()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 18) {
-      bool = this.a.isScanAlwaysAvailable();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isScanAlwaysAvailable:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isTdlsSupported()
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21) {
-      bool = this.a.isTdlsSupported();
-    } else {
-      bool = false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("isTdlsSupported:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean isWifiEnabled()
-  {
-    boolean bool = this.a.isWifiEnabled();
-    StringBuilder localStringBuilder = new StringBuilder("isWifiEnabled:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean pingSupplicant()
-  {
-    boolean bool = this.a.pingSupplicant();
-    StringBuilder localStringBuilder = new StringBuilder("pingSupplicant:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean reassociate()
-  {
-    boolean bool = this.a.reassociate();
-    StringBuilder localStringBuilder = new StringBuilder("reassociate:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean reconnect()
-  {
-    boolean bool = this.a.reconnect();
-    StringBuilder localStringBuilder = new StringBuilder("reconnect:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public boolean removeNetwork(int paramInt)
-  {
-    boolean bool = this.a.removeNetwork(paramInt);
-    StringBuilder localStringBuilder = new StringBuilder("removeNetwork:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public void removePasspointConfiguration(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("removePasspointConfiguration:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.removePasspointConfiguration(paramString);
-    }
-  }
-  
-  public boolean saveConfiguration()
-  {
-    boolean bool = this.a.saveConfiguration();
-    StringBuilder localStringBuilder = new StringBuilder("saveConfiguration:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public void setTdlsEnabled(InetAddress paramInetAddress, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("setTdlsEnabled:[");
-    localStringBuilder.append(paramInetAddress);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 19) {
-      this.a.setTdlsEnabled(paramInetAddress, paramBoolean);
-    }
-  }
-  
-  public void setTdlsEnabledWithMacAddress(String paramString, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("setTdlsEnabledWithMacAddress:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]enable:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 19) {
-      this.a.setTdlsEnabledWithMacAddress(paramString, paramBoolean);
-    }
-  }
-  
-  public boolean setWifiEnabled(boolean paramBoolean)
-  {
-    boolean bool = this.a.setWifiEnabled(paramBoolean);
-    StringBuilder localStringBuilder = new StringBuilder("setWifiEnabled:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public void startLocalOnlyHotspot(WifiManager.LocalOnlyHotspotCallback paramLocalOnlyHotspotCallback, Handler paramHandler)
-  {
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.startLocalOnlyHotspot(paramLocalOnlyHotspotCallback, paramHandler);
-    }
-  }
-  
-  public boolean startScan()
-  {
-    boolean bool = this.a.startScan();
-    StringBuilder localStringBuilder = new StringBuilder("startScan:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return bool;
-  }
-  
-  public void startWps(WpsInfo paramWpsInfo, WifiManager.WpsCallback paramWpsCallback)
-  {
-    aji.a("[API]WifiManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.a.startWps(paramWpsInfo, paramWpsCallback);
-    }
-  }
-  
-  public int updateNetwork(WifiConfiguration paramWifiConfiguration)
-  {
-    int i = this.a.updateNetwork(paramWifiConfiguration);
-    StringBuilder localStringBuilder = new StringBuilder("updateNetwork, [");
-    localStringBuilder.append(paramWifiConfiguration.SSID);
-    localStringBuilder.append("][");
-    localStringBuilder.append(paramWifiConfiguration.preSharedKey);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(i);
-    localStringBuilder.append("]");
-    aji.a("[API]WifiManager_");
-    return i;
   }
 }
 

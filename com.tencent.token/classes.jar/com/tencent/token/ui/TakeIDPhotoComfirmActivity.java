@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aap;
-import com.tencent.token.xj;
+import com.tencent.token.aaz;
+import com.tencent.token.xv;
 
 public class TakeIDPhotoComfirmActivity
   extends BaseActivity
@@ -21,24 +21,24 @@ public class TakeIDPhotoComfirmActivity
     final String str = getIntent().getStringExtra("data");
     if (TextUtils.isEmpty(str))
     {
-      xj.a("data is null");
+      xv.a("data is null");
       finish();
       return;
     }
-    Object localObject = (TextView)findViewById(2131166112);
+    Object localObject = (TextView)findViewById(2131166152);
     if (this.mFlag == 2) {
-      ((TextView)localObject).setText(2131493485);
+      ((TextView)localObject).setText(2131493493);
     }
-    localObject = (ImageView)findViewById(2131165512);
+    localObject = (ImageView)findViewById(2131165527);
     ((ImageView)localObject).postDelayed(new Runnable()
     {
       public final void run()
       {
-        Bitmap localBitmap = aap.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
+        Bitmap localBitmap = aaz.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
         this.b.setImageBitmap(localBitmap);
       }
     }, 100L);
-    ((TextView)findViewById(2131166060)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131166100)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -46,7 +46,7 @@ public class TakeIDPhotoComfirmActivity
         TakeIDPhotoComfirmActivity.this.finish();
       }
     });
-    ((TextView)findViewById(2131165404)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165416)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -60,9 +60,9 @@ public class TakeIDPhotoComfirmActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    xj.a("TakeIDPhotoComfirmActivity");
+    xv.a("TakeIDPhotoComfirmActivity");
     this.mFlag = getIntent().getIntExtra("flag", -1);
-    setContentView(2131296329);
+    setContentView(2131296334);
     init();
   }
 }

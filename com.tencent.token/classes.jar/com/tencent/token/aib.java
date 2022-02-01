@@ -2,9 +2,10 @@ package com.tencent.token;
 
 public final class aib
 {
-  public int a;
-  public String[] b;
-  public boolean c;
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean);
+  }
 }
 
 

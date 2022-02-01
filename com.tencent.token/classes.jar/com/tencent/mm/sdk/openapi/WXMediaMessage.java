@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.openapi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import com.tencent.token.pw;
+import com.tencent.token.qk;
 import java.io.ByteArrayOutputStream;
 
 public final class WXMediaMessage
@@ -37,7 +37,7 @@ public final class WXMediaMessage
     }
     for (;;)
     {
-      pw.a("MicroMsg.SDK.WXMediaMessage", (String)localObject);
+      qk.a("MicroMsg.SDK.WXMediaMessage", (String)localObject);
       return false;
       localObject = this.thumbData;
       if ((localObject != null) && (localObject.length > 32768))
@@ -94,7 +94,7 @@ public final class WXMediaMessage
     catch (Exception paramBitmap)
     {
       paramBitmap.printStackTrace();
-      pw.a("MicroMsg.SDK.WXMediaMessage", "put thumb failed");
+      qk.a("MicroMsg.SDK.WXMediaMessage", "put thumb failed");
     }
   }
   

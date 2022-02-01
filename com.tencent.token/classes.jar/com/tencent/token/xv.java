@@ -1,10 +1,117 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-public abstract interface xv
+public final class xv
 {
-  public static final AtomicInteger a = new AtomicInteger(1);
+  private static String a()
+  {
+    String str = "";
+    Object localObject = new Throwable().getStackTrace();
+    if (localObject.length > 2)
+    {
+      str = localObject[2];
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(str.getFileName());
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(str.getLineNumber());
+      ((StringBuilder)localObject).append("|");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(str.getMethodName());
+      localStringBuilder.append("()] ");
+      str = localStringBuilder.toString();
+    }
+    return str;
+  }
+  
+  private static void a(int paramInt, String paramString1, String paramString2)
+  {
+    acb.a().a(paramInt, paramString1, paramString2);
+  }
+  
+  public static void a(String paramString)
+  {
+    String str = paramString;
+    if (acb.a().d)
+    {
+      str = a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
+    }
+    boolean bool = acb.a().c;
+    a(2, "TokenLog", str);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (acb.a().d)
+    {
+      str = a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString2);
+      str = localStringBuilder.toString();
+    }
+    boolean bool = acb.a().c;
+    a(2, paramString1, str);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      String str;
+      if (acb.a().d)
+      {
+        str = a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("assert failed");
+        str = localStringBuilder.toString();
+      }
+      else
+      {
+        str = "assert failed";
+      }
+      paramBoolean = acb.a().c;
+      a(16, "TokenLog", str);
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    String str = paramString;
+    if (acb.a().d)
+    {
+      str = a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
+    }
+    boolean bool = acb.a().c;
+    a(4, "TokenLog", str);
+  }
+  
+  public static void c(String paramString)
+  {
+    String str = paramString;
+    if (acb.a().d)
+    {
+      str = a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
+    }
+    boolean bool = acb.a().c;
+    a(16, "TokenLog", str);
+  }
 }
 
 

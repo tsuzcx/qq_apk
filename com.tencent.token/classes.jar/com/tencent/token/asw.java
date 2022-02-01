@@ -1,37 +1,20 @@
 package com.tencent.token;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import tmsdk.common.d.a.c.j;
-
-public final class asw
-  implements Runnable
+final class asw
 {
-  public asw(j paramj) {}
+  public int a;
+  public aw b = null;
+  public int c = 0;
+  public boolean d = false;
+  public ajk e = null;
+  public long f = -1L;
   
-  public final void run()
+  public asw(aw paramaw, int paramInt, boolean paramBoolean, ajk paramajk)
   {
-    synchronized (j.a(this.a))
-    {
-      LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-      ??? = new StringBuilder("copy != null ? ");
-      boolean bool;
-      if (localLinkedList != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ((StringBuilder)???).append(bool);
-      if (localLinkedList != null)
-      {
-        new StringBuilder("copy.size() : ").append(localLinkedList.size());
-        ??? = localLinkedList.iterator();
-        while (((Iterator)???).hasNext()) {
-          ((asy)((Iterator)???).next()).f();
-        }
-      }
-      return;
-    }
+    this.c = paramInt;
+    this.b = paramaw;
+    this.d = paramBoolean;
+    this.e = paramajk;
   }
 }
 

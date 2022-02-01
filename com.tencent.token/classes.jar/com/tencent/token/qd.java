@@ -1,25 +1,42 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 
-final class qd
-  extends PhoneStateListener
+public final class qd
 {
-  qd(qc paramqc) {}
-  
-  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    if (qc.a(this.a) == 2) {
-      qc.a(paramSignalStrength.getCdmaDbm());
+    Intent localIntent;
+    if ((paramContext != null) && (paramString1.length() != 0) && (paramString2.length() != 0))
+    {
+      localIntent = new Intent();
+      localIntent.setClassName(paramString1, paramString2);
+      localIntent.putExtras(paramBundle);
+      paramString1 = paramContext.getPackageName();
+      localIntent.putExtra("_mmessage_sdkVersion", 553910273);
+      localIntent.putExtra("_mmessage_appPackage", paramString1);
+      localIntent.putExtra("_mmessage_content", paramString3);
+      localIntent.putExtra("_mmessage_checksum", qe.a(paramString3, paramString1));
+      localIntent.addFlags(268435456).addFlags(134217728);
     }
-    if (qc.a(this.a) == 1) {
-      qc.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+    try
+    {
+      paramContext.startActivity(localIntent);
+      qk.c("MicroMsg.SDK.MMessageAct", "send mm message, intent=".concat(String.valueOf(localIntent)));
+      return true;
     }
-    if (qc.b(this.a) != null) {
-      qc.b(this.a).listen(qc.c(this.a), 0);
+    catch (ActivityNotFoundException paramContext)
+    {
+      label128:
+      break label128;
+    }
+    for (paramContext = "send fail, target ActivityNotFound";; paramContext = "send fail, invalid arguments")
+    {
+      qk.a("MicroMsg.SDK.MMessageAct", paramContext);
+      return false;
     }
   }
 }

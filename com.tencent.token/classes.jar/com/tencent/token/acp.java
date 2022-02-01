@@ -1,19 +1,16 @@
 package com.tencent.token;
 
-import android.view.Window.Callback;
+import java.util.Stack;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 public final class acp
-  extends acn
 {
-  public aco b;
-  public String c;
-  
-  public acp(Window.Callback paramCallback, aco paramaco, String paramString)
-  {
-    super(paramCallback);
-    this.b = paramaco;
-    this.c = paramString;
-  }
+  public Stack<Node> a = new Stack();
+  public Document b;
+  public final DocumentBuilder c = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 }
 
 

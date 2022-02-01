@@ -1,23 +1,46 @@
 package com.tencent.token;
 
-import java.util.LinkedList;
-
-public final class adh<E>
+public final class adh
+  extends ahh<Object>
 {
-  public int a;
-  public LinkedList<E> b = new LinkedList();
+  public static final ahk a = new a();
+  public final ahx b;
   
-  public adh(int paramInt)
+  public adh(ahx paramahx)
   {
-    this.a = paramInt;
+    this.b = paramahx;
   }
   
-  public final void a(E paramE)
+  public final void a(aep paramaep, Object paramObject)
   {
-    if (this.b.size() >= this.a) {
-      this.b.poll();
+    if (paramObject == null)
+    {
+      paramaep.e();
+      return;
     }
-    this.b.offer(paramE);
+    Object localObject = this.b;
+    Class localClass = paramObject.getClass();
+    localObject.getClass();
+    localObject = ((ahx)localObject).a(new aek(localClass));
+    if ((localObject instanceof adh))
+    {
+      paramaep.c();
+      paramaep.d();
+      return;
+    }
+    ((ahh)localObject).a(paramaep, paramObject);
+  }
+  
+  public final class a
+    implements ahk
+  {
+    public final <T> ahh<T> a(ahx paramahx, aek<T> paramaek)
+    {
+      if (paramaek.a == Object.class) {
+        return new adh(paramahx);
+      }
+      return null;
+    }
   }
 }
 

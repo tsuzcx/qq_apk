@@ -2,8 +2,8 @@ package com.tencent.token.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import com.tencent.token.abj;
-import com.tencent.token.xj;
+import com.tencent.token.abt;
+import com.tencent.token.xv;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,7 +42,7 @@ public class ImageCache
   
   public static String d(String paramString)
   {
-    return abj.b(paramString);
+    return abt.b(paramString);
   }
   
   public final Bitmap a(Object paramObject)
@@ -290,7 +290,7 @@ public class ImageCache
     //   219: aload 10
     //   221: astore 8
     //   223: aload 13
-    //   225: invokestatic 149	com/tencent/token/aap:a	([B)Landroid/graphics/Bitmap;
+    //   225: invokestatic 149	com/tencent/token/aaz:a	([B)Landroid/graphics/Bitmap;
     //   228: astore 5
     //   230: aload 5
     //   232: ifnonnull +173 -> 405
@@ -308,7 +308,7 @@ public class ImageCache
     //   259: invokevirtual 158	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   262: checkcast 160	[B
     //   265: checkcast 160	[B
-    //   268: invokestatic 149	com/tencent/token/aap:a	([B)Landroid/graphics/Bitmap;
+    //   268: invokestatic 149	com/tencent/token/aaz:a	([B)Landroid/graphics/Bitmap;
     //   271: astore 6
     //   273: aload 6
     //   275: astore 7
@@ -756,7 +756,7 @@ public class ImageCache
   {
     synchronized (this.mLock)
     {
-      xj.b("clear cache");
+      xv.b("clear cache");
       if (this.mNeedRecycle)
       {
         Iterator localIterator = entrySet().iterator();
@@ -766,7 +766,7 @@ public class ImageCache
           if ((localBitmap != null) && (!localBitmap.isRecycled())) {
             localBitmap.recycle();
           } else {
-            xj.c("ImageCache is broken");
+            xv.c("ImageCache is broken");
           }
         }
       }
@@ -788,12 +788,12 @@ public class ImageCache
       }
       Object localObject = new StringBuilder("recycle bitmap:");
       ((StringBuilder)localObject).append((String)paramEntry.getKey());
-      xj.b(((StringBuilder)localObject).toString());
+      xv.b(((StringBuilder)localObject).toString());
       return true;
     }
     paramEntry = new StringBuilder("size=");
     paramEntry.append(size());
-    xj.b(paramEntry.toString());
+    xv.b(paramEntry.toString());
     return false;
   }
 }

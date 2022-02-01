@@ -1,624 +1,68 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.PersistableBundle;
-import android.telecom.PhoneAccountHandle;
-import android.telephony.CellInfo;
-import android.telephony.CellLocation;
-import android.telephony.IccOpenLogicalChannelResponse;
-import android.telephony.PhoneStateListener;
-import android.telephony.ServiceState;
-import android.telephony.TelephonyManager;
-import android.telephony.TelephonyManager.UssdResponseCallback;
-import android.telephony.VisualVoicemailSmsFilterSettings;
-import java.util.List;
+import com.tencent.wcdb.support.OperationCanceledException;
 
-public class aje
-  extends kp
+public final class aje
 {
-  private TelephonyManager a;
+  private boolean a;
+  private a b;
+  private boolean c;
   
-  public aje(Context paramContext, TelephonyManager paramTelephonyManager)
+  private boolean b()
   {
-    super(paramContext, paramTelephonyManager);
-    this.a = paramTelephonyManager;
-  }
-  
-  public boolean canChangeDtmfToneLength()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return this.a.canChangeDtmfToneLength();
+    try
+    {
+      boolean bool = this.a;
+      return bool;
     }
-    return false;
+    finally {}
   }
   
-  public TelephonyManager createForPhoneAccountHandle(PhoneAccountHandle paramPhoneAccountHandle)
+  private void c()
   {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.createForPhoneAccountHandle(paramPhoneAccountHandle);
-    }
-    return null;
-  }
-  
-  public TelephonyManager createForSubscriptionId(int paramInt)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.createForSubscriptionId(paramInt);
-    }
-    return null;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public List<CellInfo> getAllCellInfo()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 17) {
-      return this.a.getAllCellInfo();
-    }
-    return null;
-  }
-  
-  public int getCallState()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getCallState();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public PersistableBundle getCarrierConfig()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getCarrierConfig();
-    }
-    return null;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public CellLocation getCellLocation()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getCellLocation();
-  }
-  
-  public int getDataActivity()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getDataActivity();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public int getDataNetworkType()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.getDataNetworkType();
-    }
-    return 0;
-  }
-  
-  public int getDataState()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getDataState();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getDeviceId()
-  {
-    return ajd.j();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getDeviceId(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getDeviceId,,,TelephonyManagerInvoke::doGetDeviceId, slotIndex:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]");
-    return ajd.d(paramInt);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getDeviceSoftwareVersion()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getDeviceSoftwareVersion();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String[] getForbiddenPlmns()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getForbiddenPlmns();
-    }
-    return null;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getGroupIdLevel1()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 18) {
-      return this.a.getGroupIdLevel1();
-    }
-    return null;
-  }
-  
-  public String getIccAuthentication(int paramInt1, int paramInt2, String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.getIccAuthentication(paramInt1, paramInt2, paramString);
-    }
-    return null;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getImei()
-  {
-    return ajd.k();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getImei(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getImei,,,TelephonyManagerInvoke::doGetImei, slotIndex:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]");
-    return ajd.e(paramInt);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getLine1Number()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getLine1Number();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getMeid()
-  {
-    return ajd.l();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getMeid(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getMeid,,,TelephonyManagerInvoke::doGetMeid, slotIndex:[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("]");
-    return ajd.f(paramInt);
-  }
-  
-  public String getMmsUAProfUrl()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 19) {
-      return this.a.getMmsUAProfUrl();
-    }
-    return null;
-  }
-  
-  public String getMmsUserAgent()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 19) {
-      return this.a.getMmsUserAgent();
-    }
-    return null;
-  }
-  
-  public String getNetworkCountryIso()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getNetworkCountryIso();
-  }
-  
-  public String getNetworkOperator()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getNetworkOperator();
-  }
-  
-  public String getNetworkOperatorName()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getNetworkOperatorName();
-  }
-  
-  public String getNetworkSpecifier()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getNetworkSpecifier();
-    }
-    return null;
-  }
-  
-  public int getNetworkType()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getNetworkType();
-  }
-  
-  public int getPhoneCount()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return this.a.getPhoneCount();
-    }
-    return 0;
-  }
-  
-  public int getPhoneType()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getPhoneType();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public ServiceState getServiceState()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getServiceState();
-    }
-    return null;
-  }
-  
-  public String getSimCountryIso()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSimCountryIso();
-  }
-  
-  public String getSimOperator()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSimOperator();
-  }
-  
-  public String getSimOperatorName()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSimOperatorName();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getSimSerialNumber()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSimSerialNumber();
-  }
-  
-  public int getSimState()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSimState();
-  }
-  
-  public int getSimState(int paramInt)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getSimState(paramInt);
-    }
-    return 0;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getSubscriberId()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getSubscriberId();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getVisualVoicemailPackageName()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.getVisualVoicemailPackageName();
-    }
-    return null;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getVoiceMailAlphaTag()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getVoiceMailAlphaTag();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public String getVoiceMailNumber()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.getVoiceMailNumber();
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public int getVoiceNetworkType()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.getVoiceNetworkType();
-    }
-    return 0;
-  }
-  
-  public Uri getVoicemailRingtoneUri(PhoneAccountHandle paramPhoneAccountHandle)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.getVoicemailRingtoneUri(paramPhoneAccountHandle);
-    }
-    return null;
-  }
-  
-  public boolean hasCarrierPrivileges()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.hasCarrierPrivileges();
-    }
-    return false;
-  }
-  
-  public boolean hasIccCard()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.hasIccCard();
-  }
-  
-  public boolean iccCloseLogicalChannel(int paramInt)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.iccCloseLogicalChannel(paramInt);
-    }
-    return false;
-  }
-  
-  public byte[] iccExchangeSimIO(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.iccExchangeSimIO(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
-    }
-    return null;
-  }
-  
-  public IccOpenLogicalChannelResponse iccOpenLogicalChannel(String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.iccOpenLogicalChannel(paramString);
-    }
-    return null;
-  }
-  
-  public IccOpenLogicalChannelResponse iccOpenLogicalChannel(String paramString, int paramInt)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.iccOpenLogicalChannel(paramString, paramInt);
-    }
-    return null;
-  }
-  
-  public String iccTransmitApduBasicChannel(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.iccTransmitApduBasicChannel(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
-    }
-    return null;
-  }
-  
-  public String iccTransmitApduLogicalChannel(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.iccTransmitApduLogicalChannel(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramString);
-    }
-    return null;
-  }
-  
-  public boolean isConcurrentVoiceAndDataSupported()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.isConcurrentVoiceAndDataSupported();
-    }
-    return false;
-  }
-  
-  public boolean isDataEnabled()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      return this.a.isDataEnabled();
-    }
-    return false;
-  }
-  
-  public boolean isHearingAidCompatibilitySupported()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return this.a.isHearingAidCompatibilitySupported();
-    }
-    return false;
-  }
-  
-  public boolean isNetworkRoaming()
-  {
-    aji.a("[API]TelephonyManager_");
-    return this.a.isNetworkRoaming();
-  }
-  
-  public boolean isSmsCapable()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.isSmsCapable();
-    }
-    return false;
-  }
-  
-  public boolean isTtyModeSupported()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return this.a.isTtyModeSupported();
-    }
-    return false;
-  }
-  
-  public boolean isVoiceCapable()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.isVoiceCapable();
-    }
-    return false;
-  }
-  
-  public boolean isVoicemailVibrationEnabled(PhoneAccountHandle paramPhoneAccountHandle)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      return this.a.isVoicemailVibrationEnabled(paramPhoneAccountHandle);
-    }
-    return false;
-  }
-  
-  public boolean isWorldPhone()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return this.a.isWorldPhone();
-    }
-    return false;
-  }
-  
-  public void listen(PhoneStateListener paramPhoneStateListener, int paramInt)
-  {
-    aji.a("[API]TelephonyManager_");
-    this.a.listen(paramPhoneStateListener, paramInt);
-  }
-  
-  public void sendDialerSpecialCode(String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.sendDialerSpecialCode(paramString);
+    while (this.c) {
+      try
+      {
+        wait();
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label14:
+        break label14;
+      }
     }
   }
   
-  public String sendEnvelopeWithStatus(String paramString)
+  public final void a()
   {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 21) {
-      return this.a.sendEnvelopeWithStatus(paramString);
+    if (!b()) {
+      return;
     }
-    return null;
+    throw new OperationCanceledException();
   }
   
-  @SuppressLint({"MissingPermission"})
-  public void sendUssdRequest(String paramString, TelephonyManager.UssdResponseCallback paramUssdResponseCallback, Handler paramHandler)
+  public final void a(a parama)
   {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.sendUssdRequest(paramString, paramUssdResponseCallback, paramHandler);
+    try
+    {
+      c();
+      if (this.b == parama) {
+        return;
+      }
+      this.b = parama;
+      if ((this.a) && (parama != null))
+      {
+        parama.c();
+        return;
+      }
+      return;
     }
+    finally {}
   }
   
-  public void sendVisualVoicemailSms(String paramString1, int paramInt, String paramString2, PendingIntent paramPendingIntent)
+  public static abstract interface a
   {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.sendVisualVoicemailSms(paramString1, paramInt, paramString2, paramPendingIntent);
-    }
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void setDataEnabled(boolean paramBoolean)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.setDataEnabled(paramBoolean);
-    }
-  }
-  
-  public boolean setLine1NumberForDisplay(String paramString1, String paramString2)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.setLine1NumberForDisplay(paramString1, paramString2);
-    }
-    return false;
-  }
-  
-  public boolean setOperatorBrandOverride(String paramString)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.setOperatorBrandOverride(paramString);
-    }
-    return false;
-  }
-  
-  public boolean setPreferredNetworkTypeToGlobal()
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.setPreferredNetworkTypeToGlobal();
-    }
-    return false;
-  }
-  
-  public void setVisualVoicemailSmsFilterSettings(VisualVoicemailSmsFilterSettings paramVisualVoicemailSmsFilterSettings)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.setVisualVoicemailSmsFilterSettings(paramVisualVoicemailSmsFilterSettings);
-    }
-  }
-  
-  public boolean setVoiceMailNumber(String paramString1, String paramString2)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 22) {
-      return this.a.setVoiceMailNumber(paramString1, paramString2);
-    }
-    return false;
-  }
-  
-  public void setVoicemailRingtoneUri(PhoneAccountHandle paramPhoneAccountHandle, Uri paramUri)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.setVoicemailRingtoneUri(paramPhoneAccountHandle, paramUri);
-    }
-  }
-  
-  public void setVoicemailVibrationEnabled(PhoneAccountHandle paramPhoneAccountHandle, boolean paramBoolean)
-  {
-    aji.a("[API]TelephonyManager_");
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a.setVoicemailVibrationEnabled(paramPhoneAccountHandle, paramBoolean);
-    }
+    public abstract void c();
   }
 }
 

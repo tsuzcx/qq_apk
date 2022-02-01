@@ -1,65 +1,55 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.QueryCaptchaResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class we
-  extends tr
+  extends ud
 {
-  public QueryCaptchaResult d;
-  private long e;
-  private int f;
+  public static String d;
+  public static int e;
+  private long f;
+  private long g;
+  private int h;
+  private int i;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramabc.c.get("param.scene.id")).intValue();
+    this.f = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.g = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.i = ((Integer)paramabm.c.get("param.scene.id")).intValue();
+    this.h = paramabm.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int j = paramJSONObject.getInt("err");
+    if (j == 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = aay.d(paramJSONObject.getString("data"));
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = new JSONObject(new String(paramJSONObject));
+        d = paramJSONObject.getString("validate_code");
+        e = paramJSONObject.getInt("validate_id");
+        this.a.a = 0;
+        return;
+      }
+      xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.n().getString(2131493069));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
-      paramJSONObject = this.d;
-      paramJSONObject.mRealUin = this.e;
-      paramJSONObject.mSceneId = this.f;
-      this.a.a = 0;
-      return;
-    }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    a(j, paramJSONObject.getString("info"));
+    xv.a("ProtoGetRealNameVerify fail errCode=".concat(String.valueOf(j)));
   }
 }
 

@@ -1,22 +1,32 @@
 package com.tencent.token;
 
-public final class avb
+public abstract interface avb
 {
-  public static float a(float paramFloat)
-  {
-    if (paramFloat <= 0.0031308F) {
-      return paramFloat * 12.92F;
-    }
-    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
-  }
+  public abstract int a(String paramString, int paramInt);
   
-  public static float b(float paramFloat)
-  {
-    if (paramFloat <= 0.04045F) {
-      return paramFloat / 12.92F;
-    }
-    return (float)Math.pow((paramFloat + 0.055F) / 1.055F, 2.400000095367432D);
-  }
+  public abstract long a(String paramString, long paramLong);
+  
+  public abstract String a(String paramString);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(String paramString, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean b(String paramString, int paramInt);
+  
+  public abstract boolean b(String paramString, long paramLong);
+  
+  public abstract boolean b(String paramString1, String paramString2);
+  
+  public abstract boolean b(String paramString, boolean paramBoolean);
+  
+  public abstract boolean c();
 }
 
 

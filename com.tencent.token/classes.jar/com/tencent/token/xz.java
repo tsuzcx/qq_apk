@@ -1,183 +1,122 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Looper;
-import com.tencent.token.global.RqdApplication;
-import com.tmsdk.base.utils.SDKUtil;
-import java.lang.reflect.Method;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SectionIndexer;
+import android.widget.TextView;
+import com.tencent.token.ui.IndexActivity;
+import java.util.List;
 
 public final class xz
-  implements aud
+  extends BaseAdapter
+  implements SectionIndexer
 {
-  private SharedPreferences a;
-  private SharedPreferences.Editor b;
-  private boolean c;
+  public List<ya> a = null;
+  View.OnClickListener b;
+  private Context c;
   
-  public xz(String paramString)
+  public xz(Context paramContext, List<ya> paramList, View.OnClickListener paramOnClickListener)
   {
-    try
+    this.c = paramContext;
+    this.a = paramList;
+    this.b = paramOnClickListener;
+  }
+  
+  public final int getCount()
+  {
+    return this.a.size();
+  }
+  
+  public final Object getItem(int paramInt)
+  {
+    return this.a.get(paramInt);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getPositionForSection(int paramInt)
+  {
+    int i = 10;
+    while (i < getCount())
     {
-      this.a = RqdApplication.p().getSharedPreferences(paramString, 0);
-      return;
+      if (((ya)this.a.get(i)).b.toUpperCase().charAt(0) == paramInt) {
+        return i;
+      }
+      i += 1;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return -1;
   }
   
-  private static boolean a(SharedPreferences.Editor paramEditor)
+  public final int getSectionForPosition(int paramInt)
   {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
-    try
-    {
-      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      label51:
-      break label51;
-    }
-    return paramEditor.commit();
-    return paramEditor.commit();
+    return ((ya)this.a.get(paramInt)).b.charAt(0);
   }
   
-  private SharedPreferences.Editor d()
+  public final Object[] getSections()
   {
-    if (this.b == null) {
-      this.b = this.a.edit();
-    }
-    return this.b;
-  }
-  
-  public final int a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getInt(paramString, paramInt);
-    }
-    return 0;
-  }
-  
-  public final long a(String paramString, long paramLong)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getLong(paramString, paramLong);
-    }
-    return 0L;
-  }
-  
-  public final String a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString, null);
-    }
     return null;
   }
   
-  public final String a(String paramString1, String paramString2)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString1, paramString2);
-    }
-    return null;
-  }
-  
-  public final void a()
-  {
-    if (this.a != null) {
-      a(d().clear());
-    }
-  }
-  
-  public final boolean a(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getBoolean(paramString, paramBoolean);
-    }
-    return false;
-  }
-  
-  public final void b()
-  {
-    this.c = true;
-  }
-  
-  public final boolean b(String paramString)
-  {
-    if (this.a != null) {
-      return a(d().remove(paramString));
-    }
-    return false;
-  }
-  
-  public final boolean b(String paramString, int paramInt)
-  {
-    if (this.a != null)
+    Object localObject = (ya)this.a.get(paramInt);
+    if (paramView == null)
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putInt(paramString, paramInt);
-      if (!this.c) {
-        return a(localEditor);
+      paramViewGroup = new a();
+      paramView = LayoutInflater.from(this.c).inflate(2131296434, null);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165785));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165281));
+      paramViewGroup.c = paramView.findViewById(2131165786);
+      paramView.setTag(paramViewGroup);
+    }
+    else
+    {
+      paramViewGroup = (a)paramView.getTag();
+    }
+    int i = getSectionForPosition(paramInt);
+    if ((paramInt > 9) && (paramInt == getPositionForSection(i)))
+    {
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(((ya)localObject).b);
+      localObject = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 13, 0, (int)IndexActivity.S_DENSITY * 13);
+      paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    else if (paramInt == 0)
+    {
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(this.c.getString(2131493301));
+      if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131493301))))
+      {
+        localObject = new RelativeLayout.LayoutParams(-1, -2);
+        ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 20, 0, (int)IndexActivity.S_DENSITY * 7);
+        paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
-    return false;
-  }
-  
-  public final boolean b(String paramString, long paramLong)
-  {
-    if (this.a != null)
+    else
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putLong(paramString, paramLong);
-      if (!this.c) {
-        return a(localEditor);
-      }
+      paramViewGroup.b.setVisibility(8);
     }
-    return false;
+    paramViewGroup.c.setOnClickListener(this.b);
+    paramViewGroup.c.setTag(Integer.valueOf(paramInt));
+    paramViewGroup.a.setText(((ya)this.a.get(paramInt)).a);
+    return paramView;
   }
   
-  public final boolean b(String paramString1, String paramString2)
+  static final class a
   {
-    if (this.a != null)
-    {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putString(paramString1, paramString2);
-      if (!this.c) {
-        return a(localEditor);
-      }
-    }
-    return false;
-  }
-  
-  public final boolean b(String paramString, boolean paramBoolean)
-  {
-    if (this.a != null)
-    {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putBoolean(paramString, paramBoolean);
-      if (!this.c) {
-        return a(localEditor);
-      }
-    }
-    return false;
-  }
-  
-  public final boolean c()
-  {
-    this.c = false;
-    SharedPreferences.Editor localEditor = this.b;
-    if (localEditor != null) {
-      return a(localEditor);
-    }
-    return true;
+    TextView a;
+    TextView b;
+    View c;
   }
 }
 

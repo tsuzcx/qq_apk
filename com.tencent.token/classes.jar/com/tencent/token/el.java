@@ -1,199 +1,155 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class el
+public final class el
 {
-  private static final b b;
-  private static final View.AccessibilityDelegate c = new View.AccessibilityDelegate();
-  final View.AccessibilityDelegate a = b.a(this);
-  
-  static
+  final Object a = new Object();
+  HandlerThread b;
+  Handler c;
+  final int d;
+  private int e;
+  private Handler.Callback f = new Handler.Callback()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      b = new a();
-    } else {
-      b = new b();
-    }
-  }
-  
-  public static fj a(View paramView)
-  {
-    return b.a(c, paramView);
-  }
-  
-  public static void a(View paramView, int paramInt)
-  {
-    c.sendAccessibilityEvent(paramView, paramInt);
-  }
-  
-  public static void a(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    c.sendAccessibilityEventUnchecked(paramView, paramAccessibilityEvent);
-  }
-  
-  public static void c(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    c.onPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
-  }
-  
-  public void a(View paramView, fi paramfi)
-  {
-    c.onInitializeAccessibilityNodeInfo(paramView, paramfi.a);
-  }
-  
-  public boolean a(View paramView, int paramInt, Bundle paramBundle)
-  {
-    return b.a(c, paramView, paramInt, paramBundle);
-  }
-  
-  public boolean a(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    return c.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
-  }
-  
-  public boolean b(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    return c.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
-  }
-  
-  public void d(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    c.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-  }
-  
-  static final class a
-    extends el.b
-  {
-    public final View.AccessibilityDelegate a(final el paramel)
+    public final boolean handleMessage(Message arg1)
     {
-      new View.AccessibilityDelegate()
+      switch (???.what)
       {
-        public final boolean dispatchPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+      default: 
+        return true;
+      case 1: 
+        el localel1 = el.this;
+        ((Runnable)???.obj).run();
+        synchronized (localel1.a)
         {
-          return paramel.b(paramAnonymousView, paramAnonymousAccessibilityEvent);
+          localel1.c.removeMessages(0);
+          localel1.c.sendMessageDelayed(localel1.c.obtainMessage(0), localel1.d);
+          return true;
         }
-        
-        public final AccessibilityNodeProvider getAccessibilityNodeProvider(View paramAnonymousView)
-        {
-          paramAnonymousView = el.a(paramAnonymousView);
-          if (paramAnonymousView != null) {
-            return (AccessibilityNodeProvider)paramAnonymousView.a;
-          }
-          return null;
-        }
-        
-        public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          paramel.d(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
-        {
-          paramel.a(paramAnonymousView, fi.a(paramAnonymousAccessibilityNodeInfo));
-        }
-        
-        public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          el.c(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final boolean onRequestSendAccessibilityEvent(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          return paramel.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
-        {
-          return paramel.a(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle);
-        }
-        
-        public final void sendAccessibilityEvent(View paramAnonymousView, int paramAnonymousInt)
-        {
-          el.a(paramAnonymousView, paramAnonymousInt);
-        }
-        
-        public final void sendAccessibilityEventUnchecked(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          el.a(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-      };
-    }
-    
-    public final fj a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
-    {
-      paramAccessibilityDelegate = paramAccessibilityDelegate.getAccessibilityNodeProvider(paramView);
-      if (paramAccessibilityDelegate != null) {
-        return new fj(paramAccessibilityDelegate);
       }
-      return null;
+      el localel2 = el.this;
+      synchronized (localel2.a)
+      {
+        if (localel2.c.hasMessages(1)) {
+          return true;
+        }
+        localel2.b.quit();
+        localel2.b = null;
+        localel2.c = null;
+        return true;
+      }
     }
-    
-    public final boolean a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView, int paramInt, Bundle paramBundle)
+  };
+  private final int g;
+  private final String h;
+  
+  public el(String paramString)
+  {
+    this.h = paramString;
+    this.g = 10;
+    this.d = 10000;
+    this.e = 0;
+  }
+  
+  public final <T> T a(final Callable<T> paramCallable, int paramInt)
+  {
+    localReentrantLock = new ReentrantLock();
+    final Condition localCondition = localReentrantLock.newCondition();
+    final AtomicReference localAtomicReference = new AtomicReference();
+    final AtomicBoolean localAtomicBoolean = new AtomicBoolean(true);
+    a(new Runnable()
     {
-      return paramAccessibilityDelegate.performAccessibilityAction(paramView, paramInt, paramBundle);
+      public final void run()
+      {
+        try
+        {
+          localAtomicReference.set(paramCallable.call());
+          label16:
+          localReentrantLock.lock();
+          try
+          {
+            localAtomicBoolean.set(false);
+            localCondition.signal();
+            return;
+          }
+          finally
+          {
+            localReentrantLock.unlock();
+          }
+        }
+        catch (Exception localException)
+        {
+          break label16;
+        }
+      }
+    });
+    localReentrantLock.lock();
+    label104:
+    do
+    {
+      try
+      {
+        if (!localAtomicBoolean.get())
+        {
+          paramCallable = localAtomicReference.get();
+          return paramCallable;
+        }
+        l1 = TimeUnit.MILLISECONDS.toNanos(paramInt);
+      }
+      finally
+      {
+        long l1;
+        long l2;
+        localReentrantLock.unlock();
+      }
+      try
+      {
+        l2 = localCondition.awaitNanos(l1);
+        l1 = l2;
+      }
+      catch (InterruptedException paramCallable)
+      {
+        break label104;
+      }
+      if (!localAtomicBoolean.get())
+      {
+        paramCallable = localAtomicReference.get();
+        localReentrantLock.unlock();
+        return paramCallable;
+      }
+    } while (l1 > 0L);
+    throw new InterruptedException("timeout");
+  }
+  
+  final void a(Runnable paramRunnable)
+  {
+    synchronized (this.a)
+    {
+      if (this.b == null)
+      {
+        this.b = new HandlerThread(this.h, this.g);
+        this.b.start();
+        this.c = new Handler(this.b.getLooper(), this.f);
+        this.e += 1;
+      }
+      this.c.removeMessages(0);
+      this.c.sendMessage(this.c.obtainMessage(1, paramRunnable));
+      return;
     }
   }
   
-  static class b
+  public static abstract interface a<T>
   {
-    public View.AccessibilityDelegate a(final el paramel)
-    {
-      new View.AccessibilityDelegate()
-      {
-        public final boolean dispatchPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          return paramel.b(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          paramel.d(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
-        {
-          paramel.a(paramAnonymousView, fi.a(paramAnonymousAccessibilityNodeInfo));
-        }
-        
-        public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          el.c(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final boolean onRequestSendAccessibilityEvent(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          return paramel.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-        
-        public final void sendAccessibilityEvent(View paramAnonymousView, int paramAnonymousInt)
-        {
-          el.a(paramAnonymousView, paramAnonymousInt);
-        }
-        
-        public final void sendAccessibilityEventUnchecked(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-        {
-          el.a(paramAnonymousView, paramAnonymousAccessibilityEvent);
-        }
-      };
-    }
-    
-    public fj a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
-    {
-      return null;
-    }
-    
-    public boolean a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView, int paramInt, Bundle paramBundle)
-    {
-      return false;
-    }
+    public abstract void a(T paramT);
   }
 }
 

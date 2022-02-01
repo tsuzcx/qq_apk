@@ -1,15 +1,10 @@
 package com.tencent.token;
 
-import android.view.View;
-
-public class ff
-  implements fe
+public abstract interface ff
 {
-  public void a(View paramView) {}
+  public abstract boolean isNestedScrollingEnabled();
   
-  public void b(View paramView) {}
-  
-  public void c(View paramView) {}
+  public abstract void stopNestedScroll();
 }
 
 

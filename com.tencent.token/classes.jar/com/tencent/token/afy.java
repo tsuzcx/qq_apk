@@ -1,43 +1,19 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.qps.Codlin;
-import java.io.File;
-import java.util.List;
-
 public final class afy
 {
-  public static final agi<afy> a = new a();
+  public String a;
+  public int b;
   
-  public static long a(File paramFile)
+  public afy(String paramString, int paramInt)
   {
-    paramFile = paramFile.getName().split("_");
-    if (paramFile.length >= 2) {}
-    try
-    {
-      long l = Long.parseLong(paramFile[1]);
-      return l;
-    }
-    finally
-    {
-      label28:
-      break label28;
-    }
-    return 0L;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
-  public final class a
-    extends agi<afy>
+  public static afy a(int paramInt)
   {
-    public final Object a()
-    {
-      return new afy();
-    }
-  }
-  
-  public static final class b
-  {
-    public Codlin a;
-    public List<String> b;
+    return new afy("", paramInt);
   }
 }
 

@@ -1,385 +1,265 @@
 package com.tencent.token;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ProviderInfo;
-import android.content.pm.Signature;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.Callable;
 
-public final class dw
+class dw
+  implements ds.a
 {
-  private static final ee<String, Typeface> a = new ee(16);
-  private static final dx b = new dx("fonts");
-  private static final Object c = new Object();
-  private static final ej<String, ArrayList<dx.a<c>>> d = new ej();
-  private static final Comparator<byte[]> e = new Comparator() {};
-  
-  public static Typeface a(Context paramContext, final dv paramdv, da.a arg2, boolean paramBoolean, int paramInt1, final int paramInt2)
+  /* Error */
+  protected static Typeface a(Context paramContext, java.io.InputStream paramInputStream)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(paramdv.f);
-    ((StringBuilder)localObject1).append("-");
-    ((StringBuilder)localObject1).append(paramInt2);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = (Typeface)a.a(localObject1);
-    if (localObject2 != null)
-    {
-      if (??? != null) {
-        ???.a((Typeface)localObject2);
-      }
-      return localObject2;
-    }
-    if ((paramBoolean) && (paramInt1 == -1))
-    {
-      paramContext = b(paramContext, paramdv, paramInt2);
-      if (??? != null) {
-        if (paramContext.b == 0) {
-          ???.a(paramContext.a, null);
-        } else {
-          ???.a(paramContext.b, null);
-        }
-      }
-      return paramContext.a;
-    }
-    paramdv = new Callable() {};
-    if (paramBoolean) {}
-    try
-    {
-      paramContext = ((c)b.a(paramdv, paramInt1)).a;
-      return paramContext;
-    }
-    catch (InterruptedException paramContext) {}
-    if (??? == null) {
-      paramContext = null;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 26	com/tencent/token/dx:a	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_0
+    //   5: aload_0
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_0
+    //   12: aload_1
+    //   13: invokestatic 29	com/tencent/token/dx:a	(Ljava/io/File;Ljava/io/InputStream;)Z
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifne +10 -> 28
+    //   21: aload_0
+    //   22: invokevirtual 35	java/io/File:delete	()Z
+    //   25: pop
+    //   26: aconst_null
+    //   27: areturn
+    //   28: aload_0
+    //   29: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
+    //   32: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   35: astore_1
+    //   36: aload_0
+    //   37: invokevirtual 35	java/io/File:delete	()Z
+    //   40: pop
+    //   41: aload_1
+    //   42: areturn
+    //   43: astore_1
+    //   44: aload_0
+    //   45: invokevirtual 35	java/io/File:delete	()Z
+    //   48: pop
+    //   49: aload_1
+    //   50: athrow
+    //   51: aload_0
+    //   52: invokevirtual 35	java/io/File:delete	()Z
+    //   55: pop
+    //   56: aconst_null
+    //   57: areturn
+    //   58: astore_1
+    //   59: goto -8 -> 51
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	62	0	paramContext	Context
+    //   0	62	1	paramInputStream	java.io.InputStream
+    //   16	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	17	43	finally
+    //   28	36	43	finally
+    //   11	17	58	java/lang/RuntimeException
+    //   28	36	58	java/lang/RuntimeException
+  }
+  
+  private static <T> T a(T[] paramArrayOfT, int paramInt, a<T> parama)
+  {
+    int i;
+    if ((paramInt & 0x1) == 0) {
+      i = 400;
     } else {
-      paramContext = new dx.a() {};
+      i = 700;
     }
-    synchronized (c)
+    int i1;
+    if ((paramInt & 0x2) != 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int n = paramArrayOfT.length;
+    Object localObject = null;
+    paramInt = 0;
+    int k;
+    for (int j = 2147483647; paramInt < n; j = k)
     {
-      if (d.containsKey(localObject1))
-      {
-        if (paramContext != null) {
-          ((ArrayList)d.get(localObject1)).add(paramContext);
-        }
-        return null;
+      T ? = paramArrayOfT[paramInt];
+      int m = Math.abs(parama.b(?) - i);
+      if (parama.a(?) == i1) {
+        k = 0;
+      } else {
+        k = 1;
       }
-      if (paramContext != null)
+      m = m * 2 + k;
+      if (localObject != null)
       {
-        localObject2 = new ArrayList();
-        ((ArrayList)localObject2).add(paramContext);
-        d.put(localObject1, localObject2);
+        k = j;
+        if (j <= m) {}
       }
-      paramContext = b;
-      ??? = new dx.a() {};
-      paramContext.a(new dx.2(paramContext, paramdv, new Handler(), ???));
+      else
+      {
+        localObject = ?;
+        k = m;
+      }
+      paramInt += 1;
+    }
+    return localObject;
+  }
+  
+  /* Error */
+  public Typeface a(Context paramContext, Resources paramResources, int paramInt1, java.lang.String paramString, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 26	com/tencent/token/dx:a	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_1
+    //   12: aload_2
+    //   13: iload_3
+    //   14: invokestatic 66	com/tencent/token/dx:a	(Ljava/io/File;Landroid/content/res/Resources;I)Z
+    //   17: istore 6
+    //   19: iload 6
+    //   21: ifne +10 -> 31
+    //   24: aload_1
+    //   25: invokevirtual 35	java/io/File:delete	()Z
+    //   28: pop
+    //   29: aconst_null
+    //   30: areturn
+    //   31: aload_1
+    //   32: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
+    //   35: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   38: astore_2
+    //   39: aload_1
+    //   40: invokevirtual 35	java/io/File:delete	()Z
+    //   43: pop
+    //   44: aload_2
+    //   45: areturn
+    //   46: astore_2
+    //   47: aload_1
+    //   48: invokevirtual 35	java/io/File:delete	()Z
+    //   51: pop
+    //   52: aload_2
+    //   53: athrow
+    //   54: aload_1
+    //   55: invokevirtual 35	java/io/File:delete	()Z
+    //   58: pop
+    //   59: aconst_null
+    //   60: areturn
+    //   61: astore_2
+    //   62: goto -8 -> 54
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	this	dw
+    //   0	65	1	paramContext	Context
+    //   0	65	2	paramResources	Resources
+    //   0	65	3	paramInt1	int
+    //   0	65	4	paramString	java.lang.String
+    //   0	65	5	paramInt2	int
+    //   17	3	6	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	19	46	finally
+    //   31	39	46	finally
+    //   11	19	61	java/lang/RuntimeException
+    //   31	39	61	java/lang/RuntimeException
+  }
+  
+  public Typeface a(Context paramContext, dn.b paramb, Resources paramResources, int paramInt)
+  {
+    paramb = (dn.c)a(paramb.a, paramInt, new a() {});
+    if (paramb == null) {
       return null;
     }
-    return null;
+    return ds.a(paramContext, paramResources, paramb.d, paramb.a, paramInt);
   }
   
-  private static List<byte[]> a(Signature[] paramArrayOfSignature)
+  /* Error */
+  public Typeface a(Context paramContext, ek.b[] paramArrayOfb, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfSignature.length)
-    {
-      localArrayList.add(paramArrayOfSignature[i].toByteArray());
-      i += 1;
-    }
-    return localArrayList;
+    // Byte code:
+    //   0: aload_2
+    //   1: arraylength
+    //   2: istore 4
+    //   4: aconst_null
+    //   5: astore 5
+    //   7: iload 4
+    //   9: ifgt +5 -> 14
+    //   12: aconst_null
+    //   13: areturn
+    //   14: aload_0
+    //   15: aload_2
+    //   16: iload_3
+    //   17: invokevirtual 96	com/tencent/token/dw:a	([Lcom/tencent/token/ek$b;I)Lcom/tencent/token/ek$b;
+    //   20: astore_2
+    //   21: aload_1
+    //   22: invokevirtual 102	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   25: aload_2
+    //   26: getfield 107	com/tencent/token/ek$b:a	Landroid/net/Uri;
+    //   29: invokevirtual 113	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   32: astore_2
+    //   33: aload_1
+    //   34: aload_2
+    //   35: invokestatic 115	com/tencent/token/dw:a	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
+    //   38: astore_1
+    //   39: aload_2
+    //   40: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   43: aload_1
+    //   44: areturn
+    //   45: astore 5
+    //   47: aload_2
+    //   48: astore_1
+    //   49: aload 5
+    //   51: astore_2
+    //   52: goto +7 -> 59
+    //   55: astore_2
+    //   56: aload 5
+    //   58: astore_1
+    //   59: aload_1
+    //   60: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   63: aload_2
+    //   64: athrow
+    //   65: aconst_null
+    //   66: astore_2
+    //   67: aload_2
+    //   68: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   71: aconst_null
+    //   72: areturn
+    //   73: astore_1
+    //   74: goto -9 -> 65
+    //   77: astore_1
+    //   78: goto -11 -> 67
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	81	0	this	dw
+    //   0	81	1	paramContext	Context
+    //   0	81	2	paramArrayOfb	ek.b[]
+    //   0	81	3	paramInt	int
+    //   2	6	4	i	int
+    //   5	1	5	localObject1	Object
+    //   45	12	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	39	45	finally
+    //   21	33	55	finally
+    //   21	33	73	java/io/IOException
+    //   33	39	77	java/io/IOException
   }
   
-  public static Map<Uri, ByteBuffer> a(Context paramContext, b[] paramArrayOfb)
+  protected final ek.b a(ek.b[] paramArrayOfb, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    int j = paramArrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = paramArrayOfb[i];
-      if (((b)localObject).e == 0)
-      {
-        localObject = ((b)localObject).a;
-        if (!localHashMap.containsKey(localObject)) {
-          localHashMap.put(localObject, dj.a(paramContext, (Uri)localObject));
-        }
-      }
-      i += 1;
-    }
-    return Collections.unmodifiableMap(localHashMap);
+    (ek.b)a(paramArrayOfb, paramInt, new a() {});
   }
   
-  private static boolean a(List<byte[]> paramList1, List<byte[]> paramList2)
+  static abstract interface a<T>
   {
-    if (paramList1.size() != paramList2.size()) {
-      return false;
-    }
-    int i = 0;
-    while (i < paramList1.size())
-    {
-      if (!Arrays.equals((byte[])paramList1.get(i), (byte[])paramList2.get(i))) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  private static b[] a(Context paramContext, dv paramdv, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Uri localUri1 = new Uri.Builder().scheme("content").authority(paramString).build();
-    Uri localUri2 = new Uri.Builder().scheme("content").authority(paramString).appendPath("file").build();
-    Object localObject = null;
-    paramString = localObject;
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT > 16)
-        {
-          paramString = localObject;
-          paramContext = paramContext.getContentResolver();
-          paramString = localObject;
-          paramdv = paramdv.c;
-          paramString = localObject;
-          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramdv }, null, null);
-        }
-        else
-        {
-          paramString = localObject;
-          paramContext = paramContext.getContentResolver();
-          paramString = localObject;
-          paramdv = paramdv.c;
-          paramString = localObject;
-          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramdv }, null);
-        }
-        paramdv = localArrayList;
-        if (paramContext != null)
-        {
-          paramdv = localArrayList;
-          paramString = paramContext;
-          if (paramContext.getCount() > 0)
-          {
-            paramString = paramContext;
-            int m = paramContext.getColumnIndex("result_code");
-            paramString = paramContext;
-            localArrayList = new ArrayList();
-            paramString = paramContext;
-            int n = paramContext.getColumnIndex("_id");
-            paramString = paramContext;
-            int i1 = paramContext.getColumnIndex("file_id");
-            paramString = paramContext;
-            int i2 = paramContext.getColumnIndex("font_ttc_index");
-            paramString = paramContext;
-            int i3 = paramContext.getColumnIndex("font_weight");
-            paramString = paramContext;
-            int i4 = paramContext.getColumnIndex("font_italic");
-            paramdv = localArrayList;
-            paramString = paramContext;
-            if (paramContext.moveToNext())
-            {
-              if (m == -1) {
-                break label543;
-              }
-              paramString = paramContext;
-              i = paramContext.getInt(m);
-              if (i2 == -1) {
-                break label548;
-              }
-              paramString = paramContext;
-              j = paramContext.getInt(i2);
-              if (i1 == -1)
-              {
-                paramString = paramContext;
-                paramdv = ContentUris.withAppendedId(localUri1, paramContext.getLong(n));
-              }
-              else
-              {
-                paramString = paramContext;
-                paramdv = ContentUris.withAppendedId(localUri2, paramContext.getLong(i1));
-              }
-              if (i3 == -1) {
-                break label554;
-              }
-              paramString = paramContext;
-              k = paramContext.getInt(i3);
-              if (i4 == -1) {
-                break label562;
-              }
-              paramString = paramContext;
-              if (paramContext.getInt(i4) != 1) {
-                break label562;
-              }
-              bool = true;
-              paramString = paramContext;
-              localArrayList.add(new b(paramdv, j, k, bool, i));
-              continue;
-            }
-          }
-        }
-        if (paramContext != null) {
-          paramContext.close();
-        }
-        return (b[])paramdv.toArray(new b[0]);
-      }
-      finally
-      {
-        if (paramString != null) {
-          paramString.close();
-        }
-      }
-      label543:
-      int i = 0;
-      continue;
-      label548:
-      int j = 0;
-      continue;
-      label554:
-      int k = 400;
-      continue;
-      label562:
-      boolean bool = false;
-    }
-  }
-  
-  private static c b(Context paramContext, dv paramdv, int paramInt)
-  {
-    try
-    {
-      localObject3 = paramContext.getPackageManager();
-      localObject1 = paramContext.getResources();
-      localObject2 = paramdv.a;
-      localProviderInfo = ((PackageManager)localObject3).resolveContentProvider((String)localObject2, 0);
-      if (localProviderInfo == null) {
-        break label307;
-      }
-      if (!localProviderInfo.packageName.equals(paramdv.b)) {
-        break label260;
-      }
-      localObject2 = a(((PackageManager)localObject3).getPackageInfo(localProviderInfo.packageName, 64).signatures);
-      Collections.sort((List)localObject2, e);
-      if (paramdv.d != null) {
-        localObject1 = paramdv.d;
-      } else {
-        localObject1 = cz.a((Resources)localObject1, paramdv.e);
-      }
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      for (;;)
-      {
-        Object localObject3;
-        Object localObject2;
-        ProviderInfo localProviderInfo;
-        int j;
-        label260:
-        label307:
-        continue;
-        int i = 0;
-        continue;
-        i += 1;
-        continue;
-        Object localObject1 = null;
-      }
-    }
-    if (i < ((List)localObject1).size())
-    {
-      localObject3 = new ArrayList((Collection)((List)localObject1).get(i));
-      Collections.sort((List)localObject3, e);
-      if (a((List)localObject2, (List)localObject3))
-      {
-        localObject1 = localProviderInfo;
-        if (localObject1 == null) {
-          paramdv = new a(1, null);
-        } else {
-          paramdv = new a(0, a(paramContext, paramdv, ((ProviderInfo)localObject1).authority));
-        }
-        j = paramdv.a;
-        i = -3;
-        if (j == 0)
-        {
-          paramContext = de.a(paramContext, paramdv.b, paramInt);
-          if (paramContext != null) {
-            i = 0;
-          }
-          return new c(paramContext, i);
-        }
-        if (paramdv.a == 1) {
-          i = -2;
-        }
-        return new c(null, i);
-        paramContext = new StringBuilder("Found content provider ");
-        paramContext.append((String)localObject2);
-        paramContext.append(", but package was not ");
-        paramContext.append(paramdv.b);
-        throw new PackageManager.NameNotFoundException(paramContext.toString());
-        throw new PackageManager.NameNotFoundException("No package found for authority: ".concat(String.valueOf(localObject2)));
-        return new c(null, -1);
-      }
-    }
-  }
-  
-  public static final class a
-  {
-    final int a;
-    final dw.b[] b;
+    public abstract boolean a(T paramT);
     
-    public a(int paramInt, dw.b[] paramArrayOfb)
-    {
-      this.a = paramInt;
-      this.b = paramArrayOfb;
-    }
-  }
-  
-  public static final class b
-  {
-    public final Uri a;
-    public final int b;
-    public final int c;
-    public final boolean d;
-    final int e;
-    
-    public b(Uri paramUri, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
-    {
-      this.a = ((Uri)ei.a(paramUri));
-      this.b = paramInt1;
-      this.c = paramInt2;
-      this.d = paramBoolean;
-      this.e = paramInt3;
-    }
-  }
-  
-  static final class c
-  {
-    final Typeface a;
-    final int b;
-    
-    c(Typeface paramTypeface, int paramInt)
-    {
-      this.a = paramTypeface;
-      this.b = paramInt;
-    }
+    public abstract int b(T paramT);
   }
 }
 

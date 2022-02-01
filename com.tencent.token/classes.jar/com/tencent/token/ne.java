@@ -1,312 +1,404 @@
 package com.tencent.token;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import java.util.HashMap;
+import com.tencent.halley.downloader.c.d.a;
+import com.tencent.halley.downloader.c.d.a.a;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ne
-  implements nb, nm, Runnable
 {
-  private Map a;
-  private Set b = null;
-  private BlockingQueue c = null;
-  private nn d;
+  public boolean a = false;
+  public a b;
+  public a c;
+  public Map d = new ConcurrentHashMap();
+  public AtomicInteger e = new AtomicInteger(0);
   
-  public ne()
+  public ne(String paramString)
   {
-    lo.a("AccessSchedulerImpl", "new AccessSchedulerImpl...");
-    this.b = new CopyOnWriteArraySet();
-    this.b.add("dispatcher.3g.qq.com");
-    this.c = new ArrayBlockingQueue(10);
-    this.a = new HashMap();
-    this.d = no.a();
-    try
-    {
-      if (b()) {
-        a(true);
-      } else {
-        a(false);
-      }
-    }
-    catch (Exception localException)
-    {
-      label97:
-      Object localObject1;
-      Object localObject2;
-      long l;
-      break label97;
-    }
-    localObject1 = nj.a();
-    ((nj)localObject1).a = this;
-    localObject2 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    lv.a().registerReceiver(((nj)localObject1).b, (IntentFilter)localObject2);
-    lo.b("AccessSchedulerTrigger", "startListenNetworkChange...");
-    lo.b("AccessSchedulerTrigger", "try startAccessSchedulerTimer...");
-    localObject2 = new IntentFilter("action.scheduler.access.trigger.timer");
-    lv.a().registerReceiver(((nj)localObject1).c, (IntentFilter)localObject2);
-    localObject1 = (AlarmManager)lv.a().getSystemService("alarm");
-    if (localObject1 != null)
-    {
-      l = System.currentTimeMillis();
-      localObject2 = new Intent("action.scheduler.access.trigger.timer");
-      ((AlarmManager)localObject1).setRepeating(3, 1800000L + l, 1800000L, PendingIntent.getBroadcast(lv.a(), 0, (Intent)localObject2, 0));
-      lo.a("AccessSchedulerTrigger", "startAccessSchedulerTimer timer start...");
-    }
+    this.b = new a(paramString, a.a.b);
+    this.b.c = this.e.getAndIncrement();
   }
   
-  private void a(boolean paramBoolean)
+  public final a a(String paramString, a parama, boolean paramBoolean1, boolean paramBoolean2)
   {
-    try
+    Object localObject2 = null;
+    Object localObject1;
+    a.a locala1;
+    if (parama != null)
     {
-      StringBuilder localStringBuilder1 = new StringBuilder("before add, queue size:");
-      localStringBuilder1.append(this.c.size());
-      lo.a("AccessSchedulerImpl", localStringBuilder1.toString());
-      if ((this.c != null) && (this.c.size() == 0)) {
-        lo.a("AccessSchedulerImpl", "addTask ret:".concat(String.valueOf(this.c.add(new ni(paramBoolean)))));
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      lo.a("AccessSchedulerImpl", "addTask exception...", localThrowable);
-    }
-    StringBuilder localStringBuilder2 = new StringBuilder("after add, queue size:");
-    localStringBuilder2.append(this.c.size());
-    lo.a("AccessSchedulerImpl", localStringBuilder2.toString());
-  }
-  
-  private static boolean b()
-  {
-    boolean bool2 = false;
-    try
-    {
-      SharedPreferences localSharedPreferences = lv.a().getSharedPreferences("Access_Preferences", 0);
-      boolean bool1 = bool2;
-      if (localSharedPreferences != null)
+      a.a locala2 = parama.b;
+      localObject1 = localObject2;
+      locala1 = locala2;
+      if (!paramBoolean2)
       {
-        long l = localSharedPreferences.getLong("lastScheduleTime", 0L);
-        bool1 = bool2;
-        if (System.currentTimeMillis() - l > 86400000L)
+        localObject1 = localObject2;
+        locala1 = locala2;
+        if (a.b(parama.b))
         {
-          localSharedPreferences.edit().putLong("lastScheduleTime", System.currentTimeMillis()).commit();
-          lo.a("AccessSchedulerImpl", "force Schedule when init");
-          bool1 = true;
+          a locala = (a)this.d.get(paramString);
+          localObject1 = localObject2;
+          locala1 = locala2;
+          if (locala != null)
+          {
+            parama = locala.a(parama);
+            localObject1 = parama;
+            locala1 = locala2;
+            if (parama != null) {
+              return parama;
+            }
+          }
         }
       }
-      return bool1;
     }
-    catch (Exception localException) {}
-    return false;
+    else
+    {
+      locala1 = null;
+      localObject1 = localObject2;
+    }
+    int i = a.a.a().length;
+    while ((localObject1 == null) && (i > 0))
+    {
+      locala1 = a.a(locala1, paramBoolean1);
+      if (a.a(locala1))
+      {
+        parama = (a)this.d.get(paramString);
+        if (parama != null) {
+          localObject1 = parama.a(locala1);
+        }
+      }
+      else
+      {
+        if (locala1 == a.a.g) {
+          parama = this.c;
+        } else {
+          parama = this.b;
+        }
+        localObject1 = parama;
+      }
+      i -= 1;
+    }
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = this.b;
+    }
+    return paramString;
   }
   
-  public final List a(String paramString, long paramLong)
+  public final a a(String paramString)
   {
-    Object localObject2 = new CopyOnWriteArraySet();
-    ((Set)localObject2).add(paramString);
-    if (((Set)localObject2).size() == 0) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject1 = new nf();
-    ((nf)localObject1).b = lv.b();
-    ((nf)localObject1).c = lv.c();
-    ((nf)localObject1).d = lv.d();
-    ((nf)localObject1).a = lv.f();
-    lv.g();
-    ((nf)localObject1).e = lv.e();
-    ((nf)localObject1).a((Set)localObject2);
-    ((nf)localObject1).g = og.a();
-    ((nf)localObject1).k = og.d();
-    ((nf)localObject1).l = og.e();
-    ((nf)localObject1).w = 10;
-    if (paramLong > 0L) {
-      ((nf)localObject1).h = paramLong;
-    }
-    ((nf)localObject1).i = true;
-    paramString = new StringBuilder("request info:");
-    paramString.append(((nf)localObject1).b);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).c);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).d);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).a);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).e);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).j);
-    paramString.append(",");
-    paramString.append(null);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).k);
-    paramString.append(",");
-    paramString.append(((nf)localObject1).l);
-    paramString.append(",needHttps:true");
-    lo.a("AccessSchedulerImpl", paramString.toString());
-    paramString = ((nf)localObject1).a(true);
-    this.d = no.a();
-    this.d.b((nf)localObject1);
-    localObject2 = new StringBuilder("scheduler...end. apn:");
-    ((StringBuilder)localObject2).append(null);
-    ((StringBuilder)localObject2).append(", retCode:");
-    ((StringBuilder)localObject2).append(((nf)localObject1).m);
-    ((StringBuilder)localObject2).append(",failInfo:");
-    ((StringBuilder)localObject2).append(((nf)localObject1).n);
-    lo.b("AccessSchedulerImpl", ((StringBuilder)localObject2).toString());
-    if (paramString != null)
+    synchronized (this.d)
     {
-      localObject1 = new StringBuilder("scheduler...response:");
-      ((StringBuilder)localObject1).append(paramString.a());
-      lo.b("AccessSchedulerImpl", ((StringBuilder)localObject1).toString());
-      nu.a().a(paramString.b);
-      localObject1 = nu.a();
-      localObject2 = paramString.c;
-      if (localObject2 != null)
+      a locala2 = (a)this.d.get(paramString);
+      a locala1 = locala2;
+      if (locala2 == null)
       {
-        ((nu)localObject1).a = ((nw)localObject2);
-        ((nu)localObject1).a.b();
+        locala1 = new a(paramString);
+        this.d.put(paramString, locala1);
       }
-      return paramString.d;
+      return locala1;
     }
-    return null;
   }
   
-  public final void a()
+  public final String a()
   {
-    lo.b("AccessSchedulerImpl", "onAccessSchedulerTriggered... try to addTask");
-    a(false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b != null)
+    {
+      localStringBuilder.append("0,");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(";");
+    }
+    if (this.c != null)
+    {
+      localStringBuilder.append("1,");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(";");
+    }
+    Iterator localIterator = this.d.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (a)this.d.get(localObject);
+      if (localObject != null)
+      {
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(";");
+      }
+    }
+    return localStringBuilder.toString();
   }
   
-  public final void run()
+  public final void a(String paramString1, String paramString2, a.a parama)
   {
-    lo.b("AccessSchedulerImpl", "AccessSchedulerImpl run start...");
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      paramString1 = a(paramString1);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, parama);
+      }
+    }
+  }
+  
+  public final class a
+  {
+    public List a;
+    public boolean b = false;
+    private String c;
+    private List d;
+    private List e;
+    private List f;
+    private a g;
+    private List h;
+    private a i;
+    
+    public a(String paramString)
+    {
+      this.c = paramString;
+    }
+    
+    private static void a(StringBuilder paramStringBuilder, List paramList)
+    {
+      if (paramList != null)
+      {
+        if (paramList != null) {}
+        try
+        {
+          if (paramList.size() > 0)
+          {
+            Iterator localIterator = paramList.iterator();
+            while (localIterator.hasNext())
+            {
+              a locala = (a)localIterator.next();
+              if (locala != null)
+              {
+                paramStringBuilder.append(locala);
+                paramStringBuilder.append(",");
+              }
+            }
+          }
+          return;
+        }
+        finally {}
+      }
+    }
+    
+    private List b(a.a parama)
+    {
+      if (parama == a.a.c) {
+        return this.d;
+      }
+      if (parama == a.a.e) {
+        return this.a;
+      }
+      if (parama == a.a.f) {
+        return this.e;
+      }
+      if (parama == a.a.j) {
+        return this.f;
+      }
+      if (parama == a.a.h) {
+        return this.h;
+      }
+      return null;
+    }
+    
+    public final a a(a.a parama)
     {
       try
       {
-        nr.a();
-        lo.a("AccessSchedulerImpl", "try take a task...");
-        localObject1 = (ni)this.c.take();
-        lo.a("AccessSchedulerImpl", "task taked, try scheduler...");
-        bool1 = ((ni)localObject1).a;
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
+        if (parama == a.a.d)
         {
-          boolean bool1;
-          lo.b("AccessSchedulerImpl", "scheduler...begin");
-          Object localObject1 = og.a();
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("unknown")))
-          {
-            if (!nh.a)
-            {
-              localObject1 = "schedulerOn is off. return";
-              lo.b("AccessSchedulerImpl", (String)localObject1);
-              continue;
-            }
-            if (!bool1)
-            {
-              bool1 = nr.a().a(this.b);
-              boolean bool2 = b();
-              if (bool1) {
-                break label704;
-              }
-              if (!bool2) {
-                break label699;
-              }
-              break label704;
-            }
-            if ((this.a.get(localObject1) != null) && (System.currentTimeMillis() - ((Long)this.a.get(localObject1)).longValue() < 600000L)) {
-              continue;
-            }
-            this.a.put(localObject1, Long.valueOf(System.currentTimeMillis()));
-            localObject1 = new nf();
-            ((nf)localObject1).b = lv.b();
-            ((nf)localObject1).c = lv.c();
-            ((nf)localObject1).d = lv.d();
-            ((nf)localObject1).a = lv.f();
-            lv.g();
-            ((nf)localObject1).e = lv.e();
-            ((nf)localObject1).a(this.b);
-            ((nf)localObject1).g = og.a();
-            ((nf)localObject1).k = og.d();
-            ((nf)localObject1).l = og.e();
-            Object localObject2 = new StringBuilder("request info:");
-            ((StringBuilder)localObject2).append(((nf)localObject1).b);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).c);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).d);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).a);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).e);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).j);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(null);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).k);
-            ((StringBuilder)localObject2).append(",");
-            ((StringBuilder)localObject2).append(((nf)localObject1).l);
-            lo.a("AccessSchedulerImpl", ((StringBuilder)localObject2).toString());
-            localObject2 = ((nf)localObject1).a(false);
-            if (localObject2 != null)
-            {
-              Object localObject3 = new StringBuilder("scheduler...response:");
-              ((StringBuilder)localObject3).append(((ng)localObject2).a());
-              lo.b("AccessSchedulerImpl", ((StringBuilder)localObject3).toString());
-              nr.a().a(((ng)localObject2).a);
-              nu.a().a(((ng)localObject2).b);
-              localObject3 = nu.a();
-              localObject2 = ((ng)localObject2).c;
-              if (localObject2 != null)
-              {
-                ((nu)localObject3).a = ((nw)localObject2);
-                ((nu)localObject3).a.b();
-              }
-            }
-            localObject2 = new StringBuilder("scheduler...end. apn:");
-            ((StringBuilder)localObject2).append(null);
-            ((StringBuilder)localObject2).append(", Domain:");
-            ((StringBuilder)localObject2).append(((nf)localObject1).j);
-            ((StringBuilder)localObject2).append(", retCode:");
-            ((StringBuilder)localObject2).append(((nf)localObject1).m);
-            ((StringBuilder)localObject2).append(",failInfo:");
-            ((StringBuilder)localObject2).append(((nf)localObject1).n);
-            lo.b("AccessSchedulerImpl", ((StringBuilder)localObject2).toString());
-            this.d.a((nf)localObject1);
-            continue;
-          }
-          lo.c("AccessSchedulerImpl", "can not get current apn, do not scheduler");
+          parama = this.g;
+          return parama;
         }
-        catch (Throwable localThrowable2) {}
-        localThrowable1 = localThrowable1;
-        localThrowable1.printStackTrace();
+        if (parama == a.a.i)
+        {
+          parama = this.i;
+          return parama;
+        }
+        if (a.b(parama))
+        {
+          parama = b(parama);
+          if (parama != null)
+          {
+            parama = (a)parama.get(0);
+            return parama;
+          }
+        }
+        return null;
+      }
+      finally {}
+    }
+    
+    public final a a(a parama)
+    {
+      if (parama == null) {
+        return null;
+      }
+      try
+      {
+        List localList = b(parama.b);
+        if (localList != null)
+        {
+          int k = 0;
+          while (k < localList.size())
+          {
+            if (parama == localList.get(k))
+            {
+              int m = localList.size();
+              if (k == m - 1) {
+                return null;
+              }
+              parama = (a)localList.get(k + 1);
+              return parama;
+            }
+            k += 1;
+          }
+        }
+        return null;
+      }
+      finally {}
+    }
+    
+    public final void a(String paramString)
+    {
+      try
+      {
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        if (this.g == null)
+        {
+          this.g = new a(paramString, a.a.d);
+          this.g.c = ne.this.e.getAndIncrement();
+          return;
+        }
+        this.g.a = paramString;
         return;
       }
-      continue;
-      label699:
-      int i = 0;
-      break label706;
-      label704:
-      i = 1;
-      label706:
-      if (i == 0) {
-        String str = "scheduler...no need scheduler. return";
+      finally {}
+    }
+    
+    public final void a(String paramString, a.a parama)
+    {
+      try
+      {
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        List localList;
+        if (parama == a.a.c)
+        {
+          if (this.d == null) {
+            this.d = new ArrayList();
+          }
+          localList = this.d;
+        }
+        else if (parama == a.a.e)
+        {
+          if (this.a == null) {
+            this.a = new ArrayList();
+          }
+          localList = this.a;
+        }
+        else if (parama == a.a.f)
+        {
+          if (this.e == null) {
+            this.e = new ArrayList();
+          }
+          localList = this.e;
+        }
+        else if (parama == a.a.j)
+        {
+          if (this.f == null) {
+            this.f = new ArrayList();
+          }
+          localList = this.f;
+        }
+        else
+        {
+          if (parama != a.a.h) {
+            break label261;
+          }
+          if (this.h == null) {
+            this.h = new ArrayList();
+          }
+          localList = this.h;
+        }
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          bool = paramString.equalsIgnoreCase(((a)localIterator.next()).a);
+          if (bool) {
+            return;
+          }
+        }
+        paramString = new a(paramString, parama);
+        paramString.c = ne.this.e.getAndIncrement();
+        localList.add(paramString);
+        return;
+        label261:
+        return;
       }
+      finally {}
+    }
+    
+    public final void b(String paramString)
+    {
+      try
+      {
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        if (this.i == null)
+        {
+          this.i = new a(paramString, a.a.i);
+          this.i.c = ne.this.e.getAndIncrement();
+          return;
+        }
+        this.i.a = paramString;
+        return;
+      }
+      finally {}
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ml.b(this.c));
+      localStringBuilder.append(",");
+      a(localStringBuilder, this.d);
+      a(localStringBuilder, this.a);
+      a(localStringBuilder, this.e);
+      a(localStringBuilder, this.f);
+      a locala = this.g;
+      if (locala != null)
+      {
+        localStringBuilder.append(locala);
+        localStringBuilder.append(",");
+      }
+      a(localStringBuilder, this.h);
+      locala = this.i;
+      if (locala != null) {
+        localStringBuilder.append(locala);
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      return localStringBuilder.toString();
     }
   }
 }

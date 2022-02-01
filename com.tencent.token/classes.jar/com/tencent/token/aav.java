@@ -1,203 +1,50 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.token.global.RqdApplication;
 
 public final class aav
 {
-  public List<ss> a = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem b;
-  public long c;
-  public boolean d;
-  public boolean e = false;
+  private static final String a;
+  private static SharedPreferences b;
+  private static SharedPreferences.Editor c;
   
-  private void a(List<ss> paramList)
+  static
   {
-    try
-    {
-      if (this.b == null) {
-        this.b = ti.a().h.a("account_prot");
-      }
-      if (this.b.mClientVersion > this.b.mClickVersion)
-      {
-        Object localObject;
-        Iterator localIterator;
-        ss localss;
-        if (this.b.mClickVersion == -1)
-        {
-          if (this.b.mConfIDs != null)
-          {
-            localObject = this.b.mConfIDs.iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              int i = ((Integer)((Iterator)localObject).next()).intValue();
-              localIterator = paramList.iterator();
-              while (localIterator.hasNext())
-              {
-                localss = (ss)localIterator.next();
-                if (i == localss.a) {
-                  localss.f = true;
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          localObject = new HashSet();
-          localIterator = this.a.iterator();
-          while (localIterator.hasNext()) {
-            ((Set)localObject).add(Integer.valueOf(((ss)localIterator.next()).a));
-          }
-          localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            localss = (ss)localIterator.next();
-            if (!((Set)localObject).contains(Integer.valueOf(localss.a))) {
-              localss.f = true;
-            }
-          }
-        }
-      }
-      this.a.clear();
-      this.a = paramList;
-      if (th.a().k.b() != null) {
-        this.c = th.a().k.b().mUin;
-      }
-      return;
-    }
-    finally {}
+    Object localObject = new StringBuilder("SharedPreferencesHelper.for.");
+    ((StringBuilder)localObject).append(RqdApplication.n().getPackageName());
+    a = ((StringBuilder)localObject).toString();
+    localObject = RqdApplication.n().getSharedPreferences(a, 0);
+    b = (SharedPreferences)localObject;
+    c = ((SharedPreferences)localObject).edit();
   }
   
-  public final List<ss> a()
+  public static int a(String paramString, int paramInt)
   {
-    try
-    {
-      List localList = this.a;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return b.getInt(paramString, paramInt);
   }
   
-  public final boolean a(JSONArray paramJSONArray)
+  public static long a(String paramString)
   {
-    boolean bool;
-    if (paramJSONArray != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (paramJSONArray != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i >= paramJSONArray.length()) {
-            break label227;
-          }
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label222;
-          }
-          bool = true;
-          xj.a(bool);
-          ss localss = new ss();
-          if (!localss.a(localJSONObject)) {
-            xj.c("object item parse failed: ".concat(String.valueOf(i)));
-          }
-          localArrayList1.add(localss);
-          i += 1;
-          continue;
-          if (i >= localArrayList1.size()) {
-            break label239;
-          }
-          paramJSONArray = (ss)localArrayList1.get(i);
-          if (paramJSONArray.g) {
-            break label232;
-          }
-          localArrayList2.add(paramJSONArray);
-          break label232;
-          if (i < localArrayList1.size())
-          {
-            paramJSONArray = (ss)localArrayList1.get(i);
-            if (paramJSONArray.g) {
-              localArrayList2.add(paramJSONArray);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList2);
-        return true;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
-      }
-      label222:
-      bool = false;
-      continue;
-      label227:
-      int i = 0;
-      continue;
-      label232:
-      i += 1;
-      continue;
-      label239:
-      i = 0;
-    }
+    return b.getLong(paramString, 604800000L);
   }
   
-  public final int b()
+  public static void a(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    List localList = a();
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
+    b.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
   }
   
-  public final int c()
+  public static SharedPreferences.Editor b(String paramString)
   {
-    try
-    {
-      List localList = a();
-      int i = 0;
-      if (localList == null) {
-        return 0;
-      }
-      int k;
-      for (int j = 0; i < localList.size(); j = k)
-      {
-        boolean bool = ((ss)localList.get(i)).g;
-        k = j;
-        if (!bool) {
-          k = j + 1;
-        }
-        i += 1;
-      }
-      return j;
-    }
-    finally {}
+    return c.remove(paramString);
+  }
+  
+  public static SharedPreferences.Editor b(String paramString, int paramInt)
+  {
+    return c.putInt(paramString, paramInt);
   }
 }
 

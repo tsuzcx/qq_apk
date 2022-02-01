@@ -1,591 +1,489 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.ActionMenuPresenter;
-import android.support.v7.widget.ActionMenuView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.Toolbar.LayoutParams;
-import android.support.v7.widget.Toolbar.a;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window.Callback;
-import android.widget.TextView;
+import android.widget.AbsListView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import java.lang.reflect.Field;
 
-public final class jj
-  implements it
+public class jj
+  extends ListView
 {
-  Toolbar a;
-  CharSequence b;
-  Window.Callback c;
-  boolean d;
-  private int e;
-  private View f;
-  private View g;
-  private Drawable h;
-  private Drawable i;
-  private Drawable j;
+  private final Rect a = new Rect();
+  private int b = 0;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private int f;
+  private Field g;
+  private a h;
+  private boolean i;
+  private boolean j;
   private boolean k;
-  private CharSequence l;
-  private CharSequence m;
-  private ActionMenuPresenter n;
-  private int o = 0;
-  private int p = 0;
-  private Drawable q;
+  private fr l;
+  private gm m;
+  private b n;
   
-  public jj(Toolbar paramToolbar, boolean paramBoolean)
+  public jj(Context paramContext, boolean paramBoolean)
   {
-    this(paramToolbar, paramBoolean, gs.h.abc_action_bar_up_description);
+    super(paramContext, null, hg.a.dropDownListViewStyle);
+    this.j = paramBoolean;
+    setCacheColorHint(0);
+    try
+    {
+      this.g = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
+      this.g.setAccessible(true);
+      return;
+    }
+    catch (NoSuchFieldException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
-  private jj(Toolbar paramToolbar, boolean paramBoolean, int paramInt)
+  private void a()
   {
-    this.a = paramToolbar;
-    this.b = paramToolbar.getTitle();
-    this.l = paramToolbar.getSubtitle();
+    Drawable localDrawable = getSelector();
+    if ((localDrawable != null) && (this.k) && (isPressed())) {
+      localDrawable.setState(getDrawableState());
+    }
+  }
+  
+  private void setSelectorEnabled(boolean paramBoolean)
+  {
+    a locala = this.h;
+    if (locala != null) {
+      locala.b = paramBoolean;
+    }
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    paramInt2 = getListPaddingTop();
+    int i1 = getListPaddingBottom();
+    getListPaddingLeft();
+    getListPaddingRight();
+    paramInt3 = getDividerHeight();
+    Object localObject = getDivider();
+    ListAdapter localListAdapter = getAdapter();
+    if (localListAdapter == null) {
+      return paramInt2 + i1;
+    }
+    if ((paramInt3 <= 0) || (localObject == null)) {
+      paramInt3 = 0;
+    }
+    int i6 = localListAdapter.getCount();
+    paramInt2 += i1;
+    localObject = null;
+    i1 = 0;
+    int i4 = 0;
+    int i5;
+    for (int i2 = 0; i1 < i6; i2 = i5)
+    {
+      i5 = localListAdapter.getItemViewType(i1);
+      int i3 = i4;
+      if (i5 != i4)
+      {
+        localObject = null;
+        i3 = i5;
+      }
+      View localView = localListAdapter.getView(i1, (View)localObject, this);
+      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null)
+      {
+        localObject = generateDefaultLayoutParams();
+        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      if (((ViewGroup.LayoutParams)localObject).height > 0) {
+        i4 = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
+      } else {
+        i4 = View.MeasureSpec.makeMeasureSpec(0, 0);
+      }
+      localView.measure(paramInt1, i4);
+      localView.forceLayout();
+      i4 = paramInt2;
+      if (i1 > 0) {
+        i4 = paramInt2 + paramInt3;
+      }
+      paramInt2 = i4 + localView.getMeasuredHeight();
+      if (paramInt2 >= paramInt4)
+      {
+        if ((paramInt5 >= 0) && (i1 > paramInt5) && (i2 > 0) && (paramInt2 != paramInt4)) {
+          return i2;
+        }
+        return paramInt4;
+      }
+      i5 = i2;
+      if (paramInt5 >= 0)
+      {
+        i5 = i2;
+        if (i1 >= paramInt5) {
+          i5 = paramInt2;
+        }
+      }
+      i1 += 1;
+      i4 = i3;
+      localObject = localView;
+    }
+    return paramInt2;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, int paramInt)
+  {
+    int i2 = paramMotionEvent.getActionMasked();
+    int i1 = 1;
     boolean bool;
-    if (this.b != null) {
+    switch (i2)
+    {
+    default: 
       bool = true;
-    } else {
+      paramInt = 0;
+      break;
+    case 3: 
+      bool = false;
+      paramInt = 0;
+      break;
+    case 2: 
+      bool = true;
+      break;
+    case 1: 
       bool = false;
     }
-    this.k = bool;
-    this.j = paramToolbar.getNavigationIcon();
-    paramToolbar = ji.a(paramToolbar.getContext(), null, gs.j.ActionBar, gs.a.actionBarStyle, 0);
-    this.q = paramToolbar.a(gs.j.ActionBar_homeAsUpIndicator);
-    int i1;
-    if (paramBoolean)
+    int i3 = paramMotionEvent.findPointerIndex(paramInt);
+    Object localObject1;
+    float f1;
+    float f2;
+    Object localObject2;
+    float f3;
+    float f4;
+    Object localObject3;
+    if (i3 < 0)
     {
-      Object localObject1 = paramToolbar.c(gs.j.ActionBar_title);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.k = true;
-        b((CharSequence)localObject1);
-      }
-      localObject1 = paramToolbar.c(gs.j.ActionBar_subtitle);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.l = ((CharSequence)localObject1);
-        if ((this.e & 0x8) != 0) {
-          this.a.setSubtitle((CharSequence)localObject1);
-        }
-      }
-      localObject1 = paramToolbar.a(gs.j.ActionBar_logo);
-      if (localObject1 != null) {
-        b((Drawable)localObject1);
-      }
-      localObject1 = paramToolbar.a(gs.j.ActionBar_icon);
-      if (localObject1 != null) {
-        a((Drawable)localObject1);
-      }
-      if (this.j == null)
-      {
-        localObject1 = this.q;
-        if (localObject1 != null)
-        {
-          this.j = ((Drawable)localObject1);
-          q();
-        }
-      }
-      c(paramToolbar.a(gs.j.ActionBar_displayOptions, 0));
-      i1 = paramToolbar.g(gs.j.ActionBar_customNavigationLayout, 0);
-      Object localObject2;
-      if (i1 != 0)
-      {
-        localObject1 = LayoutInflater.from(this.a.getContext()).inflate(i1, this.a, false);
-        localObject2 = this.g;
-        if ((localObject2 != null) && ((this.e & 0x10) != 0)) {
-          this.a.removeView((View)localObject2);
-        }
-        this.g = ((View)localObject1);
-        if ((localObject1 != null) && ((this.e & 0x10) != 0)) {
-          this.a.addView(this.g);
-        }
-        c(this.e | 0x10);
-      }
-      i1 = paramToolbar.f(gs.j.ActionBar_height, 0);
-      if (i1 > 0)
-      {
-        localObject1 = this.a.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject1).height = i1;
-        this.a.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      }
-      int i2 = paramToolbar.d(gs.j.ActionBar_contentInsetStart, -1);
-      i1 = paramToolbar.d(gs.j.ActionBar_contentInsetEnd, -1);
-      if ((i2 >= 0) || (i1 >= 0))
-      {
-        localObject1 = this.a;
-        i2 = Math.max(i2, 0);
-        i1 = Math.max(i1, 0);
-        ((Toolbar)localObject1).g();
-        ((Toolbar)localObject1).m.a(i2, i1);
-      }
-      i1 = paramToolbar.g(gs.j.ActionBar_titleTextStyle, 0);
-      if (i1 != 0)
-      {
-        localObject1 = this.a;
-        localObject2 = ((Toolbar)localObject1).getContext();
-        ((Toolbar)localObject1).j = i1;
-        if (((Toolbar)localObject1).b != null) {
-          ((Toolbar)localObject1).b.setTextAppearance((Context)localObject2, i1);
-        }
-      }
-      i1 = paramToolbar.g(gs.j.ActionBar_subtitleTextStyle, 0);
-      if (i1 != 0)
-      {
-        localObject1 = this.a;
-        localObject2 = ((Toolbar)localObject1).getContext();
-        ((Toolbar)localObject1).k = i1;
-        if (((Toolbar)localObject1).c != null) {
-          ((Toolbar)localObject1).c.setTextAppearance((Context)localObject2, i1);
-        }
-      }
-      i1 = paramToolbar.g(gs.j.ActionBar_popupTheme, 0);
-      if (i1 != 0) {
-        this.a.setPopupTheme(i1);
-      }
+      bool = false;
+      paramInt = 0;
     }
     else
     {
-      i1 = 11;
-      if (this.a.getNavigationIcon() != null)
+      paramInt = (int)paramMotionEvent.getX(i3);
+      int i4 = (int)paramMotionEvent.getY(i3);
+      i3 = pointToPosition(paramInt, i4);
+      if (i3 == -1)
       {
-        i1 = 15;
-        this.q = this.a.getNavigationIcon();
-      }
-      this.e = i1;
-    }
-    paramToolbar.a.recycle();
-    if (paramInt != this.p)
-    {
-      this.p = paramInt;
-      if (TextUtils.isEmpty(this.a.getNavigationContentDescription())) {
-        d(this.p);
-      }
-    }
-    this.m = this.a.getNavigationContentDescription();
-    this.a.setNavigationOnClickListener(new View.OnClickListener()
-    {
-      final hi a = new hi(jj.this.a.getContext(), jj.this.b);
-      
-      public final void onClick(View paramAnonymousView)
-      {
-        if ((jj.this.c != null) && (jj.this.d)) {
-          jj.this.c.onMenuItemSelected(0, this.a);
-        }
-      }
-    });
-  }
-  
-  private void b(Drawable paramDrawable)
-  {
-    this.i = paramDrawable;
-    p();
-  }
-  
-  private void b(CharSequence paramCharSequence)
-  {
-    this.b = paramCharSequence;
-    if ((this.e & 0x8) != 0) {
-      this.a.setTitle(paramCharSequence);
-    }
-  }
-  
-  private void c(CharSequence paramCharSequence)
-  {
-    this.m = paramCharSequence;
-    r();
-  }
-  
-  private void p()
-  {
-    int i1 = this.e;
-    Drawable localDrawable;
-    if ((i1 & 0x2) != 0)
-    {
-      if ((i1 & 0x1) != 0)
-      {
-        localDrawable = this.i;
-        if (localDrawable == null) {
-          localDrawable = this.h;
-        }
+        paramInt = i1;
       }
       else
       {
-        localDrawable = this.h;
+        localObject1 = getChildAt(i3 - getFirstVisiblePosition());
+        f1 = paramInt;
+        f2 = i4;
+        this.k = true;
+        if (Build.VERSION.SDK_INT >= 21) {
+          drawableHotspotChanged(f1, f2);
+        }
+        if (!isPressed()) {
+          setPressed(true);
+        }
+        layoutChildren();
+        paramInt = this.f;
+        if (paramInt != -1)
+        {
+          localObject2 = getChildAt(paramInt - getFirstVisiblePosition());
+          if ((localObject2 != null) && (localObject2 != localObject1) && (((View)localObject2).isPressed())) {
+            ((View)localObject2).setPressed(false);
+          }
+        }
+        this.f = i3;
+        f3 = ((View)localObject1).getLeft();
+        f4 = ((View)localObject1).getTop();
+        if (Build.VERSION.SDK_INT >= 21) {
+          ((View)localObject1).drawableHotspotChanged(f1 - f3, f2 - f4);
+        }
+        if (!((View)localObject1).isPressed()) {
+          ((View)localObject1).setPressed(true);
+        }
+        localObject2 = getSelector();
+        if ((localObject2 != null) && (i3 != -1)) {
+          paramInt = 1;
+        } else {
+          paramInt = 0;
+        }
+        if (paramInt != 0) {
+          ((Drawable)localObject2).setVisible(false, false);
+        }
+        localObject3 = this.a;
+        ((Rect)localObject3).set(((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom());
+        ((Rect)localObject3).left -= this.b;
+        ((Rect)localObject3).top -= this.c;
+        ((Rect)localObject3).right += this.d;
+        ((Rect)localObject3).bottom += this.e;
       }
     }
-    else {
-      localDrawable = null;
+    for (;;)
+    {
+      try
+      {
+        bool = this.g.getBoolean(this);
+        if (((View)localObject1).isEnabled() != bool)
+        {
+          localObject3 = this.g;
+          if (bool) {
+            break label729;
+          }
+          bool = true;
+          ((Field)localObject3).set(this, Boolean.valueOf(bool));
+          if (i3 != -1) {
+            refreshDrawableState();
+          }
+        }
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      if (paramInt != 0)
+      {
+        Rect localRect = this.a;
+        f3 = localRect.exactCenterX();
+        f4 = localRect.exactCenterY();
+        if (getVisibility() == 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((Drawable)localObject2).setVisible(bool, false);
+        dy.a((Drawable)localObject2, f3, f4);
+      }
+      localObject2 = getSelector();
+      if ((localObject2 != null) && (i3 != -1)) {
+        dy.a((Drawable)localObject2, f1, f2);
+      }
+      setSelectorEnabled(false);
+      refreshDrawableState();
+      if (i2 == 1) {
+        performItemClick((View)localObject1, i3, getItemIdAtPosition(i3));
+      }
+      bool = true;
+      paramInt = 0;
+      if ((!bool) || (paramInt != 0))
+      {
+        this.k = false;
+        setPressed(false);
+        drawableStateChanged();
+        localObject1 = getChildAt(this.f - getFirstVisiblePosition());
+        if (localObject1 != null) {
+          ((View)localObject1).setPressed(false);
+        }
+        localObject1 = this.l;
+        if (localObject1 != null)
+        {
+          ((fr)localObject1).b();
+          this.l = null;
+        }
+      }
+      if (bool)
+      {
+        if (this.m == null) {
+          this.m = new gm(this);
+        }
+        this.m.a(true);
+        this.m.onTouch(this, paramMotionEvent);
+        return bool;
+      }
+      paramMotionEvent = this.m;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.a(false);
+      }
+      return bool;
+      label729:
+      bool = false;
     }
-    this.a.setLogo(localDrawable);
   }
   
-  private void q()
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((this.e & 0x4) != 0)
+    if (!this.a.isEmpty())
     {
-      Toolbar localToolbar = this.a;
-      Drawable localDrawable = this.j;
-      if (localDrawable == null) {
-        localDrawable = this.q;
+      Drawable localDrawable = getSelector();
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(this.a);
+        localDrawable.draw(paramCanvas);
       }
-      localToolbar.setNavigationIcon(localDrawable);
+    }
+    super.dispatchDraw(paramCanvas);
+  }
+  
+  protected void drawableStateChanged()
+  {
+    if (this.n != null) {
       return;
     }
-    this.a.setNavigationIcon(null);
+    super.drawableStateChanged();
+    setSelectorEnabled(true);
+    a();
   }
   
-  private void r()
+  public boolean hasFocus()
   {
-    if ((this.e & 0x4) != 0)
-    {
-      if (TextUtils.isEmpty(this.m))
-      {
-        this.a.setNavigationContentDescription(this.p);
-        return;
-      }
-      this.a.setNavigationContentDescription(this.m);
+    return (this.j) || (super.hasFocus());
+  }
+  
+  public boolean hasWindowFocus()
+  {
+    return (this.j) || (super.hasWindowFocus());
+  }
+  
+  public boolean isFocused()
+  {
+    return (this.j) || (super.isFocused());
+  }
+  
+  public boolean isInTouchMode()
+  {
+    return ((this.j) && (this.i)) || (super.isInTouchMode());
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    this.n = null;
+    super.onDetachedFromWindow();
+  }
+  
+  public boolean onHoverEvent(MotionEvent paramMotionEvent)
+  {
+    if (Build.VERSION.SDK_INT < 26) {
+      return super.onHoverEvent(paramMotionEvent);
     }
+    int i1 = paramMotionEvent.getActionMasked();
+    if ((i1 == 10) && (this.n == null))
+    {
+      this.n = new b((byte)0);
+      b localb = this.n;
+      localb.a.post(localb);
+    }
+    boolean bool = super.onHoverEvent(paramMotionEvent);
+    if ((i1 != 9) && (i1 != 7))
+    {
+      setSelection(-1);
+      return bool;
+    }
+    i1 = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    if ((i1 != -1) && (i1 != getSelectedItemPosition()))
+    {
+      paramMotionEvent = getChildAt(i1 - getFirstVisiblePosition());
+      if (paramMotionEvent.isEnabled()) {
+        setSelectionFromTop(i1, paramMotionEvent.getTop() - getTop());
+      }
+      a();
+    }
+    return bool;
   }
   
-  public final ViewGroup a()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.a;
+    if (paramMotionEvent.getAction() == 0) {
+      this.f = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    }
+    b localb = this.n;
+    if (localb != null)
+    {
+      localb.a.n = null;
+      localb.a.removeCallbacks(localb);
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public final fd a(final int paramInt, long paramLong)
+  public void setListSelectionHidden(boolean paramBoolean)
   {
-    fd localfd = fa.f(this.a);
-    float f1;
-    if (paramInt == 0) {
-      f1 = 1.0F;
+    this.i = paramBoolean;
+  }
+  
+  public void setSelector(Drawable paramDrawable)
+  {
+    if (paramDrawable != null) {
+      localObject = new a(paramDrawable);
     } else {
-      f1 = 0.0F;
+      localObject = null;
     }
-    localfd.a(f1).a(paramLong).a(new ff()
+    this.h = ((a)localObject);
+    super.setSelector(this.h);
+    Object localObject = new Rect();
+    if (paramDrawable != null) {
+      paramDrawable.getPadding((Rect)localObject);
+    }
+    this.b = ((Rect)localObject).left;
+    this.c = ((Rect)localObject).top;
+    this.d = ((Rect)localObject).right;
+    this.e = ((Rect)localObject).bottom;
+  }
+  
+  static final class a
+    extends hk
+  {
+    boolean b = true;
+    
+    a(Drawable paramDrawable)
     {
-      private boolean c = false;
-      
-      public final void a(View paramAnonymousView)
-      {
-        jj.this.a.setVisibility(0);
-      }
-      
-      public final void b(View paramAnonymousView)
-      {
-        if (!this.c) {
-          jj.this.a.setVisibility(paramInt);
-        }
-      }
-      
-      public final void c(View paramAnonymousView)
-      {
-        this.c = true;
-      }
-    });
-  }
-  
-  public final void a(int paramInt)
-  {
-    Drawable localDrawable;
-    if (paramInt != 0) {
-      localDrawable = gu.b(this.a.getContext(), paramInt);
-    } else {
-      localDrawable = null;
+      super();
     }
-    a(localDrawable);
-  }
-  
-  public final void a(Drawable paramDrawable)
-  {
-    this.h = paramDrawable;
-    p();
-  }
-  
-  public final void a(Menu paramMenu, hw.a parama)
-  {
-    if (this.n == null)
+    
+    public final void draw(Canvas paramCanvas)
     {
-      this.n = new ActionMenuPresenter(this.a.getContext());
-      this.n.h = gs.f.action_menu_presenter;
+      if (this.b) {
+        super.draw(paramCanvas);
+      }
     }
-    ActionMenuPresenter localActionMenuPresenter = this.n;
-    localActionMenuPresenter.f = parama;
-    parama = this.a;
-    paramMenu = (hp)paramMenu;
-    if ((paramMenu != null) || (parama.a != null))
+    
+    public final void setHotspot(float paramFloat1, float paramFloat2)
     {
-      parama.d();
-      hp localhp = parama.a.a;
-      if (localhp != paramMenu)
-      {
-        if (localhp != null)
-        {
-          localhp.b(parama.p);
-          localhp.b(parama.q);
-        }
-        if (parama.q == null) {
-          parama.q = new Toolbar.a(parama);
-        }
-        localActionMenuPresenter.l = true;
-        if (paramMenu != null)
-        {
-          paramMenu.a(localActionMenuPresenter, parama.h);
-          paramMenu.a(parama.q, parama.h);
-        }
-        else
-        {
-          localActionMenuPresenter.a(parama.h, null);
-          parama.q.a(parama.h, null);
-          localActionMenuPresenter.b(true);
-          parama.q.b(true);
-        }
-        parama.a.setPopupTheme(parama.i);
-        parama.a.setPresenter(localActionMenuPresenter);
-        parama.p = localActionMenuPresenter;
+      if (this.b) {
+        super.setHotspot(paramFloat1, paramFloat2);
       }
     }
-  }
-  
-  public final void a(Window.Callback paramCallback)
-  {
-    this.c = paramCallback;
-  }
-  
-  public final void a(hw.a parama, hp.a parama1)
-  {
-    Toolbar localToolbar = this.a;
-    localToolbar.r = parama;
-    localToolbar.s = parama1;
-    if (localToolbar.a != null) {
-      localToolbar.a.a(parama, parama1);
-    }
-  }
-  
-  public final void a(jc paramjc)
-  {
-    Object localObject = this.f;
-    if (localObject != null)
+    
+    public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      localObject = ((View)localObject).getParent();
-      Toolbar localToolbar = this.a;
-      if (localObject == localToolbar) {
-        localToolbar.removeView(this.f);
+      if (this.b) {
+        super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
       }
     }
-    this.f = paramjc;
-    if ((paramjc != null) && (this.o == 2))
+    
+    public final boolean setState(int[] paramArrayOfInt)
     {
-      this.a.addView(this.f, 0);
-      localObject = (Toolbar.LayoutParams)this.f.getLayoutParams();
-      ((Toolbar.LayoutParams)localObject).width = -2;
-      ((Toolbar.LayoutParams)localObject).height = -2;
-      ((Toolbar.LayoutParams)localObject).a = 8388691;
-      paramjc.setAllowCollapse(true);
+      if (this.b) {
+        return super.setState(paramArrayOfInt);
+      }
+      return false;
     }
-  }
-  
-  public final void a(CharSequence paramCharSequence)
-  {
-    if (!this.k) {
-      b(paramCharSequence);
-    }
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.a.setCollapsible(paramBoolean);
-  }
-  
-  public final Context b()
-  {
-    return this.a.getContext();
-  }
-  
-  public final void b(int paramInt)
-  {
-    Drawable localDrawable;
-    if (paramInt != 0) {
-      localDrawable = gu.b(this.a.getContext(), paramInt);
-    } else {
-      localDrawable = null;
-    }
-    b(localDrawable);
-  }
-  
-  public final void c(int paramInt)
-  {
-    int i1 = this.e ^ paramInt;
-    this.e = paramInt;
-    if (i1 != 0)
+    
+    public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
     {
-      if ((i1 & 0x4) != 0)
-      {
-        if ((paramInt & 0x4) != 0) {
-          r();
-        }
-        q();
+      if (this.b) {
+        return super.setVisible(paramBoolean1, paramBoolean2);
       }
-      if ((i1 & 0x3) != 0) {
-        p();
-      }
-      if ((i1 & 0x8) != 0) {
-        if ((paramInt & 0x8) != 0)
-        {
-          this.a.setTitle(this.b);
-          this.a.setSubtitle(this.l);
-        }
-        else
-        {
-          this.a.setTitle(null);
-          this.a.setSubtitle(null);
-        }
-      }
-      if ((i1 & 0x10) != 0)
-      {
-        View localView = this.g;
-        if (localView != null)
-        {
-          if ((paramInt & 0x10) != 0)
-          {
-            this.a.addView(localView);
-            return;
-          }
-          this.a.removeView(localView);
-        }
-      }
+      return false;
     }
   }
   
-  public final boolean c()
+  final class b
+    implements Runnable
   {
-    Toolbar localToolbar = this.a;
-    return (localToolbar.q != null) && (localToolbar.q.b != null);
-  }
-  
-  public final void d()
-  {
-    this.a.c();
-  }
-  
-  public final void d(int paramInt)
-  {
-    String str;
-    if (paramInt == 0) {
-      str = null;
-    } else {
-      str = this.a.getContext().getString(paramInt);
-    }
-    c(str);
-  }
-  
-  public final CharSequence e()
-  {
-    return this.a.getTitle();
-  }
-  
-  public final void e(int paramInt)
-  {
-    this.a.setVisibility(paramInt);
-  }
-  
-  public final boolean f()
-  {
-    Toolbar localToolbar = this.a;
-    return (localToolbar.getVisibility() == 0) && (localToolbar.a != null) && (localToolbar.a.b);
-  }
-  
-  public final boolean g()
-  {
-    return this.a.a();
-  }
-  
-  public final boolean h()
-  {
-    Object localObject = this.a;
-    if (((Toolbar)localObject).a != null)
+    private b() {}
+    
+    public final void run()
     {
-      localObject = ((Toolbar)localObject).a;
-      if (((ActionMenuView)localObject).c != null)
-      {
-        localObject = ((ActionMenuView)localObject).c;
-        if ((((ActionMenuPresenter)localObject).o == null) && (!((ActionMenuPresenter)localObject).h())) {
-          i1 = 0;
-        } else {
-          i1 = 1;
-        }
-        if (i1 != 0)
-        {
-          i1 = 1;
-          break label64;
-        }
-      }
-      int i1 = 0;
-      label64:
-      if (i1 != 0) {
-        return true;
-      }
+      jj.a(jj.this);
+      jj.this.drawableStateChanged();
     }
-    return false;
-  }
-  
-  public final boolean i()
-  {
-    return this.a.b();
-  }
-  
-  public final boolean j()
-  {
-    Object localObject = this.a;
-    if (((Toolbar)localObject).a != null)
-    {
-      localObject = ((Toolbar)localObject).a;
-      int i1;
-      if ((((ActionMenuView)localObject).c != null) && (((ActionMenuView)localObject).c.e())) {
-        i1 = 1;
-      } else {
-        i1 = 0;
-      }
-      if (i1 != 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final void k()
-  {
-    this.d = true;
-  }
-  
-  public final void l()
-  {
-    Toolbar localToolbar = this.a;
-    if (localToolbar.a != null) {
-      localToolbar.a.b();
-    }
-  }
-  
-  public final int m()
-  {
-    return this.e;
-  }
-  
-  public final int n()
-  {
-    return this.o;
-  }
-  
-  public final Menu o()
-  {
-    return this.a.getMenu();
   }
 }
 

@@ -1,21 +1,18 @@
 package com.tencent.token;
 
-import com.tencent.mm.sdk.plugin.MMPluginOAuth;
-import com.tencent.mm.sdk.plugin.MMPluginOAuth.Receiver;
+import android.os.Bundle;
 
-public final class qf
-  implements Runnable
+public abstract class qf
 {
-  public qf(MMPluginOAuth.Receiver paramReceiver, MMPluginOAuth paramMMPluginOAuth, String paramString) {}
+  public String a;
   
-  public final void run()
+  public void a(Bundle paramBundle)
   {
-    MMPluginOAuth localMMPluginOAuth = this.a;
-    String str = this.b;
-    MMPluginOAuth.Receiver.a(localMMPluginOAuth.b);
-    localMMPluginOAuth.a = str;
-    pw.b("MicroMsg.SDK.MMPluginOAuth", "access token: ".concat(String.valueOf(str)));
+    paramBundle.putInt("_wxapi_command_type", 2);
+    paramBundle.putString("_wxapi_basereq_transaction", this.a);
   }
+  
+  abstract boolean a();
 }
 
 

@@ -1,58 +1,56 @@
 package com.tencent.token;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.app.UiModeManager;
+import android.content.Context;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Window;
+import android.view.Window.Callback;
 
-public abstract class ha
+class ha
+  extends gz
 {
-  Object c;
-  boolean d;
+  private final UiModeManager w;
   
-  public abstract MenuInflater a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(CharSequence paramCharSequence);
-  
-  public void a(boolean paramBoolean)
+  ha(Context paramContext, Window paramWindow, gv paramgv)
   {
-    this.d = paramBoolean;
+    super(paramContext, paramWindow, paramgv);
+    this.w = ((UiModeManager)paramContext.getSystemService("uimode"));
   }
   
-  public abstract Menu b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(CharSequence paramCharSequence);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract CharSequence f();
-  
-  public abstract CharSequence g();
-  
-  public boolean h()
+  Window.Callback a(Window.Callback paramCallback)
   {
-    return false;
+    return new a(paramCallback);
   }
   
-  public abstract View i();
-  
-  public static abstract interface a
+  final int f(int paramInt)
   {
-    public abstract void a(ha paramha);
+    if ((paramInt == 0) && (this.w.getNightMode() == 0)) {
+      return -1;
+    }
+    return super.f(paramInt);
+  }
+  
+  class a
+    extends gz.a
+  {
+    a(Window.Callback paramCallback)
+    {
+      super(paramCallback);
+    }
     
-    public abstract boolean a(ha paramha, Menu paramMenu);
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+    {
+      return null;
+    }
     
-    public abstract boolean a(ha paramha, MenuItem paramMenuItem);
-    
-    public abstract boolean b(ha paramha, Menu paramMenu);
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+    {
+      if ((ha.this.o) && (paramInt == 0)) {
+        return a(paramCallback);
+      }
+      return super.onWindowStartingActionMode(paramCallback, paramInt);
+    }
   }
 }
 

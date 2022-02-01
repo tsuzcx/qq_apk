@@ -1,10 +1,13 @@
 package com.tencent.token;
 
-import android.arch.lifecycle.LiveData;
-
-public class bd<T>
-  extends LiveData<T>
-{}
+public abstract class bd
+{
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract boolean b();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

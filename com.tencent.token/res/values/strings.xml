@@ -34,7 +34,7 @@
     <string name="about_info1">QQ安全中心</string>
     <string name="about_info1_1">V6.9.10</string>
     <string name="about_info2">腾讯公司 版权所有</string>
-    <string name="about_info3">Copyright© 1998–2018 Tencent. All Rights Reserved</string>
+    <string name="about_info3">Copyright© 1998–2021 Tencent. All Rights Reserved</string>
     <string name="about_info5">使用协议</string>
     <string name="about_list_privacy">隐私协议</string>
     <string name="about_list_serialnumber">序列号</string>
@@ -43,6 +43,7 @@
     <string name="account_eval_result">您的帐号安全有待加强</string>
     <string name="account_have_bind_mb">已设置密保手机：</string>
     <string name="account_head">您的QQ</string>
+    <string name="account_info">帐号信息</string>
     <string name="account_lock_h5">https://aq.qq.com/js</string>
     <string name="account_manage_btn_com">完成</string>
     <string name="account_manage_btn_edit">编辑</string>
@@ -82,7 +83,7 @@
     <string name="activity_sms_info13">重发短信</string>
     <string name="activity_sms_info14">更换验证方式</string>
     <string name="activity_sms_info15">验证码</string>
-    <string name="activity_sms_info16">请输入QQ令牌动态密码</string>
+    <string name="activity_sms_info16">为了验证您是QQ的主人，请您输入QQ令牌动态密码，该密码仅用于身份验证，我们不会存储或是用于其他用途。</string>
     <string name="activity_sms_info17">正在处理，请稍候…</string>
     <string name="activity_sms_waiting">请等待%d秒，点击“下一步”重试。</string>
     <string name="activity_succ_1">恭喜！</string>
@@ -210,6 +211,7 @@
     <string name="detect_idphoto_fail_posbtn">立即切换</string>
     <string name="detect_idphoto_fail_tip">识别不到？</string>
     <string name="detect_idphoto_fail_title">识别不到身份证？</string>
+    <string name="device_info">设备信息</string>
     <string name="dialog_sms_btn_cancel">不是我操作</string>
     <string name="dialog_sms_btn_ok">快速验证</string>
     <string name="dialog_sms_notice_btn_cancel">取消</string>
@@ -385,7 +387,7 @@
     <string name="gesture_startpasswd_create_passwd">立即创建</string>
     <string name="gesture_startpasswd_create_skip">跳过</string>
     <string name="gesture_startpasswd_forget_passwd">忘记手势密码?</string>
-    <string name="gesture_startpasswd_forget_passwd_nobinding">本软件暂未绑定任何QQ，您可以直接设置新的启动密码,原启动密码将自动删除。</string>
+    <string name="gesture_startpasswd_forget_passwd_nobinding">本软件暂未绑定任何QQ，您可以直接设置新的启动密码，原启动密码将自动删除。</string>
     <string name="gesture_startpasswd_forget_passwd_nobinding_delete">本软件暂未绑定任何QQ，您可以直接删除启动密码。</string>
     <string name="gesture_startpasswd_forget_reset_title">重新设置</string>
     <string name="gesture_startpasswd_havedel">手势密码删除成功！</string>
@@ -482,6 +484,7 @@
     <string name="login_msg_week_7">星期日</string>
     <string name="login_msg_yesterday">昨天</string>
     <string name="login_text">登录</string>
+    <string name="logout_qq_succ">已退出登录</string>
     <string name="look_network_item_1">如需要连接到互联网，请参照以下方法：</string>
     <string name="look_network_item_1_1">检查手机中的无线局域网设置，查看是否有可接入的无线局域网信号。</string>
     <string name="look_network_item_1_2">检查手机是否已接入移动网络，并且手机没有被停机。</string>
@@ -494,7 +497,7 @@
     <string name="mb_question">密保问题</string>
     <string name="menu_about_help">关于和帮助</string>
     <string name="menu_qq_number">(%1$s)</string>
-    <string name="menu_unbind_curraccount">注销当前帐号</string>
+    <string name="menu_unbind_curraccount">退出/注销</string>
     <string name="mobile_country_america">美国</string>
     <string name="mobile_country_america_num">+1</string>
     <string name="mobile_country_australia">澳大利亚</string>
@@ -575,14 +578,19 @@
     <string name="page_scan_barcode_help_url">https://kf.qq.com/touch/sappfaq/120509riAvQj140416ZRNf6B.html?scene_id=kf94</string>
     <string name="page_verify_msg_help_url">https://kf.qq.com/touch/scene_faq.html?scene_id=kf104</string>
     <string name="permission_guide_sub_desc">授予安全中心保护权限，保证风险信息随时同步</string>
+    <string name="permission_title">权限管理</string>
     <string name="permissiong_app_whitelist">免系统关闭权限</string>
     <string name="permissiong_autostart">开机启动权限</string>
     <string name="permissiong_guide_desc">开启24h保护免遗漏任何风险信息</string>
     <string name="permissiong_guide_title">风险提醒</string>
+    <string name="personal_info_download">个人信息下载</string>
+    <string name="personal_query_title">个人信息查询与管理</string>
     <string name="photo_confirm_button">确认</string>
     <string name="pos_button">是</string>
+    <string name="privacy_detail">隐私条款</string>
     <string name="privacy_licence"> &lt;font color=#247fed>《隐私条款》&lt;/font></string>
     <string name="privacy_licence_url">https://aq.qq.com/cn2/manage/mbtoken/3g_token_anti_fraud?id=privacy_policy</string>
+    <string name="privacy_title">隐私管理</string>
     <string name="private_licence">隐私条款</string>
     <string name="progress_doing">正在处理…</string>
     <string name="progress_message">信息读取中…</string>
@@ -851,7 +859,7 @@
     <string name="utils_login_protect_open_web_tip">由于从QQ可以跳转到网页，请同时开启QQ登录保护，确保网页登录安全。</string>
     <string name="utils_login_protect_use">要使用登录保护？</string>
     <string name="utils_login_protect_use_detail">请绑定你的手机号码，用于登录时验证身份。</string>
-    <string name="utils_mail_login_protect_del_tip">如果以上设备不是您的常用设备，请点击删除。下次登录邮箱需验证密保。</string>
+    <string name="utils_mail_login_protect_del_tip">如何以上设备不是你的常用设备，请修改QQ密码，设置密保手机号，提升帐号安全。</string>
     <string name="utils_mail_login_protect_desc_tip">开启后，在网页、新手机上登录邮箱时，需验证密保或使用QQ安全中心扫描二维码才能进入邮箱。</string>
     <string name="utils_mail_protect">邮箱保护</string>
     <string name="utils_mail_protect_tile">登录邮箱时验证密保，预防隐私泄露</string>
@@ -891,7 +899,7 @@
     <string name="utils_qbqd_desc_tip">开启后，在消费Q币时需要验证密保。</string>
     <string name="utils_qbqd_protect_detail">消费Q币时验证密保，安心支付</string>
     <string name="utils_qbqd_serv">Q币保护</string>
-    <string name="utils_qq_login_protect_del_tip">如果以上设备不是您的常用设备，请点击删除。下次登录QQ需验证密保。</string>
+    <string name="utils_qq_login_protect_del_tip">如何以上设备不是你的常用设备，请前往手机QQ设置->帐号安全->登录设备管理中进行删除。</string>
     <string name="utils_qrcode_detect">二维码检测</string>
     <string name="utils_query_status">信息读取中…</string>
     <string name="utils_recover_friends">恢复好友</string>
@@ -903,7 +911,7 @@
     <string name="utils_title">工具</string>
     <string name="utils_verify_hint">功能!</string>
     <string name="utils_web_qq_protect_tip">登录网页时验证密保，防止坏人从网页端登录您的帐号。</string>
-    <string name="verify_account_tip_default">验证成功后，你就能获得最高权限，可以使用本软件的全部功能。</string>
+    <string name="verify_account_tip_default">为了保障您的帐号安全，您需验证成功后，方可使用本软件的全部功能。</string>
     <string name="verify_account_tip_title">请先进行身份验证</string>
     <string name="verify_mobile_for_strategy">为了保证您的帐号安全，我们需要确定是您本人操作，将给您的密保手机</string>
     <string name="verify_now">立即验证</string>

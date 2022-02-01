@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
-import com.tencent.token.aam;
-import com.tencent.token.aao;
-import com.tencent.token.sb;
-import com.tencent.token.xj;
+import btmsdkobf.bw;
+import com.tencent.token.aaw;
+import com.tencent.token.aay;
+import com.tencent.token.ace;
+import com.tencent.token.aib.a;
+import com.tencent.token.so;
+import com.tencent.token.xv;
 
 public class AboutActivity
   extends BaseActivity
@@ -26,7 +29,7 @@ public class AboutActivity
     super.onCreate(paramBundle);
     setContentView(2131296285);
     this.versionText = ((TextView)findViewById(2131165202));
-    paramBundle = aam.b;
+    paramBundle = aaw.b;
     try
     {
       String str1 = getPackageManager().getPackageInfo(getPackageName(), 16384).versionName;
@@ -34,13 +37,29 @@ public class AboutActivity
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      xj.c(localNameNotFoundException.getMessage());
+      xv.c(localNameNotFoundException.getMessage());
     }
     this.versionText.setText("V".concat(String.valueOf(paramBundle)));
+    this.versionText.setOnClickListener(new View.OnClickListener()
+    {
+      int a = 0;
+      
+      public final void onClick(View paramAnonymousView)
+      {
+        this.a += 1;
+        if (this.a >= 5)
+        {
+          paramAnonymousView = AboutActivity.this.versionText;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(bw.ah().aj());
+          paramAnonymousView.setText(localStringBuilder.toString());
+        }
+      }
+    });
     this.aboutInfoWithEnvir = ((TextView)findViewById(2131165201));
     String str2 = getResources().getString(2131492895);
     paramBundle = str2;
-    if (aam.c == 2)
+    if (aaw.c == 2)
     {
       paramBundle = new StringBuilder();
       paramBundle.append(str2);
@@ -52,9 +71,18 @@ public class AboutActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        sb.a().a(System.currentTimeMillis(), 44);
-        paramAnonymousView = new Intent(AboutActivity.this, HelpActivity.class);
-        AboutActivity.this.startActivity(paramAnonymousView);
+        so.a().a(System.currentTimeMillis(), 44);
+        ace.a(AboutActivity.this, "即将离开QQ安全中心，前往腾讯客服", new aib.a()
+        {
+          public final void a(boolean paramAnonymous2Boolean)
+          {
+            if (paramAnonymous2Boolean)
+            {
+              Intent localIntent = new Intent(AboutActivity.this, HelpActivity.class);
+              AboutActivity.this.startActivity(localIntent);
+            }
+          }
+        });
       }
     });
     findViewById(2131165203).setOnLongClickListener(new View.OnLongClickListener()
@@ -79,7 +107,7 @@ public class AboutActivity
       public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = AboutActivity.this;
-        aao.a(paramAnonymousView, paramAnonymousView.getString(2131493443));
+        aay.a(paramAnonymousView, paramAnonymousView.getString(2131493451));
       }
     });
     findViewById(2131165200).setOnClickListener(new View.OnClickListener()
@@ -87,14 +115,14 @@ public class AboutActivity
       public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = AboutActivity.this;
-        aao.a(paramAnonymousView, paramAnonymousView.getString(2131493347));
+        aay.a(paramAnonymousView, paramAnonymousView.getString(2131493350));
       }
     });
     findViewById(2131165204).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        aao.b(AboutActivity.this, "http://tools.3g.qq.com/j/qqsafety", "隐私协议");
+        aay.b(AboutActivity.this, "http://tools.3g.qq.com/j/qqsafety", "隐私协议");
       }
     });
   }

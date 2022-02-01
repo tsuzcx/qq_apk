@@ -9,16 +9,19 @@ class WtloginHelper$HelperThread$7
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
-    t.c(this.this$1.mUserSigInfo._seqence);
-    if (this.this$1.mDwDstAppid == WtloginHelper.access$1100(this.this$1.this$0))
+    Object localObject = u.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = ((async_context)localObject)._last_err_msg;
+    u.c(this.this$1.mUserSigInfo._seqence);
+    WtloginHelper.HelperThread.access$700(this.this$1, (async_context)localObject);
+    WtloginHelper.HelperThread.access$800(this.this$1, (async_context)localObject, this.val$ret);
+    if (this.this$1.mDwDstAppid == WtloginHelper.access$1500(this.this$1.this$0))
     {
-      WtloginHelper.HelperThread localHelperThread = this.this$1;
-      localHelperThread.mDwDstAppid = localHelperThread.mDwSubDstAppid;
+      localObject = this.this$1;
+      ((WtloginHelper.HelperThread)localObject).mDwDstAppid = ((WtloginHelper.HelperThread)localObject).mDwSubDstAppid;
       this.this$1.mDwSubDstAppid = 0L;
     }
     if (this.this$1.mPromise != null)
@@ -38,15 +41,15 @@ class WtloginHelper$HelperThread$7
       this.this$1.mPromise.Failed(localErrMsg);
       return;
     }
-    if (WtloginHelper.access$100(this.this$1.mHelper) == null) {
+    if (WtloginHelper.access$200(this.this$1.mHelper) == null) {
       return;
     }
-    if ((this.this$1.mDwDstSubAppidList == null) && (!WtloginHelper.access$200(this.this$1.this$0).e()))
+    if ((this.this$1.mDwDstSubAppidList == null) && (!WtloginHelper.access$300(this.this$1.this$0).e()))
     {
-      WtloginHelper.access$100(this.this$1.mHelper).OnGetStWithoutPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwDstAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
+      WtloginHelper.access$200(this.this$1.mHelper).OnGetStWithoutPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwDstAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
       return;
     }
-    WtloginHelper.access$100(this.this$1.mHelper).OnGetStWithoutPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwDstAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwDstSubAppidList, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
+    WtloginHelper.access$200(this.this$1.mHelper).OnGetStWithoutPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwDstAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwDstSubAppidList, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
   }
 }
 

@@ -1,37 +1,31 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import java.lang.ref.WeakReference;
 
-public final class jv
-  extends JceStruct
+final class jv
+  extends jo
 {
-  public long a = 0L;
-  public long b = 0L;
-  public String c = "";
-  public int d = 0;
-  public int e = 0;
-  public String f = "";
+  private final WeakReference<Context> a;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public jv(Context paramContext, Resources paramResources)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, true);
-    this.d = paramJceInputStream.read(this.d, 3, true);
-    this.e = paramJceInputStream.read(this.e, 4, true);
-    this.f = paramJceInputStream.readString(5, true);
+    super(paramResources);
+    this.a = new WeakReference(paramContext);
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final Drawable getDrawable(int paramInt)
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    paramJceOutputStream.write(this.d, 3);
-    paramJceOutputStream.write(this.e, 4);
-    paramJceOutputStream.write(this.f, 5);
+    Drawable localDrawable = super.getDrawable(paramInt);
+    Context localContext = (Context)this.a.get();
+    if ((localDrawable != null) && (localContext != null))
+    {
+      iy.a();
+      iy.a(localContext, paramInt, localDrawable);
+    }
+    return localDrawable;
   }
 }
 

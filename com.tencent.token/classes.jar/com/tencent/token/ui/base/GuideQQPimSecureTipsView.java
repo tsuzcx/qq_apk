@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.aae;
-import com.tencent.token.kz;
-import com.tencent.token.kz.a;
+import com.tencent.token.aao;
+import com.tencent.token.ln;
+import com.tencent.token.ln.a;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -26,10 +26,10 @@ public class GuideQQPimSecureTipsView
   public GuideQQPimSecureTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296358, this, true);
-    this.b = ((TextView)findViewById(2131166110));
-    this.c = ((TextView)findViewById(2131166109));
-    this.d = ((ImageView)findViewById(2131165657));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296365, this, true);
+    this.b = ((TextView)findViewById(2131166150));
+    this.c = ((TextView)findViewById(2131166149));
+    this.d = ((ImageView)findViewById(2131165674));
   }
   
   public final void a(final String paramString1, String paramString2, String paramString3, String paramString4, final ArrayList<String> paramArrayList, final boolean paramBoolean)
@@ -37,14 +37,14 @@ public class GuideQQPimSecureTipsView
     this.b.setText(paramString2);
     this.c.setText(paramString3);
     if (!TextUtils.isEmpty(paramString4)) {
-      new aae(this.d).execute(new String[] { paramString4 });
+      new aao(this.d).execute(new String[] { paramString4 });
     }
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = kz.a.a;
-        kz.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
+        paramAnonymousView = ln.a.a;
+        ln.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
         GuideQQPimSecureTipsView.this.setVisibility(8);
         GuideQQPimSecureTipsView.a = true;
         if (paramBoolean)

@@ -1,14 +1,43 @@
 package com.tencent.token;
 
-public abstract interface pf
+import android.os.Bundle;
+
+public final class pf
 {
-  public abstract boolean a();
-  
-  public abstract boolean a(on paramon);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
+  public static final class a
+    extends pb
+  {
+    public String c;
+    public String d = "";
+    public int e = 0;
+    public String f = "";
+    
+    public final int a()
+    {
+      return 19;
+    }
+    
+    public final void a(Bundle paramBundle)
+    {
+      super.a(paramBundle);
+      paramBundle.putString("_launch_wxminiprogram_username", this.c);
+      paramBundle.putString("_launch_wxminiprogram_path", this.d);
+      paramBundle.putString("_launch_wxminiprogram_extData", this.f);
+      paramBundle.putInt("_launch_wxminiprogram_type", this.e);
+    }
+    
+    public final boolean b()
+    {
+      if (qb.a(this.c)) {
+        return false;
+      }
+      int i = this.e;
+      if (i >= 0) {
+        return i <= 2;
+      }
+      return false;
+    }
+  }
 }
 
 

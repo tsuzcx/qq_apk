@@ -1,61 +1,117 @@
 package com.tencent.token;
 
-import android.support.v4.widget.DrawerLayout.c;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.widget.CompoundButton;
+import java.lang.reflect.Field;
 
 public final class gg
-  implements DrawerLayout.c
 {
-  boolean a;
-  private final a b;
-  private gx c;
-  private boolean d;
-  private final int e;
-  private final int f;
+  private static final c a = new c();
   
-  private void a(int paramInt)
+  static
   {
-    this.b.a(paramInt);
-  }
-  
-  private void b(float paramFloat)
-  {
-    if (paramFloat == 1.0F) {
-      this.c.a(true);
-    } else if (paramFloat == 0.0F) {
-      this.c.a(false);
-    }
-    this.c.a(paramFloat);
-  }
-  
-  public final void a()
-  {
-    b(1.0F);
-    if (this.a) {
-      a(this.f);
-    }
-  }
-  
-  public final void a(float paramFloat)
-  {
-    if (this.d)
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      b(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      a = new b();
       return;
     }
-    b(0.0F);
-  }
-  
-  public final void b()
-  {
-    b(0.0F);
-    if (this.a) {
-      a(this.e);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
+      return;
     }
   }
   
-  public static abstract interface a
+  public static Drawable a(CompoundButton paramCompoundButton)
   {
-    public abstract void a(int paramInt);
+    return a.a(paramCompoundButton);
+  }
+  
+  public static void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+  {
+    a.a(paramCompoundButton, paramColorStateList);
+  }
+  
+  public static void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+  {
+    a.a(paramCompoundButton, paramMode);
+  }
+  
+  static class a
+    extends gg.c
+  {
+    public final void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    {
+      paramCompoundButton.setButtonTintList(paramColorStateList);
+    }
+    
+    public final void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      paramCompoundButton.setButtonTintMode(paramMode);
+    }
+  }
+  
+  static final class b
+    extends gg.a
+  {
+    public final Drawable a(CompoundButton paramCompoundButton)
+    {
+      return paramCompoundButton.getButtonDrawable();
+    }
+  }
+  
+  static class c
+  {
+    private static Field a;
+    private static boolean b;
+    
+    public Drawable a(CompoundButton paramCompoundButton)
+    {
+      if (!b) {}
+      try
+      {
+        Field localField = CompoundButton.class.getDeclaredField("mButtonDrawable");
+        a = localField;
+        localField.setAccessible(true);
+        label23:
+        b = true;
+        localField = a;
+        if (localField != null) {}
+        try
+        {
+          paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
+          return paramCompoundButton;
+        }
+        catch (IllegalAccessException paramCompoundButton)
+        {
+          label46:
+          break label46;
+        }
+        a = null;
+        return null;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label23;
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    {
+      if ((paramCompoundButton instanceof gq)) {
+        ((gq)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      if ((paramCompoundButton instanceof gq)) {
+        ((gq)paramCompoundButton).setSupportButtonTintMode(paramMode);
+      }
+    }
   }
 }
 

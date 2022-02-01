@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tencent.token">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <uses-permission android:name="android.permission.REORDER_TASKS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <application android:allowBackup="false" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.tencent.token.global.RqdApplication" android:networkSecurityConfig="@xml/network_security_config" android:theme="@android:style/Theme.NoTitleBar">
+    <application android:allowBackup="false" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.tencent.token.global.RqdApplication" android:networkSecurityConfig="@xml/network_security_config" android:resizeableActivity="false" android:theme="@android:style/Theme.NoTitleBar">
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:name="com.tencent.token.ui.LogoActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -42,6 +35,14 @@
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_knowtoken" android:name="com.tencent.token.ui.KnowTokenActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/about_list_serialnumber" android:name="com.tencent.token.ui.SerialNumberActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/correct_time_title" android:name="com.tencent.token.ui.CorrectTokenActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/permission_title" android:name="com.tencent.token.ui.PermissionActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/privacy_title" android:name="com.tencent.token.ui.PrivacyManagerActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/personal_query_title" android:name="com.tencent.token.ui.PersonalQueryActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/account_info" android:name="com.tencent.token.ui.AccountInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/device_info" android:name="com.tencent.token.ui.DeviceInfo1Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/device_info" android:name="com.tencent.token.ui.DeviceInfo2Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/privacy_detail" android:name="com.tencent.token.ui.PrivacyDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/personal_info_download" android:name="com.tencent.token.ui.DownloadPersonalInfoActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/verify_page_barcode" android:name="com.tencent.token.ui.VerifyStartScanActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.BindUinActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.CheckMobileAvailableActivity" android:screenOrientation="portrait"/>

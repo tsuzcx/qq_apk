@@ -5,9 +5,9 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.token.by;
-import com.tencent.token.by.a;
-import com.tencent.token.cf;
+import com.tencent.token.cm;
+import com.tencent.token.cm.a;
+import com.tencent.token.ct;
 import java.util.ArrayList;
 
 public final class BackStackState
@@ -49,17 +49,17 @@ public final class BackStackState
     this.l = bool;
   }
   
-  public BackStackState(by paramby)
+  public BackStackState(cm paramcm)
   {
-    int i1 = paramby.b.size();
+    int i1 = paramcm.b.size();
     this.a = new int[i1 * 6];
-    if (paramby.i)
+    if (paramcm.i)
     {
       int m = 0;
       int n = 0;
       while (m < i1)
       {
-        by.a locala = (by.a)paramby.b.get(m);
+        cm.a locala = (cm.a)paramcm.b.get(m);
         int[] arrayOfInt = this.a;
         int i2 = n + 1;
         arrayOfInt[n] = locala.a;
@@ -84,37 +84,37 @@ public final class BackStackState
         m += 1;
         n += 1;
       }
-      this.b = paramby.g;
-      this.c = paramby.h;
-      this.d = paramby.k;
-      this.e = paramby.m;
-      this.f = paramby.n;
-      this.g = paramby.o;
-      this.h = paramby.p;
-      this.i = paramby.q;
-      this.j = paramby.r;
-      this.k = paramby.s;
-      this.l = paramby.t;
+      this.b = paramcm.g;
+      this.c = paramcm.h;
+      this.d = paramcm.k;
+      this.e = paramcm.m;
+      this.f = paramcm.n;
+      this.g = paramcm.o;
+      this.h = paramcm.p;
+      this.i = paramcm.q;
+      this.j = paramcm.r;
+      this.k = paramcm.s;
+      this.l = paramcm.t;
       return;
     }
     throw new IllegalStateException("Not on back stack");
   }
   
-  public final by a(cf paramcf)
+  public final cm a(ct paramct)
   {
-    by localby = new by(paramcf);
+    cm localcm = new cm(paramct);
     int n = 0;
     int m = 0;
     while (n < this.a.length)
     {
-      by.a locala = new by.a();
+      cm.a locala = new cm.a();
       Object localObject = this.a;
       int i1 = n + 1;
       locala.a = localObject[n];
-      if (cf.a)
+      if (ct.a)
       {
         localObject = new StringBuilder("Instantiate ");
-        ((StringBuilder)localObject).append(localby);
+        ((StringBuilder)localObject).append(localcm);
         ((StringBuilder)localObject).append(" op #");
         ((StringBuilder)localObject).append(m);
         ((StringBuilder)localObject).append(" base fragment #");
@@ -124,7 +124,7 @@ public final class BackStackState
       n = i1 + 1;
       i1 = localObject[i1];
       if (i1 >= 0) {
-        locala.b = ((Fragment)paramcf.f.get(i1));
+        locala.b = ((Fragment)paramct.f.get(i1));
       } else {
         locala.b = null;
       }
@@ -136,28 +136,28 @@ public final class BackStackState
       i1 = n + 1;
       locala.e = localObject[n];
       locala.f = localObject[i1];
-      localby.c = locala.c;
-      localby.d = locala.d;
-      localby.e = locala.e;
-      localby.f = locala.f;
-      localby.a(locala);
+      localcm.c = locala.c;
+      localcm.d = locala.d;
+      localcm.e = locala.e;
+      localcm.f = locala.f;
+      localcm.a(locala);
       m += 1;
       n = i1 + 1;
     }
-    localby.g = this.b;
-    localby.h = this.c;
-    localby.k = this.d;
-    localby.m = this.e;
-    localby.i = true;
-    localby.n = this.f;
-    localby.o = this.g;
-    localby.p = this.h;
-    localby.q = this.i;
-    localby.r = this.j;
-    localby.s = this.k;
-    localby.t = this.l;
-    localby.a(1);
-    return localby;
+    localcm.g = this.b;
+    localcm.h = this.c;
+    localcm.k = this.d;
+    localcm.m = this.e;
+    localcm.i = true;
+    localcm.n = this.f;
+    localcm.o = this.g;
+    localcm.p = this.h;
+    localcm.q = this.i;
+    localcm.r = this.j;
+    localcm.s = this.k;
+    localcm.t = this.l;
+    localcm.a(1);
+    return localcm;
   }
   
   public final int describeContents()

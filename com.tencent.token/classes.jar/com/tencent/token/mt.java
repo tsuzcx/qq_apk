@@ -1,96 +1,140 @@
 package com.tencent.token;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.RunnableFuture;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import android.os.SystemClock;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class mt
-  extends ThreadPoolExecutor
 {
-  public final AtomicInteger a = new AtomicInteger(0);
-  private final AtomicLong b = new AtomicLong(0L);
-  private final AtomicLong c = new AtomicLong(0L);
-  private long d = 1000L;
+  long a = 0L;
+  long b = 0L;
+  long c = 0L;
+  int d = 0;
+  private nf e;
+  private a f = new a((byte)0);
   
-  public mt(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public mt(nf paramnf)
   {
-    super(paramInt1, paramInt2, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new b((byte)0));
+    this.e = paramnf;
   }
   
-  public final void a()
+  public final long a()
   {
-    if (b())
+    return this.c - this.b;
+  }
+  
+  public final void a(int paramInt1, int paramInt2)
+  {
+    this.d += paramInt2;
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.a;
+    this.a = l1;
+    Object localObject1 = this.e;
+    ((nf)localObject1).m += l1 - l2;
+    localObject1 = this.f;
+    int j = 1;
+    if (paramInt1 <= 0) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
+    }
+    l1 = SystemClock.elapsedRealtime();
+    int i = (int)(l1 - ((a)localObject1).a);
+    ((a)localObject1).a = l1;
+    if (((a)localObject1).d.size() == 0)
     {
-      long l = this.c.longValue();
-      if (this.d + l < System.currentTimeMillis())
+      i = j;
+      if (paramInt2 == 0)
       {
-        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
-          return;
-        }
-        Thread.currentThread().setUncaughtExceptionHandler(new mu());
-        throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
+        ((a)localObject1).d.add(new mt.a.a(paramInt1));
+        i = j;
       }
     }
-  }
-  
-  protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
-  {
-    this.a.decrementAndGet();
-    if (paramThrowable == null) {
-      a();
-    }
-  }
-  
-  public final boolean b()
-  {
-    return (this.d >= 0L) && ((Thread.currentThread() instanceof mv)) && (((mv)Thread.currentThread()).a < this.b.longValue());
-  }
-  
-  public final void execute(Runnable paramRunnable)
-  {
-    super.execute(new a(paramRunnable));
-  }
-  
-  protected final RunnableFuture newTaskFor(Runnable paramRunnable, Object paramObject)
-  {
-    return (RunnableFuture)paramRunnable;
-  }
-  
-  protected final RunnableFuture newTaskFor(Callable paramCallable)
-  {
-    return (RunnableFuture)paramCallable;
-  }
-  
-  public final Future submit(Runnable paramRunnable)
-  {
-    return super.submit(new a(paramRunnable));
-  }
-  
-  public final class a
-    extends FutureTask
-    implements Comparable
-  {
-    public a()
+    else
     {
-      super(null);
+      Object localObject2 = ((a)localObject1).d.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        mt.a.a locala = (mt.a.a)((Iterator)localObject2).next();
+        locala.b += i;
+        if ((paramInt2 == 0) && (locala.b > 2000))
+        {
+          locala.b = 0;
+          locala.a = paramInt1;
+          paramInt2 = 1;
+        }
+      }
+      if (paramInt2 == 0) {
+        if (((a)localObject1).d.size() > 2000 / ls.f + 1)
+        {
+          localObject2 = new StringBuilder("records.size():");
+          ((StringBuilder)localObject2).append(((a)localObject1).d.size());
+          mc.d("CostTimeCounter", ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          ((a)localObject1).d.add(new mt.a.a(paramInt1));
+        }
+      }
+      if (l1 - ((a)localObject1).b > 200L) {
+        i = j;
+      } else {
+        i = 0;
+      }
     }
+    if (i != 0)
+    {
+      ((a)localObject1).c = ((a)localObject1).a();
+      ((a)localObject1).b = l1;
+    }
+    this.e.t = this.f.c;
   }
   
-  static final class b
-    implements RejectedExecutionHandler
+  static final class a
   {
-    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+    long a = 0L;
+    long b = 0L;
+    int c = 0;
+    List d = new LinkedList();
+    
+    final int a()
     {
-      throw new RejectedExecutionException();
+      if (this.d.size() == 0) {
+        return 0;
+      }
+      Iterator localIterator = this.d.iterator();
+      long l1 = 0L;
+      while (localIterator.hasNext())
+      {
+        a locala = (a)localIterator.next();
+        if (locala.b <= 2000)
+        {
+          long l2 = l1 + locala.a;
+          l1 = l2;
+          if (l2 < 0L)
+          {
+            StringBuilder localStringBuilder = new StringBuilder("sum:");
+            localStringBuilder.append(l2);
+            localStringBuilder.append(",len:");
+            localStringBuilder.append(locala.a);
+            mc.c("CostTimeCounter", localStringBuilder.toString());
+            l1 = l2;
+          }
+        }
+      }
+      return (int)(l1 * 1000L / 2000L);
+    }
+    
+    static final class a
+    {
+      public int a = 0;
+      public int b = 0;
+      
+      public a(int paramInt)
+      {
+        this.a = paramInt;
+      }
     }
   }
 }

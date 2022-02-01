@@ -1,31 +1,42 @@
 package com.tencent.token;
 
 import android.content.Context;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.text.TextUtils;
 
-public class agr
+public final class agr
 {
-  public agk a;
-  public adp b;
-  public Context c;
-  public int d = 0;
-  public String e = "";
-  public boolean f = true;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public int j = 0;
-  public String k = "";
-  public Map<Integer, String> l = new HashMap();
-  public String m = "";
-  public boolean n = true;
-  public boolean o = false;
-  public boolean p = true;
-  public boolean q = true;
-  public int r = 5000;
-  public int s = 3;
-  public long t = 5000L;
+  public static int a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+      if (paramContext == null) {
+        return -1;
+      }
+      if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
+        return -1;
+      }
+      int i = paramContext.getIntExtra("level", 0);
+      int j = paramContext.getIntExtra("scale", 100);
+      if (j == 0) {
+        return -1;
+      }
+      j = i * 100 / j;
+      i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      j = i;
+      if (i > 100) {
+        j = 100;
+      }
+      return j;
+    }
+    finally {}
+    return -1;
+  }
 }
 
 

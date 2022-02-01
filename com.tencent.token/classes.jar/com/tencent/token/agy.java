@@ -1,46 +1,13 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.TreeSet;
 
 public final class agy
-  implements Runnable
+  implements acj<T>
 {
-  public agy(AtomicBoolean paramAtomicBoolean, AtomicReference paramAtomicReference, Object paramObject) {}
-  
-  public final void run()
+  public final T a()
   {
-    if (this.a.get()) {
-      return;
-    }
-    try
-    {
-      throw new Exception("");
-    }
-    catch (Exception localException)
-    {
-      ??? = agg.a(agg.aH);
-      StackTraceElement[] arrayOfStackTraceElement = localException.getStackTrace();
-      int j = arrayOfStackTraceElement.length;
-      int i = 0;
-      while (i < j)
-      {
-        StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localStackTraceElement.getClassName());
-        localStringBuilder.append("_");
-        localStringBuilder.append(localStackTraceElement.getMethodName());
-        if (((String)???).equals(localStringBuilder.toString())) {
-          this.b.set(Boolean.TRUE);
-        }
-        i += 1;
-      }
-      synchronized (this.c)
-      {
-        this.c.notify();
-        return;
-      }
-    }
+    return new TreeSet();
   }
 }
 

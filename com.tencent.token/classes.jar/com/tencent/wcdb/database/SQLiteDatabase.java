@@ -4,20 +4,20 @@ import android.content.ContentValues;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.token.ahi;
-import com.tencent.token.ahj;
-import com.tencent.token.ahk;
-import com.tencent.token.ahl;
-import com.tencent.token.ahq;
-import com.tencent.token.ahs;
-import com.tencent.token.aht;
-import com.tencent.token.ahu;
-import com.tencent.token.ahw;
-import com.tencent.token.ahy;
-import com.tencent.token.ahz;
-import com.tencent.token.aia;
-import com.tencent.token.aic;
-import com.tencent.token.aie;
+import com.tencent.token.aii;
+import com.tencent.token.aij;
+import com.tencent.token.aik;
+import com.tencent.token.ail;
+import com.tencent.token.aiq;
+import com.tencent.token.ais;
+import com.tencent.token.ait;
+import com.tencent.token.aiu;
+import com.tencent.token.aiw;
+import com.tencent.token.aiy;
+import com.tencent.token.aiz;
+import com.tencent.token.aja;
+import com.tencent.token.ajc;
+import com.tencent.token.aje;
 import com.tencent.wcdb.SQLException;
 import com.tencent.wcdb.support.Log;
 import java.io.File;
@@ -28,16 +28,16 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 public final class SQLiteDatabase
-  extends ahq
+  extends aiq
 {
   private static final WeakHashMap<SQLiteDatabase, Object> e = new WeakHashMap();
   private static final String[] j = { "", " OR ROLLBACK ", " OR ABORT ", " OR FAIL ", " OR IGNORE ", " OR REPLACE " };
   public final Object a = new Object();
-  public final aht b;
+  public final ait b;
   public SQLiteConnectionPool c;
-  private final ThreadLocal<ahz> f = new ThreadLocal() {};
+  private final ThreadLocal<aiz> f = new ThreadLocal() {};
   private final a g;
-  private final ahj h;
+  private final aij h;
   private boolean i;
   
   static
@@ -45,14 +45,14 @@ public final class SQLiteDatabase
     SQLiteGlobal.a();
   }
   
-  private SQLiteDatabase(String paramString, int paramInt, a parama, ahj paramahj)
+  private SQLiteDatabase(String paramString, int paramInt, a parama, aij paramaij)
   {
     this.g = parama;
-    if (paramahj == null) {
-      paramahj = new ahl((byte)0);
+    if (paramaij == null) {
+      paramaij = new ail((byte)0);
     }
-    this.h = paramahj;
-    this.b = new aht(paramString, paramInt);
+    this.h = paramaij;
+    this.b = new ait(paramString, paramInt);
   }
   
   public static int a(boolean paramBoolean)
@@ -126,7 +126,7 @@ public final class SQLiteDatabase
           paramContentValues.append(") VALUES (NULL");
           localStringBuilder.append(paramContentValues.toString());
           localStringBuilder.append(')');
-          paramString = new aia(this, localStringBuilder.toString(), paramString);
+          paramString = new aja(this, localStringBuilder.toString(), paramString);
           try
           {
             long l = paramString.f();
@@ -156,19 +156,19 @@ public final class SQLiteDatabase
     }
   }
   
-  public static SQLiteDatabase a(File paramFile, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, ahj paramahj)
+  public static SQLiteDatabase a(File paramFile, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, aij paramaij)
   {
-    return a(paramFile.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, null, 268435456, paramahj);
+    return a(paramFile.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, null, 268435456, paramaij);
   }
   
-  public static SQLiteDatabase a(String paramString, int paramInt, ahj paramahj)
+  public static SQLiteDatabase a(String paramString, int paramInt, aij paramaij)
   {
-    return a(paramString, null, null, null, paramInt, paramahj);
+    return a(paramString, null, null, null, paramInt, paramaij);
   }
   
-  public static SQLiteDatabase a(String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, a parama, int paramInt, ahj paramahj)
+  public static SQLiteDatabase a(String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, a parama, int paramInt, aij paramaij)
   {
-    paramString = new SQLiteDatabase(paramString, paramInt, parama, paramahj);
+    paramString = new SQLiteDatabase(paramString, paramInt, parama, paramaij);
     try
     {
       paramString.a(paramArrayOfByte, paramSQLiteCipherSpec);
@@ -229,7 +229,7 @@ public final class SQLiteDatabase
     }
   }
   
-  private ahi b(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4)
+  private aii b(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4)
   {
     d();
     for (;;)
@@ -238,7 +238,7 @@ public final class SQLiteDatabase
       int m;
       try
       {
-        paramString2 = ahy.a(paramString1, paramArrayOfString1, paramString2, null, null, paramString3, paramString4);
+        paramString2 = aiy.a(paramString1, paramArrayOfString1, paramString2, paramString3, paramString4);
         if (!TextUtils.isEmpty(paramString1))
         {
           k = paramString1.indexOf(' ');
@@ -353,7 +353,7 @@ public final class SQLiteDatabase
             localStringBuilder.append(" WHERE ");
             localStringBuilder.append(paramString2);
           }
-          paramString1 = new aia(this, localStringBuilder.toString(), (Object[])localObject);
+          paramString1 = new aja(this, localStringBuilder.toString(), (Object[])localObject);
           try
           {
             k = paramString1.b();
@@ -395,7 +395,7 @@ public final class SQLiteDatabase
         {
           paramString1 = " WHERE ".concat(String.valueOf(paramString2));
           localStringBuilder.append(paramString1);
-          paramString1 = new aia(this, localStringBuilder.toString(), paramArrayOfString);
+          paramString1 = new aja(this, localStringBuilder.toString(), paramArrayOfString);
           try
           {
             int k = paramString1.b();
@@ -430,12 +430,12 @@ public final class SQLiteDatabase
     }
   }
   
-  public final ahi a(String paramString1, String[] paramArrayOfString, String paramString2)
+  public final aii a(String paramString1, String[] paramArrayOfString, String paramString2)
   {
     d();
     try
     {
-      paramString1 = new ahu(this, paramString1, paramString2).a(this.g, paramArrayOfString);
+      paramString1 = new aiu(this, paramString1, paramString2).a(this.g, paramArrayOfString);
       return paramString1;
     }
     finally
@@ -444,17 +444,17 @@ public final class SQLiteDatabase
     }
   }
   
-  public final ahi a(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4)
+  public final aii a(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4)
   {
     return b(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4);
   }
   
-  public final aia a(String paramString)
+  public final aja a(String paramString)
   {
     d();
     try
     {
-      paramString = new aia(this, paramString, null);
+      paramString = new aja(this, paramString, null);
       return paramString;
     }
     finally
@@ -475,7 +475,7 @@ public final class SQLiteDatabase
     //   0: aload_0
     //   1: invokevirtual 111	com/tencent/wcdb/database/SQLiteDatabase:d	()V
     //   4: aload_1
-    //   5: invokestatic 377	com/tencent/token/ahk:b	(Ljava/lang/String;)I
+    //   5: invokestatic 377	com/tencent/token/aik:b	(Ljava/lang/String;)I
     //   8: iconst_3
     //   9: if_icmpne +131 -> 140
     //   12: iconst_0
@@ -505,8 +505,8 @@ public final class SQLiteDatabase
     //   48: aload_0
     //   49: invokevirtual 382	com/tencent/wcdb/database/SQLiteDatabase:r	()V
     //   52: aload_0
-    //   53: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/aht;
-    //   56: getfield 384	com/tencent/token/aht:d	I
+    //   53: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/ait;
+    //   56: getfield 384	com/tencent/token/ait:d	I
     //   59: ldc_w 385
     //   62: iand
     //   63: ifne +8 -> 71
@@ -514,32 +514,32 @@ public final class SQLiteDatabase
     //   67: monitorexit
     //   68: goto +72 -> 140
     //   71: aload_0
-    //   72: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/aht;
+    //   72: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/ait;
     //   75: astore 4
     //   77: aload 4
     //   79: aload 4
-    //   81: getfield 384	com/tencent/token/aht:d	I
+    //   81: getfield 384	com/tencent/token/ait:d	I
     //   84: ldc_w 386
     //   87: iand
-    //   88: putfield 384	com/tencent/token/aht:d	I
+    //   88: putfield 384	com/tencent/token/ait:d	I
     //   91: aload_0
     //   92: getfield 264	com/tencent/wcdb/database/SQLiteDatabase:c	Lcom/tencent/wcdb/database/SQLiteConnectionPool;
     //   95: aload_0
-    //   96: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/aht;
-    //   99: invokevirtual 389	com/tencent/wcdb/database/SQLiteConnectionPool:a	(Lcom/tencent/token/aht;)V
+    //   96: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/ait;
+    //   99: invokevirtual 389	com/tencent/wcdb/database/SQLiteConnectionPool:a	(Lcom/tencent/token/ait;)V
     //   102: aload_3
     //   103: monitorexit
     //   104: goto +36 -> 140
     //   107: astore_1
     //   108: aload_0
-    //   109: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/aht;
+    //   109: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/ait;
     //   112: astore 4
     //   114: aload 4
     //   116: ldc_w 385
     //   119: aload 4
-    //   121: getfield 384	com/tencent/token/aht:d	I
+    //   121: getfield 384	com/tencent/token/ait:d	I
     //   124: ior
-    //   125: putfield 384	com/tencent/token/aht:d	I
+    //   125: putfield 384	com/tencent/token/ait:d	I
     //   128: aload_1
     //   129: athrow
     //   130: astore_1
@@ -552,25 +552,25 @@ public final class SQLiteDatabase
     //   137: monitorexit
     //   138: aload_1
     //   139: athrow
-    //   140: new 165	com/tencent/token/aia
+    //   140: new 165	com/tencent/token/aja
     //   143: dup
     //   144: aload_0
     //   145: aload_1
     //   146: aconst_null
-    //   147: invokespecial 168	com/tencent/token/aia:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: invokespecial 168	com/tencent/token/aja:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
     //   150: astore_1
     //   151: aload_1
-    //   152: invokevirtual 330	com/tencent/token/aia:b	()I
+    //   152: invokevirtual 330	com/tencent/token/aja:b	()I
     //   155: istore_2
     //   156: aload_1
-    //   157: invokevirtual 174	com/tencent/token/aia:close	()V
+    //   157: invokevirtual 174	com/tencent/token/aja:close	()V
     //   160: aload_0
     //   161: invokevirtual 176	com/tencent/wcdb/database/SQLiteDatabase:e	()V
     //   164: iload_2
     //   165: ireturn
     //   166: astore_3
     //   167: aload_1
-    //   168: invokevirtual 174	com/tencent/token/aia:close	()V
+    //   168: invokevirtual 174	com/tencent/token/aja:close	()V
     //   171: aload_3
     //   172: athrow
     //   173: astore_1
@@ -584,7 +584,7 @@ public final class SQLiteDatabase
     //   0	180	1	paramString	String
     //   13	152	2	k	int
     //   166	6	3	localObject2	Object
-    //   75	45	4	localaht	aht
+    //   75	45	4	localait	ait
     // Exception table:
     //   from	to	target	type
     //   91	102	107	java/lang/RuntimeException
@@ -626,9 +626,9 @@ public final class SQLiteDatabase
     }
   }
   
-  public final ahz b()
+  public final aiz b()
   {
-    return (ahz)this.f.get();
+    return (aiz)this.f.get();
   }
   
   public final void c()
@@ -636,13 +636,13 @@ public final class SQLiteDatabase
     b(false);
   }
   
-  final ahz f()
+  final aiz f()
   {
     synchronized (this.a)
     {
       r();
       SQLiteConnectionPool localSQLiteConnectionPool = this.c;
-      return new ahz(localSQLiteConnectionPool);
+      return new aiz(localSQLiteConnectionPool);
     }
   }
   
@@ -703,7 +703,7 @@ public final class SQLiteDatabase
   
   public final int k()
   {
-    return Long.valueOf(ahk.a(this, "PRAGMA user_version;")).intValue();
+    return Long.valueOf(aik.a(this, "PRAGMA user_version;")).intValue();
   }
   
   public final boolean l()
@@ -745,13 +745,13 @@ public final class SQLiteDatabase
     }
   }
   
-  public final aic p()
+  public final ajc p()
   {
     synchronized (this.a)
     {
       r();
-      aic localaic = this.c.c;
-      return localaic;
+      ajc localajc = this.c.c;
+      return localajc;
     }
   }
   
@@ -787,8 +787,8 @@ public final class SQLiteDatabase
     //   43: dup
     //   44: ldc_w 453
     //   47: aload_0
-    //   48: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/aht;
-    //   51: getfield 439	com/tencent/token/aht:a	Ljava/lang/String;
+    //   48: getfield 98	com/tencent/wcdb/database/SQLiteDatabase:b	Lcom/tencent/token/ait;
+    //   51: getfield 439	com/tencent/token/ait:a	Ljava/lang/String;
     //   54: invokespecial 456	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   57: invokevirtual 460	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   60: pop
@@ -804,7 +804,7 @@ public final class SQLiteDatabase
     //   72: ldc_w 462
     //   75: aconst_null
     //   76: aconst_null
-    //   77: invokevirtual 299	com/tencent/wcdb/database/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/ahi;
+    //   77: invokevirtual 299	com/tencent/wcdb/database/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/aii;
     //   80: astore_2
     //   81: aload_2
     //   82: astore_1
@@ -898,9 +898,9 @@ public final class SQLiteDatabase
   
   public static abstract interface a
   {
-    public abstract ahi a(ahs paramahs, String paramString, ahw paramahw);
+    public abstract aii a(ais paramais, String paramString, aiw paramaiw);
     
-    public abstract ahw a(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, aie paramaie);
+    public abstract aiw a(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, aje paramaje);
   }
 }
 

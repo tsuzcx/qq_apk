@@ -1,37 +1,13 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
+import java.util.List;
 
 public final class aor
-  implements aov
+  extends aou<Integer>
 {
-  final aom a;
-  final aos<PointF> b;
-  final aon c;
-  final aok d;
-  final aol e;
-  final aok f;
-  final aok g;
-  
-  private aor(aom paramaom, aos<PointF> paramaos, aon paramaon, aok paramaok1, aol paramaol, aok paramaok2, aok paramaok3)
+  public aor(List<aot<Integer>> paramList)
   {
-    this.a = paramaom;
-    this.b = paramaos;
-    this.c = paramaon;
-    this.d = paramaok1;
-    this.e = paramaol;
-    this.f = paramaok2;
-    this.g = paramaok3;
-  }
-  
-  public final aof a()
-  {
-    return new aof(this);
-  }
-  
-  public final aqc a(auv paramauv, apb paramapb)
-  {
-    return null;
+    super(paramList);
   }
 }
 

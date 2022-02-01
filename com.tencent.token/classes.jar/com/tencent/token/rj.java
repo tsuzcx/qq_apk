@@ -1,357 +1,300 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.widget.Toast;
-import com.tencent.halley.downloader.DownloaderFactory;
-import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
-import com.tencent.token.global.RqdApplication;
-import com.tmsdk.base.TMSDKBaseContext;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qqpimsecure.taiji.KeyCreator;
 
 public final class rj
 {
-  Map<String, a> a = new ConcurrentHashMap();
-  ma b = new ma()
-  {
-    public final void a() {}
-    
-    public final void a(lz paramAnonymouslz) {}
-    
-    public final void b(lz paramAnonymouslz) {}
-    
-    public final void c(lz paramAnonymouslz) {}
-    
-    public final void d(lz paramAnonymouslz) {}
-    
-    public final void e(lz paramAnonymouslz) {}
-    
-    public final void f(lz paramAnonymouslz)
-    {
-      if (paramAnonymouslz != null)
-      {
-        rj localrj = rj.this;
-        rj.a locala = (rj.a)localrj.a.get(paramAnonymouslz.c());
-        if (locala != null)
-        {
-          rj.a(paramAnonymouslz, locala);
-          StringBuilder localStringBuilder = new StringBuilder("progressChangedCallback: [");
-          localStringBuilder.append(rj.b(paramAnonymouslz));
-          localStringBuilder.append("]");
-          paramAnonymouslz = localrj.b().iterator();
-          while (paramAnonymouslz.hasNext()) {
-            ((rj.c)paramAnonymouslz.next()).a(locala);
-          }
-        }
-      }
-    }
-    
-    public final void g(lz paramAnonymouslz)
-    {
-      if (paramAnonymouslz != null) {
-        rj.this.a(paramAnonymouslz);
-      }
-    }
-    
-    public final void h(lz paramAnonymouslz)
-    {
-      if (paramAnonymouslz != null) {
-        rj.this.a(paramAnonymouslz);
-      }
-    }
-    
-    public final void i(lz paramAnonymouslz)
-    {
-      if (paramAnonymouslz != null) {
-        rj.this.a(paramAnonymouslz);
-      }
-    }
-  };
-  private ly c = null;
-  private Map<String, lz> d = new ConcurrentHashMap();
-  private List<c> e = new ArrayList();
+  private byte[] a;
+  private byte[] b;
   
-  public static String a()
+  private void a(Context paramContext)
   {
-    if ("mounted".equals(Environment.getExternalStorageState()))
-    {
-      Object localObject = zk.a("token_download");
-      if (localObject != null) {
-        return ((File)localObject).getAbsolutePath();
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
-      ((StringBuilder)localObject).append(File.separator);
-      ((StringBuilder)localObject).append("token_download");
-      return ((StringBuilder)localObject).toString();
+    if (this.a == null) {
+      b(paramContext);
     }
-    return RqdApplication.p().getFilesDir().getAbsolutePath();
-  }
-  
-  private static String a(DownloaderTaskStatus paramDownloaderTaskStatus)
-  {
-    switch (2.a[paramDownloaderTaskStatus.ordinal()])
-    {
-    default: 
-      return "";
-    case 7: 
-      return "DELETED";
-    case 6: 
-      return "PAUSED";
-    case 5: 
-      return "FAILED";
-    case 4: 
-      return "COMPLETE";
-    case 3: 
-      return "DOWNLOADING";
-    case 2: 
-      return "STARTED";
-    }
-    return "PENDING";
-  }
-  
-  public static void a(Context paramContext, File paramFile)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setFlags(1);
-    localIntent.addFlags(268435456);
-    StringBuilder localStringBuilder;
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContext.getPackageName());
-      localStringBuilder.append(".FileProvider");
-      localIntent.setDataAndType(FileProvider.a(paramContext, localStringBuilder.toString(), paramFile), "application/vnd.android.package-archive");
-    }
-    else
-    {
-      localStringBuilder = new StringBuilder("file://");
-      localStringBuilder.append(paramFile.toString());
-      localIntent.setDataAndType(Uri.parse(localStringBuilder.toString()), "application/vnd.android.package-archive");
-    }
-    paramContext.startActivity(localIntent);
-  }
-  
-  static void a(lz paramlz, a parama)
-  {
-    if (paramlz != null)
-    {
-      if (parama == null) {
-        return;
-      }
-      parama.e = paramlz.g();
-      parama.f = paramlz.d();
-      parama.b = paramlz.b();
-      return;
+    if (this.b == null) {
+      c(paramContext);
     }
   }
   
-  static String b(lz paramlz)
+  /* Error */
+  private void b(Context paramContext)
   {
-    int i = paramlz.m();
-    String str = paramlz.n();
-    return String.format("status=%s per=%d saveName=%s uniquekey=%s errorcode=%d error=%s", new Object[] { a(paramlz.d()), Integer.valueOf(paramlz.g()), paramlz.j(), paramlz.b(), Integer.valueOf(i), str });
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 33	com/tencent/token/rq:a	(Landroid/content/Context;)Lcom/tencent/token/rq;
+    //   6: pop
+    //   7: aload_0
+    //   8: getfield 19	com/tencent/token/rj:a	[B
+    //   11: ifnonnull +323 -> 334
+    //   14: invokestatic 38	com/tencent/token/rk$a:a	()Lcom/tencent/token/rk;
+    //   17: ldc 40
+    //   19: invokevirtual 45	com/tencent/token/rk:a	(Ljava/lang/String;)Lcom/tencent/token/avb;
+    //   22: ldc 47
+    //   24: ldc 49
+    //   26: invokeinterface 54 3 0
+    //   31: astore_3
+    //   32: invokestatic 38	com/tencent/token/rk$a:a	()Lcom/tencent/token/rk;
+    //   35: ldc 40
+    //   37: invokevirtual 45	com/tencent/token/rk:a	(Ljava/lang/String;)Lcom/tencent/token/avb;
+    //   40: ldc 56
+    //   42: ldc 49
+    //   44: invokeinterface 54 3 0
+    //   49: astore 5
+    //   51: aload_3
+    //   52: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   55: ifne +15 -> 70
+    //   58: aload 5
+    //   60: astore 4
+    //   62: aload 5
+    //   64: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   67: ifeq +171 -> 238
+    //   70: ldc 64
+    //   72: astore_3
+    //   73: ldc 64
+    //   75: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   78: ifne +18 -> 96
+    //   81: ldc 64
+    //   83: ldc 66
+    //   85: invokevirtual 72	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   88: istore_2
+    //   89: aload_3
+    //   90: astore 4
+    //   92: iload_2
+    //   93: ifeq +28 -> 121
+    //   96: aload_1
+    //   97: invokevirtual 78	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   100: ldc 80
+    //   102: invokestatic 86	android/provider/Settings$System:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+    //   105: astore 4
+    //   107: ldc 88
+    //   109: aload 4
+    //   111: invokestatic 92	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   114: invokevirtual 96	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: pop
+    //   118: invokestatic 100	com/tencent/token/aqx:b	()V
+    //   121: aload 4
+    //   123: astore_3
+    //   124: aload 4
+    //   126: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   129: ifeq +6 -> 135
+    //   132: ldc 102
+    //   134: astore_3
+    //   135: aload_1
+    //   136: invokevirtual 78	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   139: ldc 80
+    //   141: invokestatic 86	android/provider/Settings$System:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+    //   144: astore 4
+    //   146: aload 4
+    //   148: astore 5
+    //   150: aload 5
+    //   152: astore 4
+    //   154: aload 5
+    //   156: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   159: ifeq +7 -> 166
+    //   162: ldc 102
+    //   164: astore 4
+    //   166: new 104	java/lang/StringBuilder
+    //   169: dup
+    //   170: ldc 106
+    //   172: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   175: astore 5
+    //   177: aload 5
+    //   179: aload_3
+    //   180: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload 5
+    //   186: ldc 115
+    //   188: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: pop
+    //   192: aload 5
+    //   194: aload 4
+    //   196: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: invokestatic 100	com/tencent/token/aqx:b	()V
+    //   203: invokestatic 38	com/tencent/token/rk$a:a	()Lcom/tencent/token/rk;
+    //   206: ldc 40
+    //   208: invokevirtual 45	com/tencent/token/rk:a	(Ljava/lang/String;)Lcom/tencent/token/avb;
+    //   211: ldc 47
+    //   213: aload_3
+    //   214: invokeinterface 118 3 0
+    //   219: pop
+    //   220: invokestatic 38	com/tencent/token/rk$a:a	()Lcom/tencent/token/rk;
+    //   223: ldc 40
+    //   225: invokevirtual 45	com/tencent/token/rk:a	(Ljava/lang/String;)Lcom/tencent/token/avb;
+    //   228: ldc 56
+    //   230: aload 4
+    //   232: invokeinterface 118 3 0
+    //   237: pop
+    //   238: aload_0
+    //   239: aload_1
+    //   240: aload_3
+    //   241: invokevirtual 122	java/lang/String:getBytes	()[B
+    //   244: aload 4
+    //   246: invokevirtual 122	java/lang/String:getBytes	()[B
+    //   249: invokestatic 128	com/tencent/qqpimsecure/taiji/KeyCreator:create	(Landroid/content/Context;[B[B)[B
+    //   252: putfield 19	com/tencent/token/rj:a	[B
+    //   255: new 104	java/lang/StringBuilder
+    //   258: dup
+    //   259: ldc 130
+    //   261: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   264: aload_0
+    //   265: getfield 19	com/tencent/token/rj:a	[B
+    //   268: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: invokestatic 100	com/tencent/token/aqx:b	()V
+    //   275: aload_0
+    //   276: getfield 19	com/tencent/token/rj:a	[B
+    //   279: ifnull +11 -> 290
+    //   282: aload_0
+    //   283: getfield 19	com/tencent/token/rj:a	[B
+    //   286: arraylength
+    //   287: ifne +47 -> 334
+    //   290: invokestatic 100	com/tencent/token/aqx:b	()V
+    //   293: aload_0
+    //   294: invokestatic 38	com/tencent/token/rk$a:a	()Lcom/tencent/token/rk;
+    //   297: invokevirtual 136	com/tencent/token/rk:c	()Lcom/tencent/token/ave;
+    //   300: ldc 138
+    //   302: invokevirtual 122	java/lang/String:getBytes	()[B
+    //   305: aconst_null
+    //   306: invokeinterface 143 3 0
+    //   311: putfield 19	com/tencent/token/rj:a	[B
+    //   314: new 104	java/lang/StringBuilder
+    //   317: dup
+    //   318: ldc 145
+    //   320: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   323: aload_0
+    //   324: getfield 19	com/tencent/token/rj:a	[B
+    //   327: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: invokestatic 100	com/tencent/token/aqx:b	()V
+    //   334: aload_0
+    //   335: monitorexit
+    //   336: return
+    //   337: astore_1
+    //   338: aload_0
+    //   339: monitorexit
+    //   340: aload_1
+    //   341: athrow
+    //   342: astore 4
+    //   344: aload_3
+    //   345: astore 4
+    //   347: goto -240 -> 107
+    //   350: astore 4
+    //   352: goto -202 -> 150
+    //   355: astore_1
+    //   356: goto -81 -> 275
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	359	0	this	rj
+    //   0	359	1	paramContext	Context
+    //   88	5	2	bool	boolean
+    //   31	314	3	localObject1	Object
+    //   60	185	4	localObject2	Object
+    //   342	1	4	localThrowable1	Throwable
+    //   345	1	4	localObject3	Object
+    //   350	1	4	localThrowable2	Throwable
+    //   49	144	5	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	58	337	finally
+    //   62	70	337	finally
+    //   73	89	337	finally
+    //   96	107	337	finally
+    //   107	121	337	finally
+    //   124	132	337	finally
+    //   135	146	337	finally
+    //   154	162	337	finally
+    //   166	238	337	finally
+    //   238	275	337	finally
+    //   275	290	337	finally
+    //   290	334	337	finally
+    //   96	107	342	java/lang/Throwable
+    //   135	146	350	java/lang/Throwable
+    //   238	275	355	java/lang/Throwable
   }
   
-  private static boolean c()
-  {
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.p().getSystemService("connectivity")).getActiveNetworkInfo();
-    return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
-  }
-  
-  private void e(a parama)
-  {
-    this.a.remove(parama.c);
-    this.d.remove(parama.c);
-  }
-  
-  public final a a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return (a)this.a.get(paramString);
-  }
-  
-  public final void a(Context paramContext)
+  private void c(Context paramContext)
   {
     try
     {
-      lb.a(paramContext, "0M100WJ33N1CQ08O", "999001", TMSDKBaseContext.getGuid());
-      this.c = DownloaderFactory.getDownloader();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  final void a(lz paramlz)
-  {
-    a locala = (a)this.a.get(paramlz.c());
-    if (locala == null) {
-      return;
-    }
-    a(paramlz, locala);
-    Object localObject = new StringBuilder("stateChangedCallback: [");
-    ((StringBuilder)localObject).append(b(paramlz));
-    ((StringBuilder)localObject).append("]");
-    localObject = b();
-    switch (2.a[paramlz.d().ordinal()])
-    {
-    default: 
-    case 6: 
-      paramlz = ((List)localObject).iterator();
-      while (paramlz.hasNext()) {
-        ((c)paramlz.next()).b(locala);
-      }
-      return;
-    case 5: 
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((c)((Iterator)localObject).next()).c(locala);
-      }
-      this.c.b(paramlz);
-    case 7: 
-      e(locala);
-      return;
-    case 4: 
-      paramlz = ((List)localObject).iterator();
-      while (paramlz.hasNext()) {
-        ((c)paramlz.next()).d(locala);
-      }
-      e(locala);
-      return;
-    }
-  }
-  
-  public final void a(c paramc)
-  {
-    synchronized (this.e)
-    {
-      this.e.add(0, paramc);
-      return;
-    }
-  }
-  
-  public final boolean a(a parama)
-  {
-    if (a(parama.c) != null) {
-      return false;
-    }
-    return new File(a(), parama.d).exists();
-  }
-  
-  final List<c> b()
-  {
-    synchronized (this.e)
-    {
-      ArrayList localArrayList = new ArrayList(this.e);
-      return localArrayList;
-    }
-  }
-  
-  public final void b(a parama)
-  {
-    parama = (lz)this.d.get(parama.c);
-    if (parama != null) {
-      parama.k();
-    }
-  }
-  
-  public final void b(c paramc)
-  {
-    synchronized (this.e)
-    {
-      this.e.remove(paramc);
-      return;
-    }
-  }
-  
-  public final void c(a parama)
-  {
-    if (this.c == null) {
-      return;
-    }
-    if (!c())
-    {
-      Toast.makeText(RqdApplication.p(), "请开启网络再试", 0).show();
-      return;
-    }
-    e(parama);
-    try
-    {
-      lz locallz = this.c.a(parama.a, parama.c, a(), parama.d, this.b);
-      this.c.a(locallz);
-      this.a.put(parama.c, parama);
-      this.d.put(parama.c, locallz);
-      return;
-    }
-    catch (Exception parama)
-    {
-      parama.printStackTrace();
-    }
-  }
-  
-  public final void d(a parama)
-  {
-    if (!c())
-    {
-      Toast.makeText(RqdApplication.p(), "请开启网络再试", 0).show();
-      return;
-    }
-    parama = (lz)this.d.get(parama.c);
-    if (parama != null) {
       try
       {
-        parama.l();
-        return;
+        this.b = KeyCreator.create(paramContext, null, null);
+        new StringBuilder("mDefaultKey:").append(this.b);
+        aqx.b();
       }
-      catch (DownloaderAddTaskException parama)
+      finally
       {
-        parama.printStackTrace();
+        break label101;
       }
     }
+    catch (Throwable paramContext)
+    {
+      label39:
+      label101:
+      break label39;
+    }
+    if ((this.b == null) || (this.b.length == 0))
+    {
+      aqx.b();
+      this.b = rk.a.a().c().a("*M<>DFG##%$R(&$G%^HR<".getBytes(), null);
+      new StringBuilder("initDefaultKey exception key:").append(this.b);
+      aqx.b();
+    }
+    return;
+    throw paramContext;
   }
   
-  public static final class a
+  public final byte[] a(Context paramContext, byte[] paramArrayOfByte)
   {
-    public String a;
-    public String b;
-    public String c;
-    public String d;
-    public int e;
-    public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    a(paramContext);
+    try
+    {
+      paramContext = this.a;
+      paramContext = rk.a.a().c().a(paramArrayOfByte, paramContext);
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.getMessage();
+      aqx.a();
+    }
+    return null;
   }
   
-  public static final class b
+  public final byte[] a(Context paramContext, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    private static rj a = new rj();
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    a(paramContext);
+    try
+    {
+      paramContext = this.b;
+      if (!paramBoolean) {
+        paramContext = this.a;
+      }
+      paramContext = rk.a.a().c().b(paramArrayOfByte, paramContext);
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.getMessage();
+      aqx.a();
+    }
+    return null;
   }
   
-  public static abstract interface c
+  static final class a
   {
-    public abstract void a(rj.a parama);
-    
-    public abstract void b(rj.a parama);
-    
-    public abstract void c(rj.a parama);
-    
-    public abstract void d(rj.a parama);
+    private static final rj a = new rj((byte)0);
   }
 }
 

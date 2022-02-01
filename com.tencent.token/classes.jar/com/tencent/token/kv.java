@@ -1,10 +1,23 @@
 package com.tencent.token;
 
-public abstract interface kv
+public final class kv
 {
-  public abstract boolean a();
+  static Object a = new Object();
+  static kw b = null;
+  private static boolean c = false;
   
-  public abstract boolean b();
+  public static kw a()
+  {
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new kw();
+        }
+      }
+    }
+    return b;
+  }
 }
 
 

@@ -1,352 +1,434 @@
 package com.tencent.token;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.ui.OpMsgDisplayActivity;
-import com.tencent.token.ui.OpreateMsgActivity;
-import java.util.Iterator;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PreviewCallback;
+import android.hardware.Camera.Size;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import android.view.SurfaceHolder;
+import com.tencent.jni.FaceDetector;
+import com.tencent.jni.FaceDetector.IdCardDirection;
+import com.tencent.jni.IdCardInfo;
+import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public final class ys
-  extends BaseAdapter
+  implements Camera.AutoFocusCallback, Camera.PreviewCallback
 {
-  View.OnClickListener a = null;
-  aay b;
-  int c;
-  int d;
-  int e;
-  int f;
-  int g;
-  public View h = null;
-  public View i;
-  private OpreateMsgActivity j = null;
-  private LayoutInflater k = null;
-  private int l = 1;
-  private View.OnTouchListener m = new View.OnTouchListener()
-  {
-    public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-    {
-      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131166078);
-      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131166077);
-      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131165759);
-      SafeMsgItem localSafeMsgItem = (SafeMsgItem)paramAnonymousView.getTag();
-      int i;
-      if ((localSafeMsgItem.mFlag & 0x80) == 128) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      switch (paramAnonymousMotionEvent.getAction())
-      {
-      default: 
-        return false;
-      case 2: 
-        if (paramAnonymousView.isPressed())
-        {
-          localTextView1.setTextColor(ys.this.e);
-          localTextView2.setTextColor(ys.this.e);
-          localTextView3.setTextColor(ys.this.e);
-          return false;
-        }
-      case 1: 
-      case 3: 
-        if ((localSafeMsgItem != null) && (!localSafeMsgItem.mIsRead))
-        {
-          if (i != 0) {
-            localTextView1.setTextColor(ys.this.g);
-          } else {
-            localTextView1.setTextColor(ys.this.c);
-          }
-          localTextView3.setTextColor(ys.this.c);
-          localTextView2.setTextColor(ys.this.d);
-          return false;
-        }
-        localTextView1.setTextColor(ys.this.f);
-        localTextView3.setTextColor(ys.this.f);
-        localTextView2.setTextColor(ys.this.f);
-        return false;
-      }
-      localTextView1.setTextColor(ys.this.e);
-      localTextView2.setTextColor(ys.this.e);
-      localTextView3.setTextColor(ys.this.e);
-      return false;
-    }
-  };
+  public static int e;
+  public static int f;
+  public static int g;
+  public static int h;
+  public boolean a = false;
+  public Handler b;
+  public long c;
+  public Camera d;
+  final Object i = new Object();
+  private Context j;
+  private SurfaceHolder k;
+  private Timer l;
+  private TimerTask m;
+  private int n;
+  private int o;
+  private boolean p = false;
+  private boolean q = false;
+  private boolean r = false;
+  private FaceDetector.IdCardDirection s = FaceDetector.IdCardDirection.DT_FRONT;
+  private String t;
   
-  public ys(OpreateMsgActivity paramOpreateMsgActivity)
+  public ys(Context paramContext, SurfaceHolder paramSurfaceHolder, Handler paramHandler, FaceDetector.IdCardDirection paramIdCardDirection)
   {
-    this.j = paramOpreateMsgActivity;
-    this.k = LayoutInflater.from(paramOpreateMsgActivity);
-    this.b = tl.a().f;
-    this.c = this.j.getResources().getColor(2130968803);
-    this.d = this.j.getResources().getColor(2130968803);
-    this.e = this.j.getResources().getColor(2130968665);
-    this.f = this.j.getResources().getColor(2130968662);
-    this.g = this.j.getResources().getColor(2130968785);
+    this.j = paramContext;
+    this.b = paramHandler;
+    this.k = paramSurfaceHolder;
+    this.s = paramIdCardDirection;
+    this.o = 0;
+  }
+  
+  private static String a(Collection<String> paramCollection, String... paramVarArgs)
+  {
+    if (paramCollection != null)
+    {
+      int i1 = 0;
+      while (i1 <= 0)
+      {
+        String str = paramVarArgs[0];
+        if (paramCollection.contains(str))
+        {
+          paramCollection = str;
+          break label38;
+        }
+        i1 += 1;
+      }
+    }
+    paramCollection = null;
+    label38:
+    xv.b("resolution Settable value: ".concat(String.valueOf(paramCollection)));
+    return paramCollection;
   }
   
   public final void a()
   {
-    this.i.findViewById(2131165751).setVisibility(8);
-  }
-  
-  public final void a(String paramString)
-  {
-    TextView localTextView = (TextView)this.h.findViewById(2131166096);
-    if ((paramString != null) && (paramString.length() > 0)) {
-      localTextView.setText(paramString);
-    } else {
-      localTextView.setText(2131493415);
+    if (this.d == null) {
+      return;
     }
-    localTextView.setVisibility(0);
-    this.h.findViewById(2131165599).setVisibility(0);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    int i1 = this.b.a(this.l * 15);
-    int n = i1;
-    if (i1 <= 0) {
-      n = this.b.a(this.l * 15);
-    }
-    if (n <= 0)
+    Object localObject1 = this.j.getResources().getDisplayMetrics();
+    int i5 = ((DisplayMetrics)localObject1).widthPixels;
+    int i6 = ((DisplayMetrics)localObject1).heightPixels;
+    try
     {
-      a(null);
-    }
-    else
-    {
-      this.h.findViewById(2131166096).setVisibility(8);
-      this.h.findViewById(2131165599).setVisibility(8);
-      if (n >= this.l * 15)
+      localObject3 = this.d.getParameters().getSupportedPreviewSizes();
+      i4 = ((Camera.Size)((List)localObject3).get(0)).width;
+      i1 = ((Camera.Size)((List)localObject3).get(0)).height;
+      int i3 = 1;
+      while (i3 < ((List)localObject3).size())
       {
-        this.i.findViewById(2131165751).setVisibility(0);
-        break label107;
-      }
-    }
-    a();
-    label107:
-    this.j.finishRefresh(paramBoolean);
-    notifyDataSetChanged();
-    this.j.checkTimeZoneFlag();
-  }
-  
-  public final boolean areAllItemsEnabled()
-  {
-    return true;
-  }
-  
-  public final int getCount()
-  {
-    int n = this.b.e();
-    int i1 = this.l;
-    if (n >= i1 * 15) {
-      return i1 * 15;
-    }
-    return this.b.e();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return this.b.b(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.k.inflate(2131296379, paramViewGroup, false);
-    }
-    paramViewGroup = (SafeMsgItem)getItem(paramInt);
-    if (paramViewGroup != null)
-    {
-      localView.setOnClickListener(new c(paramViewGroup, paramInt));
-      localView.setOnTouchListener(this.m);
-      TextView localTextView1 = (TextView)localView.findViewById(2131166078);
-      TextView localTextView2 = (TextView)localView.findViewById(2131166077);
-      paramView = (TextView)localView.findViewById(2131165759);
-      CheckBox localCheckBox = (CheckBox)localView.findViewById(2131165365);
-      localCheckBox.setOnCheckedChangeListener(new a(paramViewGroup));
-      ImageView localImageView = (ImageView)localView.findViewById(2131165285);
-      Object localObject = (ImageView)localView.findViewById(2131165755);
-      localView.setTag(paramViewGroup);
-      if (paramViewGroup.mIsRead)
-      {
-        paramView.setTextColor(this.f);
-        localTextView1.setTextColor(this.f);
-        localTextView2.setTextColor(this.f);
-        localView.setBackgroundResource(2131099935);
-        ((ImageView)localObject).setVisibility(4);
-      }
-      else
-      {
-        paramView.setTextColor(this.c);
-        localTextView2.setTextColor(this.d);
-        ((ImageView)localObject).setVisibility(0);
-      }
-      boolean bool;
-      if ((paramViewGroup.mFlag & 0x80) == 128) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      if (bool)
-      {
-        ((ImageView)localObject).setImageResource(2131099889);
-        localView.setBackgroundResource(2131099979);
-        localTextView1.setTextColor(this.g);
-      }
-      else
-      {
-        ((ImageView)localObject).setImageResource(2131099892);
-        localView.setBackgroundResource(2131099978);
-        localTextView1.setTextColor(this.c);
-      }
-      localObject = new StringBuilder("opreate msg exp: ");
-      ((StringBuilder)localObject).append(bool);
-      ((StringBuilder)localObject).append(", flag=");
-      ((StringBuilder)localObject).append(paramViewGroup.mFlag);
-      xj.c(((StringBuilder)localObject).toString());
-      if (this.j.isListEdit())
-      {
-        localCheckBox.setVisibility(0);
-        localImageView.setVisibility(8);
-        paramView.setVisibility(8);
-      }
-      else
-      {
-        paramViewGroup.mIsChecked = false;
-        localCheckBox.setVisibility(8);
-        localImageView.setVisibility(0);
-        paramView.setVisibility(0);
-      }
-      localCheckBox.setChecked(paramViewGroup.mIsChecked);
-      if (paramViewGroup.mTitle != null) {
-        localTextView1.setText(Html.fromHtml(paramViewGroup.mTitle));
-      }
-      if (paramViewGroup.mContent != null) {
-        localTextView2.setText(Html.fromHtml(paramViewGroup.mContent));
-      }
-      long l1 = paramViewGroup.mTime * 1000L;
-      paramViewGroup = new StringBuilder();
-      paramViewGroup.append(aao.a(l1).replace("-", this.j.getString(2131493391)));
-      paramViewGroup.append(this.j.getString(2131493390));
-      paramViewGroup.append(" ");
-      paramViewGroup.append(aao.d(l1));
-      paramView.setText(paramViewGroup.toString());
-    }
-    return localView;
-  }
-  
-  public final int getViewTypeCount()
-  {
-    return 1;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    SafeMsgItem a;
-    
-    public a(SafeMsgItem paramSafeMsgItem)
-    {
-      this.a = paramSafeMsgItem;
-    }
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      int i = 0;
-      if (paramBoolean)
-      {
-        this.a.mIsChecked = true;
-        paramCompoundButton = ys.this.b.b.iterator();
-        while (paramCompoundButton.hasNext()) {
-          if (!((SafeMsgItem)paramCompoundButton.next()).mIsChecked) {
-            break label59;
+        double d1 = i4;
+        double d2 = i1;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d2 = d1 / d2;
+        d1 = i5;
+        double d3 = i6;
+        Double.isNaN(d1);
+        Double.isNaN(d3);
+        d1 /= d3;
+        d2 = Math.abs(d2 - d1);
+        d3 = ((Camera.Size)((List)localObject3).get(i3)).width;
+        double d4 = ((Camera.Size)((List)localObject3).get(i3)).height;
+        Double.isNaN(d3);
+        Double.isNaN(d4);
+        d1 = Math.abs(d3 / d4 - d1);
+        if (d2 >= d1)
+        {
+          i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
+          i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
+          if ((d2 == d1) && (i2 < ((Camera.Size)((List)localObject3).get(i3)).width))
+          {
+            i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
+            i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
           }
         }
-        i = 1;
-        label59:
-        if (i != 0) {
-          ys.b(ys.this).setSelectState(true);
+        else
+        {
+          i2 = i4;
         }
+        i3 += 1;
+        i4 = i2;
+      }
+      localObject3 = new StringBuilder("debug------------bestPreviewWidth=");
+      ((StringBuilder)localObject3).append(i4);
+      ((StringBuilder)localObject3).append(",bestPreviewHeight=");
+      ((StringBuilder)localObject3).append(i1);
+      ((StringBuilder)localObject3).append(", screenWidth=");
+      ((StringBuilder)localObject3).append(i5);
+      ((StringBuilder)localObject3).append(",screenHeight=");
+      ((StringBuilder)localObject3).append(i6);
+      ((StringBuilder)localObject3).append(",density=");
+      ((StringBuilder)localObject3).append(((DisplayMetrics)localObject1).density);
+      xv.c(((StringBuilder)localObject3).toString());
+      localObject1 = this.d.getParameters();
+      ((Camera.Parameters)localObject1).setPictureFormat(256);
+      ((Camera.Parameters)localObject1).setPreviewFormat(17);
+      i3 = this.j.getResources().getConfiguration().orientation;
+      i2 = 90;
+      if (i3 != 2)
+      {
+        this.n = 90;
       }
       else
       {
-        this.a.mIsChecked = false;
-        ys.b(ys.this).setSelectState(false);
+        this.n = 0;
+        i2 = 0;
       }
+      if (ui.d != -1) {
+        i2 = ui.d;
+      }
+      if (ui.e != -1) {
+        this.n = ui.e;
+      }
+      localObject3 = this.d;
+    }
+    catch (Exception localException2)
+    {
+      Object localObject3;
+      int i4;
+      int i1;
+      int i2;
+      Method localMethod;
+      label569:
+      localException2.printStackTrace();
+      Object localObject2 = new StringBuilder("Camera getParameters failed");
+      ((StringBuilder)localObject2).append(this.d);
+      xv.c(((StringBuilder)localObject2).toString());
+      localObject2 = this.b.obtainMessage(0);
+      ((Message)localObject2).what = 2;
+      ((Message)localObject2).sendToTarget();
+      return;
+    }
+    try
+    {
+      localMethod = localObject3.getClass().getMethod("setDisplayOrientation", new Class[] { Integer.TYPE });
+      if (localMethod != null) {
+        localMethod.invoke(localObject3, new Object[] { Integer.valueOf(i2) });
+      }
+    }
+    catch (Exception localException3)
+    {
+      break label569;
+    }
+    ((Camera.Parameters)localObject1).setPreviewSize(i4, i1);
+    localObject3 = a(((Camera.Parameters)localObject1).getSupportedFocusModes(), new String[] { "auto" });
+    if (localObject3 != null) {
+      ((Camera.Parameters)localObject1).setFocusMode((String)localObject3);
+    }
+    this.d.setParameters((Camera.Parameters)localObject1);
+    this.d.setPreviewCallback(this);
+    try
+    {
+      this.d.setPreviewDisplay(this.k);
+      this.d.startPreview();
+      if ((((Camera.Parameters)localObject1).getFocusMode().equals("auto")) || (((Camera.Parameters)localObject1).getFocusMode().equals("macro")))
+      {
+        this.l = new Timer(false);
+        this.m = new TimerTask()
+        {
+          public final void run()
+          {
+            ys localys = ys.this;
+            if (localys.d != null) {
+              try
+              {
+                localys.d.autoFocus(localys);
+                return;
+              }
+              catch (Exception localException)
+              {
+                localException.printStackTrace();
+                localStringBuilder = new StringBuilder("camera auto focus ");
+                localStringBuilder.append(localException.toString());
+                xv.c(localStringBuilder.toString());
+                return;
+              }
+              catch (RuntimeException localRuntimeException)
+              {
+                localRuntimeException.printStackTrace();
+                StringBuilder localStringBuilder = new StringBuilder("camera auto focus ");
+                localStringBuilder.append(localRuntimeException.toString());
+                xv.c(localStringBuilder.toString());
+                return;
+              }
+            }
+          }
+        };
+        this.l.schedule(this.m, 500L, 2000L);
+      }
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      Camera localCamera = this.d;
+      if (localCamera != null)
+      {
+        localCamera.release();
+        this.d = null;
+      }
+    }
+    if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
+    {
+      f = 0;
+      e = 0;
+      so.a().a(System.currentTimeMillis(), 130);
+      return;
+    }
+    h = 0;
+    g = 0;
+    so.a().a(System.currentTimeMillis(), 132);
+  }
+  
+  public final void b()
+  {
+    try
+    {
+      if (this.d != null)
+      {
+        this.d.setPreviewCallback(null);
+        this.d.stopPreview();
+        this.d.release();
+        this.d = null;
+      }
+      if (this.l != null)
+      {
+        this.l.cancel();
+        this.l = null;
+      }
+      if (this.m != null)
+      {
+        this.m.cancel();
+        this.m = null;
+      }
+      FaceDetector.IdCardDestroy();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  final class b
-    implements Runnable
-  {
-    SafeMsgItem a = null;
-    
-    public b(SafeMsgItem paramSafeMsgItem)
-    {
-      this.a = paramSafeMsgItem;
-    }
-    
-    public final void run()
-    {
-      aay localaay = ys.this.b;
-      SafeMsgItem localSafeMsgItem = this.a;
-      localSafeMsgItem.mIsRead = true;
-      localaay.a.d(localSafeMsgItem.mId);
-    }
-  }
+  public final void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
   
-  final class c
-    implements View.OnClickListener
+  public final void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    SafeMsgItem a = null;
-    int b;
-    
-    public c(SafeMsgItem paramSafeMsgItem, int paramInt)
-    {
-      this.a = paramSafeMsgItem;
-      this.b = paramInt;
+    if (this.a) {
+      return;
     }
-    
-    public final void onClick(View paramView)
-    {
-      if (ys.b(ys.this).isListEdit()) {
-        return;
-      }
-      Intent localIntent = new Intent(ys.b(ys.this), OpMsgDisplayActivity.class);
-      localIntent.putExtra("position", this.b);
-      localIntent.putExtra("type", 2);
-      localIntent.putExtra("abnormmsg", this.a.a());
-      ys.b(ys.this).startActivity(localIntent);
-      if (!this.a.mIsRead) {
-        paramView.postDelayed(new ys.b(ys.this, this.a), 5L);
-      }
+    if ((!this.q) && (!this.p)) {
+      new Thread(new Runnable()
+      {
+        public final void run()
+        {
+          try
+          {
+            synchronized (ys.this.i)
+            {
+              ys.a(ys.this, true);
+              ys.a(ys.this);
+              ys.b(ys.this, FaceDetector.IdCardDetectInitial(ys.b(ys.this)));
+              StringBuilder localStringBuilder = new StringBuilder("IdCardDetectInitial: ");
+              localStringBuilder.append(ys.c(ys.this));
+              localStringBuilder.append(",mIdCardModelPath=");
+              localStringBuilder.append(ys.b(ys.this));
+              xv.c(localStringBuilder.toString());
+              ys.d(ys.this);
+              ys.a(ys.this, false);
+            }
+          }
+          catch (Error localError)
+          {
+            localError.printStackTrace();
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }).start();
     }
+    if (this.p) {
+      return;
+    }
+    this.o += 1;
+    if (this.o % 2 == 0) {
+      return;
+    }
+    if (this.s == FaceDetector.IdCardDirection.DT_FRONT) {
+      e += 1;
+    } else {
+      g += 1;
+    }
+    Object localObject1 = paramCamera.getParameters();
+    int i1 = ((Camera.Parameters)localObject1).getPreviewSize().width;
+    int i2 = ((Camera.Parameters)localObject1).getPreviewSize().height;
+    localObject1 = new IdCardInfo();
+    long l5 = System.currentTimeMillis();
+    long l4 = -1L;
+    long l1 = l4;
+    long l2 = l4;
+    long l3 = l4;
+    try
+    {
+      if (this.r)
+      {
+        l2 = l4;
+        l3 = l4;
+        l1 = FaceDetector.IdCardDetect((IdCardInfo)localObject1, this.s, paramArrayOfByte, i1, i2, this.n);
+      }
+      l2 = l1;
+      l3 = l1;
+      xv.c("IdCardDetect detect ret: ".concat(String.valueOf(l1)));
+    }
+    catch (Error localError)
+    {
+      localError.printStackTrace();
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      l1 = l3;
+    }
+    l2 = System.currentTimeMillis();
+    Object localObject2 = new StringBuilder("id_card ret: ");
+    ((StringBuilder)localObject2).append(l1);
+    ((StringBuilder)localObject2).append(" time: ");
+    ((StringBuilder)localObject2).append(l2 - l5);
+    ((StringBuilder)localObject2).append(" info: ");
+    ((StringBuilder)localObject2).append(((IdCardInfo)localObject1).info());
+    ((StringBuilder)localObject2).append(", side=");
+    ((StringBuilder)localObject2).append(this.s);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (l1 == 0L)
+    {
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(", totaltime=");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.c);
+      xv.c(((StringBuilder)localObject3).toString());
+      if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
+      {
+        f = (int)(System.currentTimeMillis() - this.c);
+        localObject3 = aas.a(((IdCardInfo)localObject1).data(), "frontdata");
+        localObject2 = this.b.obtainMessage(0);
+        ((Message)localObject2).what = 1;
+        ((Message)localObject2).obj = localObject3;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
+        ((Message)localObject2).setData((Bundle)localObject3);
+        ((Message)localObject2).arg1 = 1;
+        ((Message)localObject2).sendToTarget();
+        so.a().a(System.currentTimeMillis(), 131);
+      }
+      else if (this.s == FaceDetector.IdCardDirection.DT_BACK)
+      {
+        h = (int)(System.currentTimeMillis() - this.c);
+        localObject3 = aas.a(((IdCardInfo)localObject1).data(), "backdata");
+        localObject2 = this.b.obtainMessage(0);
+        ((Message)localObject2).what = 1;
+        ((Message)localObject2).obj = localObject3;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
+        ((Message)localObject2).setData((Bundle)localObject3);
+        ((Message)localObject2).arg1 = 2;
+        ((Message)localObject2).sendToTarget();
+        so.a().a(System.currentTimeMillis(), 133);
+      }
+      localObject1 = new StringBuilder("take id photo data=");
+      ((StringBuilder)localObject1).append(paramArrayOfByte.length);
+      xv.a(((StringBuilder)localObject1).toString());
+      paramCamera.stopPreview();
+      this.a = true;
+      return;
+    }
+    xv.a("ret=".concat(String.valueOf(l1)));
+    if ((l1 != 3L) && (l1 != 5L))
+    {
+      if ((l1 == 2L) || (l1 == 4L)) {
+        this.b.obtainMessage(7).sendToTarget();
+      }
+      return;
+    }
+    this.b.obtainMessage(6).sendToTarget();
   }
 }
 

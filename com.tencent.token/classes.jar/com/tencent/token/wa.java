@@ -3,104 +3,124 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.AbnormalLoginMsgResult;
+import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.global.RqdApplication;
+import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONArray;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class wa
-  extends tr
+  extends ud
 {
-  public static int d;
-  public static int e;
-  public static int f;
-  private long g;
+  tv d;
+  tx e;
+  private long f;
+  private int g;
   private int h;
   private int i;
-  private int[] j;
+  private int j;
+  private Object k;
+  private String l;
+  private int m;
+  private int n;
+  private String o;
+  private String p;
+  private int q;
   
   public final String a()
   {
-    sh.a();
+    sv.b();
+    System.currentTimeMillis();
+    System.currentTimeMillis();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.g = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.h = ((Integer)paramabc.c.get("param.scene.id")).intValue();
+    this.f = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.g = ((Integer)paramabm.c.get("param.msg.source")).intValue();
+    this.h = ((Integer)paramabm.c.get("param.msg.num")).intValue();
+    this.i = ((Integer)paramabm.c.get("param.msg.type")).intValue();
+    this.j = ((Integer)paramabm.c.get("param.msg.filter")).intValue();
+    if ((this.j == 0) && (this.i == 1))
+    {
+      this.l = ((String)paramabm.c.get("param.device.lock.guid"));
+      this.m = ((Integer)paramabm.c.get("param.device.lock.appid")).intValue();
+      this.n = ((Integer)paramabm.c.get("param.device.lock.subappid")).intValue();
+      this.o = ((String)paramabm.c.get("param.device.lock.appname"));
+      this.p = ((String)paramabm.c.get("param.skey"));
+    }
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int k = paramJSONObject.getInt("err");
-    if (k != 0)
+    int i1 = paramJSONObject.getInt("err");
+    if (i1 != 0)
     {
-      a(k, paramJSONObject.getString("info"));
+      a(i1, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.i = paramJSONObject.getInt("need_live_detect");
+      i1 = paramJSONObject.getInt("seq_id");
+      if (i1 != this.q)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i1);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.q);
+        xv.c(paramJSONObject.toString());
+        return;
+      }
+      long l1 = paramJSONObject.getLong("uin");
+      long l2 = this.f;
       Object localObject;
-      if ((this.i == 1) && (paramJSONObject.getJSONArray("actions") != null) && (paramJSONObject.getJSONArray("actions").length() > 0))
+      if (l1 != l2)
       {
-        int m = paramJSONObject.getJSONArray("actions").length();
-        this.j = new int[m];
-        k = 0;
-        while (k < m)
+        paramJSONObject = this.a;
+        localObject = new StringBuilder("uin not match=");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.f);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
+        return;
+      }
+      if (this.i == 1)
+      {
+        this.d.a(l2);
+        if (this.j == 1)
         {
-          this.j[k] = paramJSONObject.getJSONArray("actions").getInt(k);
-          localObject = new StringBuilder("mLiveDetectActions");
-          ((StringBuilder)localObject).append(this.j[k]);
-          xj.a(((StringBuilder)localObject).toString());
-          k += 1;
+          this.k = new AbnormalLoginMsgResult(paramJSONObject);
+          this.a.a = 0;
+          return;
         }
-        k = this.h;
-        if ((k != 2) && (k != 1))
+        this.d.b = null;
+        localObject = new ArrayList();
+        if (paramJSONObject.has("devs"))
         {
-          localObject = this.j;
-          if (localObject.length > 0)
-          {
-            f = localObject[0];
-            localObject = new StringBuilder("sVryAction");
-            ((StringBuilder)localObject).append(f);
-            xj.a(((StringBuilder)localObject).toString());
+          OnlineDeviceResult localOnlineDeviceResult = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
+          if (localOnlineDeviceResult.mDevicesList != null) {
+            ((ArrayList)localObject).addAll(localOnlineDeviceResult.mDevicesList);
           }
+          this.d.b = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
         }
-        else
-        {
-          localObject = this.j;
-          if (localObject.length >= 2)
-          {
-            d = localObject[0];
-            e = localObject[1];
-          }
-        }
+        sc.a.a().a(this.f, (List)localObject);
+        this.a = this.d.f.a(paramJSONObject, l1, this.i);
+        return;
       }
-      try
-      {
-        yj.n = paramJSONObject.getInt("displayangle");
-        yj.o = paramJSONObject.getInt("imageangle");
-        localObject = new StringBuilder("display angle=");
-        ((StringBuilder)localObject).append(yj.n);
-        ((StringBuilder)localObject).append(",angel2=");
-        ((StringBuilder)localObject).append(yj.o);
-        xj.a(((StringBuilder)localObject).toString());
-        aap.a(paramJSONObject);
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-      this.a.a = 0;
+      this.e.a(l2);
+      this.a = this.e.f.a(paramJSONObject, l1, this.i);
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
   
   public final void b()
@@ -109,8 +129,7 @@ public final class wa
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.arg2 = this.i;
-      localMessage.obj = this.j;
+      localMessage.obj = this.k;
       localMessage.sendToTarget();
       this.b.e = true;
     }

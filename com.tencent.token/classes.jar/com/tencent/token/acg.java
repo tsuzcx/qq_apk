@@ -1,12 +1,11 @@
 package com.tencent.token;
 
-import android.app.Activity;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-public abstract interface acg
+public final class acg
 {
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void b(Activity paramActivity);
+  public static final Set<String> a = new LinkedHashSet();
 }
 
 

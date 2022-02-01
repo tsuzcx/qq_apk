@@ -1,67 +1,60 @@
 package com.tencent.token;
 
-public class ww
+import android.content.Context;
+import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
+import org.json.JSONObject;
+
+public final class ww
+  extends ud
 {
-  public static long d;
-  public static byte[] k = new byte[16];
-  public short a;
-  public short b;
-  public long c;
-  public short e;
-  public short f;
-  public short g;
-  public long h;
-  public byte i;
-  public byte j;
-  public byte[] l = null;
+  private long d;
+  private int e;
+  private String f;
+  private long g;
   
-  public ww() {}
-  
-  public ww(short paramShort, byte paramByte)
+  public final String a()
   {
-    this.b = paramShort;
-    this.i = paramByte;
-    this.j = 0;
+    st.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  public final byte[] a()
+  public final void a(abm paramabm)
   {
-    Object localObject = this.l;
-    int m;
-    if ((localObject != null) && (localObject.length > 0)) {
-      m = localObject.length;
-    } else {
-      m = 0;
-    }
-    this.a = ((short)(m + 41 + 1));
-    localObject = new StringBuilder("socket req msg total len: ");
-    ((StringBuilder)localObject).append(this.a);
-    xj.a(((StringBuilder)localObject).toString());
-    this.h = System.currentTimeMillis();
-    short s = this.a;
-    localObject = new byte[s];
-    localObject[0] = 2;
-    sz.a((byte[])localObject, 1, s);
-    sz.a((byte[])localObject, 3, this.b);
-    sz.a((byte[])localObject, 5, this.c);
-    sz.a((byte[])localObject, 9, d);
-    sz.a((byte[])localObject, 13, this.e);
-    sz.a((byte[])localObject, 15, this.f);
-    sz.a((byte[])localObject, 17, this.g);
-    sz.a((byte[])localObject, 19, this.h);
-    localObject[23] = this.i;
-    localObject[24] = this.j;
-    byte[] arrayOfByte = k;
-    sz.a((byte[])localObject, 25, arrayOfByte, 0, arrayOfByte.length);
-    int i1 = k.length + 25;
-    int n = i1;
-    if (m > 0)
+    this.g = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.e = paramabm.j;
+    this.f = ((String)paramabm.c.get("param.idnumber"));
+  }
+  
+  public final void a(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      sz.a((byte[])localObject, i1, this.l, 0, m);
-      n = i1 + m;
+      a(i, paramJSONObject.getString("info"));
+      return;
     }
-    localObject[n] = 3;
-    return localObject;
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
+      if (i != this.e)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.e);
+        xv.c(paramJSONObject.toString());
+        return;
+      }
+      this.a.a = 0;
+      return;
+    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

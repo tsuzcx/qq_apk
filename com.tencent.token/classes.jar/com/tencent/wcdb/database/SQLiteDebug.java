@@ -1,7 +1,7 @@
 package com.tencent.wcdb.database;
 
 import android.annotation.SuppressLint;
-import com.tencent.token.ahz;
+import com.tencent.token.aiz;
 import com.tencent.wcdb.support.Log;
 import java.util.ArrayList;
 
@@ -41,9 +41,9 @@ public final class SQLiteDebug
     {
       a = nativeGetLastErrorLine();
       localObject = new ArrayList();
-      ahz localahz = paramSQLiteDatabase.b();
-      localahz.a(null, 2, null);
-      long l = localahz.a.a("collectIoStat");
+      aiz localaiz = paramSQLiteDatabase.b();
+      localaiz.a(null, 2, null);
+      long l = localaiz.a.a("collectIoStat");
       if (l != 0L)
       {
         if (l != 0L) {

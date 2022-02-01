@@ -1,69 +1,55 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.token.ui.IndexActivity;
 
 public final class zj
-  extends RelativeLayout
+  extends Drawable
 {
-  private Context a;
-  private LayoutInflater b;
-  private View c;
-  private CheckBox d;
-  private a e;
+  public boolean a = true;
+  public ImageView b;
+  public ImageView c;
+  private Paint d;
+  private float e;
+  private float f;
   
-  public zj(Context paramContext, final int paramInt)
+  public zj(Context paramContext)
   {
-    super(paramContext);
-    this.a = paramContext;
-    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
-    if (paramInt == 0)
-    {
-      this.c = this.b.inflate(2131296423, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = ((CheckBox)findViewById(2131165367));
-      xm.a(paramInt, false);
-      this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-      {
-        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-        {
-          xm.a(paramInt, paramAnonymousBoolean ^ true);
-        }
-      });
+    int i = IndexActivity.S_RES_WIDTH;
+    paramContext.getResources().getDimension(2131034279);
+    this.e = paramContext.getResources().getDimension(2131034278);
+    this.f = (IndexActivity.S_DENSITY * 3.5F);
+    this.d = new Paint();
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setColor(-1);
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    long l = System.currentTimeMillis() + rt.a().g();
+    float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
+    float f2 = this.e;
+    paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.f, this.d);
+    if (this.a) {
+      invalidateSelf();
     }
-    else
-    {
-      this.c = this.b.inflate(2131296424, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-    }
-    findViewById(2131165948).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        zj.this.setVisibility(8);
-        if (zj.a(zj.this) != null) {
-          zj.a(zj.this).a();
-        }
-      }
-    });
   }
   
-  public final void setViewListener(a parama)
+  public final int getOpacity()
   {
-    this.e = parama;
+    return -1;
   }
   
-  public static abstract interface a
-  {
-    public abstract void a();
-  }
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

@@ -1,252 +1,184 @@
 package com.tencent.token;
 
-import android.content.res.AssetFileDescriptor;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
-import android.content.res.XmlResourceParser;
-import android.graphics.Movie;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.graphics.drawable.RippleDrawable;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import java.io.InputStream;
+import android.widget.ImageView;
 
-class ja
-  extends Resources
+public final class ja
 {
-  private final Resources a;
+  private final ImageView a;
+  private ju b;
+  private ju c;
+  private ju d;
   
-  public ja(Resources paramResources)
+  public ja(ImageView paramImageView)
   {
-    super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
-    this.a = paramResources;
+    this.a = paramImageView;
   }
   
-  public XmlResourceParser getAnimation(int paramInt)
+  private boolean a(Drawable paramDrawable)
   {
-    return this.a.getAnimation(paramInt);
+    if (this.d == null) {
+      this.d = new ju();
+    }
+    ju localju = this.d;
+    localju.a();
+    Object localObject = gl.a(this.a);
+    if (localObject != null)
+    {
+      localju.d = true;
+      localju.a = ((ColorStateList)localObject);
+    }
+    localObject = gl.b(this.a);
+    if (localObject != null)
+    {
+      localju.c = true;
+      localju.b = ((PorterDuff.Mode)localObject);
+    }
+    if ((!localju.d) && (!localju.c)) {
+      return false;
+    }
+    iy.a(paramDrawable, localju, this.a.getDrawableState());
+    return true;
   }
   
-  public boolean getBoolean(int paramInt)
+  private boolean e()
   {
-    return this.a.getBoolean(paramInt);
+    int i = Build.VERSION.SDK_INT;
+    if (i > 21) {
+      return this.b != null;
+    }
+    return i == 21;
   }
   
-  public int getColor(int paramInt)
+  public final void a(int paramInt)
   {
-    return this.a.getColor(paramInt);
+    if (paramInt != 0)
+    {
+      Drawable localDrawable = hi.b(this.a.getContext(), paramInt);
+      if (localDrawable != null) {
+        ji.b(localDrawable);
+      }
+      this.a.setImageDrawable(localDrawable);
+    }
+    else
+    {
+      this.a.setImageDrawable(null);
+    }
+    d();
   }
   
-  public ColorStateList getColorStateList(int paramInt)
+  public final void a(ColorStateList paramColorStateList)
   {
-    return this.a.getColorStateList(paramInt);
+    if (this.c == null) {
+      this.c = new ju();
+    }
+    ju localju = this.c;
+    localju.a = paramColorStateList;
+    localju.d = true;
+    d();
   }
   
-  public Configuration getConfiguration()
+  public final void a(PorterDuff.Mode paramMode)
   {
-    return this.a.getConfiguration();
+    if (this.c == null) {
+      this.c = new ju();
+    }
+    ju localju = this.c;
+    localju.b = paramMode;
+    localju.c = true;
+    d();
   }
   
-  public float getDimension(int paramInt)
+  public final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    return this.a.getDimension(paramInt);
+    jw localjw = jw.a(this.a.getContext(), paramAttributeSet, hg.j.AppCompatImageView, paramInt, 0);
+    try
+    {
+      Drawable localDrawable = this.a.getDrawable();
+      paramAttributeSet = localDrawable;
+      if (localDrawable == null)
+      {
+        paramInt = localjw.g(hg.j.AppCompatImageView_srcCompat, -1);
+        paramAttributeSet = localDrawable;
+        if (paramInt != -1)
+        {
+          localDrawable = hi.b(this.a.getContext(), paramInt);
+          paramAttributeSet = localDrawable;
+          if (localDrawable != null)
+          {
+            this.a.setImageDrawable(localDrawable);
+            paramAttributeSet = localDrawable;
+          }
+        }
+      }
+      if (paramAttributeSet != null) {
+        ji.b(paramAttributeSet);
+      }
+      if (localjw.f(hg.j.AppCompatImageView_tint)) {
+        gl.a(this.a, localjw.e(hg.j.AppCompatImageView_tint));
+      }
+      if (localjw.f(hg.j.AppCompatImageView_tintMode)) {
+        gl.a(this.a, ji.a(localjw.a(hg.j.AppCompatImageView_tintMode, -1), null));
+      }
+      return;
+    }
+    finally
+    {
+      localjw.a.recycle();
+    }
   }
   
-  public int getDimensionPixelOffset(int paramInt)
+  public final boolean a()
   {
-    return this.a.getDimensionPixelOffset(paramInt);
+    Drawable localDrawable = this.a.getBackground();
+    return (Build.VERSION.SDK_INT < 21) || (!(localDrawable instanceof RippleDrawable));
   }
   
-  public int getDimensionPixelSize(int paramInt)
+  public final ColorStateList b()
   {
-    return this.a.getDimensionPixelSize(paramInt);
+    ju localju = this.c;
+    if (localju != null) {
+      return localju.a;
+    }
+    return null;
   }
   
-  public DisplayMetrics getDisplayMetrics()
+  public final PorterDuff.Mode c()
   {
-    return this.a.getDisplayMetrics();
+    ju localju = this.c;
+    if (localju != null) {
+      return localju.b;
+    }
+    return null;
   }
   
-  public Drawable getDrawable(int paramInt)
+  public final void d()
   {
-    return this.a.getDrawable(paramInt);
-  }
-  
-  public Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
-  {
-    return this.a.getDrawable(paramInt, paramTheme);
-  }
-  
-  public Drawable getDrawableForDensity(int paramInt1, int paramInt2)
-  {
-    return this.a.getDrawableForDensity(paramInt1, paramInt2);
-  }
-  
-  public Drawable getDrawableForDensity(int paramInt1, int paramInt2, Resources.Theme paramTheme)
-  {
-    return this.a.getDrawableForDensity(paramInt1, paramInt2, paramTheme);
-  }
-  
-  public float getFraction(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return this.a.getFraction(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public int getIdentifier(String paramString1, String paramString2, String paramString3)
-  {
-    return this.a.getIdentifier(paramString1, paramString2, paramString3);
-  }
-  
-  public int[] getIntArray(int paramInt)
-  {
-    return this.a.getIntArray(paramInt);
-  }
-  
-  public int getInteger(int paramInt)
-  {
-    return this.a.getInteger(paramInt);
-  }
-  
-  public XmlResourceParser getLayout(int paramInt)
-  {
-    return this.a.getLayout(paramInt);
-  }
-  
-  public Movie getMovie(int paramInt)
-  {
-    return this.a.getMovie(paramInt);
-  }
-  
-  public String getQuantityString(int paramInt1, int paramInt2)
-  {
-    return this.a.getQuantityString(paramInt1, paramInt2);
-  }
-  
-  public String getQuantityString(int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    return this.a.getQuantityString(paramInt1, paramInt2, paramVarArgs);
-  }
-  
-  public CharSequence getQuantityText(int paramInt1, int paramInt2)
-  {
-    return this.a.getQuantityText(paramInt1, paramInt2);
-  }
-  
-  public String getResourceEntryName(int paramInt)
-  {
-    return this.a.getResourceEntryName(paramInt);
-  }
-  
-  public String getResourceName(int paramInt)
-  {
-    return this.a.getResourceName(paramInt);
-  }
-  
-  public String getResourcePackageName(int paramInt)
-  {
-    return this.a.getResourcePackageName(paramInt);
-  }
-  
-  public String getResourceTypeName(int paramInt)
-  {
-    return this.a.getResourceTypeName(paramInt);
-  }
-  
-  public String getString(int paramInt)
-  {
-    return this.a.getString(paramInt);
-  }
-  
-  public String getString(int paramInt, Object... paramVarArgs)
-  {
-    return this.a.getString(paramInt, paramVarArgs);
-  }
-  
-  public String[] getStringArray(int paramInt)
-  {
-    return this.a.getStringArray(paramInt);
-  }
-  
-  public CharSequence getText(int paramInt)
-  {
-    return this.a.getText(paramInt);
-  }
-  
-  public CharSequence getText(int paramInt, CharSequence paramCharSequence)
-  {
-    return this.a.getText(paramInt, paramCharSequence);
-  }
-  
-  public CharSequence[] getTextArray(int paramInt)
-  {
-    return this.a.getTextArray(paramInt);
-  }
-  
-  public void getValue(int paramInt, TypedValue paramTypedValue, boolean paramBoolean)
-  {
-    this.a.getValue(paramInt, paramTypedValue, paramBoolean);
-  }
-  
-  public void getValue(String paramString, TypedValue paramTypedValue, boolean paramBoolean)
-  {
-    this.a.getValue(paramString, paramTypedValue, paramBoolean);
-  }
-  
-  public void getValueForDensity(int paramInt1, int paramInt2, TypedValue paramTypedValue, boolean paramBoolean)
-  {
-    this.a.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
-  }
-  
-  public XmlResourceParser getXml(int paramInt)
-  {
-    return this.a.getXml(paramInt);
-  }
-  
-  public TypedArray obtainAttributes(AttributeSet paramAttributeSet, int[] paramArrayOfInt)
-  {
-    return this.a.obtainAttributes(paramAttributeSet, paramArrayOfInt);
-  }
-  
-  public TypedArray obtainTypedArray(int paramInt)
-  {
-    return this.a.obtainTypedArray(paramInt);
-  }
-  
-  public InputStream openRawResource(int paramInt)
-  {
-    return this.a.openRawResource(paramInt);
-  }
-  
-  public InputStream openRawResource(int paramInt, TypedValue paramTypedValue)
-  {
-    return this.a.openRawResource(paramInt, paramTypedValue);
-  }
-  
-  public AssetFileDescriptor openRawResourceFd(int paramInt)
-  {
-    return this.a.openRawResourceFd(paramInt);
-  }
-  
-  public void parseBundleExtra(String paramString, AttributeSet paramAttributeSet, Bundle paramBundle)
-  {
-    this.a.parseBundleExtra(paramString, paramAttributeSet, paramBundle);
-  }
-  
-  public void parseBundleExtras(XmlResourceParser paramXmlResourceParser, Bundle paramBundle)
-  {
-    this.a.parseBundleExtras(paramXmlResourceParser, paramBundle);
-  }
-  
-  public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
-  {
-    super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
-    Resources localResources = this.a;
-    if (localResources != null) {
-      localResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+    Drawable localDrawable = this.a.getDrawable();
+    if (localDrawable != null) {
+      ji.b(localDrawable);
+    }
+    if (localDrawable != null)
+    {
+      if ((e()) && (a(localDrawable))) {
+        return;
+      }
+      ju localju = this.c;
+      if (localju != null)
+      {
+        iy.a(localDrawable, localju, this.a.getDrawableState());
+        return;
+      }
+      localju = this.b;
+      if (localju != null) {
+        iy.a(localDrawable, localju, this.a.getDrawableState());
+      }
     }
   }
 }

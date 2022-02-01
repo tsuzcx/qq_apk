@@ -1,8 +1,26 @@
 package com.tencent.token;
 
-public abstract interface atc
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+
+public final class atc
+  implements Runnable
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  public atc(atb paramatb) {}
+  
+  public final void run()
+  {
+    ArrayList localArrayList = new ArrayList();
+    AtomicReference localAtomicReference = new AtomicReference();
+    int i = this.a.a(null, localArrayList, localAtomicReference);
+    if (-10 != i)
+    {
+      if (i == 0) {
+        return;
+      }
+      return;
+    }
+  }
 }
 
 

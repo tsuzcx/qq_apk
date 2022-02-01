@@ -1,84 +1,196 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.halley.scheduler.c.g;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public final class ok
 {
-  public static boolean a(Context paramContext, a parama)
+  public static final int[] a = { 80, 8080, 14000 };
+  public long b;
+  private Map c;
+  
+  public ok() {}
+  
+  public ok(g paramg)
   {
-    if (paramContext == null) {
-      return false;
-    }
-    if (pn.a(parama.a))
+    this.b = paramg.b;
+    this.c = new HashMap();
+    Iterator localIterator = paramg.a.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      new StringBuilder("send fail, invalid targetPkgName, targetPkgName = ").append(parama.a);
-      return false;
+      Integer localInteger = (Integer)localIterator.next();
+      if (ou.a(localInteger))
+      {
+        Object localObject = (ArrayList)paramg.a.get(localInteger);
+        ArrayList localArrayList = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          od localod = new od();
+          if (localod.a(str)) {
+            localArrayList.add(localod);
+          }
+        }
+        this.c.put(localInteger, localArrayList);
+      }
     }
-    if (pn.a(parama.b))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(parama.a);
-      ((StringBuilder)localObject).append(".wxapi.WXEntryActivity");
-      parama.b = ((StringBuilder)localObject).toString();
-    }
-    Object localObject = new StringBuilder("send, targetPkgName = ");
-    ((StringBuilder)localObject).append(parama.a);
-    ((StringBuilder)localObject).append(", targetClassName = ");
-    ((StringBuilder)localObject).append(parama.b);
-    localObject = new Intent();
-    ((Intent)localObject).setClassName(parama.a, parama.b);
-    if (parama.f != null) {
-      ((Intent)localObject).putExtras(parama.f);
-    }
-    String str = paramContext.getPackageName();
-    ((Intent)localObject).putExtra("_mmessage_sdkVersion", 621086720);
-    ((Intent)localObject).putExtra("_mmessage_appPackage", str);
-    ((Intent)localObject).putExtra("_mmessage_content", parama.c);
-    ((Intent)localObject).putExtra("_mmessage_checksum", om.a(parama.c, str));
-    ((Intent)localObject).putExtra("_message_token", parama.d);
-    if (parama.e == -1) {
-      ((Intent)localObject).addFlags(268435456).addFlags(134217728);
-    } else {
-      ((Intent)localObject).setFlags(parama.e);
-    }
-    try
-    {
-      paramContext.startActivity((Intent)localObject);
-      "send mm message, intent=".concat(String.valueOf(localObject));
-      return true;
-    }
-    catch (Exception paramContext)
-    {
-      new StringBuilder("send fail, ex = ").append(paramContext.getMessage());
-    }
-    return false;
   }
   
-  public static final class a
+  private static String a(int paramInt)
   {
-    public String a;
-    public String b;
-    public String c;
-    public String d;
-    public int e = -1;
-    public Bundle f;
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder("targetPkgName:");
-      localStringBuilder.append(this.a);
-      localStringBuilder.append(", targetClassName:");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append(", content:");
-      localStringBuilder.append(this.c);
-      localStringBuilder.append(", flags:");
-      localStringBuilder.append(this.e);
-      localStringBuilder.append(", bundle:");
-      localStringBuilder.append(this.f);
-      return localStringBuilder.toString();
+    String str = "";
+    if (paramInt == 1) {
+      return "access_cm";
     }
+    if (paramInt == 2) {
+      return "access_uni";
+    }
+    if (paramInt == 3) {
+      str = "access_ct";
+    }
+    return str;
+  }
+  
+  public final void a()
+  {
+    SharedPreferences localSharedPreferences = mj.a().getSharedPreferences("Access_Preferences", 0);
+    this.b = localSharedPreferences.getLong("timeStamp", 0L);
+    this.c = new HashMap();
+    int i = 1;
+    while (i <= 3)
+    {
+      Object localObject2 = localSharedPreferences.getString(a(i), "");
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = "";
+        if (i == 1) {
+          localObject1 = "183.61.38.168:14000,117.135.171.182:14000";
+        }
+        for (;;)
+        {
+          break;
+          if (i == 2)
+          {
+            localObject1 = "112.90.140.213:14000,112.90.140.216:14000";
+          }
+          else
+          {
+            if (i != 3) {
+              break;
+            }
+            localObject1 = "14.17.41.159:14000,140.206.160.242:14000";
+          }
+        }
+        mc.b("SdkAccessInfo", "getDefaultIpListByOpType:".concat(String.valueOf(localObject1)));
+      }
+      localObject1 = ((String)localObject1).split(",");
+      if (localObject1.length > 0)
+      {
+        localObject2 = new ArrayList();
+        int k = localObject1.length;
+        int j = 0;
+        while (j < k)
+        {
+          String str = localObject1[j];
+          od localod = new od();
+          if (localod.a(str)) {
+            ((ArrayList)localObject2).add(localod);
+          }
+          j += 1;
+        }
+        this.c.put(Integer.valueOf(i), localObject2);
+      }
+      i += 1;
+    }
+  }
+  
+  public final void b()
+  {
+    SharedPreferences localSharedPreferences = mj.a().getSharedPreferences("Access_Preferences", 0);
+    Object localObject1 = this.c;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+    {
+      localObject1 = this.c.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Integer)((Iterator)localObject1).next();
+        if (ou.a((Integer)localObject2))
+        {
+          String str = a(((Integer)localObject2).intValue());
+          Object localObject3 = (ArrayList)this.c.get(localObject2);
+          if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+          {
+            localObject3 = new StringBuilder();
+            localObject2 = ((ArrayList)this.c.get(localObject2)).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              ((StringBuilder)localObject3).append(((od)((Iterator)localObject2).next()).a());
+              ((StringBuilder)localObject3).append(",");
+            }
+            ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+            localSharedPreferences.edit().putString(str, ((StringBuilder)localObject3).toString()).commit();
+          }
+        }
+      }
+      localSharedPreferences.edit().putLong("timesStamp", this.b).commit();
+    }
+  }
+  
+  public final ArrayList c()
+  {
+    int i = ou.e();
+    ArrayList localArrayList1 = new ArrayList();
+    boolean bool = ou.a(Integer.valueOf(i));
+    int k = 0;
+    Object localObject;
+    if (bool)
+    {
+      localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Integer)localIterator.next();
+        ArrayList localArrayList2 = (ArrayList)this.c.get(localObject);
+        if (i == ((Integer)localObject).intValue()) {
+          localArrayList1.addAll(0, localArrayList2);
+        } else {
+          localArrayList1.addAll(localArrayList2);
+        }
+      }
+    }
+    Iterator localIterator = this.c.keySet().iterator();
+    int j;
+    for (i = 0;; i = Math.max(i, ((ArrayList)this.c.get(localObject)).size()))
+    {
+      j = k;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (Integer)localIterator.next();
+    }
+    while (j < i)
+    {
+      localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Integer)localIterator.next();
+        localObject = (ArrayList)this.c.get(localObject);
+        if (j < ((ArrayList)localObject).size()) {
+          localArrayList1.add(((ArrayList)localObject).get(j));
+        }
+      }
+      j += 1;
+    }
+    return localArrayList1;
   }
 }
 

@@ -1,101 +1,155 @@
 package com.tencent.token;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public final class of
-  implements nz
 {
-  private static AtomicInteger n = new AtomicInteger(0);
-  public lr a;
-  public byte[] b;
-  public lr c;
-  int d = 0;
-  public int e = 0;
-  public String f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public np k;
-  public long l;
-  public int m;
+  private static of a;
+  private oe b;
+  private og c = oh.a();
   
-  public of(lr paramlr)
+  private of()
   {
-    new CountDownLatch(1);
-    this.g = 0;
-    this.h = 0;
-    this.i = 0;
-    this.j = 0;
-    this.k = null;
-    this.l = 0L;
-    this.m = 20;
-    this.a = paramlr;
-    this.d = n.getAndIncrement();
-    paramlr = this.a;
-    int i1 = this.d;
-    paramlr.c.b = i1;
+    b();
   }
   
-  public final lr a()
+  public static of a()
   {
-    return this.c;
-  }
-  
-  public final void a(int paramInt)
-  {
-    oe localoe = oe.a();
     try
     {
-      localoe.a = this;
-      localoe.a.l = System.currentTimeMillis();
-      localoe.a.m = (paramInt * 1000);
-      localoe.e();
-      if (localoe.c())
-      {
-        localoe.a(this);
-        localoe.b();
-        localoe.d();
+      if (a == null) {
+        a = new of();
       }
+      of localof = a;
+      return localof;
+    }
+    finally {}
+  }
+  
+  private void b()
+  {
+    try
+    {
+      String str = ou.a();
+      mc.a("AccessSchedulerStorageManager", "try updateCacheInfo...currentApn:".concat(String.valueOf(str)));
+      if ((!TextUtils.isEmpty(str)) && (!str.equals("unknown")))
+      {
+        if ((this.b != null) && (this.b.a.equals(str)))
+        {
+          mc.b("AccessSchedulerStorageManager", "same apn. no need update.");
+          return;
+        }
+        this.b = this.c.a(str);
+        if (this.b != null)
+        {
+          mc.a("AccessSchedulerStorageManager", "cache succ for current apn:".concat(String.valueOf(str)));
+          return;
+        }
+        mc.c("AccessSchedulerStorageManager", "cache failed for apn:".concat(String.valueOf(str)));
+        return;
+      }
+      mc.c("AccessSchedulerStorageManager", "updateCacheInfo failed... get current apn from ApnInfo:".concat(String.valueOf(str)));
       return;
     }
-    catch (Exception localException) {}
+    finally {}
   }
   
-  public final int b()
+  public final oe.a a(String paramString)
   {
-    return this.e;
+    try
+    {
+      b();
+      if ((this.b != null) && (this.b.a.equals(ou.a())))
+      {
+        paramString = (oe.a)this.b.b.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
-  public final String c()
+  public final void a(oe paramoe)
   {
-    return this.f;
+    try
+    {
+      mc.b("AccessSchedulerStorageManager", "try updateAccessInfo...");
+      if (paramoe == null)
+      {
+        mc.c("AccessSchedulerStorageManager", "updateAccessInfo info==null");
+        return;
+      }
+      this.b = paramoe;
+      this.c.a(paramoe);
+      return;
+    }
+    finally {}
   }
   
-  public final np d()
+  public final boolean a(Set paramSet)
   {
-    return this.k;
-  }
-  
-  public final int e()
-  {
-    return this.g;
-  }
-  
-  public final int f()
-  {
-    return this.j;
-  }
-  
-  public final int g()
-  {
-    return this.h;
-  }
-  
-  public final int h()
-  {
-    return this.i;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        mc.b("AccessSchedulerStorageManager", "isNeedScheduler... ");
+        b();
+        if (this.b == null)
+        {
+          mc.b("AccessSchedulerStorageManager", "no cache, need schedule...");
+          return true;
+        }
+        Object localObject = this.b.b;
+        if (localObject == null)
+        {
+          mc.b("AccessSchedulerStorageManager", "DomainAccessInfo is null, need schedule...");
+          return true;
+        }
+        if (((Map)localObject).size() < paramSet.size())
+        {
+          paramSet = new StringBuilder("DomainAccessInfo map not enough, need schedule...map.size:");
+          paramSet.append(((Map)localObject).size());
+          mc.b("AccessSchedulerStorageManager", paramSet.toString());
+          return true;
+        }
+        Iterator localIterator = paramSet.iterator();
+        boolean bool = localIterator.hasNext();
+        i = 0;
+        if (bool)
+        {
+          paramSet = (String)localIterator.next();
+          oe.a locala = (oe.a)((Map)localObject).get(paramSet);
+          if (locala != null)
+          {
+            if (System.currentTimeMillis() - locala.d > oi.a().b.e * 60 * 1000) {
+              i = 1;
+            }
+          }
+          else
+          {
+            localObject = new StringBuilder("domainInfo for domain:");
+            ((StringBuilder)localObject).append(paramSet);
+            ((StringBuilder)localObject).append(" is null or expired. need schedule...");
+            mc.b("AccessSchedulerStorageManager", ((StringBuilder)localObject).toString());
+            return true;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+      finally {}
+      if (i == 0) {}
+    }
   }
 }
 

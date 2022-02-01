@@ -1,47 +1,15 @@
 package com.tencent.token;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class afr
 {
-  public static afs a = new afs();
+  public static Map<Integer, Long> a = new HashMap();
   
-  public static String a(Object paramObject)
+  public static void a(int paramInt, long paramLong)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    if ((paramObject instanceof String)) {
-      return (String)paramObject;
-    }
-    if ((paramObject instanceof Throwable)) {
-      return a((Throwable)paramObject);
-    }
-    return paramObject.toString();
-  }
-  
-  private static String a(Throwable paramThrowable)
-  {
-    if (paramThrowable == null) {
-      return "(Null stack trace)";
-    }
-    StringWriter localStringWriter = new StringWriter();
-    PrintWriter localPrintWriter = new PrintWriter(localStringWriter);
-    paramThrowable.printStackTrace(localPrintWriter);
-    localPrintWriter.flush();
-    paramThrowable = localStringWriter.toString();
-    localPrintWriter.close();
-    return paramThrowable;
-  }
-  
-  public static void a(Object paramObject, Throwable paramThrowable)
-  {
-    paramObject = a(paramObject);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramObject);
-    localStringBuilder.append('\n');
-    localStringBuilder.append(a(paramThrowable));
+    a.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
   }
 }
 

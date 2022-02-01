@@ -1,55 +1,34 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
-public final class ahu
-  implements ahs
+public abstract class ahu
 {
-  private static SQLiteDatabase.a f = ahr.j;
-  private final SQLiteDatabase a;
-  private final String b;
-  private final String c;
-  private final aie d;
-  private ahw e;
-  
-  public ahu(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
+  public final agx c()
   {
-    this.a = paramSQLiteDatabase;
-    this.b = paramString2;
-    this.c = paramString1;
-    this.d = null;
+    if ((this instanceof agx)) {
+      return (agx)this;
+    }
+    throw new IllegalStateException("Not a JSON Primitive: ".concat(String.valueOf(this)));
   }
   
-  public final ahi a(SQLiteDatabase.a parama, String[] paramArrayOfString)
+  public String toString()
   {
-    Object localObject = parama;
-    if (parama == null) {
-      localObject = f;
-    }
-    parama = null;
     try
     {
-      paramArrayOfString = ((SQLiteDatabase.a)localObject).a(this.a, this.c, paramArrayOfString, this.d);
-      parama = paramArrayOfString;
-      localObject = ((SQLiteDatabase.a)localObject).a(this, this.b, paramArrayOfString);
-      this.e = paramArrayOfString;
+      Object localObject = new StringWriter();
+      aep localaep = new aep((Writer)localObject);
+      localaep.m = true;
+      ady.X.a(localaep, this);
+      localObject = ((StringWriter)localObject).toString();
       return localObject;
     }
-    catch (RuntimeException paramArrayOfString)
+    catch (IOException localIOException)
     {
-      if (parama != null) {
-        parama.close();
-      }
-      throw paramArrayOfString;
+      throw new AssertionError(localIOException);
     }
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SQLiteDirectCursorDriver: ");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
   }
 }
 

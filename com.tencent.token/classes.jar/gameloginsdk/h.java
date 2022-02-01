@@ -1,8 +1,8 @@
 package gameloginsdk;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aih;
-import com.tencent.token.jx;
+import com.tencent.token.ajh;
+import com.tencent.token.kl;
 import java.util.concurrent.atomic.AtomicLong;
 
 class h
@@ -27,18 +27,18 @@ class h
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = aih.a;
+      paramInt1 = ajh.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = aih.a;
+      paramInt1 = ajh.a;
       a(paramInt3, (int)this.d);
       return;
     }
-    paramJceStruct = (jx)paramJceStruct;
-    paramInt1 = aih.a;
+    paramJceStruct = (kl)paramJceStruct;
+    paramInt1 = ajh.a;
     long l = paramJceStruct.a;
     paramInt1 = paramJceStruct.b;
     l = paramJceStruct.c;
@@ -48,7 +48,7 @@ class h
       if (!this.a.g.a(paramJceStruct.a))
       {
         new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ").append(paramJceStruct.a);
-        paramInt1 = aih.a;
+        paramInt1 = ajh.a;
         StringBuilder localStringBuilder = new StringBuilder("忽略这个包，因为没收到过包的reqid : ");
         localStringBuilder.append(paramJceStruct.a);
         localStringBuilder.toString();

@@ -1,15 +1,14 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public final class aeu
 {
-  public static Map<Integer, Long> a = new HashMap();
+  public int a = -999;
+  public String b = "";
   
-  public static void a(int paramInt, long paramLong)
+  public aeu(int paramInt, String paramString)
   {
-    a.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    this.a = paramInt;
+    this.b = paramString;
   }
 }
 

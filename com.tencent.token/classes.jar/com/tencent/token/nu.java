@@ -1,65 +1,23 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import java.util.List;
 
 public final class nu
 {
-  private static nu d;
-  public nw a;
-  public nx b = new nx();
-  public nv c;
+  public oe a;
+  public ol b;
+  public ok c;
+  public List d;
   
-  private nu()
+  public final String a()
   {
-    this.b.a();
-    this.a = new nw();
-    this.a.a();
-    this.c = new nv();
-    nv localnv = this.c;
-    SharedPreferences localSharedPreferences = lv.a().getSharedPreferences("Access_Preferences", 0);
-    localnv.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
-    localnv.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
-  }
-  
-  public static nu a()
-  {
-    try
-    {
-      if (d == null) {
-        d = new nu();
-      }
-      nu localnu = d;
-      return localnu;
-    }
-    finally {}
-  }
-  
-  public final void a(nx paramnx)
-  {
-    if (paramnx == null) {
-      return;
-    }
-    lo.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:".concat(String.valueOf(paramnx)));
-    StringBuilder localStringBuilder;
-    if ((paramnx.a < 2000) || (paramnx.a > 60000))
-    {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
-      localStringBuilder.append(paramnx.a);
-      localStringBuilder.append(" is checked to 20s");
-      lo.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      paramnx.a = 20000;
-    }
-    if ((paramnx.b < 2000) || (paramnx.b > 60000))
-    {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
-      localStringBuilder.append(paramnx.b);
-      localStringBuilder.append(" is checked to 20s");
-      lo.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      paramnx.b = 20000;
-    }
-    this.b = paramnx;
-    this.b.b();
+    StringBuilder localStringBuilder = new StringBuilder("accessInfo:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", sdkCfgInfo:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", sdkAccessInfo:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

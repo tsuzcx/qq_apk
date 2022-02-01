@@ -1,20 +1,25 @@
 package com.tencent.token;
 
-final class ary
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+public final class ary
 {
-  public int a;
-  public ai b = null;
-  public int c = 0;
-  public boolean d = false;
-  public aik e = null;
-  public long f = -1L;
+  public SharedPreferences a;
+  private SharedPreferences.Editor b;
   
-  public ary(ai paramai, int paramInt, boolean paramBoolean, aik paramaik)
+  public ary(String paramString)
   {
-    this.c = paramInt;
-    this.b = paramai;
-    this.d = paramBoolean;
-    this.e = paramaik;
+    this.a = arn.a().getSharedPreferences(paramString, 0);
+  }
+  
+  public final SharedPreferences.Editor a()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
   }
 }
 

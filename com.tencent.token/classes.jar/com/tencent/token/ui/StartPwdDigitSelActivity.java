@@ -3,7 +3,7 @@ package com.tencent.token.ui;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.tencent.token.yu;
+import com.tencent.token.zg;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +19,10 @@ public class StartPwdDigitSelActivity
   {
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131493640));
+    localHashMap.put("setting_op_name", getResources().getString(2131493648));
     localArrayList.add(localHashMap);
     localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131493639));
+    localHashMap.put("setting_op_name", getResources().getString(2131493647));
     localArrayList.add(localHashMap);
     return localArrayList;
   }
@@ -30,10 +30,10 @@ public class StartPwdDigitSelActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296465);
-    this.mListView = ((ListView)findViewById(2131166129));
+    setContentView(2131296478);
+    this.mListView = ((ListView)findViewById(2131166169));
     this.mData = getData();
-    paramBundle = new yu(this, this.mData);
+    paramBundle = new zg(this, this.mData);
     this.mListView.setAdapter(paramBundle);
   }
 }

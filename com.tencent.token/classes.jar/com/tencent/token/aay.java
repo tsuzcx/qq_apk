@@ -1,297 +1,1296 @@
 package com.tencent.token;
 
-import android.os.Looper;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
+import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.Toast;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.ui.LoginMsgActivity;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.token.core.gamelogin.GameLoginService;
+import com.tencent.token.core.push.PushService;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.ui.BaseActivity;
+import com.tencent.token.ui.HelpActivity;
+import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.widget.TokenService;
+import com.tencent.token.widget.TokenWidgetProvider;
+import com.tmsdk.common.util.TmsLog;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-import org.json.JSONArray;
+import java.util.Locale;
+import java.util.TimeZone;
+import oicq.wlogin_sdk.tools.MD5;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class aay
 {
-  public aiu a = null;
-  public List<SafeMsgItem> b = null;
-  public boolean c;
-  public int d = 0;
-  public long e = 0L;
-  public boolean f = false;
-  public int g = -1;
-  public long h = 0L;
+  static Date a = new Date();
+  static Calendar b = Calendar.getInstance();
+  static final short[] c = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 63, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
   
-  public aay(String paramString)
+  public static int a(Context paramContext, float paramFloat)
   {
-    this.a = new aiu(paramString);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public static void a()
+  private static String a(int paramInt)
   {
-    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt);
+    int i = localStringBuffer.length();
+    paramInt = 0;
+    while (paramInt < 2 - i)
+    {
+      localStringBuffer.insert(0, 0);
+      paramInt += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(long paramLong)
+  {
+    a.setTime(paramLong);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = b.get(2);
+    int j = b.get(5);
+    localStringBuffer.append(i + 1);
+    localStringBuffer.append('-');
+    if (j < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(j);
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(long paramLong, char paramChar)
+  {
+    a.setTime(paramLong);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = b.get(2) + 1;
+    int j = b.get(5);
+    int k = b.get(11);
+    int m = b.get(12);
+    localStringBuffer.append(b.get(1));
+    localStringBuffer.append(paramChar);
+    if (i < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(i);
+    localStringBuffer.append(paramChar);
+    if (j < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(j);
+    localStringBuffer.append(' ');
+    if (k < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(k);
+    localStringBuffer.append(':');
+    if (m < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(m);
+    StringBuilder localStringBuilder = new StringBuilder("testabc src=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",dst=");
+    localStringBuilder.append(localStringBuffer.toString());
+    xv.a(localStringBuilder.toString());
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString.length() < 5) {
+      return paramString;
+    }
+    int i = 0;
+    String str = paramString.substring(0, 3);
+    while (i < paramString.length() - 5)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append('*');
+      str = localStringBuilder.toString();
+      i += 1;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString.substring(paramString.length() - 2, paramString.length()));
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(Calendar paramCalendar)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramCalendar.get(1));
+    localStringBuffer.append('-');
+    localStringBuffer.append(a(paramCalendar.get(2) + 1));
+    localStringBuffer.append('-');
+    localStringBuffer.append(a(paramCalendar.get(5)));
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      int k = paramArrayOfByte[i];
+      int j = k;
+      if (k < 0) {
+        j = k + 256;
+      }
+      k = j / 16;
+      j -= k * 16;
+      char c1;
+      if (k > 9) {
+        c1 = (char)(k - 10 + 65);
+      } else {
+        c1 = (char)(k + 48);
+      }
+      char c2;
+      if (j > 9) {
+        c2 = (char)(j - 10 + 65);
+      } else {
+        c2 = (char)(j + 48);
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(Character.valueOf(c1).toString());
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(Character.valueOf(c2).toString());
+      localStringBuffer.append(localStringBuilder.toString());
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(Object... paramVarArgs)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      int i = 0;
+      while (i < 2)
+      {
+        localJSONObject.put((String)paramVarArgs[0], paramVarArgs[1]);
+        i += 2;
+      }
+      paramVarArgs = localJSONObject.toString();
+      xv.a("plain data: ".concat(String.valueOf(paramVarArgs)));
+      paramVarArgs = b(paramVarArgs.getBytes());
+      return paramVarArgs;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static void a(Activity paramActivity, int paramInt)
+  {
+    try
+    {
+      localMethod = Activity.class.getMethod("overridePendingTransition", new Class[] { Integer.TYPE, Integer.TYPE });
+      switch (paramInt)
+      {
+      case 1: 
+        localMethod.invoke(paramActivity, new Object[] { Integer.valueOf(2130771991), Integer.valueOf(2130771990) });
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      Method localMethod;
+      xv.c(paramActivity.toString());
       return;
     }
-    xj.c("should run in mainthread");
-    xj.c("should run in mainthread");
+    localMethod.invoke(paramActivity, new Object[] { Integer.valueOf(2130771989), Integer.valueOf(2130771992) });
+    return;
   }
   
-  private void a(List<SafeMsgItem> paramList)
+  public static void a(Activity paramActivity, String paramString)
   {
-    a();
-    this.b.clear();
-    if (paramList != null) {
-      this.b.addAll(paramList);
+    try
+    {
+      paramActivity.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+      xv.b(paramActivity.toString());
     }
   }
   
-  public final int a(int paramInt)
+  public static void a(Context paramContext)
   {
-    this.c = false;
-    int j = this.g;
-    int i = paramInt;
-    if (j >= 0) {
-      i = Math.max(paramInt, j);
+    if ((paramContext instanceof BaseActivity))
+    {
+      ((BaseActivity)paramContext).showUserDialog("请前往手机QQ设置->帐号安全中进行修改密码。");
+      return;
+    }
+    Toast.makeText(paramContext, "请前往手机QQ设置->帐号安全中进行修改密码。", 0).show();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent(paramContext, HelpActivity.class);
+    localIntent.putExtra("help_url", paramString1);
+    localIntent.putExtra("help_title", paramString2);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, String paramString)
+  {
+    if (paramString == null) {
+      paramBaseActivity.showToast(2131493637);
     }
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject = th.a().k.b();
-      if ((localObject != null) && (i > 0))
-      {
-        long l2 = ((QQUser)localObject).mUin;
-        long l1 = l2;
-        if (!((QQUser)localObject).mIsBinded)
-        {
-          l1 = l2;
-          if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-            l1 = aao.f(((QQUser)localObject).mRealUin);
-          }
-        }
-        localObject = this.a.a(l1, i + 1);
-        if (localObject != null)
-        {
-          if (((List)localObject).size() > i)
-          {
-            this.c = true;
-            paramInt = 0;
-            while (paramInt < i)
-            {
-              localArrayList.add(((List)localObject).get(paramInt));
-              paramInt += 1;
-            }
-          }
-          localArrayList.addAll((Collection)localObject);
-        }
-        a(localArrayList);
-        return e();
-      }
-      a(null);
-      return 0;
+      paramBaseActivity.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramBaseActivity)
     {
-      Object localObject = new StringBuilder("Exception:");
-      ((StringBuilder)localObject).append(localException.toString());
-      xj.c(((StringBuilder)localObject).toString());
-      a(null);
+      paramBaseActivity.printStackTrace();
+      xv.b(paramBaseActivity.toString());
+    }
+  }
+  
+  public static void a(IndexActivity paramIndexActivity, String paramString)
+  {
+    if (paramString == null) {
+      paramIndexActivity.showToast(2131493637);
+    }
+    try
+    {
+      paramIndexActivity.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
+      return;
+    }
+    catch (Exception paramIndexActivity)
+    {
+      paramIndexActivity.printStackTrace();
+      xv.b(paramIndexActivity.toString());
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    Object localObject = RqdApplication.n();
+    if (!TextUtils.isEmpty(null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(null);
+      localStringBuilder.append(paramString);
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
+    }
+    localObject = ((Context)localObject).getSharedPreferences(paramString, 0).edit();
+    ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
+    ((SharedPreferences.Editor)localObject).commit();
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      Context localContext = RqdApplication.n();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("account_tip_flag");
+        paramString = localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        paramString.putBoolean("account_tip_flag", paramBoolean);
+        paramString.commit();
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = (ConnectivityManager)RqdApplication.n().getSystemService("connectivity");
+    boolean bool2 = false;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((ConnectivityManager)localObject).getNetworkInfo(1);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      localObject = ((NetworkInfo)localObject).getState();
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (NetworkInfo.State.CONNECTED == localObject) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    a.setTime(paramLong1);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    int i = b.get(1);
+    int j = b.get(6);
+    a.setTime(paramLong2);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    int k = b.get(1);
+    int m = b.get(6);
+    return (i == k) && (j == m);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      paramContext.printStackTrace();
+      paramContext = null;
+    }
+    return paramContext != null;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[24];
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    int n = 0;
+    int k = paramInt;
+    paramInt = n;
+    int i1;
+    for (;;)
+    {
+      n = k - 1;
+      i1 = j;
+      if (k <= 0) {
+        break;
+      }
+      j = i + 1;
+      i = paramArrayOfByte[i];
+      i1 = i;
+      if (i == 0) {
+        break;
+      }
+      i1 = i;
+      if (i == 95) {
+        break;
+      }
+      k = i;
+      if (i == 32) {
+        k = 42;
+      }
+      i1 = c[k];
+      if (i1 >= 0)
+      {
+        switch (m % 4)
+        {
+        default: 
+          break;
+        case 3: 
+          arrayOfByte[paramInt] = ((byte)(arrayOfByte[paramInt] | i1));
+          paramInt += 1;
+          break;
+        case 2: 
+          i = paramInt + 1;
+          arrayOfByte[paramInt] = ((byte)(arrayOfByte[paramInt] | i1 >> 2));
+          arrayOfByte[i] = ((byte)((i1 & 0x3) << 6));
+          paramInt = i;
+          break;
+        case 1: 
+          i = paramInt + 1;
+          arrayOfByte[paramInt] = ((byte)(arrayOfByte[paramInt] | i1 >> 4));
+          arrayOfByte[i] = ((byte)((i1 & 0xF) << 4));
+          paramInt = i;
+          break;
+        case 0: 
+          arrayOfByte[paramInt] = ((byte)(i1 << 2));
+        }
+        m += 1;
+        i = j;
+        k = n;
+        j = i1;
+      }
+      else
+      {
+        i = j;
+        k = n;
+        j = i1;
+      }
+    }
+    if (i1 == 95)
+    {
+      i = paramInt;
+      switch (m % 4)
+      {
+      default: 
+        return arrayOfByte;
+      case 2: 
+        i = paramInt + 1;
+      case 3: 
+        arrayOfByte[i] = 0;
+        return arrayOfByte;
+      }
+      return null;
+    }
+    return arrayOfByte;
+  }
+  
+  public static String b(long paramLong)
+  {
+    a.setTime(System.currentTimeMillis());
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    int i = b.get(1);
+    int j = b.get(6);
+    a.setTime(paramLong);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    int k = b.get(1);
+    int m = b.get(6);
+    int n = b.get(7);
+    if ((i == k) && (j == m)) {
+      return xr.g().getResources().getString(2131493331);
+    }
+    if ((i == k) && (j == m + 1)) {
+      return xr.g().getResources().getString(2131493339);
+    }
+    if ((i == k) && (j <= m + 6))
+    {
+      switch (n)
+      {
+      default: 
+        return a(b);
+      case 7: 
+        return xr.g().getResources().getString(2131493337);
+      case 6: 
+        return xr.g().getResources().getString(2131493336);
+      case 5: 
+        return xr.g().getResources().getString(2131493335);
+      case 4: 
+        return xr.g().getResources().getString(2131493334);
+      case 3: 
+        return xr.g().getResources().getString(2131493333);
+      case 2: 
+        return xr.g().getResources().getString(2131493332);
+      }
+      return xr.g().getResources().getString(2131493338);
+    }
+    return a(b);
+  }
+  
+  public static String b(Context paramContext)
+  {
+    if (!sj.a().b()) {
+      return null;
+    }
+    try
+    {
+      if (sj.a().b()) {
+        paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
+      } else {
+        paramContext = "";
+      }
+    }
+    catch (Exception paramContext)
+    {
+      label40:
+      break label40;
+    }
+    paramContext = null;
+    xv.b("androidID =".concat(String.valueOf(paramContext)));
+    if (paramContext == null) {
+      return null;
+    }
+    return MD5.toMD5(paramContext);
+  }
+  
+  public static String b(String paramString)
+  {
+    if (paramString.length() < 3) {
+      return paramString;
+    }
+    StringBuffer localStringBuffer = new StringBuffer("12******9");
+    localStringBuffer.replace(0, 2, paramString.substring(0, 2));
+    localStringBuffer.replace(8, 9, paramString.substring(paramString.length() - 1, paramString.length()));
+    return localStringBuffer.toString();
+  }
+  
+  public static String b(byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte = tt.a().a;
+    if ((arrayOfByte != null) && (arrayOfByte.length == 16))
+    {
+      paramArrayOfByte = new abr().b(paramArrayOfByte, arrayOfByte);
+      if (paramArrayOfByte == null)
+      {
+        xv.c("encrypt pwd failed");
+        return null;
+      }
+      return tl.a(paramArrayOfByte);
+    }
+    boolean bool;
+    if (arrayOfByte == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    xv.a(bool);
+    return null;
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, HelpActivity.class);
+    localIntent.putExtra("help_url", paramString);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void b(Context paramContext, String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent(paramContext, HelpActivity.class);
+    localIntent.putExtra("help_url", paramString1);
+    localIntent.putExtra("help_title", paramString2);
+    localIntent.putExtra("help_url_need_login_sig", false);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static boolean b()
+  {
+    return RqdApplication.c == 1;
+  }
+  
+  public static int c(long paramLong)
+  {
+    if (paramLong >= 0L)
+    {
+      if (paramLong % 86400L == 0L)
+      {
+        int i = (int)(paramLong / 86400L);
+        if (i == 0) {
+          return 1;
+        }
+        return i;
+      }
+      return 1 + (int)(paramLong / 86400L);
     }
     return 0;
   }
   
-  public final xh a(JSONObject paramJSONObject, long paramLong, int paramInt)
+  public static String c(Context paramContext)
   {
-    xh localxh = new xh();
-    long l1 = aap.a(paramInt, paramLong);
-    for (;;)
-    {
-      int i;
-      long l2;
-      try
-      {
-        i = paramJSONObject.getInt("is_have_msg");
-        int m = paramJSONObject.getInt("rsp_msg_num");
-        localObject1 = paramJSONObject.getJSONArray("msgs");
-        if ((i <= 0) || (m <= 0)) {
-          break label517;
-        }
-        bool = true;
-        this.f = bool;
-        Object localObject2 = new StringBuilder("is need again=");
-        ((StringBuilder)localObject2).append(i);
-        ((StringBuilder)localObject2).append(", msg cnt=");
-        ((StringBuilder)localObject2).append(m);
-        xj.a(((StringBuilder)localObject2).toString());
-        if ((m > 0) && (localObject1 != null))
-        {
-          this.d = m;
-          this.a.c(paramLong);
-          i = 0;
-          int j = 0;
-          if (i < ((JSONArray)localObject1).length())
-          {
-            localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-            if (localObject2 == null) {
-              break label523;
-            }
-            bool = true;
-            xj.a(bool);
-            SafeMsgItem localSafeMsgItem = new SafeMsgItem();
-            localSafeMsgItem.mUin = paramLong;
-            if (!localSafeMsgItem.a((JSONObject)localObject2)) {
-              xj.c("object item parse failed: ".concat(String.valueOf(i)));
-            }
-            if ((this.g != -1) || (!localSafeMsgItem.b())) {
-              break label529;
-            }
-            int k = LoginMsgActivity.mNewMsgCntSetByAccount;
-            l2 = th.a().k.b().mRealUin;
-            this.g = (k + i + 1);
-            this.h = l2;
-            if (paramInt == 1) {
-              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
-            }
-            StringBuilder localStringBuilder = new StringBuilder("setlist got IPC msg,index = ");
-            localStringBuilder.append(LoginMsgActivity.mNewMsgCntSetByAccount + i + 1);
-            xj.c(localStringBuilder.toString());
-            if (this.a.a(localSafeMsgItem))
-            {
-              k = j + 1;
-              j = k;
-              l2 = l1;
-              if (localSafeMsgItem.mTime + 1L <= l1) {
-                break label532;
-              }
-              l2 = localSafeMsgItem.mTime + 1L;
-              j = k;
-              break label532;
-            }
-            xj.c("msg store to db is wrong".concat(String.valueOf(localObject2)));
-            l2 = l1;
-            break label532;
-          }
-          if (j != m)
-          {
-            this.d = j;
-            xj.c("msg cnt is wrong");
-            xj.c("msg cnt is wrong".concat(String.valueOf(paramJSONObject)));
-          }
-          aap.a(paramInt, paramLong, l1);
-          localxh.a = 0;
-          return localxh;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        localObject1 = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject1).append(paramJSONObject.toString());
-        localxh.a(10021, ((StringBuilder)localObject1).toString(), null);
-      }
-      catch (JSONException paramJSONObject)
-      {
-        Object localObject1 = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject1).append(paramJSONObject.toString());
-        localxh.a(10020, ((StringBuilder)localObject1).toString(), null);
-      }
-      localxh.a = 0;
-      return localxh;
-      label517:
-      boolean bool = false;
-      continue;
-      label523:
-      bool = false;
-      continue;
-      label529:
-      continue;
-      label532:
-      i += 1;
-      l1 = l2;
+    if (!sj.a().b()) {
+      return null;
     }
-  }
-  
-  public final void a(long paramLong)
-  {
-    
-    if (paramLong != 0L)
-    {
-      this.a.a(paramLong);
-      this.b.clear();
-    }
-  }
-  
-  public final SafeMsgItem b()
-  {
     try
     {
-      Object localObject = th.a().k.b();
-      if (localObject == null) {
-        return null;
-      }
-      if ((this.h != 0L) && (this.h != ((QQUser)localObject).mRealUin))
-      {
-        f();
-        com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = false;
-      }
-      long l2 = ((QQUser)localObject).mUin;
-      long l1 = l2;
-      if (!((QQUser)localObject).mIsBinded)
-      {
-        l1 = l2;
-        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-          l1 = aao.f(((QQUser)localObject).mRealUin);
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+    }
+    catch (Exception paramContext)
+    {
+      label31:
+      break label31;
+    }
+    paramContext = null;
+    xv.b("mac =".concat(String.valueOf(paramContext)));
+    if (paramContext == null) {
+      return null;
+    }
+    return MD5.toMD5(paramContext);
+  }
+  
+  public static String c(String paramString)
+  {
+    int k = paramString.length();
+    int i = 0;
+    while (i < k)
+    {
+      char c1 = paramString.charAt(i);
+      if (!Character.isLetterOrDigit(c1)) {
+        switch (c1)
+        {
+        default: 
+          break;
+        case '#': 
+        case '%': 
+        case '(': 
+        case ')': 
+        case '+': 
+        case ',': 
+        case '-': 
+        case '.': 
+        case '=': 
+        case '@': 
+        case '[': 
+        case ']': 
+        case '_': 
+        case '{': 
+        case '}': 
+          j = 1;
+          break;
         }
       }
-      localObject = this.a.a(l1, 1);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+      int j = 0;
+      if (j == 0)
       {
-        localObject = (SafeMsgItem)((List)localObject).get(0);
-        return localObject;
+        StringBuilder localStringBuilder = new StringBuilder("B");
+        localStringBuilder.append(aap.a(paramString.getBytes()));
+        return localStringBuilder.toString();
+      }
+      i += 1;
+    }
+    return "A".concat(String.valueOf(paramString));
+  }
+  
+  public static boolean c()
+  {
+    return RqdApplication.o();
+  }
+  
+  public static byte[] c(byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte = tt.a().a;
+    if ((arrayOfByte != null) && (arrayOfByte.length == 16))
+    {
+      paramArrayOfByte = new abr().b(paramArrayOfByte, arrayOfByte);
+      if (paramArrayOfByte == null)
+      {
+        xv.c("encrypt pwd failed");
+        return null;
+      }
+      return paramArrayOfByte;
+    }
+    boolean bool;
+    if (arrayOfByte == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    xv.a(bool);
+    return null;
+  }
+  
+  public static String d(long paramLong)
+  {
+    a.setTime(paramLong);
+    b.setTime(a);
+    b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = b.get(11);
+    int j = b.get(12);
+    if (i < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(i);
+    localStringBuffer.append(':');
+    if (j < 10) {
+      localStringBuffer.append('0');
+    }
+    localStringBuffer.append(j);
+    return localStringBuffer.toString();
+  }
+  
+  public static String d(Context paramContext)
+  {
+    if (!sj.a().b()) {
+      return null;
+    }
+    try
+    {
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getBSSID();
+    }
+    catch (Exception paramContext)
+    {
+      label31:
+      break label31;
+    }
+    paramContext = null;
+    xv.b("bssid =".concat(String.valueOf(paramContext)));
+    if (paramContext == null) {
+      return null;
+    }
+    return MD5.toMD5(paramContext);
+  }
+  
+  public static boolean d()
+  {
+    return RqdApplication.o();
+  }
+  
+  public static byte[] d(String paramString)
+  {
+    byte[] arrayOfByte = tt.a().a;
+    if ((arrayOfByte != null) && (arrayOfByte.length == 16)) {
+      try
+      {
+        paramString = new abr().a(tl.a(paramString), arrayOfByte);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+    }
+    boolean bool;
+    if (arrayOfByte == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    xv.a(bool);
+    return null;
+  }
+  
+  public static String e(long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return "";
+    }
+    StringBuffer localStringBuffer1 = new StringBuffer(Long.toString(paramLong));
+    StringBuffer localStringBuffer2 = new StringBuffer("");
+    int i = 0;
+    while (i < localStringBuffer1.length())
+    {
+      if ((i != 0) && (i != 1) && (i != localStringBuffer1.length() - 1)) {
+        localStringBuffer2.append('*');
+      } else {
+        localStringBuffer2.append(localStringBuffer1.charAt(i));
+      }
+      i += 1;
+    }
+    return localStringBuffer2.toString();
+  }
+  
+  public static String e(Context paramContext)
+  {
+    if (!sj.a().b()) {
+      return null;
+    }
+    try
+    {
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getSSID();
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return null;
+  }
+  
+  public static boolean e()
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    try
+    {
+      Object localObject = RqdApplication.n();
+      if (tt.a().k.b() == null) {
+        return false;
+      }
+      String str = String.valueOf(tt.a().k.b().mUin);
+      if (!TextUtils.isEmpty(str))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("account_tip_flag");
+        localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+        bool1 = ((SharedPreferences)localObject).getBoolean("account_tip_flag", false);
+        if (bool1) {
+          try
+          {
+            localObject = ((SharedPreferences)localObject).edit();
+            ((SharedPreferences.Editor)localObject).putBoolean("account_tip_flag", false);
+            ((SharedPreferences.Editor)localObject).commit();
+          }
+          catch (Exception localException1)
+          {
+            break label133;
+          }
+        }
+        return bool1;
+      }
+    }
+    catch (Exception localException2)
+    {
+      bool1 = bool2;
+      label133:
+      localException2.printStackTrace();
+    }
+    return bool1;
+  }
+  
+  public static byte[] e(String paramString)
+  {
+    xv.a("data hex: ".concat(String.valueOf(paramString)));
+    TmsLog.i("mod_seed", "@decSeedDataV2 data: ".concat(String.valueOf(paramString)));
+    try
+    {
+      abr localabr = new abr();
+      paramString = tl.a(paramString);
+      sv.b();
+      paramString = localabr.a(paramString, null);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      TmsLog.e("mod_seed", "@decSeedDataV2 err.", paramString);
+    }
+    return null;
+  }
+  
+  public static long f(long paramLong)
+  {
+    long l = 0L;
+    if (paramLong == 0L) {
+      return 0L;
+    }
+    String str = tl.a(MD5.toMD5Byte(Long.toString(paramLong)));
+    int j = Math.min(31, str.length() - 1);
+    for (paramLong = l; j >= 0; paramLong = l)
+    {
+      int k = 0;
+      int i;
+      if ((str.charAt(j) >= '0') && (str.charAt(j) <= '9'))
+      {
+        i = str.charAt(j) - '0';
+      }
+      else if ((str.charAt(j) >= 'a') && (str.charAt(j) <= 'f'))
+      {
+        i = str.charAt(j) - 'a';
+      }
+      else
+      {
+        i = k;
+        if (str.charAt(j) >= 'A')
+        {
+          i = k;
+          if (str.charAt(j) <= 'F') {
+            i = str.charAt(j) - 'A';
+          }
+        }
+      }
+      l = paramLong;
+      if (i % 2 != 0) {
+        l = paramLong + (1L << j);
+      }
+      j -= 1;
+    }
+    return paramLong;
+  }
+  
+  public static String f(String paramString)
+  {
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return null;
+      }
+      if (paramString.startsWith("http://")) {
+        return "http://";
+      }
+      if (paramString.startsWith("https://")) {
+        return "https://";
       }
       return null;
     }
-    catch (Exception localException) {}
     return null;
   }
   
-  public final SafeMsgItem b(int paramInt)
+  public static boolean f()
   {
-    int i = this.b.size();
-    if ((paramInt >= 0) && (paramInt < i)) {
-      return (SafeMsgItem)this.b.get(paramInt);
-    }
-    return null;
-  }
-  
-  public final void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((SafeMsgItem)localIterator.next()).mIsChecked = false;
-    }
-  }
-  
-  public final int d()
-  {
-    Iterator localIterator = this.b.iterator();
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
     int i = 0;
-    while (localIterator.hasNext()) {
-      if (((SafeMsgItem)localIterator.next()).mIsChecked) {
-        i += 1;
+    while (i < localList.size())
+    {
+      if (((ActivityManager.RunningServiceInfo)localList.get(i)).service.getClassName().equals("com.tencent.token.core.gamelogin.GameLoginService"))
+      {
+        StringBuilder localStringBuilder = new StringBuilder("game login: ");
+        localStringBuilder.append(((ActivityManager.RunningServiceInfo)localList.get(i)).service.getClassName());
+        xv.c(localStringBuilder.toString());
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public static String g(String paramString)
+  {
+    String str = f(paramString);
+    if (str == null) {
+      return null;
+    }
+    paramString = paramString.substring(str.length());
+    int i = paramString.indexOf('/');
+    if (i == -1) {
+      return paramString;
+    }
+    return paramString.substring(0, i);
+  }
+  
+  public static void g()
+  {
+    int j = 0;
+    try
+    {
+      Context localContext = RqdApplication.n();
+      int[] arrayOfInt = AppWidgetManager.getInstance(localContext).getAppWidgetIds(new ComponentName(localContext, TokenWidgetProvider.class));
+      StringBuilder localStringBuilder = new StringBuilder("widget_big num=");
+      localStringBuilder.append(arrayOfInt.length);
+      xv.a(localStringBuilder.toString());
+      int i = j;
+      if (arrayOfInt != null)
+      {
+        i = j;
+        if (arrayOfInt.length > 0) {
+          i = 1;
+        }
+      }
+      if ((i != 0) && (!n())) {
+        localContext.startService(new Intent(localContext, TokenService.class));
+      }
+      if (!o()) {
+        localContext.startService(new Intent(localContext, PushService.class));
+      }
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public static void h()
+  {
+    Intent localIntent = new Intent(RqdApplication.n(), GameLoginService.class);
+    RqdApplication.n().stopService(localIntent);
+  }
+  
+  public static void h(String paramString)
+  {
+    Object localObject = RqdApplication.n();
+    if (!TextUtils.isEmpty(null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(null);
+      localStringBuilder.append(paramString);
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean(paramString, true);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
+    }
+    localObject = ((Context)localObject).getSharedPreferences(paramString, 0).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean(paramString, true);
+    ((SharedPreferences.Editor)localObject).commit();
+  }
+  
+  public static String i()
+  {
+    Object localObject = RqdApplication.n();
+    if (localObject != null)
+    {
+      localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
+      if (localObject != null)
+      {
+        if (((NetworkInfo)localObject).getType() == 0)
+        {
+          if (((NetworkInfo)localObject).getExtraInfo() == null) {
+            return "";
+          }
+          return ((NetworkInfo)localObject).getExtraInfo().toLowerCase(Locale.getDefault());
+        }
+        return ((NetworkInfo)localObject).getTypeName().toLowerCase(Locale.getDefault());
+      }
+      return "";
+    }
+    return "";
+  }
+  
+  public static boolean i(String paramString)
+  {
+    Context localContext = RqdApplication.n();
+    if (!TextUtils.isEmpty(null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(null);
+      localStringBuilder.append(paramString);
+      return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean(paramString, false);
+    }
+    return localContext.getSharedPreferences(paramString, 0).getBoolean(paramString, false);
+  }
+  
+  public static int j(String paramString)
+  {
+    Context localContext = RqdApplication.n();
+    if (!TextUtils.isEmpty(null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(null);
+      localStringBuilder.append(paramString);
+      return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getInt(paramString, 0);
+    }
+    return localContext.getSharedPreferences(paramString, 0).getInt(paramString, 0);
+  }
+  
+  public static String j()
+  {
+    try
+    {
+      Object localObject = RqdApplication.n();
+      localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0).versionName;
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return "";
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      localNameNotFoundException.printStackTrace();
+    }
+    return "";
+  }
+  
+  /* Error */
+  public static String k()
+  {
+    // Byte code:
+    //   0: new 747	java/util/ArrayList
+    //   3: dup
+    //   4: invokespecial 748	java/util/ArrayList:<init>	()V
+    //   7: astore_0
+    //   8: new 750	java/io/DataInputStream
+    //   11: dup
+    //   12: invokestatic 346	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+    //   15: invokevirtual 102	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   18: invokevirtual 754	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   21: ldc_w 756
+    //   24: invokevirtual 762	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   27: invokespecial 765	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   30: astore_1
+    //   31: aload_1
+    //   32: invokevirtual 768	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   35: astore_2
+    //   36: aload_2
+    //   37: ifnull +38 -> 75
+    //   40: aload_2
+    //   41: invokevirtual 187	java/lang/String:length	()I
+    //   44: iconst_1
+    //   45: if_icmple -14 -> 31
+    //   48: aload_2
+    //   49: invokevirtual 770	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   52: ldc_w 772
+    //   55: invokevirtual 774	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   58: iflt -27 -> 31
+    //   61: aload_0
+    //   62: aload_2
+    //   63: bipush 8
+    //   65: invokevirtual 667	java/lang/String:substring	(I)Ljava/lang/String;
+    //   68: invokevirtual 777	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   71: pop
+    //   72: goto -41 -> 31
+    //   75: aload_0
+    //   76: invokevirtual 778	java/util/ArrayList:size	()I
+    //   79: ifle +20 -> 99
+    //   82: aload_0
+    //   83: aload_0
+    //   84: invokevirtual 778	java/util/ArrayList:size	()I
+    //   87: iconst_1
+    //   88: isub
+    //   89: invokevirtual 779	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   92: checkcast 186	java/lang/String
+    //   95: astore_0
+    //   96: goto +7 -> 103
+    //   99: ldc_w 781
+    //   102: astore_0
+    //   103: aload_1
+    //   104: invokevirtual 784	java/io/DataInputStream:close	()V
+    //   107: aload_0
+    //   108: areturn
+    //   109: astore_0
+    //   110: goto +15 -> 125
+    //   113: astore_0
+    //   114: aload_0
+    //   115: invokevirtual 293	java/lang/Exception:printStackTrace	()V
+    //   118: aload_1
+    //   119: invokevirtual 784	java/io/DataInputStream:close	()V
+    //   122: goto +9 -> 131
+    //   125: aload_1
+    //   126: invokevirtual 784	java/io/DataInputStream:close	()V
+    //   129: aload_0
+    //   130: athrow
+    //   131: ldc_w 781
+    //   134: areturn
+    //   135: astore_0
+    //   136: goto -5 -> 131
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   7	101	0	localObject1	Object
+    //   109	1	0	localObject2	Object
+    //   113	17	0	localException	Exception
+    //   135	1	0	localIOException	java.io.IOException
+    //   30	96	1	localDataInputStream	java.io.DataInputStream
+    //   35	28	2	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   31	36	109	finally
+    //   40	72	109	finally
+    //   75	96	109	finally
+    //   114	118	109	finally
+    //   31	36	113	java/lang/Exception
+    //   40	72	113	java/lang/Exception
+    //   75	96	113	java/lang/Exception
+    //   0	31	135	java/io/IOException
+    //   103	107	135	java/io/IOException
+    //   118	122	135	java/io/IOException
+    //   125	131	135	java/io/IOException
+  }
+  
+  public static String k(String paramString)
+  {
+    xv.a(paramString);
+    if (paramString == null) {
+      return "null";
+    }
+    try
+    {
+      int j = paramString.indexOf("//");
+      if (j == -1) {
+        break label208;
+      }
+      int i = xr.a();
+      j += 2;
+      str1 = paramString.substring(0, j);
+      str2 = paramString.substring(j, paramString.length() - 1);
+      switch (i)
+      {
+      case 3: 
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append("gray.");
+        localStringBuilder.append(str2);
+        return localStringBuilder.toString();
       }
     }
-    return i;
+    catch (Exception localException)
+    {
+      String str1;
+      String str2;
+      StringBuilder localStringBuilder;
+      localException.printStackTrace();
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("exp.");
+    localStringBuilder.append(str2);
+    return localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("test.");
+    localStringBuilder.append(str2);
+    str1 = localStringBuilder.toString();
+    return str1;
+    label208:
+    return paramString;
+    return paramString;
   }
   
-  public final int e()
+  @SuppressLint({"MissingPermission", "HardwareIds"})
+  public static String l()
   {
-    return this.b.size();
+    if (!sj.a().b()) {
+      return null;
+    }
+    xv.b("deviceId =".concat(String.valueOf("00000000000021")));
+    return MD5.toMD5("00000000000021");
   }
   
-  public final void f()
+  public static int m()
   {
-    this.g = -1;
-    this.h = 0L;
+    return Build.VERSION.SDK_INT;
+  }
+  
+  private static boolean n()
+  {
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (((ActivityManager.RunningServiceInfo)localList.get(i)).service.getClassName().equals("com.tencent.token.widget.TokenService")) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private static boolean o()
+  {
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
+    if (localList == null) {
+      return false;
+    }
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (((ActivityManager.RunningServiceInfo)localList.get(i)).service.getClassName().equals("com.tencent.token.core.push.PushService")) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
 }
 

@@ -1,129 +1,108 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.MenuItem;
-import android.view.SubMenu;
+import android.support.v7.view.menu.ListMenuItemView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
 
 public final class ic
-  extends hp
-  implements SubMenu
+  extends BaseAdapter
 {
-  public hp l;
-  private hr m;
+  static final int a = hg.g.abc_popup_menu_item_layout;
+  public id b;
+  boolean c;
+  private int d = -1;
+  private final boolean e;
+  private final LayoutInflater f;
   
-  public ic(Context paramContext, hp paramhp, hr paramhr)
+  public ic(id paramid, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    super(paramContext);
-    this.l = paramhp;
-    this.m = paramhr;
+    this.e = paramBoolean;
+    this.f = paramLayoutInflater;
+    this.b = paramid;
+    a();
   }
   
-  public final String a()
+  private void a()
   {
-    Object localObject = this.m;
-    int i;
-    if (localObject != null) {
-      i = ((hr)localObject).getItemId();
+    if localif = this.b.j;
+    if (localif != null)
+    {
+      ArrayList localArrayList = this.b.j();
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        if ((if)localArrayList.get(i) == localif)
+        {
+          this.d = i;
+          return;
+        }
+        i += 1;
+      }
+    }
+    this.d = -1;
+  }
+  
+  public final if a(int paramInt)
+  {
+    ArrayList localArrayList;
+    if (this.e) {
+      localArrayList = this.b.j();
     } else {
-      i = 0;
+      localArrayList = this.b.h();
     }
-    if (i == 0) {
-      return null;
+    int j = this.d;
+    int i = paramInt;
+    if (j >= 0)
+    {
+      i = paramInt;
+      if (paramInt >= j) {
+        i = paramInt + 1;
+      }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(super.a());
-    ((StringBuilder)localObject).append(":");
-    ((StringBuilder)localObject).append(i);
-    return ((StringBuilder)localObject).toString();
+    return (if)localArrayList.get(i);
   }
   
-  public final void a(hp.a parama)
+  public final int getCount()
   {
-    this.l.a(parama);
+    ArrayList localArrayList;
+    if (this.e) {
+      localArrayList = this.b.j();
+    } else {
+      localArrayList = this.b.h();
+    }
+    if (this.d < 0) {
+      return localArrayList.size();
+    }
+    return localArrayList.size() - 1;
   }
   
-  final boolean a(hp paramhp, MenuItem paramMenuItem)
+  public final long getItemId(int paramInt)
   {
-    return (super.a(paramhp, paramMenuItem)) || (this.l.a(paramhp, paramMenuItem));
+    return paramInt;
   }
   
-  public final boolean a(hr paramhr)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.l.a(paramhr);
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.f.inflate(a, paramViewGroup, false);
+    }
+    paramView = (il.a)localView;
+    if (this.c) {
+      ((ListMenuItemView)localView).setForceShowIcon(true);
+    }
+    paramView.a(a(paramInt));
+    return localView;
   }
   
-  public final boolean b()
+  public final void notifyDataSetChanged()
   {
-    return this.l.b();
-  }
-  
-  public final boolean b(hr paramhr)
-  {
-    return this.l.b(paramhr);
-  }
-  
-  public final boolean c()
-  {
-    return this.l.c();
-  }
-  
-  public final MenuItem getItem()
-  {
-    return this.m;
-  }
-  
-  public final hp k()
-  {
-    return this.l.k();
-  }
-  
-  public final SubMenu setHeaderIcon(int paramInt)
-  {
-    super.a(0, null, paramInt, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderIcon(Drawable paramDrawable)
-  {
-    super.a(0, null, 0, paramDrawable, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderTitle(int paramInt)
-  {
-    super.a(paramInt, null, 0, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderTitle(CharSequence paramCharSequence)
-  {
-    super.a(0, paramCharSequence, 0, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderView(View paramView)
-  {
-    super.a(0, null, 0, null, paramView);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setIcon(int paramInt)
-  {
-    this.m.setIcon(paramInt);
-    return this;
-  }
-  
-  public final SubMenu setIcon(Drawable paramDrawable)
-  {
-    this.m.setIcon(paramDrawable);
-    return this;
-  }
-  
-  public final void setQwertyMode(boolean paramBoolean)
-  {
-    this.l.setQwertyMode(paramBoolean);
+    a();
+    super.notifyDataSetChanged();
   }
 }
 

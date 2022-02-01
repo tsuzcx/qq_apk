@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/personal_information_manager" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="个人信息查询与管理" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:id="@id/about_divider_1" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/device_info" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="当前设备信息" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/personal_info_download" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="个人信息下载" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/privacy_detail" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="隐私条款" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/permission_detail" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="应用权限说明" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+</LinearLayout>

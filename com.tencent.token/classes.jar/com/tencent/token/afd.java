@@ -1,88 +1,365 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.IBinder;
-import android.os.Parcel;
-import java.security.MessageDigest;
+import com.tencent.turingfd.sdk.qps.Lyra;
+import com.tencent.turingfd.sdk.qps.Orion;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class afd
-  extends afb
 {
-  public static final String b = agg.a(agg.i);
+  public ByteBuffer a = ByteBuffer.allocate(128);
   
-  public final String a(IBinder paramIBinder)
+  private void a(int paramInt)
   {
-    String str;
-    Object localObject3;
-    try
+    if (this.a.remaining() < paramInt)
     {
-      localObject1 = agn.a;
-      str = ((Context)localObject1).getPackageName();
-      localParcel = null;
+      ByteBuffer localByteBuffer = ByteBuffer.allocate((this.a.capacity() + paramInt) * 2);
+      localByteBuffer.put(this.a.array(), 0, this.a.position());
+      this.a = localByteBuffer;
     }
-    finally {}
-    try
+  }
+  
+  private void a(Object paramObject, int paramInt)
+  {
+    if ((paramObject instanceof Byte))
     {
-      localObject5 = ((Context)localObject1).getPackageManager().getPackageInfo(str, 64).signatures;
-      break label44;
+      a(((Byte)paramObject).byteValue(), paramInt);
+      return;
     }
-    finally {}
-    Object localObject5 = null;
-    label44:
-    Object localObject1 = localParcel;
-    if (localObject5 != null)
+    if ((paramObject instanceof Boolean))
     {
-      localObject1 = localParcel;
-      if (localObject5.length > 0)
+      a((byte)((Boolean)paramObject).booleanValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Short))
+    {
+      a(((Short)paramObject).shortValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      a(((Integer)paramObject).intValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Long))
+    {
+      a(((Long)paramObject).longValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Float))
+    {
+      a(((Float)paramObject).floatValue(), paramInt);
+      return;
+    }
+    double d;
+    if ((paramObject instanceof Double))
+    {
+      d = ((Double)paramObject).doubleValue();
+      a(10);
+      b((byte)5, paramInt);
+      this.a.putDouble(d);
+      return;
+    }
+    if ((paramObject instanceof String))
+    {
+      a((String)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof Map))
+    {
+      a((Map)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof List))
+    {
+      a((List)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof Orion))
+    {
+      a((Orion)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof byte[]))
+    {
+      a((byte[])paramObject, paramInt);
+      return;
+    }
+    int i;
+    if ((paramObject instanceof boolean[]))
+    {
+      paramObject = (boolean[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        localObject5 = localObject5[0].toByteArray();
-        try
-        {
-          localObject6 = MessageDigest.getInstance("SHA1");
-          localObject1 = localParcel;
-          if (localObject6 != null)
-          {
-            localObject1 = ((MessageDigest)localObject6).digest((byte[])localObject5);
-            localObject5 = new StringBuilder();
-            int j = localObject1.length;
-            int i = 0;
-            while (i < j)
-            {
-              ((StringBuilder)localObject5).append(Integer.toHexString(localObject1[i] & 0xFF | 0x100).substring(1, 3));
-              i += 1;
-            }
-            localObject1 = ((StringBuilder)localObject5).toString();
-          }
-        }
-        finally
-        {
-          localObject2.printStackTrace();
-          localObject3 = localParcel;
-        }
+        a((byte)paramObject[paramInt], 0);
+        paramInt += 1;
       }
     }
-    Object localObject6 = agg.a(agg.j);
-    localObject5 = Parcel.obtain();
-    Parcel localParcel = Parcel.obtain();
+    if ((paramObject instanceof short[]))
+    {
+      paramObject = (short[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof long[]))
+    {
+      paramObject = (long[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof float[]))
+    {
+      paramObject = (float[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof double[]))
+    {
+      paramObject = (double[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        d = paramObject[paramInt];
+        a(10);
+        b((byte)5, 0);
+        this.a.putDouble(d);
+        paramInt += 1;
+      }
+    }
+    if (paramObject.getClass().isArray())
+    {
+      paramObject = (Object[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof Collection))
+    {
+      a((Collection)paramObject, paramInt);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    throw new Lyra(localStringBuilder.toString());
+  }
+  
+  private void b(byte paramByte, int paramInt)
+  {
+    byte b;
+    if (paramInt < 15)
+    {
+      b = (byte)(paramByte | paramInt << 4);
+      this.a.put(b);
+      return;
+    }
+    if (paramInt < 256)
+    {
+      b = (byte)(paramByte | 0xF0);
+      this.a.put(b);
+      this.a.put((byte)paramInt);
+      return;
+    }
+    throw new Lyra("tag is too large: ".concat(String.valueOf(paramInt)));
+  }
+  
+  public final void a(byte paramByte, int paramInt)
+  {
+    a(3);
+    if (paramByte == 0)
+    {
+      b((byte)12, paramInt);
+      return;
+    }
+    b((byte)0, paramInt);
+    this.a.put(paramByte);
+  }
+  
+  public final void a(float paramFloat, int paramInt)
+  {
+    a(6);
+    b((byte)4, paramInt);
+    this.a.putFloat(paramFloat);
+  }
+  
+  public final void a(int paramInt1, int paramInt2)
+  {
+    a(6);
+    if ((paramInt1 >= -32768) && (paramInt1 <= 32767))
+    {
+      a((short)paramInt1, paramInt2);
+      return;
+    }
+    b((byte)2, paramInt2);
+    this.a.putInt(paramInt1);
+  }
+  
+  public final void a(long paramLong, int paramInt)
+  {
+    a(10);
+    if ((paramLong >= -2147483648L) && (paramLong <= 2147483647L))
+    {
+      a((int)paramLong, paramInt);
+      return;
+    }
+    b((byte)3, paramInt);
+    this.a.putLong(paramLong);
+  }
+  
+  public final void a(Orion paramOrion, int paramInt)
+  {
+    a(2);
+    b((byte)10, paramInt);
+    paramOrion.a(this);
+    a(2);
+    b((byte)11, 0);
+  }
+  
+  public final void a(String paramString, int paramInt)
+  {
     try
     {
-      ((Parcel)localObject5).writeInterfaceToken(b);
-      ((Parcel)localObject5).writeString(str);
-      ((Parcel)localObject5).writeString(localObject3);
-      ((Parcel)localObject5).writeString((String)localObject6);
-      paramIBinder.transact(1, (Parcel)localObject5, localParcel, 0);
-      localParcel.readException();
-      paramIBinder = localParcel.readString();
-      return paramIBinder;
+      byte[] arrayOfByte = paramString.getBytes("GBK");
+      paramString = arrayOfByte;
     }
-    finally
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      localParcel.recycle();
-      ((Parcel)localObject5).recycle();
+      label12:
+      break label12;
     }
+    paramString = paramString.getBytes();
+    a(paramString.length + 10);
+    if (paramString.length > 255)
+    {
+      b((byte)7, paramInt);
+      this.a.putInt(paramString.length);
+      this.a.put(paramString);
+      return;
+    }
+    b((byte)6, paramInt);
+    this.a.put((byte)paramString.length);
+    this.a.put(paramString);
+  }
+  
+  public final <T> void a(Collection<T> paramCollection, int paramInt)
+  {
+    a(8);
+    b((byte)9, paramInt);
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    a(paramInt, 0);
+    if (paramCollection != null)
+    {
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        a(paramCollection.next(), 0);
+      }
+    }
+  }
+  
+  public final <K, V> void a(Map<K, V> paramMap, int paramInt)
+  {
+    a(8);
+    b((byte)8, paramInt);
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    a(paramInt, 0);
+    if (paramMap != null)
+    {
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        a(localEntry.getKey(), 0);
+        a(localEntry.getValue(), 1);
+      }
+    }
+  }
+  
+  public final void a(short paramShort, int paramInt)
+  {
+    a(4);
+    if ((paramShort >= -128) && (paramShort <= 127))
+    {
+      a((byte)paramShort, paramInt);
+      return;
+    }
+    b((byte)1, paramInt);
+    this.a.putShort(paramShort);
+  }
+  
+  public final void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    a(paramArrayOfByte.length + 8);
+    b((byte)13, paramInt);
+    b((byte)0, 0);
+    a(paramArrayOfByte.length, 0);
+    this.a.put(paramArrayOfByte);
   }
 }
 

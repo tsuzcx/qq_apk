@@ -1,339 +1,342 @@
 package com.tencent.token;
 
-import java.io.UnsupportedEncodingException;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
+import com.tencent.token.global.RqdApplication;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class abj
+  extends Observable
+  implements abd
 {
-  static final byte[] a = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-  private long[] b = new long[4];
-  private long[] c = new long[2];
-  private byte[] d = new byte[64];
-  private byte[] e = new byte[16];
+  public static final String[] a = { "login_protect", "account_prot", "mail_protect", "qb_prot", "account_lock", "game_lock", "real_name", "modify_pwd", "recover_friends", "account_freeze", "key_value" };
+  public int b = 0;
+  private List<NewConfigureCacheItem> c = Collections.synchronizedList(new ArrayList());
+  private boolean d = false;
   
-  public abj()
+  private void a(NewConfigureCacheItem paramNewConfigureCacheItem)
   {
-    a();
-  }
-  
-  private static long a(byte paramByte)
-  {
-    if (paramByte < 0) {
-      return paramByte & 0xFF;
-    }
-    return paramByte;
-  }
-  
-  private static long a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
-  {
-    int i = (int)(paramLong1 + ((paramLong3 & paramLong2 | paramLong4 & (0xFFFFFFFF ^ paramLong2)) + paramLong5 + paramLong7));
-    return (i << (int)paramLong6 | i >>> (int)(32L - paramLong6)) + paramLong2;
-  }
-  
-  private void a()
-  {
-    long[] arrayOfLong = this.c;
-    arrayOfLong[0] = 0L;
-    arrayOfLong[1] = 0L;
-    arrayOfLong = this.b;
-    arrayOfLong[0] = 1732584193L;
-    arrayOfLong[1] = 4023233417L;
-    arrayOfLong[2] = 2562383102L;
-    arrayOfLong[3] = 271733878L;
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    byte[] arrayOfByte = new byte[64];
-    long[] arrayOfLong = this.c;
-    int m = 0;
-    int j = (int)(arrayOfLong[0] >>> 3) & 0x3F;
-    long l2 = arrayOfLong[0];
-    long l1 = paramInt << 3;
-    l2 += l1;
-    arrayOfLong[0] = l2;
-    if (l2 < l1) {
-      arrayOfLong[1] += 1L;
-    }
-    arrayOfLong = this.c;
-    arrayOfLong[1] += (paramInt >>> 29);
-    int i = 64 - j;
-    if (paramInt >= i)
+    try
     {
-      a(this.d, paramArrayOfByte, j, 0, i);
-      d(this.d);
-      for (;;)
+      this.c.add(paramNewConfigureCacheItem);
+      return;
+    }
+    finally
+    {
+      paramNewConfigureCacheItem = finally;
+      throw paramNewConfigureCacheItem;
+    }
+  }
+  
+  private boolean a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      try
       {
-        k = i;
-        j = m;
-        if (i + 63 >= paramInt) {
-          break;
+        if (i < paramJSONArray.length())
+        {
+          Object localObject = paramJSONArray.getJSONArray(i);
+          String str = (String)((JSONArray)localObject).get(0);
+          int k = ((Integer)((JSONArray)localObject).get(1)).intValue();
+          NewConfigureCacheItem localNewConfigureCacheItem = a(str);
+          localObject = localNewConfigureCacheItem;
+          if (localNewConfigureCacheItem == null)
+          {
+            localObject = new NewConfigureCacheItem(str);
+            a((NewConfigureCacheItem)localObject);
+            break label155;
+            if (j < a.length - 1)
+            {
+              if ((this.b == 0) || (((NewConfigureCacheItem)localObject).mClientVersion >= k) || (!str.equals(a[j]))) {
+                break label160;
+              }
+              this.d = true;
+              break label160;
+            }
+            ((NewConfigureCacheItem)localObject).mClientVersion = k;
+            i += 1;
+          }
         }
-        a(arrayOfByte, paramArrayOfByte, 0, i, 64);
-        d(arrayOfByte);
-        i += 64;
+        else
+        {
+          return true;
+        }
+      }
+      catch (JSONException paramJSONArray)
+      {
+        return false;
+      }
+      catch (Exception paramJSONArray)
+      {
+        return false;
+      }
+      label155:
+      int j = 0;
+      continue;
+      label160:
+      j += 1;
+    }
+  }
+  
+  private boolean b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        localObject1 = paramJSONObject.getJSONArray("main_tab_new");
+        paramJSONObject = paramJSONObject.getJSONArray("conf_id_new");
+        if (localObject1 != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = (String)((JSONArray)localObject1).get(i);
+            NewConfigureCacheItem localNewConfigureCacheItem = a((String)localObject2);
+            if (localNewConfigureCacheItem == null) {
+              break label282;
+            }
+            localNewConfigureCacheItem.mClickVersion = -1;
+            j = 0;
+            if (j >= a.length - 1) {
+              break label282;
+            }
+            if (!((String)localObject2).equals(a[j])) {
+              break label275;
+            }
+            this.d = true;
+            break label275;
+          }
+        }
+        localObject1 = this.c.iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (NewConfigureCacheItem)((Iterator)localObject1).next();
+          if (((NewConfigureCacheItem)localObject2).mClickVersion == -1) {
+            continue;
+          }
+          ((NewConfigureCacheItem)localObject2).mClickVersion = ((NewConfigureCacheItem)localObject2).mClientVersion;
+          continue;
+        }
+        localObject1 = a("game_lock");
+        if (((NewConfigureCacheItem)localObject1).mConfIDs == null) {
+          ((NewConfigureCacheItem)localObject1).mConfIDs = new ArrayList();
+        }
+        localObject2 = a("account_prot");
+        if (((NewConfigureCacheItem)localObject2).mConfIDs != null) {
+          break label289;
+        }
+        ((NewConfigureCacheItem)localObject2).mConfIDs = new ArrayList();
+      }
+      catch (Exception paramJSONObject)
+      {
+        Object localObject1;
+        Object localObject2;
+        xv.b(paramJSONObject.toString());
+        return false;
+      }
+      if (i < paramJSONObject.length())
+      {
+        ((NewConfigureCacheItem)localObject1).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        ((NewConfigureCacheItem)localObject2).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        i += 1;
+      }
+      else
+      {
+        return true;
+        label275:
+        j += 1;
+        continue;
+        label282:
+        i += 1;
+        continue;
+        label289:
+        if (paramJSONObject != null) {
+          i = 0;
+        }
       }
     }
-    int k = 0;
-    a(this.d, paramArrayOfByte, j, k, paramInt - k);
   }
   
-  private static void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
+  public final abn a(Serializable paramSerializable)
   {
-    int i = 0;
-    while (i < paramInt3)
-    {
-      paramArrayOfByte1[(paramInt1 + i)] = paramArrayOfByte2[(paramInt2 + i)];
-      i += 1;
-    }
+    abn localabn = new abn();
+    localabn.a = paramSerializable;
+    return localabn;
   }
   
-  private static void a(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < paramInt)
-    {
-      paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
-      paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
-      paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
-      paramArrayOfByte[(i + 3)] = ((byte)(int)(0xFF & paramArrayOfLong[j] >>> 24));
-      j += 1;
-      i += 4;
-    }
-  }
-  
-  private static void a(long[] paramArrayOfLong, byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < 64)
-    {
-      paramArrayOfLong[j] = (a(paramArrayOfByte[i]) | a(paramArrayOfByte[(i + 1)]) << 8 | a(paramArrayOfByte[(i + 2)]) << 16 | a(paramArrayOfByte[(i + 3)]) << 24);
-      j += 1;
-      i += 4;
-    }
-  }
-  
-  public static byte[] a(String paramString)
+  public final NewConfigureCacheItem a(String paramString)
   {
     try
     {
-      byte[] arrayOfByte = paramString.getBytes("ISO8859_1");
-      paramString = arrayOfByte;
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        NewConfigureCacheItem localNewConfigureCacheItem = (NewConfigureCacheItem)localIterator.next();
+        boolean bool = localNewConfigureCacheItem.mConfKey.equals(paramString);
+        if (bool) {
+          return localNewConfigureCacheItem;
+        }
+      }
+      return null;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      label12:
-      break label12;
-    }
-    paramString = paramString.getBytes();
-    return new abj().c(paramString);
+    finally {}
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public final Serializable a(abn paramabn)
   {
-    return new abj().c(paramArrayOfByte);
+    return (Serializable)paramabn.a;
   }
   
-  private static long b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  public final void a()
   {
-    int i = (int)((paramLong2 & paramLong4 | (0xFFFFFFFF ^ paramLong4) & paramLong3) + paramLong5 + paramLong7 + paramLong1);
-    int j = (int)paramLong6;
-    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
-  }
-  
-  private static String b(byte paramByte)
-  {
-    char[] arrayOfChar = new char[16];
-    char[] tmp6_5 = arrayOfChar;
-    tmp6_5[0] = 48;
-    char[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 49;
-    char[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 50;
-    char[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 51;
-    char[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 52;
-    char[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 53;
-    char[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 54;
-    char[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 55;
-    char[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 56;
-    char[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 57;
-    char[] tmp60_54 = tmp54_48;
-    tmp60_54[10] = 65;
-    char[] tmp66_60 = tmp60_54;
-    tmp66_60[11] = 66;
-    char[] tmp72_66 = tmp66_60;
-    tmp72_66[12] = 67;
-    char[] tmp78_72 = tmp72_66;
-    tmp78_72[13] = 68;
-    char[] tmp84_78 = tmp78_72;
-    tmp84_78[14] = 69;
-    char[] tmp90_84 = tmp84_78;
-    tmp90_84[15] = 70;
-    tmp90_84;
-    return new String(new char[] { arrayOfChar[(paramByte >>> 4 & 0xF)], arrayOfChar[(paramByte & 0xF)] });
-  }
-  
-  public static String b(String paramString)
-  {
-    try
-    {
-      arrayOfByte = paramString.getBytes("ISO8859_1");
-      paramString = arrayOfByte;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      byte[] arrayOfByte;
-      label12:
-      int i;
-      break label12;
-    }
-    paramString = paramString.getBytes();
-    arrayOfByte = new abj().c(paramString);
-    paramString = "";
-    i = 0;
-    while (i < 16)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(b(arrayOfByte[i]));
-      paramString = localStringBuilder.toString();
-      i += 1;
-    }
-    return paramString;
-  }
-  
-  public static String b(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = new abj().c(paramArrayOfByte);
-    paramArrayOfByte = "";
-    int i = 0;
-    while (i < 16)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramArrayOfByte);
-      localStringBuilder.append(b(arrayOfByte[i]));
-      paramArrayOfByte = localStringBuilder.toString();
-      i += 1;
-    }
-    return paramArrayOfByte;
-  }
-  
-  private static long c(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
-  {
-    int i = (int)(paramLong1 + ((paramLong3 ^ paramLong2 ^ paramLong4) + paramLong5 + paramLong7));
-    return (i << (int)paramLong6 | i >>> (int)(32L - paramLong6)) + paramLong2;
-  }
-  
-  private byte[] c(byte[] paramArrayOfByte)
-  {
-    a();
-    a(paramArrayOfByte, paramArrayOfByte.length);
-    paramArrayOfByte = new byte[8];
-    a(paramArrayOfByte, this.c, 8);
-    int i = (int)(this.c[0] >>> 3) & 0x3F;
-    if (i < 56) {
-      i = 56 - i;
+    Object localObject1 = RqdApplication.m().a(this);
+    if (localObject1 == null) {
+      localObject1 = null;
     } else {
-      i = 120 - i;
+      localObject1 = (List)((abb.a)localObject1).b.a;
     }
-    a(a, i);
-    a(paramArrayOfByte, 8);
-    a(this.e, this.b, 16);
-    return this.e;
+    int k = 0;
+    int i;
+    if (localObject1 == null)
+    {
+      i = 0;
+    }
+    else
+    {
+      int m = ((List)localObject1).size();
+      i = 0;
+      while (i < a.length)
+      {
+        j = 0;
+        while (j < m)
+        {
+          localObject2 = (NewConfigureCacheItem)((List)localObject1).get(j);
+          if (a[i].equals(((NewConfigureCacheItem)localObject2).mConfKey)) {
+            break;
+          }
+          j += 1;
+        }
+        if (j == m)
+        {
+          i = 0;
+          break label170;
+        }
+        i += 1;
+      }
+      Object localObject2 = ((List)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        if (((NewConfigureCacheItem)((Iterator)localObject2).next()).mConfIDs == null)
+        {
+          i = 0;
+          break label170;
+        }
+      }
+      i = 1;
+    }
+    label170:
+    int j = k;
+    if (i != 0)
+    {
+      this.c.addAll((Collection)localObject1);
+      return;
+    }
+    for (;;)
+    {
+      localObject1 = a;
+      if (j >= localObject1.length) {
+        break;
+      }
+      a(new NewConfigureCacheItem(localObject1[j]));
+      j += 1;
+    }
   }
   
-  private static long d(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  public final boolean a(JSONObject paramJSONObject)
   {
-    int i = (int)(paramLong1 + ((paramLong3 ^ (paramLong4 ^ 0xFFFFFFFF | paramLong2)) + paramLong5 + paramLong7));
-    return (i << (int)paramLong6 | i >>> (int)(32L - paramLong6)) + paramLong2;
+    bool2 = false;
+    if (paramJSONObject == null) {
+      return false;
+    }
+    xv.c(paramJSONObject.toString());
+    try
+    {
+      i = paramJSONObject.getInt("version");
+      bool1 = bool2;
+      if (this.b >= i) {
+        break label144;
+      }
+      bool1 = a(paramJSONObject.getJSONArray("config_version"));
+      try
+      {
+        SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
+        localEditor.putInt("exchangeky_conf_ver", i);
+        localEditor.commit();
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+        localStringBuilder.append(localException.getMessage());
+        xv.c(localStringBuilder.toString());
+      }
+      if (this.b != 0) {
+        break label180;
+      }
+      bool1 = b(paramJSONObject.getJSONObject("install_new"));
+    }
+    catch (Exception paramJSONObject)
+    {
+      for (;;)
+      {
+        int i;
+        label144:
+        boolean bool1 = bool2;
+      }
+    }
+    this.b = i;
+    if (bool1)
+    {
+      b();
+      setChanged();
+      notifyObservers();
+      if (this.d) {
+        xy.a(true);
+      }
+    }
+    return bool1;
   }
   
-  private void d(byte[] paramArrayOfByte)
+  public final void b()
   {
-    long[] arrayOfLong = this.b;
-    long l2 = arrayOfLong[0];
-    long l1 = arrayOfLong[1];
-    long l4 = arrayOfLong[2];
-    long l3 = arrayOfLong[3];
-    arrayOfLong = new long[16];
-    a(arrayOfLong, paramArrayOfByte);
-    l2 = a(l2, l1, l4, l3, arrayOfLong[0], 7L, 3614090360L);
-    l3 = a(l3, l2, l1, l4, arrayOfLong[1], 12L, 3905402710L);
-    l4 = a(l4, l3, l2, l1, arrayOfLong[2], 17L, 606105819L);
-    l1 = a(l1, l4, l3, l2, arrayOfLong[3], 22L, 3250441966L);
-    l2 = a(l2, l1, l4, l3, arrayOfLong[4], 7L, 4118548399L);
-    l3 = a(l3, l2, l1, l4, arrayOfLong[5], 12L, 1200080426L);
-    l4 = a(l4, l3, l2, l1, arrayOfLong[6], 17L, 2821735955L);
-    l1 = a(l1, l4, l3, l2, arrayOfLong[7], 22L, 4249261313L);
-    l2 = a(l2, l1, l4, l3, arrayOfLong[8], 7L, 1770035416L);
-    l3 = a(l3, l2, l1, l4, arrayOfLong[9], 12L, 2336552879L);
-    l4 = a(l4, l3, l2, l1, arrayOfLong[10], 17L, 4294925233L);
-    l1 = a(l1, l4, l3, l2, arrayOfLong[11], 22L, 2304563134L);
-    l2 = a(l2, l1, l4, l3, arrayOfLong[12], 7L, 1804603682L);
-    l3 = a(l3, l2, l1, l4, arrayOfLong[13], 12L, 4254626195L);
-    l4 = a(l4, l3, l2, l1, arrayOfLong[14], 17L, 2792965006L);
-    l1 = a(l1, l4, l3, l2, arrayOfLong[15], 22L, 1236535329L);
-    l2 = b(l2, l1, l4, l3, arrayOfLong[1], 5L, 4129170786L);
-    l3 = b(l3, l2, l1, l4, arrayOfLong[6], 9L, 3225465664L);
-    l4 = b(l4, l3, l2, l1, arrayOfLong[11], 14L, 643717713L);
-    l1 = b(l1, l4, l3, l2, arrayOfLong[0], 20L, 3921069994L);
-    l2 = b(l2, l1, l4, l3, arrayOfLong[5], 5L, 3593408605L);
-    l3 = b(l3, l2, l1, l4, arrayOfLong[10], 9L, 38016083L);
-    l4 = b(l4, l3, l2, l1, arrayOfLong[15], 14L, 3634488961L);
-    l1 = b(l1, l4, l3, l2, arrayOfLong[4], 20L, 3889429448L);
-    l2 = b(l2, l1, l4, l3, arrayOfLong[9], 5L, 568446438L);
-    l3 = b(l3, l2, l1, l4, arrayOfLong[14], 9L, 3275163606L);
-    l4 = b(l4, l3, l2, l1, arrayOfLong[3], 14L, 4107603335L);
-    l1 = b(l1, l4, l3, l2, arrayOfLong[8], 20L, 1163531501L);
-    l2 = b(l2, l1, l4, l3, arrayOfLong[13], 5L, 2850285829L);
-    l3 = b(l3, l2, l1, l4, arrayOfLong[2], 9L, 4243563512L);
-    l4 = b(l4, l3, l2, l1, arrayOfLong[7], 14L, 1735328473L);
-    l1 = b(l1, l4, l3, l2, arrayOfLong[12], 20L, 2368359562L);
-    l2 = c(l2, l1, l4, l3, arrayOfLong[5], 4L, 4294588738L);
-    l3 = c(l3, l2, l1, l4, arrayOfLong[8], 11L, 2272392833L);
-    l4 = c(l4, l3, l2, l1, arrayOfLong[11], 16L, 1839030562L);
-    l1 = c(l1, l4, l3, l2, arrayOfLong[14], 23L, 4259657740L);
-    l2 = c(l2, l1, l4, l3, arrayOfLong[1], 4L, 2763975236L);
-    l3 = c(l3, l2, l1, l4, arrayOfLong[4], 11L, 1272893353L);
-    l4 = c(l4, l3, l2, l1, arrayOfLong[7], 16L, 4139469664L);
-    l1 = c(l1, l4, l3, l2, arrayOfLong[10], 23L, 3200236656L);
-    l2 = c(l2, l1, l4, l3, arrayOfLong[13], 4L, 681279174L);
-    l3 = c(l3, l2, l1, l4, arrayOfLong[0], 11L, 3936430074L);
-    l4 = c(l4, l3, l2, l1, arrayOfLong[3], 16L, 3572445317L);
-    l1 = c(l1, l4, l3, l2, arrayOfLong[6], 23L, 76029189L);
-    l2 = c(l2, l1, l4, l3, arrayOfLong[9], 4L, 3654602809L);
-    l3 = c(l3, l2, l1, l4, arrayOfLong[12], 11L, 3873151461L);
-    l4 = c(l4, l3, l2, l1, arrayOfLong[15], 16L, 530742520L);
-    l1 = c(l1, l4, l3, l2, arrayOfLong[2], 23L, 3299628645L);
-    l2 = d(l2, l1, l4, l3, arrayOfLong[0], 6L, 4096336452L);
-    l3 = d(l3, l2, l1, l4, arrayOfLong[7], 10L, 1126891415L);
-    l4 = d(l4, l3, l2, l1, arrayOfLong[14], 15L, 2878612391L);
-    l1 = d(l1, l4, l3, l2, arrayOfLong[5], 21L, 4237533241L);
-    l2 = d(l2, l1, l4, l3, arrayOfLong[12], 6L, 1700485571L);
-    l3 = d(l3, l2, l1, l4, arrayOfLong[3], 10L, 2399980690L);
-    l4 = d(l4, l3, l2, l1, arrayOfLong[10], 15L, 4293915773L);
-    l1 = d(l1, l4, l3, l2, arrayOfLong[1], 21L, 2240044497L);
-    l2 = d(l2, l1, l4, l3, arrayOfLong[8], 6L, 1873313359L);
-    l3 = d(l3, l2, l1, l4, arrayOfLong[15], 10L, 4264355552L);
-    l4 = d(l4, l3, l2, l1, arrayOfLong[6], 15L, 2734768916L);
-    l1 = d(l1, l4, l3, l2, arrayOfLong[13], 21L, 1309151649L);
-    l2 = d(l2, l1, l4, l3, arrayOfLong[4], 6L, 4149444226L);
-    l3 = d(l3, l2, l1, l4, arrayOfLong[11], 10L, 3174756917L);
-    l4 = d(l4, l3, l2, l1, arrayOfLong[2], 15L, 718787259L);
-    l1 = d(l1, l4, l3, l2, arrayOfLong[9], 21L, 3951481745L);
-    paramArrayOfByte = this.b;
-    paramArrayOfByte[0] += l2;
-    paramArrayOfByte[1] += l1;
-    paramArrayOfByte[2] += l4;
-    paramArrayOfByte[3] += l3;
+    abn localabn = new abn();
+    localabn.a = this.c;
+    RqdApplication.m().a(this, localabn);
+  }
+  
+  public final String c()
+  {
+    return getClass().toString();
   }
 }
 

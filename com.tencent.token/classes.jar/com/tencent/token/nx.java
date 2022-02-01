@@ -1,123 +1,97 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.halley.scheduler.c.c;
-import com.tencent.halley.scheduler.c.i;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.net.NetworkInfo;
 
-public final class nx
+final class nx
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public i f;
+  private static nx d;
+  oa a;
+  final BroadcastReceiver b = new ny(this);
+  final BroadcastReceiver c = new nz(this);
   
-  public nx() {}
-  
-  public nx(c paramc)
+  public static nx a()
   {
-    this.a = paramc.a;
-    this.b = paramc.b;
-    this.c = paramc.c;
-    this.d = paramc.d;
-    this.e = paramc.e;
-    this.f = paramc.f;
-  }
-  
-  private void c()
-  {
-    int i = this.a;
-    if ((i < 10000) || (i > 60000)) {
-      this.a = 20000;
-    }
-    i = this.b;
-    if ((i < 10000) || (i > 60000)) {
-      this.b = 20000;
-    }
-    i = this.c;
-    if ((i < 3) || (i > 15)) {
-      this.c = 8;
-    }
-    i = this.d;
-    if ((i <= 0) || (i > 5)) {
-      this.d = 2;
-    }
-    i = this.e;
-    if ((i < 5) || (i > 2160)) {
-      this.e = 120;
-    }
-  }
-  
-  public final void a()
-  {
-    Object localObject = lv.a().getSharedPreferences("Access_Preferences", 0);
-    this.a = ((SharedPreferences)localObject).getInt("connectTimeout", 15000);
-    this.b = ((SharedPreferences)localObject).getInt("readTimeout", 15000);
-    this.c = ((SharedPreferences)localObject).getInt("apnCachedNum", 8);
-    this.d = ((SharedPreferences)localObject).getInt("parallelNum", 2);
-    this.e = ((SharedPreferences)localObject).getInt("expireTime", 120);
-    i locali = null;
-    localObject = ((SharedPreferences)localObject).getString("samplingInfo", null);
-    if (localObject != null)
+    try
     {
-      localObject = ((String)localObject).split(";");
-      locali = new i();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      while (i < localObject.length - 1)
-      {
-        String[] arrayOfString = localObject[i].split(",");
-        localHashMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), Byte.valueOf(Byte.parseByte(arrayOfString[1])));
-        i += 1;
+      if (d == null) {
+        d = new nx();
       }
-      locali.a = localHashMap;
-      locali.b = Byte.parseByte(localObject[(localObject.length - 1)]);
+      nx localnx = d;
+      return localnx;
     }
-    this.f = locali;
-    c();
+    finally {}
   }
   
-  public final void b()
+  final class a
+    implements Runnable
   {
-    Object localObject = lv.a().getSharedPreferences("Access_Preferences", 0);
-    c();
-    ((SharedPreferences)localObject).edit().putInt("connectTimeout", this.a).commit();
-    ((SharedPreferences)localObject).edit().putInt("readTimeout", this.b).commit();
-    ((SharedPreferences)localObject).edit().putInt("apnCachedNum", this.c).commit();
-    ((SharedPreferences)localObject).edit().putInt("parallelNum", this.d).commit();
-    ((SharedPreferences)localObject).edit().putInt("expireTime", this.e).commit();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-    localObject = this.f;
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    if (((i)localObject).a != null)
+    private a() {}
+    
+    public final void run()
     {
-      Iterator localIterator = ((i)localObject).a.entrySet().iterator();
-      while (localIterator.hasNext())
+      try
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append(localEntry.getKey());
-        localStringBuilder2.append(",");
-        localStringBuilder2.append(localEntry.getValue());
-        localStringBuilder2.append(";");
-        localStringBuilder1.append(localStringBuilder2.toString());
+        nx localnx = nx.this;
+        if (localnx.a != null)
+        {
+          localnx.a.a();
+          return;
+        }
+        mc.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+        return;
       }
-      localStringBuilder1.append(((i)localObject).b);
-      localObject = localStringBuilder1.toString();
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    else
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private Intent a;
+    
+    b(Intent paramIntent)
     {
-      localObject = null;
+      this.a = paramIntent;
     }
-    localEditor.putString("samplingInfo", (String)localObject).commit();
+    
+    public final void run()
+    {
+      Object localObject = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
+      nx localnx = nx.this;
+      if (localObject != null)
+      {
+        localObject = ou.b;
+        ou.b();
+        String str = ou.b;
+        if (!((String)localObject).equals(str))
+        {
+          if ((((String)localObject).equals(ou.a)) && (ou.f()))
+          {
+            if (localnx.a != null)
+            {
+              localnx.a.a();
+              return;
+            }
+            mc.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+            return;
+          }
+          if ((!str.equals(ou.a)) && (ou.f()))
+          {
+            if (localnx.a != null)
+            {
+              localnx.a.a();
+              return;
+            }
+            mc.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+          }
+        }
+      }
+    }
   }
 }
 

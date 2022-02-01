@@ -1,12 +1,27 @@
 package com.tencent.token;
 
+import android.os.Build.VERSION;
+
 public final class acx
 {
-  public String a = "";
-  public String b = "";
-  public long c = 0L;
-  public long d = 0L;
-  public String e = new String(agn.b());
+  public static String a;
+  public static String b;
+  public static String c;
+  
+  public static int a()
+  {
+    try
+    {
+      int i = Integer.parseInt(Build.VERSION.SDK);
+      return i;
+    }
+    finally
+    {
+      label9:
+      break label9;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,141 +1,78 @@
 package com.tencent.token;
 
-import android.os.SystemClock;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.halley.common.b.e;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 
 public final class mf
 {
-  long a = 0L;
-  long b = 0L;
-  long c = 0L;
-  int d = 0;
-  private mr e;
-  private a f = new a((byte)0);
+  public static HashMap d;
+  public HashMap a = new HashMap();
+  public String b = "GBK";
+  public e c = new e();
+  private md e = new md();
   
-  public mf(mr parammr)
+  public final void a(String paramString)
   {
-    this.e = parammr;
+    this.c.d = paramString;
   }
   
-  public final long a()
+  public final void a(String paramString, Object paramObject)
   {
-    return this.c - this.b;
+    Object localObject = new me();
+    ((me)localObject).b = this.b;
+    ((me)localObject).a(paramObject, 0);
+    paramObject = ((me)localObject).a;
+    localObject = new byte[paramObject.position()];
+    System.arraycopy(paramObject.array(), 0, localObject, 0, localObject.length);
+    this.a.put(paramString, localObject);
   }
   
-  public final void a(int paramInt1, int paramInt2)
+  public final byte[] a()
   {
-    this.d += paramInt2;
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = this.a;
-    this.a = l1;
-    Object localObject1 = this.e;
-    ((mr)localObject1).m += l1 - l2;
-    localObject1 = this.f;
-    int j = 1;
-    if (paramInt1 <= 0) {
-      paramInt2 = 1;
-    } else {
-      paramInt2 = 0;
-    }
-    l1 = SystemClock.elapsedRealtime();
-    int i = (int)(l1 - ((a)localObject1).a);
-    ((a)localObject1).a = l1;
-    if (((a)localObject1).d.size() == 0)
-    {
-      i = j;
-      if (paramInt2 == 0)
-      {
-        ((a)localObject1).d.add(new mf.a.a(paramInt1));
-        i = j;
-      }
-    }
-    else
-    {
-      Object localObject2 = ((a)localObject1).d.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        mf.a.a locala = (mf.a.a)((Iterator)localObject2).next();
-        locala.b += i;
-        if ((paramInt2 == 0) && (locala.b > 2000))
-        {
-          locala.b = 0;
-          locala.a = paramInt1;
-          paramInt2 = 1;
-        }
-      }
-      if (paramInt2 == 0) {
-        if (((a)localObject1).d.size() > 2000 / le.f + 1)
-        {
-          localObject2 = new StringBuilder("records.size():");
-          ((StringBuilder)localObject2).append(((a)localObject1).d.size());
-          lo.d("CostTimeCounter", ((StringBuilder)localObject2).toString());
-        }
-        else
-        {
-          ((a)localObject1).d.add(new mf.a.a(paramInt1));
-        }
-      }
-      if (l1 - ((a)localObject1).b > 200L) {
-        i = j;
-      } else {
-        i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      ((a)localObject1).c = ((a)localObject1).a();
-      ((a)localObject1).b = l1;
-    }
-    this.e.t = this.f.c;
+    Object localObject2 = new me(0);
+    ((me)localObject2).b = this.b;
+    ((me)localObject2).a(this.a, 0);
+    Object localObject1 = this.c;
+    ((e)localObject1).a = 3;
+    localObject2 = ((me)localObject2).a;
+    byte[] arrayOfByte = new byte[((ByteBuffer)localObject2).position()];
+    System.arraycopy(((ByteBuffer)localObject2).array(), 0, arrayOfByte, 0, arrayOfByte.length);
+    ((e)localObject1).e = arrayOfByte;
+    localObject1 = new me(0);
+    ((me)localObject1).b = this.b;
+    this.c.a((me)localObject1);
+    localObject2 = ((me)localObject1).a;
+    localObject1 = new byte[((ByteBuffer)localObject2).position()];
+    System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject1, 0, localObject1.length);
+    int i = localObject1.length + 4;
+    localObject2 = ByteBuffer.allocate(i);
+    ((ByteBuffer)localObject2).putInt(i).put((byte[])localObject1).flip();
+    return ((ByteBuffer)localObject2).array();
   }
   
-  static final class a
+  public final Object b(String paramString, Object paramObject)
   {
-    long a = 0L;
-    long b = 0L;
-    int c = 0;
-    List d = new LinkedList();
-    
-    final int a()
-    {
-      if (this.d.size() == 0) {
-        return 0;
-      }
-      Iterator localIterator = this.d.iterator();
-      long l1 = 0L;
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        if (locala.b <= 2000)
-        {
-          long l2 = l1 + locala.a;
-          l1 = l2;
-          if (l2 < 0L)
-          {
-            StringBuilder localStringBuilder = new StringBuilder("sum:");
-            localStringBuilder.append(l2);
-            localStringBuilder.append(",len:");
-            localStringBuilder.append(locala.a);
-            lo.c("CostTimeCounter", localStringBuilder.toString());
-            l1 = l2;
-          }
-        }
-      }
-      return (int)(l1 * 1000L / 2000L);
+    if (!this.a.containsKey(paramString)) {
+      return null;
     }
-    
-    static final class a
+    paramString = (byte[])this.a.get(paramString);
+    try
     {
-      public int a = 0;
-      public int b = 0;
-      
-      public a(int paramInt)
-      {
-        this.a = paramInt;
-      }
+      this.e.a = ByteBuffer.wrap(paramString);
+      this.e.b = this.b;
+      paramString = this.e.a(paramObject, 0, true);
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      throw new Exception(paramString);
+    }
+  }
+  
+  public final void b(String paramString)
+  {
+    this.c.c = paramString;
   }
 }
 

@@ -1,51 +1,29 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.support.v4.app.SupportActivity;
-import android.util.AttributeSet;
-import android.view.View;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public abstract class bz
-  extends SupportActivity
+public final class bz
 {
-  protected boolean mStartedIntentSenderFromFragment;
+  public final HashMap<String, bx> a = new HashMap();
   
-  protected static void checkForValidRequestCode(int paramInt)
+  public final void a()
   {
-    if ((paramInt & 0xFFFF0000) == 0) {
-      return;
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bx)localIterator.next()).a();
     }
-    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
+    this.a.clear();
   }
   
-  protected abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public final void a(String paramString, bx parambx)
   {
-    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
-    if (localView == null) {
-      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    bx localbx = (bx)this.a.get(paramString);
+    if (localbx != null) {
+      localbx.a();
     }
-    return localView;
-  }
-  
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
-    if (localView == null) {
-      return super.onCreateView(paramString, paramContext, paramAttributeSet);
-    }
-    return localView;
-  }
-  
-  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
-      checkForValidRequestCode(paramInt1);
-    }
-    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+    this.a.put(paramString, parambx);
   }
 }
 

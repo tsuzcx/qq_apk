@@ -1,15 +1,13 @@
 package com.tencent.token;
 
-import android.view.ViewGroup;
-
 public final class ew
 {
-  public int a;
-  private final ViewGroup b;
-  
-  public ew(ViewGroup paramViewGroup)
+  public static <T> T a(T paramT)
   {
-    this.b = paramViewGroup;
+    if (paramT != null) {
+      return paramT;
+    }
+    throw new NullPointerException();
   }
 }
 

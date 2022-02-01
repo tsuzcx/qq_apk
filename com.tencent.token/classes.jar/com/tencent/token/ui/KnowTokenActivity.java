@@ -19,13 +19,13 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Scroller;
-import com.tencent.token.aap;
-import com.tencent.token.zd;
-import com.tencent.token.zd.a;
+import com.tencent.token.aaz;
+import com.tencent.token.zp;
+import com.tencent.token.zp.a;
 
 public class KnowTokenActivity
   extends BaseActivity
-  implements zd.a
+  implements zp.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
@@ -50,7 +50,7 @@ public class KnowTokenActivity
         {
           if (KnowTokenActivity.this.mLevel < KnowTokenActivity.IMAGE_LEVEL_COUNT - 1)
           {
-            paramAnonymousMotionEvent1 = aap.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$004(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
+            paramAnonymousMotionEvent1 = aaz.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$004(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
             if (paramAnonymousMotionEvent1 == null)
             {
               KnowTokenActivity.this.doOutOfMemory();
@@ -71,7 +71,7 @@ public class KnowTokenActivity
         }
         else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (KnowTokenActivity.this.mLevel > 0))
         {
-          paramAnonymousMotionEvent1 = aap.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
+          paramAnonymousMotionEvent1 = aaz.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             KnowTokenActivity.this.doOutOfMemory();
@@ -119,7 +119,7 @@ public class KnowTokenActivity
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private zd mPageCurlView;
+  private zp mPageCurlView;
   private int mWidth;
   
   private void doOutOfMemory()
@@ -136,7 +136,7 @@ public class KnowTokenActivity
     this.mDotFull = null;
     localObject = this.mPageCurlView;
     if (localObject != null) {
-      ((zd)localObject).b();
+      ((zp)localObject).b();
     }
     this.mPageCurlView = null;
     finish();
@@ -172,9 +172,9 @@ public class KnowTokenActivity
       this.DOT_SIZE = this.mDotEmpty.getWidth();
       this.DOT_OFFSET_X = ((this.mWidth - IMAGE_LEVEL_COUNT * 2 * this.DOT_SIZE + this.DOT_SIZE) / 2);
       this.DOT_OFFSET_Y = (this.mHeight * 9 / 10);
-      this.mLowQuality = aap.a(this.mWidth, this.mHeight);
-      this.mPageCurlView = new zd(this, this, this.mWidth, this.mHeight);
-      this.mPageCurlView.setBackgroundColor(getResources().getColor(2130968713));
+      this.mLowQuality = aaz.a(this.mWidth, this.mHeight);
+      this.mPageCurlView = new zp(this, this, this.mWidth, this.mHeight);
+      this.mPageCurlView.setBackgroundColor(getResources().getColor(2130968714));
       paramBundle = new RelativeLayout(this);
       paramBundle.addView(this.mPageCurlView, new ViewGroup.LayoutParams(-1, -1));
       Object localObject1 = new DisplayMetrics();
@@ -196,12 +196,12 @@ public class KnowTokenActivity
       });
       this.mEndBtn.setGravity(17);
       paramBundle.addView(this.mEndBtn, (ViewGroup.LayoutParams)localObject2);
-      localObject1 = aap.a(this, mBitmapIds[0], this.mLowQuality);
+      localObject1 = aaz.a(this, mBitmapIds[0], this.mLowQuality);
       if ((localObject1 != null) && (this.mDotEmpty != null) && (this.mDotFull != null))
       {
         localObject2 = this.mPageCurlView;
-        ((zd)localObject2).a = ((Bitmap)localObject1);
-        ((zd)localObject2).b = null;
+        ((zp)localObject2).a = ((Bitmap)localObject1);
+        ((zp)localObject2).b = null;
         this.mPageCurlView.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)

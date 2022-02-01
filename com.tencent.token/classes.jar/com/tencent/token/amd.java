@@ -1,172 +1,570 @@
 package com.tencent.token;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+import java.net.ProxySelector;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
-final class amd
+public final class amd
 {
-  private static final int[] a = { 8184, 8388568, 268435426, 268435427, 268435428, 268435429, 268435430, 268435431, 268435432, 16777194, 1073741820, 268435433, 268435434, 1073741821, 268435435, 268435436, 268435437, 268435438, 268435439, 268435440, 268435441, 268435442, 1073741822, 268435443, 268435444, 268435445, 268435446, 268435447, 268435448, 268435449, 268435450, 268435451, 20, 1016, 1017, 4090, 8185, 21, 248, 2042, 1018, 1019, 249, 2043, 250, 22, 23, 24, 0, 1, 2, 25, 26, 27, 28, 29, 30, 31, 92, 251, 32764, 32, 4091, 1020, 8186, 33, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 252, 115, 253, 8187, 524272, 8188, 16380, 34, 32765, 3, 35, 4, 36, 5, 37, 38, 39, 6, 116, 117, 40, 41, 42, 7, 43, 118, 44, 8, 9, 45, 119, 120, 121, 122, 123, 32766, 2044, 16381, 8189, 268435452, 1048550, 4194258, 1048551, 1048552, 4194259, 4194260, 4194261, 8388569, 4194262, 8388570, 8388571, 8388572, 8388573, 8388574, 16777195, 8388575, 16777196, 16777197, 4194263, 8388576, 16777198, 8388577, 8388578, 8388579, 8388580, 2097116, 4194264, 8388581, 4194265, 8388582, 8388583, 16777199, 4194266, 2097117, 1048553, 4194267, 4194268, 8388584, 8388585, 2097118, 8388586, 4194269, 4194270, 16777200, 2097119, 4194271, 8388587, 8388588, 2097120, 2097121, 4194272, 2097122, 8388589, 4194273, 8388590, 8388591, 1048554, 4194274, 4194275, 4194276, 8388592, 4194277, 4194278, 8388593, 67108832, 67108833, 1048555, 524273, 4194279, 8388594, 4194280, 33554412, 67108834, 67108835, 67108836, 134217694, 134217695, 67108837, 16777201, 33554413, 524274, 2097123, 67108838, 134217696, 134217697, 67108839, 134217698, 16777202, 2097124, 2097125, 67108840, 67108841, 268435453, 134217699, 134217700, 134217701, 1048556, 16777203, 1048557, 2097126, 4194281, 2097127, 2097128, 8388595, 4194282, 4194283, 33554414, 33554415, 16777204, 16777205, 67108842, 8388596, 67108843, 134217702, 67108844, 67108845, 134217703, 134217704, 134217705, 134217706, 134217707, 268435454, 134217708, 134217709, 134217710, 134217711, 134217712, 67108846 };
-  private static final byte[] b = { 13, 23, 28, 28, 28, 28, 28, 28, 28, 24, 30, 28, 28, 30, 28, 28, 28, 28, 28, 28, 28, 28, 30, 28, 28, 28, 28, 28, 28, 28, 28, 28, 6, 10, 10, 12, 13, 6, 8, 11, 10, 10, 8, 11, 8, 6, 6, 6, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 7, 8, 15, 6, 12, 10, 13, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 7, 8, 13, 19, 13, 14, 6, 15, 5, 6, 5, 6, 5, 6, 6, 6, 5, 7, 7, 6, 6, 6, 5, 6, 7, 6, 5, 5, 6, 7, 7, 7, 7, 7, 15, 11, 14, 13, 28, 20, 22, 20, 20, 22, 22, 22, 23, 22, 23, 23, 23, 23, 23, 24, 23, 24, 24, 22, 23, 24, 23, 23, 23, 23, 21, 22, 23, 22, 23, 23, 24, 22, 21, 20, 22, 22, 23, 23, 21, 23, 22, 22, 24, 21, 22, 23, 23, 21, 21, 22, 21, 23, 22, 23, 23, 20, 22, 22, 22, 23, 22, 22, 23, 26, 26, 20, 19, 22, 23, 22, 25, 26, 26, 26, 27, 27, 26, 24, 25, 19, 21, 26, 27, 27, 26, 27, 24, 21, 21, 26, 26, 28, 27, 27, 27, 20, 24, 20, 21, 22, 21, 21, 23, 22, 22, 25, 25, 24, 24, 26, 23, 26, 27, 26, 26, 27, 27, 27, 27, 27, 28, 27, 27, 27, 27, 27, 26 };
-  private static final amd c = new amd();
-  private final a d = new a();
+  public final akm a;
+  public aln b;
+  public final aku c;
+  public final akq d;
+  public final ala e;
+  public alz f;
+  public amg g;
+  private amc.a i;
+  private final Object j;
+  private final amc k;
+  private int l;
+  private boolean m;
+  private boolean n;
+  private boolean o;
   
-  private amd()
+  public amd(aku paramaku, akm paramakm, akq paramakq, ala paramala, Object paramObject)
   {
-    b();
+    this.c = paramaku;
+    this.a = paramakm;
+    this.d = paramakq;
+    this.e = paramala;
+    this.k = new amc(paramakm, f(), paramakq, paramala);
+    this.j = paramObject;
   }
   
-  static int a(amy paramamy)
+  private alz a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < paramamy.g())
-    {
-      int j = paramamy.a(i);
-      l += b[(j & 0xFF)];
-      i += 1;
-    }
-    return (int)(l + 7L >> 3);
-  }
-  
-  public static amd a()
-  {
-    return c;
-  }
-  
-  static void a(amy paramamy, amw paramamw)
-  {
-    int j = 0;
-    long l = 0L;
-    int i = 0;
-    while (j < paramamy.g())
-    {
-      int m = paramamy.a(j) & 0xFF;
-      int k = a[m];
-      m = b[m];
-      l = l << m | k;
-      i += m;
-      while (i >= 8)
-      {
-        i -= 8;
-        paramamw.h((int)(l >> i));
-      }
-      j += 1;
-    }
-    if (i > 0) {
-      paramamw.h((int)(255 >>> i | l << 8 - i));
-    }
-  }
-  
-  private void b()
-  {
-    int i = 0;
     for (;;)
     {
-      Object localObject = b;
-      if (i >= localObject.length) {
-        break;
-      }
-      int k = a[i];
-      int j = localObject[i];
-      a locala = new a(i, j);
-      localObject = this.d;
-      while (j > 8)
+      int i3;
+      synchronized (this.c)
       {
-        j = (byte)(j - 8);
-        m = k >>> j & 0xFF;
-        if (((a)localObject).a != null)
+        if (!this.n)
         {
-          if (localObject.a[m] == null) {
-            ((a)localObject).a[m] = new a();
+          if (this.g == null)
+          {
+            if (!this.o)
+            {
+              if ((!h) && (!Thread.holdsLock(this.c))) {
+                throw new AssertionError();
+              }
+              Object localObject1 = this.f;
+              Object localObject8 = null;
+              if ((localObject1 != null) && (((alz)localObject1).g))
+              {
+                localObject7 = a(false, false, true);
+                if (this.f == null) {
+                  break label646;
+                }
+                localObject6 = this.f;
+                if (localObject6 != null) {
+                  break label652;
+                }
+                alp.a.a(this.c, this.a, this, null);
+                if (this.f != null)
+                {
+                  localObject6 = this.f;
+                  localObject1 = null;
+                  i1 = 1;
+                }
+                else
+                {
+                  localObject1 = this.b;
+                  i1 = 0;
+                }
+                alr.a((Socket)localObject7);
+                if (localObject6 != null) {
+                  return localObject6;
+                }
+                if (localObject1 == null)
+                {
+                  localObject7 = this.i;
+                  if ((localObject7 == null) || (!((amc.a)localObject7).a()))
+                  {
+                    this.i = this.k.b();
+                    i3 = 1;
+                    continue;
+                  }
+                }
+                i3 = 0;
+                synchronized (this.c)
+                {
+                  if (!this.o)
+                  {
+                    localObject7 = localObject6;
+                    int i2 = i1;
+                    if (i3 != 0)
+                    {
+                      ArrayList localArrayList = new ArrayList(this.i.a);
+                      int i4 = localArrayList.size();
+                      i3 = 0;
+                      localObject7 = localObject6;
+                      i2 = i1;
+                      if (i3 < i4)
+                      {
+                        aln localaln = (aln)localArrayList.get(i3);
+                        alp.a.a(this.c, this.a, this, localaln);
+                        if (this.f == null) {
+                          break label661;
+                        }
+                        localObject7 = this.f;
+                        this.b = localaln;
+                        i2 = 1;
+                      }
+                    }
+                    localObject6 = localObject7;
+                    if (i2 == 0)
+                    {
+                      localObject6 = localObject1;
+                      if (localObject1 == null)
+                      {
+                        localObject1 = this.i;
+                        if (((amc.a)localObject1).a())
+                        {
+                          localObject6 = ((amc.a)localObject1).a;
+                          i1 = ((amc.a)localObject1).b;
+                          ((amc.a)localObject1).b = (i1 + 1);
+                          localObject6 = (aln)((List)localObject6).get(i1);
+                        }
+                        else
+                        {
+                          throw new NoSuchElementException();
+                        }
+                      }
+                      this.b = ((aln)localObject6);
+                      this.l = 0;
+                      localObject6 = new alz(this.c, (aln)localObject6);
+                      a((alz)localObject6, false);
+                    }
+                    if (i2 != 0) {
+                      return localObject6;
+                    }
+                    ((alz)localObject6).a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
+                    f().b(((alz)localObject6).a);
+                    synchronized (this.c)
+                    {
+                      this.m = true;
+                      alp.a.b(this.c, (alz)localObject6);
+                      localObject7 = localObject8;
+                      localObject1 = localObject6;
+                      if (((alz)localObject6).a())
+                      {
+                        localObject7 = alp.a.a(this.c, this.a, this);
+                        localObject1 = this.f;
+                      }
+                      alr.a((Socket)localObject7);
+                      return localObject1;
+                    }
+                  }
+                  throw new IOException("Canceled");
+                }
+              }
+            }
+            else
+            {
+              throw new IOException("Canceled");
+            }
           }
-          localObject = localObject.a[m];
+          else {
+            throw new IllegalStateException("codec != null");
+          }
         }
-        else
-        {
-          throw new IllegalStateException("invalid dictionary: prefix not unique");
+        else {
+          throw new IllegalStateException("released");
         }
       }
-      int m = 8 - j;
-      k = k << m & 0xFF;
-      j = k;
-      while (j < k + (1 << m))
-      {
-        ((a)localObject).a[j] = locala;
-        j += 1;
-      }
-      i += 1;
+      Object localObject7 = null;
+      continue;
+      label646:
+      Object localObject6 = null;
+      continue;
+      label652:
+      Object localObject5 = null;
+      int i1 = 0;
+      continue;
+      label661:
+      i3 += 1;
     }
   }
   
-  final byte[] a(byte[] paramArrayOfByte)
+  private alz a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    a locala1 = this.d;
-    int j = 0;
-    int k = 0;
-    int i = 0;
-    int m;
-    a locala2;
     for (;;)
     {
-      m = i;
-      locala2 = locala1;
-      if (j >= paramArrayOfByte.length) {
-        break;
-      }
-      k = k << 8 | paramArrayOfByte[j] & 0xFF;
-      i += 8;
-      while (i >= 8)
+      alz localalz = a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1);
+      synchronized (this.c)
       {
-        locala1 = locala1.a[(k >>> i - 8 & 0xFF)];
-        if (locala1.a == null)
+        if (localalz.h == 0) {
+          return localalz;
+        }
+        if (!localalz.a(paramBoolean2))
         {
-          localByteArrayOutputStream.write(locala1.b);
-          i -= locala1.c;
-          locala1 = this.d;
+          d();
+          continue;
+        }
+        return localalz;
+      }
+    }
+  }
+  
+  private void a(alz paramalz)
+  {
+    int i2 = paramalz.j.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (((Reference)paramalz.j.get(i1)).get() == this)
+      {
+        paramalz.j.remove(i1);
+        return;
+      }
+      i1 += 1;
+    }
+    throw new IllegalStateException();
+  }
+  
+  private ama f()
+  {
+    return alp.a.a(this.c);
+  }
+  
+  public final amg a()
+  {
+    synchronized (this.c)
+    {
+      amg localamg = this.g;
+      return localamg;
+    }
+  }
+  
+  /* Error */
+  public final amg a(alg paramalg, ale.a arg2, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_2
+    //   1: invokeinterface 214 1 0
+    //   6: istore 4
+    //   8: aload_2
+    //   9: invokeinterface 216 1 0
+    //   14: istore 5
+    //   16: aload_2
+    //   17: invokeinterface 218 1 0
+    //   22: istore 6
+    //   24: aload_1
+    //   25: getfield 223	com/tencent/token/alg:C	I
+    //   28: istore 7
+    //   30: aload_1
+    //   31: getfield 226	com/tencent/token/alg:y	Z
+    //   34: istore 8
+    //   36: aload_0
+    //   37: iload 4
+    //   39: iload 5
+    //   41: iload 6
+    //   43: iload 7
+    //   45: iload 8
+    //   47: iload_3
+    //   48: invokespecial 228	com/tencent/token/amd:a	(IIIIZZ)Lcom/tencent/token/alz;
+    //   51: astore 9
+    //   53: aload 9
+    //   55: getfield 231	com/tencent/token/alz:d	Lcom/tencent/token/amx;
+    //   58: ifnull +22 -> 80
+    //   61: new 233	com/tencent/token/amw
+    //   64: dup
+    //   65: aload_1
+    //   66: aload_2
+    //   67: aload_0
+    //   68: aload 9
+    //   70: getfield 231	com/tencent/token/alz:d	Lcom/tencent/token/amx;
+    //   73: invokespecial 236	com/tencent/token/amw:<init>	(Lcom/tencent/token/alg;Lcom/tencent/token/ale$a;Lcom/tencent/token/amd;Lcom/tencent/token/amx;)V
+    //   76: astore_1
+    //   77: goto +85 -> 162
+    //   80: aload 9
+    //   82: getfield 239	com/tencent/token/alz:b	Ljava/net/Socket;
+    //   85: aload_2
+    //   86: invokeinterface 216 1 0
+    //   91: invokevirtual 245	java/net/Socket:setSoTimeout	(I)V
+    //   94: aload 9
+    //   96: getfield 248	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   99: invokeinterface 253 1 0
+    //   104: aload_2
+    //   105: invokeinterface 216 1 0
+    //   110: i2l
+    //   111: getstatic 259	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   114: invokevirtual 264	com/tencent/token/aok:a	(JLjava/util/concurrent/TimeUnit;)Lcom/tencent/token/aok;
+    //   117: pop
+    //   118: aload 9
+    //   120: getfield 267	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   123: invokeinterface 270 1 0
+    //   128: aload_2
+    //   129: invokeinterface 218 1 0
+    //   134: i2l
+    //   135: getstatic 259	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   138: invokevirtual 264	com/tencent/token/aok:a	(JLjava/util/concurrent/TimeUnit;)Lcom/tencent/token/aok;
+    //   141: pop
+    //   142: new 272	com/tencent/token/amq
+    //   145: dup
+    //   146: aload_1
+    //   147: aload_0
+    //   148: aload 9
+    //   150: getfield 248	com/tencent/token/alz:e	Lcom/tencent/token/anv;
+    //   153: aload 9
+    //   155: getfield 267	com/tencent/token/alz:f	Lcom/tencent/token/anu;
+    //   158: invokespecial 275	com/tencent/token/amq:<init>	(Lcom/tencent/token/alg;Lcom/tencent/token/amd;Lcom/tencent/token/anv;Lcom/tencent/token/anu;)V
+    //   161: astore_1
+    //   162: aload_0
+    //   163: getfield 50	com/tencent/token/amd:c	Lcom/tencent/token/aku;
+    //   166: astore_2
+    //   167: aload_2
+    //   168: monitorenter
+    //   169: aload_0
+    //   170: aload_1
+    //   171: putfield 73	com/tencent/token/amd:g	Lcom/tencent/token/amg;
+    //   174: aload_2
+    //   175: monitorexit
+    //   176: aload_1
+    //   177: areturn
+    //   178: astore_1
+    //   179: aload_2
+    //   180: monitorexit
+    //   181: aload_1
+    //   182: athrow
+    //   183: astore_1
+    //   184: new 277	com/tencent/token/amb
+    //   187: dup
+    //   188: aload_1
+    //   189: invokespecial 280	com/tencent/token/amb:<init>	(Ljava/io/IOException;)V
+    //   192: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	193	0	this	amd
+    //   0	193	1	paramalg	alg
+    //   0	193	3	paramBoolean	boolean
+    //   6	32	4	i1	int
+    //   14	26	5	i2	int
+    //   22	20	6	i3	int
+    //   28	16	7	i4	int
+    //   34	12	8	bool	boolean
+    //   51	103	9	localalz	alz
+    // Exception table:
+    //   from	to	target	type
+    //   169	176	178	finally
+    //   179	181	178	finally
+    //   36	77	183	java/io/IOException
+    //   80	162	183	java/io/IOException
+    //   162	169	183	java/io/IOException
+    //   181	183	183	java/io/IOException
+  }
+  
+  public final Socket a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((!h) && (!Thread.holdsLock(this.c))) {
+      throw new AssertionError();
+    }
+    if (paramBoolean3) {
+      this.g = null;
+    }
+    if (paramBoolean2) {
+      this.n = true;
+    }
+    Object localObject = this.f;
+    if (localObject != null)
+    {
+      if (paramBoolean1) {
+        ((alz)localObject).g = true;
+      }
+      if ((this.g == null) && ((this.n) || (this.f.g)))
+      {
+        a(this.f);
+        if (this.f.j.isEmpty())
+        {
+          this.f.k = System.nanoTime();
+          if (alp.a.a(this.c, this.f))
+          {
+            localObject = this.f.b;
+            break label155;
+          }
+        }
+        localObject = null;
+        label155:
+        this.f = null;
+        return localObject;
+      }
+    }
+    return null;
+  }
+  
+  public final void a(alz paramalz, boolean paramBoolean)
+  {
+    if ((!h) && (!Thread.holdsLock(this.c))) {
+      throw new AssertionError();
+    }
+    if (this.f == null)
+    {
+      this.f = paramalz;
+      this.m = paramBoolean;
+      paramalz.j.add(new a(this, this.j));
+      return;
+    }
+    throw new IllegalStateException();
+  }
+  
+  public final void a(IOException paramIOException)
+  {
+    for (;;)
+    {
+      synchronized (this.c)
+      {
+        if ((paramIOException instanceof ane))
+        {
+          paramIOException = ((ane)paramIOException).a;
+          if (paramIOException == ams.e)
+          {
+            this.l += 1;
+            if (this.l <= 1) {
+              break label220;
+            }
+          }
+          else
+          {
+            if (paramIOException == ams.f) {
+              break label220;
+            }
+            this.b = null;
+            bool = true;
+            continue;
+          }
         }
         else
         {
-          i -= 8;
+          if ((this.f == null) || ((this.f.a()) && (!(paramIOException instanceof amr)))) {
+            break label230;
+          }
+          if (this.f.h != 0) {
+            break label225;
+          }
+          if ((this.b != null) && (paramIOException != null))
+          {
+            amc localamc = this.k;
+            aln localaln = this.b;
+            if ((localaln.b.type() != Proxy.Type.DIRECT) && (localamc.a.g != null)) {
+              localamc.a.g.connectFailed(localamc.a.a.a(), localaln.b.address(), paramIOException);
+            }
+            localamc.b.a(localaln);
+          }
         }
+        this.b = null;
+        bool = true;
+        paramIOException = a(bool, false, true);
+        alr.a(paramIOException);
+        return;
       }
-      j += 1;
+      label220:
+      boolean bool = false;
+      continue;
+      label225:
+      bool = true;
+      continue;
+      label230:
+      bool = false;
     }
-    while (m > 0)
-    {
-      paramArrayOfByte = locala2.a[(k << 8 - m & 0xFF)];
-      if ((paramArrayOfByte.a != null) || (paramArrayOfByte.c > m)) {
-        break;
-      }
-      localByteArrayOutputStream.write(paramArrayOfByte.b);
-      m -= paramArrayOfByte.c;
-      locala2 = this.d;
-    }
-    return localByteArrayOutputStream.toByteArray();
   }
   
-  static final class a
+  public final void a(boolean paramBoolean, amg paramamg)
   {
-    final a[] a;
-    final int b;
-    final int c;
-    
-    a()
+    aku localaku = this.c;
+    if (paramamg != null) {}
+    try
     {
-      this.a = new a[256];
-      this.b = 0;
-      this.c = 0;
-    }
-    
-    a(int paramInt1, int paramInt2)
-    {
-      this.a = null;
-      this.b = paramInt1;
-      paramInt2 &= 0x7;
-      paramInt1 = paramInt2;
-      if (paramInt2 == 0) {
-        paramInt1 = 8;
+      if (paramamg == this.g)
+      {
+        if (!paramBoolean)
+        {
+          paramamg = this.f;
+          paramamg.h += 1;
+        }
+        paramamg = a(paramBoolean, false, true);
+        alr.a(paramamg);
+        return;
       }
-      this.c = paramInt1;
+      StringBuilder localStringBuilder = new StringBuilder("expected ");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(paramamg);
+      throw new IllegalStateException(localStringBuilder.toString());
+    }
+    finally {}
+  }
+  
+  public final alz b()
+  {
+    try
+    {
+      alz localalz = this.f;
+      return localalz;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void c()
+  {
+    synchronized (this.c)
+    {
+      Socket localSocket = a(false, true, false);
+      alr.a(localSocket);
+      return;
+    }
+  }
+  
+  public final void d()
+  {
+    synchronized (this.c)
+    {
+      Socket localSocket = a(true, false, false);
+      alr.a(localSocket);
+      return;
+    }
+  }
+  
+  public final boolean e()
+  {
+    if (this.b == null)
+    {
+      amc.a locala = this.i;
+      if (((locala == null) || (!locala.a())) && (!this.k.a())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public final String toString()
+  {
+    alz localalz = b();
+    if (localalz != null) {
+      return localalz.toString();
+    }
+    return this.a.toString();
+  }
+  
+  public static final class a
+    extends WeakReference<amd>
+  {
+    public final Object a;
+    
+    a(amd paramamd, Object paramObject)
+    {
+      super();
+      this.a = paramObject;
     }
   }
 }

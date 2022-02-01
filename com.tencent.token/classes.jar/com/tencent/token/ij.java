@@ -1,110 +1,153 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.widget.CompoundButton;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow.OnDismissListener;
 
-public final class ij
+public class ij
 {
-  public ColorStateList a = null;
-  public PorterDuff.Mode b = null;
-  private final CompoundButton c;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f;
-  
-  public ij(CompoundButton paramCompoundButton)
+  protected View a;
+  protected int b = 8388611;
+  PopupWindow.OnDismissListener c;
+  private final Context d;
+  private final id e;
+  private final boolean f;
+  private final int g;
+  private final int h;
+  private boolean i;
+  private ik.a j;
+  private ii k;
+  private final PopupWindow.OnDismissListener l = new PopupWindow.OnDismissListener()
   {
-    this.c = paramCompoundButton;
+    public final void onDismiss()
+    {
+      ij.this.d();
+    }
+  };
+  
+  public ij(Context paramContext, id paramid, View paramView, boolean paramBoolean, int paramInt)
+  {
+    this(paramContext, paramid, paramView, paramBoolean, paramInt, 0);
   }
   
-  private void b()
+  public ij(Context paramContext, id paramid, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    Drawable localDrawable = fs.a(this.c);
-    if ((localDrawable != null) && ((this.d) || (this.e)))
+    this.d = paramContext;
+    this.e = paramid;
+    this.a = paramView;
+    this.f = paramBoolean;
+    this.g = paramInt1;
+    this.h = paramInt2;
+  }
+  
+  public final ii a()
+  {
+    if (this.k == null)
     {
-      localDrawable = dk.d(localDrawable).mutate();
-      if (this.d) {
-        dk.a(localDrawable, this.a);
+      Object localObject = ((WindowManager)this.d.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17) {
+        ((Display)localObject).getRealSize(localPoint);
+      } else {
+        ((Display)localObject).getSize(localPoint);
       }
-      if (this.e) {
-        dk.a(localDrawable, this.b);
+      int m;
+      if (Math.min(localPoint.x, localPoint.y) >= this.d.getResources().getDimensionPixelSize(hg.d.abc_cascading_menus_min_smallest_width)) {
+        m = 1;
+      } else {
+        m = 0;
       }
-      if (localDrawable.isStateful()) {
-        localDrawable.setState(this.c.getDrawableState());
+      if (m != 0) {
+        localObject = new ia(this.d, this.a, this.g, this.h, this.f);
+      } else {
+        localObject = new ip(this.d, this.e, this.a, this.g, this.h, this.f);
       }
-      this.c.setButtonDrawable(localDrawable);
+      ((ii)localObject).a(this.e);
+      ((ii)localObject).a(this.l);
+      ((ii)localObject).a(this.a);
+      ((ii)localObject).a(this.j);
+      ((ii)localObject).a(this.i);
+      ((ii)localObject).a(this.b);
+      this.k = ((ii)localObject);
+    }
+    return this.k;
+  }
+  
+  final void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ii localii = a();
+    localii.c(paramBoolean2);
+    if (paramBoolean1)
+    {
+      int m = paramInt1;
+      if ((fb.a(this.b, fo.c(this.a)) & 0x7) == 5) {
+        m = paramInt1 + this.a.getWidth();
+      }
+      localii.b(m);
+      localii.c(paramInt2);
+      paramInt1 = (int)(this.d.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
+      localii.e = new Rect(m - paramInt1, paramInt2 - paramInt1, m + paramInt1, paramInt2 + paramInt1);
+    }
+    localii.b();
+  }
+  
+  public final void a(ik.a parama)
+  {
+    this.j = parama;
+    ii localii = this.k;
+    if (localii != null) {
+      localii.a(parama);
     }
   }
   
-  public final int a(int paramInt)
+  public final void a(boolean paramBoolean)
   {
-    int i = paramInt;
-    if (Build.VERSION.SDK_INT < 17)
-    {
-      Drawable localDrawable = fs.a(this.c);
-      i = paramInt;
-      if (localDrawable != null) {
-        i = paramInt + localDrawable.getIntrinsicWidth();
-      }
+    this.i = paramBoolean;
+    ii localii = this.k;
+    if (localii != null) {
+      localii.a(paramBoolean);
     }
-    return i;
   }
   
-  public final void a()
+  public final boolean b()
   {
-    if (this.f)
-    {
-      this.f = false;
-      return;
+    if (e()) {
+      return true;
     }
-    this.f = true;
-    b();
+    if (this.a == null) {
+      return false;
+    }
+    a(0, 0, false, false);
+    return true;
   }
   
-  public final void a(ColorStateList paramColorStateList)
+  public final void c()
   {
-    this.a = paramColorStateList;
-    this.d = true;
-    b();
+    if (e()) {
+      this.k.c();
+    }
   }
   
-  public final void a(PorterDuff.Mode paramMode)
+  protected void d()
   {
-    this.b = paramMode;
-    this.e = true;
-    b();
+    this.k = null;
+    PopupWindow.OnDismissListener localOnDismissListener = this.c;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
+    }
   }
   
-  public final void a(AttributeSet paramAttributeSet, int paramInt)
+  public final boolean e()
   {
-    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, gs.j.CompoundButton, paramInt, 0);
-    try
-    {
-      if (paramAttributeSet.hasValue(gs.j.CompoundButton_android_button))
-      {
-        paramInt = paramAttributeSet.getResourceId(gs.j.CompoundButton_android_button, 0);
-        if (paramInt != 0) {
-          this.c.setButtonDrawable(gu.b(this.c.getContext(), paramInt));
-        }
-      }
-      if (paramAttributeSet.hasValue(gs.j.CompoundButton_buttonTint)) {
-        fs.a(this.c, paramAttributeSet.getColorStateList(gs.j.CompoundButton_buttonTint));
-      }
-      if (paramAttributeSet.hasValue(gs.j.CompoundButton_buttonTintMode)) {
-        fs.a(this.c, iu.a(paramAttributeSet.getInt(gs.j.CompoundButton_buttonTintMode, -1), null));
-      }
-      return;
-    }
-    finally
-    {
-      paramAttributeSet.recycle();
-    }
+    ii localii = this.k;
+    return (localii != null) && (localii.d());
   }
 }
 

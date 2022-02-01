@@ -1,71 +1,20 @@
 package com.tencent.token;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build.VERSION;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.app.Fragment;
+import java.util.List;
 
 public final class cu
-  implements Iterable<Intent>
 {
-  private static final c c = new c();
-  public final ArrayList<Intent> a = new ArrayList();
-  public final Context b;
+  final List<Fragment> a;
+  final List<cu> b;
+  final List<bz> c;
   
-  static
+  cu(List<Fragment> paramList, List<cu> paramList1, List<bz> paramList2)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      c = new b();
-      return;
-    }
+    this.a = paramList;
+    this.b = paramList1;
+    this.c = paramList2;
   }
-  
-  private cu(Context paramContext)
-  {
-    this.b = paramContext;
-  }
-  
-  public static cu a(Context paramContext)
-  {
-    return new cu(paramContext);
-  }
-  
-  public final cu a(ComponentName paramComponentName)
-  {
-    int i = this.a.size();
-    try
-    {
-      for (paramComponentName = cm.a(this.b, paramComponentName); paramComponentName != null; paramComponentName = cm.a(this.b, paramComponentName.getComponent())) {
-        this.a.add(i, paramComponentName);
-      }
-      return this;
-    }
-    catch (PackageManager.NameNotFoundException paramComponentName)
-    {
-      throw new IllegalArgumentException(paramComponentName);
-    }
-  }
-  
-  @Deprecated
-  public final Iterator<Intent> iterator()
-  {
-    return this.a.iterator();
-  }
-  
-  public static abstract interface a
-  {
-    public abstract Intent getSupportParentActivityIntent();
-  }
-  
-  static final class b
-    extends cu.c
-  {}
-  
-  static class c {}
 }
 
 

@@ -1,11 +1,21 @@
 package com.tencent.turingfd.sdk.qps;
 
-public class break
+public final class break
   extends RuntimeException
 {
   public break(String paramString)
   {
     super(paramString);
+  }
+  
+  public break(String paramString, Throwable paramThrowable)
+  {
+    super(paramString, paramThrowable);
+  }
+  
+  public break(Throwable paramThrowable)
+  {
+    super(paramThrowable);
   }
 }
 

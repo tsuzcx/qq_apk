@@ -82,9 +82,26 @@ public class c
   
   public native void d2(long paramLong);
   
-  public native String n();
+  protected native String n();
   
-  public native void n(Context paramContext, String paramString, long paramLong, int paramInt);
+  public native void n(Context paramContext, String paramString, long paramLong1, int paramInt, long paramLong2);
+  
+  public void o(String paramString1, String paramString2)
+  {
+    a locala = this.r;
+    if (locala != null) {
+      locala.a(paramString1, paramString2);
+    }
+  }
+  
+  public String q(String paramString1, String paramString2)
+  {
+    a locala = this.r;
+    if (locala != null) {
+      return locala.b(paramString1, paramString2);
+    }
+    return null;
+  }
   
   long r()
   {
@@ -103,9 +120,13 @@ public class c
     
     public abstract void a(String paramString);
     
+    public abstract void a(String paramString1, String paramString2);
+    
     public abstract boolean a(long paramLong);
     
     public abstract long b();
+    
+    public abstract String b(String paramString1, String paramString2);
     
     public abstract long c();
     

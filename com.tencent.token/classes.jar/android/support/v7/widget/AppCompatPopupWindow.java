@@ -6,9 +6,9 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
-import com.tencent.token.fz;
-import com.tencent.token.gs.j;
-import com.tencent.token.ji;
+import com.tencent.token.gn;
+import com.tencent.token.hg.j;
+import com.tencent.token.jw;
 
 class AppCompatPopupWindow
   extends PopupWindow
@@ -41,11 +41,11 @@ class AppCompatPopupWindow
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    paramContext = ji.a(paramContext, paramAttributeSet, gs.j.PopupWindow, paramInt1, paramInt2);
-    if (paramContext.f(gs.j.PopupWindow_overlapAnchor)) {
-      a(paramContext.a(gs.j.PopupWindow_overlapAnchor, false));
+    paramContext = jw.a(paramContext, paramAttributeSet, hg.j.PopupWindow, paramInt1, paramInt2);
+    if (paramContext.f(hg.j.PopupWindow_overlapAnchor)) {
+      a(paramContext.a(hg.j.PopupWindow_overlapAnchor, false));
     }
-    setBackgroundDrawable(paramContext.a(gs.j.PopupWindow_android_popupBackground));
+    setBackgroundDrawable(paramContext.a(hg.j.PopupWindow_android_popupBackground));
     paramContext.a.recycle();
   }
   
@@ -56,7 +56,7 @@ class AppCompatPopupWindow
       this.b = paramBoolean;
       return;
     }
-    fz.a(this, paramBoolean);
+    gn.a(this, paramBoolean);
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)

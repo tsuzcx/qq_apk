@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.aqv;
+import com.tencent.token.art;
 
 public final class b
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ public final class b
   public String a = null;
   public Runnable b = null;
   
-  public b(aqv paramaqv) {}
+  public b(art paramart) {}
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -25,7 +25,7 @@ public final class b
       if (this.b == null) {
         return;
       }
-      aqv.a(this.c).post(this.b);
+      art.a(this.c).post(this.b);
       this.c.a(paramContext);
       return;
     }

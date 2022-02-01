@@ -8,20 +8,20 @@ import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.TextView;
-import com.tencent.token.ez;
-import com.tencent.token.fp;
-import com.tencent.token.ii;
-import com.tencent.token.il;
-import com.tencent.token.ip;
-import com.tencent.token.ir;
+import com.tencent.token.fn;
+import com.tencent.token.gd;
+import com.tencent.token.iw;
+import com.tencent.token.iz;
+import com.tencent.token.jd;
 import com.tencent.token.jf;
+import com.tencent.token.jt;
 
 public class AppCompatTextView
   extends TextView
-  implements ez, fp
+  implements fn, gd
 {
-  private final ii b = new ii(this);
-  private final ip c;
+  private final iw b = new iw(this);
+  private final jd c;
   
   public AppCompatTextView(Context paramContext)
   {
@@ -35,9 +35,9 @@ public class AppCompatTextView
   
   public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jf.a(paramContext), paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
     this.b.a(paramAttributeSet, paramInt);
-    this.c = ip.a(this);
+    this.c = jd.a(this);
     this.c.a(paramAttributeSet, paramInt);
     this.c.a();
   }
@@ -47,11 +47,11 @@ public class AppCompatTextView
     super.drawableStateChanged();
     Object localObject = this.b;
     if (localObject != null) {
-      ((ii)localObject).d();
+      ((iw)localObject).d();
     }
     localObject = this.c;
     if (localObject != null) {
-      ((ip)localObject).a();
+      ((jd)localObject).a();
     }
   }
   
@@ -60,9 +60,9 @@ public class AppCompatTextView
     if (a) {
       return super.getAutoSizeMaxTextSize();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.d);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.d);
     }
     return -1;
   }
@@ -72,9 +72,9 @@ public class AppCompatTextView
     if (a) {
       return super.getAutoSizeMinTextSize();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.c);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.c);
     }
     return -1;
   }
@@ -84,9 +84,9 @@ public class AppCompatTextView
     if (a) {
       return super.getAutoSizeStepGranularity();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return Math.round(localip.b.b);
+    jd localjd = this.c;
+    if (localjd != null) {
+      return Math.round(localjd.b.b);
     }
     return -1;
   }
@@ -96,9 +96,9 @@ public class AppCompatTextView
     if (a) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return localip.b.e;
+    jd localjd = this.c;
+    if (localjd != null) {
+      return localjd.b.e;
     }
     return new int[0];
   }
@@ -112,42 +112,42 @@ public class AppCompatTextView
       }
       return 0;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      return localip.b.a;
+    jd localjd = this.c;
+    if (localjd != null) {
+      return localjd.b.a;
     }
     return 0;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.b();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.c();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return il.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return iz.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ip localip = this.c;
-    if (localip != null) {
-      localip.b();
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.b();
     }
   }
   
@@ -166,9 +166,9 @@ public class AppCompatTextView
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -179,9 +179,9 @@ public class AppCompatTextView
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramArrayOfInt, paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramArrayOfInt, paramInt);
     }
   }
   
@@ -192,9 +192,9 @@ public class AppCompatTextView
       super.setAutoSizeTextTypeWithDefaults(paramInt);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt);
     }
   }
   
@@ -210,34 +210,34 @@ public class AppCompatTextView
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramInt);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramColorStateList);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramMode);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramContext, paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
   
@@ -248,9 +248,9 @@ public class AppCompatTextView
       super.setTextSize(paramInt, paramFloat);
       return;
     }
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramInt, paramFloat);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramInt, paramFloat);
     }
   }
 }

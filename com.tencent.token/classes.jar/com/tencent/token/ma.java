@@ -1,26 +1,25 @@
 package com.tencent.token;
 
-public abstract interface ma
+import android.telephony.PhoneStateListener;
+
+final class ma
+  extends PhoneStateListener
 {
-  public abstract void a();
-  
-  public abstract void a(lz paramlz);
-  
-  public abstract void b(lz paramlz);
-  
-  public abstract void c(lz paramlz);
-  
-  public abstract void d(lz paramlz);
-  
-  public abstract void e(lz paramlz);
-  
-  public abstract void f(lz paramlz);
-  
-  public abstract void g(lz paramlz);
-  
-  public abstract void h(lz paramlz);
-  
-  public abstract void i(lz paramlz);
+  public final void onDataConnectionStateChanged(int paramInt)
+  {
+    mc.a("DownloaderPhoneCallState", "onDataConnectionStateChanged, state:".concat(String.valueOf(paramInt)));
+    super.onDataConnectionStateChanged(paramInt);
+    boolean bool;
+    if (paramInt == 3) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    lz.a(bool);
+    StringBuilder localStringBuilder = new StringBuilder("sIsDataSuspend:");
+    localStringBuilder.append(lz.c());
+    mc.a("DownloaderPhoneCallState", localStringBuilder.toString());
+  }
 }
 
 

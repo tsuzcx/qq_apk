@@ -1,99 +1,21 @@
 package com.tencent.token;
 
-public abstract class abq
-  implements abp
+final class abq
+  extends abp
 {
-  private byte[] a = new byte[4];
-  private int b = 0;
-  private long c;
+  int d = 1;
   
-  public final void a()
+  abq() {}
+  
+  abq(byte paramByte)
   {
-    long l = this.c;
-    a((byte)-128);
-    while (this.b != 0) {
-      a((byte)0);
-    }
-    a(l << 3);
-    c();
+    super(1);
   }
   
-  public final void a(byte paramByte)
+  public final String toString()
   {
-    byte[] arrayOfByte = this.a;
-    int i = this.b;
-    this.b = (i + 1);
-    arrayOfByte[i] = paramByte;
-    if (this.b == arrayOfByte.length)
-    {
-      a(arrayOfByte, 0);
-      this.b = 0;
-    }
-    this.c += 1L;
+    return new abo(this, this.d).toString();
   }
-  
-  protected abstract void a(long paramLong);
-  
-  protected abstract void a(byte[] paramArrayOfByte, int paramInt);
-  
-  public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    int j = paramInt1;
-    for (;;)
-    {
-      paramInt1 = j;
-      paramInt2 = i;
-      if (this.b == 0) {
-        break;
-      }
-      paramInt1 = j;
-      paramInt2 = i;
-      if (i <= 0) {
-        break;
-      }
-      a(paramArrayOfByte[j]);
-      j += 1;
-      i -= 1;
-    }
-    for (;;)
-    {
-      i = paramInt1;
-      j = paramInt2;
-      if (paramInt2 <= this.a.length) {
-        break;
-      }
-      a(paramArrayOfByte, paramInt1);
-      byte[] arrayOfByte = this.a;
-      paramInt1 += arrayOfByte.length;
-      paramInt2 -= arrayOfByte.length;
-      this.c += arrayOfByte.length;
-    }
-    while (j > 0)
-    {
-      a(paramArrayOfByte[i]);
-      i += 1;
-      j -= 1;
-    }
-  }
-  
-  public void b()
-  {
-    this.c = 0L;
-    this.b = 0;
-    int i = 0;
-    for (;;)
-    {
-      byte[] arrayOfByte = this.a;
-      if (i >= arrayOfByte.length) {
-        break;
-      }
-      arrayOfByte[i] = 0;
-      i += 1;
-    }
-  }
-  
-  protected abstract void c();
 }
 
 

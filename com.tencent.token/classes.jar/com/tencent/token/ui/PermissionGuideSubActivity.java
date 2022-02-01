@@ -18,12 +18,12 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aap;
-import com.tencent.token.atv;
-import com.tencent.token.atv.a;
-import com.tencent.token.atx;
+import com.tencent.token.aaz;
+import com.tencent.token.aut;
+import com.tencent.token.aut.a;
+import com.tencent.token.auv;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.xj;
+import com.tencent.token.xv;
 import com.tmsdk.TMSDKContext;
 
 public class PermissionGuideSubActivity
@@ -48,16 +48,16 @@ public class PermissionGuideSubActivity
   
   private void initControllers()
   {
-    this.mTitleBar = findViewById(2131166119);
-    this.mTitleText = ((TextView)findViewById(2131165298));
-    this.mTitleDivider = findViewById(2131166120);
+    this.mTitleBar = findViewById(2131166159);
+    this.mTitleText = ((TextView)findViewById(2131165305));
+    this.mTitleDivider = findViewById(2131166160);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTitleBar.getLayoutParams();
     if (IndexActivity.S_RES_HEIGHT > 0) {
       localMarginLayoutParams.height = IndexActivity.S_TITLE_HEIGHT;
     }
-    this.mBackArrow = findViewById(2131165291);
-    this.mBackArrowImg = ((ImageView)findViewById(2131165293));
-    this.mRightOptionButton = ((Button)findViewById(2131165294));
+    this.mBackArrow = findViewById(2131165298);
+    this.mBackArrowImg = ((ImageView)findViewById(2131165300));
+    this.mRightOptionButton = ((Button)findViewById(2131165301));
     setDefaultTitle();
     setDefaultBackArrow();
   }
@@ -74,13 +74,13 @@ public class PermissionGuideSubActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296398);
+    setContentView(2131296407);
     paramBundle = getIntent();
     int j = 0;
     boolean bool1 = paramBundle.getBooleanExtra("app_whitelist", false);
     boolean bool2 = getIntent().getBooleanExtra("auto_start", false);
-    this.mPer1Layout = ((RelativeLayout)findViewById(2131165811));
-    this.mPer2Layout = ((RelativeLayout)findViewById(2131165812));
+    this.mPer1Layout = ((RelativeLayout)findViewById(2131165830));
+    this.mPer2Layout = ((RelativeLayout)findViewById(2131165834));
     paramBundle = this.mPer1Layout;
     int i;
     if (bool1) {
@@ -102,7 +102,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          atv.a(new int[] { 3 }).a(new atx()
+          aut.a(new int[] { 3 }).a(new auv()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -114,7 +114,7 @@ public class PermissionGuideSubActivity
               }
               if (i == 0)
               {
-                Toast.makeText(RqdApplication.p(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150121);
@@ -131,7 +131,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          atv.a(new int[] { 4 }).a(new atx()
+          aut.a(new int[] { 4 }).a(new auv()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -143,7 +143,7 @@ public class PermissionGuideSubActivity
               }
               if (i == 0)
               {
-                Toast.makeText(RqdApplication.p(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150118);
@@ -163,20 +163,20 @@ public class PermissionGuideSubActivity
   
   public void setContentView(int paramInt)
   {
-    super.setContentView(2131296464);
+    super.setContentView(2131296477);
     View localView = getLayoutInflater().inflate(paramInt, null);
-    ((RelativeLayout)findViewById(2131165409)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
+    ((RelativeLayout)findViewById(2131165421)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
     getContentView().setBackgroundDrawable(localView.getBackground());
-    this.animLayout = ((RelativeLayout)findViewById(2131165278));
-    this.lineImg = ((ImageView)findViewById(2131165664));
-    this.arcImg = ((ImageView)findViewById(2131165284));
+    this.animLayout = ((RelativeLayout)findViewById(2131165284));
+    this.lineImg = ((ImageView)findViewById(2131165681));
+    this.arcImg = ((ImageView)findViewById(2131165290));
     initControllers();
     if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex")))
     {
-      aap.a(this, this.mTitleBar, 2130968773);
+      aaz.a(this, this.mTitleBar, 2130968774);
       return;
     }
-    aap.a(this, this.mTitleBar, 2130968641);
+    aaz.a(this, this.mTitleBar, 2130968641);
   }
   
   protected void setDefaultBackArrow()
@@ -208,7 +208,7 @@ public class PermissionGuideSubActivity
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
       localNameNotFoundException.printStackTrace();
-      xj.c(localNameNotFoundException.toString());
+      xv.c(localNameNotFoundException.toString());
       localObject = null;
     }
     if ((localObject != null) && (localObject.labelRes != 0))

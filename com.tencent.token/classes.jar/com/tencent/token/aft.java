@@ -1,20 +1,12 @@
 package com.tencent.token;
 
-public final class aft
+import android.content.Context;
+
+public abstract interface aft
 {
-  public static String a()
-  {
-    try
-    {
-      throw null;
-      label2:
-      return "";
-    }
-    catch (Exception localException)
-    {
-      break label2;
-    }
-  }
+  public abstract afy a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
 }
 
 

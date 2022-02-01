@@ -17,33 +17,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.token.av;
-import com.tencent.token.av.b;
-import com.tencent.token.az;
-import com.tencent.token.bl;
-import com.tencent.token.bx;
-import com.tencent.token.bx.a;
-import com.tencent.token.bx.b;
-import com.tencent.token.bx.c;
-import com.tencent.token.ca;
-import com.tencent.token.cb;
-import com.tencent.token.cc;
-import com.tencent.token.cd;
-import com.tencent.token.ce;
-import com.tencent.token.cf;
-import com.tencent.token.cg;
+import com.tencent.token.bj;
+import com.tencent.token.bj.b;
+import com.tencent.token.bn;
+import com.tencent.token.bz;
 import com.tencent.token.cl;
+import com.tencent.token.cl.a;
+import com.tencent.token.cl.b;
+import com.tencent.token.cl.c;
+import com.tencent.token.co;
+import com.tencent.token.cp;
+import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.cs;
-import com.tencent.token.ea;
-import com.tencent.token.ek;
+import com.tencent.token.ct;
+import com.tencent.token.cu;
+import com.tencent.token.cz;
+import com.tencent.token.dg;
+import com.tencent.token.eo;
+import com.tencent.token.ey;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class FragmentActivity
-  extends ca
-  implements bx.a, bx.c
+  extends co
+  implements cl.a, cl.c
 {
   static final String ALLOCATED_REQUEST_INDICIES_TAG = "android:support:request_indicies";
   static final String FRAGMENTS_TAG = "android:support:fragments";
@@ -54,7 +54,7 @@ public class FragmentActivity
   static final String REQUEST_FRAGMENT_WHO_TAG = "android:support:request_fragment_who";
   private static final String TAG = "FragmentActivity";
   boolean mCreated;
-  final cc mFragments = new cc(new a());
+  final cq mFragments = new cq(new a());
   public final Handler mHandler = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -76,15 +76,15 @@ public class FragmentActivity
       }
     }
   };
-  cl mLoaderManager;
+  cz mLoaderManager;
   int mNextCandidateRequestIndex;
-  ek<String> mPendingFragmentActivityResults;
+  ey<String> mPendingFragmentActivityResults;
   boolean mReallyStopped = true;
   boolean mRequestedPermissionsFromFragment;
   boolean mResumed;
   boolean mRetaining;
   boolean mStopped = true;
-  private bl mViewModelStore;
+  private bz mViewModelStore;
   
   private int allocateRequestIndex(Fragment paramFragment)
   {
@@ -92,12 +92,12 @@ public class FragmentActivity
     {
       for (;;)
       {
-        ek localek = this.mPendingFragmentActivityResults;
+        ey localey = this.mPendingFragmentActivityResults;
         i = this.mNextCandidateRequestIndex;
-        if (localek.a) {
-          localek.a();
+        if (localey.a) {
+          localey.a();
         }
-        if (ea.a(localek.b, localek.d, i) < 0) {
+        if (eo.a(localey.b, localey.d, i) < 0) {
           break;
         }
         this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
@@ -112,20 +112,20 @@ public class FragmentActivity
   
   private void markFragmentsCreated()
   {
-    while (markState(getSupportFragmentManager(), av.b.c)) {}
+    while (markState(getSupportFragmentManager(), bj.b.c)) {}
   }
   
-  private static boolean markState(ce paramce, av.b paramb)
+  private static boolean markState(cs paramcs, bj.b paramb)
   {
-    paramce = paramce.d().iterator();
+    paramcs = paramcs.d().iterator();
     boolean bool1 = false;
-    while (paramce.hasNext())
+    while (paramcs.hasNext())
     {
-      Object localObject = (Fragment)paramce.next();
+      Object localObject = (Fragment)paramcs.next();
       if (localObject != null)
       {
         boolean bool2 = bool1;
-        if (((Fragment)localObject).getLifecycle().a().a(av.b.d))
+        if (((Fragment)localObject).getLifecycle().a().a(bj.b.d))
         {
           ((Fragment)localObject).U.a(paramb);
           bool2 = true;
@@ -133,7 +133,7 @@ public class FragmentActivity
         localObject = ((Fragment)localObject).u;
         bool1 = bool2;
         if (localObject != null) {
-          bool1 = bool2 | markState((ce)localObject, paramb);
+          bool1 = bool2 | markState((cs)localObject, paramb);
         }
       }
     }
@@ -176,9 +176,9 @@ public class FragmentActivity
     paramPrintWriter.print(this.mStopped);
     paramPrintWriter.print(" mReallyStopped=");
     paramPrintWriter.println(this.mReallyStopped);
-    cl localcl = this.mLoaderManager;
-    if (localcl != null) {
-      localcl.a((String)localObject, paramPrintWriter);
+    cz localcz = this.mLoaderManager;
+    if (localcz != null) {
+      localcz.a((String)localObject, paramPrintWriter);
     }
     this.mFragments.a.f.a(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
@@ -192,32 +192,32 @@ public class FragmentActivity
     return null;
   }
   
-  public av getLifecycle()
+  public bj getLifecycle()
   {
     return super.getLifecycle();
   }
   
-  public ce getSupportFragmentManager()
+  public cs getSupportFragmentManager()
   {
     return this.mFragments.a.f;
   }
   
-  public cl getSupportLoaderManager()
+  public cz getSupportLoaderManager()
   {
-    cl localcl = this.mLoaderManager;
-    if (localcl != null) {
-      return localcl;
+    cz localcz = this.mLoaderManager;
+    if (localcz != null) {
+      return localcz;
     }
     this.mLoaderManager = new LoaderManagerImpl(this, getViewModelStore());
     return this.mLoaderManager;
   }
   
-  public bl getViewModelStore()
+  public bz getViewModelStore()
   {
     if (getApplication() != null)
     {
       if (this.mViewModelStore == null) {
-        this.mViewModelStore = new bl();
+        this.mViewModelStore = new bz();
       }
       return this.mViewModelStore;
     }
@@ -239,7 +239,7 @@ public class FragmentActivity
       this.mFragments.a(paramIntent);
       return;
     }
-    bx.b localb = bx.a();
+    cl.b localb = cl.a();
     if ((localb != null) && (localb.b())) {
       return;
     }
@@ -250,12 +250,12 @@ public class FragmentActivity
   
   public void onBackPressed()
   {
-    cf localcf = this.mFragments.a.f;
-    boolean bool = localcf.e();
+    ct localct = this.mFragments.a.f;
+    boolean bool = localct.e();
     if ((bool) && (Build.VERSION.SDK_INT <= 25)) {
       return;
     }
-    if ((bool) || (!localcf.c())) {
+    if ((bool) || (!localct.c())) {
       super.onBackPressed();
     }
   }
@@ -270,11 +270,11 @@ public class FragmentActivity
   protected void onCreate(Bundle paramBundle)
   {
     Object localObject1 = this.mFragments;
-    Object localObject2 = ((cc)localObject1).a.f;
-    Object localObject3 = ((cc)localObject1).a;
-    Object localObject4 = ((cc)localObject1).a;
+    Object localObject2 = ((cq)localObject1).a.f;
+    Object localObject3 = ((cq)localObject1).a;
+    Object localObject4 = ((cq)localObject1).a;
     localObject1 = null;
-    ((cf)localObject2).a((cd)localObject3, (cb)localObject4, null);
+    ((ct)localObject2).a((cr)localObject3, (cp)localObject4, null);
     super.onCreate(paramBundle);
     localObject4 = (b)getLastNonConfigurationInstance();
     if (localObject4 != null) {
@@ -287,7 +287,7 @@ public class FragmentActivity
       if (localObject4 != null) {
         localObject1 = ((b)localObject4).c;
       }
-      ((cc)localObject3).a.f.a((Parcelable)localObject2, (cg)localObject1);
+      ((cq)localObject3).a.f.a((Parcelable)localObject2, (cu)localObject1);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
         this.mNextCandidateRequestIndex = paramBundle.getInt("android:support:next_request_index");
@@ -295,7 +295,7 @@ public class FragmentActivity
         paramBundle = paramBundle.getStringArray("android:support:request_fragment_who");
         if ((localObject1 != null) && (paramBundle != null) && (localObject1.length == paramBundle.length))
         {
-          this.mPendingFragmentActivityResults = new ek(localObject1.length);
+          this.mPendingFragmentActivityResults = new ey(localObject1.length);
           int i = 0;
           while (i < localObject1.length)
           {
@@ -307,7 +307,7 @@ public class FragmentActivity
     }
     if (this.mPendingFragmentActivityResults == null)
     {
-      this.mPendingFragmentActivityResults = new ek();
+      this.mPendingFragmentActivityResults = new ey();
       this.mNextCandidateRequestIndex = 0;
     }
     this.mFragments.a.f.k();
@@ -318,9 +318,9 @@ public class FragmentActivity
     if (paramInt == 0)
     {
       boolean bool = super.onCreatePanelMenu(paramInt, paramMenu);
-      cc localcc = this.mFragments;
+      cq localcq = this.mFragments;
       MenuInflater localMenuInflater = getMenuInflater();
-      return bool | localcc.a.f.a(paramMenu, localMenuInflater);
+      return bool | localcq.a.f.a(paramMenu, localMenuInflater);
     }
     return super.onCreatePanelMenu(paramInt, paramMenu);
   }
@@ -329,9 +329,9 @@ public class FragmentActivity
   {
     super.onDestroy();
     doReallyStop(false);
-    bl localbl = this.mViewModelStore;
-    if ((localbl != null) && (!this.mRetaining)) {
-      localbl.a();
+    bz localbz = this.mViewModelStore;
+    if ((localbz != null) && (!this.mRetaining)) {
+      localbz.a();
     }
     this.mFragments.a.f.p();
   }
@@ -460,15 +460,15 @@ public class FragmentActivity
     }
     Object localObject1 = onRetainCustomNonConfigurationInstance();
     Object localObject2 = this.mFragments.a.f;
-    cf.a(((cf)localObject2).D);
-    localObject2 = ((cf)localObject2).D;
+    ct.a(((ct)localObject2).D);
+    localObject2 = ((ct)localObject2).D;
     if ((localObject2 == null) && (this.mViewModelStore == null) && (localObject1 == null)) {
       return null;
     }
     b localb = new b();
     localb.a = localObject1;
     localb.b = this.mViewModelStore;
-    localb.c = ((cg)localObject2);
+    localb.c = ((cu)localObject2);
     return localb;
   }
   
@@ -531,14 +531,14 @@ public class FragmentActivity
   {
     if (paramInt == -1)
     {
-      bx.a(this, paramArrayOfString, paramInt);
+      cl.a(this, paramArrayOfString, paramInt);
       return;
     }
     checkForValidRequestCode(paramInt);
     try
     {
       this.mRequestedPermissionsFromFragment = true;
-      bx.a(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF));
+      cl.a(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF));
       return;
     }
     finally
@@ -547,14 +547,14 @@ public class FragmentActivity
     }
   }
   
-  public void setEnterSharedElementCallback(cs paramcs)
+  public void setEnterSharedElementCallback(dg paramdg)
   {
-    bx.a(this, paramcs);
+    cl.a(this, paramdg);
   }
   
-  public void setExitSharedElementCallback(cs paramcs)
+  public void setExitSharedElementCallback(dg paramdg)
   {
-    bx.b(this, paramcs);
+    cl.b(this, paramdg);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
@@ -576,7 +576,7 @@ public class FragmentActivity
     if (paramInt == -1) {}
     try
     {
-      bx.a(this, paramIntent, -1, paramBundle);
+      cl.a(this, paramIntent, -1, paramBundle);
       return;
     }
     finally
@@ -584,7 +584,7 @@ public class FragmentActivity
       this.mStartedActivityFromFragment = false;
     }
     checkForValidRequestCode(paramInt);
-    bx.a(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF), paramBundle);
+    cl.a(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF), paramBundle);
     this.mStartedActivityFromFragment = false;
   }
   
@@ -594,7 +594,7 @@ public class FragmentActivity
     if (paramInt1 == -1) {}
     try
     {
-      bx.a(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      cl.a(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
       return;
     }
     finally
@@ -602,13 +602,13 @@ public class FragmentActivity
       this.mStartedIntentSenderFromFragment = false;
     }
     checkForValidRequestCode(paramInt1);
-    bx.a(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt1 & 0xFFFF), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    cl.a(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt1 & 0xFFFF), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
     this.mStartedIntentSenderFromFragment = false;
   }
   
   public void supportFinishAfterTransition()
   {
-    bx.b(this);
+    cl.b(this);
   }
   
   @Deprecated
@@ -619,12 +619,12 @@ public class FragmentActivity
   
   public void supportPostponeEnterTransition()
   {
-    bx.c(this);
+    cl.c(this);
   }
   
   public void supportStartPostponedEnterTransition()
   {
-    bx.d(this);
+    cl.d(this);
   }
   
   public final void validateRequestPermissionsRequestCode(int paramInt)
@@ -635,7 +635,7 @@ public class FragmentActivity
   }
   
   final class a
-    extends cd<FragmentActivity>
+    extends cr<FragmentActivity>
   {
     public a()
     {
@@ -696,8 +696,8 @@ public class FragmentActivity
   static final class b
   {
     Object a;
-    bl b;
-    cg c;
+    bz b;
+    cu c;
   }
 }
 

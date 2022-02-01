@@ -1,23 +1,130 @@
 package com.tencent.turingfd.sdk.qps;
 
-import com.tencent.token.agd;
-import com.tencent.token.age;
+import com.tencent.token.ahl;
+import java.lang.reflect.Field;
+import java.util.Locale;
 
-public final class for
-  extends final
+public enum for
+  implements ahl
 {
-  public long a = 0L;
-  
-  public final void a(agd paramagd)
+  public static String a(String paramString)
   {
-    this.a = paramagd.a(this.a, 0, false);
+    int j = paramString.length();
+    int i = 0;
+    while ((!Character.isLetter(paramString.charAt(i))) && (i < j - 1)) {
+      i += 1;
+    }
+    char c1 = paramString.charAt(i);
+    if (Character.isUpperCase(c1)) {
+      return paramString;
+    }
+    c1 = Character.toUpperCase(c1);
+    if (i == 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(c1);
+      localStringBuilder.append(paramString.substring(1));
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, i));
+    localStringBuilder.append(c1);
+    localStringBuilder.append(paramString.substring(i + 1));
+    return localStringBuilder.toString();
   }
   
-  public final void a(age paramage)
+  public static String a(String paramString1, String paramString2)
   {
-    long l = this.a;
-    if (l != 0L) {
-      paramage.a(l, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = paramString1.length();
+    int i = 0;
+    while (i < j)
+    {
+      char c1 = paramString1.charAt(i);
+      if ((Character.isUpperCase(c1)) && (localStringBuilder.length() != 0)) {
+        localStringBuilder.append(paramString2);
+      }
+      localStringBuilder.append(c1);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public enum case
+  {
+    public case()
+    {
+      super(5, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return for.a(paramField.getName(), ".").toLowerCase(Locale.ENGLISH);
+    }
+  }
+  
+  public enum do
+  {
+    public do()
+    {
+      super(0, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return paramField.getName();
+    }
+  }
+  
+  public enum for
+  {
+    public for()
+    {
+      super(2, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return for.a(for.a(paramField.getName(), " "));
+    }
+  }
+  
+  public enum if
+  {
+    public if()
+    {
+      super(1, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return for.a(paramField.getName());
+    }
+  }
+  
+  public enum new
+  {
+    public new()
+    {
+      super(3, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return for.a(paramField.getName(), "_").toLowerCase(Locale.ENGLISH);
+    }
+  }
+  
+  public enum try
+  {
+    public try()
+    {
+      super(4, (byte)0);
+    }
+    
+    public final String a(Field paramField)
+    {
+      return for.a(paramField.getName(), "-").toLowerCase(Locale.ENGLISH);
     }
   }
 }

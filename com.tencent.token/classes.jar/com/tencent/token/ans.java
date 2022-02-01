@@ -1,128 +1,71 @@
 package com.tencent.token;
 
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
 
-public abstract class ans<K, A>
+final class ans
 {
-  final List<a> a = new ArrayList();
-  boolean b = false;
-  private final List<? extends anv<K>> c;
-  private float d = 0.0F;
-  private anv<K> e;
+  private static final byte[] a = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+  private static final byte[] b = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
   
-  ans(List<? extends anv<K>> paramList)
+  public static String a(byte[] paramArrayOfByte)
   {
-    this.c = paramList;
+    return a(paramArrayOfByte, a);
   }
   
-  private anv<K> b()
+  private static String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (!this.c.isEmpty())
-    {
-      Object localObject = this.e;
-      if ((localObject != null) && (((anv)localObject).a(this.d))) {
-        return this.e;
-      }
-      localObject = this.c;
-      int i = 0;
-      anv localanv = (anv)((List)localObject).get(0);
-      localObject = localanv;
-      if (this.d < localanv.a())
-      {
-        this.e = localanv;
-        return localanv;
-      }
-      while ((!((anv)localObject).a(this.d)) && (i < this.c.size()))
-      {
-        localObject = (anv)this.c.get(i);
-        i += 1;
-      }
-      this.e = ((anv)localObject);
-      return localObject;
-    }
-    throw new IllegalStateException("There are no keyframes");
-  }
-  
-  public A a()
-  {
-    anv localanv1 = b();
-    boolean bool = this.b;
-    float f1 = 0.0F;
-    if (!bool)
-    {
-      anv localanv2 = b();
-      int i;
-      if (localanv2.c == null) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (i == 0)
-      {
-        f1 = this.d;
-        float f2 = localanv2.a();
-        float f3 = localanv2.b();
-        float f4 = localanv2.a();
-        f1 = localanv2.c.getInterpolation((f1 - f2) / (f3 - f4));
-      }
-    }
-    return a(localanv1, f1);
-  }
-  
-  public abstract A a(anv<K> paramanv, float paramFloat);
-  
-  public void a(float paramFloat)
-  {
-    boolean bool = this.c.isEmpty();
+    byte[] arrayOfByte = new byte[(paramArrayOfByte1.length + 2) / 3 * 4];
+    int k = paramArrayOfByte1.length - paramArrayOfByte1.length % 3;
     int i = 0;
-    float f1;
-    if (bool) {
-      f1 = 0.0F;
-    } else {
-      f1 = ((anv)this.c.get(0)).a();
-    }
-    if (paramFloat < f1)
+    int j = 0;
+    int m;
+    while (i < k)
     {
-      f1 = 0.0F;
+      m = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0xFF) >> 2)];
+      j = m + 1;
+      int i1 = paramArrayOfByte1[i];
+      int n = i + 1;
+      arrayOfByte[m] = paramArrayOfByte2[((i1 & 0x3) << 4 | (paramArrayOfByte1[n] & 0xFF) >> 4)];
+      m = j + 1;
+      i1 = paramArrayOfByte1[n];
+      n = i + 2;
+      arrayOfByte[j] = paramArrayOfByte2[((i1 & 0xF) << 2 | (paramArrayOfByte1[n] & 0xFF) >> 6)];
+      j = m + 1;
+      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[n] & 0x3F)];
+      i += 3;
     }
-    else
+    switch (paramArrayOfByte1.length % 3)
     {
-      float f2;
-      if (this.c.isEmpty())
-      {
-        f2 = 1.0F;
-      }
-      else
-      {
-        List localList = this.c;
-        f2 = ((anv)localList.get(localList.size() - 1)).b();
-      }
-      f1 = paramFloat;
-      if (paramFloat > f2) {
-        f1 = 1.0F;
-      }
+    default: 
+      break;
+    case 2: 
+      i = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
+      j = i + 1;
+      m = paramArrayOfByte1[k];
+      k += 1;
+      arrayOfByte[i] = paramArrayOfByte2[((m & 0x3) << 4 | (paramArrayOfByte1[k] & 0xFF) >> 4)];
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xF) << 2)];
+      arrayOfByte[(j + 1)] = 61;
+      break;
+    case 1: 
+      i = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
+      j = i + 1;
+      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4)];
+      arrayOfByte[j] = 61;
+      arrayOfByte[(j + 1)] = 61;
     }
-    if (f1 == this.d) {
-      return;
-    }
-    this.d = f1;
-    while (i < this.a.size())
+    try
     {
-      ((a)this.a.get(i)).b();
-      i += 1;
+      paramArrayOfByte1 = new String(arrayOfByte, "US-ASCII");
+      return paramArrayOfByte1;
     }
-  }
-  
-  public void a(a parama)
-  {
-    this.a.add(parama);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void b();
+    catch (UnsupportedEncodingException paramArrayOfByte1)
+    {
+      throw new AssertionError(paramArrayOfByte1);
+    }
   }
 }
 

@@ -1,68 +1,47 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
-import android.view.Menu;
-import android.view.ViewGroup;
-import android.view.Window.Callback;
+import android.support.v7.widget.ActionBarContainer;
 
-public abstract interface it
+public class it
+  extends Drawable
 {
-  public abstract ViewGroup a();
+  final ActionBarContainer a;
   
-  public abstract fd a(int paramInt, long paramLong);
+  public it(ActionBarContainer paramActionBarContainer)
+  {
+    this.a = paramActionBarContainer;
+  }
   
-  public abstract void a(int paramInt);
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.a.d)
+    {
+      if (this.a.c != null) {
+        this.a.c.draw(paramCanvas);
+      }
+    }
+    else
+    {
+      if (this.a.a != null) {
+        this.a.a.draw(paramCanvas);
+      }
+      if ((this.a.b != null) && (this.a.e)) {
+        this.a.b.draw(paramCanvas);
+      }
+    }
+  }
   
-  public abstract void a(Drawable paramDrawable);
+  public int getOpacity()
+  {
+    return 0;
+  }
   
-  public abstract void a(Menu paramMenu, hw.a parama);
+  public void setAlpha(int paramInt) {}
   
-  public abstract void a(Window.Callback paramCallback);
-  
-  public abstract void a(hw.a parama, hp.a parama1);
-  
-  public abstract void a(jc paramjc);
-  
-  public abstract void a(CharSequence paramCharSequence);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract Context b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract CharSequence e();
-  
-  public abstract void e(int paramInt);
-  
-  public abstract boolean f();
-  
-  public abstract boolean g();
-  
-  public abstract boolean h();
-  
-  public abstract boolean i();
-  
-  public abstract boolean j();
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
-  public abstract int m();
-  
-  public abstract int n();
-  
-  public abstract Menu o();
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

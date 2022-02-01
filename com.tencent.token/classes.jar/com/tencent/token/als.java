@@ -1,592 +1,370 @@
 package com.tencent.token;
 
-import java.io.EOFException;
 import java.io.IOException;
-import java.net.ProtocolException;
-import java.net.Proxy;
-import java.net.Proxy.Type;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public final class als
-  implements ali
+  implements ale
 {
-  final aki a;
-  final alf b;
-  final amx c;
-  final amw d;
-  int e = 0;
-  private long f = 262144L;
+  final alw a;
   
-  public als(aki paramaki, alf paramalf, amx paramamx, amw paramamw)
+  public als(alw paramalw)
   {
-    this.a = paramaki;
-    this.b = paramalf;
-    this.c = paramamx;
-    this.d = paramamw;
+    this.a = paramalw;
   }
   
-  static void a(anb paramanb)
+  private static alc a(alc paramalc1, alc paramalc2)
   {
-    anm localanm1 = paramanb.a;
-    anm localanm2 = anm.c;
-    if (localanm2 != null)
+    alc.a locala = new alc.a();
+    int k = paramalc1.a.length / 2;
+    int j = 0;
+    int i = 0;
+    while (i < k)
     {
-      paramanb.a = localanm2;
-      localanm1.g_();
-      localanm1.d();
-      return;
-    }
-    throw new IllegalArgumentException("delegate == null");
-  }
-  
-  private String d()
-  {
-    String str = this.c.d(this.f);
-    this.f -= str.length();
-    return str;
-  }
-  
-  public final akn.a a(boolean paramBoolean)
-  {
-    int i = this.e;
-    Object localObject1;
-    if ((i != 1) && (i != 3))
-    {
-      localObject1 = new StringBuilder("state: ");
-      ((StringBuilder)localObject1).append(this.e);
-      throw new IllegalStateException(((StringBuilder)localObject1).toString());
-    }
-    try
-    {
-      localObject1 = alq.a(d());
-      localObject2 = new akn.a();
-      ((akn.a)localObject2).b = ((alq)localObject1).a;
-      ((akn.a)localObject2).c = ((alq)localObject1).b;
-      ((akn.a)localObject2).d = ((alq)localObject1).c;
-      localObject2 = ((akn.a)localObject2).a(c());
-      if ((paramBoolean) && (((alq)localObject1).b == 100)) {
-        return null;
+      String str1 = paramalc1.a(i);
+      String str2 = paramalc1.b(i);
+      if (((!"Warning".equalsIgnoreCase(str1)) || (!str2.startsWith("1"))) && ((b(str1)) || (!a(str1)) || (paramalc2.a(str1) == null))) {
+        alp.a.a(locala, str1, str2);
       }
-      if (((alq)localObject1).b == 100)
-      {
-        this.e = 3;
-        return localObject2;
+      i += 1;
+    }
+    k = paramalc2.a.length / 2;
+    i = j;
+    while (i < k)
+    {
+      paramalc1 = paramalc2.a(i);
+      if ((!b(paramalc1)) && (a(paramalc1))) {
+        alp.a.a(locala, paramalc1, paramalc2.b(i));
       }
-      this.e = 4;
-      return localObject2;
-    }
-    catch (EOFException localEOFException)
-    {
-      Object localObject2 = new StringBuilder("unexpected end of stream on ");
-      ((StringBuilder)localObject2).append(this.b);
-      localObject2 = new IOException(((StringBuilder)localObject2).toString());
-      ((IOException)localObject2).initCause(localEOFException);
-      throw ((Throwable)localObject2);
-    }
-  }
-  
-  public final ako a(akn paramakn)
-  {
-    String str = paramakn.a("Content-Type");
-    if (!alk.b(paramakn)) {
-      return new aln(str, 0L, ane.a(a(0L)));
-    }
-    if ("chunked".equalsIgnoreCase(paramakn.a("Transfer-Encoding")))
-    {
-      paramakn = paramakn.a.a;
-      if (this.e == 4)
-      {
-        this.e = 5;
-        return new aln(str, -1L, ane.a(new c(paramakn)));
-      }
-      paramakn = new StringBuilder("state: ");
-      paramakn.append(this.e);
-      throw new IllegalStateException(paramakn.toString());
-    }
-    long l = alk.a(paramakn);
-    if (l != -1L) {
-      return new aln(str, l, ane.a(a(l)));
-    }
-    if (this.e == 4)
-    {
-      paramakn = this.b;
-      if (paramakn != null)
-      {
-        this.e = 5;
-        paramakn.d();
-        return new aln(str, -1L, ane.a(new f()));
-      }
-      throw new IllegalStateException("streamAllocation == null");
-    }
-    paramakn = new StringBuilder("state: ");
-    paramakn.append(this.e);
-    throw new IllegalStateException(paramakn.toString());
-  }
-  
-  public final ank a(akl paramakl, long paramLong)
-  {
-    if ("chunked".equalsIgnoreCase(paramakl.a("Transfer-Encoding")))
-    {
-      if (this.e == 1)
-      {
-        this.e = 2;
-        return new b();
-      }
-      paramakl = new StringBuilder("state: ");
-      paramakl.append(this.e);
-      throw new IllegalStateException(paramakl.toString());
-    }
-    if (paramLong != -1L)
-    {
-      if (this.e == 1)
-      {
-        this.e = 2;
-        return new d(paramLong);
-      }
-      paramakl = new StringBuilder("state: ");
-      paramakl.append(this.e);
-      throw new IllegalStateException(paramakl.toString());
-    }
-    throw new IllegalStateException("Cannot stream a request body without chunked encoding or a known content length!");
-  }
-  
-  public final anl a(long paramLong)
-  {
-    if (this.e == 4)
-    {
-      this.e = 5;
-      return new e(paramLong);
-    }
-    StringBuilder localStringBuilder = new StringBuilder("state: ");
-    localStringBuilder.append(this.e);
-    throw new IllegalStateException(localStringBuilder.toString());
-  }
-  
-  public final void a()
-  {
-    this.d.flush();
-  }
-  
-  public final void a(ake paramake, String paramString)
-  {
-    if (this.e == 0)
-    {
-      this.d.b(paramString).b("\r\n");
-      int i = 0;
-      int j = paramake.a.length / 2;
-      while (i < j)
-      {
-        this.d.b(paramake.a(i)).b(": ").b(paramake.b(i)).b("\r\n");
-        i += 1;
-      }
-      this.d.b("\r\n");
-      this.e = 1;
-      return;
-    }
-    paramake = new StringBuilder("state: ");
-    paramake.append(this.e);
-    throw new IllegalStateException(paramake.toString());
-  }
-  
-  public final void a(akl paramakl)
-  {
-    Object localObject = this.b.b().a.b.type();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramakl.b);
-    localStringBuilder.append(' ');
-    int i;
-    if ((!paramakl.a.b()) && (localObject == Proxy.Type.HTTP)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0) {
-      localStringBuilder.append(paramakl.a);
-    } else {
-      localStringBuilder.append(alo.a(paramakl.a));
-    }
-    localStringBuilder.append(" HTTP/1.1");
-    localObject = localStringBuilder.toString();
-    a(paramakl.c, (String)localObject);
-  }
-  
-  public final void b()
-  {
-    this.d.flush();
-  }
-  
-  public final ake c()
-  {
-    ake.a locala = new ake.a();
-    for (;;)
-    {
-      String str = d();
-      if (str.length() == 0) {
-        break;
-      }
-      akr.a.a(locala, str);
+      i += 1;
     }
     return locala.a();
   }
   
-  abstract class a
-    implements anl
+  private static all a(all paramall)
   {
-    protected final anb a = new anb(als.this.c.a());
-    protected boolean b;
-    protected long c = 0L;
-    
-    private a() {}
-    
-    public long a(amv paramamv, long paramLong)
+    if ((paramall != null) && (paramall.g != null))
     {
-      try
-      {
-        paramLong = als.this.c.a(paramamv, paramLong);
-        if (paramLong > 0L) {
-          this.c += paramLong;
-        }
-        return paramLong;
-      }
-      catch (IOException paramamv)
-      {
-        a(false);
-        throw paramamv;
-      }
+      paramall = paramall.a();
+      paramall.g = null;
+      return paramall.a();
     }
-    
-    public final anm a()
-    {
-      return this.a;
-    }
-    
-    protected final void a(boolean paramBoolean)
-    {
-      if (als.this.e == 6) {
-        return;
-      }
-      if (als.this.e == 5)
-      {
-        als.a(this.a);
-        localObject = als.this;
-        ((als)localObject).e = 6;
-        if (((als)localObject).b != null) {
-          als.this.b.a(paramBoolean ^ true, als.this);
-        }
-        return;
-      }
-      Object localObject = new StringBuilder("state: ");
-      ((StringBuilder)localObject).append(als.this.e);
-      throw new IllegalStateException(((StringBuilder)localObject).toString());
-    }
+    return paramall;
   }
   
-  final class b
-    implements ank
+  private static boolean a(String paramString)
   {
-    private final anb b = new anb(als.this.d.a());
-    private boolean c;
-    
-    b() {}
-    
-    public final anm a()
-    {
-      return this.b;
-    }
-    
-    public final void a_(amv paramamv, long paramLong)
-    {
-      if (!this.c)
-      {
-        if (paramLong == 0L) {
-          return;
-        }
-        als.this.d.j(paramLong);
-        als.this.d.b("\r\n");
-        als.this.d.a_(paramamv, paramLong);
-        als.this.d.b("\r\n");
-        return;
-      }
-      throw new IllegalStateException("closed");
-    }
-    
-    public final void close()
-    {
-      try
-      {
-        boolean bool = this.c;
-        if (bool) {
-          return;
-        }
-        this.c = true;
-        als.this.d.b("0\r\n\r\n");
-        als.a(this.b);
-        als.this.e = 3;
-        return;
-      }
-      finally {}
-    }
-    
-    public final void flush()
-    {
-      try
-      {
-        boolean bool = this.c;
-        if (bool) {
-          return;
-        }
-        als.this.d.flush();
-        return;
-      }
-      finally {}
-    }
+    return (!"Connection".equalsIgnoreCase(paramString)) && (!"Keep-Alive".equalsIgnoreCase(paramString)) && (!"Proxy-Authenticate".equalsIgnoreCase(paramString)) && (!"Proxy-Authorization".equalsIgnoreCase(paramString)) && (!"TE".equalsIgnoreCase(paramString)) && (!"Trailers".equalsIgnoreCase(paramString)) && (!"Transfer-Encoding".equalsIgnoreCase(paramString)) && (!"Upgrade".equalsIgnoreCase(paramString));
   }
   
-  final class c
-    extends als.a
+  private static boolean b(String paramString)
   {
-    private final akf f;
-    private long g = -1L;
-    private boolean h = true;
-    
-    c(akf paramakf)
-    {
-      super((byte)0);
-      this.f = paramakf;
+    return ("Content-Length".equalsIgnoreCase(paramString)) || ("Content-Encoding".equalsIgnoreCase(paramString)) || ("Content-Type".equalsIgnoreCase(paramString));
+  }
+  
+  public final all a(ale.a parama)
+  {
+    Object localObject1 = this.a;
+    Object localObject2;
+    if (localObject1 != null) {
+      localObject2 = ((alw)localObject1).a();
+    } else {
+      localObject2 = null;
     }
-    
-    public final long a(amv paramamv, long paramLong)
+    alu.a locala = new alu.a(System.currentTimeMillis(), parama.a(), (all)localObject2);
+    long l1;
+    if (locala.c == null)
     {
-      if (paramLong >= 0L)
+      localObject1 = new alu(locala.b, null);
+    }
+    else if ((locala.b.a.b()) && (locala.c.e == null))
+    {
+      localObject1 = new alu(locala.b, null);
+    }
+    else if (!alu.a(locala.c, locala.b))
+    {
+      localObject1 = new alu(locala.b, null);
+    }
+    else
+    {
+      localObject3 = locala.b.b();
+      if (!((akp)localObject3).c)
       {
-        if (!this.b)
+        localObject1 = locala.b;
+        int i;
+        if ((((alj)localObject1).a("If-Modified-Since") == null) && (((alj)localObject1).a("If-None-Match") == null)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        if (i == 0)
         {
-          if (!this.h) {
-            return -1L;
+          Object localObject4 = locala.c.b();
+          if (((akp)localObject4).l)
+          {
+            localObject1 = new alu(null, locala.c);
+            break label946;
           }
-          long l = this.g;
-          if ((l == 0L) || (l == -1L)) {
-            if (this.g != -1L) {
-              als.this.c.n();
+          localObject1 = locala.d;
+          long l4 = 0L;
+          if (localObject1 != null) {
+            l1 = Math.max(0L, locala.j - locala.d.getTime());
+          } else {
+            l1 = 0L;
+          }
+          long l2 = l1;
+          if (locala.l != -1) {
+            l2 = Math.max(l1, TimeUnit.SECONDS.toMillis(locala.l));
+          }
+          long l5 = l2 + (locala.j - locala.i) + (locala.a - locala.j);
+          localObject1 = locala.c.b();
+          if (((akp)localObject1).e != -1)
+          {
+            l1 = TimeUnit.SECONDS.toMillis(((akp)localObject1).e);
+          }
+          else if (locala.h != null)
+          {
+            if (locala.d != null) {
+              l1 = locala.d.getTime();
+            } else {
+              l1 = locala.j;
+            }
+            l1 = locala.h.getTime() - l1;
+            if (l1 <= 0L) {
+              l1 = 0L;
             }
           }
-          try
+          else
           {
-            this.g = als.this.c.k();
-            String str = als.this.c.n().trim();
-            if (this.g >= 0L) {
-              if (!str.isEmpty())
+            if (locala.f != null)
+            {
+              localObject1 = locala.c.a.a;
+              if (((ald)localObject1).d == null)
               {
-                boolean bool = str.startsWith(";");
-                if (!bool) {}
+                localObject1 = null;
               }
               else
               {
-                if (this.g == 0L)
+                StringBuilder localStringBuilder = new StringBuilder();
+                ald.b(localStringBuilder, ((ald)localObject1).d);
+                localObject1 = localStringBuilder.toString();
+              }
+              if (localObject1 == null)
+              {
+                if (locala.d != null) {
+                  l1 = locala.d.getTime();
+                } else {
+                  l1 = locala.i;
+                }
+                l1 -= locala.f.getTime();
+                if (l1 > 0L)
                 {
-                  this.h = false;
-                  alk.a(als.this.a.k, this.f, als.this.c());
-                  a(true);
+                  l1 /= 10L;
+                  break label563;
                 }
-                if (!this.h) {
-                  return -1L;
-                }
-                paramLong = super.a(paramamv, Math.min(paramLong, this.g));
-                if (paramLong != -1L)
-                {
-                  this.g -= paramLong;
-                  return paramLong;
-                }
-                paramamv = new ProtocolException("unexpected end of stream");
-                a(false);
-                throw paramamv;
+                l1 = 0L;
+                break label563;
               }
             }
-            paramamv = new StringBuilder("expected chunk size and optional extensions but was \"");
-            paramamv.append(this.g);
-            paramamv.append(str);
-            paramamv.append("\"");
-            throw new ProtocolException(paramamv.toString());
+            l1 = 0L;
           }
-          catch (NumberFormatException paramamv)
+          label563:
+          l2 = l1;
+          if (((akp)localObject3).e != -1) {
+            l2 = Math.min(l1, TimeUnit.SECONDS.toMillis(((akp)localObject3).e));
+          }
+          if (((akp)localObject3).j != -1) {
+            l1 = TimeUnit.SECONDS.toMillis(((akp)localObject3).j);
+          } else {
+            l1 = 0L;
+          }
+          long l3 = l4;
+          if (!((akp)localObject4).h)
           {
-            throw new ProtocolException(paramamv.getMessage());
-          }
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    
-    public final void close()
-    {
-      if (this.b) {
-        return;
-      }
-      if ((this.h) && (!akt.a(this, TimeUnit.MILLISECONDS))) {
-        a(false);
-      }
-      this.b = true;
-    }
-  }
-  
-  final class d
-    implements ank
-  {
-    private final anb b = new anb(als.this.d.a());
-    private boolean c;
-    private long d;
-    
-    d(long paramLong)
-    {
-      this.d = paramLong;
-    }
-    
-    public final anm a()
-    {
-      return this.b;
-    }
-    
-    public final void a_(amv paramamv, long paramLong)
-    {
-      if (!this.c)
-      {
-        akt.a(paramamv.b, paramLong);
-        if (paramLong <= this.d)
-        {
-          als.this.d.a_(paramamv, paramLong);
-          this.d -= paramLong;
-          return;
-        }
-        paramamv = new StringBuilder("expected ");
-        paramamv.append(this.d);
-        paramamv.append(" bytes but received ");
-        paramamv.append(paramLong);
-        throw new ProtocolException(paramamv.toString());
-      }
-      throw new IllegalStateException("closed");
-    }
-    
-    public final void close()
-    {
-      if (this.c) {
-        return;
-      }
-      this.c = true;
-      if (this.d <= 0L)
-      {
-        als.a(this.b);
-        als.this.e = 3;
-        return;
-      }
-      throw new ProtocolException("unexpected end of stream");
-    }
-    
-    public final void flush()
-    {
-      if (this.c) {
-        return;
-      }
-      als.this.d.flush();
-    }
-  }
-  
-  final class e
-    extends als.a
-  {
-    private long f;
-    
-    e(long paramLong)
-    {
-      super((byte)0);
-      this.f = paramLong;
-      if (this.f == 0L) {
-        a(true);
-      }
-    }
-    
-    public final long a(amv paramamv, long paramLong)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.b)
-        {
-          long l = this.f;
-          if (l == 0L) {
-            return -1L;
-          }
-          paramLong = super.a(paramamv, Math.min(l, paramLong));
-          if (paramLong != -1L)
-          {
-            this.f -= paramLong;
-            if (this.f == 0L) {
-              a(true);
+            l3 = l4;
+            if (((akp)localObject3).i != -1) {
+              l3 = TimeUnit.SECONDS.toMillis(((akp)localObject3).i);
             }
-            return paramLong;
           }
-          paramamv = new ProtocolException("unexpected end of stream");
-          a(false);
-          throw paramamv;
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    
-    public final void close()
-    {
-      if (this.b) {
-        return;
-      }
-      if ((this.f != 0L) && (!akt.a(this, TimeUnit.MILLISECONDS))) {
-        a(false);
-      }
-      this.b = true;
-    }
-  }
-  
-  final class f
-    extends als.a
-  {
-    private boolean f;
-    
-    f()
-    {
-      super((byte)0);
-    }
-    
-    public final long a(amv paramamv, long paramLong)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.b)
-        {
-          if (this.f) {
-            return -1L;
-          }
-          paramLong = super.a(paramamv, paramLong);
-          if (paramLong == -1L)
+          if (!((akp)localObject4).c)
           {
-            this.f = true;
-            a(true);
-            return -1L;
+            l1 += l5;
+            if (l1 < l3 + l2)
+            {
+              localObject1 = locala.c.a();
+              if (l1 >= l2) {
+                ((all.a)localObject1).a("Warning", "110 HttpURLConnection \"Response is stale\"");
+              }
+              if (l5 > 86400000L)
+              {
+                if ((locala.c.b().e == -1) && (locala.h == null)) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+                if (i != 0) {
+                  ((all.a)localObject1).a("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
+                }
+              }
+              localObject1 = new alu(null, ((all.a)localObject1).a());
+              break label946;
+            }
           }
-          return paramLong;
+          if (locala.k != null)
+          {
+            localObject1 = "If-None-Match";
+            localObject3 = locala.k;
+          }
+          else if (locala.f != null)
+          {
+            localObject1 = "If-Modified-Since";
+            localObject3 = locala.g;
+          }
+          else
+          {
+            if (locala.d == null) {
+              break label913;
+            }
+            localObject1 = "If-Modified-Since";
+            localObject3 = locala.e;
+          }
+          localObject4 = locala.b.c.a();
+          alp.a.a((alc.a)localObject4, (String)localObject1, (String)localObject3);
+          localObject1 = locala.b.a();
+          ((alj.a)localObject1).c = ((alc.a)localObject4).a().a();
+          localObject1 = new alu(((alj.a)localObject1).a(), locala.c);
+          break label946;
+          label913:
+          localObject1 = new alu(locala.b, null);
+          break label946;
         }
-        throw new IllegalStateException("closed");
       }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
+      localObject1 = new alu(locala.b, null);
     }
-    
-    public final void close()
+    label946:
+    Object localObject3 = localObject1;
+    if (((alu)localObject1).a != null)
     {
-      if (this.b) {
-        return;
+      localObject3 = localObject1;
+      if (locala.b.b().k) {
+        localObject3 = new alu(null, null);
       }
-      if (!this.f) {
-        a(false);
+    }
+    localObject1 = ((alu)localObject3).a;
+    localObject3 = ((alu)localObject3).b;
+    if ((localObject2 != null) && (localObject3 == null)) {
+      alr.a(((all)localObject2).g);
+    }
+    if ((localObject1 == null) && (localObject3 == null))
+    {
+      localObject1 = new all.a();
+      ((all.a)localObject1).a = parama.a();
+      ((all.a)localObject1).b = alh.b;
+      ((all.a)localObject1).c = 504;
+      ((all.a)localObject1).d = "Unsatisfiable Request (only-if-cached)";
+      ((all.a)localObject1).g = alr.c;
+      ((all.a)localObject1).k = -1L;
+      ((all.a)localObject1).l = System.currentTimeMillis();
+      return ((all.a)localObject1).a();
+    }
+    if (localObject1 == null) {
+      return ((all)localObject3).a().b(a((all)localObject3)).a();
+    }
+    try
+    {
+      parama = parama.a((alj)localObject1);
+      if ((parama == null) && (localObject2 != null)) {
+        alr.a(((all)localObject2).g);
       }
-      this.b = true;
+      if (localObject3 != null)
+      {
+        if (parama.c == 304)
+        {
+          localObject1 = ((all)localObject3).a().a(a(((all)localObject3).f, parama.f));
+          ((all.a)localObject1).k = parama.k;
+          ((all.a)localObject1).l = parama.l;
+          localObject1 = ((all.a)localObject1).b(a((all)localObject3)).a(a(parama)).a();
+          parama.g.close();
+          return localObject1;
+        }
+        alr.a(((all)localObject3).g);
+      }
+      parama = parama.a().b(a((all)localObject3)).a(a(parama)).a();
+      if (this.a != null)
+      {
+        if ((ami.b(parama)) && (alu.a(parama, (alj)localObject1)))
+        {
+          localObject1 = this.a.b();
+          if (localObject1 == null) {
+            return parama;
+          }
+          localObject2 = ((alt)localObject1).a();
+          if (localObject2 == null) {
+            return parama;
+          }
+          localObject1 = new aoj()
+          {
+            boolean a;
+            
+            public final long a(ant paramAnonymousant, long paramAnonymousLong)
+            {
+              try
+              {
+                paramAnonymousLong = this.b.a(paramAnonymousant, paramAnonymousLong);
+                if (paramAnonymousLong == -1L)
+                {
+                  if (!this.a)
+                  {
+                    this.a = true;
+                    this.d.close();
+                  }
+                  return -1L;
+                }
+                paramAnonymousant.a(this.d.b(), paramAnonymousant.b - paramAnonymousLong, paramAnonymousLong);
+                this.d.r();
+                return paramAnonymousLong;
+              }
+              catch (IOException paramAnonymousant)
+              {
+                if (!this.a) {
+                  this.a = true;
+                }
+                throw paramAnonymousant;
+              }
+            }
+            
+            public final aok a()
+            {
+              return this.b.a();
+            }
+            
+            public final void close()
+            {
+              if ((!this.a) && (!alr.a(this, TimeUnit.MILLISECONDS))) {
+                this.a = true;
+              }
+              this.b.close();
+            }
+          };
+          localObject2 = parama.a("Content-Type");
+          l1 = parama.g.a();
+          parama = parama.a();
+          parama.g = new aml((String)localObject2, l1, aoc.a((aoj)localObject1));
+          return parama.a();
+        }
+        localObject1 = ((alj)localObject1).b;
+        if ((!((String)localObject1).equals("POST")) && (!((String)localObject1).equals("PATCH")) && (!((String)localObject1).equals("PUT")) && (!((String)localObject1).equals("DELETE"))) {
+          ((String)localObject1).equals("MOVE");
+        }
+      }
+      return parama;
+    }
+    finally
+    {
+      if (localObject2 != null) {
+        alr.a(((all)localObject2).g);
+      }
     }
   }
 }

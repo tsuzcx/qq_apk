@@ -1,62 +1,86 @@
 package com.tencent.token;
 
-final class gp
+import android.os.Build.VERSION;
+import android.widget.TextView;
+
+public final class gp
 {
-  private static gp d;
-  public long a;
-  public long b;
-  public int c;
+  static final g a = new g();
   
-  static gp a()
+  static
   {
-    if (d == null) {
-      d = new gp();
+    if (eh.a())
+    {
+      a = new f();
+      return;
     }
-    return d;
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      a = new e();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new d();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public final void a(long paramLong, double paramDouble1, double paramDouble2)
+  public static void a(TextView paramTextView, int paramInt)
   {
-    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
-    float f2 = 0.01720197F * f1 + 6.24006F;
-    double d1 = f2;
-    double d2 = Math.sin(d1);
-    Double.isNaN(d1);
-    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
-    paramDouble2 = -paramDouble2 / 360.0D;
-    double d3 = f1 - 0.0009F;
-    Double.isNaN(d3);
-    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
-    Double.isNaN(d3);
-    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
-    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
-    paramDouble1 = 0.0174532923847437D * paramDouble1;
-    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
-    if (paramDouble1 >= 1.0D)
+    a.a(paramTextView, paramInt);
+  }
+  
+  static class a
+    extends gp.g
+  {}
+  
+  static class b
+    extends gp.a
+  {}
+  
+  static class c
+    extends gp.b
+  {}
+  
+  static class d
+    extends gp.c
+  {
+    public final void a(TextView paramTextView, int paramInt)
     {
-      this.c = 1;
-      this.a = -1L;
-      this.b = -1L;
-      return;
+      paramTextView.setTextAppearance(paramInt);
     }
-    if (paramDouble1 <= -1.0D)
+  }
+  
+  static class e
+    extends gp.d
+  {}
+  
+  static final class f
+    extends gp.e
+  {}
+  
+  static class g
+  {
+    public void a(TextView paramTextView, int paramInt)
     {
-      this.c = 0;
-      this.a = -1L;
-      this.b = -1L;
-      return;
+      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
     }
-    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
-    Double.isNaN(paramDouble1);
-    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
-    Double.isNaN(paramDouble1);
-    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
-    if ((this.b < paramLong) && (this.a > paramLong))
-    {
-      this.c = 0;
-      return;
-    }
-    this.c = 1;
   }
 }
 

@@ -1,232 +1,257 @@
 package com.tencent.token;
 
+import com.tencent.turingfd.sdk.qps.switch;
+import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public final class adj
+  implements ahk
 {
-  /* Error */
-  public static java.lang.String a(android.content.Context paramContext, java.lang.String paramString)
+  public final ahn a;
+  public final ahl b;
+  public final ahg c;
+  public final ada d;
+  public final aeh e = aeh.a();
+  
+  public adj(ahn paramahn, ahl paramahl, ahg paramahg, ada paramada)
   {
-    // Byte code:
-    //   0: ldc 8
-    //   2: astore_2
-    //   3: aload_0
-    //   4: invokevirtual 14	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   7: astore_3
-    //   8: new 16	java/io/ByteArrayInputStream
-    //   11: dup
-    //   12: aload_3
-    //   13: aload_3
-    //   14: aload_0
-    //   15: invokevirtual 14	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   18: aload_1
-    //   19: iconst_0
-    //   20: invokevirtual 22	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
-    //   23: getfield 28	android/content/pm/ApplicationInfo:uid	I
-    //   26: invokevirtual 32	android/content/pm/PackageManager:getPackagesForUid	(I)[Ljava/lang/String;
-    //   29: iconst_0
-    //   30: aaload
-    //   31: bipush 64
-    //   33: invokevirtual 36	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   36: getfield 42	android/content/pm/PackageInfo:signatures	[Landroid/content/pm/Signature;
-    //   39: iconst_0
-    //   40: aaload
-    //   41: invokevirtual 48	android/content/pm/Signature:toByteArray	()[B
-    //   44: invokespecial 52	java/io/ByteArrayInputStream:<init>	([B)V
-    //   47: astore_0
-    //   48: ldc 54
-    //   50: invokestatic 60	java/security/cert/CertificateFactory:getInstance	(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
-    //   53: aload_0
-    //   54: invokevirtual 64	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
-    //   57: checkcast 66	java/security/cert/X509Certificate
-    //   60: invokevirtual 69	java/security/cert/X509Certificate:getEncoded	()[B
-    //   63: invokestatic 75	com/tencent/token/agn:c	([B)Ljava/lang/String;
-    //   66: astore_1
-    //   67: aload_0
-    //   68: invokevirtual 79	java/io/ByteArrayInputStream:close	()V
-    //   71: aload_1
-    //   72: areturn
-    //   73: aconst_null
-    //   74: astore_0
-    //   75: aload_0
-    //   76: ifnull +8 -> 84
-    //   79: aload_2
-    //   80: astore_1
-    //   81: goto -14 -> 67
-    //   84: ldc 8
-    //   86: areturn
-    //   87: astore_0
-    //   88: goto -15 -> 73
-    //   91: astore_1
-    //   92: goto -17 -> 75
-    //   95: astore_0
-    //   96: aload_1
-    //   97: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	98	0	paramContext	android.content.Context
-    //   0	98	1	paramString	java.lang.String
-    //   2	78	2	str	java.lang.String
-    //   7	7	3	localPackageManager	android.content.pm.PackageManager
-    // Exception table:
-    //   from	to	target	type
-    //   3	48	87	finally
-    //   48	67	91	finally
-    //   67	71	95	finally
+    this.a = paramahn;
+    this.b = paramahl;
+    this.c = paramahg;
+    this.d = paramada;
   }
   
-  /* Error */
-  public static java.util.List<java.lang.String> a(java.io.File paramFile)
+  private boolean a(Field paramField, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: new 85	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 87	java/util/ArrayList:<init>	()V
-    //   7: astore_3
-    //   8: new 89	java/util/jar/JarFile
-    //   11: dup
-    //   12: aload_0
-    //   13: invokespecial 92	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   16: astore_0
-    //   17: aload_0
-    //   18: aload_0
-    //   19: ldc 94
-    //   21: invokevirtual 98	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   24: sipush 8192
-    //   27: newarray byte
-    //   29: invokestatic 101	com/tencent/token/adj:a	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;[B)[Ljava/security/cert/Certificate;
-    //   32: astore 4
-    //   34: aload 4
-    //   36: ifnull +43 -> 79
-    //   39: aload 4
-    //   41: arraylength
-    //   42: istore_2
-    //   43: iconst_0
-    //   44: istore_1
-    //   45: iload_1
-    //   46: iload_2
-    //   47: if_icmpge +32 -> 79
-    //   50: aload_3
-    //   51: aload 4
-    //   53: iload_1
-    //   54: aaload
-    //   55: invokevirtual 104	java/security/cert/Certificate:getEncoded	()[B
-    //   58: invokestatic 75	com/tencent/token/agn:c	([B)Ljava/lang/String;
-    //   61: invokevirtual 108	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   64: pop
-    //   65: iload_1
-    //   66: iconst_1
-    //   67: iadd
-    //   68: istore_1
-    //   69: goto -24 -> 45
-    //   72: astore_3
-    //   73: aload_0
-    //   74: invokevirtual 109	java/util/jar/JarFile:close	()V
-    //   77: aload_3
-    //   78: athrow
-    //   79: aload_0
-    //   80: invokevirtual 109	java/util/jar/JarFile:close	()V
-    //   83: aload_3
-    //   84: areturn
-    //   85: astore 4
-    //   87: goto -8 -> 79
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	90	0	paramFile	java.io.File
-    //   44	25	1	i	int
-    //   42	6	2	j	int
-    //   7	44	3	localArrayList	java.util.ArrayList
-    //   72	12	3	localList	java.util.List<java.lang.String>
-    //   32	20	4	arrayOfCertificate	java.security.cert.Certificate[]
-    //   85	1	4	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   17	34	72	finally
-    //   39	43	72	finally
-    //   50	65	72	finally
-    //   17	34	85	java/lang/Exception
-    //   39	43	85	java/lang/Exception
-    //   50	65	85	java/lang/Exception
+    Object localObject = this.c;
+    boolean bool1 = ahg.a(paramField.getType());
+    boolean bool2 = false;
+    int i;
+    if ((!bool1) && (!((ahg)localObject).a(paramBoolean))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    bool1 = bool2;
+    if (i == 0)
+    {
+      if (((paramField.getModifiers() & 0x88) == 0) && (!paramField.isSynthetic()) && (!ahg.a(paramField.getType())))
+      {
+        if (paramBoolean) {
+          localObject = ((ahg)localObject).b;
+        } else {
+          localObject = ((ahg)localObject).c;
+        }
+        if (!((List)localObject).isEmpty())
+        {
+          new ahf(paramField);
+          paramField = ((List)localObject).iterator();
+          while (paramField.hasNext()) {
+            if (((aha)paramField.next()).a()) {
+              break label157;
+            }
+          }
+        }
+        i = 0;
+      }
+      else
+      {
+        label157:
+        i = 1;
+      }
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
-  /* Error */
-  private static java.security.cert.Certificate[] a(java.util.jar.JarFile paramJarFile, java.util.jar.JarEntry paramJarEntry, byte[] paramArrayOfByte)
+  public final <T> ahh<T> a(ahx paramahx, aek<T> paramaek)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 117	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   7: astore_0
-    //   8: aload_0
-    //   9: aload_2
-    //   10: iconst_0
-    //   11: sipush 8192
-    //   14: invokevirtual 123	java/io/InputStream:read	([BII)I
-    //   17: iconst_m1
-    //   18: if_icmpne -10 -> 8
-    //   21: aload_3
-    //   22: astore_2
-    //   23: aload_1
-    //   24: ifnull +8 -> 32
-    //   27: aload_1
-    //   28: invokevirtual 129	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
-    //   31: astore_2
-    //   32: aload_0
-    //   33: invokevirtual 130	java/io/InputStream:close	()V
-    //   36: aload_2
-    //   37: areturn
-    //   38: astore_2
-    //   39: aload_0
-    //   40: astore_1
-    //   41: aload_2
-    //   42: astore_0
-    //   43: goto +6 -> 49
-    //   46: astore_0
-    //   47: aconst_null
-    //   48: astore_1
-    //   49: aload_1
-    //   50: ifnull +7 -> 57
-    //   53: aload_1
-    //   54: invokevirtual 130	java/io/InputStream:close	()V
-    //   57: aload_0
-    //   58: athrow
-    //   59: aconst_null
-    //   60: astore_0
-    //   61: aload_0
-    //   62: ifnull +7 -> 69
-    //   65: aload_0
-    //   66: invokevirtual 130	java/io/InputStream:close	()V
-    //   69: aconst_null
-    //   70: areturn
-    //   71: astore_0
-    //   72: goto -13 -> 59
-    //   75: astore_1
-    //   76: goto -15 -> 61
-    //   79: astore_0
-    //   80: aload_2
-    //   81: areturn
-    //   82: astore_1
-    //   83: goto -26 -> 57
-    //   86: astore_0
-    //   87: aconst_null
-    //   88: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	paramJarFile	java.util.jar.JarFile
-    //   0	89	1	paramJarEntry	java.util.jar.JarEntry
-    //   0	89	2	paramArrayOfByte	byte[]
-    //   1	21	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	21	38	finally
-    //   27	32	38	finally
-    //   2	8	46	finally
-    //   2	8	71	java/io/IOException
-    //   8	21	75	java/io/IOException
-    //   27	32	75	java/io/IOException
-    //   32	36	79	java/io/IOException
-    //   53	57	82	java/io/IOException
-    //   65	69	86	java/io/IOException
+    Class localClass = paramaek.a;
+    if (!Object.class.isAssignableFrom(localClass)) {
+      return null;
+    }
+    this.a.a(paramaek);
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    if (!localClass.isInterface())
+    {
+      Type localType2 = paramaek.b;
+      Object localObject3 = paramaek;
+      while (localClass != Object.class)
+      {
+        paramaek = localClass.getDeclaredFields();
+        int j = paramaek.length;
+        int k;
+        for (int i = 0;; i = k)
+        {
+          Object localObject1 = this;
+          if (i >= j) {
+            break label568;
+          }
+          Field localField = paramaek[i];
+          boolean bool1 = ((adj)localObject1).a(localField, true);
+          boolean bool2 = ((adj)localObject1).a(localField, false);
+          if ((!bool1) && (!bool2))
+          {
+            k = i;
+            i = j;
+          }
+          else
+          {
+            ((adj)localObject1).e.a(localField);
+            Type localType1 = switch.a(((aek)localObject3).b, localClass, localField.getGenericType());
+            Object localObject4 = (ahq)localField.getAnnotation(ahq.class);
+            if (localObject4 == null)
+            {
+              localObject1 = Collections.singletonList(((adj)localObject1).b.a(localField));
+            }
+            else
+            {
+              localObject2 = ((ahq)localObject4).a();
+              localObject4 = ((ahq)localObject4).b();
+              if (localObject4.length == 0)
+              {
+                localObject1 = Collections.singletonList(localObject2);
+              }
+              else
+              {
+                localObject1 = new ArrayList(localObject4.length + 1);
+                ((ArrayList)localObject1).add(localObject2);
+                k = localObject4.length;
+                m = 0;
+                while (m < k)
+                {
+                  ((ArrayList)localObject1).add(localObject4[m]);
+                  m += 1;
+                }
+              }
+            }
+            k = ((List)localObject1).size();
+            Object localObject2 = null;
+            int m = 0;
+            localObject4 = localObject1;
+            localObject1 = paramaek;
+            for (paramaek = (aek<T>)localObject2;; paramaek = (aek<T>)localObject2)
+            {
+              ahx localahx = paramahx;
+              if (m >= k) {
+                break;
+              }
+              String str = (String)((List)localObject4).get(m);
+              if (m != 0) {
+                bool1 = false;
+              }
+              aek localaek = new aek(localType1);
+              localObject2 = localaek.a;
+              if ((localObject2 instanceof Class)) {
+                ((Class)localObject2).isPrimitive();
+              }
+              localObject2 = (ahp)localField.getAnnotation(ahp.class);
+              if (localObject2 != null) {
+                localObject2 = ada.a(this.a, localahx, localaek, (ahp)localObject2);
+              } else {
+                localObject2 = null;
+              }
+              if (localObject2 != null) {
+                bool2 = true;
+              } else {
+                bool2 = false;
+              }
+              if (localObject2 == null) {
+                localObject2 = localahx.a(localaek);
+              }
+              localObject2 = (b)localLinkedHashMap.put(str, new adi(str, bool1, localField, bool2, (ahh)localObject2, paramahx, localaek));
+              if (paramaek != null) {
+                localObject2 = paramaek;
+              }
+              m += 1;
+            }
+            if (paramaek != null) {
+              break;
+            }
+            k = i;
+            i = j;
+            paramaek = (aek<T>)localObject1;
+          }
+          k += 1;
+          j = i;
+        }
+        paramahx = new StringBuilder();
+        paramahx.append(localType2);
+        paramahx.append(" declares multiple JSON fields named ");
+        paramahx.append(paramaek.f);
+        throw new IllegalArgumentException(paramahx.toString());
+        label568:
+        localObject3 = new aek(switch.a(((aek)localObject3).b, localClass, localClass.getGenericSuperclass()));
+        localClass = ((aek)localObject3).a;
+      }
+    }
+    return new a(localLinkedHashMap);
+  }
+  
+  public static final class a<T>
+    extends ahh<T>
+  {
+    public final Map<String, adj.b> a;
+    
+    public a(Map<String, adj.b> paramMap)
+    {
+      this.a = paramMap;
+    }
+    
+    public final void a(aep paramaep, T paramT)
+    {
+      if (paramT == null)
+      {
+        paramaep.e();
+        return;
+      }
+      paramaep.c();
+      try
+      {
+        Iterator localIterator = this.a.values().iterator();
+        while (localIterator.hasNext())
+        {
+          adj.b localb = (adj.b)localIterator.next();
+          if (localb.a(paramT))
+          {
+            paramaep.a(localb.f);
+            localb.a(paramaep, paramT);
+          }
+        }
+        paramaep.d();
+        return;
+      }
+      catch (IllegalAccessException paramaep)
+      {
+        throw new AssertionError(paramaep);
+      }
+    }
+  }
+  
+  public static abstract class b
+  {
+    public final String f;
+    public final boolean g;
+    
+    public b(String paramString, boolean paramBoolean)
+    {
+      this.f = paramString;
+      this.g = paramBoolean;
+    }
+    
+    public abstract void a(aep paramaep, Object paramObject);
+    
+    public abstract boolean a(Object paramObject);
   }
 }
 

@@ -1,39 +1,33 @@
 package com.tencent.token;
 
-import android.os.Bundle;
+import java.net.Socket;
+import java.util.ArrayList;
 
-public final class oq
+public abstract interface oq
 {
-  public static final class a
-    extends on
-  {
-    public String c;
-    
-    public final int a()
-    {
-      return 20;
-    }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.c);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
-    }
-    
-    public final boolean b()
-    {
-      if (pn.a(this.c)) {
-        return false;
-      }
-      return this.c.length() <= 10240;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(ArrayList paramArrayList);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract int b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(ArrayList paramArrayList);
+  
+  public abstract Socket c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract od f();
 }
 
 

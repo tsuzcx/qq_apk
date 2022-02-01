@@ -1,41 +1,65 @@
 package com.tencent.token;
 
-import android.database.Cursor;
-
-public abstract interface ahi
-  extends Cursor
+public final class ahi
 {
-  public abstract void close();
+  public static final int a;
   
-  public abstract byte[] getBlob(int paramInt);
+  static
+  {
+    String str = System.getProperty("java.version");
+    int j = 0;
+    try
+    {
+      localObject = str.split("[._]");
+      i = Integer.parseInt(localObject[0]);
+      if ((i == 1) && (localObject.length > 1))
+      {
+        i = Integer.parseInt(localObject[1]);
+        break label52;
+      }
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      Object localObject;
+      int i;
+      label50:
+      label52:
+      break label50;
+    }
+    i = -1;
+    if (i == -1) {}
+    try
+    {
+      localObject = new StringBuilder();
+      i = j;
+      while (i < str.length())
+      {
+        char c = str.charAt(i);
+        if (!Character.isDigit(c)) {
+          break;
+        }
+        ((StringBuilder)localObject).append(c);
+        i += 1;
+      }
+      i = Integer.parseInt(((StringBuilder)localObject).toString());
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      label115:
+      break label115;
+    }
+    i = -1;
+    j = i;
+    if (i == -1) {
+      j = 6;
+    }
+    a = j;
+  }
   
-  public abstract int getColumnCount();
-  
-  public abstract int getColumnIndex(String paramString);
-  
-  public abstract String[] getColumnNames();
-  
-  public abstract int getCount();
-  
-  public abstract double getDouble(int paramInt);
-  
-  public abstract int getInt(int paramInt);
-  
-  public abstract long getLong(int paramInt);
-  
-  public abstract String getString(int paramInt);
-  
-  public abstract int getType(int paramInt);
-  
-  public abstract boolean isAfterLast();
-  
-  public abstract boolean isLast();
-  
-  public abstract boolean moveToFirst();
-  
-  public abstract boolean moveToLast();
-  
-  public abstract boolean moveToNext();
+  public static boolean a()
+  {
+    return a >= 9;
+  }
 }
 
 

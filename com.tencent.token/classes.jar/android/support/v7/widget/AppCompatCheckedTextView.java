@@ -6,17 +6,17 @@ import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.CheckedTextView;
-import com.tencent.token.gu;
-import com.tencent.token.il;
-import com.tencent.token.ip;
-import com.tencent.token.jf;
-import com.tencent.token.ji;
+import com.tencent.token.hi;
+import com.tencent.token.iz;
+import com.tencent.token.jd;
+import com.tencent.token.jt;
+import com.tencent.token.jw;
 
 public class AppCompatCheckedTextView
   extends CheckedTextView
 {
   private static final int[] a = { 16843016 };
-  private final ip b = ip.a(this);
+  private final jd b = jd.a(this);
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,10 +25,10 @@ public class AppCompatCheckedTextView
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jf.a(paramContext), paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
     this.b.a(paramAttributeSet, paramInt);
     this.b.a();
-    paramContext = ji.a(getContext(), paramAttributeSet, a, paramInt, 0);
+    paramContext = jw.a(getContext(), paramAttributeSet, a, paramInt, 0);
     setCheckMarkDrawable(paramContext.a(0));
     paramContext.a.recycle();
   }
@@ -36,28 +36,28 @@ public class AppCompatCheckedTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    ip localip = this.b;
-    if (localip != null) {
-      localip.a();
+    jd localjd = this.b;
+    if (localjd != null) {
+      localjd.a();
     }
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return il.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return iz.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   public void setCheckMarkDrawable(int paramInt)
   {
-    setCheckMarkDrawable(gu.b(getContext(), paramInt));
+    setCheckMarkDrawable(hi.b(getContext(), paramInt));
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    ip localip = this.b;
-    if (localip != null) {
-      localip.a(paramContext, paramInt);
+    jd localjd = this.b;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
 }

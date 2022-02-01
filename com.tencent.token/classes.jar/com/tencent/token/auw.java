@@ -1,6 +1,6 @@
 package com.tencent.token;
 
-public final class auw {}
+public abstract interface auw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

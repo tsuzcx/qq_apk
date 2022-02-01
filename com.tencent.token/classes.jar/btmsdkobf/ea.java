@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
-import com.tencent.token.rw;
+import com.tencent.token.sj;
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.HashMap;
@@ -95,7 +95,7 @@ public class ea
   
   public static String j(Context paramContext)
   {
-    if (!rw.a().b()) {
+    if (!sj.a().b()) {
       return "02:00:00:00:00:00";
     }
     localObject2 = null;

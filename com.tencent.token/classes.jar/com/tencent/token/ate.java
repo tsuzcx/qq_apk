@@ -1,114 +1,122 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class ate
+public class ate
+  extends aro
 {
-  public static String a = "TmsTcpNetwork";
-  public ata b = new ata((byte)0);
-  public Context c = null;
-  public atd d = null;
-  ass e = null;
-  public boolean f = false;
-  public asq g = null;
-  private long h = 180000L;
+  public atb a;
+  public ExecutorService b;
+  private final String c = "SharkProtocolQueue";
+  private final int d = 1073741824;
+  private final long e = -1L;
+  private Context f;
+  private TreeMap g = new TreeMap();
+  private ArrayList h = new ArrayList();
+  private Handler i = new atf(this, Looper.getMainLooper());
   
-  public ate(Context paramContext)
+  public static void a(int paramInt)
   {
-    this.c = paramContext;
-  }
-  
-  public final int a(JceStruct paramJceStruct)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < 3)
+    if (b(5, 1))
     {
-      byte[] arrayOfByte = arw.a(paramJceStruct);
-      j = this.b.a(arrayOfByte);
-      if (j == 0) {
-        return 0;
-      }
-      i += 1;
-    }
-    return j;
-  }
-  
-  public final void a()
-  {
-    this.b.a(false, false);
-    if (this.f)
-    {
-      asq localasq = this.g;
-      if (localasq != null) {
-        localasq.b();
+      atm.a().a.incrementAndGet();
+      if (b(5, 4)) {
+        atm.a().b();
       }
     }
   }
   
-  public final void a(int paramInt)
+  public static void b(int paramInt)
   {
-    this.d.a(paramInt);
-  }
-  
-  public final void a(long paramLong)
-  {
-    if (this.h == paramLong) {
-      return;
-    }
-    asq localasq = this.g;
-    if (localasq != null) {
-      localasq.a(paramLong);
-    }
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.d = new atd(paramBoolean);
-  }
-  
-  public final void a(boolean paramBoolean, ass paramass)
-  {
-    this.f = paramBoolean;
-    this.e = paramass;
-    if (this.f)
+    if (b(1, 1))
     {
-      this.g = new asq(this.c, paramass);
-      this.g.a(this.h);
-      this.g.a();
-      return;
+      atm localatm = atm.a();
+      if (localatm.a.decrementAndGet() <= 0)
+      {
+        localatm.a.set(0);
+        localatm.c();
+      }
     }
-    paramass = this.g;
-    if (paramass != null) {
-      paramass.b();
-    }
-    this.g = null;
   }
   
-  public final boolean b()
+  private static boolean b(int paramInt1, int paramInt2)
   {
-    boolean bool2 = aqz.a();
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    a();
-    Object localObject = this.d;
-    ((atd)localObject).b = ((((atd)localObject).b + 1) % ((atd)localObject).a.size());
-    localObject = this.b;
-    atd localatd = this.d;
-    if (((ata)localObject).a(false, true)) {
-      bool1 = ((ata)localObject).a(((ata)localObject).a, localatd);
-    }
-    a(this.f, this.e);
-    return bool1;
+    return (paramInt1 & paramInt2) != 0;
   }
   
-  public final boolean c()
+  public final ajj a(int paramInt1, int paramInt2)
   {
-    return this.b.a();
+    if (b(paramInt2, 1)) {
+      return atm.a().a(paramInt1);
+    }
+    ajj localajj = null;
+    synchronized (this.g)
+    {
+      if (this.g.containsKey(Integer.valueOf(paramInt1))) {
+        localajj = (ajj)((Pair)this.g.remove(Integer.valueOf(paramInt1))).second;
+      }
+      return localajj;
+    }
+  }
+  
+  public final WeakReference a(long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aji paramaji)
+  {
+    return a(paramLong, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramaji, -1L);
+  }
+  
+  public final WeakReference a(long paramLong1, int paramInt1, JceStruct arg4, JceStruct paramJceStruct2, int paramInt2, aji paramaji, long paramLong2)
+  {
+    if (b(paramInt2, 1)) {
+      return atm.a().a(this.a, paramInt1, paramInt2, 0, 0, ???, paramJceStruct2, paramaji, paramLong2);
+    }
+    paramJceStruct2 = new atg(this, paramLong1, paramInt1, ???, paramJceStruct2, paramInt2, paramaji);
+    paramJceStruct2.g = this.a.b.a();
+    paramJceStruct2.i = paramLong2;
+    synchronized (this.h)
+    {
+      this.h.add(paramJceStruct2);
+      this.i.sendEmptyMessage(1);
+      return new WeakReference(paramJceStruct2.h);
+    }
+  }
+  
+  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ajj paramajj)
+  {
+    if (paramajj != null)
+    {
+      if (b(paramInt2, 1))
+      {
+        atm.a().a(paramInt2, paramInt1, paramJceStruct, paramajj);
+        return;
+      }
+      Object localObject = null;
+      synchronized (this.g)
+      {
+        if (!this.g.containsKey(Integer.valueOf(paramInt1)))
+        {
+          this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramajj));
+          paramJceStruct = localObject;
+        }
+        else
+        {
+          paramJceStruct = new ClassCastException();
+        }
+        if (paramJceStruct == null) {
+          return;
+        }
+        throw paramJceStruct;
+      }
+    }
+    throw new NullPointerException();
   }
 }
 

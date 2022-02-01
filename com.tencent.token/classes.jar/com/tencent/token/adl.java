@@ -1,27 +1,15 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-
-public final class adl
+public class adl
 {
-  public static final agi<adl> a = new a();
-  public Handler b;
+  public static final String a;
   
-  public adl()
+  static
   {
-    HandlerThread localHandlerThread = new HandlerThread("TuringMMWorker");
-    localHandlerThread.start();
-    this.b = new Handler(localHandlerThread.getLooper());
-  }
-  
-  public final class a
-    extends agi<adl>
-  {
-    public final Object a()
-    {
-      return new adl();
-    }
+    StringBuilder localStringBuilder = new StringBuilder("mpdc_");
+    localStringBuilder.append(agb.a);
+    localStringBuilder.append("_1");
+    a = localStringBuilder.toString();
   }
 }
 

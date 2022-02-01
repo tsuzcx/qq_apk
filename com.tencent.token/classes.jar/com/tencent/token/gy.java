@@ -1,32 +1,45 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.method.TransformationMethod;
-import android.view.View;
-import java.util.Locale;
+import android.support.v7.app.AppCompatDelegateImplV9.PanelFeatureState;
+import android.view.KeyboardShortcutGroup;
+import android.view.Menu;
+import android.view.Window;
+import android.view.Window.Callback;
+import java.util.List;
 
-public final class gy
-  implements TransformationMethod
+final class gy
+  extends ha
 {
-  private Locale a;
-  
-  public gy(Context paramContext)
+  gy(Context paramContext, Window paramWindow, gv paramgv)
   {
-    this.a = paramContext.getResources().getConfiguration().locale;
+    super(paramContext, paramWindow, paramgv);
   }
   
-  public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
+  final Window.Callback a(Window.Callback paramCallback)
   {
-    if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.a);
+    return new a(paramCallback);
+  }
+  
+  final class a
+    extends ha.a
+  {
+    a(Window.Callback paramCallback)
+    {
+      super(paramCallback);
     }
-    return null;
+    
+    public final void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+    {
+      AppCompatDelegateImplV9.PanelFeatureState localPanelFeatureState = gy.this.g(0);
+      if ((localPanelFeatureState != null) && (localPanelFeatureState.j != null))
+      {
+        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.j, paramInt);
+        return;
+      }
+      super.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+    }
   }
-  
-  public final void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 

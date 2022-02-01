@@ -9,9 +9,9 @@ import android.content.IntentFilter;
 import android.media.SoundPool;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.rf;
-import com.tencent.token.sl;
-import com.tencent.token.xj;
+import com.tencent.token.rt;
+import com.tencent.token.sx;
+import com.tencent.token.xv;
 
 public class TokenService
   extends Service
@@ -31,39 +31,39 @@ public class TokenService
   public TokenService()
   {
     int[] arrayOfInt = this.h;
-    arrayOfInt[0] = 2131100190;
-    arrayOfInt[1] = 2131100191;
-    arrayOfInt[2] = 2131100192;
-    arrayOfInt[3] = 2131100193;
-    arrayOfInt[4] = 2131100194;
-    arrayOfInt[5] = 2131100195;
-    arrayOfInt[6] = 2131100196;
-    arrayOfInt[7] = 2131100197;
-    arrayOfInt[8] = 2131100198;
-    arrayOfInt[9] = 2131100199;
+    arrayOfInt[0] = 2131100195;
+    arrayOfInt[1] = 2131100196;
+    arrayOfInt[2] = 2131100197;
+    arrayOfInt[3] = 2131100198;
+    arrayOfInt[4] = 2131100199;
+    arrayOfInt[5] = 2131100200;
+    arrayOfInt[6] = 2131100201;
+    arrayOfInt[7] = 2131100202;
+    arrayOfInt[8] = 2131100203;
+    arrayOfInt[9] = 2131100204;
   }
   
   private void a()
   {
-    Object localObject2 = rf.a();
-    if (!((rf)localObject2).d())
+    Object localObject2 = rt.a();
+    if (!((rt)localObject2).d())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       Object localObject1 = localAppWidgetManager.getAppWidgetIds(this.e);
-      this.c.setImageViewResource(2131166288, 2131100208);
+      this.c.setImageViewResource(2131166328, 2131100213);
       boolean bool = this.f;
       int i1 = 0;
       if (!bool)
       {
-        this.b = ((rf)localObject2).f();
+        this.b = ((rt)localObject2).f();
         if (this.g) {
-          this.c.setImageViewResource(2131166288, 2131100205);
+          this.c.setImageViewResource(2131166328, 2131100210);
         }
-        this.c.setViewVisibility(2131166287, 4);
-        this.c.setViewVisibility(2131166131, 4);
-        this.c.setViewVisibility(2131166140, 0);
-        this.c.setViewVisibility(2131166138, 0);
-        this.c.setOnClickPendingIntent(2131166140, this.j);
+        this.c.setViewVisibility(2131166327, 4);
+        this.c.setViewVisibility(2131166171, 4);
+        this.c.setViewVisibility(2131166180, 0);
+        this.c.setViewVisibility(2131166178, 0);
+        this.c.setOnClickPendingIntent(2131166180, this.j);
         int m = 0;
         for (;;)
         {
@@ -72,15 +72,15 @@ public class TokenService
           if (m >= localObject2.length) {
             break;
           }
-          this.c.setImageViewResource(2131166132 + m, this.h[localObject2[m]]);
+          this.c.setImageViewResource(2131166172 + m, this.h[localObject2[m]]);
           m += 1;
         }
       }
-      this.c.setViewVisibility(2131166140, 4);
-      this.c.setViewVisibility(2131166138, 4);
-      this.c.setViewVisibility(2131166287, 0);
-      this.c.setViewVisibility(2131166131, 0);
-      this.c.setOnClickPendingIntent(2131166287, this.i);
+      this.c.setViewVisibility(2131166180, 4);
+      this.c.setViewVisibility(2131166178, 4);
+      this.c.setViewVisibility(2131166327, 0);
+      this.c.setViewVisibility(2131166171, 0);
+      this.c.setOnClickPendingIntent(2131166327, this.i);
       int n = i1;
       try
       {
@@ -96,7 +96,7 @@ public class TokenService
         localException.printStackTrace();
         localObject1 = new StringBuilder("TokenService ");
         ((StringBuilder)localObject1).append(localException.toString());
-        xj.c(((StringBuilder)localObject1).toString());
+        xv.c(((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -108,7 +108,7 @@ public class TokenService
   
   public void onCreate()
   {
-    xj.a("onCreate");
+    xv.a("onCreate");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -120,7 +120,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    sl.a(this).a.release();
+    sx.a(this).a.release();
     unregisterReceiver(this.k);
   }
   
@@ -193,7 +193,7 @@ public class TokenService
     //   124: getfield 50	com/tencent/token/widget/TokenService:j	Landroid/app/PendingIntent;
     //   127: invokevirtual 109	android/widget/RemoteViews:setOnClickPendingIntent	(ILandroid/app/PendingIntent;)V
     //   130: aload_0
-    //   131: invokestatic 169	com/tencent/token/sl:a	(Landroid/content/Context;)Lcom/tencent/token/sl;
+    //   131: invokestatic 169	com/tencent/token/sx:a	(Landroid/content/Context;)Lcom/tencent/token/sx;
     //   134: pop
     //   135: invokestatic 218	java/lang/System:currentTimeMillis	()J
     //   138: lstore 5
@@ -204,13 +204,13 @@ public class TokenService
     //   146: monitorenter
     //   147: ldc2_w 219
     //   150: lstore_3
-    //   151: invokestatic 73	com/tencent/token/rf:a	()Lcom/tencent/token/rf;
-    //   154: invokevirtual 76	com/tencent/token/rf:d	()Z
+    //   151: invokestatic 73	com/tencent/token/rt:a	()Lcom/tencent/token/rt;
+    //   154: invokevirtual 76	com/tencent/token/rt:d	()Z
     //   157: ifne +75 -> 232
-    //   160: invokestatic 225	com/tencent/token/sk:a	()Lcom/tencent/token/sk;
-    //   163: invokevirtual 227	com/tencent/token/sk:c	()Z
+    //   160: invokestatic 225	com/tencent/token/sw:a	()Lcom/tencent/token/sw;
+    //   163: invokevirtual 227	com/tencent/token/sw:c	()Z
     //   166: ifne +53 -> 219
-    //   169: invokestatic 231	com/tencent/token/aap:e	()J
+    //   169: invokestatic 231	com/tencent/token/aaz:e	()J
     //   172: lconst_0
     //   173: lcmp
     //   174: ifeq +6 -> 180
@@ -218,7 +218,7 @@ public class TokenService
     //   180: aload_0
     //   181: iconst_0
     //   182: putfield 42	com/tencent/token/widget/TokenService:f	Z
-    //   185: invokestatic 235	com/tencent/token/sj:h	()J
+    //   185: invokestatic 235	com/tencent/token/sv:d	()J
     //   188: lstore_3
     //   189: lload_3
     //   190: ldc2_w 236

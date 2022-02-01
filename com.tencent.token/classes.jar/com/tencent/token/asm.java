@@ -1,21 +1,43 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import java.lang.ref.WeakReference;
 
-public abstract interface asm
+final class asm
+  extends Handler
 {
-  public abstract aij a(int paramInt1, int paramInt2);
+  WeakReference a = null;
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aii paramaii);
+  public asm(atm paramatm, Context paramContext)
+  {
+    super(paramContext.getMainLooper());
+    this.a = new WeakReference(paramatm);
+  }
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, aii paramaii, long paramLong);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, aij paramaij);
-  
-  public abstract void b();
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    atm localatm = (atm)this.a.get();
+    if (localatm == null) {
+      return;
+    }
+    if (paramMessage.what != 0) {
+      return;
+    }
+    int i = localatm.c + 1;
+    localatm.c = i;
+    if (i < 20)
+    {
+      if (localatm.d()) {
+        localatm.c = 0;
+      }
+    }
+    else {
+      localatm.c();
+    }
+  }
 }
 
 

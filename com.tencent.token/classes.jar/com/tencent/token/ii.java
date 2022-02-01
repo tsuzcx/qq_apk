@@ -1,187 +1,131 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
+import android.content.Context;
+import android.graphics.Rect;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
+import android.widget.HeaderViewListAdapter;
+import android.widget.ListAdapter;
+import android.widget.PopupWindow.OnDismissListener;
 
-public final class ii
+abstract class ii
+  implements AdapterView.OnItemClickListener, ik, io
 {
-  private final View a;
-  private final ik b;
-  private int c = -1;
-  private jg d;
-  private jg e;
-  private jg f;
+  Rect e;
   
-  public ii(View paramView)
+  protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
   {
-    this.a = paramView;
-    this.b = ik.a();
+    int j = 0;
+    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i3 = paramListAdapter.getCount();
+    Object localObject1 = paramViewGroup;
+    paramViewGroup = null;
+    int i = 0;
+    int m = 0;
+    while (j < i3)
+    {
+      int n = paramListAdapter.getItemViewType(j);
+      int k = m;
+      if (n != m)
+      {
+        paramViewGroup = null;
+        k = n;
+      }
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new FrameLayout(paramContext);
+      }
+      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
+      paramViewGroup.measure(i1, i2);
+      m = paramViewGroup.getMeasuredWidth();
+      if (m >= paramInt) {
+        return paramInt;
+      }
+      n = i;
+      if (m > i) {
+        n = m;
+      }
+      j += 1;
+      m = k;
+      localObject1 = localObject2;
+      i = n;
+    }
+    return i;
   }
   
-  private boolean a(Drawable paramDrawable)
+  protected static ic a(ListAdapter paramListAdapter)
   {
-    if (this.f == null) {
-      this.f = new jg();
+    if ((paramListAdapter instanceof HeaderViewListAdapter)) {
+      return (ic)((HeaderViewListAdapter)paramListAdapter).getWrappedAdapter();
     }
-    jg localjg = this.f;
-    localjg.a();
-    Object localObject = fa.m(this.a);
-    if (localObject != null)
+    return (ic)paramListAdapter;
+  }
+  
+  protected static boolean b(id paramid)
+  {
+    int j = paramid.size();
+    int i = 0;
+    while (i < j)
     {
-      localjg.d = true;
-      localjg.a = ((ColorStateList)localObject);
+      MenuItem localMenuItem = paramid.getItem(i);
+      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
+        return true;
+      }
+      i += 1;
     }
-    localObject = fa.n(this.a);
-    if (localObject != null)
-    {
-      localjg.c = true;
-      localjg.b = ((PorterDuff.Mode)localObject);
-    }
-    if ((!localjg.d) && (!localjg.c)) {
-      return false;
-    }
-    ik.a(paramDrawable, localjg, this.a.getDrawableState());
+    return false;
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public final void a(Context paramContext, id paramid) {}
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(PopupWindow.OnDismissListener paramOnDismissListener);
+  
+  public abstract void a(id paramid);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public final boolean b(if paramif)
+  {
+    return false;
+  }
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public final boolean c(if paramif)
+  {
+    return false;
+  }
+  
+  protected boolean f()
+  {
     return true;
   }
   
-  private void b(ColorStateList paramColorStateList)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramColorStateList != null)
-    {
-      if (this.d == null) {
-        this.d = new jg();
-      }
-      jg localjg = this.d;
-      localjg.a = paramColorStateList;
-      localjg.d = true;
-    }
-    else
-    {
-      this.d = null;
-    }
-    d();
-  }
-  
-  private boolean e()
-  {
-    int i = Build.VERSION.SDK_INT;
-    if (i > 21) {
-      return this.d != null;
-    }
-    return i == 21;
-  }
-  
-  public final void a()
-  {
-    this.c = -1;
-    b(null);
-    d();
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.c = paramInt;
-    Object localObject = this.b;
-    if (localObject != null) {
-      localObject = ((ik)localObject).b(this.a.getContext(), paramInt);
+    paramView = (ListAdapter)paramAdapterView.getAdapter();
+    paramAdapterView = a(paramView).b;
+    paramView = (MenuItem)paramView.getItem(paramInt);
+    if (f()) {
+      paramInt = 0;
     } else {
-      localObject = null;
+      paramInt = 4;
     }
-    b((ColorStateList)localObject);
-    d();
-  }
-  
-  public final void a(ColorStateList paramColorStateList)
-  {
-    if (this.e == null) {
-      this.e = new jg();
-    }
-    jg localjg = this.e;
-    localjg.a = paramColorStateList;
-    localjg.d = true;
-    d();
-  }
-  
-  public final void a(PorterDuff.Mode paramMode)
-  {
-    if (this.e == null) {
-      this.e = new jg();
-    }
-    jg localjg = this.e;
-    localjg.b = paramMode;
-    localjg.c = true;
-    d();
-  }
-  
-  public final void a(AttributeSet paramAttributeSet, int paramInt)
-  {
-    paramAttributeSet = ji.a(this.a.getContext(), paramAttributeSet, gs.j.ViewBackgroundHelper, paramInt, 0);
-    try
-    {
-      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_android_background))
-      {
-        this.c = paramAttributeSet.g(gs.j.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.b.b(this.a.getContext(), this.c);
-        if (localColorStateList != null) {
-          b(localColorStateList);
-        }
-      }
-      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_backgroundTint)) {
-        fa.a(this.a, paramAttributeSet.e(gs.j.ViewBackgroundHelper_backgroundTint));
-      }
-      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_backgroundTintMode)) {
-        fa.a(this.a, iu.a(paramAttributeSet.a(gs.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
-      }
-      return;
-    }
-    finally
-    {
-      paramAttributeSet.a.recycle();
-    }
-  }
-  
-  public final ColorStateList b()
-  {
-    jg localjg = this.e;
-    if (localjg != null) {
-      return localjg.a;
-    }
-    return null;
-  }
-  
-  public final PorterDuff.Mode c()
-  {
-    jg localjg = this.e;
-    if (localjg != null) {
-      return localjg.b;
-    }
-    return null;
-  }
-  
-  public final void d()
-  {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null)
-    {
-      if ((e()) && (a(localDrawable))) {
-        return;
-      }
-      jg localjg = this.e;
-      if (localjg != null)
-      {
-        ik.a(localDrawable, localjg, this.a.getDrawableState());
-        return;
-      }
-      localjg = this.d;
-      if (localjg != null) {
-        ik.a(localDrawable, localjg, this.a.getDrawableState());
-      }
-    }
+    paramAdapterView.a(paramView, this, paramInt);
   }
 }
 

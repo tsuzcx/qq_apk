@@ -1,54 +1,15 @@
 package com.tencent.token;
 
-import android.os.Bundle;
+import java.net.Socket;
 
 public final class oo
 {
-  public static final class a
-    extends on
-  {
-    public int c;
-    public String d;
-    public String e;
-    
-    public final int a()
-    {
-      return 18;
-    }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.a(paramBundle);
-      paramBundle.putInt("_wxapi_subscribemessage_req_scene", this.c);
-      paramBundle.putString("_wxapi_subscribemessage_req_templateid", this.d);
-      paramBundle.putString("_wxapi_subscribemessage_req_reserved", this.e);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getInt("_wxapi_subscribemessage_req_scene");
-      this.d = paramBundle.getString("_wxapi_subscribemessage_req_templateid");
-      this.e = paramBundle.getString("_wxapi_subscribemessage_req_reserved");
-    }
-    
-    public final boolean b()
-    {
-      String str = this.d;
-      if (str != null)
-      {
-        if (str.length() == 0) {
-          return false;
-        }
-        if (this.d.length() > 1024) {
-          return false;
-        }
-        str = this.e;
-        return (str == null) || (str.length() <= 1024);
-      }
-      return false;
-    }
-  }
+  int a;
+  String b = "";
+  Socket c = null;
+  int d = -1;
+  int e = -1;
+  od f;
 }
 
 

@@ -1,15 +1,23 @@
 package com.tencent.token;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import java.util.LinkedList;
 
-public final class add
-  implements FileFilter
+public final class add<E>
 {
-  public final boolean accept(File paramFile)
+  public int a;
+  public LinkedList<E> b = new LinkedList();
+  
+  public add(int paramInt)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.a = paramInt;
+  }
+  
+  public final void a(E paramE)
+  {
+    if (this.b.size() >= this.a) {
+      this.b.poll();
+    }
+    this.b.offer(paramE);
   }
 }
 

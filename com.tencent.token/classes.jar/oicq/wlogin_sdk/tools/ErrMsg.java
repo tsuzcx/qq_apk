@@ -12,18 +12,21 @@ public class ErrMsg
   private String otherinfo;
   private String title;
   private int type;
+  private int version;
   
   public ErrMsg()
   {
+    this.version = 0;
     this.type = 0;
     this.title = InternationMsg.a(InternationMsg.MSG_TYPE.MSG_0);
     this.message = InternationMsg.a(InternationMsg.MSG_TYPE.MSG_1);
     this.otherinfo = "";
   }
   
-  public ErrMsg(int paramInt, String paramString1, String paramString2, String paramString3)
+  public ErrMsg(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    this.type = paramInt;
+    this.version = paramInt1;
+    this.type = paramInt2;
     this.title = paramString1;
     this.message = paramString2;
     this.otherinfo = paramString3;
@@ -64,8 +67,14 @@ public class ErrMsg
     return this.type;
   }
   
+  public int getVersion()
+  {
+    return this.version;
+  }
+  
   public void readFromParcel(Parcel paramParcel)
   {
+    this.version = paramParcel.readInt();
     this.type = paramParcel.readInt();
     this.title = paramParcel.readString();
     this.message = paramParcel.readString();
@@ -92,10 +101,23 @@ public class ErrMsg
     this.type = paramInt;
   }
   
+  public void setVersion(int paramInt)
+  {
+    this.version = paramInt;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("(");
-    int i = this.type;
+    int i = this.version;
+    if (i < 0) {
+      localObject = Integer.valueOf(i);
+    } else {
+      localObject = Integer.toString(i);
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(")(");
+    i = this.type;
     if (i < 0) {
       localObject = Integer.valueOf(i);
     } else {
@@ -117,6 +139,7 @@ public class ErrMsg
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    paramParcel.writeInt(this.version);
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.message);

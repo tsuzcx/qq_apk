@@ -1,43 +1,55 @@
 package com.tencent.token;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 public final class pp
+  implements po.b
 {
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public String a;
+  public String b;
+  public String c;
+  public boolean d;
+  public int e = 0;
+  public int f = 0;
+  
+  public final int a()
   {
-    Intent localIntent;
-    if ((paramContext != null) && (paramString1.length() != 0) && (paramString2.length() != 0))
-    {
-      localIntent = new Intent();
-      localIntent.setClassName(paramString1, paramString2);
-      localIntent.putExtras(paramBundle);
-      paramString1 = paramContext.getPackageName();
-      localIntent.putExtra("_mmessage_sdkVersion", 553910273);
-      localIntent.putExtra("_mmessage_appPackage", paramString1);
-      localIntent.putExtra("_mmessage_content", paramString3);
-      localIntent.putExtra("_mmessage_checksum", pq.a(paramString3, paramString1));
-      localIntent.addFlags(268435456).addFlags(134217728);
-    }
-    try
-    {
-      paramContext.startActivity(localIntent);
-      pw.c("MicroMsg.SDK.MMessageAct", "send mm message, intent=".concat(String.valueOf(localIntent)));
-      return true;
-    }
-    catch (ActivityNotFoundException paramContext)
-    {
-      label128:
-      break label128;
-    }
-    for (paramContext = "send fail, target ActivityNotFound";; paramContext = "send fail, invalid arguments")
-    {
-      pw.a("MicroMsg.SDK.MMessageAct", paramContext);
+    return 36;
+  }
+  
+  public final void a(Bundle paramBundle)
+  {
+    paramBundle.putString("_wxminiprogram_webpageurl", this.a);
+    paramBundle.putString("_wxminiprogram_username", this.b);
+    paramBundle.putString("_wxminiprogram_path", this.c);
+    paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.d);
+    paramBundle.putInt("_wxminiprogram_type", this.e);
+    paramBundle.putInt("_wxminiprogram_disableforward", this.f);
+  }
+  
+  public final void b(Bundle paramBundle)
+  {
+    this.a = paramBundle.getString("_wxminiprogram_webpageurl");
+    this.b = paramBundle.getString("_wxminiprogram_username");
+    this.c = paramBundle.getString("_wxminiprogram_path");
+    this.d = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
+    this.e = paramBundle.getInt("_wxminiprogram_type");
+    this.f = paramBundle.getInt("_wxminiprogram_disableforward");
+  }
+  
+  public final boolean b()
+  {
+    if (qb.a(this.a)) {
       return false;
     }
+    if (qb.a(this.b)) {
+      return false;
+    }
+    int i = this.e;
+    if (i >= 0) {
+      return i <= 2;
+    }
+    return false;
   }
 }
 

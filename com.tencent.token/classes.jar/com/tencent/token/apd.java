@@ -1,62 +1,93 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.graphics.PointF;
 
-final class apd
-  extends apb
+public final class apd
 {
-  private final Paint g = new Paint(3);
-  private final Rect h = new Rect();
-  private final Rect i = new Rect();
-  private final float j;
+  final aou<Integer> a;
+  private final Matrix b = new Matrix();
+  private final aou<PointF> c;
+  private final aoq<?, PointF> d;
+  private final aou<aqi> e;
+  private final aou<Float> f;
+  private final aoq<?, Float> g;
+  private final aoq<?, Float> h;
   
-  apd(auv paramauv, ape paramape, float paramFloat)
+  public apd(app paramapp)
   {
-    super(paramauv, paramape);
-    this.j = paramFloat;
-  }
-  
-  private Bitmap c()
-  {
-    String str = this.c.g;
-    return this.b.a(str);
-  }
-  
-  public final void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    super.a(paramRectF, paramMatrix);
-    paramMatrix = c();
-    if (paramMatrix != null)
-    {
-      paramRectF.set(paramRectF.left, paramRectF.top, Math.min(paramRectF.right, paramMatrix.getWidth()), Math.min(paramRectF.bottom, paramMatrix.getHeight()));
-      this.a.mapRect(paramRectF);
+    this.c = paramapp.a.a();
+    this.d = paramapp.b.c();
+    this.e = paramapp.c.a();
+    this.f = paramapp.d.a();
+    this.a = paramapp.e.a();
+    if (paramapp.f != null) {
+      this.g = paramapp.f.a();
+    } else {
+      this.g = null;
     }
-  }
-  
-  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
-  {
-    this.g.setColorFilter(paramColorFilter);
-  }
-  
-  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    Bitmap localBitmap = c();
-    if (localBitmap == null) {
+    if (paramapp.g != null)
+    {
+      this.h = paramapp.g.a();
       return;
     }
-    this.g.setAlpha(paramInt);
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.h.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.i.set(0, 0, (int)(localBitmap.getWidth() * this.j), (int)(localBitmap.getHeight() * this.j));
-    paramCanvas.drawBitmap(localBitmap, this.h, this.i, this.g);
-    paramCanvas.restore();
+    this.h = null;
+  }
+  
+  public final Matrix a()
+  {
+    this.b.reset();
+    Object localObject = (PointF)this.d.a();
+    if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
+      this.b.preTranslate(((PointF)localObject).x, ((PointF)localObject).y);
+    }
+    float f1 = ((Float)this.f.a()).floatValue();
+    if (f1 != 0.0F) {
+      this.b.preRotate(f1);
+    }
+    localObject = (aqi)this.e.a();
+    if ((((aqi)localObject).a != 1.0F) || (((aqi)localObject).b != 1.0F)) {
+      this.b.preScale(((aqi)localObject).a, ((aqi)localObject).b);
+    }
+    localObject = (PointF)this.c.a();
+    if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
+      this.b.preTranslate(-((PointF)localObject).x, -((PointF)localObject).y);
+    }
+    return this.b;
+  }
+  
+  public final void a(aoq.a parama)
+  {
+    this.c.a(parama);
+    this.d.a(parama);
+    this.e.a(parama);
+    this.f.a(parama);
+    this.a.a(parama);
+    aoq localaoq = this.g;
+    if (localaoq != null) {
+      localaoq.a(parama);
+    }
+    localaoq = this.h;
+    if (localaoq != null) {
+      localaoq.a(parama);
+    }
+  }
+  
+  public final void a(apz paramapz)
+  {
+    paramapz.a(this.c);
+    paramapz.a(this.d);
+    paramapz.a(this.e);
+    paramapz.a(this.f);
+    paramapz.a(this.a);
+    aoq localaoq = this.g;
+    if (localaoq != null) {
+      paramapz.a(localaoq);
+    }
+    localaoq = this.h;
+    if (localaoq != null) {
+      paramapz.a(localaoq);
+    }
   }
 }
 

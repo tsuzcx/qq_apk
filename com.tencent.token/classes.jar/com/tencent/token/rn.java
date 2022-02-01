@@ -1,235 +1,156 @@
 package com.tencent.token;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Debug.MemoryInfo;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.jni.FaceDetector;
-import com.tencent.jni.FaceInfo;
-import com.tencent.jni.FaceThreshold;
-import com.tencent.service.DetectType;
-import com.tencent.service.FaceServiceDelegate;
-import com.tencent.service.FaceServiceDelegate.FaceDetectErrorCode;
-import java.util.ArrayList;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
 
-public final class rn
-  implements rm
+@SuppressLint({"UseSparseArrays"})
+final class rn
 {
-  private static final int b;
-  private static final int c;
-  private static final int d;
-  public FaceThreshold a;
-  private ArrayList<FaceDetector> e = new ArrayList();
-  private ArrayList<rq> f = new ArrayList();
-  private rk g = null;
-  private rr h;
-  private ThreadPoolExecutor i;
-  private a j = null;
-  private Context k;
-  private FaceServiceDelegate l;
-  private String m;
-  private boolean n = false;
-  private long o = 0L;
-  private long p = 0L;
-  private int q = 0;
-  private int r = 0;
-  private boolean s = false;
+  private static final String[] a = { "com.coloros.safecenter", "com.coloros.oppoguardelf", "com.oppo.safe" };
+  private static final String[] b = { "com.iqoo.secure", "com.vivo.abe" };
+  private static final String[] c = { "com.huawei.systemmanager" };
+  private static final String[] d = { "com.samsung.android.sm_cn", "com.samsung.android.sm" };
+  private static final String[] e = { "com.gionee.softmanager" };
+  private static final String[] f = { "com.meizu.safe" };
+  private static final String[] g = { "com.miui.securitycenter" };
+  private static String h = "";
   
-  static
+  private static String a(Context paramContext, String paramString)
   {
-    int i1 = Runtime.getRuntime().availableProcessors();
-    b = i1;
-    c = i1;
-    d = i1;
-  }
-  
-  public rn(Context paramContext, FaceServiceDelegate paramFaceServiceDelegate, String paramString)
-  {
-    this.k = paramContext;
-    this.l = paramFaceServiceDelegate;
-    this.m = paramString;
-  }
-  
-  public final void a()
-  {
-    this.h = new rr(this.k);
-    this.h.a();
-    int i1 = 0;
-    while (i1 < d)
+    if (!TextUtils.isEmpty(h)) {
+      return h;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = paramString.toLowerCase(Locale.ENGLISH);
+    paramString = null;
+    if (str.contains("oppo")) {
+      paramString = a;
+    } else if (str.contains("vivo")) {
+      paramString = b;
+    } else if (str.contains("huawei")) {
+      paramString = c;
+    } else if (str.contains("gionee")) {
+      paramString = e;
+    } else if (str.contains("meizu")) {
+      paramString = f;
+    } else if (str.contains("samsung")) {
+      paramString = d;
+    } else if (str.contains("xiaomi")) {
+      paramString = g;
+    }
+    if (paramString != null)
     {
-      ((android.app.ActivityManager)this.k.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
-      FaceDetector localFaceDetector = new FaceDetector();
-      localFaceDetector.Initial(this.m, this.a);
-      this.e.add(localFaceDetector);
-      i1 += 1;
-    }
-    this.j = new a(Looper.myLooper());
-    this.i = new ThreadPoolExecutor(b, c, 3L, TimeUnit.MINUTES, new ArrayBlockingQueue(4), new b());
-    this.n = false;
-    this.s = true;
-  }
-  
-  public final void a(rk paramrk)
-  {
-    Message localMessage = new Message();
-    localMessage.what = 36865;
-    localMessage.obj = paramrk;
-    paramrk = this.j;
-    if (paramrk != null) {
-      paramrk.sendMessage(localMessage);
-    }
-  }
-  
-  public final void a(rq paramrq, DetectType paramDetectType)
-  {
-    if (this.n) {
-      return;
-    }
-    if (this.h.a) {
-      return;
-    }
-    if (this.f.size() + this.r == 0) {
-      this.o = System.currentTimeMillis();
-    }
-    if (this.f.size() + this.r == 4) {
-      return;
-    }
-    int i1 = 0;
-    while (i1 < this.e.size())
-    {
-      FaceDetector localFaceDetector = (FaceDetector)this.e.get(i1);
-      if (localFaceDetector.idle())
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        localFaceDetector.setIdle(false);
-        paramDetectType = new rl(this, localFaceDetector, paramrq, paramDetectType);
-        paramDetectType.a = this.o;
-        this.i.execute(paramDetectType);
-        this.f.add(paramrq);
-        this.q += 1;
-        return;
+        str = paramString[i];
+        try
+        {
+          paramContext.getPackageManager().getPackageInfo(str, 0);
+          h = str;
+          return str;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          i += 1;
+        }
       }
-      i1 += 1;
     }
+    return h;
   }
   
-  public final void b()
+  private static String a(String paramString)
   {
-    this.n = false;
-    if (this.s) {
-      this.h.b();
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.h = null;
-    Object localObject = this.i;
-    if (localObject != null) {}
+    return str;
+  }
+  
+  static HashMap<Integer, String> a(Context paramContext)
+  {
+    HashMap localHashMap = new HashMap(7);
+    Object localObject = aqv.a();
+    localHashMap.put(Integer.valueOf(9800), localObject);
+    localHashMap.put(Integer.valueOf(9801), a(yd.a));
+    localHashMap.put(Integer.valueOf(9803), a(aqv.b()));
+    localHashMap.put(Integer.valueOf(9804), aqv.a("ro.build.fingerprint"));
     try
     {
-      ((ThreadPoolExecutor)localObject).shutdown();
-      i1 = 0;
-      boolean bool;
-      do
-      {
-        xj.b("awaitTermination before");
-        bool = this.i.awaitTermination(100L, TimeUnit.MILLISECONDS);
-        localObject = new StringBuilder("awaitTermination after ");
-        i1 += 1;
-        ((StringBuilder)localObject).append(i1);
-        xj.b(((StringBuilder)localObject).toString());
-      } while (!bool);
+      localHashMap.put(Integer.valueOf(9806), paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName);
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Throwable localThrowable)
     {
-      int i1;
-      label90:
-      break label90;
+      localThrowable.printStackTrace();
+      localHashMap.put(Integer.valueOf(9806), "");
     }
-    i1 = 0;
-    while (i1 < d)
+    localHashMap.put(Integer.valueOf(9807), a("107022"));
+    localHashMap.put(Integer.valueOf(9808), a("2.0.0"));
+    if (!TextUtils.isEmpty(a(paramContext, (String)localObject))) {
+      localHashMap.put(Integer.valueOf(9810), a(h));
+    }
+    paramContext = localHashMap.keySet().iterator();
+    while (paramContext.hasNext())
     {
-      ((FaceDetector)this.e.get(i1)).Destroy();
-      i1 += 1;
+      int i = ((Integer)paramContext.next()).intValue();
+      localObject = new StringBuilder("profile:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append((String)localHashMap.get(Integer.valueOf(i)));
+      aqx.b();
     }
-    this.e.clear();
-    this.n = false;
-    this.s = false;
-    this.k = null;
-    this.l = null;
+    return localHashMap;
   }
   
-  final class a
-    extends Handler
+  static HashMap<Integer, Integer> b(Context paramContext)
   {
-    public a(Looper paramLooper)
+    HashMap localHashMap = new HashMap(3);
+    localHashMap.put(Integer.valueOf(9802), Integer.valueOf(Build.VERSION.SDK_INT));
+    try
     {
-      super();
+      localHashMap.put(Integer.valueOf(9805), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode));
     }
-    
-    public final void handleMessage(Message paramMessage)
+    catch (Throwable localThrowable)
     {
-      if (paramMessage.what != 36865)
+      localThrowable.printStackTrace();
+      localHashMap.put(Integer.valueOf(9805), Integer.valueOf(0));
+    }
+    localHashMap.put(Integer.valueOf(9809), Integer.valueOf(70));
+    localHashMap.put(Integer.valueOf(9812), Integer.valueOf(2));
+    if (!TextUtils.isEmpty(a(paramContext, aqv.a()))) {
+      try
       {
-        new StringBuilder("Unknown message type ").append(paramMessage.what);
-        return;
+        localHashMap.put(Integer.valueOf(9811), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(h, 0).versionCode));
       }
-      paramMessage = (rk)paramMessage.obj;
-      paramMessage.a.setIdle(true);
-      if (!rn.a(rn.this).contains(paramMessage.b))
+      catch (Throwable paramContext)
       {
-        xj.b("Discard pic");
-        return;
-      }
-      if (rn.b(rn.this) != null)
-      {
-        if (rn.c(rn.this) == null) {
-          return;
-        }
-        if (paramMessage.c == 0)
-        {
-          if (rn.d(rn.this) == null) {
-            rn.a(rn.this, paramMessage);
-          } else if (paramMessage.d.qualityScore() > rn.d(rn.this).d.qualityScore()) {
-            rn.a(rn.this, paramMessage);
-          }
-          rn.e(rn.this);
-        }
-        else
-        {
-          FaceServiceDelegate.FaceDetectErrorCode localFaceDetectErrorCode = FaceServiceDelegate.FaceDetectErrorCode.values()[paramMessage.c];
-          rn.b(rn.this).a(localFaceDetectErrorCode);
-        }
-        rn.a(rn.this).remove(paramMessage.b);
-        if (rn.f(rn.this) == 4)
-        {
-          rn.a(rn.this, System.currentTimeMillis());
-          paramMessage = new StringBuilder("检测了");
-          paramMessage.append(rn.g(rn.this));
-          paramMessage.append("帧数据 检测到4张人脸时间: ");
-          paramMessage.append(rn.h(rn.this) - rn.i(rn.this));
-          paramMessage.append(" 最大分数: ");
-          paramMessage.append(rn.d(rn.this).d.qualityScore());
-          xj.b(paramMessage.toString());
-          rn.b(rn.this).a(rn.d(rn.this).b.a, rn.d(rn.this).d.faceData(), rn.g(rn.this));
-          rn.a(rn.this, null);
-          rn.j(rn.this);
-          rn.k(rn.this);
-          return;
-        }
-        rn.b(rn.this);
-        return;
+        paramContext.printStackTrace();
       }
     }
-  }
-  
-  final class b
-    implements RejectedExecutionHandler
-  {
-    public b() {}
-    
-    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor) {}
+    paramContext = localHashMap.keySet().iterator();
+    while (paramContext.hasNext())
+    {
+      int i = ((Integer)paramContext.next()).intValue();
+      StringBuilder localStringBuilder = new StringBuilder("profile:");
+      localStringBuilder.append(i);
+      localStringBuilder.append("|");
+      localStringBuilder.append(localHashMap.get(Integer.valueOf(i)));
+      aqx.b();
+    }
+    return localHashMap;
   }
 }
 

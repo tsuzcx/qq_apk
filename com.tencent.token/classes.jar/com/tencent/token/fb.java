@@ -1,51 +1,16 @@
 package com.tencent.token;
 
 import android.os.Build.VERSION;
-import android.view.ViewGroup;
+import android.view.Gravity;
 
 public final class fb
 {
-  static final c a = new c();
-  
-  static
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      a = new b();
-      return;
+    if (Build.VERSION.SDK_INT >= 17) {
+      return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
     }
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      a = new a();
-      return;
-    }
-  }
-  
-  public static boolean a(ViewGroup paramViewGroup)
-  {
-    return a.a(paramViewGroup);
-  }
-  
-  static class a
-    extends fb.c
-  {}
-  
-  static final class b
-    extends fb.a
-  {
-    public final boolean a(ViewGroup paramViewGroup)
-    {
-      return paramViewGroup.isTransitionGroup();
-    }
-  }
-  
-  static class c
-  {
-    public boolean a(ViewGroup paramViewGroup)
-    {
-      Boolean localBoolean = (Boolean)paramViewGroup.getTag(bm.a.tag_transition_group);
-      return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (fa.h(paramViewGroup) != null);
-    }
+    return paramInt1 & 0xFF7FFFFF;
   }
 }
 

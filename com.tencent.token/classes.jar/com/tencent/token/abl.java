@@ -1,12 +1,29 @@
 package com.tencent.token;
 
-public abstract class abl
+import com.tencent.token.core.bean.QQUser;
+
+public final class abl
 {
-  protected abstract void a();
+  public te a = new te();
+  long b;
+  public boolean c;
   
-  protected abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  protected abstract byte[] b();
+  public final void a(te paramte)
+  {
+    try
+    {
+      this.a = paramte;
+      if (tt.a().k.b() != null) {
+        this.b = tt.a().k.b().mUin;
+      }
+      return;
+    }
+    finally
+    {
+      paramte = finally;
+      throw paramte;
+    }
+  }
 }
 
 

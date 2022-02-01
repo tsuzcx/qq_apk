@@ -1,49 +1,67 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import java.io.InputStream;
+import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 
 public final class ab
-  extends JceStruct
+  implements Cloneable
 {
-  public int a = 2;
-  public int b = 0;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public int f = 0;
+  public String a;
+  public long b = -1L;
+  public long c = -1L;
+  public int d = -1;
+  public byte[] e;
+  public int f = -1;
+  public long g = -1L;
+  public int h = -1;
+  public int i = -1;
+  public byte[] j;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public ab(byte[] paramArrayOfByte, InputStream paramInputStream)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, false);
-    this.d = paramJceInputStream.readString(3, false);
-    this.e = paramJceInputStream.readString(4, false);
-    this.f = paramJceInputStream.read(this.f, 5, false);
+    aa.a(paramInputStream, paramArrayOfByte, 0, 46);
+    paramArrayOfByte = new z(paramArrayOfByte, ByteOrder.LITTLE_ENDIAN);
+    paramArrayOfByte.a();
+    paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    this.d = paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    paramArrayOfByte.a();
+    this.b = (paramArrayOfByte.a() & 0xFFFFFFFF);
+    this.c = (paramArrayOfByte.a() & 0xFFFFFFFF);
+    this.f = paramArrayOfByte.b();
+    this.h = paramArrayOfByte.b();
+    this.i = paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    paramArrayOfByte.b();
+    paramArrayOfByte.a();
+    this.g = (paramArrayOfByte.a() & 0xFFFFFFFF);
+    this.j = new byte[this.f];
+    paramArrayOfByte = this.j;
+    aa.a(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
+    paramArrayOfByte = this.j;
+    this.a = new String(paramArrayOfByte, 0, paramArrayOfByte.length, StandardCharsets.UTF_8);
+    int k = this.i;
+    if (k > 0)
+    {
+      paramArrayOfByte = new byte[k];
+      aa.a(paramInputStream, paramArrayOfByte, 0, k);
+      new String(paramArrayOfByte, 0, k, StandardCharsets.UTF_8);
+    }
+    k = this.h;
+    if (k > 0)
+    {
+      this.e = new byte[k];
+      aa.a(paramInputStream, this.e, 0, k);
+    }
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final String toString()
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    String str = this.c;
-    if (str != null) {
-      paramJceOutputStream.write(str, 2);
-    }
-    str = this.d;
-    if (str != null) {
-      paramJceOutputStream.write(str, 3);
-    }
-    str = this.e;
-    if (str != null) {
-      paramJceOutputStream.write(str, 4);
-    }
-    int i = this.f;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 5);
-    }
+    return this.a;
   }
 }
 

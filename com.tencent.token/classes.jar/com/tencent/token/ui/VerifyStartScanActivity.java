@@ -9,25 +9,25 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
-import com.tencent.token.aao;
+import com.tencent.token.aay;
 import com.tencent.token.ui.base.CameraPrepareDialog;
-import com.tencent.token.xm;
-import com.tencent.token.yh;
-import com.tencent.token.zj;
-import com.tencent.token.zj.a;
+import com.tencent.token.xy;
+import com.tencent.token.yt;
+import com.tencent.token.zv;
+import com.tencent.token.zv.a;
 
 public class VerifyStartScanActivity
   extends BaseActivity
 {
   private CameraPrepareDialog mCameraDialog;
-  private zj mScanTipView;
+  private zv mScanTipView;
   private int mSource;
   
   private void gotoScan()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      yh local3 = new yh()
+      yt local3 = new yt()
       {
         public final void a()
         {
@@ -60,21 +60,21 @@ public class VerifyStartScanActivity
     View localView = new View(this);
     localView.setBackgroundColor(-16777216);
     setContentView(localView);
-    if (!xm.a(this.mSource))
+    if (!xy.a(this.mSource))
     {
       gotoScan();
-      setRightTitleImage(2131100164, new View.OnClickListener()
+      setRightTitleImage(2131100169, new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           paramAnonymousView = VerifyStartScanActivity.this;
-          aao.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
+          aay.b(paramAnonymousView, paramAnonymousView.getString(2131493432));
         }
       });
       return;
     }
-    this.mScanTipView = new zj(this, this.mSource);
-    this.mScanTipView.setViewListener(new zj.a()
+    this.mScanTipView = new zv(this, this.mSource);
+    this.mScanTipView.setViewListener(new zv.a()
     {
       public final void a()
       {
@@ -84,17 +84,17 @@ public class VerifyStartScanActivity
     addContentView(this.mScanTipView);
     if (this.mSource == 0)
     {
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
-      this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+      this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
     }
     else
     {
-      setTitle(getResources().getString(2131493540));
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968786));
+      setTitle(getResources().getString(2131493548));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968787));
       this.mTitleDivider.setVisibility(8);
     }
     this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
-    this.mTitleText.setTextColor(getResources().getColor(2130968761));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   protected void dismissCameraDialog()

@@ -1,69 +1,42 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class apu
+  extends JceStruct
 {
-  public static Object a(JSONArray paramJSONArray, int paramInt)
+  public String a = "";
+  public int b = 0;
+  public String c = "";
+  
+  public final JceStruct newInit()
   {
-    if ((paramJSONArray != null) && (paramInt >= 0))
-    {
-      if (paramInt >= paramJSONArray.length()) {
-        return null;
-      }
-      try
-      {
-        paramJSONArray = paramJSONArray.get(paramInt);
-        return paramJSONArray;
-      }
-      catch (Throwable paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-      }
-    }
-    return null;
+    return new apu();
   }
   
-  public static Object a(JSONObject paramJSONObject, String paramString)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (paramJSONObject != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return null;
-      }
-      try
-      {
-        paramJSONObject = paramJSONObject.get(paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
-    return null;
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.readString(2, false);
   }
   
-  public static String b(JSONObject paramJSONObject, String paramString)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (paramJSONObject != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return null;
-      }
-      try
-      {
-        paramJSONObject = paramJSONObject.getString(paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    return null;
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
+    }
+    str = this.c;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
+    }
   }
 }
 

@@ -1,434 +1,452 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.PreviewCallback;
-import android.hardware.Camera.Size;
-import android.os.Bundle;
+import android.os.Debug;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
-import android.util.DisplayMetrics;
-import android.view.SurfaceHolder;
-import com.tencent.jni.FaceDetector;
-import com.tencent.jni.FaceDetector.IdCardDirection;
-import com.tencent.jni.IdCardInfo;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.token.global.taiji.CustomPriorityBlockingQueue;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 public final class yg
-  implements Camera.AutoFocusCallback, Camera.PreviewCallback
+  implements yf.a, yi
 {
-  public static int e;
-  public static int f;
-  public static int g;
-  public static int h;
-  public boolean a = false;
-  public Handler b;
-  public long c;
-  public Camera d;
-  final Object i = new Object();
-  private Context j;
-  private SurfaceHolder k;
-  private Timer l;
-  private TimerTask m;
-  private int n;
-  private int o;
-  private boolean p = false;
-  private boolean q = false;
-  private boolean r = false;
-  private FaceDetector.IdCardDirection s = FaceDetector.IdCardDirection.DT_FRONT;
-  private String t;
+  static long g;
+  static long h;
+  ReentrantReadWriteLock a = new ReentrantReadWriteLock();
+  protected CustomPriorityBlockingQueue<Runnable> b = new CustomPriorityBlockingQueue();
+  protected LinkedList<a> c = new LinkedList();
+  protected ArrayList<a> d = new ArrayList();
+  protected HashMap<a, Thread> e = new HashMap();
+  protected yf f = null;
+  volatile boolean i = false;
+  private ReentrantReadWriteLock j = new ReentrantReadWriteLock();
+  private ArrayList<Object> k = new ArrayList();
+  private ArrayList<yi.a> l = new ArrayList();
+  private int m;
+  private boolean n = false;
+  private HandlerThread o;
+  private b p;
+  private yi.a q = null;
   
-  public yg(Context paramContext, SurfaceHolder paramSurfaceHolder, Handler paramHandler, FaceDetector.IdCardDirection paramIdCardDirection)
+  public yg()
   {
-    this.j = paramContext;
-    this.b = paramHandler;
-    this.k = paramSurfaceHolder;
-    this.s = paramIdCardDirection;
-    this.o = 0;
+    int i2 = Runtime.getRuntime().availableProcessors();
+    int i1 = i2;
+    if (i2 < 4) {
+      i1 = 4;
+    }
+    this.m = i1;
+    this.f = new yf(this.m + 2, TimeUnit.SECONDS, this.b, new ThreadPoolExecutor.CallerRunsPolicy());
+    this.f.a = this;
+    this.o = new HandlerThread("TMS_THREAD_POOL_HANDLER");
+    this.o.start();
+    this.p = new b(this.o.getLooper());
+    this.a.writeLock().lock();
+    try
+    {
+      this.i = true;
+      h = System.currentTimeMillis();
+      g = 2000L;
+      return;
+    }
+    finally
+    {
+      this.a.writeLock().unlock();
+    }
   }
   
-  private static String a(Collection<String> paramCollection, String... paramVarArgs)
+  private void a(boolean paramBoolean)
   {
-    if (paramCollection != null)
+    if ((paramBoolean) || (this.f.getCorePoolSize() < this.m))
     {
+      this.f.setCorePoolSize(this.m);
+      this.f.setMaximumPoolSize(this.m);
+    }
+  }
+  
+  public final ArrayList<Object> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    this.j.readLock().lock();
+    try
+    {
+      localArrayList.addAll(this.k);
+      return localArrayList;
+    }
+    finally
+    {
+      this.j.readLock().unlock();
+    }
+  }
+  
+  public final void a(final Runnable paramRunnable)
+  {
+    this.a.writeLock().lock();
+    try
+    {
+      paramRunnable = (a)paramRunnable;
+      Iterator localIterator = this.e.keySet().iterator();
+      while ((localIterator != null) && (localIterator.hasNext()))
+      {
+        a locala = (a)localIterator.next();
+        if ((locala != null) && (locala.equals(paramRunnable)))
+        {
+          localIterator.remove();
+          i1 = 1;
+          break label84;
+        }
+      }
       int i1 = 0;
-      while (i1 <= 0)
+      label84:
+      this.a.writeLock().unlock();
+      if (i1 != 0)
       {
-        String str = paramVarArgs[0];
-        if (paramCollection.contains(str))
-        {
-          paramCollection = str;
-          break label38;
-        }
-        i1 += 1;
-      }
-    }
-    paramCollection = null;
-    label38:
-    xj.b("resolution Settable value: ".concat(String.valueOf(paramCollection)));
-    return paramCollection;
-  }
-  
-  public final void a()
-  {
-    if (this.d == null) {
-      return;
-    }
-    Object localObject1 = this.j.getResources().getDisplayMetrics();
-    int i5 = ((DisplayMetrics)localObject1).widthPixels;
-    int i6 = ((DisplayMetrics)localObject1).heightPixels;
-    try
-    {
-      localObject3 = this.d.getParameters().getSupportedPreviewSizes();
-      i4 = ((Camera.Size)((List)localObject3).get(0)).width;
-      i1 = ((Camera.Size)((List)localObject3).get(0)).height;
-      int i3 = 1;
-      while (i3 < ((List)localObject3).size())
-      {
-        double d1 = i4;
-        double d2 = i1;
-        Double.isNaN(d1);
-        Double.isNaN(d2);
-        d2 = d1 / d2;
-        d1 = i5;
-        double d3 = i6;
-        Double.isNaN(d1);
-        Double.isNaN(d3);
-        d1 /= d3;
-        d2 = Math.abs(d2 - d1);
-        d3 = ((Camera.Size)((List)localObject3).get(i3)).width;
-        double d4 = ((Camera.Size)((List)localObject3).get(i3)).height;
-        Double.isNaN(d3);
-        Double.isNaN(d4);
-        d1 = Math.abs(d3 / d4 - d1);
-        if (d2 >= d1)
-        {
-          i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
-          i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
-          if ((d2 == d1) && (i2 < ((Camera.Size)((List)localObject3).get(i3)).width))
-          {
-            i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
-            i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
-          }
-        }
-        else
-        {
-          i2 = i4;
-        }
-        i3 += 1;
-        i4 = i2;
-      }
-      localObject3 = new StringBuilder("debug------------bestPreviewWidth=");
-      ((StringBuilder)localObject3).append(i4);
-      ((StringBuilder)localObject3).append(",bestPreviewHeight=");
-      ((StringBuilder)localObject3).append(i1);
-      ((StringBuilder)localObject3).append(", screenWidth=");
-      ((StringBuilder)localObject3).append(i5);
-      ((StringBuilder)localObject3).append(",screenHeight=");
-      ((StringBuilder)localObject3).append(i6);
-      ((StringBuilder)localObject3).append(",density=");
-      ((StringBuilder)localObject3).append(((DisplayMetrics)localObject1).density);
-      xj.c(((StringBuilder)localObject3).toString());
-      localObject1 = this.d.getParameters();
-      ((Camera.Parameters)localObject1).setPictureFormat(256);
-      ((Camera.Parameters)localObject1).setPreviewFormat(17);
-      i3 = this.j.getResources().getConfiguration().orientation;
-      i2 = 90;
-      if (i3 != 2)
-      {
-        this.n = 90;
-      }
-      else
-      {
-        this.n = 0;
-        i2 = 0;
-      }
-      if (tw.d != -1) {
-        i2 = tw.d;
-      }
-      if (tw.e != -1) {
-        this.n = tw.e;
-      }
-      localObject3 = this.d;
-    }
-    catch (Exception localException2)
-    {
-      Object localObject3;
-      int i4;
-      int i1;
-      int i2;
-      Method localMethod;
-      label569:
-      localException2.printStackTrace();
-      Object localObject2 = new StringBuilder("Camera getParameters failed");
-      ((StringBuilder)localObject2).append(this.d);
-      xj.c(((StringBuilder)localObject2).toString());
-      localObject2 = this.b.obtainMessage(0);
-      ((Message)localObject2).what = 2;
-      ((Message)localObject2).sendToTarget();
-      return;
-    }
-    try
-    {
-      localMethod = localObject3.getClass().getMethod("setDisplayOrientation", new Class[] { Integer.TYPE });
-      if (localMethod != null) {
-        localMethod.invoke(localObject3, new Object[] { Integer.valueOf(i2) });
-      }
-    }
-    catch (Exception localException3)
-    {
-      break label569;
-    }
-    ((Camera.Parameters)localObject1).setPreviewSize(i4, i1);
-    localObject3 = a(((Camera.Parameters)localObject1).getSupportedFocusModes(), new String[] { "auto" });
-    if (localObject3 != null) {
-      ((Camera.Parameters)localObject1).setFocusMode((String)localObject3);
-    }
-    this.d.setParameters((Camera.Parameters)localObject1);
-    this.d.setPreviewCallback(this);
-    try
-    {
-      this.d.setPreviewDisplay(this.k);
-      this.d.startPreview();
-      if ((((Camera.Parameters)localObject1).getFocusMode().equals("auto")) || (((Camera.Parameters)localObject1).getFocusMode().equals("macro")))
-      {
-        this.l = new Timer(false);
-        this.m = new TimerTask()
+        long l1 = System.currentTimeMillis();
+        long l2 = paramRunnable.a.f;
+        paramRunnable.a.f = (l1 - l2);
+        l1 = Debug.threadCpuTimeNanos();
+        l2 = paramRunnable.a.g;
+        paramRunnable.a.g = (l1 - l2);
+        this.p.post(new Runnable()
         {
           public final void run()
           {
-            yg localyg = yg.this;
-            if (localyg.d != null) {
-              try
-              {
-                localyg.d.autoFocus(localyg);
-                return;
+            yg.a(yg.this).writeLock().lock();
+            try
+            {
+              Iterator localIterator = yg.b(yg.this).iterator();
+              while (localIterator.hasNext()) {
+                localIterator.next();
               }
-              catch (Exception localException)
-              {
-                localException.printStackTrace();
-                localStringBuilder = new StringBuilder("camera auto focus ");
-                localStringBuilder.append(localException.toString());
-                xj.c(localStringBuilder.toString());
-                return;
+              yg.a(yg.this).writeLock().unlock();
+              if (yg.this.f.getActiveCount() + 4 <= yg.c(yg.this)) {
+                yg.a(yg.this, true);
               }
-              catch (RuntimeException localRuntimeException)
-              {
-                localRuntimeException.printStackTrace();
-                StringBuilder localStringBuilder = new StringBuilder("camera auto focus ");
-                localStringBuilder.append(localRuntimeException.toString());
-                xj.c(localStringBuilder.toString());
-                return;
-              }
+              return;
+            }
+            finally
+            {
+              yg.a(yg.this).writeLock().unlock();
             }
           }
-        };
-        this.l.schedule(this.m, 500L, 2000L);
+        });
       }
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      Camera localCamera = this.d;
-      if (localCamera != null)
-      {
-        localCamera.release();
-        this.d = null;
-      }
-    }
-    if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
-    {
-      f = 0;
-      e = 0;
-      sb.a().a(System.currentTimeMillis(), 130);
       return;
     }
-    h = 0;
-    g = 0;
-    sb.a().a(System.currentTimeMillis(), 132);
+    finally
+    {
+      this.a.writeLock().unlock();
+    }
   }
   
-  public final void b()
+  public final void a(Runnable paramRunnable, String paramString)
   {
+    this.a.writeLock().lock();
     try
     {
-      if (this.d != null)
-      {
-        this.d.setPreviewCallback(null);
-        this.d.stopPreview();
-        this.d.release();
-        this.d = null;
-      }
-      if (this.l != null)
-      {
-        this.l.cancel();
-        this.l = null;
-      }
-      if (this.m != null)
-      {
-        this.m.cancel();
-        this.m = null;
-      }
-      FaceDetector.IdCardDestroy();
+      paramRunnable = new a(5, paramRunnable, paramString);
+      this.c.add(paramRunnable);
+      this.d.add(paramRunnable);
+      this.p.sendEmptyMessage(1);
       return;
     }
-    catch (Exception localException)
+    finally
     {
-      localException.printStackTrace();
+      this.a.writeLock().unlock();
     }
   }
   
-  public final void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
-  
-  public final void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  /* Error */
+  public final void a(Thread paramThread, final Runnable paramRunnable)
   {
-    if (this.a) {
-      return;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   4: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   7: invokevirtual 157	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:lock	()V
+    //   10: aload_0
+    //   11: getfield 85	com/tencent/token/yg:d	Ljava/util/ArrayList;
+    //   14: invokevirtual 226	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   17: astore 7
+    //   19: iconst_0
+    //   20: istore 4
+    //   22: aload 7
+    //   24: ifnull +64 -> 88
+    //   27: aload_2
+    //   28: checkcast 16	com/tencent/token/yg$a
+    //   31: astore 6
+    //   33: iload 4
+    //   35: istore_3
+    //   36: aload 6
+    //   38: astore_2
+    //   39: aload 7
+    //   41: invokeinterface 204 1 0
+    //   46: ifeq +47 -> 93
+    //   49: aload 7
+    //   51: invokeinterface 208 1 0
+    //   56: checkcast 16	com/tencent/token/yg$a
+    //   59: astore_2
+    //   60: aload_2
+    //   61: ifnull -28 -> 33
+    //   64: aload_2
+    //   65: aload 6
+    //   67: invokevirtual 251	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   70: ifeq -37 -> 33
+    //   73: aload 7
+    //   75: invokeinterface 211 1 0
+    //   80: iconst_1
+    //   81: istore_3
+    //   82: aload 6
+    //   84: astore_2
+    //   85: goto +8 -> 93
+    //   88: aconst_null
+    //   89: astore_2
+    //   90: iload 4
+    //   92: istore_3
+    //   93: aload_0
+    //   94: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   97: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   100: invokevirtual 172	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   103: iload_3
+    //   104: ifne +4 -> 108
+    //   107: return
+    //   108: aload_2
+    //   109: getfield 254	com/tencent/token/yg$a:a	Lcom/tencent/token/yi$b;
+    //   112: invokestatic 163	java/lang/System:currentTimeMillis	()J
+    //   115: putfield 258	com/tencent/token/yi$b:f	J
+    //   118: aload_2
+    //   119: getfield 254	com/tencent/token/yg$a:a	Lcom/tencent/token/yi$b;
+    //   122: invokestatic 263	android/os/Debug:threadCpuTimeNanos	()J
+    //   125: putfield 264	com/tencent/token/yi$b:g	J
+    //   128: aload_0
+    //   129: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   132: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   135: invokevirtual 157	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:lock	()V
+    //   138: aload_0
+    //   139: getfield 90	com/tencent/token/yg:e	Ljava/util/HashMap;
+    //   142: aload_2
+    //   143: aload_1
+    //   144: invokevirtual 284	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   147: pop
+    //   148: aload_0
+    //   149: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   152: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   155: invokevirtual 172	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   158: aload_2
+    //   159: getfield 254	com/tencent/token/yg$a:a	Lcom/tencent/token/yi$b;
+    //   162: getfield 286	com/tencent/token/yi$b:d	I
+    //   165: istore 4
+    //   167: iload 4
+    //   169: ifgt +8 -> 177
+    //   172: iconst_1
+    //   173: istore_3
+    //   174: goto +16 -> 190
+    //   177: iload 4
+    //   179: istore_3
+    //   180: iload 4
+    //   182: bipush 10
+    //   184: if_icmple +6 -> 190
+    //   187: bipush 10
+    //   189: istore_3
+    //   190: aload_1
+    //   191: iload_3
+    //   192: invokevirtual 291	java/lang/Thread:setPriority	(I)V
+    //   195: aload_1
+    //   196: aload_2
+    //   197: getfield 254	com/tencent/token/yg$a:a	Lcom/tencent/token/yi$b;
+    //   200: getfield 294	com/tencent/token/yi$b:c	Ljava/lang/String;
+    //   203: invokevirtual 297	java/lang/Thread:setName	(Ljava/lang/String;)V
+    //   206: aload_2
+    //   207: getfield 254	com/tencent/token/yg$a:a	Lcom/tencent/token/yi$b;
+    //   210: aload_1
+    //   211: invokevirtual 300	java/lang/Thread:getId	()J
+    //   214: putfield 302	com/tencent/token/yi$b:k	J
+    //   217: aload_0
+    //   218: getfield 94	com/tencent/token/yg:n	Z
+    //   221: istore 5
+    //   223: aload_0
+    //   224: getfield 148	com/tencent/token/yg:p	Lcom/tencent/token/yg$b;
+    //   227: new 10	com/tencent/token/yg$1
+    //   230: dup
+    //   231: aload_0
+    //   232: iload 5
+    //   234: aload_2
+    //   235: invokespecial 305	com/tencent/token/yg$1:<init>	(Lcom/tencent/token/yg;ZLcom/tencent/token/yg$a;)V
+    //   238: invokevirtual 271	com/tencent/token/yg$b:post	(Ljava/lang/Runnable;)Z
+    //   241: pop
+    //   242: aload_0
+    //   243: iconst_1
+    //   244: putfield 94	com/tencent/token/yg:n	Z
+    //   247: return
+    //   248: astore_1
+    //   249: aload_0
+    //   250: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   253: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   256: invokevirtual 172	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   259: aload_1
+    //   260: athrow
+    //   261: astore_1
+    //   262: aload_0
+    //   263: getfield 73	com/tencent/token/yg:a	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   266: invokevirtual 152	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   269: invokevirtual 172	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   272: aload_1
+    //   273: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	274	0	this	yg
+    //   0	274	1	paramThread	Thread
+    //   0	274	2	paramRunnable	Runnable
+    //   35	157	3	i1	int
+    //   20	165	4	i2	int
+    //   221	12	5	bool	boolean
+    //   31	52	6	locala	a
+    //   17	57	7	localIterator	Iterator
+    // Exception table:
+    //   from	to	target	type
+    //   138	148	248	finally
+    //   10	19	261	finally
+    //   27	33	261	finally
+    //   39	60	261	finally
+    //   64	80	261	finally
+  }
+  
+  public final ArrayList<yi.a> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    this.j.readLock().lock();
+    try
+    {
+      localArrayList.addAll(this.l);
+      return localArrayList;
     }
-    if ((!this.q) && (!this.p)) {
-      new Thread(new Runnable()
+    finally
+    {
+      this.j.readLock().unlock();
+    }
+  }
+  
+  public final void b(final Runnable paramRunnable, String paramString)
+  {
+    paramRunnable = new a(2147483647, paramRunnable, paramString);
+    this.a.writeLock().lock();
+    try
+    {
+      this.d.add(paramRunnable);
+      this.a.writeLock().unlock();
+      this.p.post(new Runnable()
       {
         public final void run()
         {
-          try
+          yg.this.f.execute(paramRunnable);
+          if ((yg.this.f.getActiveCount() >= yg.c(yg.this)) && (yg.this.f.getCorePoolSize() < 18))
           {
-            synchronized (yg.this.i)
-            {
-              yg.a(yg.this, true);
-              yg.a(yg.this);
-              yg.b(yg.this, FaceDetector.IdCardDetectInitial(yg.b(yg.this)));
-              StringBuilder localStringBuilder = new StringBuilder("IdCardDetectInitial: ");
-              localStringBuilder.append(yg.c(yg.this));
-              localStringBuilder.append(",mIdCardModelPath=");
-              localStringBuilder.append(yg.b(yg.this));
-              xj.c(localStringBuilder.toString());
-              yg.d(yg.this);
-              yg.a(yg.this, false);
-            }
+            yg.this.f.setCorePoolSize(yg.this.f.getCorePoolSize() + 1);
+            yg.this.f.setMaximumPoolSize(yg.this.f.getCorePoolSize() + 1);
           }
-          catch (Error localError)
+          else
           {
-            localError.printStackTrace();
+            yg.a(yg.this, false);
           }
-          catch (Exception localException)
+          Iterator localIterator = yg.this.b().iterator();
+          while (localIterator.hasNext())
           {
-            localException.printStackTrace();
+            localIterator.next();
+            yg.this.f.getActiveCount();
           }
         }
-      }).start();
-    }
-    if (this.p) {
+      });
       return;
     }
-    this.o += 1;
-    if (this.o % 2 == 0) {
-      return;
-    }
-    if (this.s == FaceDetector.IdCardDirection.DT_FRONT) {
-      e += 1;
-    } else {
-      g += 1;
-    }
-    Object localObject1 = paramCamera.getParameters();
-    int i1 = ((Camera.Parameters)localObject1).getPreviewSize().width;
-    int i2 = ((Camera.Parameters)localObject1).getPreviewSize().height;
-    localObject1 = new IdCardInfo();
-    long l5 = System.currentTimeMillis();
-    long l4 = -1L;
-    long l1 = l4;
-    long l2 = l4;
-    long l3 = l4;
-    try
+    finally
     {
-      if (this.r)
+      this.a.writeLock().unlock();
+    }
+  }
+  
+  final class a
+    implements Comparable<a>, Runnable
+  {
+    yi.b a = new yi.b();
+    
+    public a(int paramInt, Runnable paramRunnable, String paramString)
+    {
+      if (paramString != null)
       {
-        l2 = l4;
-        l3 = l4;
-        l1 = FaceDetector.IdCardDetect((IdCardInfo)localObject1, this.s, paramArrayOfByte, i1, i2, this.n);
+        this$1 = paramString;
+        if (paramString.length() != 0) {}
       }
-      l2 = l1;
-      l3 = l1;
-      xj.c("IdCardDetect detect ret: ".concat(String.valueOf(l1)));
-    }
-    catch (Error localError)
-    {
-      localError.printStackTrace();
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      l1 = l3;
-    }
-    l2 = System.currentTimeMillis();
-    Object localObject2 = new StringBuilder("id_card ret: ");
-    ((StringBuilder)localObject2).append(l1);
-    ((StringBuilder)localObject2).append(" time: ");
-    ((StringBuilder)localObject2).append(l2 - l5);
-    ((StringBuilder)localObject2).append(" info: ");
-    ((StringBuilder)localObject2).append(((IdCardInfo)localObject1).info());
-    ((StringBuilder)localObject2).append(", side=");
-    ((StringBuilder)localObject2).append(this.s);
-    localObject2 = ((StringBuilder)localObject2).toString();
-    if (l1 == 0L)
-    {
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append((String)localObject2);
-      ((StringBuilder)localObject3).append(", totaltime=");
-      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.c);
-      xj.c(((StringBuilder)localObject3).toString());
-      if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
+      else
       {
-        f = (int)(System.currentTimeMillis() - this.c);
-        localObject3 = aai.a(((IdCardInfo)localObject1).data(), "frontdata");
-        localObject2 = this.b.obtainMessage(0);
-        ((Message)localObject2).what = 1;
-        ((Message)localObject2).obj = localObject3;
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
-        ((Message)localObject2).setData((Bundle)localObject3);
-        ((Message)localObject2).arg1 = 1;
-        ((Message)localObject2).sendToTarget();
-        sb.a().a(System.currentTimeMillis(), 131);
+        this$1 = paramRunnable.getClass().getName();
       }
-      else if (this.s == FaceDetector.IdCardDirection.DT_BACK)
-      {
-        h = (int)(System.currentTimeMillis() - this.c);
-        localObject3 = aai.a(((IdCardInfo)localObject1).data(), "backdata");
-        localObject2 = this.b.obtainMessage(0);
-        ((Message)localObject2).what = 1;
-        ((Message)localObject2).obj = localObject3;
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
-        ((Message)localObject2).setData((Bundle)localObject3);
-        ((Message)localObject2).arg1 = 2;
-        ((Message)localObject2).sendToTarget();
-        sb.a().a(System.currentTimeMillis(), 133);
-      }
-      localObject1 = new StringBuilder("take id photo data=");
-      ((StringBuilder)localObject1).append(paramArrayOfByte.length);
-      xj.a(((StringBuilder)localObject1).toString());
-      paramCamera.stopPreview();
-      this.a = true;
-      return;
+      paramString = this.a;
+      paramString.a = 1;
+      paramString.d = paramInt;
+      paramString.c = yg.this;
+      paramString.b = 0L;
+      paramString.i = paramRunnable;
+      paramString.h = false;
+      paramString.j = null;
+      paramString.e = System.currentTimeMillis();
     }
-    xj.a("ret=".concat(String.valueOf(l1)));
-    if ((l1 != 3L) && (l1 != 5L))
+    
+    public final void run()
     {
-      if ((l1 == 2L) || (l1 == 4L)) {
-        this.b.obtainMessage(7).sendToTarget();
+      yi.b localb = this.a;
+      if ((localb != null) && (localb.i != null)) {
+        this.a.i.run();
       }
-      return;
     }
-    this.b.obtainMessage(6).sendToTarget();
+  }
+  
+  final class b
+    extends Handler
+  {
+    public b(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      if (paramMessage.what != 1) {
+        return;
+      }
+      removeMessages(paramMessage.what);
+      if (yg.d(yg.this))
+      {
+        long l = System.currentTimeMillis();
+        if ((yg.c() > 0L) && (Math.abs(yg.d() - l) > yg.c()))
+        {
+          paramMessage = yg.this;
+          paramMessage.a.writeLock().lock();
+        }
+        try
+        {
+          paramMessage.i = false;
+          yg.h = 0L;
+          yg.g = 0L;
+          paramMessage.a.writeLock().unlock();
+        }
+        finally
+        {
+          paramMessage.a.writeLock().unlock();
+        }
+        return;
+      }
+      yg.e(yg.this);
+    }
   }
 }
 

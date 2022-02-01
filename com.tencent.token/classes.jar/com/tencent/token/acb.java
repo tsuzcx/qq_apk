@@ -1,60 +1,177 @@
 package com.tencent.token;
 
-public final class acb
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Environment;
+import com.tencent.token.global.RqdApplication;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class acb
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public static String[] a;
+  public static aar a;
+  private static acb e;
+  protected aaq b;
+  public volatile boolean c = xr.a.d;
+  public volatile boolean d = xr.a.e;
+  private volatile boolean f = xr.a.a;
+  private volatile boolean g = xr.a.b;
   
   static
   {
-    int[] arrayOfInt1 = agg.o;
-    String str1 = agg.a(arrayOfInt1);
-    int[] arrayOfInt2 = agg.p;
-    String str2 = agg.a(arrayOfInt2);
-    int[] arrayOfInt3 = agg.q;
-    String str3 = agg.a(arrayOfInt3);
-    int[] arrayOfInt4 = agg.r;
-    String str4 = agg.a(arrayOfInt4);
-    int[] arrayOfInt5 = agg.s;
-    String str5 = agg.a(arrayOfInt5);
-    int[] arrayOfInt6 = agg.t;
-    String str6 = agg.a(arrayOfInt6);
-    int[] arrayOfInt7 = agg.u;
-    String str7 = agg.a(arrayOfInt7);
-    int[] arrayOfInt8 = agg.v;
-    String str8 = agg.a(arrayOfInt8);
-    String str9 = agg.a(agg.w);
-    int[] arrayOfInt9 = agg.x;
-    String str10 = agg.a(arrayOfInt9);
-    String str11 = agg.a(agg.y);
-    String str12 = agg.a(agg.z);
-    String str13 = agg.a(agg.A);
-    String str14 = agg.a(agg.B);
-    String str15 = agg.a(agg.C);
-    String str16 = agg.a(agg.D);
-    int[] arrayOfInt10 = agg.E;
-    String str17 = agg.a(arrayOfInt10);
-    int[] arrayOfInt11 = agg.F;
-    String str18 = agg.a(arrayOfInt11);
-    int[] arrayOfInt12 = agg.G;
-    String str19 = agg.a(arrayOfInt12);
-    int[] arrayOfInt13 = agg.H;
-    String str20 = agg.a(arrayOfInt13);
-    int[] arrayOfInt14 = agg.I;
-    a = new String[] { str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15, str16, str17, str18, str19, str20, agg.a(arrayOfInt14) };
-    agg.a(arrayOfInt1);
-    agg.a(arrayOfInt2);
-    agg.a(arrayOfInt3);
-    agg.a(arrayOfInt4);
-    agg.a(arrayOfInt5);
-    agg.a(arrayOfInt6);
-    agg.a(arrayOfInt7);
-    agg.a(arrayOfInt8);
-    agg.a(arrayOfInt9);
-    agg.a(arrayOfInt10);
-    agg.a(arrayOfInt11);
-    agg.a(arrayOfInt12);
-    agg.a(arrayOfInt13);
-    agg.a(arrayOfInt14);
+    int i = aav.a("debug.file.blockcount", 24);
+    long l = aav.a("debug.file.keepperiod");
+    a = new aar(b(), i, "Sec.File.Tracer", ".sec.log", l);
+  }
+  
+  public acb()
+  {
+    aav.a(this);
+    this.b = new aaq(a);
+  }
+  
+  public static acb a()
+  {
+    if (e == null) {
+      try
+      {
+        if (e == null) {
+          e = new acb();
+        }
+      }
+      finally {}
+    }
+    return e;
+  }
+  
+  public static void a(int paramInt)
+  {
+    int i;
+    if (paramInt <= 63)
+    {
+      i = paramInt;
+      if (paramInt >= 0) {}
+    }
+    else
+    {
+      i = xr.a.h;
+    }
+    aav.b("debug.file.tracelevel", i).commit();
+  }
+  
+  private static void a(File paramFile)
+  {
+    if (paramFile != null)
+    {
+      if (!paramFile.exists()) {
+        return;
+      }
+      if (paramFile.isFile())
+      {
+        paramFile.delete();
+        return;
+      }
+      paramFile = paramFile.listFiles();
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(paramFile[i]);
+        i += 1;
+      }
+      return;
+    }
+  }
+  
+  public static BufferedReader b(int paramInt)
+  {
+    Object localObject = a.b(System.currentTimeMillis());
+    if (!((File)localObject).isDirectory()) {
+      return null;
+    }
+    localObject = a.b((File)localObject);
+    localObject = a.a((File[])localObject);
+    if ((paramInt >= 0) && (paramInt < localObject.length)) {
+      localObject = localObject[(localObject.length - paramInt - 1)];
+    }
+    try
+    {
+      localObject = new BufferedReader(new FileReader((File)localObject));
+      return localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      label72:
+      break label72;
+    }
+    return null;
+  }
+  
+  public static File b()
+  {
+    String str1 = xr.a.g;
+    String str2 = Environment.getExternalStorageState();
+    int i;
+    if ((!"mounted".equals(str2)) && (!"mounted_ro".equals(str2))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      return new File(Environment.getExternalStorageDirectory(), str1);
+    }
+    return new File(RqdApplication.n().getFilesDir(), str1);
+  }
+  
+  public static void c()
+  {
+    Object localObject = a.b(System.currentTimeMillis());
+    localObject = a.b((File)localObject);
+    if (localObject != null)
+    {
+      int i = 0;
+      while (i < localObject.length)
+      {
+        a(localObject[i]);
+        i += 1;
+      }
+    }
+  }
+  
+  public static boolean d()
+  {
+    return aav.a("debug.file.uploadfiledate", -1) >= 0;
+  }
+  
+  public static int e()
+  {
+    return aav.a("debug.file.uploadfiledate", -1);
+  }
+  
+  public final void a(int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.f) && (this.g))
+    {
+      aaq localaaq = this.b;
+      if (localaaq != null) {
+        localaaq.b(paramInt, Thread.currentThread(), rt.a().h() * 1000L, paramString1, paramString2);
+      }
+    }
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
+    {
+      int i = aav.a("debug.file.tracelevel", xr.a.h);
+      a(16, "SecTracer", "File Trace Level Changed = ".concat(String.valueOf(i)));
+      this.b.b = i;
+    }
   }
 }
 

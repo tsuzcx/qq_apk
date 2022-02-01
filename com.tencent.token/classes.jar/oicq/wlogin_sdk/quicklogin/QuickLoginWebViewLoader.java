@@ -100,10 +100,20 @@ public class QuickLoginWebViewLoader
     }
     localObject2 = new RelativeLayout(paramActivity);
     ((RelativeLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    int k = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
-    double d = k;
+    int n = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
+    double d = n;
     Double.isNaN(d);
-    int m = (int)(d * 0.07000000000000001D);
+    int k = (int)(d * 0.07000000000000001D);
+    int m;
+    if (80 > k)
+    {
+      k = 80;
+      m = 1;
+    }
+    else
+    {
+      m = 0;
+    }
     Object localObject3 = new TextView(paramActivity);
     try
     {
@@ -112,9 +122,9 @@ public class QuickLoginWebViewLoader
     }
     catch (IllegalArgumentException localIllegalArgumentException1)
     {
-      label258:
+      label278:
       StringBuilder localStringBuilder;
-      break label258;
+      break label278;
     }
     localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
@@ -126,7 +136,7 @@ public class QuickLoginWebViewLoader
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
     ((TextView)localObject3).setText("");
-    ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-1, m));
+    ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-1, k));
     ((RelativeLayout)localObject2).addView((View)localObject3);
     localObject3 = new Button(paramActivity);
     try
@@ -136,8 +146,10 @@ public class QuickLoginWebViewLoader
     }
     catch (IllegalArgumentException localIllegalArgumentException2)
     {
-      label397:
-      break label397;
+      label417:
+      int i1;
+      int i2;
+      break label417;
     }
     localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
@@ -149,15 +161,21 @@ public class QuickLoginWebViewLoader
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
     ((Button)localObject3).setText("关闭");
-    ((Button)localObject3).setPadding(15, ((Button)localObject3).getPaddingTop(), 15, ((Button)localObject3).getPaddingBottom());
-    ((Button)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, m));
+    i1 = ((Button)localObject3).getPaddingTop();
+    i2 = ((Button)localObject3).getPaddingBottom();
+    if (1 == m) {
+      ((Button)localObject3).setPadding(15, 0, 15, 0);
+    } else {
+      ((Button)localObject3).setPadding(15, i1, 15, i2);
+    }
+    ((Button)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, k));
     ((RelativeLayout)localObject2).addView((View)localObject3);
     ((Button)localObject3).setOnClickListener(new a(paramActivity));
     try
     {
       localObject3 = new WebView(paramActivity);
-      paramIntent = new RelativeLayout.LayoutParams(-1, k - m);
-      paramIntent.setMargins(0, m, 0, 0);
+      paramIntent = new RelativeLayout.LayoutParams(-1, n - k);
+      paramIntent.setMargins(0, k, 0, 0);
       ((WebView)localObject3).setLayoutParams(paramIntent);
       ((RelativeLayout)localObject2).addView((View)localObject3);
       paramActivity.setContentView((View)localObject2);
@@ -201,7 +219,7 @@ public class QuickLoginWebViewLoader
       }
       localObject2 = new StringBuilder("https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=");
       ((StringBuilder)localObject2).append(l);
-      ((StringBuilder)localObject2).append("&style=42&s_url=http://wtlogin.qq.com/&pt_no_onekey=1&pt_no_auth=1&daid=499&wt_force_pwd=");
+      ((StringBuilder)localObject2).append("&style=42&s_url=https://wtlogin.qq.com/&pt_no_onekey=1&pt_no_auth=1&daid=499&wt_force_pwd=");
       ((StringBuilder)localObject2).append(j);
       ((StringBuilder)localObject2).append((String)localObject1);
       paramActivity.runOnUiThread(new g((WebView)localObject3, ((StringBuilder)localObject2).toString(), paramIntent));

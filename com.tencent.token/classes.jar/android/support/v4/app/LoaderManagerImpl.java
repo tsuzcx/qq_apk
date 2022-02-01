@@ -4,36 +4,36 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.LiveData.LifecycleBoundObserver;
 import android.arch.lifecycle.LiveData.a;
 import android.os.Bundle;
-import com.tencent.token.ar;
-import com.tencent.token.av;
-import com.tencent.token.av.b;
-import com.tencent.token.ay;
-import com.tencent.token.bd;
-import com.tencent.token.be;
+import com.tencent.token.bf;
 import com.tencent.token.bj;
-import com.tencent.token.bk;
-import com.tencent.token.bk.a;
-import com.tencent.token.bl;
-import com.tencent.token.cl;
-import com.tencent.token.cl.a;
-import com.tencent.token.cw;
-import com.tencent.token.cw.a;
-import com.tencent.token.eb;
-import com.tencent.token.ek;
+import com.tencent.token.bj.b;
+import com.tencent.token.bm;
+import com.tencent.token.br;
+import com.tencent.token.bs;
+import com.tencent.token.bx;
+import com.tencent.token.by;
+import com.tencent.token.by.a;
+import com.tencent.token.bz;
+import com.tencent.token.cz;
+import com.tencent.token.cz.a;
+import com.tencent.token.dk;
+import com.tencent.token.dk.a;
+import com.tencent.token.ep;
+import com.tencent.token.ey;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
 public final class LoaderManagerImpl
-  extends cl
+  extends cz
 {
   static boolean a = false;
   public final LoaderViewModel b;
-  private final ay c;
+  private final bm c;
   
-  LoaderManagerImpl(ay paramay, bl parambl)
+  LoaderManagerImpl(bm parambm, bz parambz)
   {
-    this.c = paramay;
-    this.b = LoaderViewModel.a(parambl);
+    this.c = parambm;
+    this.b = LoaderViewModel.a(parambz);
   }
   
   public final void a(String paramString, PrintWriter paramPrintWriter)
@@ -47,37 +47,37 @@ public final class LoaderManagerImpl
     localStringBuilder.append("LoaderManager{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" in ");
-    eb.a(this.c, localStringBuilder);
+    ep.a(this.c, localStringBuilder);
     localStringBuilder.append("}}");
     return localStringBuilder.toString();
   }
   
   public static class LoaderViewModel
-    extends bj
+    extends bx
   {
-    private static final bk.a a = new bk.a()
+    private static final by.a a = new by.a()
     {
-      public final <T extends bj> T a()
+      public final <T extends bx> T a()
       {
         return new LoaderManagerImpl.LoaderViewModel();
       }
     };
-    private ek<LoaderManagerImpl.a> b = new ek();
+    private ey<LoaderManagerImpl.a> b = new ey();
     
-    static LoaderViewModel a(bl parambl)
+    static LoaderViewModel a(bz parambz)
     {
-      bk localbk = new bk(parambl, a);
-      parambl = LoaderViewModel.class.getCanonicalName();
-      if (parambl != null)
+      by localby = new by(parambz, a);
+      parambz = LoaderViewModel.class.getCanonicalName();
+      if (parambz != null)
       {
-        String str = "android.arch.lifecycle.ViewModelProvider.DefaultKey:".concat(String.valueOf(parambl));
-        parambl = (bj)localbk.b.a.get(str);
-        if (!LoaderViewModel.class.isInstance(parambl))
+        String str = "android.arch.lifecycle.ViewModelProvider.DefaultKey:".concat(String.valueOf(parambz));
+        parambz = (bx)localby.b.a.get(str);
+        if (!LoaderViewModel.class.isInstance(parambz))
         {
-          parambl = localbk.a.a();
-          localbk.b.a(str, parambl);
+          parambz = localby.a.a();
+          localby.b.a(str, parambz);
         }
-        return (LoaderViewModel)parambl;
+        return (LoaderViewModel)parambz;
       }
       throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
     }
@@ -92,17 +92,17 @@ public final class LoaderManagerImpl
         ((LoaderManagerImpl.a)this.b.d(i)).d();
         i += 1;
       }
-      ek localek = this.b;
-      j = localek.d;
-      Object[] arrayOfObject = localek.c;
+      ey localey = this.b;
+      j = localey.d;
+      Object[] arrayOfObject = localey.c;
       i = 0;
       while (i < j)
       {
         arrayOfObject[i] = null;
         i += 1;
       }
-      localek.d = 0;
-      localek.a = false;
+      localey.d = 0;
+      localey.a = false;
     }
     
     public final void a(String paramString, PrintWriter paramPrintWriter)
@@ -143,30 +143,30 @@ public final class LoaderManagerImpl
   }
   
   public static final class a<D>
-    extends bd<D>
-    implements cw.a<D>
+    extends br<D>
+    implements dk.a<D>
   {
     private final int e;
     private final Bundle f;
-    private final cw<D> g;
-    private ay h;
+    private final dk<D> g;
+    private bm h;
     private LoaderManagerImpl.b<D> i;
-    private cw<D> j;
+    private dk<D> j;
     
     public final void a()
     {
       if (LoaderManagerImpl.a) {
         new StringBuilder("  Starting: ").append(this);
       }
-      cw localcw = this.g;
-      localcw.c = true;
-      localcw.e = false;
-      localcw.d = false;
+      dk localdk = this.g;
+      localdk.c = true;
+      localdk.e = false;
+      localdk.d = false;
     }
     
-    public final void a(be<D> parambe)
+    public final void a(bs<D> parambs)
     {
-      super.a(parambe);
+      super.a(parambs);
       this.h = null;
       this.i = null;
     }
@@ -188,26 +188,26 @@ public final class LoaderManagerImpl
       localObject2 = ((StringBuilder)localObject2).toString();
       paramPrintWriter.print((String)localObject2);
       paramPrintWriter.print("mId=");
-      paramPrintWriter.print(((cw)localObject1).a);
+      paramPrintWriter.print(((dk)localObject1).a);
       paramPrintWriter.print(" mListener=");
-      paramPrintWriter.println(((cw)localObject1).b);
-      if ((((cw)localObject1).c) || (((cw)localObject1).f) || (((cw)localObject1).g))
+      paramPrintWriter.println(((dk)localObject1).b);
+      if ((((dk)localObject1).c) || (((dk)localObject1).f) || (((dk)localObject1).g))
       {
         paramPrintWriter.print((String)localObject2);
         paramPrintWriter.print("mStarted=");
-        paramPrintWriter.print(((cw)localObject1).c);
+        paramPrintWriter.print(((dk)localObject1).c);
         paramPrintWriter.print(" mContentChanged=");
-        paramPrintWriter.print(((cw)localObject1).f);
+        paramPrintWriter.print(((dk)localObject1).f);
         paramPrintWriter.print(" mProcessingChange=");
-        paramPrintWriter.println(((cw)localObject1).g);
+        paramPrintWriter.println(((dk)localObject1).g);
       }
-      if ((((cw)localObject1).d) || (((cw)localObject1).e))
+      if ((((dk)localObject1).d) || (((dk)localObject1).e))
       {
         paramPrintWriter.print((String)localObject2);
         paramPrintWriter.print("mAbandoned=");
-        paramPrintWriter.print(((cw)localObject1).d);
+        paramPrintWriter.print(((dk)localObject1).d);
         paramPrintWriter.print(" mReset=");
-        paramPrintWriter.println(((cw)localObject1).e);
+        paramPrintWriter.println(((dk)localObject1).e);
       }
       if (this.i != null)
       {
@@ -228,7 +228,7 @@ public final class LoaderManagerImpl
       if (localObject1 == LiveData.a) {
         localObject1 = null;
       }
-      paramPrintWriter.println(cw.a(localObject1));
+      paramPrintWriter.println(dk.a(localObject1));
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mStarted=");
       boolean bool;
@@ -250,26 +250,26 @@ public final class LoaderManagerImpl
     
     final void c()
     {
-      ay localay = this.h;
+      bm localbm = this.h;
       Object localObject = this.i;
-      if ((localay != null) && (localObject != null))
+      if ((localbm != null) && (localObject != null))
       {
-        super.a((be)localObject);
-        if (localay.getLifecycle().a() != av.b.a)
+        super.a((bs)localObject);
+        if (localbm.getLifecycle().a() != bj.b.a)
         {
-          LiveData.LifecycleBoundObserver localLifecycleBoundObserver = new LiveData.LifecycleBoundObserver(this, localay, (be)localObject);
+          LiveData.LifecycleBoundObserver localLifecycleBoundObserver = new LiveData.LifecycleBoundObserver(this, localbm, (bs)localObject);
           localObject = (LiveData.a)this.b.a(localObject, localLifecycleBoundObserver);
-          if ((localObject != null) && (!((LiveData.a)localObject).a(localay))) {
+          if ((localObject != null) && (!((LiveData.a)localObject).a(localbm))) {
             throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
           }
           if (localObject == null) {
-            localay.getLifecycle().a(localLifecycleBoundObserver);
+            localbm.getLifecycle().a(localLifecycleBoundObserver);
           }
         }
       }
     }
     
-    final cw<D> d()
+    final dk<D> d()
     {
       if (LoaderManagerImpl.a) {
         new StringBuilder("  Destroying: ").append(this);
@@ -278,23 +278,23 @@ public final class LoaderManagerImpl
       Object localObject = this.i;
       if (localObject != null)
       {
-        a((be)localObject);
+        a((bs)localObject);
         if ((((LoaderManagerImpl.b)localObject).b) && (LoaderManagerImpl.a)) {
           new StringBuilder("  Resetting: ").append(((LoaderManagerImpl.b)localObject).a);
         }
       }
       localObject = this.g;
-      if (((cw)localObject).b != null)
+      if (((dk)localObject).b != null)
       {
-        if (((cw)localObject).b == this)
+        if (((dk)localObject).b == this)
         {
-          ((cw)localObject).b = null;
+          ((dk)localObject).b = null;
           localObject = this.g;
-          ((cw)localObject).e = true;
-          ((cw)localObject).c = false;
-          ((cw)localObject).d = false;
-          ((cw)localObject).f = false;
-          ((cw)localObject).g = false;
+          ((dk)localObject).e = true;
+          ((dk)localObject).c = false;
+          ((dk)localObject).d = false;
+          ((dk)localObject).f = false;
+          ((dk)localObject).g = false;
           return this.j;
         }
         throw new IllegalArgumentException("Attempting to unregister the wrong listener");
@@ -310,18 +310,18 @@ public final class LoaderManagerImpl
       localStringBuilder.append(" #");
       localStringBuilder.append(this.e);
       localStringBuilder.append(" : ");
-      eb.a(this.g, localStringBuilder);
+      ep.a(this.g, localStringBuilder);
       localStringBuilder.append("}}");
       return localStringBuilder.toString();
     }
   }
   
   static final class b<D>
-    implements be<D>
+    implements bs<D>
   {
-    final cw<D> a;
+    final dk<D> a;
     boolean b;
-    private final cl.a<D> c;
+    private final cz.a<D> c;
     
     public final void a(D paramD)
     {
@@ -330,7 +330,7 @@ public final class LoaderManagerImpl
         StringBuilder localStringBuilder = new StringBuilder("  onLoadFinished in ");
         localStringBuilder.append(this.a);
         localStringBuilder.append(": ");
-        localStringBuilder.append(cw.a(paramD));
+        localStringBuilder.append(dk.a(paramD));
       }
       this.b = true;
     }

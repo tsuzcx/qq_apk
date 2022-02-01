@@ -1,43 +1,19 @@
 package com.tencent.token;
 
-import java.io.IOException;
+import java.util.Hashtable;
 
-public enum akj
+public final class akj
 {
-  private final String g;
-  
-  private akj(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public static akj a(String paramString)
-  {
-    if (paramString.equals(a.g)) {
-      return a;
-    }
-    if (paramString.equals(b.g)) {
-      return b;
-    }
-    if (paramString.equals(e.g)) {
-      return e;
-    }
-    if (paramString.equals(d.g)) {
-      return d;
-    }
-    if (paramString.equals(c.g)) {
-      return c;
-    }
-    if (paramString.equals(f.g)) {
-      return f;
-    }
-    throw new IOException("Unexpected protocol: ".concat(String.valueOf(paramString)));
-  }
-  
-  public final String toString()
-  {
-    return this.g;
-  }
+  final String a;
+  String b;
+  int c;
+  final akk d;
+  final byte[] e;
+  Hashtable f;
+  public String g;
+  long h;
+  long i;
+  final boolean j;
 }
 
 

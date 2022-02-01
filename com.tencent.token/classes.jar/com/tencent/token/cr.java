@@ -1,33 +1,70 @@
 package com.tencent.token;
 
-import android.app.RemoteInput;
-import android.app.RemoteInput.Builder;
-import android.os.Bundle;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import java.io.PrintWriter;
 
-public final class cr
+public abstract class cr<E>
+  extends cp
 {
-  final String a;
-  final CharSequence b;
-  final CharSequence[] c;
-  final boolean d;
-  final Bundle e;
-  final Set<String> f;
+  public final Activity b;
+  public final Context c;
+  public final Handler d;
+  final int e;
+  public final ct f = new ct();
   
-  static RemoteInput[] a(cr[] paramArrayOfcr)
+  private cr(Activity paramActivity, Context paramContext, Handler paramHandler)
   {
-    if (paramArrayOfcr == null) {
-      return null;
-    }
-    RemoteInput[] arrayOfRemoteInput = new RemoteInput[paramArrayOfcr.length];
-    int i = 0;
-    while (i < paramArrayOfcr.length)
-    {
-      cr localcr = paramArrayOfcr[i];
-      arrayOfRemoteInput[i] = new RemoteInput.Builder(localcr.a).setLabel(localcr.b).setChoices(localcr.c).setAllowFreeFormInput(localcr.d).addExtras(localcr.e).build();
-      i += 1;
-    }
-    return arrayOfRemoteInput;
+    this.b = paramActivity;
+    this.c = paramContext;
+    this.d = paramHandler;
+    this.e = 0;
+  }
+  
+  protected cr(FragmentActivity paramFragmentActivity)
+  {
+    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
+  }
+  
+  public View a(int paramInt)
+  {
+    return null;
+  }
+  
+  protected void a(Fragment paramFragment) {}
+  
+  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public LayoutInflater c()
+  {
+    return LayoutInflater.from(this.c);
+  }
+  
+  public void d() {}
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public int f()
+  {
+    return this.e;
   }
 }
 

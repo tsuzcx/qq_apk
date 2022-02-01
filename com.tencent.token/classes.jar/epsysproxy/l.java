@@ -13,12 +13,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import com.tencent.token.aiy;
-import com.tencent.token.ajh;
-import com.tencent.token.ajh.f;
-import com.tencent.token.kw;
-import com.tencent.token.kx;
-import com.tencent.token.kx.a;
+import com.tencent.token.ajw;
+import com.tencent.token.akf;
+import com.tencent.token.akf.f;
+import com.tencent.token.lk;
+import com.tencent.token.ll;
+import com.tencent.token.ll.a;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -52,16 +52,16 @@ public class l
         localStringBuilder.append((String)localObject2);
         localStringBuilder.append("]");
       }
-      if (ajh.f.a.a != null)
+      if (akf.f.a.a != null)
       {
-        localObject1 = ajh.f.a.a;
-        localObject2 = ((kw)localObject1).a("registerReceiver");
+        localObject1 = akf.f.a.a;
+        localObject2 = ((lk)localObject1).a("registerReceiver");
         localObject1 = paramIntentFilter;
         if (localObject2 != null)
         {
           localObject1 = paramIntentFilter;
-          if (((kx.a)localObject2).a != null) {
-            localObject1 = (IntentFilter)((kx.a)localObject2).a;
+          if (((ll.a)localObject2).a != null) {
+            localObject1 = (IntentFilter)((ll.a)localObject2).a;
           }
         }
         paramIntentFilter = ((IntentFilter)localObject1).actionsIterator();
@@ -93,13 +93,13 @@ public class l
   
   public PackageManager getPackageManager()
   {
-    if (kx.a()) {
-      return aiy.a.getPackageManager();
+    if (ll.a()) {
+      return ajw.a.getPackageManager();
     }
     if ((this.b & 0x2) != 0L) {
       return this.a.getPackageManager();
     }
-    return aiy.a.getPackageManager();
+    return ajw.a.getPackageManager();
   }
   
   public Object getSystemService(String paramString)

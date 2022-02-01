@@ -1,17 +1,18 @@
 package com.tencent.token;
 
-import java.io.IOException;
-
-public final class amg
-  extends IOException
+public abstract interface amg
 {
-  public final alu a;
+  public abstract all.a a(boolean paramBoolean);
   
-  public amg(alu paramalu)
-  {
-    super("stream was reset: ".concat(String.valueOf(paramalu)));
-    this.a = paramalu;
-  }
+  public abstract alm a(all paramall);
+  
+  public abstract aoi a(alj paramalj, long paramLong);
+  
+  public abstract void a();
+  
+  public abstract void a(alj paramalj);
+  
+  public abstract void b();
 }
 
 

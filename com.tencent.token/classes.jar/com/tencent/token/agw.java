@@ -1,16 +1,22 @@
 package com.tencent.token;
 
-import java.util.Stack;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import com.tencent.turingfd.sdk.qps.Andromeda;
+import java.util.AbstractMap;
 
 public final class agw
+  extends ahu
 {
-  public Stack<Node> a = new Stack();
-  public Document b;
-  public final DocumentBuilder c = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+  public final Andromeda<String, ahu> a = new Andromeda();
+  
+  public final boolean equals(Object paramObject)
+  {
+    return (paramObject == this) || (((paramObject instanceof agw)) && (((agw)paramObject).a.equals(this.a)));
+  }
+  
+  public final int hashCode()
+  {
+    return this.a.hashCode();
+  }
 }
 
 

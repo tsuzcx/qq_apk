@@ -8,62 +8,57 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ws
-  extends tr
+  extends ud
 {
-  private long d;
-  private long e;
+  public String d;
+  private int e;
   private String f;
-  private String g;
-  private String h;
-  private int i;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramabc.c.get("param.scene.id")).intValue();
-    this.f = ((String)paramabc.c.get("param.ticket"));
-    this.g = ((String)paramabc.c.get("param.randstr"));
+    this.d = ((String)paramabm.c.get("param.barcode.url"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j != 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      a(j, paramJSONObject.getString("info"));
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      j = paramJSONObject.getInt("seq_id");
-      if (j != this.i)
+      StringBuilder localStringBuilder = new StringBuilder("json");
+      localStringBuilder.append(paramJSONObject.toString());
+      xv.a(localStringBuilder.toString());
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.c)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
+        paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        si.a();
-        paramJSONObject.append(si.b());
-        xj.c(paramJSONObject.toString());
+        paramJSONObject.append(this.c);
+        xv.c(paramJSONObject.toString());
         return;
       }
-      if (this.e == 5L) {
-        this.h = paramJSONObject.getString("captcha_sig");
-      }
+      this.e = paramJSONObject.getInt("malicious_id");
+      this.f = paramJSONObject.getString("malicious_desc");
       this.a.a = 0;
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
   
   public final void b()
@@ -72,7 +67,8 @@ public final class ws
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.h;
+      localMessage.arg2 = this.e;
+      localMessage.obj = this.f;
       localMessage.sendToTarget();
       this.b.e = true;
     }

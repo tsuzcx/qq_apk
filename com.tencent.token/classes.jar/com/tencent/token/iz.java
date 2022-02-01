@@ -1,180 +1,24 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.support.v7.view.menu.ListMenuItemView;
-import android.support.v7.widget.ListPopupWindow;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.widget.HeaderViewListAdapter;
-import android.widget.PopupWindow;
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
 
 public final class iz
-  extends ListPopupWindow
-  implements iy
 {
-  private static Method b;
-  public iy a;
-  
-  static
+  public static InputConnection a(InputConnection paramInputConnection, EditorInfo paramEditorInfo, View paramView)
   {
-    try
-    {
-      b = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
-  }
-  
-  public iz(Context paramContext, int paramInt1, int paramInt2)
-  {
-    super(paramContext, null, paramInt1, paramInt2);
-  }
-  
-  public final iv a(Context paramContext, boolean paramBoolean)
-  {
-    paramContext = new a(paramContext, paramBoolean);
-    paramContext.setHoverListener(this);
-    return paramContext;
-  }
-  
-  public final void a()
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      this.q.setEnterTransition(null);
-    }
-  }
-  
-  public final void a(hp paramhp, MenuItem paramMenuItem)
-  {
-    iy localiy = this.a;
-    if (localiy != null) {
-      localiy.a(paramhp, paramMenuItem);
-    }
-  }
-  
-  public final void b(hp paramhp, MenuItem paramMenuItem)
-  {
-    iy localiy = this.a;
-    if (localiy != null) {
-      localiy.b(paramhp, paramMenuItem);
-    }
-  }
-  
-  public final void l()
-  {
-    Method localMethod = b;
-    if (localMethod != null) {}
-    try
-    {
-      localMethod.invoke(this.q, new Object[] { Boolean.FALSE });
-      return;
-    }
-    catch (Exception localException) {}
-    return;
-  }
-  
-  public static final class a
-    extends iv
-  {
-    final int a;
-    final int b;
-    private iy c;
-    private MenuItem d;
-    
-    public a(Context paramContext, boolean paramBoolean)
-    {
-      super(paramBoolean);
-      paramContext = paramContext.getResources().getConfiguration();
-      if ((Build.VERSION.SDK_INT >= 17) && (1 == paramContext.getLayoutDirection()))
-      {
-        this.a = 21;
-        this.b = 22;
-        return;
-      }
-      this.a = 22;
-      this.b = 21;
-    }
-    
-    public final boolean onHoverEvent(MotionEvent paramMotionEvent)
-    {
-      if (this.c != null)
-      {
-        Object localObject1 = getAdapter();
-        int i;
-        if ((localObject1 instanceof HeaderViewListAdapter))
+    if ((paramInputConnection != null) && (paramEditorInfo.hintText == null)) {
+      for (paramView = paramView.getParent(); (paramView instanceof View); paramView = paramView.getParent()) {
+        if ((paramView instanceof kd))
         {
-          localObject1 = (HeaderViewListAdapter)localObject1;
-          i = ((HeaderViewListAdapter)localObject1).getHeadersCount();
-          localObject1 = (ho)((HeaderViewListAdapter)localObject1).getWrappedAdapter();
-        }
-        else
-        {
-          i = 0;
-          localObject1 = (ho)localObject1;
-        }
-        MenuItem localMenuItem = null;
-        Object localObject2 = localMenuItem;
-        if (paramMotionEvent.getAction() != 10)
-        {
-          int j = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-          localObject2 = localMenuItem;
-          if (j != -1)
-          {
-            i = j - i;
-            localObject2 = localMenuItem;
-            if (i >= 0)
-            {
-              localObject2 = localMenuItem;
-              if (i < ((ho)localObject1).getCount()) {
-                localObject2 = ((ho)localObject1).a(i);
-              }
-            }
-          }
-        }
-        localMenuItem = this.d;
-        if (localMenuItem != localObject2)
-        {
-          localObject1 = ((ho)localObject1).b;
-          if (localMenuItem != null) {
-            this.c.a((hp)localObject1, localMenuItem);
-          }
-          this.d = ((MenuItem)localObject2);
-          if (localObject2 != null) {
-            this.c.b((hp)localObject1, (MenuItem)localObject2);
-          }
+          paramEditorInfo.hintText = ((kd)paramView).a();
+          return paramInputConnection;
         }
       }
-      return super.onHoverEvent(paramMotionEvent);
     }
-    
-    public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-    {
-      ListMenuItemView localListMenuItemView = (ListMenuItemView)getSelectedView();
-      if ((localListMenuItemView != null) && (paramInt == this.a))
-      {
-        if ((localListMenuItemView.isEnabled()) && (localListMenuItemView.getItemData().hasSubMenu())) {
-          performItemClick(localListMenuItemView, getSelectedItemPosition(), getSelectedItemId());
-        }
-        return true;
-      }
-      if ((localListMenuItemView != null) && (paramInt == this.b))
-      {
-        setSelection(-1);
-        ((ho)getAdapter()).b.a(false);
-        return true;
-      }
-      return super.onKeyDown(paramInt, paramKeyEvent);
-    }
-    
-    public final void setHoverListener(iy paramiy)
-    {
-      this.c = paramiy;
-    }
+    return paramInputConnection;
   }
 }
 

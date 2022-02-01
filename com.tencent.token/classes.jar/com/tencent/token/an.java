@@ -1,56 +1,22 @@
 package com.tencent.token;
 
-import java.util.concurrent.Executor;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-public class an
-  extends ap
+public final class an
+  extends JceStruct
 {
-  private static volatile an b;
-  private static final Executor d = new Executor()
-  {
-    public final void execute(Runnable paramAnonymousRunnable)
-    {
-      an.a().b(paramAnonymousRunnable);
-    }
-  };
-  private static final Executor e = new Executor()
-  {
-    public final void execute(Runnable paramAnonymousRunnable)
-    {
-      an.a().a(paramAnonymousRunnable);
-    }
-  };
-  public ap a = this.c;
-  private ap c = new ao();
+  public int a = 0;
   
-  public static an a()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (b != null) {
-      return b;
-    }
-    try
-    {
-      if (b == null) {
-        b = new an();
-      }
-      return b;
-    }
-    finally {}
+    this.a = paramJceInputStream.read(this.a, 0, true);
   }
   
-  public final void a(Runnable paramRunnable)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    this.a.a(paramRunnable);
-  }
-  
-  public final void b(Runnable paramRunnable)
-  {
-    this.a.b(paramRunnable);
-  }
-  
-  public final boolean b()
-  {
-    return this.a.b();
+    paramJceOutputStream.write(this.a, 0);
   }
 }
 

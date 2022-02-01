@@ -51,10 +51,19 @@ public class MD5
   
   private void Encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
+    int k = paramArrayOfLong.length;
+    StringBuilder localStringBuilder = new StringBuilder("Encode ");
+    localStringBuilder.append(k);
+    localStringBuilder.append(" len:");
+    localStringBuilder.append(paramInt);
+    util.LOGI(localStringBuilder.toString(), "");
     int i = 0;
     int j = 0;
     while (i < paramInt)
     {
+      if (j >= k) {
+        util.LOGI("Encode index:".concat(String.valueOf(j)), "");
+      }
       paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
       paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
       paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));

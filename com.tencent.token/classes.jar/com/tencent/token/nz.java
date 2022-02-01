@@ -1,24 +1,21 @@
 package com.tencent.token;
 
-public abstract interface nz
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+final class nz
+  extends BroadcastReceiver
 {
-  public abstract lr a();
+  nz(nx paramnx) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract String c();
-  
-  public abstract np d();
-  
-  public abstract int e();
-  
-  public abstract int f();
-  
-  public abstract int g();
-  
-  public abstract int h();
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
+    paramContext.append(System.currentTimeMillis());
+    mc.a("AccessSchedulerTrigger", paramContext.toString());
+    lr.a().a(new nx.a(this.a, (byte)0));
+  }
 }
 
 

@@ -1,210 +1,144 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.util.LongSparseArray;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.PopupWindow;
 import java.lang.reflect.Field;
-import java.util.Map;
+import java.lang.reflect.Method;
 
-final class gn
+public final class gn
 {
-  private static Field a;
-  private static boolean b;
-  private static Class c;
-  private static boolean d;
-  private static Field e;
-  private static boolean f;
-  private static Field g;
-  private static boolean h;
+  static final d a = new d();
   
-  static boolean a(Resources paramResources)
+  static
   {
-    if (!b) {}
-    try
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      a = localField;
-      localField.setAccessible(true);
-      label23:
-      b = true;
-      localField = a;
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      a = new a();
+      return;
+    }
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
+  {
+    a.a(paramPopupWindow, paramInt);
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+  {
+    a.a(paramPopupWindow, paramBoolean);
+  }
+  
+  static class a
+    extends gn.d
+  {
+    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+    {
+      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  static class b
+    extends gn.a
+  {
+    private static Field a;
+    
+    static
+    {
+      try
+      {
+        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
+        a = localField;
+        localField.setAccessible(true);
+        return;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException) {}
+    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+    {
+      Field localField = a;
       if (localField != null) {}
       try
       {
-        paramResources = (Map)localField.get(paramResources);
+        localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+        return;
       }
-      catch (IllegalAccessException paramResources)
-      {
-        label47:
-        break label47;
-      }
-      paramResources = null;
-      if (paramResources != null)
-      {
-        paramResources.clear();
-        return true;
-      }
-      return false;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      break label23;
+      catch (IllegalAccessException paramPopupWindow) {}
+      return;
     }
   }
   
-  private static boolean a(Object paramObject)
+  static final class c
+    extends gn.b
   {
-    if (!d) {}
-    try
+    public final void a(PopupWindow paramPopupWindow, int paramInt)
     {
-      c = Class.forName("android.content.res.ThemedResourceCache");
-      d = true;
-      localObject = c;
-      if (localObject == null) {
-        return false;
-      }
-      if (f) {}
+      paramPopupWindow.setWindowLayoutType(paramInt);
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    
+    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
     {
+      paramPopupWindow.setOverlapAnchor(paramBoolean);
+    }
+  }
+  
+  static class d
+  {
+    private static Method a;
+    private static boolean b;
+    
+    public void a(PopupWindow paramPopupWindow, int paramInt)
+    {
+      if (!b) {}
       try
       {
-        Object localObject = ((Class)localObject).getDeclaredField("mUnthemedEntries");
-        e = (Field)localObject;
-        ((Field)localObject).setAccessible(true);
-        label50:
-        f = true;
-        localObject = e;
-        if (localObject == null) {
-          return false;
-        }
+        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
+        a = localMethod;
+        localMethod.setAccessible(true);
+        label33:
+        b = true;
+        localMethod = a;
+        if (localMethod != null) {}
         try
         {
-          paramObject = (LongSparseArray)((Field)localObject).get(paramObject);
+          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          return;
         }
-        catch (IllegalAccessException paramObject)
-        {
-          label76:
-          break label76;
-        }
-        paramObject = null;
-        if (paramObject != null)
-        {
-          paramObject.clear();
-          return true;
-        }
-        return false;
-        localClassNotFoundException = localClassNotFoundException;
+        catch (Exception paramPopupWindow) {}
+        return;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      catch (Exception localException)
       {
-        break label50;
+        break label33;
       }
     }
-  }
-  
-  static boolean b(Resources paramResources)
-  {
-    if (!b) {}
-    try
+    
+    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
     {
-      localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      a = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      b = true;
-      localObject3 = null;
-      localField = a;
-      localObject1 = localObject3;
-      if (localField == null) {}
+      int i = paramInt1;
+      if ((fb.a(paramInt3, fo.c(paramView)) & 0x7) == 5) {
+        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
+      }
+      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      try
-      {
-        Field localField;
-        Object localObject1 = localField.get(paramResources);
-        if (localObject1 == null) {
-          return false;
-        }
-        return (localObject1 != null) && (a(localObject1));
-        localNoSuchFieldException = localNoSuchFieldException;
-      }
-      catch (IllegalAccessException paramResources)
-      {
-        for (;;)
-        {
-          Object localObject3;
-          Object localObject2 = localObject3;
-        }
-      }
-    }
-  }
-  
-  static boolean c(Resources paramResources)
-  {
-    if (!h) {}
-    try
-    {
-      localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      g = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      h = true;
-      localObject1 = g;
-      if (localObject1 == null) {
-        return false;
-      }
-      localObject3 = null;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException2)
-    {
-      try
-      {
-        paramResources = ((Field)localObject1).get(paramResources);
-        break label50;
-        paramResources = null;
-        label50:
-        if (paramResources == null) {
-          return false;
-        }
-        if (b) {}
-      }
-      catch (IllegalAccessException localNoSuchFieldException2)
-      {
-        try
-        {
-          localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-          a = (Field)localObject1;
-          ((Field)localObject1).setAccessible(true);
-          b = true;
-          localField = a;
-          localObject1 = localObject3;
-          if (localField == null) {}
-        }
-        catch (NoSuchFieldException localNoSuchFieldException2)
-        {
-          try
-          {
-            for (;;)
-            {
-              Field localField;
-              Object localObject1 = localField.get(paramResources);
-              return (localObject1 != null) && (a(localObject1));
-              localNoSuchFieldException1 = localNoSuchFieldException1;
-              continue;
-              paramResources = paramResources;
-            }
-            localNoSuchFieldException2 = localNoSuchFieldException2;
-          }
-          catch (IllegalAccessException paramResources)
-          {
-            for (;;)
-            {
-              Object localObject3;
-              Object localObject2 = localObject3;
-            }
-          }
-        }
-      }
-    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
   }
 }
 

@@ -3,45 +3,45 @@ package android.arch.lifecycle;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import com.tencent.token.av;
-import com.tencent.token.av.a;
-import com.tencent.token.ay;
-import com.tencent.token.bi;
+import com.tencent.token.bj;
+import com.tencent.token.bj.a;
+import com.tencent.token.bm;
+import com.tencent.token.bw;
 
 public class LifecycleService
   extends Service
-  implements ay
+  implements bm
 {
-  private final bi a = new bi(this);
+  private final bw a = new bw(this);
   
-  public av getLifecycle()
+  public bj getLifecycle()
   {
     return this.a.a;
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    this.a.a(av.a.ON_START);
+    this.a.a(bj.a.ON_START);
     return null;
   }
   
   public void onCreate()
   {
-    this.a.a(av.a.ON_CREATE);
+    this.a.a(bj.a.ON_CREATE);
     super.onCreate();
   }
   
   public void onDestroy()
   {
-    bi localbi = this.a;
-    localbi.a(av.a.ON_STOP);
-    localbi.a(av.a.ON_DESTROY);
+    bw localbw = this.a;
+    localbw.a(bj.a.ON_STOP);
+    localbw.a(bj.a.ON_DESTROY);
     super.onDestroy();
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    this.a.a(av.a.ON_START);
+    this.a.a(bj.a.ON_START);
     super.onStart(paramIntent, paramInt);
   }
   

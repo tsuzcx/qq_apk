@@ -1,162 +1,239 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.ImageCache;
+import com.tencent.token.utils.UserTask;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
 
 public final class aau
+  extends BitmapDrawable
 {
-  public List<ss> a = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem b;
-  public long c;
-  public boolean d;
-  public boolean e = false;
+  public static Bitmap a;
+  public static Bitmap b;
+  public static ImageCache c;
+  public static Map<String, aau> d;
+  public static Map<String, String> e;
+  public static boolean f = false;
+  private static boolean h;
+  private BitmapDrawable g;
   
-  private void a(List<ss> paramList)
+  private aau(final String paramString1, final String paramString2)
   {
+    this.g = new BitmapDrawable(a);
+    new UserTask() {}.a(new String[] { "" });
+  }
+  
+  private aau(final String paramString1, final String paramString2, final String paramString3, Bitmap paramBitmap)
+  {
+    this.g = new BitmapDrawable(paramBitmap);
+    new UserTask() {}.a(new String[] { "" });
+  }
+  
+  public static BitmapDrawable a(String paramString1, String paramString2)
+  {
+    
+    if (!f)
+    {
+      f = true;
+      a(e);
+    }
+    Object localObject;
+    if (paramString2 != null)
+    {
+      localObject = paramString2;
+      if (paramString2.length() > 4) {}
+    }
+    else
+    {
+      if ((paramString1 == null) || (paramString1.length() <= 4)) {
+        break label258;
+      }
+      localObject = ImageCache.d(paramString1);
+    }
+    paramString2 = c.a(localObject);
+    if (paramString2 != null)
+    {
+      xv.a("face:from cache");
+      localObject = a(paramString1, (String)localObject, paramString2);
+      if (localObject != null) {
+        return localObject;
+      }
+      xv.b("from memcache".concat(String.valueOf(paramString1)));
+      return new BitmapDrawable(paramString2);
+    }
+    paramString2 = c;
+    paramString2 = paramString2.b(paramString2.c((String)localObject));
+    if (paramString2 != null)
+    {
+      c.b((String)localObject, paramString2);
+      localObject = a(paramString1, (String)localObject, paramString2);
+      if (localObject != null) {
+        return localObject;
+      }
+      xv.b("from cache,don't update".concat(String.valueOf(paramString1)));
+      return new BitmapDrawable(paramString2);
+    }
+    if ((paramString1 != null) && (paramString1.length() > 4))
+    {
+      paramString2 = (aau)d.get(paramString1);
+      if (paramString2 != null)
+      {
+        xv.b("from loading task".concat(String.valueOf(paramString1)));
+        return paramString2;
+      }
+      xv.b("from new task".concat(String.valueOf(paramString1)));
+      paramString2 = new aau(paramString1, (String)localObject);
+      d.put(paramString1, paramString2);
+      return paramString2;
+    }
+    return new BitmapDrawable(a);
+    label258:
+    return new BitmapDrawable(a);
+  }
+  
+  private static BitmapDrawable a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    String str = (String)e.get(paramString2);
+    if ((paramString1 != null) && (paramString1.length() > 4) && (str != null))
+    {
+      aau localaau = (aau)d.get(paramString1);
+      if (localaau != null) {
+        return localaau;
+      }
+      paramString2 = new aau(paramString1, paramString2, str, paramBitmap);
+      d.put(paramString1, paramString2);
+      return paramString2;
+    }
+    return null;
+  }
+  
+  private static void a()
+  {
+    if (!h)
+    {
+      Resources localResources = RqdApplication.n().getResources();
+      a = aaz.a(localResources, 2131099813);
+      b = aaz.a(localResources, 2131099767);
+      c = new ImageCache(30, RqdApplication.n());
+      e = Collections.synchronizedMap(new HashMap());
+      d = Collections.synchronizedMap(new HashMap());
+      h = true;
+    }
+  }
+  
+  private static boolean a(Map<String, String> paramMap)
+  {
+    if (paramMap == null) {
+      return false;
+    }
+    Object localObject = new ajq();
     try
     {
-      if (this.b == null) {
-        this.b = ti.a().h.a("game_lock");
-      }
-      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
+      localObject = ajs.a((aju)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Iterator localIterator1 = this.b.mConfIDs.iterator();
-        while (localIterator1.hasNext())
-        {
-          int i = ((Integer)localIterator1.next()).intValue();
-          Iterator localIterator2 = paramList.iterator();
-          while (localIterator2.hasNext())
-          {
-            ss localss = (ss)localIterator2.next();
-            if (i == localss.a) {
-              localss.f = true;
-            }
-          }
+        ajq localajq = (ajq)((Iterator)localObject).next();
+        if (localajq == null) {
+          break;
         }
+        paramMap.put(localajq.a, localajq.b);
       }
-      this.a.clear();
-      this.a.addAll(paramList);
-      if (th.a().k.b() != null) {
-        this.c = th.a().k.b().mUin;
-      }
-      return;
+      return true;
     }
-    finally {}
-  }
-  
-  public final int a()
-  {
-    List localList = this.a;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
-  }
-  
-  public final boolean a(JSONArray paramJSONArray)
-  {
-    boolean bool;
-    if (paramJSONArray != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (paramJSONArray != null) {}
-    for (;;)
+    catch (Exception paramMap)
     {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i >= paramJSONArray.length()) {
-            break label227;
-          }
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label222;
-          }
-          bool = true;
-          xj.a(bool);
-          ss localss = new ss();
-          if (!localss.c(localJSONObject)) {
-            xj.c("object item parse failed: ".concat(String.valueOf(i)));
-          }
-          localArrayList1.add(localss);
-          i += 1;
-          continue;
-          if (i >= localArrayList1.size()) {
-            break label239;
-          }
-          paramJSONArray = (ss)localArrayList1.get(i);
-          if (paramJSONArray.g) {
-            break label232;
-          }
-          localArrayList2.add(paramJSONArray);
-          break label232;
-          if (i < localArrayList1.size())
-          {
-            paramJSONArray = (ss)localArrayList1.get(i);
-            if (paramJSONArray.g) {
-              localArrayList2.add(paramJSONArray);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList2);
-        return true;
+      paramMap.printStackTrace();
+      xv.c(paramMap.toString());
+    }
+    return false;
+  }
+  
+  public static BitmapDrawable b(String paramString1, String paramString2)
+  {
+    
+    if (!f)
+    {
+      f = true;
+      a(e);
+    }
+    String str;
+    if (paramString2 != null)
+    {
+      str = paramString2;
+      if (paramString2.length() > 4) {}
+    }
+    else
+    {
+      if ((paramString1 == null) || (paramString1.length() <= 4)) {
+        break label120;
       }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
-      }
-      label222:
-      bool = false;
-      continue;
-      label227:
-      int i = 0;
-      continue;
-      label232:
-      i += 1;
-      continue;
-      label239:
-      i = 0;
+      str = ImageCache.d(paramString1);
+    }
+    paramString2 = (aau)d.get(paramString1);
+    if (paramString2 != null)
+    {
+      xv.b("from loading task".concat(String.valueOf(paramString1)));
+      return paramString2;
+    }
+    xv.b("from new task".concat(String.valueOf(paramString1)));
+    paramString2 = new aau(paramString1, str);
+    d.put(paramString1, paramString2);
+    return paramString2;
+    label120:
+    return new BitmapDrawable(a);
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.draw(paramCanvas);
     }
   }
   
-  public final int b()
+  public final int getOpacity()
   {
-    try
-    {
-      List localList = this.a;
-      int i = 0;
-      if (localList == null) {
-        return 0;
-      }
-      int k;
-      for (int j = 0; i < localList.size(); j = k)
-      {
-        boolean bool = ((ss)localList.get(i)).g;
-        k = j;
-        if (!bool) {
-          k = j + 1;
-        }
-        i += 1;
-      }
-      return j;
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      return localBitmapDrawable.getOpacity();
     }
-    finally {}
+    return -2;
+  }
+  
+  public final void onBoundsChange(Rect paramRect)
+  {
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setBounds(paramRect);
+    }
+    super.onBoundsChange(paramRect);
+  }
+  
+  public final void setAlpha(int paramInt)
+  {
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setAlpha(paramInt);
+    }
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter)
+  {
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setColorFilter(paramColorFilter);
+    }
   }
 }
 

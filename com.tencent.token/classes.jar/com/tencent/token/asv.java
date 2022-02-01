@@ -1,50 +1,18 @@
 package com.tencent.token;
 
-public final class asv
+import com.qq.taf.jce.JceStruct;
+
+final class asv
 {
-  int a;
-  String b;
-  private int c;
+  public ajj a = null;
+  public JceStruct b;
+  public int c = 0;
   
-  public asv() {}
-  
-  public asv(String paramString, int paramInt1, int paramInt2)
+  public asv(int paramInt, ajj paramajj, JceStruct paramJceStruct)
   {
-    this.c = paramInt2;
-    this.b = paramString;
-    this.a = paramInt1;
-  }
-  
-  protected final Object clone()
-  {
-    return new asv(this.b, this.a, this.c);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {
-      return false;
-    }
-    paramObject = (asv)paramObject;
-    return (paramObject.b.equals(this.b)) && (paramObject.a == this.a);
-  }
-  
-  public final int hashCode()
-  {
-    return super.hashCode();
-  }
-  
-  public final String toString()
-  {
-    if (this.a >= 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.b);
-      localStringBuilder.append(":");
-      localStringBuilder.append(this.a);
-      return localStringBuilder.toString();
-    }
-    return this.b;
+    this.a = paramajj;
+    this.b = paramJceStruct;
+    this.c = paramInt;
   }
 }
 

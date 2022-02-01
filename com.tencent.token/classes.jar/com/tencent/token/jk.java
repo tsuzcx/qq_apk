@@ -1,18 +1,14 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.view.View;
+import android.graphics.Rect;
 
-public final class jk
+public abstract interface jk
 {
-  public static void a(View paramView, CharSequence paramCharSequence)
+  public abstract void setOnFitSystemWindowsListener(a parama);
+  
+  public static abstract interface a
   {
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      paramView.setTooltipText(paramCharSequence);
-      return;
-    }
-    jl.a(paramView, paramCharSequence);
+    public abstract void a(Rect paramRect);
   }
 }
 

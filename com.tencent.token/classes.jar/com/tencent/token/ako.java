@@ -1,38 +1,22 @@
 package com.tencent.token;
 
 import java.io.Closeable;
+import java.io.Flushable;
 
-public abstract class ako
-  implements Closeable
+public final class ako
+  implements Closeable, Flushable
 {
-  public static ako a(byte[] paramArrayOfByte)
+  final alw a;
+  final alv b;
+  
+  public final void close()
   {
-    amv localamv = new amv().b(paramArrayOfByte);
-    long l = paramArrayOfByte.length;
-    if (localamv != null) {
-      new ako()
-      {
-        public final long a()
-        {
-          return this.b;
-        }
-        
-        public final amx b()
-        {
-          return this.c;
-        }
-      };
-    }
-    throw new NullPointerException("source == null");
+    this.b.close();
   }
   
-  public abstract long a();
-  
-  public abstract amx b();
-  
-  public void close()
+  public final void flush()
   {
-    akt.a(b());
+    this.b.flush();
   }
 }
 

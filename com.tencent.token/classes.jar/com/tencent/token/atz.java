@@ -1,64 +1,16 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.meri.service.monitor.AccessibilityDispatcher;
-
-public final class atz
+final class atz
+  extends Thread
 {
-  public aua a;
-  
-  private void b()
+  atz(aty paramaty, String paramString)
   {
-    if (this.a == null) {
-      this.a = new a();
-    }
+    super(paramString);
   }
   
-  public final aua a()
+  public final void run()
   {
-    b();
-    return this.a;
-  }
-  
-  final class a
-    implements aua
-  {
-    a()
-    {
-      AccessibilityDispatcher.a = new kj()
-      {
-        public final HandlerThread a()
-        {
-          return new HandlerThread("AccessibilityDispatcher");
-        }
-        
-        public final Handler b()
-        {
-          HandlerThread localHandlerThread = new HandlerThread("MonitorCallbackHandler");
-          localHandlerThread.start();
-          return new Handler(localHandlerThread.getLooper());
-        }
-      };
-    }
-    
-    public final int a(Context paramContext)
-    {
-      return AccessibilityDispatcher.a(paramContext);
-    }
-    
-    public final void a() {}
-    
-    public final void a(Context paramContext, aoc paramaoc, aqb.a parama)
-    {
-      AccessibilityDispatcher.a(paramContext, paramaoc, parama);
-    }
-  }
-  
-  public static final class b
-  {
-    private static final atz a = new atz((byte)0);
+    aty.a(this.a);
   }
 }
 

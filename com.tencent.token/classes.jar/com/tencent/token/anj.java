@@ -1,280 +1,165 @@
 package com.tencent.token;
 
-import java.util.Arrays;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.List;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLSocket;
 
 final class anj
-  extends amy
+  extends anl
 {
-  final transient byte[][] f;
-  final transient int[] g;
+  private final Method a;
+  private final Method b;
+  private final Method d;
+  private final Class<?> e;
+  private final Class<?> f;
   
-  anj(amv paramamv, int paramInt)
+  private anj(Method paramMethod1, Method paramMethod2, Method paramMethod3, Class<?> paramClass1, Class<?> paramClass2)
   {
-    super(null);
-    ann.a(paramamv.b, 0L, paramInt);
-    Object localObject = paramamv.a;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    while (j < paramInt) {
-      if (((anh)localObject).c != ((anh)localObject).b)
-      {
-        j += ((anh)localObject).c - ((anh)localObject).b;
-        i += 1;
-        localObject = ((anh)localObject).f;
-      }
-      else
-      {
-        throw new AssertionError("s.limit == s.pos");
-      }
-    }
-    this.f = new byte[i][];
-    this.g = new int[i * 2];
-    paramamv = paramamv.a;
-    j = 0;
-    i = k;
-    while (i < paramInt)
+    this.a = paramMethod1;
+    this.b = paramMethod2;
+    this.d = paramMethod3;
+    this.e = paramClass1;
+    this.f = paramClass2;
+  }
+  
+  public static anl a()
+  {
+    try
     {
-      this.f[j] = paramamv.a;
-      k = i + (paramamv.c - paramamv.b);
-      i = k;
-      if (k > paramInt) {
-        i = paramInt;
-      }
-      localObject = this.g;
-      localObject[j] = i;
-      localObject[(this.f.length + j)] = paramamv.b;
-      paramamv.d = true;
-      j += 1;
-      paramamv = paramamv.f;
+      Object localObject1 = Class.forName("org.eclipse.jetty.alpn.ALPN");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject2).append("$Provider");
+      localObject2 = Class.forName(((StringBuilder)localObject2).toString());
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject3).append("$ClientProvider");
+      localObject3 = Class.forName(((StringBuilder)localObject3).toString());
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject4).append("$ServerProvider");
+      localObject4 = Class.forName(((StringBuilder)localObject4).toString());
+      localObject1 = new anj(((Class)localObject1).getMethod("put", new Class[] { SSLSocket.class, localObject2 }), ((Class)localObject1).getMethod("get", new Class[] { SSLSocket.class }), ((Class)localObject1).getMethod("remove", new Class[] { SSLSocket.class }), (Class)localObject3, (Class)localObject4);
+      return localObject1;
     }
-  }
-  
-  private int b(int paramInt)
-  {
-    paramInt = Arrays.binarySearch(this.g, 0, this.f.length, paramInt + 1);
-    if (paramInt >= 0) {
-      return paramInt;
-    }
-    return paramInt ^ 0xFFFFFFFF;
-  }
-  
-  private amy i()
-  {
-    return new amy(h());
-  }
-  
-  public final byte a(int paramInt)
-  {
-    ann.a(this.g[(this.f.length - 1)], paramInt, 1L);
-    int j = b(paramInt);
-    int i;
-    if (j == 0) {
-      i = 0;
-    } else {
-      i = this.g[(j - 1)];
-    }
-    int[] arrayOfInt = this.g;
-    byte[][] arrayOfByte = this.f;
-    int k = arrayOfInt[(arrayOfByte.length + j)];
-    return arrayOfByte[j][(paramInt - i + k)];
-  }
-  
-  public final amy a(int paramInt1, int paramInt2)
-  {
-    return i().a(paramInt1, paramInt2);
-  }
-  
-  public final String a()
-  {
-    return i().a();
-  }
-  
-  final void a(amv paramamv)
-  {
-    int m = this.f.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
+    catch (ClassNotFoundException|NoSuchMethodException localClassNotFoundException)
     {
-      Object localObject = this.g;
-      int n = localObject[(m + i)];
-      k = localObject[i];
-      localObject = new anh(this.f[i], n, n + k - j);
-      if (paramamv.a == null)
-      {
-        ((anh)localObject).g = ((anh)localObject);
-        ((anh)localObject).f = ((anh)localObject);
-        paramamv.a = ((anh)localObject);
-      }
-      else
-      {
-        paramamv.a.g.a((anh)localObject);
-      }
-      i += 1;
+      label157:
+      break label157;
     }
-    paramamv.b += j;
+    return null;
   }
   
-  public final boolean a(int paramInt1, amy paramamy, int paramInt2, int paramInt3)
+  @Nullable
+  public final String a(SSLSocket paramSSLSocket)
   {
-    if (g() - paramInt3 < 0) {
-      return false;
-    }
-    int j = b(0);
-    int i = paramInt1;
-    paramInt1 = j;
-    while (paramInt3 > 0)
+    try
     {
-      if (paramInt1 == 0) {
-        j = 0;
-      } else {
-        j = this.g[(paramInt1 - 1)];
+      paramSSLSocket = (a)Proxy.getInvocationHandler(this.b.invoke(null, new Object[] { paramSSLSocket }));
+      if ((!paramSSLSocket.a) && (paramSSLSocket.b == null))
+      {
+        anl.c.a(4, "ALPN callback dropped: HTTP/2 is disabled. Is alpn-boot on the boot class path?", null);
+        return null;
       }
-      int k = Math.min(paramInt3, this.g[paramInt1] - j + j - i);
-      int[] arrayOfInt = this.g;
-      byte[][] arrayOfByte = this.f;
-      int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
-      if (!paramamy.a(paramInt2, arrayOfByte[paramInt1], i - j + m, k)) {
-        return false;
+      if (paramSSLSocket.a) {
+        return null;
       }
-      i += k;
-      paramInt2 += k;
-      paramInt3 -= k;
-      paramInt1 += 1;
+      paramSSLSocket = paramSSLSocket.b;
+      return paramSSLSocket;
     }
-    return true;
+    catch (IllegalAccessException paramSSLSocket) {}catch (InvocationTargetException paramSSLSocket) {}
+    throw alr.a("unable to get selected protocol", paramSSLSocket);
   }
   
-  public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  public final void a(SSLSocket paramSSLSocket, String paramString, List<alh> paramList)
   {
-    if ((paramInt1 >= 0) && (paramInt1 <= g() - paramInt3) && (paramInt2 >= 0))
+    Object localObject = a(paramList);
+    try
     {
-      if (paramInt2 > paramArrayOfByte.length - paramInt3) {
-        return false;
+      paramString = anl.class.getClassLoader();
+      paramList = this.e;
+      Class localClass = this.f;
+      localObject = new a((List)localObject);
+      paramString = Proxy.newProxyInstance(paramString, new Class[] { paramList, localClass }, (InvocationHandler)localObject);
+      this.a.invoke(null, new Object[] { paramSSLSocket, paramString });
+      return;
+    }
+    catch (IllegalAccessException paramSSLSocket) {}catch (InvocationTargetException paramSSLSocket) {}
+    throw alr.a("unable to set alpn", paramSSLSocket);
+  }
+  
+  public final void b(SSLSocket paramSSLSocket)
+  {
+    try
+    {
+      this.d.invoke(null, new Object[] { paramSSLSocket });
+      return;
+    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw alr.a("unable to remove alpn", paramSSLSocket);
+  }
+  
+  static final class a
+    implements InvocationHandler
+  {
+    boolean a;
+    String b;
+    private final List<String> c;
+    
+    a(List<String> paramList)
+    {
+      this.c = paramList;
+    }
+    
+    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+    {
+      String str = paramMethod.getName();
+      Class localClass = paramMethod.getReturnType();
+      paramObject = paramArrayOfObject;
+      if (paramArrayOfObject == null) {
+        paramObject = alr.b;
       }
-      int j = b(paramInt1);
-      int i = paramInt1;
-      paramInt1 = j;
-      while (paramInt3 > 0)
+      if ((str.equals("supports")) && (Boolean.TYPE == localClass)) {
+        return Boolean.TRUE;
+      }
+      if ((str.equals("unsupported")) && (Void.TYPE == localClass))
       {
-        if (paramInt1 == 0) {
-          j = 0;
-        } else {
-          j = this.g[(paramInt1 - 1)];
+        this.a = true;
+        return null;
+      }
+      if ((str.equals("protocols")) && (paramObject.length == 0)) {
+        return this.c;
+      }
+      if (((str.equals("selectProtocol")) || (str.equals("select"))) && (String.class == localClass) && (paramObject.length == 1) && ((paramObject[0] instanceof List)))
+      {
+        paramObject = (List)paramObject[0];
+        int j = paramObject.size();
+        int i = 0;
+        while (i < j)
+        {
+          if (this.c.contains(paramObject.get(i)))
+          {
+            paramObject = (String)paramObject.get(i);
+            this.b = paramObject;
+            return paramObject;
+          }
+          i += 1;
         }
-        int k = Math.min(paramInt3, this.g[paramInt1] - j + j - i);
-        int[] arrayOfInt = this.g;
-        byte[][] arrayOfByte = this.f;
-        int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
-        if (!ann.a(arrayOfByte[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
-          return false;
-        }
-        i += k;
-        paramInt2 += k;
-        paramInt3 -= k;
-        paramInt1 += 1;
+        paramObject = (String)this.c.get(0);
+        this.b = paramObject;
+        return paramObject;
       }
-      return true;
-    }
-    return false;
-  }
-  
-  public final String b()
-  {
-    return i().b();
-  }
-  
-  public final amy c()
-  {
-    return i().c();
-  }
-  
-  public final amy d()
-  {
-    return i().d();
-  }
-  
-  public final String e()
-  {
-    return i().e();
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {
-      return true;
-    }
-    if ((paramObject instanceof amy))
-    {
-      paramObject = (amy)paramObject;
-      if ((paramObject.g() == g()) && (a(0, paramObject, 0, g()))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final amy f()
-  {
-    return i().f();
-  }
-  
-  public final int g()
-  {
-    return this.g[(this.f.length - 1)];
-  }
-  
-  public final byte[] h()
-  {
-    Object localObject2 = this.g;
-    Object localObject1 = this.f;
-    localObject2 = new byte[localObject2[(localObject1.length - 1)]];
-    int m = localObject1.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      localObject1 = this.g;
-      int n = localObject1[(m + i)];
-      k = localObject1[i];
-      System.arraycopy(this.f[i], n, localObject2, j, k - j);
-      i += 1;
-    }
-    return localObject2;
-  }
-  
-  public final int hashCode()
-  {
-    int i = this.d;
-    if (i != 0) {
-      return i;
-    }
-    int i2 = this.f.length;
-    int k = 0;
-    int m = 1;
-    int n;
-    for (int j = 0; k < i2; j = n)
-    {
-      byte[] arrayOfByte = this.f[k];
-      int[] arrayOfInt = this.g;
-      int i1 = arrayOfInt[(i2 + k)];
-      n = arrayOfInt[k];
-      i = i1;
-      while (i < n - j + i1)
+      if (((str.equals("protocolSelected")) || (str.equals("selected"))) && (paramObject.length == 1))
       {
-        m = m * 31 + arrayOfByte[i];
-        i += 1;
+        this.b = ((String)paramObject[0]);
+        return null;
       }
-      k += 1;
+      return paramMethod.invoke(this, paramObject);
     }
-    this.d = m;
-    return m;
-  }
-  
-  public final String toString()
-  {
-    return i().toString();
   }
 }
 

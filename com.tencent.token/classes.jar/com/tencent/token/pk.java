@@ -4,21 +4,35 @@ import android.os.Bundle;
 
 public final class pk
 {
-  public static String a(Bundle paramBundle, String paramString)
+  public static final class a
+    extends pb
   {
-    if (paramBundle == null) {
-      return null;
-    }
-    try
+    public String c;
+    
+    public final int a()
     {
-      paramBundle = paramBundle.getString(paramString);
-      return paramBundle;
+      return 22;
     }
-    catch (Exception paramBundle)
+    
+    public final void a(Bundle paramBundle)
     {
-      new StringBuilder("getStringExtra exception:").append(paramBundle.getMessage());
+      super.b(paramBundle);
+      paramBundle.putString("_wxapi_pay_insourance_req_url", this.c);
     }
-    return null;
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getString("_wxapi_pay_insourance_req_url");
+    }
+    
+    public final boolean b()
+    {
+      if (qb.a(this.c)) {
+        return false;
+      }
+      return this.c.length() <= 10240;
+    }
   }
 }
 

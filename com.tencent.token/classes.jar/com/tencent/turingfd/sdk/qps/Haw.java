@@ -1,27 +1,85 @@
 package com.tencent.turingfd.sdk.qps;
 
-import com.tencent.token.agd;
-import com.tencent.token.age;
+import com.tencent.token.afb;
+import com.tencent.token.afd;
+import com.tencent.token.afj;
 
 public final class Haw
-  extends final
+  extends Orion
+  implements Cloneable
 {
-  public String a = "";
-  public String b = "";
-  public int c = 0;
+  public int b = 0;
+  public String c = "";
   
-  public final void a(agd paramagd)
+  public final void a(afb paramafb)
   {
-    this.a = paramagd.a(0, true);
-    this.b = paramagd.a(1, true);
-    this.c = paramagd.a(this.c, 2, true);
+    this.b = paramafb.a(this.b, 0, true);
+    this.c = paramafb.a(1, true);
   }
   
-  public final void a(age paramage)
+  public final void a(afd paramafd)
   {
-    paramage.a(this.a, 0);
-    paramage.a(this.b, 1);
-    paramage.a(this.c, 2);
+    paramafd.a(this.b, 0);
+    paramafd.a(this.c, 1);
+  }
+  
+  public final void a(StringBuilder paramStringBuilder)
+  {
+    int i = this.b;
+    paramStringBuilder.append("r");
+    paramStringBuilder.append(": ");
+    paramStringBuilder.append(i);
+    paramStringBuilder.append('\n');
+    String str = this.c;
+    paramStringBuilder.append("d");
+    paramStringBuilder.append(": ");
+    if (str == null)
+    {
+      paramStringBuilder.append("null\n");
+      return;
+    }
+    paramStringBuilder.append(str);
+    paramStringBuilder.append('\n');
+  }
+  
+  public final Object clone()
+  {
+    try
+    {
+      Object localObject = super.clone();
+      return localObject;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label7:
+      break label7;
+    }
+    if (a) {
+      return null;
+    }
+    throw new AssertionError();
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {
+      return false;
+    }
+    paramObject = (Haw)paramObject;
+    return (afj.a(this.b, paramObject.b)) && (this.c.equals(paramObject.c));
+  }
+  
+  public final int hashCode()
+  {
+    try
+    {
+      throw new Exception("Need define key first!");
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 0;
   }
 }
 

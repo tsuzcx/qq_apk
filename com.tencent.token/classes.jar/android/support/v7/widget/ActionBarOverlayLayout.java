@@ -20,21 +20,21 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.Window.Callback;
 import android.widget.OverScroller;
-import com.tencent.token.eu;
-import com.tencent.token.ew;
-import com.tencent.token.fa;
-import com.tencent.token.gs.a;
-import com.tencent.token.gs.f;
-import com.tencent.token.hw.a;
-import com.tencent.token.is;
-import com.tencent.token.it;
-import com.tencent.token.jo;
+import com.tencent.token.fi;
+import com.tencent.token.fk;
+import com.tencent.token.fo;
+import com.tencent.token.hg.a;
+import com.tencent.token.hg.f;
+import com.tencent.token.ik.a;
+import com.tencent.token.jg;
+import com.tencent.token.jh;
+import com.tencent.token.kc;
 
 public class ActionBarOverlayLayout
   extends ViewGroup
-  implements eu, is
+  implements fi, jg
 {
-  static final int[] f = { gs.a.actionBarSize, 16842841 };
+  static final int[] f = { hg.a.actionBarSize, 16842841 };
   private final Runnable A = new Runnable()
   {
     public final void run()
@@ -53,7 +53,7 @@ public class ActionBarOverlayLayout
       localActionBarOverlayLayout.d = localActionBarOverlayLayout.a.animate().translationY(-ActionBarOverlayLayout.this.a.getHeight()).setListener(ActionBarOverlayLayout.this.e);
     }
   };
-  private final ew C;
+  private final fk C;
   ActionBarContainer a;
   public boolean b;
   boolean c;
@@ -77,7 +77,7 @@ public class ActionBarOverlayLayout
   private int g;
   private int h = 0;
   private ContentFrameLayout i;
-  private it j;
+  private jh j;
   private Drawable k;
   private boolean l;
   private boolean m;
@@ -99,13 +99,13 @@ public class ActionBarOverlayLayout
   {
     super(paramContext, paramAttributeSet);
     a(paramContext);
-    this.C = new ew(this);
+    this.C = new fk(this);
   }
   
-  private static it a(View paramView)
+  private static jh a(View paramView)
   {
-    if ((paramView instanceof it)) {
-      return (it)paramView;
+    if ((paramView instanceof jh)) {
+      return (jh)paramView;
     }
     if ((paramView instanceof Toolbar)) {
       return ((Toolbar)paramView).getWrapper();
@@ -176,9 +176,9 @@ public class ActionBarOverlayLayout
   {
     if (this.i == null)
     {
-      this.i = ((ContentFrameLayout)findViewById(gs.f.action_bar_activity_content));
-      this.a = ((ActionBarContainer)findViewById(gs.f.action_bar_container));
-      this.j = a(findViewById(gs.f.action_bar));
+      this.i = ((ContentFrameLayout)findViewById(hg.f.action_bar_activity_content));
+      this.a = ((ActionBarContainer)findViewById(hg.f.action_bar_container));
+      this.j = a(findViewById(hg.f.action_bar));
     }
   }
   
@@ -209,7 +209,7 @@ public class ActionBarOverlayLayout
     }
   }
   
-  public final void a(Menu paramMenu, hw.a parama)
+  public final void a(Menu paramMenu, ik.a parama)
   {
     i();
     this.j.a(paramMenu, parama);
@@ -269,10 +269,10 @@ public class ActionBarOverlayLayout
   protected boolean fitSystemWindows(Rect paramRect)
   {
     i();
-    fa.i(this);
+    fo.i(this);
     boolean bool = a(this.a, paramRect, false);
     this.t.set(paramRect);
-    jo.a(this, this.t, this.q);
+    kc.a(this, this.t, this.q);
     if (!this.u.equals(this.t))
     {
       this.u.set(this.t);
@@ -330,7 +330,7 @@ public class ActionBarOverlayLayout
   {
     super.onConfigurationChanged(paramConfiguration);
     a(getContext());
-    fa.j(this);
+    fo.j(this);
   }
   
   protected void onDetachedFromWindow()
@@ -371,7 +371,7 @@ public class ActionBarOverlayLayout
     int i6 = Math.max(0, this.a.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
     int i5 = Math.max(0, this.a.getMeasuredHeight() + ((LayoutParams)localObject).topMargin + ((LayoutParams)localObject).bottomMargin);
     int i4 = View.combineMeasuredStates(0, this.a.getMeasuredState());
-    if ((fa.i(this) & 0x100) != 0) {
+    if ((fo.i(this) & 0x100) != 0) {
       i2 = 1;
     } else {
       i2 = 0;
@@ -534,7 +534,7 @@ public class ActionBarOverlayLayout
       }
     }
     if ((((i3 ^ paramInt) & 0x100) != 0) && (this.x != null)) {
-      fa.j(this);
+      fo.j(this);
     }
   }
   
@@ -565,7 +565,7 @@ public class ActionBarOverlayLayout
       if (i1 != 0)
       {
         onWindowSystemUiVisibilityChanged(i1);
-        fa.j(this);
+        fo.j(this);
       }
     }
   }

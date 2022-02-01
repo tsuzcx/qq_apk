@@ -1,56 +1,65 @@
 package com.tencent.token;
 
-import android.app.UiModeManager;
-import android.content.Context;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Window;
-import android.view.Window.Callback;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.ListView;
 
-class gm
-  extends gl
+public final class gm
+  extends gc
 {
-  private final UiModeManager w;
+  private final ListView f;
   
-  gm(Context paramContext, Window paramWindow, gh paramgh)
+  public gm(ListView paramListView)
   {
-    super(paramContext, paramWindow, paramgh);
-    this.w = ((UiModeManager)paramContext.getSystemService("uimode"));
+    super(paramListView);
+    this.f = paramListView;
   }
   
-  Window.Callback a(Window.Callback paramCallback)
+  public final void a(int paramInt)
   {
-    return new a(paramCallback);
-  }
-  
-  final int f(int paramInt)
-  {
-    if ((paramInt == 0) && (this.w.getNightMode() == 0)) {
-      return -1;
-    }
-    return super.f(paramInt);
-  }
-  
-  class a
-    extends gl.a
-  {
-    a(Window.Callback paramCallback)
+    ListView localListView = this.f;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      super(paramCallback);
+      localListView.scrollListBy(paramInt);
+      return;
     }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+    int i = localListView.getFirstVisiblePosition();
+    if (i != -1)
     {
-      return null;
-    }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
-    {
-      if ((gm.this.o) && (paramInt == 0)) {
-        return a(paramCallback);
+      View localView = localListView.getChildAt(0);
+      if (localView != null) {
+        localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
       }
-      return super.onWindowStartingActionMode(paramCallback, paramInt);
     }
+  }
+  
+  public final boolean b(int paramInt)
+  {
+    ListView localListView = this.f;
+    int i = localListView.getCount();
+    if (i == 0) {
+      return false;
+    }
+    int j = localListView.getChildCount();
+    int k = localListView.getFirstVisiblePosition();
+    if (paramInt > 0)
+    {
+      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
+        return false;
+      }
+    }
+    else
+    {
+      if (paramInt >= 0) {
+        break label89;
+      }
+      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
+        return false;
+      }
+    }
+    return true;
+    label89:
+    return false;
   }
 }
 

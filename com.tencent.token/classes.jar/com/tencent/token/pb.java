@@ -2,55 +2,27 @@ package com.tencent.token;
 
 import android.os.Bundle;
 
-public final class pb
-  implements pa.b
+public abstract class pb
 {
   public String a;
   public String b;
-  public String c;
-  public boolean d;
-  public int e = 0;
-  public int f = 0;
   
-  public final int a()
+  public abstract int a();
+  
+  public void a(Bundle paramBundle)
   {
-    return 36;
+    paramBundle.putInt("_wxapi_command_type", a());
+    paramBundle.putString("_wxapi_basereq_transaction", this.a);
+    paramBundle.putString("_wxapi_basereq_openid", this.b);
   }
   
-  public final void a(Bundle paramBundle)
+  public void b(Bundle paramBundle)
   {
-    paramBundle.putString("_wxminiprogram_webpageurl", this.a);
-    paramBundle.putString("_wxminiprogram_username", this.b);
-    paramBundle.putString("_wxminiprogram_path", this.c);
-    paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.d);
-    paramBundle.putInt("_wxminiprogram_type", this.e);
-    paramBundle.putInt("_wxminiprogram_disableforward", this.f);
+    this.a = py.a(paramBundle, "_wxapi_basereq_transaction");
+    this.b = py.a(paramBundle, "_wxapi_basereq_openid");
   }
   
-  public final void b(Bundle paramBundle)
-  {
-    this.a = paramBundle.getString("_wxminiprogram_webpageurl");
-    this.b = paramBundle.getString("_wxminiprogram_username");
-    this.c = paramBundle.getString("_wxminiprogram_path");
-    this.d = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
-    this.e = paramBundle.getInt("_wxminiprogram_type");
-    this.f = paramBundle.getInt("_wxminiprogram_disableforward");
-  }
-  
-  public final boolean b()
-  {
-    if (pn.a(this.a)) {
-      return false;
-    }
-    if (pn.a(this.b)) {
-      return false;
-    }
-    int i = this.e;
-    if (i >= 0) {
-      return i <= 2;
-    }
-    return false;
-  }
+  public abstract boolean b();
 }
 
 

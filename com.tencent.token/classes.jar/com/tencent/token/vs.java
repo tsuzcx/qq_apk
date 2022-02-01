@@ -3,53 +3,114 @@ package com.tencent.token;
 import android.content.Context;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class vs
-  extends tr
+  extends ud
 {
-  public static String d;
-  public static int e;
-  private long f;
-  private long g;
+  private long d;
+  private int e;
+  private int f;
+  private int g;
   private int h;
-  private int i;
+  private String i;
+  private String j;
+  private String k;
   
   public final String a()
   {
-    sh.a();
+    st.a();
+    StringBuilder localStringBuilder = new StringBuilder("sessId=");
+    localStringBuilder.append(null);
+    xv.c(localStringBuilder.toString());
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.f = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.g = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.i = ((Integer)paramabc.c.get("param.scene.id")).intValue();
-    this.h = paramabc.j;
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramabm.c.get("param.device.lock.id")).intValue();
+    this.i = ((String)paramabm.c.get("param.device.lock.guid"));
+    this.f = ((Integer)paramabm.c.get("param.device.lock.appid")).intValue();
+    this.g = ((Integer)paramabm.c.get("param.device.lock.subappid")).intValue();
+    this.j = ((String)paramabm.c.get("param.device.lock.appname"));
+    this.k = ((String)paramabm.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramabm.c.get("param.common.seq")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j == 0)
+    int m = paramJSONObject.getInt("err");
+    if (m != 0)
     {
-      paramJSONObject = aao.d(paramJSONObject.getString("data"));
-      if (paramJSONObject != null)
+      a(m, paramJSONObject.getString("info"));
+      return;
+    }
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      xv.a("decode json=".concat(String.valueOf(paramJSONObject)));
+      m = paramJSONObject.getInt("seq_id");
+      if (m != this.h)
       {
-        paramJSONObject = new JSONObject(new String(paramJSONObject));
-        d = paramJSONObject.getString("validate_code");
-        e = paramJSONObject.getInt("validate_id");
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(m);
+        paramJSONObject.append(",right = ");
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
+        return;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        m = paramJSONObject.getInt("id");
+        paramJSONObject = paramJSONObject.getJSONArray("result");
+        if (m == 70)
+        {
+          tu.a().b(paramJSONObject);
+        }
+        else if (m == 71)
+        {
+          tu.a().c(paramJSONObject);
+        }
+        else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
+        {
+          m = 0;
+          if (m < paramJSONObject.length())
+          {
+            JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
+            if (localJSONObject.getInt("id") == 71)
+            {
+              tu.a().a(localJSONObject);
+              break label306;
+            }
+            localJSONObject.getInt("id");
+            break label306;
+          }
+        }
         this.a.a = 0;
         return;
       }
-      xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-      a(10022, RqdApplication.p().getString(2131493068));
+      catch (JSONException paramJSONObject)
+      {
+        a(201, RqdApplication.n().getString(2131492911));
+        paramJSONObject.printStackTrace();
+        return;
+      }
+      xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.n().getString(2131493069));
       return;
+      label306:
+      m += 1;
     }
-    a(j, paramJSONObject.getString("info"));
-    xj.a("ProtoGetRealNameVerify fail errCode=".concat(String.valueOf(j)));
   }
 }
 

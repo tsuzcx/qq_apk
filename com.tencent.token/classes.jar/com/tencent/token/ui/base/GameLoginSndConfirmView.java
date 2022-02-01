@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xj;
+import com.tencent.token.xv;
 
 public class GameLoginSndConfirmView
   extends RelativeLayout
@@ -87,7 +87,7 @@ public class GameLoginSndConfirmView
   
   public final void a()
   {
-    xj.a("game login unregister interval timer");
+    xv.a("game login unregister interval timer");
     AlarmManager localAlarmManager = this.p;
     if (localAlarmManager != null)
     {
@@ -108,7 +108,7 @@ public class GameLoginSndConfirmView
     }
     Object localObject = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getString(2131493218));
+    localStringBuilder.append(getResources().getString(2131493220));
     localStringBuilder.append("(");
     localStringBuilder.append(this.r);
     localStringBuilder.append(")");

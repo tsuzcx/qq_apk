@@ -1,8 +1,29 @@
 package com.tencent.token;
 
-public abstract interface aov
+import android.graphics.Path;
+import java.util.ArrayList;
+import java.util.List;
+
+public final class aov
 {
-  public abstract aqc a(auv paramauv, apb paramapb);
+  final List<aoq<?, Path>> a;
+  final List<aou<Integer>> b;
+  final List<apv> c;
+  
+  public aov(List<apv> paramList)
+  {
+    this.c = paramList;
+    this.a = new ArrayList(paramList.size());
+    this.b = new ArrayList(paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      this.a.add(((apv)paramList.get(i)).b.c());
+      apj localapj = ((apv)paramList.get(i)).c;
+      this.b.add(localapj.a());
+      i += 1;
+    }
+  }
 }
 
 

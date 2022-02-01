@@ -1,31 +1,172 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ae
-  extends JceStruct
 {
-  static byte[] b;
-  public byte[] a = null;
+  public SharedPreferences a = null;
+  public long b = 0L;
+  public String c = "";
+  public String d = "";
+  public Context e = null;
+  public String f = "";
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public ae(Context paramContext, String paramString)
   {
-    if (b == null)
+    try
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
-      b = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      this.e = paramContext;
+      this.f = paramString;
+      return;
     }
-    this.a = ((byte[])paramJceInputStream.read(b, 0, false));
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public static boolean a(byte[] paramArrayOfByte, String paramString)
   {
-    byte[] arrayOfByte = this.a;
-    if (arrayOfByte != null) {
-      paramJceOutputStream.write(arrayOfByte, 0);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      boolean bool1 = al.a(paramArrayOfByte);
+      boolean bool2 = paramString.equalsIgnoreCase(ag.b(paramArrayOfByte));
+      if ((bool1) && (bool2)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private byte[] b()
+  {
+    if (TextUtils.isEmpty(this.d)) {
+      return null;
+    }
+    Object localObject;
+    try
+    {
+      localObject = new File(this.d);
+      if (((File)localObject).exists())
+      {
+        byte[] arrayOfByte = new byte[(int)((File)localObject).length()];
+        localObject = new FileInputStream((File)localObject);
+        try
+        {
+          ((FileInputStream)localObject).read(arrayOfByte);
+          ((FileInputStream)localObject).close();
+          return arrayOfByte;
+        }
+        catch (Exception localException1) {}
+      }
+      else
+      {
+        localObject = null;
+      }
+    }
+    catch (Exception localException2)
+    {
+      localObject = null;
+      localException2.printStackTrace();
+    }
+    if (localObject != null) {
+      try
+      {
+        ((FileInputStream)localObject).close();
+        return null;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      Object localObject = b();
+      Context localContext = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localContext.getFilesDir().toString());
+      localStringBuilder.append(aa.a(ak.a[3]));
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.f);
+      this.d = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(aa.a(ak.a[0]));
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.f);
+      this.a = localContext.getSharedPreferences(localStringBuilder.toString(), 0);
+      this.b = this.a.getLong(aa.a(ak.a[1]), 0L);
+      this.c = this.a.getString(aa.a(ak.a[2]), "");
+      if (!a((byte[])localObject, this.c))
+      {
+        localObject = this.a.edit();
+        ((SharedPreferences.Editor)localObject).clear();
+        ((SharedPreferences.Editor)localObject).commit();
+        localObject = new File(this.d);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+        this.c = "";
+        this.b = 0L;
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public final JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      c();
+      localJSONObject.put(ak.a(24), 1);
+      localJSONObject.put(ak.a(27), this.b);
+      localJSONObject.put(ak.a(28), this.c);
+      localJSONObject.put(ak.a(26), "");
+      localJSONObject.put(ak.a(25), "");
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public final void a(long paramLong, String paramString)
+  {
+    if ((paramLong > 0L) && (!TextUtils.isEmpty(paramString))) {
+      try
+      {
+        SharedPreferences.Editor localEditor = this.a.edit();
+        localEditor.putLong(aa.a(ak.a[1]), paramLong);
+        localEditor.putString(aa.a(ak.a[2]), paramString);
+        localEditor.commit();
+        this.b = paramLong;
+        this.c = paramString;
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
 }

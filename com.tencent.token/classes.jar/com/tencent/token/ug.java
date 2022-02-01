@@ -1,92 +1,46 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.concurrent.Callable;
 
-public final class ug
-  extends tr
+public class ug
 {
-  private long d;
-  private int e;
-  private int f;
-  
-  public final String a()
+  public static xt a(abm paramabm, String paramString)
   {
-    sh.a();
-    this.a.a(104, null, null);
-    return null;
-  }
-  
-  public final void a(abc paramabc)
-  {
-    this.d = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramabc.c.get("param.type")).intValue();
-    this.e = paramabc.j;
-  }
-  
-  public final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    new xt();
+    try
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.e)
+      st.a();
+      sp.a.a();
+      xt localxt = sp.a();
+      Object localObject = localxt;
+      if (localxt.b())
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.e);
-        xj.c(paramJSONObject.toString());
-        return;
-      }
-      long l = paramJSONObject.getLong("server_time");
-      sj.b();
-      sj.a(l);
-      if (paramJSONObject.getInt("seed_available") == 1)
-      {
-        paramJSONObject = aao.e(paramJSONObject.getString("seed"));
-        if (paramJSONObject != null)
+        paramString = ua.a(paramString);
+        if (paramString != null)
         {
-          sj.b().c();
-          sj.b().a(paramJSONObject);
-          sj.b().a.a();
+          paramabm = paramString.c(paramabm);
+          localObject = paramabm;
+          if (paramabm.b())
+          {
+            st.a();
+            tt.a().g();
+            localObject = paramabm;
+          }
+        }
+        else
+        {
+          localxt.a(10000, null, null);
+          localObject = localxt;
         }
       }
-      paramJSONObject = th.a().d(this.d);
-      if (paramJSONObject != null) {
-        th.a().a(paramJSONObject);
-      }
-      this.a.a = 0;
-      return;
+      return localObject;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    finally {}
   }
   
-  public final void b()
+  public static Callable<xt> a(abm paramabm)
   {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Object localObject = new StringBuilder("handleSuccess");
-      ((StringBuilder)localObject).append(this.b.f);
-      xj.c(((StringBuilder)localObject).toString());
-      localObject = this.b.d.obtainMessage(this.b.f);
-      ((Message)localObject).arg1 = 0;
-      ((Message)localObject).sendToTarget();
-      this.b.e = true;
-    }
+    new Callable() {};
   }
 }
 

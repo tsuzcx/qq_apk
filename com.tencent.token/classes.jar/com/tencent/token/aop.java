@@ -1,12 +1,11 @@
 package com.tencent.token;
 
-public final class aop
-  extends aot<aou, aou>
+import android.graphics.Path;
+
+abstract interface aop
+  extends ara
 {
-  public final aoe a()
-  {
-    return new aoe(this.a);
-  }
+  public abstract Path h_();
 }
 
 

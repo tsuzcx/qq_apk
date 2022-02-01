@@ -1,104 +1,57 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public final class de
+final class de
+  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
-  private static final a a;
-  private static final ee<String, Typeface> b = new ee(16);
+  private final View a;
+  private ViewTreeObserver b;
+  private final Runnable c;
   
-  static
+  private de(View paramView, Runnable paramRunnable)
   {
-    if (Build.VERSION.SDK_INT >= 26) {
-      a = new dh();
-    } else if ((Build.VERSION.SDK_INT >= 24) && (dg.a())) {
-      a = new dg();
-    } else if (Build.VERSION.SDK_INT >= 21) {
-      a = new df();
+    this.a = paramView;
+    this.b = paramView.getViewTreeObserver();
+    this.c = paramRunnable;
+  }
+  
+  public static de a(View paramView, Runnable paramRunnable)
+  {
+    paramRunnable = new de(paramView, paramRunnable);
+    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+    paramView.addOnAttachStateChangeListener(paramRunnable);
+    return paramRunnable;
+  }
+  
+  private void a()
+  {
+    if (this.b.isAlive()) {
+      this.b.removeOnPreDrawListener(this);
     } else {
-      a = new di();
+      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    this.a.removeOnAttachStateChangeListener(this);
   }
   
-  public static Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
+  public final boolean onPreDraw()
   {
-    paramContext = a.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
-    if (paramContext != null)
-    {
-      paramResources = b(paramResources, paramInt1, paramInt2);
-      b.a(paramResources, paramContext);
-    }
-    return paramContext;
+    a();
+    this.c.run();
+    return true;
   }
   
-  public static Typeface a(Context paramContext, cz.a parama, Resources paramResources, int paramInt1, int paramInt2, da.a parama1)
+  public final void onViewAttachedToWindow(View paramView)
   {
-    if ((parama instanceof cz.d))
-    {
-      parama = (cz.d)parama;
-      boolean bool;
-      if (parama.c == 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      int i = parama.b;
-      paramContext = dw.a(paramContext, parama.a, parama1, bool, i, paramInt2);
-    }
-    else
-    {
-      parama = a.a(paramContext, (cz.b)parama, paramResources, paramInt2);
-      paramContext = parama;
-      if (parama1 != null) {
-        if (parama != null)
-        {
-          parama1.a(parama, null);
-          paramContext = parama;
-        }
-        else
-        {
-          parama1.a(-3, null);
-          paramContext = parama;
-        }
-      }
-    }
-    if (paramContext != null) {
-      b.a(b(paramResources, paramInt1, paramInt2), paramContext);
-    }
-    return paramContext;
+    this.b = paramView.getViewTreeObserver();
   }
   
-  public static Typeface a(Context paramContext, dw.b[] paramArrayOfb, int paramInt)
+  public final void onViewDetachedFromWindow(View paramView)
   {
-    return a.a(paramContext, paramArrayOfb, paramInt);
-  }
-  
-  public static Typeface a(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    return (Typeface)b.a(b(paramResources, paramInt1, paramInt2));
-  }
-  
-  private static String b(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramResources.getResourcePackageName(paramInt1));
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramInt2);
-    return localStringBuilder.toString();
-  }
-  
-  static abstract interface a
-  {
-    public abstract Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2);
-    
-    public abstract Typeface a(Context paramContext, cz.b paramb, Resources paramResources, int paramInt);
-    
-    public abstract Typeface a(Context paramContext, dw.b[] paramArrayOfb, int paramInt);
+    a();
   }
 }
 

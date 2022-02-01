@@ -20,7 +20,7 @@ public class ProgressTextView
   public float c;
   public String d = "";
   public String e;
-  private int f = 2130968708;
+  private int f = 2130968709;
   
   public ProgressTextView(Context paramContext, AttributeSet paramAttributeSet)
   {

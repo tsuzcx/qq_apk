@@ -13,16 +13,16 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aao;
-import com.tencent.token.ais;
+import com.tencent.token.aay;
+import com.tencent.token.ajr;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.sb;
-import com.tencent.token.sc;
-import com.tencent.token.sc.a;
-import com.tencent.token.sg;
-import com.tencent.token.sk;
-import com.tencent.token.th;
+import com.tencent.token.so;
+import com.tencent.token.sp;
+import com.tencent.token.sp.a;
+import com.tencent.token.ss;
+import com.tencent.token.sw;
+import com.tencent.token.tt;
 import com.tencent.token.ui.base.LockPatternSmallView;
 import com.tencent.token.ui.base.LockPatternVerifyView;
 import com.tencent.token.ui.base.LockPatternVerifyView.b;
@@ -30,8 +30,8 @@ import com.tencent.token.ui.base.LockPatternView;
 import com.tencent.token.ui.base.LockPatternView.DisplayMode;
 import com.tencent.token.ui.base.LockPatternView.a;
 import com.tencent.token.ui.base.LockPatternView.b;
-import com.tencent.token.xh;
-import com.tencent.token.xj;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
 import java.util.List;
 
 public class StartPwdGestureModifyActivity
@@ -84,37 +84,37 @@ public class StartPwdGestureModifyActivity
         {
           localObject1 = StartPwdGestureModifyActivity.this;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(StartPwdGestureModifyActivity.this.getResources().getString(2131493555));
+          ((StringBuilder)localObject2).append(StartPwdGestureModifyActivity.this.getResources().getString(2131493563));
           ((StringBuilder)localObject2).append(":");
           ((StringBuilder)localObject2).append(paramAnonymousMessage.getData().getString("exception"));
           ((StartPwdGestureModifyActivity)localObject1).showToast(((StringBuilder)localObject2).toString());
           return;
         }
-        StartPwdGestureModifyActivity.this.showToast(2131493555);
+        StartPwdGestureModifyActivity.this.showToast(2131493563);
         return;
       }
       if (paramAnonymousMessage.arg1 == 0)
       {
         StartPwdGestureModifyActivity.this.dismissDialog();
-        paramAnonymousMessage = th.a().k.b();
+        paramAnonymousMessage = tt.a().k.b();
         if (paramAnonymousMessage == null)
         {
-          sb.a().a(System.currentTimeMillis(), 23);
+          so.a().a(System.currentTimeMillis(), 23);
           paramAnonymousMessage = StartPwdGestureModifyActivity.this;
-          paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493242, 2131493244);
+          paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493244, 2131493246);
           return;
         }
         StartPwdGestureModifyActivity.this.dismissDialog();
-        localObject1 = sg.a(StartPwdGestureModifyActivity.this.getApplicationContext());
+        localObject1 = ss.a(StartPwdGestureModifyActivity.this.getApplicationContext());
         localObject2 = StartPwdGestureModifyActivity.this;
         Handler localHandler = ((StartPwdGestureModifyActivity)localObject2).mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramAnonymousMessage.mRealUin);
-        ((sg)localObject1).a((Activity)localObject2, localHandler, localStringBuilder.toString());
+        ((ss)localObject1).a((Activity)localObject2, localHandler, localStringBuilder.toString());
         return;
       }
       StartPwdGestureModifyActivity.this.dismissDialog();
-      paramAnonymousMessage = (xh)paramAnonymousMessage.obj;
+      paramAnonymousMessage = (xt)paramAnonymousMessage.obj;
       StartPwdGestureModifyActivity.this.showUserDialog(paramAnonymousMessage.c);
     }
   };
@@ -128,18 +128,18 @@ public class StartPwdGestureModifyActivity
   
   private void gotoQuickLoginWb()
   {
-    QQUser localQQUser = th.a().k.b();
+    QQUser localQQUser = tt.a().k.b();
     if ((localQQUser != null) && (localQQUser.mRealUin > 0L))
     {
-      sg localsg = sg.a(getApplicationContext());
+      ss localss = ss.a(getApplicationContext());
       Handler localHandler = this.mHandler;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localQQUser.mRealUin);
-      localsg.a(this, localHandler, localStringBuilder.toString());
+      localss.a(this, localHandler, localStringBuilder.toString());
       return;
     }
-    sc.a.a().c(this.mHandler);
-    showProDialog(this, 2131492986, 2131493441, null);
+    sp.a.a().b(this.mHandler);
+    showProDialog(this, 2131492987, 2131493449, null);
   }
   
   private void initUI()
@@ -152,7 +152,7 @@ public class StartPwdGestureModifyActivity
     {
       public final void a()
       {
-        xj.b("RESULT_START");
+        xv.b("RESULT_START");
         StartPwdGestureModifyActivity.this.mLockPatternView.removeCallbacks(StartPwdGestureModifyActivity.this.mClearView);
       }
       
@@ -160,19 +160,19 @@ public class StartPwdGestureModifyActivity
       {
         StringBuilder localStringBuilder = new StringBuilder("Detected: ");
         localStringBuilder.append(StartPwdGestureModifyActivity.this.mLockPatternView.getPatternString());
-        xj.b(localStringBuilder.toString());
+        xv.b(localStringBuilder.toString());
         if (StartPwdGestureModifyActivity.this.mModifyStage == 1)
         {
           if (paramAnonymousList.size() < 3)
           {
             StartPwdGestureModifyActivity.this.mLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
             StartPwdGestureModifyActivity.this.mSmallView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-            StartPwdGestureModifyActivity.this.showPromtMsg(2131493254, true);
+            StartPwdGestureModifyActivity.this.showPromtMsg(2131493256, true);
             StartPwdGestureModifyActivity.this.mLockPatternView.c = false;
             StartPwdGestureModifyActivity.this.mLockPatternView.postDelayed(StartPwdGestureModifyActivity.this.mClearView, 1000L);
             return;
           }
-          StartPwdGestureModifyActivity.this.showPromtMsg(2131493248, false);
+          StartPwdGestureModifyActivity.this.showPromtMsg(2131493250, false);
           StartPwdGestureModifyActivity.this.mLockPatternView.c = false;
           StartPwdGestureModifyActivity.access$602(StartPwdGestureModifyActivity.this, 2);
           paramAnonymousList = StartPwdGestureModifyActivity.this;
@@ -184,44 +184,44 @@ public class StartPwdGestureModifyActivity
         if (!StartPwdGestureModifyActivity.this.mLockPatternView.getPatternString().equals(StartPwdGestureModifyActivity.this.mStage1String))
         {
           StartPwdGestureModifyActivity.this.mLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-          StartPwdGestureModifyActivity.this.showPromtMsg(2131493252, true);
+          StartPwdGestureModifyActivity.this.showPromtMsg(2131493254, true);
           StartPwdGestureModifyActivity.this.mLockPatternView.c = false;
           StartPwdGestureModifyActivity.this.mLockPatternView.postDelayed(StartPwdGestureModifyActivity.this.mClearView, 1000L);
           return;
         }
-        StartPwdGestureModifyActivity.this.showPromtMsg(2131493251, false);
+        StartPwdGestureModifyActivity.this.showPromtMsg(2131493253, false);
         StartPwdGestureModifyActivity.this.mLockPatternView.c = false;
         StartPwdGestureModifyActivity.this.mSmallView.b = 3;
         StartPwdGestureModifyActivity.this.mSmallView.a(paramAnonymousList);
-        sk.a().c(StartPwdGestureModifyActivity.this.mStage1String);
+        sw.a().c(StartPwdGestureModifyActivity.this.mStage1String);
         StartPwdGestureModifyActivity.this.mLockPatternView.postDelayed(StartPwdGestureModifyActivity.this.mFinishTask, 1000L);
       }
       
       public final void b()
       {
-        xj.b("CLEARED");
+        xv.b("CLEARED");
       }
       
       public final void c()
       {
-        xj.b("CellAdded");
+        xv.b("CellAdded");
       }
     });
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
     this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
-    this.mTitleText.setTextColor(getResources().getColor(2130968761));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   private void judgeNextStep()
   {
     dismissDialog();
-    sb.a().a(System.currentTimeMillis(), 25);
-    sk.a().e();
-    RqdApplication.m();
-    aao.a(FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    sk.a();
-    sk.a(0);
+    so.a().a(System.currentTimeMillis(), 25);
+    sw.a().e();
+    RqdApplication.l();
+    aay.a(FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
+    sw.a();
+    sw.a(0);
     LockPatternVerifyView localLockPatternVerifyView = this.mVV;
     if (localLockPatternVerifyView != null) {
       localLockPatternVerifyView.d();
@@ -231,12 +231,12 @@ public class StartPwdGestureModifyActivity
   private void showNobindingAlert(final Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131492986, getString(paramInt1), paramInt2, 2131493029, new DialogInterface.OnClickListener()
+      showUserDialog(2131492987, getString(paramInt1), paramInt2, 2131493030, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          sk.a().e();
-          RqdApplication.m();
+          sw.a().e();
+          RqdApplication.l();
           StartPwdGestureModifyActivity.this.setResult(35);
           StartPwdGestureModifyActivity.this.finish();
         }
@@ -247,9 +247,9 @@ public class StartPwdGestureModifyActivity
   private void showPromtMsg(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.mPromtMsg.setTextColor(getResources().getColor(2130968778));
+      this.mPromtMsg.setTextColor(getResources().getColor(2130968779));
     } else {
-      this.mPromtMsg.setTextColor(getResources().getColor(2130968777));
+      this.mPromtMsg.setTextColor(getResources().getColor(2130968778));
     }
     this.mPromtMsg.setText(paramInt);
   }
@@ -258,7 +258,7 @@ public class StartPwdGestureModifyActivity
   {
     super.finish();
     if (this.mModifyMode) {
-      aao.a(this, 0);
+      aay.a(this, 0);
     }
   }
   
@@ -268,7 +268,7 @@ public class StartPwdGestureModifyActivity
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(", requestCode=");
     localStringBuilder.append(paramInt1);
-    xj.c(localStringBuilder.toString());
+    xv.c(localStringBuilder.toString());
     if ((paramInt1 == 256) && (paramInt2 == 257))
     {
       paramIntent = this.mVV;
@@ -278,7 +278,7 @@ public class StartPwdGestureModifyActivity
     }
     else if ((paramInt1 == 1201) || (paramInt1 == 1202))
     {
-      sg.a(getApplicationContext()).a(paramIntent);
+      ss.a(getApplicationContext()).a(paramIntent);
     }
   }
   
@@ -286,11 +286,11 @@ public class StartPwdGestureModifyActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2131296450);
-    if (sk.a().c())
+    setContentView(2131296463);
+    if (sw.a().c())
     {
-      ((ViewStub)findViewById(2131166283)).inflate();
-      this.mVV = ((LockPatternVerifyView)findViewById(2131165722));
+      ((ViewStub)findViewById(2131166323)).inflate();
+      this.mVV = ((LockPatternVerifyView)findViewById(2131165739));
       this.mVV.setAnimType(1);
       this.mModifyMode = true;
       this.mVV.setVerifyListener(new LockPatternVerifyView.b()
@@ -300,7 +300,7 @@ public class StartPwdGestureModifyActivity
         public final void a(boolean paramAnonymousBoolean)
         {
           StartPwdGestureModifyActivity localStartPwdGestureModifyActivity = StartPwdGestureModifyActivity.this;
-          localStartPwdGestureModifyActivity.showUserDialog(2131492986, localStartPwdGestureModifyActivity.getResources().getString(2131493259), 2131493040, new DialogInterface.OnClickListener()
+          localStartPwdGestureModifyActivity.showUserDialog(2131492987, localStartPwdGestureModifyActivity.getResources().getString(2131493261), 2131493041, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -317,9 +317,9 @@ public class StartPwdGestureModifyActivity
         }
       });
     }
-    this.mLockPatternView = ((LockPatternView)findViewById(2131166266));
-    this.mSmallView = ((LockPatternSmallView)findViewById(2131166265));
-    this.mPromtMsg = ((TextView)findViewById(2131166267));
+    this.mLockPatternView = ((LockPatternView)findViewById(2131166306));
+    this.mSmallView = ((LockPatternSmallView)findViewById(2131166305));
+    this.mPromtMsg = ((TextView)findViewById(2131166307));
     initUI();
   }
 }

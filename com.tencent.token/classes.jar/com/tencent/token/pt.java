@@ -1,46 +1,14 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXMediaMessage.a;
-
-public final class pt
+public abstract interface pt
 {
-  public static final class a
-    extends pr
-  {
-    public WXMediaMessage b;
-    public int c;
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.a(paramBundle);
-      WXMediaMessage localWXMediaMessage = this.b;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("_wxobject_sdkVer", localWXMediaMessage.sdkVer);
-      localBundle.putString("_wxobject_title", localWXMediaMessage.title);
-      localBundle.putString("_wxobject_description", localWXMediaMessage.description);
-      localBundle.putByteArray("_wxobject_thumbdata", localWXMediaMessage.thumbData);
-      if (localWXMediaMessage.mediaObject != null)
-      {
-        localBundle.putString("_wxobject_identifier_", localWXMediaMessage.mediaObject.getClass().getName());
-        localWXMediaMessage.mediaObject.serialize(localBundle);
-      }
-      paramBundle.putAll(localBundle);
-      paramBundle.putInt("_wxapi_sendmessagetowx_req_scene", this.c);
-    }
-    
-    final boolean a()
-    {
-      WXMediaMessage localWXMediaMessage = this.b;
-      if (localWXMediaMessage == null)
-      {
-        pw.a("MicroMsg.SDK.SendMessageToWX.Req", "checkArgs fail ,message is null");
-        return false;
-      }
-      return localWXMediaMessage.checkArgs();
-    }
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(pb parampb);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
 }
 
 

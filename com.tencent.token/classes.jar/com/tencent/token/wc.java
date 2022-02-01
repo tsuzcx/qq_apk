@@ -1,57 +1,70 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wc
-  extends tr
+  extends ud
 {
-  public String d;
-  public long e;
-  public int f;
+  private long d;
+  private String e;
+  private int f;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.e = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramabc.c.get("param.qqpwd"));
-    this.f = ((Integer)paramabc.c.get("param.scene.id")).intValue();
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    if (paramJSONObject.getInt("err") != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      this.e = null;
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    byte[] arrayOfByte = aay.d(paramJSONObject.getString("data"));
+    if (arrayOfByte != null)
     {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (this.c != i)
+      int i = new JSONObject(new String(arrayOfByte)).getInt("seq_id");
+      if (i != this.f)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xj.c(paramJSONObject.toString());
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
         return;
       }
-      this.a.a = 0;
+      this.e = paramJSONObject.getString("photo_url");
       return;
     }
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(arrayOfByte)));
+    a(10022, RqdApplication.n().getString(2131493069));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.e;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

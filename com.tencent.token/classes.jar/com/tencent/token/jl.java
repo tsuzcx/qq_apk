@@ -1,177 +1,244 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnHoverListener;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
-import android.view.accessibility.AccessibilityManager;
+import android.view.ViewParent;
 
-final class jl
-  implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
+public abstract class jl
+  implements View.OnAttachStateChangeListener, View.OnTouchListener
 {
-  private static jl i;
-  private static jl j;
-  private final View a;
-  private final CharSequence b;
-  private final Runnable c = new Runnable()
-  {
-    public final void run()
-    {
-      jl.a(jl.this);
-    }
-  };
-  private final Runnable d = new Runnable()
-  {
-    public final void run()
-    {
-      jl.b(jl.this);
-    }
-  };
-  private int e;
-  private int f;
-  private jm g;
-  private boolean h;
+  private final float a;
+  private final int b;
+  final View c;
+  private final int d;
+  private Runnable e;
+  private Runnable f;
+  private boolean g;
+  private int h;
+  private final int[] i = new int[2];
   
-  private jl(View paramView, CharSequence paramCharSequence)
+  public jl(View paramView)
   {
-    this.a = paramView;
-    this.b = paramCharSequence;
-    this.a.setOnLongClickListener(this);
-    this.a.setOnHoverListener(this);
+    this.c = paramView;
+    paramView.setLongClickable(true);
+    paramView.addOnAttachStateChangeListener(this);
+    this.a = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
+    this.b = ViewConfiguration.getTapTimeout();
+    this.d = ((this.b + ViewConfiguration.getLongPressTimeout()) / 2);
   }
   
-  private void a()
+  private void e()
   {
-    if (j == this)
-    {
-      j = null;
-      jm localjm = this.g;
-      if (localjm != null)
-      {
-        localjm.a();
-        this.g = null;
-        this.a.removeOnAttachStateChangeListener(this);
-      }
+    Runnable localRunnable = this.f;
+    if (localRunnable != null) {
+      this.c.removeCallbacks(localRunnable);
     }
-    if (i == this) {
-      c(null);
-    }
-    this.a.removeCallbacks(this.d);
-  }
-  
-  public static void a(View paramView, CharSequence paramCharSequence)
-  {
-    jl localjl = i;
-    if ((localjl != null) && (localjl.a == paramView)) {
-      c(null);
-    }
-    if (TextUtils.isEmpty(paramCharSequence))
-    {
-      paramCharSequence = j;
-      if ((paramCharSequence != null) && (paramCharSequence.a == paramView)) {
-        paramCharSequence.a();
-      }
-      paramView.setOnLongClickListener(null);
-      paramView.setLongClickable(false);
-      paramView.setOnHoverListener(null);
-      return;
-    }
-    new jl(paramView, paramCharSequence);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (!fa.s(this.a)) {
-      return;
-    }
-    c(null);
-    jl localjl = j;
-    if (localjl != null) {
-      localjl.a();
-    }
-    j = this;
-    this.h = paramBoolean;
-    this.g = new jm(this.a.getContext());
-    this.g.a(this.a, this.e, this.f, this.h, this.b);
-    this.a.addOnAttachStateChangeListener(this);
-    long l;
-    if (this.h) {
-      l = 2500L;
-    } else if ((fa.i(this.a) & 0x1) == 1) {
-      l = 3000L - ViewConfiguration.getLongPressTimeout();
-    } else {
-      l = 15000L - ViewConfiguration.getLongPressTimeout();
-    }
-    this.a.removeCallbacks(this.d);
-    this.a.postDelayed(this.d, l);
-  }
-  
-  private void b()
-  {
-    this.a.postDelayed(this.c, ViewConfiguration.getLongPressTimeout());
-  }
-  
-  private void c()
-  {
-    this.a.removeCallbacks(this.c);
-  }
-  
-  private static void c(jl paramjl)
-  {
-    jl localjl = i;
-    if (localjl != null) {
-      localjl.c();
-    }
-    i = paramjl;
-    if (paramjl != null) {
-      i.b();
+    localRunnable = this.e;
+    if (localRunnable != null) {
+      this.c.removeCallbacks(localRunnable);
     }
   }
   
-  public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((this.g != null) && (this.h)) {
-      return false;
-    }
-    paramView = (AccessibilityManager)this.a.getContext().getSystemService("accessibility");
-    if ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled())) {
-      return false;
-    }
-    int k = paramMotionEvent.getAction();
-    if (k != 7)
-    {
-      if (k != 10) {
-        return false;
-      }
-      a();
-      return false;
-    }
-    if ((this.a.isEnabled()) && (this.g == null))
-    {
-      this.e = ((int)paramMotionEvent.getX());
-      this.f = ((int)paramMotionEvent.getY());
-      c(this);
-    }
-    return false;
-  }
+  public abstract io a();
   
-  public final boolean onLongClick(View paramView)
+  protected boolean b()
   {
-    this.e = (paramView.getWidth() / 2);
-    this.f = (paramView.getHeight() / 2);
-    a(true);
+    io localio = a();
+    if ((localio != null) && (!localio.d())) {
+      localio.b();
+    }
     return true;
   }
   
-  public final void onViewAttachedToWindow(View paramView) {}
-  
-  public final void onViewDetachedFromWindow(View paramView)
+  protected boolean c()
   {
-    a();
+    io localio = a();
+    if ((localio != null) && (localio.d())) {
+      localio.c();
+    }
+    return true;
+  }
+  
+  final void d()
+  {
+    e();
+    View localView = this.c;
+    if (localView.isEnabled())
+    {
+      if (localView.isLongClickable()) {
+        return;
+      }
+      if (!b()) {
+        return;
+      }
+      localView.getParent().requestDisallowInterceptTouchEvent(true);
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+      localView.onTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.g = true;
+      return;
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    boolean bool3 = this.g;
+    boolean bool1;
+    int j;
+    boolean bool2;
+    if (bool3)
+    {
+      paramView = this.c;
+      Object localObject = a();
+      if ((localObject != null) && (((io)localObject).d()))
+      {
+        localObject = (jj)((io)localObject).e();
+        if ((localObject != null) && (((jj)localObject).isShown()))
+        {
+          MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
+          int[] arrayOfInt = this.i;
+          paramView.getLocationOnScreen(arrayOfInt);
+          localMotionEvent.offsetLocation(arrayOfInt[0], arrayOfInt[1]);
+          paramView = this.i;
+          ((View)localObject).getLocationOnScreen(paramView);
+          localMotionEvent.offsetLocation(-paramView[0], -paramView[1]);
+          bool1 = ((jj)localObject).a(localMotionEvent, this.h);
+          localMotionEvent.recycle();
+          j = paramMotionEvent.getActionMasked();
+          if ((j != 1) && (j != 3)) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          if ((bool1) && (j != 0)) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+        }
+        else
+        {
+          j = 0;
+        }
+      }
+      else
+      {
+        j = 0;
+      }
+      if ((j == 0) && (c())) {
+        bool2 = false;
+      } else {
+        bool2 = true;
+      }
+    }
+    else
+    {
+      paramView = this.c;
+      if (paramView.isEnabled()) {
+        switch (paramMotionEvent.getActionMasked())
+        {
+        default: 
+          break;
+        case 2: 
+          j = paramMotionEvent.findPointerIndex(this.h);
+          if (j >= 0)
+          {
+            float f1 = paramMotionEvent.getX(j);
+            float f2 = paramMotionEvent.getY(j);
+            float f3 = this.a;
+            float f4 = -f3;
+            if ((f1 >= f4) && (f2 >= f4) && (f1 < paramView.getRight() - paramView.getLeft() + f3) && (f2 < paramView.getBottom() - paramView.getTop() + f3)) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            if (j == 0)
+            {
+              e();
+              paramView.getParent().requestDisallowInterceptTouchEvent(true);
+              j = 1;
+            }
+          }
+          break;
+        case 1: 
+        case 3: 
+          e();
+          break;
+        case 0: 
+          this.h = paramMotionEvent.getPointerId(0);
+          if (this.e == null) {
+            this.e = new a();
+          }
+          paramView.postDelayed(this.e, this.b);
+          if (this.f == null) {
+            this.f = new b();
+          }
+          paramView.postDelayed(this.f, this.d);
+        }
+      }
+      j = 0;
+      if ((j != 0) && (b())) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      bool2 = bool1;
+      if (bool1)
+      {
+        long l = SystemClock.uptimeMillis();
+        paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        this.c.onTouchEvent(paramView);
+        paramView.recycle();
+        bool2 = bool1;
+      }
+    }
+    this.g = bool2;
+    if (!bool2) {
+      return bool3;
+    }
+    return true;
+  }
+  
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    this.g = false;
+    this.h = -1;
+    paramView = this.e;
+    if (paramView != null) {
+      this.c.removeCallbacks(paramView);
+    }
+  }
+  
+  final class a
+    implements Runnable
+  {
+    a() {}
+    
+    public final void run()
+    {
+      ViewParent localViewParent = jl.this.c.getParent();
+      if (localViewParent != null) {
+        localViewParent.requestDisallowInterceptTouchEvent(true);
+      }
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    b() {}
+    
+    public final void run()
+    {
+      jl.this.d();
+    }
   }
 }
 

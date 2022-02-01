@@ -1,10 +1,41 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import android.database.Cursor;
 
 public abstract interface aii
+  extends Cursor
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
+  public abstract void close();
+  
+  public abstract byte[] getBlob(int paramInt);
+  
+  public abstract int getColumnCount();
+  
+  public abstract int getColumnIndex(String paramString);
+  
+  public abstract String[] getColumnNames();
+  
+  public abstract int getCount();
+  
+  public abstract double getDouble(int paramInt);
+  
+  public abstract int getInt(int paramInt);
+  
+  public abstract long getLong(int paramInt);
+  
+  public abstract String getString(int paramInt);
+  
+  public abstract int getType(int paramInt);
+  
+  public abstract boolean isAfterLast();
+  
+  public abstract boolean isLast();
+  
+  public abstract boolean moveToFirst();
+  
+  public abstract boolean moveToLast();
+  
+  public abstract boolean moveToNext();
 }
 
 

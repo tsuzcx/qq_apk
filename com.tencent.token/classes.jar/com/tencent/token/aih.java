@@ -1,9 +1,8 @@
 package com.tencent.token;
 
-public final class aih
-{
-  public static int a;
-}
+public abstract interface aih
+  extends aii
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

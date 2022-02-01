@@ -3,17 +3,17 @@ package com.tencent.token.core.push;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.aao;
-import com.tencent.token.xj;
+import com.tencent.token.aay;
+import com.tencent.token.xv;
 
 public class BootBroadcastReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    xj.c("android boot completed");
+    xv.c("android boot completed");
     if (paramIntent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-      aao.g();
+      aay.g();
     }
   }
 }

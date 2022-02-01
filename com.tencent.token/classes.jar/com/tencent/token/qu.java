@@ -1,87 +1,46 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
-public class qu
+public final class qu
 {
-  private static qu b;
-  aud a;
-  private Context c;
-  private int d = 0;
-  
-  private qu(Context paramContext)
+  public static final class a
   {
-    this.c = paramContext;
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.d = 4;
-    }
-    this.a = qw.a.a().a("tj");
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("act_got_ads");
-    paramContext.registerReceiver(new BroadcastReceiver()
+    public static Object a(int paramInt, String paramString)
     {
-      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      switch (paramInt)
       {
-        
-        if ("act_got_ads".equals(paramAnonymousIntent.getAction()))
+      default: 
+        break;
+      case 6: 
+      case 5: 
+      case 4: 
+      case 2: 
+      case 1: 
+        try
         {
-          paramAnonymousContext = qu.this;
-          paramAnonymousIntent = qw.a.a();
-          qu.a(qu.this);
-          qu.b(qu.this);
-          qu.a(paramAnonymousContext, paramAnonymousIntent.a("tj"));
+          return Double.valueOf(paramString);
         }
-      }
-    }, localIntentFilter);
-  }
-  
-  public static qu a(Context paramContext)
-  {
-    if (b == null) {
-      try
-      {
-        if (b == null) {
-          b = new qu(paramContext);
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
         }
+        return Float.valueOf(paramString);
+        return Boolean.valueOf(paramString);
+        return Long.valueOf(paramString);
+        return Integer.valueOf(paramString);
+        qk.a("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
+        return null;
       }
-      finally {}
+      return paramString;
     }
-    return b;
   }
   
-  public final String a(int paramInt)
+  public static final class b
+    implements BaseColumns
   {
-    return this.a.a("ad_".concat(String.valueOf(paramInt)), "");
-  }
-  
-  public final void a(HashMap<Integer, String> paramHashMap)
-  {
-    a(paramHashMap, true);
-  }
-  
-  public final void a(HashMap<Integer, String> paramHashMap, boolean paramBoolean)
-  {
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
-    {
-      this.a.b();
-      Iterator localIterator = paramHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        if ((paramBoolean) || (TextUtils.isEmpty(this.a.a("ad_".concat(String.valueOf(i)), "")))) {
-          this.a.b("ad_".concat(String.valueOf(i)), (String)paramHashMap.get(Integer.valueOf(i)));
-        }
-      }
-      this.a.c();
-    }
+    public static final Uri a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
   }
 }
 

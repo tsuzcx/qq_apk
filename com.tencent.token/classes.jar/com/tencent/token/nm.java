@@ -1,8 +1,32 @@
 package com.tencent.token;
 
-public abstract interface nm
+import java.util.concurrent.Future;
+
+public final class nm
 {
-  public abstract void a();
+  private Future a;
+  
+  public nm(Future paramFuture)
+  {
+    this.a = paramFuture;
+  }
+  
+  public final boolean a()
+  {
+    Future localFuture = this.a;
+    if (localFuture != null) {
+      try
+      {
+        boolean bool = localFuture.cancel(false);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+    return false;
+  }
 }
 
 

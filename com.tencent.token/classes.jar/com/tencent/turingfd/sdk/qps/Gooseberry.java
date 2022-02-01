@@ -1,33 +1,61 @@
 package com.tencent.turingfd.sdk.qps;
 
-import com.tencent.token.agd;
-import com.tencent.token.age;
-import com.tencent.token.agu;
+import com.tencent.token.afb;
+import com.tencent.token.afd;
+import com.tencent.token.afj;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class Gooseberry
-  extends final
+  extends Orion
   implements Cloneable
 {
-  public static Ginkgo a = new Ginkgo();
-  public int c = 0;
-  public Ginkgo d = null;
+  public static Map<String, String> a;
+  public static Map<Integer, Integer> b;
+  public static Map<String, String> c;
   public long e = 0L;
+  public boolean f = true;
+  public long g = 0L;
+  public Map<String, String> h = null;
+  public Map<Integer, Integer> i = null;
+  public long j = 0L;
+  public Map<String, String> k = null;
   
-  public final void a(agd paramagd)
+  static
   {
-    this.c = paramagd.a(this.c, 0, true);
-    this.d = ((Ginkgo)paramagd.a(a, 1, false));
-    this.e = paramagd.a(this.e, 2, true);
+    HashMap localHashMap = new HashMap();
+    a = localHashMap;
+    localHashMap.put("", "");
+    b = new HashMap();
+    b.put(Integer.valueOf(0), Integer.valueOf(0));
+    localHashMap = new HashMap();
+    c = localHashMap;
+    localHashMap.put("", "");
   }
   
-  public final void a(age paramage)
+  public final void a(afb paramafb)
   {
-    paramage.a(this.c, 0);
-    Ginkgo localGinkgo = this.d;
-    if (localGinkgo != null) {
-      paramage.a(localGinkgo, 1);
+    this.e = paramafb.a(this.e, 0, true);
+    this.f = paramafb.a(this.f, 1, true);
+    this.g = paramafb.a(this.g, 2, true);
+    this.h = ((Map)paramafb.a(a, 3, true));
+    this.i = ((Map)paramafb.a(b, 4, true));
+    this.j = paramafb.a(this.j, 5, true);
+    this.k = ((Map)paramafb.a(c, 6, false));
+  }
+  
+  public final void a(afd paramafd)
+  {
+    paramafd.a(this.e, 0);
+    paramafd.a((byte)this.f, 1);
+    paramafd.a(this.g, 2);
+    paramafd.a(this.h, 3);
+    paramafd.a(this.i, 4);
+    paramafd.a(this.j, 5);
+    Map localMap = this.k;
+    if (localMap != null) {
+      paramafd.a(localMap, 6);
     }
-    paramage.a(this.e, 2);
   }
   
   public final Object clone()
@@ -42,7 +70,7 @@ public final class Gooseberry
       label7:
       break label7;
     }
-    if (b) {
+    if (d) {
       return null;
     }
     throw new AssertionError();
@@ -54,15 +82,19 @@ public final class Gooseberry
       return false;
     }
     paramObject = (Gooseberry)paramObject;
-    int i = this.c;
-    int j = paramObject.c;
-    int k = agu.a;
-    if (i == j) {
-      i = 1;
-    } else {
-      i = 0;
+    if (afj.a(this.e, paramObject.e))
+    {
+      int m;
+      if (this.f == paramObject.f) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if ((m != 0) && (afj.a(this.g, paramObject.g)) && (this.h.equals(paramObject.h)) && (this.i.equals(paramObject.i)) && (afj.a(this.j, paramObject.j)) && (this.k.equals(paramObject.k))) {
+        return true;
+      }
     }
-    return (i != 0) && (this.d.equals(paramObject.d)) && (agu.a(this.e, paramObject.e));
+    return false;
   }
   
   public final int hashCode()

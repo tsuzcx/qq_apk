@@ -1,19 +1,88 @@
 package com.tencent.token;
 
-import java.util.Collections;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import java.util.List;
 
-public abstract interface ajz
+public final class ajz
 {
-  public static final ajz a = new ajz()
-  {
-    public final List<ajy> a()
-    {
-      return Collections.emptyList();
-    }
-  };
+  static PackageManager a;
   
-  public abstract List<ajy> a();
+  public static List<PackageInfo> a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getInstalledPackages, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.getInstalledPackages(paramInt);
+  }
+  
+  public static List<ResolveInfo> a(ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("queryIntentActivityOptions, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.queryIntentActivityOptions(paramComponentName, paramArrayOfIntent, paramIntent, paramInt);
+  }
+  
+  public static List<ResolveInfo> a(Intent paramIntent, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("queryBroadcastReceivers, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.queryBroadcastReceivers(paramIntent, paramInt);
+  }
+  
+  public static List<ApplicationInfo> b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getInstalledApplications, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.getInstalledApplications(paramInt);
+  }
+  
+  public static List<ResolveInfo> b(Intent paramIntent, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("queryIntentServices, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.queryIntentServices(paramIntent, paramInt);
+  }
+  
+  public static List<ResolveInfo> c(Intent paramIntent, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("queryIntentActivities, flags:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!ll.a()) {
+      return null;
+    }
+    akg.a("[API]PackageManagerInvoke_");
+    return a.queryIntentActivities(paramIntent, paramInt);
+  }
 }
 
 

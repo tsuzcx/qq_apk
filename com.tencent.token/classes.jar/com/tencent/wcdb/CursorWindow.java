@@ -5,10 +5,10 @@ import android.database.CharArrayBuffer;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.token.ahq;
+import com.tencent.token.aiq;
 
 public class CursorWindow
-  extends ahq
+  extends aiq
   implements Parcelable
 {
   public static final Parcelable.Creator<CursorWindow> CREATOR = new Parcelable.Creator() {};

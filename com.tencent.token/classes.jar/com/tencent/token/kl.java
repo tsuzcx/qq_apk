@@ -1,36 +1,28 @@
 package com.tencent.token;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.IContentProvider;
-import com.oasisfeng.condom.CondomCore;
-import com.oasisfeng.condom.ContentResolverWrapper;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class kl
-  extends ContentResolverWrapper
+  extends JceStruct
 {
-  private final CondomCore a;
+  public long a = 0L;
+  public int b = 0;
+  public long c = 0L;
   
-  public kl(CondomCore paramCondomCore, Context paramContext, ContentResolver paramContentResolver)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    super(paramContext, paramContentResolver);
-    this.a = paramCondomCore;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
   }
   
-  public final IContentProvider acquireProvider(Context paramContext, String paramString)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
-      return null;
-    }
-    return super.acquireProvider(paramContext, paramString);
-  }
-  
-  public final IContentProvider acquireUnstableProvider(Context paramContext, String paramString)
-  {
-    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
-      return null;
-    }
-    return super.acquireUnstableProvider(paramContext, paramString);
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
   }
 }
 

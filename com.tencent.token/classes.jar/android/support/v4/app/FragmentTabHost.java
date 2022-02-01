@@ -10,8 +10,8 @@ import android.util.AttributeSet;
 import android.view.View.BaseSavedState;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
-import com.tencent.token.ce;
-import com.tencent.token.ch;
+import com.tencent.token.cs;
+import com.tencent.token.cv;
 import java.util.ArrayList;
 
 public class FragmentTabHost
@@ -20,7 +20,7 @@ public class FragmentTabHost
 {
   private final ArrayList<a> a = new ArrayList();
   private Context b;
-  private ce c;
+  private cs c;
   private int d;
   private TabHost.OnTabChangeListener e;
   private a f;
@@ -50,18 +50,18 @@ public class FragmentTabHost
     return null;
   }
   
-  private ch a(String paramString, ch paramch)
+  private cv a(String paramString, cv paramcv)
   {
     a locala = a(paramString);
-    paramString = paramch;
+    paramString = paramcv;
     if (this.f != locala)
     {
-      paramString = paramch;
-      if (paramch == null) {
+      paramString = paramcv;
+      if (paramcv == null) {
         paramString = this.c.a();
       }
-      paramch = this.f;
-      if ((paramch != null) && (paramch.d != null)) {
+      paramcv = this.f;
+      if ((paramcv != null) && (paramcv.d != null)) {
         paramString.a(this.f.d);
       }
       if (locala != null) {
@@ -107,7 +107,7 @@ public class FragmentTabHost
             if (localObject1 == null) {
               localObject2 = this.c.a();
             }
-            ((ch)localObject2).a(locala.d);
+            ((cv)localObject2).a(locala.d);
           }
         }
       }
@@ -115,10 +115,10 @@ public class FragmentTabHost
       localObject1 = localObject2;
     }
     this.g = true;
-    localObject1 = a(str, (ch)localObject1);
+    localObject1 = a(str, (cv)localObject1);
     if (localObject1 != null)
     {
-      ((ch)localObject1).b();
+      ((cv)localObject1).b();
       this.c.b();
     }
   }
@@ -154,7 +154,7 @@ public class FragmentTabHost
     {
       localObject = a(paramString, null);
       if (localObject != null) {
-        ((ch)localObject).b();
+        ((cv)localObject).b();
       }
     }
     Object localObject = this.e;

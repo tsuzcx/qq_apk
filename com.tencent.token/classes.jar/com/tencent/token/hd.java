@@ -1,132 +1,62 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.support.v7.widget.ActionBarContextView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import java.lang.ref.WeakReference;
-
-public final class hd
-  extends ha
-  implements hp.a
+final class hd
 {
-  private Context a;
-  private ActionBarContextView b;
-  private ha.a e;
-  private WeakReference<View> f;
-  private boolean g;
-  private boolean h;
-  private hp i;
+  private static hd d;
+  public long a;
+  public long b;
+  public int c;
   
-  public hd(Context paramContext, ActionBarContextView paramActionBarContextView, ha.a parama, boolean paramBoolean)
+  static hd a()
   {
-    this.a = paramContext;
-    this.b = paramActionBarContextView;
-    this.e = parama;
-    paramContext = new hp(paramActionBarContextView.getContext());
-    paramContext.e = 1;
-    this.i = paramContext;
-    this.i.a(this);
-    this.h = paramBoolean;
-  }
-  
-  public final MenuInflater a()
-  {
-    return new hf(this.b.getContext());
-  }
-  
-  public final void a(int paramInt)
-  {
-    b(this.a.getString(paramInt));
-  }
-  
-  public final void a(View paramView)
-  {
-    this.b.setCustomView(paramView);
-    if (paramView != null) {
-      paramView = new WeakReference(paramView);
-    } else {
-      paramView = null;
+    if (d == null) {
+      d = new hd();
     }
-    this.f = paramView;
+    return d;
   }
   
-  public final void a(hp paramhp)
+  public final void a(long paramLong, double paramDouble1, double paramDouble2)
   {
-    d();
-    this.b.a();
-  }
-  
-  public final void a(CharSequence paramCharSequence)
-  {
-    this.b.setSubtitle(paramCharSequence);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    this.b.setTitleOptional(paramBoolean);
-  }
-  
-  public final boolean a(hp paramhp, MenuItem paramMenuItem)
-  {
-    return this.e.a(this, paramMenuItem);
-  }
-  
-  public final Menu b()
-  {
-    return this.i;
-  }
-  
-  public final void b(int paramInt)
-  {
-    a(this.a.getString(paramInt));
-  }
-  
-  public final void b(CharSequence paramCharSequence)
-  {
-    this.b.setTitle(paramCharSequence);
-  }
-  
-  public final void c()
-  {
-    if (this.g) {
+    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
+    float f2 = 0.01720197F * f1 + 6.24006F;
+    double d1 = f2;
+    double d2 = Math.sin(d1);
+    Double.isNaN(d1);
+    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
+    paramDouble2 = -paramDouble2 / 360.0D;
+    double d3 = f1 - 0.0009F;
+    Double.isNaN(d3);
+    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
+    Double.isNaN(d3);
+    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
+    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
+    paramDouble1 = 0.0174532923847437D * paramDouble1;
+    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
+    if (paramDouble1 >= 1.0D)
+    {
+      this.c = 1;
+      this.a = -1L;
+      this.b = -1L;
       return;
     }
-    this.g = true;
-    this.b.sendAccessibilityEvent(32);
-    this.e.a(this);
-  }
-  
-  public final void d()
-  {
-    this.e.b(this, this.i);
-  }
-  
-  public final CharSequence f()
-  {
-    return this.b.getTitle();
-  }
-  
-  public final CharSequence g()
-  {
-    return this.b.getSubtitle();
-  }
-  
-  public final boolean h()
-  {
-    return this.b.g;
-  }
-  
-  public final View i()
-  {
-    WeakReference localWeakReference = this.f;
-    if (localWeakReference != null) {
-      return (View)localWeakReference.get();
+    if (paramDouble1 <= -1.0D)
+    {
+      this.c = 0;
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
-    return null;
+    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
+    Double.isNaN(paramDouble1);
+    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
+    Double.isNaN(paramDouble1);
+    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
+    if ((this.b < paramLong) && (this.a > paramLong))
+    {
+      this.c = 0;
+      return;
+    }
+    this.c = 1;
   }
 }
 

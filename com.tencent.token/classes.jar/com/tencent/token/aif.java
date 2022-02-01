@@ -1,73 +1,104 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import com.tencent.wcdb.FileUtils;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
-import com.tencent.wcdb.database.SQLiteGlobal;
-import java.io.File;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.wcdb.CursorWindow;
 
-public final class aif
+public abstract class aif
+  extends Binder
+  implements aim
 {
-  static {}
-  
-  public static SQLiteDatabase a(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, SQLiteDatabase.a parama, ahj paramahj)
+  public static aim a(IBinder paramIBinder)
   {
-    if (paramString.charAt(0) == File.separatorChar)
+    if (paramIBinder == null) {
+      return null;
+    }
+    aim localaim = (aim)paramIBinder.queryLocalInterface("android.content.IBulkCursor");
+    if (localaim != null) {
+      return localaim;
+    }
+    return new aig(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      paramContext = new File(paramString.substring(0, paramString.lastIndexOf(File.separatorChar)));
-      paramString = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
-    }
-    else
-    {
-      if (paramContext == null) {
-        break label289;
+    default: 
+      break;
+    case 7: 
+    case 6: 
+    case 5: 
+    case 4: 
+    case 3: 
+    case 2: 
+    case 1: 
+      try
+      {
+        paramParcel1.enforceInterface("android.content.IBulkCursor");
+        b();
+        paramParcel2.writeNoException();
+        return true;
       }
-      paramContext = paramContext.getApplicationInfo().dataDir;
-      if (paramContext != null) {
-        paramContext = new File(paramContext);
-      } else {
-        paramContext = null;
+      catch (Exception paramParcel1)
+      {
+        IInterface localIInterface;
+        aik.a(paramParcel2, paramParcel1);
+        return true;
       }
-      File localFile = new File(paramContext, "databases");
-      paramContext = localFile;
-      if (localFile.getPath().equals("databases")) {
-        paramContext = new File("/data/system");
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = a(paramParcel1.readBundle(getClass().getClassLoader()));
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = c();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      b(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = paramParcel1.readStrongBinder();
+      if (paramParcel1 == null)
+      {
+        paramParcel1 = null;
       }
-      if (paramString.indexOf(File.separatorChar) >= 0) {
-        break label254;
+      else
+      {
+        localIInterface = paramParcel1.queryLocalInterface("com.tencent.wcdb.IContentObserver");
+        if ((localIInterface != null) && ((localIInterface instanceof ain))) {
+          paramParcel1 = (ain)localIInterface;
+        } else {
+          paramParcel1 = new ain.a.a(paramParcel1);
+        }
       }
-      paramString = new File(paramContext, paramString);
+      paramInt1 = a(paramParcel1);
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      paramParcel2.writeBundle(c());
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 == null)
+      {
+        paramParcel2.writeInt(0);
+        return true;
+      }
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
     }
-    if ((!paramContext.isDirectory()) && (paramContext.mkdir())) {
-      FileUtils.setPermissions(paramContext.getPath(), 505, -1, -1);
-    }
-    if ((paramInt & 0x8) != 0) {
-      i = 805306368;
-    } else {
-      i = 268435456;
-    }
-    paramContext = SQLiteDatabase.a(paramString.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, parama, i, paramahj);
-    paramString = paramString.getPath();
-    int i = 432;
-    if ((paramInt & 0x1) != 0) {
-      i = 436;
-    }
-    int j = i;
-    if ((paramInt & 0x2) != 0) {
-      j = i | 0x2;
-    }
-    FileUtils.setPermissions(paramString, j, -1, -1);
-    return paramContext;
-    label254:
-    paramContext = new StringBuilder("File ");
-    paramContext.append(paramString);
-    paramContext.append(" contains a path separator");
-    throw new IllegalArgumentException(paramContext.toString());
-    label289:
-    throw new RuntimeException("Not supported in system context");
+    return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
   }
 }
 

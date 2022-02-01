@@ -1,63 +1,225 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 public final class aoc
-  extends JceStruct
 {
-  static ArrayList<ano> f = new ArrayList();
-  public int a = 0;
-  public int b = 0;
-  public ArrayList<ano> c = null;
-  public String d = "";
-  public int e = 0;
+  static final Logger a = Logger.getLogger(aoc.class.getName());
   
-  static
+  public static anu a(aoi paramaoi)
   {
-    ano localano = new ano();
-    f.add(localano);
+    return new aod(paramaoi);
   }
   
-  public final JceStruct newInit()
+  public static anv a(aoj paramaoj)
   {
-    return new aoc();
+    return new aoe(paramaoj);
   }
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public static aoi a(final Socket paramSocket)
   {
-    this.a = paramJceInputStream.read(this.a, 0, false);
-    this.b = paramJceInputStream.read(this.b, 1, false);
-    this.c = ((ArrayList)paramJceInputStream.read(f, 2, false));
-    this.d = paramJceInputStream.readString(3, false);
-    this.e = paramJceInputStream.read(this.e, 4, false);
+    if (paramSocket != null)
+    {
+      if (paramSocket.getOutputStream() != null)
+      {
+        anr localanr = c(paramSocket);
+        paramSocket = paramSocket.getOutputStream();
+        if (paramSocket != null) {
+          new anr.1(localanr, new aoi()
+          {
+            public final aok a()
+            {
+              return aoc.this;
+            }
+            
+            public final void a_(ant paramAnonymousant, long paramAnonymousLong)
+            {
+              aol.a(paramAnonymousant.b, 0L, paramAnonymousLong);
+              while (paramAnonymousLong > 0L)
+              {
+                aoc.this.f();
+                aof localaof = paramAnonymousant.a;
+                int i = (int)Math.min(paramAnonymousLong, localaof.c - localaof.b);
+                paramSocket.write(localaof.a, localaof.b, i);
+                localaof.b += i;
+                long l2 = i;
+                long l1 = paramAnonymousLong - l2;
+                paramAnonymousant.b -= l2;
+                paramAnonymousLong = l1;
+                if (localaof.b == localaof.c)
+                {
+                  paramAnonymousant.a = localaof.b();
+                  aog.a(localaof);
+                  paramAnonymousLong = l1;
+                }
+              }
+            }
+            
+            public final void close()
+            {
+              paramSocket.close();
+            }
+            
+            public final void flush()
+            {
+              paramSocket.flush();
+            }
+            
+            public final String toString()
+            {
+              StringBuilder localStringBuilder = new StringBuilder("sink(");
+              localStringBuilder.append(paramSocket);
+              localStringBuilder.append(")");
+              return localStringBuilder.toString();
+            }
+          });
+        }
+        throw new IllegalArgumentException("out == null");
+      }
+      throw new IOException("socket's output stream == null");
+    }
+    throw new IllegalArgumentException("socket == null");
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public static aoj a(InputStream paramInputStream)
   {
-    int i = this.a;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 0);
+    return a(paramInputStream, new aok());
+  }
+  
+  private static aoj a(final InputStream paramInputStream, aok paramaok)
+  {
+    if (paramInputStream != null)
+    {
+      if (paramaok != null) {
+        new aoj()
+        {
+          public final long a(ant paramAnonymousant, long paramAnonymousLong)
+          {
+            if (paramAnonymousLong >= 0L)
+            {
+              if (paramAnonymousLong == 0L) {
+                return 0L;
+              }
+              try
+              {
+                aoc.this.f();
+                aof localaof = paramAnonymousant.e(1);
+                int i = (int)Math.min(paramAnonymousLong, 8192 - localaof.c);
+                i = paramInputStream.read(localaof.a, localaof.c, i);
+                if (i == -1) {
+                  return -1L;
+                }
+                localaof.c += i;
+                paramAnonymousLong = paramAnonymousant.b;
+                long l = i;
+                paramAnonymousant.b = (paramAnonymousLong + l);
+                return l;
+              }
+              catch (AssertionError paramAnonymousant)
+              {
+                if (aoc.a(paramAnonymousant)) {
+                  throw new IOException(paramAnonymousant);
+                }
+                throw paramAnonymousant;
+              }
+            }
+            throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramAnonymousLong)));
+          }
+          
+          public final aok a()
+          {
+            return aoc.this;
+          }
+          
+          public final void close()
+          {
+            paramInputStream.close();
+          }
+          
+          public final String toString()
+          {
+            StringBuilder localStringBuilder = new StringBuilder("source(");
+            localStringBuilder.append(paramInputStream);
+            localStringBuilder.append(")");
+            return localStringBuilder.toString();
+          }
+        };
+      }
+      throw new IllegalArgumentException("timeout == null");
     }
-    i = this.b;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 1);
+    throw new IllegalArgumentException("in == null");
+  }
+  
+  static boolean a(AssertionError paramAssertionError)
+  {
+    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
+  }
+  
+  public static aoj b(Socket paramSocket)
+  {
+    if (paramSocket != null)
+    {
+      if (paramSocket.getInputStream() != null)
+      {
+        anr localanr = c(paramSocket);
+        return new anr.2(localanr, a(paramSocket.getInputStream(), localanr));
+      }
+      throw new IOException("socket's input stream == null");
     }
-    Object localObject = this.c;
-    if (localObject != null) {
-      paramJceOutputStream.write((Collection)localObject, 2);
-    }
-    localObject = this.d;
-    if (localObject != null) {
-      paramJceOutputStream.write((String)localObject, 3);
-    }
-    i = this.e;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 4);
-    }
+    throw new IllegalArgumentException("socket == null");
+  }
+  
+  private static anr c(Socket paramSocket)
+  {
+    new anr()
+    {
+      protected final IOException a(@Nullable IOException paramAnonymousIOException)
+      {
+        SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
+        if (paramAnonymousIOException != null) {
+          localSocketTimeoutException.initCause(paramAnonymousIOException);
+        }
+        return localSocketTimeoutException;
+      }
+      
+      protected final void a()
+      {
+        try
+        {
+          aoc.this.close();
+          return;
+        }
+        catch (AssertionError localAssertionError)
+        {
+          if (aoc.a(localAssertionError))
+          {
+            localLogger = aoc.a;
+            localLevel = Level.WARNING;
+            localStringBuilder = new StringBuilder("Failed to close timed out socket ");
+            localStringBuilder.append(aoc.this);
+            localLogger.log(localLevel, localStringBuilder.toString(), localAssertionError);
+            return;
+          }
+          throw localAssertionError;
+        }
+        catch (Exception localException)
+        {
+          Logger localLogger = aoc.a;
+          Level localLevel = Level.WARNING;
+          StringBuilder localStringBuilder = new StringBuilder("Failed to close timed out socket ");
+          localStringBuilder.append(aoc.this);
+          localLogger.log(localLevel, localStringBuilder.toString(), localException);
+        }
+      }
+    };
   }
 }
 

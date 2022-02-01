@@ -1,10 +1,26 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
-public abstract interface aue
+public class aue
+  extends aro
+  implements auf
 {
-  public abstract void a(int paramInt, ArrayList<String> paramArrayList);
+  public final NetworkInfo a()
+  {
+    try
+    {
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)arn.a().getSystemService("connectivity")).getActiveNetworkInfo();
+      return localNetworkInfo;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

@@ -1,175 +1,149 @@
 package com.tencent.token;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import java.util.ArrayList;
+import android.location.Location;
+import android.location.LocationManager;
+import java.util.Calendar;
 
-public final class he
-  extends ActionMode
+final class he
 {
-  final Context a;
-  final ha b;
+  private static he a;
+  private final Context b;
+  private final LocationManager c;
+  private final a d = new a();
   
-  public he(Context paramContext, ha paramha)
+  private he(Context paramContext, LocationManager paramLocationManager)
   {
-    this.a = paramContext;
-    this.b = paramha;
+    this.b = paramContext;
+    this.c = paramLocationManager;
   }
   
-  public final void finish()
+  private Location a(String paramString)
   {
-    this.b.c();
-  }
-  
-  public final View getCustomView()
-  {
-    return this.b.i();
-  }
-  
-  public final Menu getMenu()
-  {
-    return hy.a(this.a, (dq)this.b.b());
-  }
-  
-  public final MenuInflater getMenuInflater()
-  {
-    return this.b.a();
-  }
-  
-  public final CharSequence getSubtitle()
-  {
-    return this.b.g();
-  }
-  
-  public final Object getTag()
-  {
-    return this.b.c;
-  }
-  
-  public final CharSequence getTitle()
-  {
-    return this.b.f();
-  }
-  
-  public final boolean getTitleOptionalHint()
-  {
-    return this.b.d;
-  }
-  
-  public final void invalidate()
-  {
-    this.b.d();
-  }
-  
-  public final boolean isTitleOptional()
-  {
-    return this.b.h();
-  }
-  
-  public final void setCustomView(View paramView)
-  {
-    this.b.a(paramView);
-  }
-  
-  public final void setSubtitle(int paramInt)
-  {
-    this.b.b(paramInt);
-  }
-  
-  public final void setSubtitle(CharSequence paramCharSequence)
-  {
-    this.b.a(paramCharSequence);
-  }
-  
-  public final void setTag(Object paramObject)
-  {
-    this.b.c = paramObject;
-  }
-  
-  public final void setTitle(int paramInt)
-  {
-    this.b.a(paramInt);
-  }
-  
-  public final void setTitle(CharSequence paramCharSequence)
-  {
-    this.b.b(paramCharSequence);
-  }
-  
-  public final void setTitleOptionalHint(boolean paramBoolean)
-  {
-    this.b.a(paramBoolean);
-  }
-  
-  public static final class a
-    implements ha.a
-  {
-    final ActionMode.Callback a;
-    final Context b;
-    final ArrayList<he> c;
-    final ej<Menu, Menu> d;
-    
-    public a(Context paramContext, ActionMode.Callback paramCallback)
+    try
     {
-      this.b = paramContext;
-      this.a = paramCallback;
-      this.c = new ArrayList();
-      this.d = new ej();
-    }
-    
-    private Menu a(Menu paramMenu)
-    {
-      Menu localMenu2 = (Menu)this.d.get(paramMenu);
-      Menu localMenu1 = localMenu2;
-      if (localMenu2 == null)
+      if (this.c.isProviderEnabled(paramString))
       {
-        localMenu1 = hy.a(this.b, (dq)paramMenu);
-        this.d.put(paramMenu, localMenu1);
+        paramString = this.c.getLastKnownLocation(paramString);
+        return paramString;
       }
-      return localMenu1;
     }
-    
-    public final void a(ha paramha)
+    catch (Exception paramString)
     {
-      this.a.onDestroyActionMode(b(paramha));
+      label22:
+      break label22;
     }
-    
-    public final boolean a(ha paramha, Menu paramMenu)
+    return null;
+  }
+  
+  static he a(Context paramContext)
+  {
+    if (a == null)
     {
-      return this.a.onCreateActionMode(b(paramha), a(paramMenu));
+      paramContext = paramContext.getApplicationContext();
+      a = new he(paramContext, (LocationManager)paramContext.getSystemService("location"));
     }
-    
-    public final boolean a(ha paramha, MenuItem paramMenuItem)
-    {
-      return this.a.onActionItemClicked(b(paramha), hy.a(this.b, (dr)paramMenuItem));
+    return a;
+  }
+  
+  private void a(Location paramLocation)
+  {
+    a locala = this.d;
+    long l1 = System.currentTimeMillis();
+    hd localhd = hd.a();
+    localhd.a(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l2 = localhd.a;
+    localhd.a(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    boolean bool;
+    if (localhd.c == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    
-    public final ActionMode b(ha paramha)
+    long l3 = localhd.b;
+    long l4 = localhd.a;
+    localhd.a(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l5 = localhd.b;
+    if ((l3 != -1L) && (l4 != -1L))
     {
-      int j = this.c.size();
-      int i = 0;
-      while (i < j)
-      {
-        he localhe = (he)this.c.get(i);
-        if ((localhe != null) && (localhe.b == paramha)) {
-          return localhe;
-        }
-        i += 1;
+      if (l1 > l4) {
+        l1 = 0L + l5;
+      } else if (l1 > l3) {
+        l1 = 0L + l4;
+      } else {
+        l1 = 0L + l3;
       }
-      paramha = new he(this.b, paramha);
-      this.c.add(paramha);
-      return paramha;
+      l1 += 60000L;
     }
-    
-    public final boolean b(ha paramha, Menu paramMenu)
+    else
     {
-      return this.a.onPrepareActionMode(b(paramha), a(paramMenu));
+      l1 = 43200000L + l1;
     }
+    locala.a = bool;
+    locala.b = l2;
+    locala.c = l3;
+    locala.d = l4;
+    locala.e = l5;
+    locala.f = l1;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  private Location b()
+  {
+    int i = dm.a(this.b, "android.permission.ACCESS_COARSE_LOCATION");
+    Location localLocation2 = null;
+    Location localLocation1;
+    if (i == 0) {
+      localLocation1 = a("network");
+    } else {
+      localLocation1 = null;
+    }
+    if (dm.a(this.b, "android.permission.ACCESS_FINE_LOCATION") == 0) {
+      localLocation2 = a("gps");
+    }
+    if ((localLocation2 != null) && (localLocation1 != null))
+    {
+      if (localLocation2.getTime() > localLocation1.getTime()) {
+        return localLocation2;
+      }
+      return localLocation1;
+    }
+    if (localLocation2 != null) {
+      return localLocation2;
+    }
+    return localLocation1;
+  }
+  
+  private boolean c()
+  {
+    return this.d.f > System.currentTimeMillis();
+  }
+  
+  final boolean a()
+  {
+    a locala = this.d;
+    if (c()) {
+      return locala.a;
+    }
+    Location localLocation = b();
+    if (localLocation != null)
+    {
+      a(localLocation);
+      return locala.a;
+    }
+    int i = Calendar.getInstance().get(11);
+    return (i < 6) || (i >= 22);
+  }
+  
+  static final class a
+  {
+    boolean a;
+    long b;
+    long c;
+    long d;
+    long e;
+    long f;
   }
 }
 

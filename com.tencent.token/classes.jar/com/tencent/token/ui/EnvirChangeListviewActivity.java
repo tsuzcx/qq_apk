@@ -11,22 +11,22 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.ait;
-import com.tencent.token.sh;
-import com.tencent.token.sk;
-import com.tencent.token.sn;
-import com.tencent.token.th;
-import com.tencent.token.tj;
-import com.tencent.token.wv;
-import com.tencent.token.xf;
-import com.tencent.token.xj;
+import com.tencent.token.ajs;
+import com.tencent.token.st;
+import com.tencent.token.sw;
+import com.tencent.token.sz;
+import com.tencent.token.tt;
+import com.tencent.token.tv;
+import com.tencent.token.xh;
+import com.tencent.token.xr;
+import com.tencent.token.xv;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnvirChangeListviewActivity
   extends BaseActivity
 {
-  List<sn> envirDataList = new ArrayList();
+  List<sz> envirDataList = new ArrayList();
   String[] envirHosts = { "http://test.aq.qq.com", "https://w.aq.qq.com", "http://exp.aq.qq.com", "http://gray.aq.qq.com" };
   String[] envirNames = { "测试环境", "正式环境", "201体验环境", "157灰度环境" };
   final long[] mHits = new long[2];
@@ -35,35 +35,35 @@ public class EnvirChangeListviewActivity
     public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
     {
       paramAnonymousAdapterView = EnvirChangeListviewActivity.this.maAdapter;
-      if (!((sn)paramAnonymousAdapterView.a.get(paramAnonymousInt)).c)
+      if (!((sz)paramAnonymousAdapterView.a.get(paramAnonymousInt)).c)
       {
-        ((sn)paramAnonymousAdapterView.a.get(paramAnonymousInt)).c = true;
+        ((sz)paramAnonymousAdapterView.a.get(paramAnonymousInt)).c = true;
         int i = 0;
         while (i < paramAnonymousAdapterView.a.size())
         {
           if (i != paramAnonymousInt) {
-            ((sn)paramAnonymousAdapterView.a.get(i)).c = false;
+            ((sz)paramAnonymousAdapterView.a.get(i)).c = false;
           }
           i += 1;
         }
       }
       paramAnonymousAdapterView.notifyDataSetChanged();
-      paramAnonymousAdapterView = (sn)EnvirChangeListviewActivity.this.envirDataList.get(paramAnonymousInt);
+      paramAnonymousAdapterView = (sz)EnvirChangeListviewActivity.this.envirDataList.get(paramAnonymousInt);
       Toast.makeText(EnvirChangeListviewActivity.this.getApplicationContext(), paramAnonymousAdapterView.b, 0).show();
-      xf.a(paramAnonymousInt);
-      ait.b();
-      th.a();
-      sh.a();
-      th.a().g();
-      th.b();
-      xf.a();
-      th.a();
+      xr.a(paramAnonymousInt);
+      ajs.a();
+      tt.a();
+      st.a();
+      tt.a().g();
+      tt.b();
+      xr.a();
+      tt.a();
       Toast.makeText(EnvirChangeListviewActivity.this, "该功能已失效", 0).show();
-      xj.c("UserAgent.isInit():---true");
-      sk.b();
-      wv.b();
+      xv.c("UserAgent.isInit():---true");
+      sw.b();
+      xh.b();
       AccountPageActivity.mNeedRefreshEval = true;
-      tj.b();
+      tv.b();
       EnvirChangeListviewActivity.this.finish();
     }
   };
@@ -74,16 +74,16 @@ public class EnvirChangeListviewActivity
     int i = 0;
     while (i < this.envirNames.length)
     {
-      sn localsn = new sn();
-      localsn.a = this.envirNames[i];
+      sz localsz = new sz();
+      localsz.a = this.envirNames[i];
       String[] arrayOfString = this.envirHosts;
-      localsn.b = arrayOfString[i];
-      if (arrayOfString[i] == xf.e()) {
-        localsn.c = true;
+      localsz.b = arrayOfString[i];
+      if (arrayOfString[i] == xr.e()) {
+        localsz.c = true;
       } else {
-        localsn.c = false;
+        localsz.c = false;
       }
-      this.envirDataList.add(localsn);
+      this.envirDataList.add(localsz);
       i += 1;
     }
   }
@@ -91,8 +91,8 @@ public class EnvirChangeListviewActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296323);
-    paramBundle = (ListView)findViewById(2131165461);
+    setContentView(2131296328);
+    paramBundle = (ListView)findViewById(2131165476);
     initData();
     this.maAdapter = new a(this, this.envirDataList);
     paramBundle.setAdapter(this.maAdapter);
@@ -102,11 +102,11 @@ public class EnvirChangeListviewActivity
   final class a
     extends BaseAdapter
   {
-    List<sn> a;
+    List<sz> a;
     private EnvirChangeListviewActivity c;
     private LayoutInflater d;
     
-    public a(List<sn> paramList)
+    public a(List<sz> paramList)
     {
       this.d = LayoutInflater.from(paramList);
       this.c = paramList;
@@ -137,15 +137,15 @@ public class EnvirChangeListviewActivity
     {
       View localView = paramView;
       if (paramView == null) {
-        localView = this.d.inflate(2131296322, paramViewGroup, false);
+        localView = this.d.inflate(2131296327, paramViewGroup, false);
       }
-      paramView = (TextView)localView.findViewById(2131165463);
-      paramViewGroup = (TextView)localView.findViewById(2131165462);
-      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131165974);
-      sn localsn = (sn)getItem(paramInt);
-      paramView.setText(localsn.a);
-      paramViewGroup.setText(localsn.b);
-      localRadioButton.setChecked(localsn.c);
+      paramView = (TextView)localView.findViewById(2131165478);
+      paramViewGroup = (TextView)localView.findViewById(2131165477);
+      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131166009);
+      sz localsz = (sz)getItem(paramInt);
+      paramView.setText(localsz.a);
+      paramViewGroup.setText(localsz.b);
+      localRadioButton.setChecked(localsz.c);
       return localView;
     }
   }

@@ -1,47 +1,24 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 
 public final class py
-  extends Handler
 {
-  private final int a;
-  private final boolean b;
-  private long c;
-  private final a d;
-  
-  public final void a()
+  public static String a(Bundle paramBundle, String paramString)
   {
-    removeMessages(this.a);
-  }
-  
-  protected final void finalize()
-  {
-    a();
-    super.finalize();
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == this.a)
-    {
-      paramMessage = this.d;
-      if (paramMessage == null) {
-        return;
-      }
-      if (!paramMessage.a()) {
-        return;
-      }
-      if (this.b) {
-        sendEmptyMessageDelayed(this.a, this.c);
-      }
+    if (paramBundle == null) {
+      return null;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean a();
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      new StringBuilder("getStringExtra exception:").append(paramBundle.getMessage());
+    }
+    return null;
   }
 }
 

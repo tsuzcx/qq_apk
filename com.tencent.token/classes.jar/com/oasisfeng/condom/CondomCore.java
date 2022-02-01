@@ -24,10 +24,10 @@ import android.os.Process;
 import android.support.annotation.Keep;
 import android.util.EventLog;
 import com.oasisfeng.condom.util.Lazy;
-import com.tencent.token.aix;
-import com.tencent.token.km;
-import com.tencent.token.km.a;
-import com.tencent.token.km.b;
+import com.tencent.token.ajv;
+import com.tencent.token.la;
+import com.tencent.token.la.a;
+import com.tencent.token.la.b;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -99,7 +99,7 @@ public class CondomCore
     }
     while (paramContext.hasNext())
     {
-      ((km)paramContext.next()).a(this.mKitManager);
+      ((la)paramContext.next()).a(this.mKitManager);
       continue;
       this.mKitManager = null;
     }
@@ -325,7 +325,7 @@ public class CondomCore
     i locali = this.mKitManager;
     if (locali != null)
     {
-      paramString = (km.b)locali.a.get(paramString);
+      paramString = (la.b)locali.a.get(paramString);
       if (paramString != null)
       {
         paramString = paramString.a(this.mBase);
@@ -462,7 +462,7 @@ public class CondomCore
   final class c
     extends Lazy<PackageManager>
   {
-    c(aix paramaix, Context paramContext, Lazy paramLazy) {}
+    c(ajv paramajv, Context paramContext, Lazy paramLazy) {}
   }
   
   final class d
@@ -510,12 +510,12 @@ public class CondomCore
   }
   
   static final class i
-    implements km.a
+    implements la.a
   {
-    final Map<String, km.b> a = new HashMap();
+    final Map<String, la.b> a = new HashMap();
     final Set<String> b = new HashSet();
     
-    public final void a(String paramString, km.b paramb)
+    public final void a(String paramString, la.b paramb)
     {
       this.a.put(paramString, paramb);
     }

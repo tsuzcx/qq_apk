@@ -1,24 +1,38 @@
 package com.tencent.token;
 
-import java.util.concurrent.CountDownLatch;
+import android.os.Bundle;
 
-final class pe
-  implements Runnable
+public final class pe
 {
-  pe(pd parampd, CountDownLatch paramCountDownLatch) {}
-  
-  public final void run()
+  public static final class a
+    extends pb
   {
-    try
+    public String c;
+    
+    public final int a()
     {
-      pg localpg = new pg(this.b.a);
-      pd.a(this.b, localpg.getInt("_build_info_sdk_int_", 0));
+      return 20;
     }
-    catch (Exception localException)
+    
+    public final void a(Bundle paramBundle)
     {
-      localException.getMessage();
+      super.b(paramBundle);
+      paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.c);
     }
-    this.a.countDown();
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
+    }
+    
+    public final boolean b()
+    {
+      if (qb.a(this.c)) {
+        return false;
+      }
+      return this.c.length() <= 10240;
+    }
   }
 }
 

@@ -1,30 +1,32 @@
 package com.tencent.token;
 
 import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class ut
-  extends tr
+  extends ud
 {
-  private String d;
-  private byte[] e;
-  private int f;
+  private long d;
+  private int e;
+  private String f;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((String)paramabc.c.get("param.uin.wtlogin"));
-    this.e = ((byte[])paramabc.c.get("param.wtlogin.a2"));
-    this.f = ((Integer)paramabc.c.get("param.wtlogin.type")).intValue();
+    this.d = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.e = paramabm.j;
+    this.f = ((String)paramabm.c.get("param.bind.areacode"));
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -35,44 +37,67 @@ public final class ut
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    long l1;
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       i = paramJSONObject.getInt("seq_id");
-      if (this.c != i)
+      if (i != this.e)
       {
         this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.e);
+        xv.c(paramJSONObject.toString());
         return;
       }
-      l1 = Long.parseLong(paramJSONObject.getString("uin"));
-      paramJSONObject = paramJSONObject.getString("uin_mask");
-    }
-    try
-    {
-      long l2 = Long.parseLong(this.d);
-      QQUser localQQUser = th.a().d(l2);
-      if (localQQUser != null)
+      long l = paramJSONObject.getLong("server_time");
+      sv.b();
+      sv.a(l);
+      try
       {
-        localQQUser.mUin = l1;
-        localQQUser.mUinMask = paramJSONObject;
+        paramJSONObject.getLong("seed_expire_time");
+        sv.b();
       }
-      this.b.c.put("param.uinhash", Long.valueOf(l1));
-      this.b.c.put("param.wtlogin.a2", this.e);
-      th.a().e(l2);
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramJSONObject.getInt("seed_available") == 1)
+      {
+        paramJSONObject = aay.e(paramJSONObject.getString("seed"));
+        if (paramJSONObject != null)
+        {
+          sv.b();
+          sv.b();
+          sv.a(paramJSONObject);
+          sv.b();
+        }
+      }
+      paramJSONObject = tt.a().d(this.d);
+      if (paramJSONObject != null) {
+        tt.a().a(paramJSONObject);
+      }
       this.a.a = 0;
       return;
     }
-    catch (Exception paramJSONObject)
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
     {
-      label185:
-      break label185;
+      Object localObject = new StringBuilder("handleSuccess");
+      ((StringBuilder)localObject).append(this.b.f);
+      xv.c(((StringBuilder)localObject).toString());
+      localObject = this.b.d.obtainMessage(this.b.f);
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).sendToTarget();
+      this.b.e = true;
     }
-    this.a.a(10000, null, null);
-    return;
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

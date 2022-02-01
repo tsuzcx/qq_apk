@@ -1,36 +1,32 @@
 package com.tencent.token;
 
+import java.lang.reflect.Field;
+
 public final class adi
+  extends adj.b
 {
-  public int a;
-  public int b;
-  public int c;
-  public String d = "";
-  public int e;
-  
-  public adi(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public adi(String paramString, boolean paramBoolean1, Field paramField, boolean paramBoolean2, ahh paramahh, ahx paramahx, aek paramaek)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.d = paramString;
-    this.c = paramInt3;
-    this.e = paramInt4;
+    super(paramString, paramBoolean1);
   }
   
-  public final String toString()
+  public final void a(aep paramaep, Object paramObject)
   {
-    String str1 = String.format("% 6d", new Object[] { Integer.valueOf(this.a) });
-    String str2 = String.format("% 6d", new Object[] { Integer.valueOf(this.b) });
-    String str3 = String.format("% 6d", new Object[] { Integer.valueOf(this.c) });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str1);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(str2);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(str3);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(this.d);
-    return localStringBuilder.toString();
+    Object localObject = this.a.get(paramObject);
+    if (this.b) {
+      paramObject = this.c;
+    } else {
+      paramObject = new adu(this.d, this.c, this.e.b);
+    }
+    paramObject.a(paramaep, localObject);
+  }
+  
+  public final boolean a(Object paramObject)
+  {
+    if (!this.g) {
+      return false;
+    }
+    return this.a.get(paramObject) != paramObject;
   }
 }
 

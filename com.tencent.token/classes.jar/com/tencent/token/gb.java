@@ -1,86 +1,34 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.widget.TextView;
+import android.view.animation.Interpolator;
 
-public final class gb
+abstract class gb
+  implements Interpolator
 {
-  static final g a = new g();
+  private final float[] a;
+  private final float b;
   
-  static
+  protected gb(float[] paramArrayOfFloat)
   {
-    if (dt.a())
-    {
-      a = new f();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      a = new e();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      a = new d();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      a = new c();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      a = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      a = new a();
-      return;
-    }
+    this.a = paramArrayOfFloat;
+    this.b = (1.0F / (this.a.length - 1));
   }
   
-  public static void a(TextView paramTextView, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    a.a(paramTextView, paramInt);
-  }
-  
-  static class a
-    extends gb.g
-  {}
-  
-  static class b
-    extends gb.a
-  {}
-  
-  static class c
-    extends gb.b
-  {}
-  
-  static class d
-    extends gb.c
-  {
-    public final void a(TextView paramTextView, int paramInt)
-    {
-      paramTextView.setTextAppearance(paramInt);
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
     }
-  }
-  
-  static class e
-    extends gb.d
-  {}
-  
-  static final class f
-    extends gb.e
-  {}
-  
-  static class g
-  {
-    public void a(TextView paramTextView, int paramInt)
-    {
-      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
+    if (paramFloat <= 0.0F) {
+      return 0.0F;
     }
+    float[] arrayOfFloat = this.a;
+    int i = Math.min((int)((arrayOfFloat.length - 1) * paramFloat), arrayOfFloat.length - 2);
+    float f1 = i;
+    float f2 = this.b;
+    paramFloat = (paramFloat - f1 * f2) / f2;
+    arrayOfFloat = this.a;
+    return arrayOfFloat[i] + paramFloat * (arrayOfFloat[(i + 1)] - arrayOfFloat[i]);
   }
 }
 

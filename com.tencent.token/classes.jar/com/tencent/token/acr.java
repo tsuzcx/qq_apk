@@ -1,112 +1,88 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class acr
 {
-  public static HashMap<String, Class<?>> a = new HashMap();
-  public static HashMap<Class<?>, HashMap<String, Field>> b = new HashMap();
-  public static HashMap<Class<?>, HashMap<String, Method>> c = new HashMap();
+  public static String[] a;
   
-  public static Object a(Class<?> paramClass, String paramString, Object paramObject)
+  static
   {
-    if (paramClass == null) {
-      paramClass = null;
-    }
-    while (paramClass != null)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        try
-        {
-          Object localObject1;
-          paramClass.printStackTrace();
-        }
-        finally
-        {
-          paramClass.printStackTrace();
-          return null;
-        }
-        paramClass = paramClass.get(paramObject);
-        return paramClass;
-        paramClass = (Class<?>)localObject2;
-      }
-      paramClass = null;
-    }
-    return null;
+    int[] arrayOfInt1 = afz.o;
+    String str1 = afz.a(arrayOfInt1);
+    int[] arrayOfInt2 = afz.p;
+    String str2 = afz.a(arrayOfInt2);
+    int[] arrayOfInt3 = afz.q;
+    String str3 = afz.a(arrayOfInt3);
+    int[] arrayOfInt4 = afz.r;
+    String str4 = afz.a(arrayOfInt4);
+    int[] arrayOfInt5 = afz.s;
+    String str5 = afz.a(arrayOfInt5);
+    int[] arrayOfInt6 = afz.t;
+    String str6 = afz.a(arrayOfInt6);
+    int[] arrayOfInt7 = afz.u;
+    String str7 = afz.a(arrayOfInt7);
+    int[] arrayOfInt8 = afz.v;
+    String str8 = afz.a(arrayOfInt8);
+    String str9 = afz.a(afz.w);
+    int[] arrayOfInt9 = afz.x;
+    String str10 = afz.a(arrayOfInt9);
+    String str11 = afz.a(afz.y);
+    String str12 = afz.a(afz.z);
+    String str13 = afz.a(afz.A);
+    String str14 = afz.a(afz.B);
+    String str15 = afz.a(afz.C);
+    String str16 = afz.a(afz.D);
+    int[] arrayOfInt10 = afz.E;
+    String str17 = afz.a(arrayOfInt10);
+    int[] arrayOfInt11 = afz.F;
+    String str18 = afz.a(arrayOfInt11);
+    int[] arrayOfInt12 = afz.G;
+    String str19 = afz.a(arrayOfInt12);
+    int[] arrayOfInt13 = afz.H;
+    String str20 = afz.a(arrayOfInt13);
+    int[] arrayOfInt14 = afz.I;
+    a = new String[] { str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15, str16, str17, str18, str19, str20, afz.a(arrayOfInt14) };
+    afz.a(arrayOfInt1);
+    afz.a(arrayOfInt2);
+    afz.a(arrayOfInt3);
+    afz.a(arrayOfInt4);
+    afz.a(arrayOfInt5);
+    afz.a(arrayOfInt6);
+    afz.a(arrayOfInt7);
+    afz.a(arrayOfInt8);
+    afz.a(arrayOfInt9);
+    afz.a(arrayOfInt10);
+    afz.a(arrayOfInt11);
+    afz.a(arrayOfInt12);
+    afz.a(arrayOfInt13);
+    afz.a(arrayOfInt14);
   }
   
-  public static Object a(String paramString1, String paramString2)
+  public static Set<String> a(Set<String> paramSet)
   {
-    Class localClass1;
-    try
+    HashSet localHashSet = new HashSet();
+    String[] arrayOfString = a;
+    Iterator localIterator = paramSet.iterator();
+    while (localIterator.hasNext())
     {
-      Class localClass2 = (Class)a.get(paramString1);
-      localClass1 = localClass2;
-      if (localClass2 == null) {
-        localClass1 = Class.forName(paramString1);
-      }
-      a.put(paramString1, localClass1);
-    }
-    finally {}
-    try
-    {
-      paramString1.printStackTrace();
-      localClass1 = null;
-      paramString1 = a(localClass1, paramString2, null);
-      return paramString1;
-    }
-    finally
-    {
-      paramString1.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Method a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
-  {
-    Object localObject2;
-    do
-    {
-      try
+      String str = (String)localIterator.next();
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        if (!TextUtils.isEmpty(paramString))
-        {
-          String str = paramString;
-          localObject2 = (HashMap)c.get(paramClass);
-          Object localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            localObject1 = new HashMap();
-            c.put(paramClass, localObject1);
-          }
-          Method localMethod = (Method)((HashMap)localObject1).get(str);
-          localObject2 = localMethod;
-          if (localMethod == null)
-          {
-            localObject2 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
-            continue;
-            ((Method)localObject2).setAccessible(true);
-            ((HashMap)localObject1).put(str, localObject2);
-            return localObject2;
-          }
+        if (Pattern.compile(arrayOfString[i]).matcher(str).find()) {
+          localHashSet.add(str);
         }
-        else
-        {
-          return null;
-        }
+        i += 1;
       }
-      finally
-      {
-        paramClass.printStackTrace();
-        return null;
-      }
-    } while (localObject2 != null);
-    return null;
+    }
+    paramSet.removeAll(localHashSet);
+    return paramSet;
   }
 }
 

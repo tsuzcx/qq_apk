@@ -1,54 +1,80 @@
 package com.tencent.token;
 
-import android.app.Notification.Builder;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public final class wu
-  extends ContextWrapper
+  extends ud
 {
-  private NotificationManager a;
+  private long d;
+  private long e;
+  private int f;
+  private int g;
+  private long h;
+  private Integer i;
   
-  public wu(Context paramContext)
+  public final String a()
   {
-    super(paramContext);
+    st.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  private NotificationManager a()
+  public final void a(abm paramabm)
   {
-    if (this.a == null) {
-      this.a = ((NotificationManager)getSystemService("notification"));
-    }
-    return this.a;
+    this.e = ((Long)paramabm.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramabm.c.get("param.scene_id")).intValue();
+    this.h = ((Long)paramabm.c.get("param.op_time")).longValue();
+    this.f = paramabm.j;
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
   }
   
-  public final void a(int paramInt, String paramString1, String paramString2, PendingIntent paramPendingIntent)
+  public final void a(JSONObject paramJSONObject)
   {
-    if (Build.VERSION.SDK_INT >= 26)
+    int j = paramJSONObject.getInt("err");
+    if (j != 0)
     {
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        NotificationChannel localNotificationChannel = new NotificationChannel("channel_qqsafe", "channel_name_qqsafe", 4);
-        a().createNotificationChannel(localNotificationChannel);
-      }
-      if (Build.VERSION.SDK_INT >= 26) {
-        paramString1 = new Notification.Builder(RqdApplication.p(), "channel_qqsafe").setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2131099914).setAutoCancel(true);
-      } else {
-        paramString1 = null;
-      }
-      paramString1 = paramString1.build();
-      a().notify(paramInt, paramString1);
+      a(j, paramJSONObject.getString("info"));
       return;
     }
-    paramString1 = new cn.b(RqdApplication.p(), (byte)0).c().a(paramString1).b(paramString2);
-    paramString1.e = paramPendingIntent;
-    paramString1 = paramString1.a().b().d();
-    a().notify(paramInt, paramString1);
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      xv.a("mbtoken3_qry_face_verify_on_off ret: ".concat(String.valueOf(paramJSONObject)));
+      j = paramJSONObject.getInt("seq_id");
+      if (j != this.f)
+      {
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(j);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.f);
+        xv.c(paramJSONObject.toString());
+        this.a.a(10030, null, null);
+        return;
+      }
+      this.i = Integer.valueOf(paramJSONObject.getInt("verify_type"));
+      this.a.a = 0;
+      return;
+    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.i;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

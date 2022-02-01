@@ -1,101 +1,94 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ts
 {
-  ExecutorService a = Executors.newFixedThreadPool(5);
-  public b b = new b("");
-  public a c = new a()
-  {
-    public final void a(abc paramAnonymousabc)
-    {
-      MotionEvent localMotionEvent = aad.a().j;
-      if (localMotionEvent != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder("cginame:");
-        localStringBuilder.append(paramAnonymousabc.a);
-        xj.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("pagename:");
-        localStringBuilder.append(paramAnonymousabc.i);
-        xj.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("getRawX:");
-        localStringBuilder.append(localMotionEvent.getRawX());
-        xj.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("getRawY:");
-        localStringBuilder.append(localMotionEvent.getRawY());
-        xj.c(localStringBuilder.toString());
-        long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
-        xj.c("eventStartTime:".concat(String.valueOf(l)));
-        int i = aad.a().k;
-        xj.c("touch_type:".concat(String.valueOf(i)));
-        aad.a().a(i, paramAnonymousabc.a, paramAnonymousabc.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
-        aad.a().b();
-      }
-    }
-    
-    public final void a(abc paramAnonymousabc, xh paramAnonymousxh)
-    {
-      if (paramAnonymousxh.b())
-      {
-        sf.a().a(System.currentTimeMillis(), 0, paramAnonymousabc.a, 0, "", aao.i());
-        if ((!paramAnonymousabc.e) && (paramAnonymousabc.d != null))
-        {
-          paramAnonymousxh = paramAnonymousabc.d.obtainMessage(paramAnonymousabc.f);
-          paramAnonymousxh.arg1 = 0;
-          paramAnonymousxh.sendToTarget();
-          paramAnonymousabc.e = true;
-        }
-      }
-      else
-      {
-        if (paramAnonymousxh.a < 10000) {
-          sf.a().a(System.currentTimeMillis(), 0, paramAnonymousabc.a, 0, "", aao.i());
-        } else {
-          sf.a().a(System.currentTimeMillis(), sf.a(paramAnonymousxh.a), paramAnonymousabc.a, 1, paramAnonymousxh.b, aao.i());
-        }
-        if ((!paramAnonymousabc.e) && (paramAnonymousabc.d != null))
-        {
-          Message localMessage = paramAnonymousabc.d.obtainMessage(paramAnonymousabc.f);
-          localMessage.arg1 = paramAnonymousxh.a;
-          localMessage.obj = paramAnonymousxh;
-          localMessage.sendToTarget();
-          paramAnonymousabc.e = true;
-        }
-      }
-      paramAnonymousxh = ts.this.b;
-      paramAnonymousxh.a.post(new ts.b.4(paramAnonymousxh, paramAnonymousabc));
-    }
-  };
+  private static ts a;
+  private String b = "/cn/mbtoken3/mbtoken3_asec_push_getconn";
   
-  public static abstract interface a
+  public static ts a()
   {
-    public abstract void a(abc paramabc);
-    
-    public abstract void a(abc paramabc, xh paramxh);
+    if (a == null) {
+      a = new ts();
+    }
+    return a;
   }
   
-  public final class b
-    extends HandlerThread
+  public final xt b()
   {
-    public Handler a = new Handler();
-    private Map<abc, Future<xh>> c = Collections.synchronizedMap(new HashMap());
-    
-    public b(String paramString)
+    xt localxt = new xt();
+    Object localObject1 = new akl();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(xr.e());
+    ((StringBuilder)localObject2).append(this.b);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = ((akl)localObject1).a((String)localObject2);
+    if (localObject3 == null)
     {
-      super();
+      localxt.a(((akl)localObject1).a);
+      localObject1 = new StringBuilder("client request url: ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(" failed, reason: ");
+      ((StringBuilder)localObject1).append(localxt.a);
+      ((StringBuilder)localObject1).append(":");
+      ((StringBuilder)localObject1).append(localxt.b);
+      xv.c(((StringBuilder)localObject1).toString());
+      return localxt;
     }
+    try
+    {
+      localObject1 = new JSONObject(new String((byte[])localObject3));
+      int i = ((JSONObject)localObject1).getInt("err");
+      if (i != 0)
+      {
+        localObject2 = new StringBuilder("error");
+        ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+        xv.c(((StringBuilder)localObject2).toString());
+        localObject1 = ((JSONObject)localObject1).getString("info");
+        localxt.a(i, (String)localObject1, (String)localObject1);
+        return localxt;
+      }
+      int j = ((JSONObject)localObject1).getInt("retry_cnt");
+      int k = ((JSONObject)localObject1).getInt("retry_time");
+      int m = ((JSONObject)localObject1).getInt("hb_time");
+      localObject1 = ((JSONObject)localObject1).getJSONArray("conn");
+      localObject2 = new String[((JSONArray)localObject1).length()];
+      localObject3 = new int[((JSONArray)localObject1).length()];
+      i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
+        localObject2[i] = localJSONObject.getString("ip");
+        localObject3[i] = localJSONObject.getInt("port");
+        i += 1;
+      }
+      xh.a().a((String[])localObject2, (int[])localObject3, j, k * 1000, m * 1000);
+      localxt.a = 0;
+      return localxt;
+    }
+    catch (Exception localException)
+    {
+      localObject2 = new StringBuilder("unknown err: ");
+      ((StringBuilder)localObject2).append(localException.toString());
+      xv.c(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject2).append(localException.toString());
+      localxt.a(10021, ((StringBuilder)localObject2).toString(), null);
+      return localxt;
+    }
+    catch (JSONException localJSONException)
+    {
+      localObject2 = new StringBuilder("parse json failed: ");
+      ((StringBuilder)localObject2).append(localJSONException.toString());
+      xv.c(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject2).append(localJSONException.toString());
+      localxt.a(10020, ((StringBuilder)localObject2).toString(), null);
+    }
+    return localxt;
   }
 }
 

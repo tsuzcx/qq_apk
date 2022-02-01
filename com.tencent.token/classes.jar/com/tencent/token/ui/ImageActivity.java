@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
-import com.tencent.token.aae;
+import com.tencent.token.aao;
 import com.tencent.token.widget.ScaleImageView;
 
 public class ImageActivity
@@ -20,7 +20,7 @@ public class ImageActivity
     localFrameLayout.setBackgroundColor(-1);
     localFrameLayout.addView(localScaleImageView, -1, -1);
     setContentView(localFrameLayout);
-    new aae(localScaleImageView).execute(new String[] { paramBundle });
+    new aao(localScaleImageView).execute(new String[] { paramBundle });
     setTitle("隐私政策");
   }
 }

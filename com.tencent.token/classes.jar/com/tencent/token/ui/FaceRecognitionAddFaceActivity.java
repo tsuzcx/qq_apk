@@ -12,8 +12,8 @@ public class FaceRecognitionAddFaceActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296334);
-    ((Button)findViewById(2131165470)).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296339);
+    ((Button)findViewById(2131165485)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {

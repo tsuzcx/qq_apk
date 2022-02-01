@@ -1,75 +1,49 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.turingfd.sdk.qps.Ginkgo;
-import java.io.File;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import com.tencent.turingfd.sdk.qps.switch;
+import java.lang.reflect.Type;
 
-public final class aek
+public class aek<T>
 {
-  public static long a = TimeUnit.HOURS.toMillis(32L);
-  public static aek b = new aek();
+  public final Class<? super T> a;
+  public final Type b;
+  public final int c;
   
-  public static long a(Context paramContext, String paramString, long paramLong1, long paramLong2)
+  public aek()
   {
-    paramContext = b(paramContext);
-    if (paramContext == null) {
-      return paramLong1;
-    }
-    paramContext = paramContext.k;
-    if (paramContext == null) {
-      return paramLong1;
-    }
-    if (!paramContext.containsKey(paramString)) {
-      return paramLong1;
-    }
-    try
+    Type localType = getClass().getGenericSuperclass();
+    if (!(localType instanceof Class))
     {
-      long l = Long.valueOf((String)paramContext.get(paramString)).longValue();
-      return l * paramLong2;
+      localType = switch.a(((java.lang.reflect.ParameterizedType)localType).getActualTypeArguments()[0]);
+      this.b = localType;
+      this.a = switch.b(localType);
+      this.c = localType.hashCode();
+      return;
     }
-    finally {}
-    return paramLong1;
+    throw new RuntimeException("Missing type parameter.");
   }
   
-  public static String a(Context paramContext)
+  public aek(Type paramType)
   {
-    paramContext = paramContext.getDir("turingfd", 0);
-    if (paramContext == null) {
-      return "";
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramContext.getAbsolutePath());
-    paramContext = File.separator;
-    ((StringBuilder)localObject).append(paramContext);
-    ((StringBuilder)localObject).append("12");
-    localObject = new File(((StringBuilder)localObject).toString());
-    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((File)localObject).getAbsolutePath());
-    localStringBuilder.append(paramContext);
-    localStringBuilder.append(agh.a);
-    localStringBuilder.append("_qps_1");
-    return localStringBuilder.toString();
+    paramType = switch.a((Type)ahr.a(paramType));
+    this.b = paramType;
+    this.a = switch.b(paramType);
+    this.c = paramType.hashCode();
   }
   
-  public static Ginkgo b(Context paramContext)
+  public final boolean equals(Object paramObject)
   {
-    try
-    {
-      Ginkgo localGinkgo = new Ginkgo();
-      localGinkgo.a(new agd(adg.a(a(paramContext))));
-      return localGinkgo;
-    }
-    finally
-    {
-      label28:
-      break label28;
-    }
-    return null;
+    return ((paramObject instanceof aek)) && (switch.a(this.b, ((aek)paramObject).b));
+  }
+  
+  public final int hashCode()
+  {
+    return this.c;
+  }
+  
+  public final String toString()
+  {
+    return switch.c(this.b);
   }
 }
 

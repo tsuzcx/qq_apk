@@ -1,30 +1,63 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
-final class ari
-  extends Handler
+public final class ari
+  extends JceStruct
 {
-  ari(aso paramaso, Looper paramLooper)
+  static are f = new are();
+  static arf g = new arf();
+  static arf h = new arf();
+  static ArrayList<arj> i = new ArrayList();
+  public String a = "";
+  public are b = null;
+  public arf c = null;
+  public arf d = null;
+  public ArrayList<arj> e = null;
+  
+  static
   {
-    super(paramLooper);
+    arj localarj = new arj();
+    i.add(localarj);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public final JceStruct newInit()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2: 
-      paramMessage = (asc)paramMessage.obj;
-      aso.a(this.a, paramMessage);
-      return;
+    return new ari();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, true);
+    this.b = ((are)paramJceInputStream.read(f, 1, false));
+    this.c = ((arf)paramJceInputStream.read(g, 2, false));
+    this.d = ((arf)paramJceInputStream.read(h, 3, false));
+    this.e = ((ArrayList)paramJceInputStream.read(i, 4, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    aso.a((asb)paramMessage.obj);
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
+    }
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
+    }
   }
 }
 

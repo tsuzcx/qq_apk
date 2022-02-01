@@ -1,95 +1,74 @@
 package com.tencent.token;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import org.conscrypt.Conscrypt;
+import org.conscrypt.OpenSSLProvider;
 
-final class anh
+public final class anh
+  extends anl
 {
-  final byte[] a;
-  int b;
-  int c;
-  boolean d;
-  boolean e;
-  anh f;
-  anh g;
-  
-  anh()
+  public static anl a()
   {
-    this.a = new byte[8192];
-    this.e = true;
-    this.d = false;
-  }
-  
-  anh(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.a = paramArrayOfByte;
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.d = true;
-    this.e = false;
-  }
-  
-  final anh a()
-  {
-    this.d = true;
-    return new anh(this.a, this.b, this.c);
-  }
-  
-  public final anh a(anh paramanh)
-  {
-    paramanh.g = this;
-    paramanh.f = this.f;
-    this.f.g = paramanh;
-    this.f = paramanh;
-    return paramanh;
-  }
-  
-  public final void a(anh paramanh, int paramInt)
-  {
-    if (paramanh.e)
+    try
     {
-      int i = paramanh.c;
-      if (i + paramInt > 8192) {
-        if (!paramanh.d)
-        {
-          int j = paramanh.b;
-          if (i + paramInt - j <= 8192)
-          {
-            byte[] arrayOfByte = paramanh.a;
-            System.arraycopy(arrayOfByte, j, arrayOfByte, 0, i - j);
-            paramanh.c -= paramanh.b;
-            paramanh.b = 0;
-          }
-          else
-          {
-            throw new IllegalArgumentException();
-          }
-        }
-        else
-        {
-          throw new IllegalArgumentException();
-        }
+      Class.forName("org.conscrypt.ConscryptEngineSocket");
+      if (!Conscrypt.isAvailable()) {
+        return null;
       }
-      System.arraycopy(this.a, this.b, paramanh.a, paramanh.c, paramInt);
-      paramanh.c += paramInt;
-      this.b += paramInt;
-      return;
+      anh localanh = new anh();
+      return localanh;
     }
-    throw new IllegalArgumentException();
+    catch (ClassNotFoundException localClassNotFoundException) {}
+    return null;
   }
   
   @Nullable
-  public final anh b()
+  public final String a(SSLSocket paramSSLSocket)
   {
-    anh localanh1 = this.f;
-    if (localanh1 == this) {
-      localanh1 = null;
+    if (Conscrypt.isConscrypt(paramSSLSocket)) {
+      return Conscrypt.getApplicationProtocol(paramSSLSocket);
     }
-    anh localanh2 = this.g;
-    localanh2.f = this.f;
-    this.f.g = localanh2;
-    this.f = null;
-    this.g = null;
-    return localanh1;
+    return super.a(paramSSLSocket);
+  }
+  
+  public final void a(SSLSocket paramSSLSocket, String paramString, List<alh> paramList)
+  {
+    if (Conscrypt.isConscrypt(paramSSLSocket))
+    {
+      if (paramString != null)
+      {
+        Conscrypt.setUseSessionTickets(paramSSLSocket, true);
+        Conscrypt.setHostname(paramSSLSocket, paramString);
+      }
+      Conscrypt.setApplicationProtocols(paramSSLSocket, (String[])anl.a(paramList).toArray(new String[0]));
+      return;
+    }
+    super.a(paramSSLSocket, paramString, paramList);
+  }
+  
+  public final void a(SSLSocketFactory paramSSLSocketFactory)
+  {
+    if (Conscrypt.isConscrypt(paramSSLSocketFactory)) {
+      Conscrypt.setUseEngineSocket(paramSSLSocketFactory, true);
+    }
+  }
+  
+  public final SSLContext b()
+  {
+    try
+    {
+      SSLContext localSSLContext = SSLContext.getInstance("TLS", new OpenSSLProvider());
+      return localSSLContext;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException);
+    }
   }
 }
 

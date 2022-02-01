@@ -1,55 +1,64 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.meri.service.monitor.AccessibilityDispatcher;
+
 public final class aux
 {
-  private static boolean a = false;
-  private static String[] b;
-  private static long[] c;
-  private static int d;
-  private static int e;
+  public auy a;
   
-  public static void a(String paramString)
+  private void b()
   {
-    if (!a) {
-      return;
+    if (this.a == null) {
+      this.a = new a();
     }
-    int i = d;
-    if (i == 20)
-    {
-      e += 1;
-      return;
-    }
-    b[i] = paramString;
-    c[i] = System.nanoTime();
-    d += 1;
   }
   
-  public static float b(String paramString)
+  public final auy a()
   {
-    int i = e;
-    if (i > 0)
+    b();
+    return this.a;
+  }
+  
+  final class a
+    implements auy
+  {
+    a()
     {
-      e = i - 1;
-      return 0.0F;
+      AccessibilityDispatcher.a = new kx()
+      {
+        public final HandlerThread a()
+        {
+          return new HandlerThread("AccessibilityDispatcher");
+        }
+        
+        public final Handler b()
+        {
+          HandlerThread localHandlerThread = new HandlerThread("MonitorCallbackHandler");
+          localHandlerThread.start();
+          return new Handler(localHandlerThread.getLooper());
+        }
+      };
     }
-    if (!a) {
-      return 0.0F;
-    }
-    i = d - 1;
-    d = i;
-    if (i != -1)
+    
+    public final int a(Context paramContext)
     {
-      if (paramString.equals(b[d])) {
-        return (float)(System.nanoTime() - c[d]) / 1000000.0F;
-      }
-      StringBuilder localStringBuilder = new StringBuilder("Unbalanced trace call ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(". Expected ");
-      localStringBuilder.append(b[d]);
-      localStringBuilder.append(".");
-      throw new IllegalStateException(localStringBuilder.toString());
+      return AccessibilityDispatcher.a(paramContext);
     }
-    throw new IllegalStateException("Can't end trace section. There are none.");
+    
+    public final void a() {}
+    
+    public final void a(Context paramContext, apa paramapa, aqz.a parama)
+    {
+      AccessibilityDispatcher.a(paramContext, paramapa, parama);
+    }
+  }
+  
+  public static final class b
+  {
+    private static final aux a = new aux((byte)0);
   }
 }
 

@@ -33,20 +33,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.OverScroller;
 import android.widget.ScrollView;
-import com.tencent.token.el;
-import com.tencent.token.es;
-import com.tencent.token.et;
-import com.tencent.token.eu;
-import com.tencent.token.ew;
-import com.tencent.token.fa;
+import com.tencent.token.ez;
+import com.tencent.token.fg;
+import com.tencent.token.fh;
 import com.tencent.token.fi;
+import com.tencent.token.fk;
+import com.tencent.token.fo;
 import com.tencent.token.fw;
+import com.tencent.token.gk;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NestedScrollView
   extends FrameLayout
-  implements es, eu
+  implements fg, fi
 {
   private static final a w = new a();
   private static final int[] x = { 16843130 };
@@ -74,8 +74,8 @@ public class NestedScrollView
   private int t;
   private int u;
   private SavedState v;
-  private final ew y;
-  private final et z;
+  private final fk y;
+  private final fh z;
   
   public NestedScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -95,10 +95,10 @@ public class NestedScrollView
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, x, paramInt, 0);
     setFillViewport(paramContext.getBoolean(0, false));
     paramContext.recycle();
-    this.y = new ew(this);
-    this.z = new et(this);
+    this.y = new fk(this);
+    this.z = new fh(this);
     setNestedScrollingEnabled(true);
-    fa.a(this, w);
+    fo.a(this, w);
   }
   
   private int a(Rect paramRect)
@@ -237,7 +237,7 @@ public class NestedScrollView
       paramInt1 = getScrollY();
       paramInt2 = Math.max(0, Math.min(paramInt2 + paramInt1, i1));
       this.c.startScroll(getScrollX(), paramInt1, 0, paramInt2 - paramInt1);
-      fa.a(this);
+      fo.a(this);
     }
     else
     {
@@ -638,7 +638,7 @@ public class NestedScrollView
       b(1);
       this.c.fling(getScrollX(), getScrollY(), 0, paramInt, 0, 0, -2147483648, 2147483647, 0, 0);
       this.u = getScrollY();
-      fa.a(this);
+      fo.a(this);
     }
   }
   
@@ -813,7 +813,7 @@ public class NestedScrollView
         }
       }
       this.u = i4;
-      fa.a(this);
+      fo.a(this);
       return;
     }
     if (d(1)) {
@@ -922,7 +922,7 @@ public class NestedScrollView
         paramCanvas.translate(i2, i3);
         this.d.setSize(i1, i4);
         if (this.d.draw(paramCanvas)) {
-          fa.a(this);
+          fo.a(this);
         }
         paramCanvas.restoreToCount(i9);
       }
@@ -959,7 +959,7 @@ public class NestedScrollView
         paramCanvas.rotate(180.0F, i1, 0.0F);
         this.e.setSize(i1, i3);
         if (this.e.draw(paramCanvas)) {
-          fa.a(this);
+          fo.a(this);
         }
         paramCanvas.restoreToCount(i9);
       }
@@ -1129,7 +1129,7 @@ public class NestedScrollView
         this.q = -1;
         c();
         if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
-          fa.a(this);
+          fo.a(this);
         }
         c(0);
         break;
@@ -1387,7 +1387,7 @@ public class NestedScrollView
       break;
     case 3: 
       if ((this.j) && (getChildCount() > 0) && (this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange()))) {
-        fa.a(this);
+        fo.a(this);
       }
       this.q = -1;
       d();
@@ -1458,21 +1458,21 @@ public class NestedScrollView
             i2 = i5 + i1;
             if (i2 < 0)
             {
-              fw.a(this.d, i1 / getHeight(), paramMotionEvent.getX(i3) / getWidth());
+              gk.a(this.d, i1 / getHeight(), paramMotionEvent.getX(i3) / getWidth());
               if (!this.e.isFinished()) {
                 this.e.onRelease();
               }
             }
             else if (i2 > i4)
             {
-              fw.a(this.e, i1 / getHeight(), 1.0F - paramMotionEvent.getX(i3) / getWidth());
+              gk.a(this.e, i1 / getHeight(), 1.0F - paramMotionEvent.getX(i3) / getWidth());
               if (!this.d.isFinished()) {
                 this.d.onRelease();
               }
             }
             paramMotionEvent = this.d;
             if ((paramMotionEvent != null) && ((!paramMotionEvent.isFinished()) || (!this.e.isFinished()))) {
-              fa.a(this);
+              fo.a(this);
             }
           }
         }
@@ -1485,7 +1485,7 @@ public class NestedScrollView
       if (Math.abs(i1) > this.o) {
         j(-i1);
       } else if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
-        fa.a(this);
+        fo.a(this);
       }
       this.q = -1;
       d();
@@ -1651,24 +1651,24 @@ public class NestedScrollView
   }
   
   static final class a
-    extends el
+    extends ez
   {
-    public final void a(View paramView, fi paramfi)
+    public final void a(View paramView, fw paramfw)
     {
-      super.a(paramView, paramfi);
+      super.a(paramView, paramfw);
       paramView = (NestedScrollView)paramView;
-      paramfi.b(ScrollView.class.getName());
+      paramfw.b(ScrollView.class.getName());
       if (paramView.isEnabled())
       {
         int i = paramView.getScrollRange();
         if (i > 0)
         {
-          paramfi.i(true);
+          paramfw.i(true);
           if (paramView.getScrollY() > 0) {
-            paramfi.a(8192);
+            paramfw.a(8192);
           }
           if (paramView.getScrollY() < i) {
-            paramfi.a(4096);
+            paramfw.a(4096);
           }
         }
       }

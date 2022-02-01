@@ -16,14 +16,14 @@ public class Reporter
   public String _app_sig = new String("");
   public String _app_v = new String("");
   public String _btime = util.get_release_time();
-  public String _bver = "6.0.0.2202";
+  public String _bver = "6.0.0.2484";
   public String _device = new String("");
   public String _disp_name = new String("");
   public String _ksid = new String("");
   public TreeMap<Integer, report_t2> _lst = new TreeMap();
   public int _os = 2;
   public String _os_v = new String("");
-  public String _sdk_v = Integer.valueOf(5).toString();
+  public String _sdk_v = Integer.valueOf(18).toString();
   
   public void add_t2(report_t2 paramreport_t2)
   {

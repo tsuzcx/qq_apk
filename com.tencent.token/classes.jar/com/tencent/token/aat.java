@@ -1,14 +1,10 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import java.io.File;
 
-public abstract interface aat
+public final class aat
 {
-  public abstract abd a(Serializable paramSerializable);
-  
-  public abstract Serializable a(abd paramabd);
-  
-  public abstract String c();
+  static File a;
 }
 
 

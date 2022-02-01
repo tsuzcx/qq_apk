@@ -6,11 +6,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import com.tencent.token.rf;
-import com.tencent.token.sk;
-import com.tencent.token.sl;
-import com.tencent.token.sl.2;
-import com.tencent.token.xj;
+import com.tencent.token.rt;
+import com.tencent.token.sw;
+import com.tencent.token.sx;
+import com.tencent.token.sx.2;
+import com.tencent.token.xv;
 
 public class WidgetReceiver
   extends BroadcastReceiver
@@ -33,17 +33,17 @@ public class WidgetReceiver
       }
       if ("com.tencent.token.widget.SPEECH".equals(paramIntent))
       {
-        paramIntent = sk.a();
-        if ((!rf.a().d()) && (!paramIntent.c()))
+        paramIntent = sw.a();
+        if ((!rt.a().d()) && (!paramIntent.c()))
         {
-          paramContext = sl.a(paramContext);
-          paramIntent = rf.a().f();
-          xj.a("start play token1");
+          paramContext = sx.a(paramContext);
+          paramIntent = rt.a().f();
+          xv.a("start play token1");
           if (!paramContext.b)
           {
             paramContext.b = true;
-            xj.a("start play token2");
-            new sl.2(paramContext, paramIntent).execute(new String[] { Integer.toString(0) });
+            xv.a("start play token2");
+            new sx.2(paramContext, paramIntent).execute(new String[] { Integer.toString(0) });
           }
         }
       }

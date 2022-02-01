@@ -1,15 +1,8 @@
 package com.tencent.token;
 
-import java.net.Socket;
-
-public final class oa
+public abstract interface oa
 {
-  int a;
-  String b = "";
-  Socket c = null;
-  int d = -1;
-  int e = -1;
-  np f;
+  public abstract void a();
 }
 
 

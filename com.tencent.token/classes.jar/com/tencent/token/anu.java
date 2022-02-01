@@ -1,14 +1,31 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.nio.channels.WritableByteChannel;
 
-public final class anu
-  extends anw<Float>
+public abstract interface anu
+  extends aoi, WritableByteChannel
 {
-  public anu(List<anv<Float>> paramList)
-  {
-    super(paramList);
-  }
+  public abstract ant b();
+  
+  public abstract anu b(String paramString);
+  
+  public abstract anu c(byte[] paramArrayOfByte);
+  
+  public abstract anu c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract anu f(int paramInt);
+  
+  public abstract void flush();
+  
+  public abstract anu g(int paramInt);
+  
+  public abstract anu h(int paramInt);
+  
+  public abstract anu j(long paramLong);
+  
+  public abstract anu k(long paramLong);
+  
+  public abstract anu r();
 }
 
 

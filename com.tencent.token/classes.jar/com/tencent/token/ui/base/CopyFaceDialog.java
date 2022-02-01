@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.aap;
+import com.tencent.token.aaz;
 import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 import com.tencent.token.ui.IndexActivity;
 
@@ -35,18 +35,18 @@ public class CopyFaceDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296311);
+    setContentView(2131296313);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131165415));
+    this.b = ((TextView)findViewById(2131165427));
     paramBundle = new StringBuilder();
     paramBundle.append(this.a);
-    paramBundle.append(this.c.getResources().getString(2131493127));
+    paramBundle.append(this.c.getResources().getString(2131493129));
     paramBundle = paramBundle.toString();
-    this.b.setText(aap.a(paramBundle, this.c.getResources().getDimension(2131034250), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
-    ((Button)findViewById(2131165349)).setOnClickListener(new View.OnClickListener()
+    this.b.setText(aaz.a(paramBundle, this.c.getResources().getDimension(2131034250), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
+    ((Button)findViewById(2131165357)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {

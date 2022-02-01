@@ -1,132 +1,99 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.ListPopupWindow;
-import android.util.DisplayMetrics;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.graphics.drawable.Drawable;
+import android.support.v7.app.AlertController.a;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AlertDialog.a;
+import android.support.v7.view.menu.ExpandedMenuView;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+import java.util.ArrayList;
 
-final class ib
-  extends hu
-  implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener, hw
+public final class ib
+  implements AdapterView.OnItemClickListener, ik
 {
-  final iz a;
-  View b;
-  private final Context c;
-  private final hp d;
-  private final ho f;
-  private final boolean g;
-  private final int h;
-  private final int i;
-  private final int j;
-  private final ViewTreeObserver.OnGlobalLayoutListener k = new ViewTreeObserver.OnGlobalLayoutListener()
+  Context a;
+  LayoutInflater b;
+  id c;
+  ExpandedMenuView d;
+  int e;
+  int f;
+  int g;
+  public ik.a h;
+  a i;
+  
+  private ib(int paramInt)
   {
-    public final void onGlobalLayout()
+    this.g = paramInt;
+    this.f = 0;
+  }
+  
+  public ib(Context paramContext, int paramInt)
+  {
+    this(paramInt);
+    this.a = paramContext;
+    this.b = LayoutInflater.from(this.a);
+  }
+  
+  public final il a(ViewGroup paramViewGroup)
+  {
+    if (this.d == null)
     {
-      if ((ib.this.d()) && (!ib.this.a.p))
-      {
-        View localView = ib.this.b;
-        if ((localView != null) && (localView.isShown()))
-        {
-          ib.this.a.b();
-          return;
-        }
-        ib.this.c();
-        return;
+      this.d = ((ExpandedMenuView)this.b.inflate(hg.g.abc_expanded_menu_layout, paramViewGroup, false));
+      if (this.i == null) {
+        this.i = new a();
+      }
+      this.d.setAdapter(this.i);
+      this.d.setOnItemClickListener(this);
+    }
+    return this.d;
+  }
+  
+  public final void a(Context paramContext, id paramid)
+  {
+    int j = this.f;
+    if (j != 0)
+    {
+      this.a = new ContextThemeWrapper(paramContext, j);
+      this.b = LayoutInflater.from(this.a);
+    }
+    else if (this.a != null)
+    {
+      this.a = paramContext;
+      if (this.b == null) {
+        this.b = LayoutInflater.from(this.a);
       }
     }
-  };
-  private final View.OnAttachStateChangeListener l = new View.OnAttachStateChangeListener()
-  {
-    public final void onViewAttachedToWindow(View paramAnonymousView) {}
-    
-    public final void onViewDetachedFromWindow(View paramAnonymousView)
-    {
-      if (ib.a(ib.this) != null)
-      {
-        if (!ib.a(ib.this).isAlive()) {
-          ib.a(ib.this, paramAnonymousView.getViewTreeObserver());
-        }
-        ib.a(ib.this).removeGlobalOnLayoutListener(ib.b(ib.this));
-      }
-      paramAnonymousView.removeOnAttachStateChangeListener(this);
+    this.c = paramid;
+    paramContext = this.i;
+    if (paramContext != null) {
+      paramContext.notifyDataSetChanged();
     }
-  };
-  private PopupWindow.OnDismissListener m;
-  private View n;
-  private hw.a o;
-  private ViewTreeObserver p;
-  private boolean q;
-  private boolean r;
-  private int s;
-  private int t = 0;
-  private boolean u;
-  
-  public ib(Context paramContext, hp paramhp, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.c = paramContext;
-    this.d = paramhp;
-    this.g = paramBoolean;
-    this.f = new ho(paramhp, LayoutInflater.from(paramContext), this.g);
-    this.i = paramInt1;
-    this.j = paramInt2;
-    Resources localResources = paramContext.getResources();
-    this.h = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(gs.d.abc_config_prefDialogWidth));
-    this.n = paramView;
-    this.a = new iz(this.c, this.i, this.j);
-    paramhp.a(this, paramContext);
   }
   
-  public final void a(int paramInt)
+  public final void a(id paramid, boolean paramBoolean)
   {
-    this.t = paramInt;
-  }
-  
-  public final void a(View paramView)
-  {
-    this.n = paramView;
-  }
-  
-  public final void a(PopupWindow.OnDismissListener paramOnDismissListener)
-  {
-    this.m = paramOnDismissListener;
-  }
-  
-  public final void a(hp paramhp) {}
-  
-  public final void a(hp paramhp, boolean paramBoolean)
-  {
-    if (paramhp != this.d) {
-      return;
-    }
-    c();
-    hw.a locala = this.o;
+    ik.a locala = this.h;
     if (locala != null) {
-      locala.a(paramhp, paramBoolean);
+      locala.a(paramid, paramBoolean);
     }
   }
   
-  public final void a(hw.a parama)
+  public final void a(ik.a parama)
   {
-    this.o = parama;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.f.c = paramBoolean;
+    this.h = parama;
   }
   
   public final boolean a()
@@ -134,184 +101,153 @@ final class ib
     return false;
   }
   
-  public final boolean a(ic paramic)
+  public final boolean a(iq paramiq)
   {
-    if (paramic.hasVisibleItems())
-    {
-      Object localObject = new hv(this.c, paramic, this.b, this.g, this.i, this.j);
-      ((hv)localObject).a(this.o);
-      ((hv)localObject).a(hu.b(paramic));
-      ((hv)localObject).b = this.t;
-      ((hv)localObject).c = this.m;
-      this.m = null;
-      this.d.a(false);
-      int i1 = this.a.g;
-      int i2 = this.a.g();
-      if (((hv)localObject).e())
-      {
-        i1 = 1;
-      }
-      else if (((hv)localObject).a == null)
-      {
-        i1 = 0;
-      }
-      else
-      {
-        ((hv)localObject).a(i1, i2, true, true);
-        i1 = 1;
-      }
-      if (i1 != 0)
-      {
-        localObject = this.o;
-        if (localObject != null) {
-          ((hw.a)localObject).a(paramic);
-        }
-        return true;
-      }
+    if (!paramiq.hasVisibleItems()) {
+      return false;
     }
-    return false;
-  }
-  
-  public final void b()
-  {
-    boolean bool = d();
-    int i2 = 1;
-    int i1;
-    if (bool)
+    Object localObject1 = new ie(paramiq);
+    Object localObject3 = ((ie)localObject1).a;
+    Object localObject2 = new AlertDialog.a(((id)localObject3).a);
+    ((ie)localObject1).c = new ib(((AlertDialog.a)localObject2).a.a, hg.g.abc_list_menu_item_layout);
+    ((ie)localObject1).c.h = ((ik.a)localObject1);
+    ((ie)localObject1).a.a(((ie)localObject1).c);
+    Object localObject4 = ((ie)localObject1).c.b();
+    ((AlertDialog.a)localObject2).a.w = ((ListAdapter)localObject4);
+    ((AlertDialog.a)localObject2).a.x = ((DialogInterface.OnClickListener)localObject1);
+    localObject4 = ((id)localObject3).h;
+    if (localObject4 != null)
     {
-      i1 = i2;
+      ((AlertDialog.a)localObject2).a.g = ((View)localObject4);
     }
     else
     {
-      if (!this.q)
-      {
-        Object localObject1 = this.n;
-        if (localObject1 != null)
-        {
-          this.b = ((View)localObject1);
-          this.a.a(this);
-          localObject1 = this.a;
-          ((ListPopupWindow)localObject1).l = this;
-          ((iz)localObject1).f();
-          localObject1 = this.b;
-          if (this.p == null) {
-            i1 = 1;
-          } else {
-            i1 = 0;
-          }
-          this.p = ((View)localObject1).getViewTreeObserver();
-          if (i1 != 0) {
-            this.p.addOnGlobalLayoutListener(this.k);
-          }
-          ((View)localObject1).addOnAttachStateChangeListener(this.l);
-          Object localObject2 = this.a;
-          ((ListPopupWindow)localObject2).k = ((View)localObject1);
-          ((ListPopupWindow)localObject2).h = this.t;
-          if (!this.r)
-          {
-            this.s = a(this.f, null, this.c, this.h);
-            this.r = true;
-          }
-          this.a.b(this.s);
-          this.a.h();
-          this.a.o = this.e;
-          this.a.b();
-          localObject1 = this.a.e;
-          ((ListView)localObject1).setOnKeyListener(this);
-          if ((this.u) && (this.d.f != null))
-          {
-            localObject2 = (FrameLayout)LayoutInflater.from(this.c).inflate(gs.g.abc_popup_menu_header_item_layout, (ViewGroup)localObject1, false);
-            TextView localTextView = (TextView)((FrameLayout)localObject2).findViewById(16908310);
-            if (localTextView != null) {
-              localTextView.setText(this.d.f);
-            }
-            ((FrameLayout)localObject2).setEnabled(false);
-            ((ListView)localObject1).addHeaderView((View)localObject2, null, false);
-          }
-          this.a.a(this.f);
-          this.a.b();
-          i1 = i2;
-          break label334;
-        }
-      }
-      i1 = 0;
+      localObject4 = ((id)localObject3).g;
+      ((AlertDialog.a)localObject2).a.d = ((Drawable)localObject4);
+      localObject3 = ((id)localObject3).f;
+      ((AlertDialog.a)localObject2).a.f = ((CharSequence)localObject3);
     }
-    label334:
-    if (i1 != 0) {
-      return;
+    ((AlertDialog.a)localObject2).a.u = ((DialogInterface.OnKeyListener)localObject1);
+    ((ie)localObject1).b = ((AlertDialog.a)localObject2).a();
+    ((ie)localObject1).b.setOnDismissListener((DialogInterface.OnDismissListener)localObject1);
+    localObject2 = ((ie)localObject1).b.getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject2).type = 1003;
+    ((WindowManager.LayoutParams)localObject2).flags |= 0x20000;
+    ((ie)localObject1).b.show();
+    localObject1 = this.h;
+    if (localObject1 != null) {
+      ((ik.a)localObject1).a(paramiq);
     }
-    throw new IllegalStateException("StandardMenuPopup cannot be used without an anchor");
+    return true;
   }
   
-  public final void b(int paramInt)
+  public final ListAdapter b()
   {
-    this.a.g = paramInt;
+    if (this.i == null) {
+      this.i = new a();
+    }
+    return this.i;
   }
   
   public final void b(boolean paramBoolean)
   {
-    this.r = false;
-    ho localho = this.f;
-    if (localho != null) {
-      localho.notifyDataSetChanged();
+    a locala = this.i;
+    if (locala != null) {
+      locala.notifyDataSetChanged();
     }
   }
   
-  public final void c()
+  public final boolean b(if paramif)
   {
-    if (d()) {
-      this.a.c();
-    }
-  }
-  
-  public final void c(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
-  
-  public final void c(boolean paramBoolean)
-  {
-    this.u = paramBoolean;
-  }
-  
-  public final boolean d()
-  {
-    return (!this.q) && (this.a.q.isShowing());
-  }
-  
-  public final ListView e()
-  {
-    return this.a.e;
-  }
-  
-  public final void onDismiss()
-  {
-    this.q = true;
-    this.d.close();
-    Object localObject = this.p;
-    if (localObject != null)
-    {
-      if (!((ViewTreeObserver)localObject).isAlive()) {
-        this.p = this.b.getViewTreeObserver();
-      }
-      this.p.removeGlobalOnLayoutListener(this.k);
-      this.p = null;
-    }
-    this.b.removeOnAttachStateChangeListener(this.l);
-    localObject = this.m;
-    if (localObject != null) {
-      ((PopupWindow.OnDismissListener)localObject).onDismiss();
-    }
-  }
-  
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
-    {
-      c();
-      return true;
-    }
     return false;
+  }
+  
+  public final boolean c(if paramif)
+  {
+    return false;
+  }
+  
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.c.a(this.i.a(paramInt), this, 0);
+  }
+  
+  final class a
+    extends BaseAdapter
+  {
+    private int b = -1;
+    
+    public a()
+    {
+      a();
+    }
+    
+    private void a()
+    {
+      if localif = ib.this.c.j;
+      if (localif != null)
+      {
+        ArrayList localArrayList = ib.this.c.j();
+        int j = localArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          if ((if)localArrayList.get(i) == localif)
+          {
+            this.b = i;
+            return;
+          }
+          i += 1;
+        }
+      }
+      this.b = -1;
+    }
+    
+    public final if a(int paramInt)
+    {
+      ArrayList localArrayList = ib.this.c.j();
+      int i = paramInt + ib.this.e;
+      int j = this.b;
+      paramInt = i;
+      if (j >= 0)
+      {
+        paramInt = i;
+        if (i >= j) {
+          paramInt = i + 1;
+        }
+      }
+      return (if)localArrayList.get(paramInt);
+    }
+    
+    public final int getCount()
+    {
+      int i = ib.this.c.j().size() - ib.this.e;
+      if (this.b < 0) {
+        return i;
+      }
+      return i - 1;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      View localView = paramView;
+      if (paramView == null) {
+        localView = ib.this.b.inflate(ib.this.g, paramViewGroup, false);
+      }
+      ((il.a)localView).a(a(paramInt));
+      return localView;
+    }
+    
+    public final void notifyDataSetChanged()
+    {
+      a();
+      super.notifyDataSetChanged();
+    }
   }
 }
 

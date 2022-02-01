@@ -2,26 +2,26 @@ package android.support.v4.app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.token.av;
-import com.tencent.token.av.b;
-import com.tencent.token.ay;
-import com.tencent.token.az;
-import com.tencent.token.bh;
-import com.tencent.token.ej;
+import com.tencent.token.bj;
+import com.tencent.token.bj.b;
+import com.tencent.token.bm;
+import com.tencent.token.bn;
+import com.tencent.token.bv;
+import com.tencent.token.ex;
 
 public class SupportActivity
   extends Activity
-  implements ay
+  implements bm
 {
-  private ej<Class<? extends a>, a> mExtraDataMap = new ej();
-  private az mLifecycleRegistry = new az(this);
+  private ex<Class<? extends a>, a> mExtraDataMap = new ex();
+  private bn mLifecycleRegistry = new bn(this);
   
   public <T extends a> T getExtraData(Class<T> paramClass)
   {
     return (a)this.mExtraDataMap.get(paramClass);
   }
   
-  public av getLifecycle()
+  public bj getLifecycle()
   {
     return this.mLifecycleRegistry;
   }
@@ -29,12 +29,12 @@ public class SupportActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bh.a(this);
+    bv.a(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    this.mLifecycleRegistry.a(av.b.c);
+    this.mLifecycleRegistry.a(bj.b.c);
     super.onSaveInstanceState(paramBundle);
   }
   

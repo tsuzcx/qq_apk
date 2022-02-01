@@ -1,13 +1,55 @@
 package com.tencent.token;
 
-final class arn
-  implements Runnable
+import android.content.Context;
+import android.os.Process;
+import java.util.concurrent.Executors;
+
+public final class arn
 {
-  arn(aso paramaso, asc paramasc) {}
+  public static int a;
+  private static Context b;
   
-  public final void run()
+  public static int a(String paramString)
   {
-    aso.a(this.b, this.a);
+    if ("build".equals(paramString)) {
+      return a;
+    }
+    return 0;
+  }
+  
+  public static Context a()
+  {
+    return b;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    b = paramContext.getApplicationContext();
+  }
+  
+  public static void a(ast paramast, int paramInt)
+  {
+    a = paramInt;
+    ate localate = (ate)arp.a(ate.class);
+    StringBuilder localStringBuilder = new StringBuilder("pid: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("SharkProtocolQueue init()");
+    localate.a = new atb(b, paramast);
+    atm.a().a(paramast);
+    localate.b = Executors.newSingleThreadExecutor();
+    paramast = localate.a;
+    if (paramast.e.a())
+    {
+      long l1 = paramast.a.j();
+      long l2 = System.currentTimeMillis();
+      boolean bool = arw.a(l2, l1, 360);
+      paramast.a.b(l2);
+      if (bool)
+      {
+        kv.a();
+        kw.b(new atc(paramast), "checkDoRegist");
+      }
+    }
   }
 }
 

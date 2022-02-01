@@ -1,62 +1,50 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Collection;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.secprotocol.t.s;
+import org.json.JSONObject;
 
 public final class aj
-  extends JceStruct
 {
-  static ab f;
-  static ArrayList g;
-  public int a = 0;
-  public int b = 0;
-  public int c = 1;
-  public ab d = null;
-  public ArrayList e = null;
+  public final Context a;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public aj(Context paramContext)
   {
-    this.a = paramJceInputStream.read(this.a, 0, false);
-    this.b = paramJceInputStream.read(this.b, 1, false);
-    this.c = paramJceInputStream.read(this.c, 2, false);
-    if (f == null) {
-      f = new ab();
-    }
-    this.d = ((ab)paramJceInputStream.read(f, 3, false));
-    if (g == null)
-    {
-      g = new ArrayList();
-      ai localai = new ai();
-      g.add(localai);
-    }
-    this.e = ((ArrayList)paramJceInputStream.read(g, 4, false));
+    this.a = paramContext;
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final JSONObject a(int paramInt, String paramString, af paramaf)
   {
-    int i = this.a;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 0);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put(ak.a(0), paramInt);
+      localJSONObject.put(ak.a(1), 1);
+      localJSONObject.put(ak.a(2), paramaf.b);
+      localJSONObject.put(ak.a(3), paramaf.d);
+      localJSONObject.put(ak.a(4), paramaf.c);
+      localJSONObject.put(ak.a(5), paramaf.e);
+      localJSONObject.put(ak.a(6), paramString);
+      localJSONObject.put(ak.a(7), paramaf.f);
+      localJSONObject.put(ak.a(8), paramaf.g);
+      localJSONObject.put(ak.a(9), Build.VERSION.SDK_INT);
+      localJSONObject.put(ak.a(10), s.b(paramaf.a));
+      localJSONObject.put(ak.a(11), paramaf.h);
+      localJSONObject.put(ak.a(12), System.currentTimeMillis());
+      localJSONObject.put(ak.a(13), 1);
+      localJSONObject.put(ak.a(14), "");
+      localJSONObject.put(ak.a(15), s.getProcessName(this.a));
+      localJSONObject.put(ak.a(16), s.c(this.a));
+      localJSONObject.put(ak.a(17), s.d(this.a));
+      localJSONObject.put(ak.a(18), s.e(this.a));
+      return localJSONObject;
     }
-    i = this.b;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 1);
+    finally
+    {
+      paramString.printStackTrace();
     }
-    i = this.c;
-    if (i != 1) {
-      paramJceOutputStream.write(i, 2);
-    }
-    Object localObject = this.d;
-    if (localObject != null) {
-      paramJceOutputStream.write((JceStruct)localObject, 3);
-    }
-    localObject = this.e;
-    if (localObject != null) {
-      paramJceOutputStream.write((Collection)localObject, 4);
-    }
+    return null;
   }
 }
 

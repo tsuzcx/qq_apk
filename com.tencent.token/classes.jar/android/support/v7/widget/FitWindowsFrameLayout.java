@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import com.tencent.token.iw;
-import com.tencent.token.iw.a;
+import com.tencent.token.jk;
+import com.tencent.token.jk.a;
 
 public class FitWindowsFrameLayout
   extends FrameLayout
-  implements iw
+  implements jk
 {
-  private iw.a a;
+  private jk.a a;
   
   public FitWindowsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,14 +20,14 @@ public class FitWindowsFrameLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    iw.a locala = this.a;
+    jk.a locala = this.a;
     if (locala != null) {
       locala.a(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }
   
-  public void setOnFitSystemWindowsListener(iw.a parama)
+  public void setOnFitSystemWindowsListener(jk.a parama)
   {
     this.a = parama;
   }

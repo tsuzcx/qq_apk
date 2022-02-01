@@ -1,215 +1,172 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
-import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.AccountPageActivity;
-import com.tencent.token.ui.FaceRecognitionCameraActivity;
-import com.tencent.token.ui.GeneralVerifyMobileUpActivity;
-import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.ui.NetActiveSetDirBySeqActivity;
-import com.tencent.token.ui.NetActiveVryMobileNoSmsActivity;
-import com.tencent.token.ui.NetActiveVryOtherListActivity;
-import com.tencent.token.ui.NetActiveVryQQTokenActivity;
-import com.tencent.token.ui.NetActiveVryQuesActivity;
-import com.tencent.token.ui.RealNameFindActivity;
-import com.tencent.token.ui.UtilsActivity;
-import com.tencent.token.ui.VerifyMobilePhoneActivity;
-import com.tmsdk.TMSDKContext;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.ui.UtilsGameLockActivity;
+import com.tencent.token.ui.base.SwitchButton;
 
 public final class yw
+  extends BaseAdapter
 {
-  private static yw c;
-  public Activity a;
-  public QQUser b = new QQUser();
-  private Handler d = new Handler();
+  public static boolean h = false;
+  public UtilsGameLockActivity a;
+  public boolean b;
+  public te c;
+  public zu d;
+  public Handler e;
+  public boolean f = true;
+  public View g;
+  a i = new a();
+  private LayoutInflater j;
+  private ListView k;
   
-  public static yw a()
+  public yw(UtilsGameLockActivity paramUtilsGameLockActivity, ListView paramListView, Handler paramHandler)
   {
-    if (c == null) {
-      c = new yw();
-    }
-    return c;
+    this.a = paramUtilsGameLockActivity;
+    this.j = LayoutInflater.from(paramUtilsGameLockActivity);
+    this.k = paramListView;
+    this.e = paramHandler;
   }
   
-  private void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, Handler paramHandler)
+  public static void a()
   {
-    if (!paramActivity.isFinishing())
+    int n = tu.a().c.a();
+    int m = 0;
+    while (m < n)
     {
-      if (paramDeterminVerifyFactorsResult == null) {
-        return;
+      te localte = tu.a().a(m);
+      if (localte != null) {
+        localte.e = false;
       }
-      QQUser localQQUser = th.a().k.b();
-      if (paramDeterminVerifyFactorsResult.mScene == 2) {
-        localQQUser = this.b;
-      }
-      if (localQQUser == null) {
-        return;
-      }
-      if (paramVerifyTypeItem != null)
+      m += 1;
+    }
+  }
+  
+  public final void a(zu paramzu, boolean paramBoolean)
+  {
+    if ((paramzu != null) && (paramzu.h != null))
+    {
+      Object localObject = this.a;
+      if (localObject != null)
       {
-        List localList = paramVerifyTypeItem.mVerifyFactorList;
-        if ((localList != null) && (localList.size() > 0))
+        if (((UtilsGameLockActivity)localObject).isFinishing()) {
+          return;
+        }
+        localObject = paramzu.h;
+        TextView localTextView = paramzu.b;
+        SwitchButton localSwitchButton = paramzu.d;
+        ProgressBar localProgressBar = paramzu.c;
+        paramzu = paramzu.e;
+        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramzu != null))
         {
-          i = ((Integer)localList.get(0)).intValue();
-          break label90;
+          if (localObject == null) {
+            return;
+          }
+          if ((paramBoolean) && (!((te)localObject).b.equals(localTextView.getText()))) {
+            return;
+          }
+          if (((te)localObject).f) {
+            paramzu.setVisibility(0);
+          } else {
+            paramzu.setVisibility(4);
+          }
+          if ((!((te)localObject).e) && (tu.a().c()))
+          {
+            localProgressBar.setVisibility(4);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(true);
+            localSwitchButton.a(true ^ ((te)localObject).c, false);
+          }
+          else
+          {
+            localProgressBar.setVisibility(0);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(false);
+          }
+          if (!tu.a().c()) {
+            this.a.queryGameLockStatus();
+          }
+          localTextView.setText(((te)localObject).b);
+          return;
         }
+        return;
       }
-      int i = -1;
-      label90:
-      a(paramActivity, paramDeterminVerifyFactorsResult, paramVerifyTypeItem, i, true, paramHandler);
-      paramActivity = new StringBuilder();
-      paramActivity.append(localQQUser.mRealUin);
-      TMSDKContext.SaveStringData(1150089, paramActivity.toString());
-      return;
     }
   }
   
-  private void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, QQUser paramQQUser, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
+  public final int getCount()
   {
-    switch (paramInt)
-    {
-    default: 
-      paramHandler = new Intent(paramActivity, NetActiveVryOtherListActivity.class);
-      paramHandler.putExtra("intent.qquser", paramQQUser);
-      paramHandler.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
-      paramHandler.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
-      paramActivity.startActivity(paramHandler);
-      return;
-    case 7: 
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 7, paramBoolean, paramActivity, NetActiveVryQuesActivity.class);
-      return;
-    case 6: 
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 6, paramBoolean, paramActivity, RealNameFindActivity.class);
-      return;
-    case 5: 
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 5, paramBoolean, paramActivity, FaceRecognitionCameraActivity.class);
-      return;
-    case 4: 
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 4, paramBoolean, paramActivity, NetActiveVryQQTokenActivity.class);
-      return;
-    case 3: 
-      if (paramDeterminVerifyFactorsResult.d())
-      {
-        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
-        return;
-      }
-      if (paramDeterminVerifyFactorsResult.e())
-      {
-        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, GeneralVerifyMobileUpActivity.class);
-        return;
-      }
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
-      return;
-    case 2: 
-      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 2, paramBoolean, paramActivity, VerifyMobilePhoneActivity.class);
-      return;
+    if (this.f) {
+      return tu.a().c.b();
     }
-    if (paramDeterminVerifyFactorsResult.b())
-    {
-      si.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.verifyTypeId, "", "", paramHandler);
-      this.a = null;
-      return;
-    }
-    a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 1, paramBoolean, paramActivity, NetActiveSetDirBySeqActivity.class);
+    return tu.a().c.a();
   }
   
-  private void a(final DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, final QQUser paramQQUser, final DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, final int paramInt, final boolean paramBoolean, final Activity paramActivity, final Class paramClass)
+  public final Object getItem(int paramInt)
   {
-    if ((paramActivity instanceof NetActiveVryOtherListActivity))
-    {
-      paramActivity.setResult(112);
-      paramActivity.finish();
+    return Integer.valueOf(paramInt);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.j.inflate(2131296485, paramViewGroup, false);
     }
-    this.d.postDelayed(new Runnable()
+    paramView = new zu(localView, tu.a().a(paramInt));
+    paramView.d.setTag(paramView);
+    paramView.d.setOnCheckedChangeListener(this.i);
+    a(paramView, false);
+    return localView;
+  }
+  
+  final class a
+    implements CompoundButton.OnCheckedChangeListener
+  {
+    a() {}
+    
+    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      public final void run()
+      paramCompoundButton = (zu)paramCompoundButton.getTag();
+      if (paramCompoundButton == null) {
+        return;
+      }
+      te localte = paramCompoundButton.h;
+      if ((localte != null) && (paramCompoundButton.a != null) && (tu.a().c()))
       {
-        Intent localIntent = new Intent(paramActivity, paramClass);
-        localIntent.putExtra("intent.qquser", paramQQUser);
-        localIntent.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
-        localIntent.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
-        localIntent.putExtra("intent.determin_verify_factor_id", paramInt);
-        localIntent.putExtra("intent.determin_first_verify_factor", paramBoolean);
-        boolean bool;
-        if ((paramActivity instanceof NetActiveVryOtherListActivity)) {
-          bool = true;
-        } else {
-          bool = false;
+        if (paramBoolean != localte.c) {
+          return;
         }
-        localIntent.putExtra("intent.determin_from_list", bool);
-        paramActivity.startActivity(localIntent);
-      }
-    }, 10L);
-  }
-  
-  public static void b() {}
-  
-  public final Intent a(Activity paramActivity)
-  {
-    Object localObject = this.a;
-    if (localObject != null) {
-      localObject = new Intent(paramActivity, localObject.getClass());
-    } else {
-      localObject = new Intent(paramActivity, IndexActivity.class);
-    }
-    Activity localActivity = this.a;
-    if (((localActivity instanceof UtilsActivity)) || ((localActivity instanceof AccountPageActivity))) {
-      localObject = new Intent(paramActivity, IndexActivity.class);
-    }
-    ((Intent)localObject).addFlags(67108864);
-    return localObject;
-  }
-  
-  public final void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, Handler paramHandler)
-  {
-    if (!paramActivity.isFinishing())
-    {
-      if (paramDeterminVerifyFactorsResult == null) {
-        return;
-      }
-      this.a = paramActivity;
-      Object localObject1 = th.a().k.b();
-      if (paramDeterminVerifyFactorsResult.mScene == 2) {
-        localObject1 = this.b;
-      }
-      if (localObject1 == null) {
-        return;
-      }
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if (paramDeterminVerifyFactorsResult.mVerifyTypeList != null)
-      {
-        localObject1 = localObject2;
-        if (paramDeterminVerifyFactorsResult.mVerifyTypeList.size() > 0) {
-          localObject1 = (DeterminVerifyFactorsResult.VerifyTypeItem)paramDeterminVerifyFactorsResult.mVerifyTypeList.get(0);
+        if (!localte.e)
+        {
+          if (yw.a(yw.this)) {
+            return;
+          }
+          yw.a(yw.this, localte);
+          yw.a(yw.this, paramCompoundButton);
+          localte.e = true;
+          yw.b(yw.this);
+          yw.this.a(paramCompoundButton, false);
+          ty.a().a(3, yw.c(yw.this).getHandler());
+          return;
         }
-      }
-      a(paramActivity, paramDeterminVerifyFactorsResult, (DeterminVerifyFactorsResult.VerifyTypeItem)localObject1, paramHandler);
-      return;
-    }
-  }
-  
-  public final void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
-  {
-    if (!paramActivity.isFinishing())
-    {
-      if (paramDeterminVerifyFactorsResult == null) {
         return;
       }
-      QQUser localQQUser = th.a().k.b();
-      if (paramDeterminVerifyFactorsResult.mScene == 2) {
-        localQQUser = this.b;
-      }
-      if (localQQUser == null) {
-        return;
-      }
-      a(paramActivity, paramDeterminVerifyFactorsResult, localQQUser, paramVerifyTypeItem, paramInt, paramBoolean, paramHandler);
-      return;
     }
   }
 }

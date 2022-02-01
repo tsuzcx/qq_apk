@@ -1,296 +1,149 @@
 package com.tencent.token;
 
+import android.content.Context;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
-import java.util.concurrent.Callable;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tp
+public final class tp
+  extends tq
 {
-  public static int a = 0;
-  private static int b = 1;
+  static tp a;
+  private final String d = "/cn/mbtoken3/mbtoken3_scan_qrcode_v2";
+  private String e;
+  private int f;
   
-  public static xh a(abc paramabc, String paramString)
+  private tp()
   {
-    xh localxh = new xh();
-    Object localObject2 = (Long)paramabc.c.get("param.uinhash");
-    if (localObject2 == null)
-    {
-      localxh.a(10000, null, null);
-      return localxh;
-    }
-    try
-    {
-      Object localObject1 = th.a();
-      Object localObject3 = ((th)localObject1).k.b();
-      if ((localObject3 != null) && (((th)localObject1).l == localObject3))
-      {
-        long l = System.currentTimeMillis() / 1000L;
-        if (((th)localObject1).m + ((th)localObject1).n > l)
-        {
-          localObject1 = ((th)localObject1).l;
-          break label175;
-        }
-      }
-      StringBuilder localStringBuilder = new StringBuilder("user not login, login_user=");
-      localStringBuilder.append(((th)localObject1).l);
-      localStringBuilder.append(",current_user=");
-      localStringBuilder.append(localObject3);
-      xj.a(localStringBuilder.toString());
-      ((th)localObject1).l = null;
-      ((th)localObject1).m = 0L;
-      ((th)localObject1).n = 0L;
-      localObject1 = null;
-      label175:
-      xj.c("login task: loginedUser".concat(String.valueOf(localObject1)));
-      localObject3 = (Long)paramabc.c.get("param.uin.wtlogin");
-      if ((localObject1 != null) && ((!((QQUser)localObject1).mIsBinded) || (((QQUser)localObject1).mUin == ((Long)localObject2).longValue())) && ((((QQUser)localObject1).mIsBinded) || (localObject3 == null) || (((QQUser)localObject1).mRealUin == ((Long)localObject3).longValue())))
-      {
-        localObject2 = to.a(paramString);
-        if (localObject3 != null) {
-          paramabc.c.put("param.uinhash", Long.valueOf(((QQUser)localObject1).mUin));
-        }
-        if (localObject2 != null)
-        {
-          localObject1 = ((tr)localObject2).c(paramabc);
-          if (((xh)localObject1).b()) {
-            return localObject1;
-          }
-          if ((((xh)localObject1).a != 109) && (((xh)localObject1).a != 104)) {
-            return localObject1;
-          }
-          paramabc = c(paramabc, paramString);
-          if (paramabc.b())
-          {
-            sh.a();
-            th.a().g();
-          }
-          return paramabc;
-        }
-        localxh.a(10000, null, null);
-        return localxh;
-      }
-      paramabc = c(paramabc, paramString);
-      if (paramabc.b())
-      {
-        sh.a();
-        th.a().g();
-      }
-      return paramabc;
-    }
-    finally {}
+    super(2);
   }
   
-  public static Callable<xh> a(abc paramabc)
+  public static tp a()
   {
-    new Callable() {};
+    if (a == null) {
+      a = new tp();
+    }
+    return a;
   }
   
-  private static xh b(abc paramabc, String paramString)
+  public final xt a(String paramString)
   {
-    Object localObject1 = new xh();
-    ??? = paramabc.c.get("param.uin.wtlogin");
-    if (??? == null)
+    this.b.clear();
+    this.e = "";
+    this.f = 0;
+    xt localxt = new xt();
+    Object localObject = tt.a();
+    if ((localObject != null) && (((tt)localObject).k.b() != null))
     {
-      ((xh)localObject1).a(10000, null, null);
-      return localObject1;
-    }
-    String str = String.valueOf(((Long)???).longValue());
-    b = 1;
-    Object localObject3 = sg.a(RqdApplication.p());
-    ??? = new StringBuilder("st sync account=");
-    ((StringBuilder)???).append(str);
-    ((StringBuilder)???).append(",appid=523005419");
-    xj.a(((StringBuilder)???).toString());
-    Object localObject4 = sg.a(RqdApplication.p());
-    synchronized (sg.g)
-    {
-      if (!((sg)localObject4).a(str, 523005419L))
+      long l = ((tt)localObject).k.d();
+      if (l == 0L)
       {
-        ((sg)localObject4).e = true;
-        ((sg)localObject4).a(str, null, 523005419L);
-        sg.g.wait();
-        b = 1;
+        localxt.a(10029, null, null);
+        return localxt;
       }
-      else
-      {
-        ((sg)localObject4).f.a(15, null, null);
+      if (((tt)localObject).k.b().mIsBinded) {
+        l = ((tt)localObject).k.b().mUin;
       }
-      ??? = ((sg)localObject3).f;
-      localObject4 = new StringBuilder("wtlogin result=");
-      ((StringBuilder)localObject4).append(((xh)???).a);
-      ((StringBuilder)localObject4).append(",errinfo=");
-      ((StringBuilder)localObject4).append(((xh)???).c);
-      xj.a(((StringBuilder)localObject4).toString());
-      localObject4 = new StringBuilder("wtlogin result=");
-      ((StringBuilder)localObject4).append(((xh)???).a);
-      ((StringBuilder)localObject4).append(",errinfo=");
-      ((StringBuilder)localObject4).append(((xh)???).c);
-      xj.a(((StringBuilder)localObject4).toString());
-      if (!((xh)???).b())
+      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      localObject = new AtomicReference(null);
+      rt.a().e(l, paramString, new rt.a()
       {
-        paramString = ((xh)???).c;
-        paramabc = paramString;
-        if (((xh)???).c.indexOf("(") == -1)
+        public final void a(rv paramAnonymousrv)
         {
-          paramabc = paramString;
-          if (((xh)???).c.indexOf(")") == -1)
-          {
-            paramabc = new StringBuilder();
-            paramabc.append(((xh)???).c);
-            paramabc.append("(");
-            paramabc.append(((sg)localObject3).f.a);
-            paramabc.append(")");
-            paramabc = paramabc.toString();
-          }
+          this.a.set(paramAnonymousrv);
+          localCountDownLatch.countDown();
         }
-        xj.c("wtlogin error for user: ".concat(String.valueOf(paramabc)));
-        if ((((xh)???).a != 15) && (((xh)???).a != 16) && (((xh)???).a != 1) && (((xh)???).a != 2))
+      });
+      try
+      {
+        localCountDownLatch.await();
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
+      localObject = (rv)((AtomicReference)localObject).get();
+      if (localObject == null)
+      {
+        localxt.a(-356, null, null);
+        localObject = new StringBuilder("client request url: ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" failed, reason: ");
+        ((StringBuilder)localObject).append(localxt.a);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(localxt.b);
+        xv.c(((StringBuilder)localObject).toString());
+        return localxt;
+      }
+      try
+      {
+        int i = ((rv)localObject).b;
+        if (i != 0)
         {
-          if ((((xh)???).a != 40) && (((xh)???).a != 42) && (((xh)???).a != 64))
+          paramString = ((rv)localObject).d;
+          localxt.a(i, paramString, paramString);
+          return localxt;
+        }
+        localObject = ((rv)localObject).c;
+        if (localObject != null)
+        {
+          localObject = new JSONObject((String)localObject);
+          this.f = ((JSONObject)localObject).getInt("type");
+          if (1 == this.f)
           {
-            if (((xh)???).a == -1000)
-            {
-              paramString = new StringBuilder();
-              paramString.append(paramabc);
-              paramString.append("(");
-              paramString.append(((xh)???).a);
-              paramString.append(")");
-              paramString = paramString.toString();
-              localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append(paramabc);
-              ((StringBuilder)localObject3).append("(");
-              ((StringBuilder)localObject3).append(((xh)???).a);
-              ((StringBuilder)localObject3).append(")");
-              ((xh)localObject1).a(10003, paramString, ((StringBuilder)localObject3).toString());
-              return localObject1;
+            paramString = ((JSONObject)localObject).getJSONObject("msg");
+            localObject = new sy();
+            if (!((sy)localObject).a(paramString)) {
+              xv.c("object item parse failed ");
+            } else {
+              this.b.add(localObject);
             }
-            paramString = new StringBuilder();
-            paramString.append(paramabc);
-            paramString.append("(");
-            paramString.append(((xh)???).a);
-            paramString.append(")");
-            paramString = paramString.toString();
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(paramabc);
-            ((StringBuilder)localObject3).append("(");
-            ((StringBuilder)localObject3).append(((xh)???).a);
-            ((StringBuilder)localObject3).append(")");
-            ((xh)localObject1).a(10028, paramString, ((StringBuilder)localObject3).toString());
-            return localObject1;
           }
-          ((xh)localObject1).a(((xh)???).a, paramabc, paramabc);
-          ((xh)localObject1).d = ((xh)???).d;
-          return localObject1;
-        }
-        ((xh)localObject1).a(10027, paramabc, paramabc);
-        return localObject1;
-      }
-      localObject1 = (byte[])((xh)???).d;
-      int i = b;
-      paramabc.c.put("param.uin.wtlogin", str);
-      paramabc.c.put("param.wtlogin.a2", localObject1);
-      paramabc.c.put("param.wtlogin.type", Integer.valueOf(i));
-      localObject1 = tu.a(paramabc, "mbtoken3_vfy_wtlogin");
-      if (((xh)localObject1).b())
-      {
-        paramString = to.a(paramString);
-        if (paramString != null) {
-          return paramString.c(paramabc);
-        }
-        ((xh)localObject1).a(10000, null, null);
-        return localObject1;
-      }
-      return localObject1;
-    }
-  }
-  
-  private static xh c(abc paramabc, String paramString)
-  {
-    new xh();
-    if (paramabc.c.get("param.uin.wtlogin") != null) {
-      return b(paramabc, paramString);
-    }
-    new xh();
-    int i;
-    if (paramabc.m == 1)
-    {
-      paramabc.m = 0;
-      i = 1;
-    }
-    else
-    {
-      i = -1;
-    }
-    paramabc.c.put("param.loginv2.clearkick", Integer.valueOf(a));
-    Object localObject = tu.a(paramabc, "mbtoken3_login_v2");
-    if (((xh)localObject).b())
-    {
-      a = 0;
-      paramString = to.a(paramString);
-      if (paramString != null)
-      {
-        if (i != -1)
-        {
-          paramabc.m = 1;
-          paramabc.k = true;
-        }
-        return paramString.c(paramabc);
-      }
-      ((xh)localObject).a(10000, null, null);
-      return localObject;
-    }
-    if ((!((xh)localObject).b()) && (((xh)localObject).a == 102))
-    {
-      long l1 = System.currentTimeMillis() + rf.a().g();
-      long l2 = 30 - (int)(l1 / 1000L % 30L) + 1L;
-      localObject = new StringBuilder("sleep ");
-      ((StringBuilder)localObject).append(l2);
-      ((StringBuilder)localObject).append("s for dyncode refresh:");
-      ((StringBuilder)localObject).append(l1);
-      xj.a(((StringBuilder)localObject).toString());
-      Thread.sleep(l2 * 1000L);
-      localObject = to.a("mbtoken3_login_v2").c(paramabc);
-      if (((xh)localObject).b())
-      {
-        a = 0;
-        paramString = to.a(paramString);
-        if (paramString != null)
-        {
-          if (i != -1)
+          else if (2 == this.f)
           {
-            paramabc.m = 1;
-            paramabc.k = true;
+            this.e = ((JSONObject)localObject).getString("text");
           }
-          return paramString.c(paramabc);
-        }
-        ((xh)localObject).a(10000, null, null);
-        return localObject;
-      }
-      return localObject;
-    }
-    if ((!((xh)localObject).b()) && (((xh)localObject).a == 112))
-    {
-      localObject = to.a("mbtoken3_login_v2").c(paramabc);
-      if (((xh)localObject).b())
-      {
-        a = 0;
-        paramString = to.a(paramString);
-        if (paramString != null)
-        {
-          if (i != -1)
+          else
           {
-            paramabc.m = 1;
-            paramabc.k = true;
+            this.e = paramString;
           }
-          return paramString.c(paramabc);
+          tt.a().g();
+          localxt.a = 0;
+          return localxt;
         }
-        ((xh)localObject).a(10000, null, null);
-        return localObject;
+        xv.c("parseJSON error decodeData");
+        localxt.a(10022, RqdApplication.n().getString(2131493069), null);
+        return localxt;
       }
-      return localObject;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        localObject = new StringBuilder("unknown err: ");
+        ((StringBuilder)localObject).append(paramString.toString());
+        xv.c(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder("JSONException:");
+        ((StringBuilder)localObject).append(paramString.toString());
+        localxt.a(10021, ((StringBuilder)localObject).toString(), null);
+        return localxt;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        localObject = new StringBuilder("parse json failed: ");
+        ((StringBuilder)localObject).append(paramString.toString());
+        xv.c(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder("JSONException:");
+        ((StringBuilder)localObject).append(paramString.toString());
+        localxt.a(10020, ((StringBuilder)localObject).toString(), null);
+        return localxt;
+      }
     }
-    return localObject;
+    localxt.a(110, null, null);
+    return localxt;
   }
 }
 

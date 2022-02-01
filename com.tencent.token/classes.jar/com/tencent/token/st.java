@@ -1,20 +1,15 @@
 package com.tencent.token;
 
-import org.json.JSONObject;
-
 public final class st
 {
-  public int a;
-  public String b;
-  public String c;
-  public String d;
+  private static st a;
   
-  public st(JSONObject paramJSONObject)
+  public static st a()
   {
-    this.a = paramJSONObject.optInt("id");
-    this.c = paramJSONObject.optString("title");
-    this.b = paramJSONObject.optString("icon");
-    this.d = paramJSONObject.optString("url");
+    if (a == null) {
+      a = new st();
+    }
+    return a;
   }
 }
 

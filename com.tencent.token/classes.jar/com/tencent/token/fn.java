@@ -1,35 +1,17 @@
 package com.tencent.token;
 
-import android.view.animation.Interpolator;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-abstract class fn
-  implements Interpolator
+public abstract interface fn
 {
-  private final float[] a;
-  private final float b;
+  public abstract ColorStateList getSupportBackgroundTintList();
   
-  protected fn(float[] paramArrayOfFloat)
-  {
-    this.a = paramArrayOfFloat;
-    this.b = (1.0F / (this.a.length - 1));
-  }
+  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
   
-  public float getInterpolation(float paramFloat)
-  {
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
-    }
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
-    }
-    float[] arrayOfFloat = this.a;
-    int i = Math.min((int)((arrayOfFloat.length - 1) * paramFloat), arrayOfFloat.length - 2);
-    float f1 = i;
-    float f2 = this.b;
-    paramFloat = (paramFloat - f1 * f2) / f2;
-    arrayOfFloat = this.a;
-    return arrayOfFloat[i] + paramFloat * (arrayOfFloat[(i + 1)] - arrayOfFloat[i]);
-  }
+  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
+  
+  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
 }
 
 

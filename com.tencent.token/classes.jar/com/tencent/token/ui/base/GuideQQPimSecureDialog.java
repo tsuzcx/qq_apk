@@ -9,9 +9,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aae;
-import com.tencent.token.kz;
-import com.tencent.token.kz.a;
+import com.tencent.token.aao;
+import com.tencent.token.ln;
+import com.tencent.token.ln.a;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -48,12 +48,12 @@ public class GuideQQPimSecureDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296355);
+    setContentView(2131296360);
     getWindow().setBackgroundDrawableResource(2131099877);
-    paramBundle = (TextView)findViewById(2131165661);
-    TextView localTextView = (TextView)findViewById(2131165662);
-    Button localButton = (Button)findViewById(2131165568);
-    findViewById(2131165382).setOnClickListener(new View.OnClickListener()
+    paramBundle = (TextView)findViewById(2131165678);
+    TextView localTextView = (TextView)findViewById(2131165679);
+    Button localButton = (Button)findViewById(2131165584);
+    findViewById(2131165392).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -64,8 +64,8 @@ public class GuideQQPimSecureDialog
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = kz.a.a;
-        kz.a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
+        paramAnonymousView = ln.a.a;
+        ln.a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
         GuideQQPimSecureDialog.this.a();
         TMSDKContext.SaveStringData(1150162, GuideQQPimSecureDialog.this.c);
       }
@@ -73,7 +73,7 @@ public class GuideQQPimSecureDialog
     paramBundle.setText((CharSequence)this.a.get(0));
     localTextView.setText((CharSequence)this.a.get(1));
     localButton.setText((CharSequence)this.a.get(2));
-    new aae((ImageView)findViewById(2131166152)).execute(new String[] { this.d });
+    new aao((ImageView)findViewById(2131166192)).execute(new String[] { this.d });
   }
 }
 

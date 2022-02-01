@@ -1,22 +1,22 @@
 package com.tencent.token;
 
 final class asb
+  implements auo
 {
-  int a;
-  int b;
-  int c;
-  int d;
-  byte[] e;
-  arp f;
+  asb(asa paramasa) {}
   
-  asb(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte, arp paramarp)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramArrayOfByte;
-    this.f = paramarp;
+    asa.a();
+    StringBuilder localStringBuilder = new StringBuilder("checkWifiApprovement() needWifiApprove: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" receivedError");
+    localStringBuilder.append(paramBoolean2);
+    asa.a();
+    localStringBuilder = new StringBuilder("checkWifiApprovement() needWifiApprove: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" receivedError");
+    localStringBuilder.append(paramBoolean2);
   }
 }
 

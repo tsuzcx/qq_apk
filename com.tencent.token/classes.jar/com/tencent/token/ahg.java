@@ -1,176 +1,92 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.wcdb.CursorWindow;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-final class ahg
-  implements ahm
+public final class ahg
+  implements ahk, Cloneable
 {
-  private IBinder a;
-  private Bundle b;
+  public static final ahg a = new ahg();
+  public List<aha> b = Collections.emptyList();
+  public List<aha> c = Collections.emptyList();
   
-  public ahg(IBinder paramIBinder)
+  public static boolean a(Class<?> paramClass)
   {
-    this.a = paramIBinder;
-    this.b = null;
+    return (!Enum.class.isAssignableFrom(paramClass)) && ((paramClass.isAnonymousClass()) || (paramClass.isLocalClass()));
   }
   
-  public final int a(ahn paramahn)
+  public final <T> ahh<T> a(final ahx paramahx, final aek<T> paramaek)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    boolean bool2 = a(paramaek.a);
+    int i = 0;
+    final boolean bool1;
+    if ((!bool2) && (!a(true))) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    if ((bool2) || (a(false))) {
+      i = 1;
+    }
+    if ((!bool1) && (i == 0)) {
+      return null;
+    }
+    return new a(bool1, paramahx, paramaek);
+  }
+  
+  public final boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      localObject = this.b;
+    } else {
+      localObject = this.c;
+    }
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((aha)((Iterator)localObject).next()).b()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public final Object clone()
+  {
     try
     {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      localParcel1.writeStrongInterface(paramahn);
-      boolean bool = this.a.transact(3, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      int i;
-      if (!bool)
+      ahg localahg = (ahg)super.clone();
+      return localahg;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      throw new AssertionError(localCloneNotSupportedException);
+    }
+  }
+  
+  public final class a
+    extends ahh<T>
+  {
+    public ahh<T> a;
+    
+    public a(boolean paramBoolean, ahx paramahx, aek paramaek) {}
+    
+    public final void a(aep paramaep, T paramT)
+    {
+      if (bool1)
       {
-        i = -1;
+        paramaep.e();
+        return;
       }
-      else
+      ahh localahh2 = this.a;
+      ahh localahh1 = localahh2;
+      if (localahh2 == null)
       {
-        i = localParcel2.readInt();
-        this.b = localParcel2.readBundle(getClass().getClassLoader());
+        localahh1 = paramahx.a(ahg.this, paramaek);
+        this.a = localahh1;
       }
-      return i;
+      localahh1.a(paramaep, paramT);
     }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final Bundle a(Bundle paramBundle)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      localParcel1.writeBundle(paramBundle);
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      paramBundle = localParcel2.readBundle(getClass().getClassLoader());
-      return paramBundle;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final CursorWindow a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      CursorWindow localCursorWindow = null;
-      if (localParcel2.readInt() == 1) {
-        localCursorWindow = CursorWindow.a(localParcel2);
-      }
-      return localCursorWindow;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      return;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public final void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      this.a.transact(7, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      return;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final void b(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      ahk.a(localParcel2);
-      return;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
-  }
-  
-  public final Bundle c()
-  {
-    if (this.b == null)
-    {
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-        this.a.transact(5, localParcel1, localParcel2, 0);
-        ahk.a(localParcel2);
-        this.b = localParcel2.readBundle(getClass().getClassLoader());
-        localParcel1.recycle();
-        localParcel2.recycle();
-      }
-      finally
-      {
-        localParcel1.recycle();
-        localParcel2.recycle();
-      }
-    }
-    return this.b;
   }
 }
 

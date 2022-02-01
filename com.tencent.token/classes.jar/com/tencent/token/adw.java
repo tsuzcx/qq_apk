@@ -1,9 +1,39 @@
 package com.tencent.token;
 
 public final class adw
-  implements aei
 {
-  public adw(aec paramaec) {}
+  public static adw a;
+  public static int b;
+  public static Object c = new Object();
+  public adw d;
+  public boolean e;
+  public int f;
+  public int g;
+  public int h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public String m = "";
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("action : ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",deviceId : ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",toolType : ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",rawX : ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",rawY : ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",pressure : ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(",size : ");
+    localStringBuilder.append(this.l);
+    return localStringBuilder.toString();
+  }
 }
 
 

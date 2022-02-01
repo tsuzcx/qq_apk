@@ -1,43 +1,10 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-
 public final class arw
 {
-  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
+  public static boolean a(long paramLong1, long paramLong2, int paramInt)
   {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    paramJceStruct.recyle();
-    paramJceStruct.readFrom(b(paramArrayOfByte));
-    return paramJceStruct;
-  }
-  
-  public static am a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = a(paramArrayOfByte, new am());
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    return (am)paramArrayOfByte;
-  }
-  
-  public static byte[] a(JceStruct paramJceStruct)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("UTF-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
-  }
-  
-  private static JceInputStream b(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-    paramArrayOfByte.setServerEncoding("UTF-8");
-    return paramArrayOfByte;
+    return paramLong1 - paramLong2 > paramInt * 60 * 1000;
   }
 }
 

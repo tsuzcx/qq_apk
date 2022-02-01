@@ -1,24 +1,33 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-
 public final class ep
 {
-  public static int a(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+  public static void a(Object paramObject, StringBuilder paramStringBuilder)
   {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return paramMarginLayoutParams.getMarginStart();
+    if (paramObject == null)
+    {
+      paramStringBuilder.append("null");
+      return;
     }
-    return paramMarginLayoutParams.leftMargin;
-  }
-  
-  public static int b(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return paramMarginLayoutParams.getMarginEnd();
+    String str2 = paramObject.getClass().getSimpleName();
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() > 0) {}
     }
-    return paramMarginLayoutParams.rightMargin;
+    else
+    {
+      str2 = paramObject.getClass().getName();
+      int i = str2.lastIndexOf('.');
+      str1 = str2;
+      if (i > 0) {
+        str1 = str2.substring(i + 1);
+      }
+    }
+    paramStringBuilder.append(str1);
+    paramStringBuilder.append('{');
+    paramStringBuilder.append(Integer.toHexString(System.identityHashCode(paramObject)));
   }
 }
 

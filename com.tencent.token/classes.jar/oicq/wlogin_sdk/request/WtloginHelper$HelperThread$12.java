@@ -9,12 +9,16 @@ class WtloginHelper$HelperThread$12
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
-    WtloginHelper.access$100(this.this$1.mHelper).OnVerifySMSVerifyLoginCode(this.this$1.mUserAccount, this.this$1.mMsgCode, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
+    async_context localasync_context = u.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = localasync_context._last_err_msg;
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$2300(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$800(this.this$1, localasync_context, this.val$ret);
+    WtloginHelper.access$200(this.this$1.mHelper).OnVerifySMSVerifyLoginCode(this.this$1.mUserAccount, this.this$1.mMsgCode, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
   }
 }
 

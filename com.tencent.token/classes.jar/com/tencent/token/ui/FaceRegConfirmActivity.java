@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.token.aai;
-import com.tencent.token.xj;
+import com.tencent.token.aas;
+import com.tencent.token.xv;
 
 public class FaceRegConfirmActivity
   extends BaseActivity
@@ -28,15 +28,15 @@ public class FaceRegConfirmActivity
     ((StringBuilder)localObject).append(this.mBitmap1.getWidth());
     ((StringBuilder)localObject).append(",h=");
     ((StringBuilder)localObject).append(this.mBitmap1.getHeight());
-    xj.c(((StringBuilder)localObject).toString());
+    xv.c(((StringBuilder)localObject).toString());
     if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
-      localObject = (ImageView)findViewById(2131165675);
-      ImageView localImageView = (ImageView)findViewById(2131165676);
+      localObject = (ImageView)findViewById(2131165692);
+      ImageView localImageView = (ImageView)findViewById(2131165693);
       ((ImageView)localObject).setImageBitmap(this.mBitmap1);
       localImageView.setImageBitmap(this.mBitmap2);
     }
-    ((Button)findViewById(2131165406)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165418)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -44,12 +44,12 @@ public class FaceRegConfirmActivity
         FaceRegConfirmActivity.this.finish();
       }
     });
-    ((Button)findViewById(2131165914)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165948)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        aai.b(FaceRegConfirmActivity.this.mPath1);
-        aai.b(FaceRegConfirmActivity.this.mPath2);
+        aas.b(FaceRegConfirmActivity.this.mPath1);
+        aas.b(FaceRegConfirmActivity.this.mPath2);
         FaceRegConfirmActivity.this.setResult(10);
         FaceRegConfirmActivity.this.finish();
       }
@@ -58,16 +58,16 @@ public class FaceRegConfirmActivity
   
   private void initOriginImg()
   {
-    Object localObject = aai.a(this.mPath1);
+    Object localObject = aas.a(this.mPath1);
     this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = aai.a(this.mPath2);
+    localObject = aas.a(this.mPath2);
     this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = (ImageView)findViewById(2131165675);
-    ImageView localImageView = (ImageView)findViewById(2131165676);
-    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131165670);
-    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131165671);
-    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131165672);
-    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131165673);
+    localObject = (ImageView)findViewById(2131165692);
+    ImageView localImageView = (ImageView)findViewById(2131165693);
+    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131165687);
+    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131165688);
+    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131165689);
+    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131165690);
     int i = (int)(this.mBitmap1.getHeight() * 140 / this.mBitmap1.getWidth() * IndexActivity.S_DENSITY);
     float f = i;
     int j = (int)(IndexActivity.S_DENSITY * 6.0F + f);
@@ -114,7 +114,7 @@ public class FaceRegConfirmActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296341);
+    setContentView(2131296346);
     this.mPath1 = getIntent().getStringExtra("origindata1");
     this.mPath2 = getIntent().getStringExtra("origindata2");
     if ((!TextUtils.isEmpty(this.mPath1)) && (!TextUtils.isEmpty(this.mPath2))) {
@@ -134,9 +134,9 @@ public class FaceRegConfirmActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          xj.c("onBackPressed");
-          aai.b(FaceRegConfirmActivity.this.mPath1);
-          aai.b(FaceRegConfirmActivity.this.mPath2);
+          xv.c("onBackPressed");
+          aas.b(FaceRegConfirmActivity.this.mPath1);
+          aas.b(FaceRegConfirmActivity.this.mPath2);
           FaceRegConfirmActivity.this.setResult(10);
           FaceRegConfirmActivity.this.finish();
         }

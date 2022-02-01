@@ -1,43 +1,40 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatDelegateImplV9.PanelFeatureState;
-import android.view.KeyboardShortcutGroup;
-import android.view.Menu;
-import android.view.Window;
-import android.view.Window.Callback;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.widget.EdgeEffect;
 
-final class gk
-  extends gm
+public final class gk
 {
-  gk(Context paramContext, Window paramWindow, gh paramgh)
-  {
-    super(paramContext, paramWindow, paramgh);
-  }
+  private static final b a = new b();
   
-  final Window.Callback a(Window.Callback paramCallback)
+  static
   {
-    return new a(paramCallback);
-  }
-  
-  final class a
-    extends gm.a
-  {
-    a(Window.Callback paramCallback)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      super(paramCallback);
+      a = new a();
+      return;
     }
-    
-    public final void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+  }
+  
+  public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+  {
+    a.a(paramEdgeEffect, paramFloat1, paramFloat2);
+  }
+  
+  static final class a
+    extends gk.b
+  {
+    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
     {
-      AppCompatDelegateImplV9.PanelFeatureState localPanelFeatureState = gk.this.g(0);
-      if ((localPanelFeatureState != null) && (localPanelFeatureState.j != null))
-      {
-        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.j, paramInt);
-        return;
-      }
-      super.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+    }
+  }
+  
+  static class b
+  {
+    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1);
     }
   }
 }

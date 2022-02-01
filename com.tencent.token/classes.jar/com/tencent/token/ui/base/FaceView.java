@@ -17,8 +17,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.jni.LiveRectInfo;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xj;
-import com.tencent.token.yj;
+import com.tencent.token.xv;
+import com.tencent.token.yv;
 
 public class FaceView
   extends View
@@ -81,15 +81,15 @@ public class FaceView
   {
     super(paramContext, paramAttributeSet);
     this.q = paramContext;
-    this.E = this.q.getResources().getColor(2130968655);
+    this.E = this.q.getResources().getColor(2130968656);
     this.F = -1;
     paramAttributeSet = new BitmapFactory.Options();
     paramAttributeSet.inSampleSize = 2;
     this.o = BitmapFactory.decodeResource(paramContext.getResources(), 2131099840, paramAttributeSet);
-    this.N = BitmapFactory.decodeResource(paramContext.getResources(), 2131099933, null);
-    this.P = BitmapFactory.decodeResource(paramContext.getResources(), 2131099932, null);
-    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2131100094, null);
-    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2131100093, null);
+    this.N = BitmapFactory.decodeResource(paramContext.getResources(), 2131099938, null);
+    this.P = BitmapFactory.decodeResource(paramContext.getResources(), 2131099937, null);
+    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2131100099, null);
+    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2131100098, null);
     this.L = this.N.getWidth();
     this.M = this.N.getHeight();
     this.a = paramContext.getResources().getDisplayMetrics().density;
@@ -102,7 +102,7 @@ public class FaceView
     paramContext.append(this.c);
     paramContext.append(",scale=");
     paramContext.append(this.a);
-    xj.c(paramContext.toString());
+    xv.c(paramContext.toString());
     this.d = new Rect(0, 0, this.b, this.c);
     int i1 = this.b;
     this.f = (i1 / 2);
@@ -156,12 +156,12 @@ public class FaceView
     this.D = false;
     if (paramBoolean1)
     {
-      this.F = this.q.getResources().getColor(2130968656);
+      this.F = this.q.getResources().getColor(2130968657);
       this.E = this.F;
       if (paramBoolean2)
       {
-        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
-        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100148, null);
+        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100152, null);
+        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100153, null);
       }
       else
       {
@@ -171,12 +171,12 @@ public class FaceView
     }
     else
     {
-      this.F = this.q.getResources().getColor(2130968655);
+      this.F = this.q.getResources().getColor(2130968656);
       this.E = this.F;
       if (paramBoolean2)
       {
-        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
-        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100148, null);
+        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100152, null);
+        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100153, null);
       }
       else
       {
@@ -220,7 +220,7 @@ public class FaceView
     super.onDraw(paramCanvas);
     if (this.d == null)
     {
-      xj.a("rect=null");
+      xv.a("rect=null");
       return;
     }
     this.x.setAlpha(255);
@@ -502,16 +502,16 @@ public class FaceView
       default: 
         break;
       case 4: 
-        this.h = (this.f + this.e * this.U / yj.k);
+        this.h = (this.f + this.e * this.U / yv.k);
         break;
       case 3: 
-        this.h = (this.f - this.e * this.U / yj.k);
+        this.h = (this.f - this.e * this.U / yv.k);
         break;
       case 2: 
-        this.i = (this.g + this.e * this.U / yj.k);
+        this.i = (this.g + this.e * this.U / yv.k);
         break;
       case 1: 
-        this.i = (this.g - this.e * this.U / yj.k);
+        this.i = (this.g - this.e * this.U / yv.k);
       }
       this.n = 8;
       invalidate();

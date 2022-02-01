@@ -1,39 +1,87 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 
-public class zq
+public final class zq
+  extends Drawable
 {
-  private static zq b;
-  private aki a;
+  public boolean a;
+  public float b;
+  private int c;
+  private int d;
+  private Paint e = new Paint();
+  private RectF f;
+  private RectF g;
+  private float h;
   
-  public zq()
+  public zq(Context paramContext)
   {
-    aki.a locala = new aki.a();
-    locala.x = akt.a("timeout", TimeUnit.SECONDS);
-    locala.z = akt.a("timeout", TimeUnit.SECONDS);
-    locala.y = akt.a("timeout", TimeUnit.SECONDS);
-    this.a = new aki(locala);
+    this.c = paramContext.getResources().getColor(2130968666);
+    this.d = paramContext.getResources().getColor(2130968670);
+    this.f = new RectF();
+    this.g = new RectF();
   }
   
-  public static zq a()
+  public final void a()
   {
-    if (b == null) {
-      try
-      {
-        if (b == null) {
-          b = new zq();
-        }
+    this.b = 0.0F;
+    this.a = false;
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    this.e.setColor(this.c);
+    this.e.setStyle(Paint.Style.FILL);
+    paramCanvas.drawRoundRect(this.f, 5.0F, 5.0F, this.e);
+    if (!this.a)
+    {
+      double d1 = this.b;
+      Double.isNaN(d1);
+      this.b = ((float)(d1 + 0.15D));
+      if (this.b > 80.0F) {
+        this.b = 80.0F;
       }
-      finally {}
     }
-    return b;
+    else
+    {
+      this.b += 5.0F;
+    }
+    if (this.b >= 100.0F) {
+      this.b = 100.0F;
+    }
+    this.g.set(this.f.left, this.f.top, this.f.left + this.h * this.b, this.f.bottom);
+    this.e.setColor(this.d);
+    paramCanvas.drawRoundRect(this.g, 5.0F, 5.0F, this.e);
+    invalidateSelf();
   }
   
-  final void a(akl paramakl, ajt paramajt)
+  public final int getOpacity()
   {
-    akk.a(this.a, paramakl, false).a(paramajt);
+    return 0;
   }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.f.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.h = (this.f.width() / 100.0F);
+    StringBuilder localStringBuilder = new StringBuilder("setBounds rect=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",clipRect=");
+    localStringBuilder.append(this.g);
+    xv.c(localStringBuilder.toString());
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

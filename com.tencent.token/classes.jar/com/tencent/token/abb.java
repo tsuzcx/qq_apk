@@ -1,28 +1,18 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
+import java.io.Serializable;
 
-public final class abb
+public abstract interface abb
 {
-  public ss a = new ss();
-  long b;
-  public boolean c;
+  public abstract a a(abd paramabd);
   
-  public final void a(ss paramss)
+  public abstract void a(abd paramabd, abn paramabn);
+  
+  public static final class a
   {
-    try
-    {
-      this.a = paramss;
-      if (th.a().k.b() != null) {
-        this.b = th.a().k.b().mUin;
-      }
-      return;
-    }
-    finally
-    {
-      paramss = finally;
-      throw paramss;
-    }
+    public boolean a;
+    public abn b;
+    public Serializable c;
   }
 }
 

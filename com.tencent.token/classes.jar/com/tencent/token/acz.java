@@ -1,47 +1,57 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.qps.final;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public final class acz
+  extends ahh<Date>
 {
-  public final int a;
-  public final int b;
-  public final int c;
-  public final b d;
-  public final final e;
-  public final byte[] f;
-  public final final g;
+  public static final ahk a = new a();
+  public final List<DateFormat> b;
   
-  public acz(a parama)
+  public acz()
   {
-    this.a = parama.b;
-    this.b = parama.c;
-    this.c = parama.g;
-    this.d = parama.a;
-    this.e = parama.d;
-    this.f = parama.e;
-    this.g = parama.f;
-  }
-  
-  public static final class a
-  {
-    public acz.b a;
-    public final int b;
-    public final int c;
-    public final d = null;
-    public byte[] e = null;
-    public final f = null;
-    public final int g;
-    
-    public a(int paramInt1, int paramInt2, int paramInt3)
-    {
-      this.b = paramInt1;
-      this.c = paramInt2;
-      this.g = paramInt3;
+    ArrayList localArrayList = new ArrayList();
+    this.b = localArrayList;
+    Locale localLocale = Locale.US;
+    localArrayList.add(DateFormat.getDateTimeInstance(2, 2, localLocale));
+    if (!Locale.getDefault().equals(localLocale)) {
+      localArrayList.add(DateFormat.getDateTimeInstance(2, 2));
+    }
+    if (ahi.a()) {
+      localArrayList.add(ahr.a());
     }
   }
   
-  public static abstract interface b {}
+  public final void a(aep paramaep, Object paramObject)
+  {
+    paramObject = (Date)paramObject;
+    if (paramObject == null) {}
+    try
+    {
+      paramaep.e();
+      break label41;
+      paramaep.b(((DateFormat)this.b.get(0)).format(paramObject));
+      label41:
+      return;
+    }
+    finally {}
+  }
+  
+  public final class a
+    implements ahk
+  {
+    public final <T> ahh<T> a(ahx paramahx, aek<T> paramaek)
+    {
+      if (paramaek.a == Date.class) {
+        return new acz();
+      }
+      return null;
+    }
+  }
 }
 
 

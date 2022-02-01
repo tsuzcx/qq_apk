@@ -1,88 +1,102 @@
 package com.tencent.token;
 
-import android.app.Dialog;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.FacePwdIndexActivity;
-import java.util.List;
+import java.util.ArrayList;
 
 public final class yy
   extends BaseAdapter
 {
-  private List<QQUser> a;
-  private Dialog b;
-  private LayoutInflater c;
-  private FacePwdIndexActivity d;
+  private Context a;
+  private ArrayList<td> b;
+  private int c = 0;
   
-  public yy(FacePwdIndexActivity paramFacePwdIndexActivity, Dialog paramDialog, List<QQUser> paramList)
+  public yy(Context paramContext, ArrayList<td> paramArrayList)
   {
-    this.c = LayoutInflater.from(paramFacePwdIndexActivity);
-    this.b = paramDialog;
-    this.a = paramList;
-    this.d = paramFacePwdIndexActivity;
+    this.a = paramContext;
+    this.b = paramArrayList;
   }
   
   public final int getCount()
   {
-    List localList = this.a;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
+    return this.b.size();
   }
   
   public final Object getItem(int paramInt)
   {
-    return null;
+    return Integer.valueOf(paramInt);
   }
   
   public final long getItemId(int paramInt)
   {
-    return 0L;
+    return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.c.inflate(2131296333, paramViewGroup, false);
-    }
-    paramView = localView.findViewById(2131165447);
-    if (paramInt == getCount() - 1) {
-      paramView.setVisibility(4);
-    } else {
-      paramView.setVisibility(0);
-    }
-    paramView = (TextView)localView.findViewById(2131166075);
-    paramViewGroup = this.a;
-    if (paramViewGroup != null)
+    int i = 0;
+    if (paramView == null)
     {
-      paramViewGroup = (QQUser)paramViewGroup.get(paramInt);
-      if (paramViewGroup != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramViewGroup.mNickName);
-        localStringBuilder.append("(");
-        localStringBuilder.append(aao.e(paramViewGroup.mRealUin));
-        localStringBuilder.append(")");
-        paramView.setText(localStringBuilder.toString());
-        localView.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            aap.b(paramViewGroup.mRealUin);
-            yy.a(yy.this).dismiss();
-            yy.b(yy.this).refreshList();
-          }
-        });
-      }
+      paramView = new a();
+      localObject = LayoutInflater.from(this.a).inflate(2131296368, paramViewGroup, false);
+      paramView.d = ((View)localObject).findViewById(2131165632);
+      paramView.a = ((TextView)((View)localObject).findViewById(2131166208));
+      paramView.b = ((ImageView)((View)localObject).findViewById(2131165630));
+      paramView.c = ((ImageView)((View)localObject).findViewById(2131165631));
+      paramView.e = ((RelativeLayout)((View)localObject).findViewById(2131165756));
+      ((View)localObject).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
     }
-    return localView;
+    else
+    {
+      paramViewGroup = (a)paramView.getTag();
+    }
+    Object localObject = (td)this.b.get(paramInt);
+    if ((localObject != null) && (((td)localObject).f))
+    {
+      if (!TextUtils.isEmpty(((td)localObject).c)) {
+        paramViewGroup.a.setText(((td)localObject).c);
+      }
+      paramViewGroup.d.setOnClickListener(((td)localObject).a);
+      if (((td)localObject).b > 0) {
+        paramViewGroup.b.setImageResource(((td)localObject).b);
+      } else {
+        new aao(paramViewGroup.b).execute(new String[] { ((td)localObject).h });
+      }
+      if (((td)localObject).d)
+      {
+        paramViewGroup.c.setVisibility(0);
+        return paramView;
+      }
+      paramViewGroup.c.setVisibility(4);
+      paramViewGroup = paramViewGroup.e;
+      if (((td)localObject).e) {
+        paramInt = i;
+      } else {
+        paramInt = 8;
+      }
+      paramViewGroup.setVisibility(paramInt);
+    }
+    return paramView;
+  }
+  
+  final class a
+  {
+    TextView a;
+    ImageView b;
+    ImageView c;
+    View d;
+    RelativeLayout e;
+    
+    a() {}
   }
 }
 

@@ -1,49 +1,47 @@
 package com.tencent.token;
 
-import java.io.Writer;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 
-public final class ec
-  extends Writer
+class ec
+  extends eb
 {
-  private final String a;
-  private StringBuilder b = new StringBuilder(128);
-  
-  public ec(String paramString)
+  ec(Drawable paramDrawable)
   {
-    this.a = paramString;
+    super(paramDrawable);
   }
   
-  private void a()
+  ec(eb.a parama, Resources paramResources)
   {
-    if (this.b.length() > 0)
+    super(parama, paramResources);
+  }
+  
+  eb.a b()
+  {
+    return new a(this.b);
+  }
+  
+  public boolean isAutoMirrored()
+  {
+    return this.c.isAutoMirrored();
+  }
+  
+  public void setAutoMirrored(boolean paramBoolean)
+  {
+    this.c.setAutoMirrored(paramBoolean);
+  }
+  
+  static final class a
+    extends eb.a
+  {
+    a(eb.a parama)
     {
-      StringBuilder localStringBuilder = this.b;
-      localStringBuilder.delete(0, localStringBuilder.length());
+      super();
     }
-  }
-  
-  public final void close()
-  {
-    a();
-  }
-  
-  public final void flush()
-  {
-    a();
-  }
-  
-  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    while (i < paramInt2)
+    
+    public final Drawable newDrawable(Resources paramResources)
     {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      } else {
-        this.b.append(c);
-      }
-      i += 1;
+      return new ec(this, paramResources);
     }
   }
 }

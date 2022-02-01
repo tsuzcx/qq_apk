@@ -1,70 +1,108 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLParameters;
-import javax.net.ssl.SSLSocket;
 
-final class amk
-  extends amn
+public final class amk
+  implements ale.a
 {
-  final Method a;
-  final Method b;
+  public final amd a;
+  final amg b;
+  final alz c;
+  public final alj d;
+  final akq e;
+  final ala f;
+  private final List<ale> g;
+  private final int h;
+  private final int i;
+  private final int j;
+  private final int k;
+  private int l;
   
-  private amk(Method paramMethod1, Method paramMethod2)
+  public amk(List<ale> paramList, amd paramamd, amg paramamg, alz paramalz, int paramInt1, alj paramalj, akq paramakq, ala paramala, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
+    this.g = paramList;
+    this.c = paramalz;
+    this.a = paramamd;
+    this.b = paramamg;
+    this.h = paramInt1;
+    this.d = paramalj;
+    this.e = paramakq;
+    this.f = paramala;
+    this.i = paramInt2;
+    this.j = paramInt3;
+    this.k = paramInt4;
   }
   
-  public static amk a()
+  public final alj a()
   {
-    try
-    {
-      amk localamk = new amk(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
-      return localamk;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label37:
-      break label37;
-    }
-    return null;
+    return this.d;
   }
   
-  @Nullable
-  public final String a(SSLSocket paramSSLSocket)
+  public final all a(alj paramalj)
   {
-    try
+    return a(paramalj, this.a, this.b, this.c);
+  }
+  
+  public final all a(alj paramalj, amd paramamd, amg paramamg, alz paramalz)
+  {
+    if (this.h < this.g.size())
     {
-      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null)
+      this.l += 1;
+      if ((this.b != null) && (!this.c.a(paramalj.a)))
       {
-        boolean bool = paramSSLSocket.equals("");
-        if (!bool) {
-          return paramSSLSocket;
-        }
+        paramalj = new StringBuilder("network interceptor ");
+        paramalj.append(this.g.get(this.h - 1));
+        paramalj.append(" must retain the same host and port");
+        throw new IllegalStateException(paramalj.toString());
       }
-      return null;
+      if ((this.b != null) && (this.l > 1))
+      {
+        paramalj = new StringBuilder("network interceptor ");
+        paramalj.append(this.g.get(this.h - 1));
+        paramalj.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramalj.toString());
+      }
+      paramamd = new amk(this.g, paramamd, paramamg, paramalz, this.h + 1, paramalj, this.e, this.f, this.i, this.j, this.k);
+      paramalj = (ale)this.g.get(this.h);
+      paramalz = paramalj.a(paramamd);
+      if ((paramamg != null) && (this.h + 1 < this.g.size()) && (paramamd.l != 1))
+      {
+        paramamd = new StringBuilder("network interceptor ");
+        paramamd.append(paramalj);
+        paramamd.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramamd.toString());
+      }
+      if (paramalz != null)
+      {
+        if (paramalz.g != null) {
+          return paramalz;
+        }
+        paramamd = new StringBuilder("interceptor ");
+        paramamd.append(paramalj);
+        paramamd.append(" returned a response with no body");
+        throw new IllegalStateException(paramamd.toString());
+      }
+      paramamd = new StringBuilder("interceptor ");
+      paramamd.append(paramalj);
+      paramamd.append(" returned null");
+      throw new NullPointerException(paramamd.toString());
     }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw akt.a("unable to get selected protocols", paramSSLSocket);
+    throw new AssertionError();
   }
   
-  public final void a(SSLSocket paramSSLSocket, String paramString, List<akj> paramList)
+  public final int b()
   {
-    try
-    {
-      paramString = paramSSLSocket.getSSLParameters();
-      paramList = a(paramList);
-      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
-      paramSSLSocket.setSSLParameters(paramString);
-      return;
-    }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw akt.a("unable to set ssl parameters", paramSSLSocket);
+    return this.i;
+  }
+  
+  public final int c()
+  {
+    return this.j;
+  }
+  
+  public final int d()
+  {
+    return this.k;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.c;
-import com.tencent.token.lp;
-import com.tencent.token.lq;
+import com.tencent.token.md;
+import com.tencent.token.me;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,35 +18,35 @@ public final class a
   public int d = 0;
   private Map e = null;
   
-  public final void a(lp paramlp)
+  public final void a(md parammd)
   {
-    this.a = paramlp.a(0, true);
-    this.b = paramlp.a(1, true);
+    this.a = parammd.a(0, true);
+    this.b = parammd.a(1, true);
     if (f == null)
     {
       f = new ArrayList();
       h localh = new h();
       f.add(localh);
     }
-    this.c = ((ArrayList)paramlp.a(f, 2, true));
-    this.d = paramlp.a(this.d, 3, true);
+    this.c = ((ArrayList)parammd.a(f, 2, true));
+    this.d = parammd.a(this.d, 3, true);
     if (g == null)
     {
       g = new HashMap();
       g.put("", "");
     }
-    this.e = ((Map)paramlp.a(g, 4, false));
+    this.e = ((Map)parammd.a(g, 4, false));
   }
   
-  public final void a(lq paramlq)
+  public final void a(me paramme)
   {
-    paramlq.a(this.a, 0);
-    paramlq.a(this.b, 1);
-    paramlq.a(this.c, 2);
-    paramlq.a(this.d, 3);
+    paramme.a(this.a, 0);
+    paramme.a(this.b, 1);
+    paramme.a(this.c, 2);
+    paramme.a(this.d, 3);
     Map localMap = this.e;
     if (localMap != null) {
-      paramlq.a(localMap, 4);
+      paramme.a(localMap, 4);
     }
   }
 }

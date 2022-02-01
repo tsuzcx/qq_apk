@@ -1,6 +1,6 @@
 package oicq.wlogin_sdk.tools;
 
-import oicq.wlogin_sdk.request.t;
+import oicq.wlogin_sdk.request.u;
 
 public class InternationMsg
 {
@@ -15,7 +15,7 @@ public class InternationMsg
       if (i >= arrayOfa.length) {
         break;
       }
-      if ((paramMSG_TYPE == arrayOfa[i].b) && (t.u == a[i].a)) {
+      if ((paramMSG_TYPE == arrayOfa[i].b) && (u.v == a[i].a)) {
         return a[i].c;
       }
       i += 1;

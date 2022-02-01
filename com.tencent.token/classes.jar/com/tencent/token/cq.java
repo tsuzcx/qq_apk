@@ -1,57 +1,29 @@
 package com.tencent.token;
 
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.support.v4.app.Fragment;
 
-final class cq
-  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
+public final class cq
 {
-  private final View a;
-  private ViewTreeObserver b;
-  private final Runnable c;
+  public final cr<?> a;
   
-  private cq(View paramView, Runnable paramRunnable)
+  public cq(cr<?> paramcr)
   {
-    this.a = paramView;
-    this.b = paramView.getViewTreeObserver();
-    this.c = paramRunnable;
+    this.a = paramcr;
   }
   
-  public static cq a(View paramView, Runnable paramRunnable)
+  public final Fragment a(String paramString)
   {
-    paramRunnable = new cq(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    return paramRunnable;
+    return this.a.f.b(paramString);
   }
   
-  private void a()
+  public final void a()
   {
-    if (this.b.isAlive()) {
-      this.b.removeOnPreDrawListener(this);
-    } else {
-      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    }
-    this.a.removeOnAttachStateChangeListener(this);
+    this.a.f.j();
   }
   
-  public final boolean onPreDraw()
+  public final boolean b()
   {
-    a();
-    this.c.run();
-    return true;
-  }
-  
-  public final void onViewAttachedToWindow(View paramView)
-  {
-    this.b = paramView.getViewTreeObserver();
-  }
-  
-  public final void onViewDetachedFromWindow(View paramView)
-  {
-    a();
+    return this.a.f.h();
   }
 }
 

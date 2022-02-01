@@ -1,136 +1,102 @@
 package com.tencent.token;
 
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Typeface;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.TypedValue;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 
 public final class da
 {
-  public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama)
+  public static Intent a(Activity paramActivity)
   {
-    if (paramContext.isRestricted()) {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      localObject = paramActivity.getParentActivityIntent();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    Object localObject = b(paramActivity);
+    if (localObject == null) {
       return null;
     }
-    Resources localResources = paramContext.getResources();
-    localResources.getValue(paramInt1, paramTypedValue, true);
-    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama);
-    if (paramContext == null)
-    {
-      if (parama != null) {
-        return paramContext;
-      }
-      paramContext = new StringBuilder("Font resource ID #0x");
-      paramContext.append(Integer.toHexString(paramInt1));
-      paramContext.append(" could not be retrieved.");
-      throw new Resources.NotFoundException(paramContext.toString());
-    }
-    return paramContext;
-  }
-  
-  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
-  {
-    if (paramTypedValue.string != null)
-    {
-      paramTypedValue = paramTypedValue.string.toString();
-      if (!paramTypedValue.startsWith("res/"))
-      {
-        if (parama != null) {
-          parama.a(-3, null);
-        }
-        return null;
-      }
-      Typeface localTypeface = de.a(paramResources, paramInt1, paramInt2);
-      if (localTypeface != null)
-      {
-        if (parama != null) {
-          parama.a(localTypeface, null);
-        }
-        return localTypeface;
-      }
-    }
+    ComponentName localComponentName = new ComponentName(paramActivity, (String)localObject);
     try
     {
-      if (paramTypedValue.toLowerCase().endsWith(".xml"))
-      {
-        paramTypedValue = cz.a(paramResources.getXml(paramInt1), paramResources);
-        if (paramTypedValue == null)
-        {
-          if (parama == null) {
-            break label242;
-          }
-          parama.a(-3, null);
-          return null;
-        }
-        return de.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
+      if (b(paramActivity, localComponentName) == null) {
+        return Intent.makeMainActivity(localComponentName);
       }
-      paramContext = de.a(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
-      if (parama != null)
-      {
-        if (paramContext != null)
-        {
-          parama.a(paramContext, null);
-          return paramContext;
-        }
-        parama.a(-3, null);
-      }
-      return paramContext;
+      paramActivity = new Intent().setComponent(localComponentName);
+      return paramActivity;
     }
-    catch (XmlPullParserException|IOException paramContext)
+    catch (PackageManager.NameNotFoundException paramActivity)
     {
-      label162:
-      break label162;
+      label67:
+      break label67;
     }
-    if (parama != null) {
-      parama.a(-3, null);
-    }
-    return null;
-    paramContext = new StringBuilder("Resource \"");
-    paramContext.append(paramResources.getResourceName(paramInt1));
-    paramContext.append("\" (");
-    paramContext.append(Integer.toHexString(paramInt1));
-    paramContext.append(") is not a Font: ");
-    paramContext.append(paramTypedValue);
-    throw new Resources.NotFoundException(paramContext.toString());
-    label242:
+    paramActivity = new StringBuilder("getParentActivityIntent: bad parentActivityName '");
+    paramActivity.append((String)localObject);
+    paramActivity.append("' in manifest");
     return null;
   }
   
-  public static abstract class a
+  public static Intent a(Context paramContext, ComponentName paramComponentName)
   {
-    public final void a(final int paramInt, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
-      {
-        public final void run() {}
-      });
+    String str = b(paramContext, paramComponentName);
+    if (str == null) {
+      return null;
     }
-    
-    public abstract void a(Typeface paramTypeface);
-    
-    public final void a(final Typeface paramTypeface, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
-      {
-        public final void run()
-        {
-          da.a.this.a(paramTypeface);
-        }
-      });
+    paramComponentName = new ComponentName(paramComponentName.getPackageName(), str);
+    if (b(paramContext, paramComponentName) == null) {
+      return Intent.makeMainActivity(paramComponentName);
     }
+    return new Intent().setComponent(paramComponentName);
+  }
+  
+  public static String b(Activity paramActivity)
+  {
+    try
+    {
+      paramActivity = b(paramActivity, paramActivity.getComponentName());
+      return paramActivity;
+    }
+    catch (PackageManager.NameNotFoundException paramActivity)
+    {
+      throw new IllegalArgumentException(paramActivity);
+    }
+  }
+  
+  private static String b(Context paramContext, ComponentName paramComponentName)
+  {
+    paramComponentName = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      str = paramComponentName.parentActivityName;
+      if (str != null) {
+        return str;
+      }
+    }
+    if (paramComponentName.metaData == null) {
+      return null;
+    }
+    String str = paramComponentName.metaData.getString("android.support.PARENT_ACTIVITY");
+    if (str == null) {
+      return null;
+    }
+    paramComponentName = str;
+    if (str.charAt(0) == '.')
+    {
+      paramComponentName = new StringBuilder();
+      paramComponentName.append(paramContext.getPackageName());
+      paramComponentName.append(str);
+      paramComponentName = paramComponentName.toString();
+    }
+    return paramComponentName;
   }
 }
 

@@ -1,22 +1,56 @@
 package com.tencent.token;
 
-import android.view.View;
-
-public abstract interface eu
+public final class eu<F, S>
 {
-  public abstract boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean);
+  public final F a;
+  public final S b;
   
-  public abstract boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2);
+  public eu(F paramF, S paramS)
+  {
+    this.a = paramF;
+    this.b = paramS;
+  }
   
-  public abstract void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt);
+  private static boolean a(Object paramObject1, Object paramObject2)
+  {
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+  }
   
-  public abstract void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof eu)) {
+      return false;
+    }
+    paramObject = (eu)paramObject;
+    return (a(paramObject.a, this.a)) && (a(paramObject.b, this.b));
+  }
   
-  public abstract void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt);
+  public final int hashCode()
+  {
+    Object localObject = this.a;
+    int j = 0;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = localObject.hashCode();
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i ^ j;
+  }
   
-  public abstract boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt);
-  
-  public abstract void onStopNestedScroll(View paramView);
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Pair{");
+    localStringBuilder.append(String.valueOf(this.a));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(String.valueOf(this.b));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
 }
 
 

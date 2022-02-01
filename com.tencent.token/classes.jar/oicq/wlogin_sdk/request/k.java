@@ -1,132 +1,55 @@
 package oicq.wlogin_sdk.request;
 
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Random;
-import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
 
 public class k
+  implements Runnable
 {
-  protected t a;
+  private HttpURLConnection a;
+  private boolean b = false;
   
-  public String a(int paramInt)
+  public k(HttpURLConnection paramHttpURLConnection)
   {
-    paramInt = Math.abs(paramInt % 2);
-    return new String[] { "log.wtlogin.qq.com", "log1.wtlogin.qq.com" }[paramInt];
+    this.a = paramHttpURLConnection;
   }
   
-  protected byte[] a(byte[] paramArrayOfByte)
+  public static boolean a(HttpURLConnection paramHttpURLConnection, long paramLong)
   {
-    byte[] arrayOfByte1 = util.get_rand_16byte(t.a);
-    paramArrayOfByte = cryptor.encrypt(paramArrayOfByte, 0, paramArrayOfByte.length, arrayOfByte1);
-    byte[] arrayOfByte2 = new byte[paramArrayOfByte.length + arrayOfByte1.length];
-    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
-    return arrayOfByte2;
-  }
-  
-  public int b(byte[] paramArrayOfByte)
-  {
-    int k = 0;
-    if (paramArrayOfByte != null)
+    try
     {
-      if (paramArrayOfByte.length == 0) {
-        return 0;
-      }
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(getClass().getName());
-      ((StringBuilder)localObject1).append(":snd_rcv_req_error ...");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.a.f);
-      util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
-      int j = new Random().nextInt();
-      int i = 0;
-      while (i < 2)
-      {
-        localObject1 = new StringBuilder("try http connect ");
-        ((StringBuilder)localObject1).append(i);
-        ((StringBuilder)localObject1).append(" ...");
-        localObject1 = ((StringBuilder)localObject1).toString();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.a.f);
-        util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
-        localObject1 = a(j);
-        try
-        {
-          localObject2 = new StringBuilder("http://");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("/cgi-bin/wlogin_proxy_log");
-          localObject1 = new URL(((StringBuilder)localObject2).toString());
-          localObject2 = "url=".concat(String.valueOf(localObject1));
-          StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append(this.a.f);
-          util.LOGI((String)localObject2, localStringBuilder2.toString());
-          localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
-          ((HttpURLConnection)localObject1).setRequestMethod("POST");
-          ((HttpURLConnection)localObject1).setRequestProperty("Content-Type", "application/octet-stream");
-          ((HttpURLConnection)localObject1).setRequestProperty("Content-Disposition", "attachment; filename=micromsgresp.dat");
-          ((HttpURLConnection)localObject1).setRequestProperty("Content-Length", new Integer(paramArrayOfByte.length).toString());
-          ((HttpURLConnection)localObject1).setConnectTimeout(this.a.l);
-          ((HttpURLConnection)localObject1).setReadTimeout(this.a.l);
-          ((HttpURLConnection)localObject1).setDoOutput(true);
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.a.f);
-          util.LOGI("http request connect ...", ((StringBuilder)localObject2).toString());
-          if (!j.a((HttpURLConnection)localObject1, this.a.l))
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(this.a.f);
-            util.LOGI("http request connect failed", ((StringBuilder)localObject1).toString());
-            i += 1;
-            j += 1;
-          }
-          else
-          {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(this.a.f);
-            util.LOGI("http request write ...", ((StringBuilder)localObject2).toString());
-            localObject2 = ((HttpURLConnection)localObject1).getOutputStream();
-            ((OutputStream)localObject2).write(paramArrayOfByte, 0, paramArrayOfByte.length);
-            ((OutputStream)localObject2).flush();
-            int m = ((HttpURLConnection)localObject1).getResponseCode();
-            localObject1 = "http request response code=".concat(String.valueOf(m));
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(this.a.f);
-            util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
-            if (200 == m) {
-              break;
-            }
-            i += 1;
-            j += 1;
-          }
-        }
-        catch (Exception localException)
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.a.f);
-          util.printException(localException, ((StringBuilder)localObject2).toString());
-          i += 1;
-          j += 1;
-        }
-      }
-      j = k;
-      if (i > 0) {
-        j = -1000;
-      }
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append(getClass().getName());
-      paramArrayOfByte.append(":snd_rcv_req_error ret=");
-      paramArrayOfByte.append(j);
-      paramArrayOfByte = paramArrayOfByte.toString();
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append(this.a.f);
-      util.LOGI(paramArrayOfByte, localStringBuilder1.toString());
-      return j;
+      paramHttpURLConnection = new k(paramHttpURLConnection);
+      Thread localThread = new Thread(paramHttpURLConnection);
+      localThread.start();
+      localThread.join(paramLong);
+      boolean bool = paramHttpURLConnection.a();
+      return bool;
     }
-    return 0;
+    catch (Throwable paramHttpURLConnection)
+    {
+      label37:
+      break label37;
+    }
+    return false;
+  }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public void run()
+  {
+    try
+    {
+      this.a.connect();
+      this.b = true;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      util.printThrowable(localThrowable, "");
+    }
   }
 }
 

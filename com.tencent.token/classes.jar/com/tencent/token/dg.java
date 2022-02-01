@@ -1,130 +1,92 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.net.Uri;
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
-final class dg
-  extends di
+public abstract class dg
 {
-  private static final Class a;
-  private static final Constructor b;
-  private static final Method c;
-  private static final Method d;
+  static int b = 1048576;
+  Matrix a;
   
-  static
+  static Bitmap a(Drawable paramDrawable)
   {
-    Object localObject1 = null;
-    try
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if ((i > 0) && (j > 0))
     {
-      localClass2 = Class.forName("android.graphics.FontFamily");
-      Constructor localConstructor = localClass2.getConstructor(new Class[0]);
-      localObject2 = localClass2.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
-      Method localMethod = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass2, 1).getClass() });
-      localObject1 = localConstructor;
+      float f = Math.min(1.0F, b / (i * j));
+      if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+      i = (int)(i * f);
+      j = (int)(j * f);
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Rect localRect = paramDrawable.getBounds();
+      int k = localRect.left;
+      int m = localRect.top;
+      int n = localRect.right;
+      int i1 = localRect.bottom;
+      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.draw(localCanvas);
+      paramDrawable.setBounds(k, m, n, i1);
+      return localBitmap;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}catch (ClassNotFoundException localClassNotFoundException) {}
-    localClassNotFoundException.getClass().getName();
-    Class localClass2 = null;
-    Class localClass1 = localClass2;
-    Object localObject2 = localClass1;
-    b = localObject1;
-    a = localClass2;
-    c = (Method)localObject2;
-    d = localClass1;
+    return null;
   }
   
-  private static Typeface a(Object paramObject)
+  public static View a(Context paramContext, Parcelable paramParcelable)
   {
-    try
+    boolean bool = paramParcelable instanceof Bundle;
+    Object localObject = null;
+    if (bool)
     {
-      Object localObject = Array.newInstance(a, 1);
-      Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)d.invoke(null, new Object[] { localObject });
-      return paramObject;
-    }
-    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
-    throw new RuntimeException(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return c != null;
-  }
-  
-  private static boolean a(Object paramObject, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    try
-    {
-      paramBoolean = ((Boolean)c.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
-      return paramBoolean;
-    }
-    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
-    throw new RuntimeException(paramObject);
-  }
-  
-  private static Object b()
-  {
-    try
-    {
-      Object localObject = b.newInstance(new Object[0]);
-      return localObject;
-    }
-    catch (InvocationTargetException localInvocationTargetException) {}catch (InstantiationException localInstantiationException) {}catch (IllegalAccessException localIllegalAccessException) {}
-    throw new RuntimeException(localIllegalAccessException);
-  }
-  
-  public final Typeface a(Context paramContext, cz.b paramb, Resources paramResources, int paramInt)
-  {
-    Object localObject1 = b();
-    paramb = paramb.a;
-    int i = paramb.length;
-    paramInt = 0;
-    while (paramInt < i)
-    {
-      Object localObject2 = paramb[paramInt];
-      ByteBuffer localByteBuffer = dj.a(paramContext, paramResources, localObject2.d);
-      if (localByteBuffer == null) {
+      paramParcelable = (Bundle)paramParcelable;
+      localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
+      if (localObject == null) {
         return null;
       }
-      if (!a(localObject1, localByteBuffer, 0, localObject2.b, localObject2.c)) {
-        return null;
-      }
-      paramInt += 1;
-    }
-    return a(localObject1);
-  }
-  
-  public final Typeface a(Context paramContext, dw.b[] paramArrayOfb, int paramInt)
-  {
-    Object localObject = b();
-    ej localej = new ej();
-    int j = paramArrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      dw.b localb = paramArrayOfb[i];
-      Uri localUri = localb.a;
-      ByteBuffer localByteBuffer2 = (ByteBuffer)localej.get(localUri);
-      ByteBuffer localByteBuffer1 = localByteBuffer2;
-      if (localByteBuffer2 == null)
+      paramContext = new ImageView(paramContext);
+      paramContext.setImageBitmap((Bitmap)localObject);
+      paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
+      localObject = paramContext;
+      if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
       {
-        localByteBuffer1 = dj.a(paramContext, localUri);
-        localej.put(localUri, localByteBuffer1);
+        paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
+        localObject = new Matrix();
+        ((Matrix)localObject).setValues(paramParcelable);
+        paramContext.setImageMatrix((Matrix)localObject);
+        return paramContext;
       }
-      if (!a(localObject, localByteBuffer1, localb.b, localb.c, localb.d)) {
-        return null;
-      }
-      i += 1;
     }
-    return Typeface.create(a(localObject), paramInt);
+    else if ((paramParcelable instanceof Bitmap))
+    {
+      paramParcelable = (Bitmap)paramParcelable;
+      localObject = new ImageView(paramContext);
+      ((ImageView)localObject).setImageBitmap(paramParcelable);
+    }
+    return localObject;
+  }
+  
+  public static void a(a parama)
+  {
+    parama.a();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a();
   }
 }
 

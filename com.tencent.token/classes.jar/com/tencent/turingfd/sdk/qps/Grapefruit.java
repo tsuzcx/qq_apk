@@ -1,39 +1,35 @@
 package com.tencent.turingfd.sdk.qps;
 
-import com.tencent.token.agd;
-import com.tencent.token.age;
+import com.tencent.token.afb;
+import com.tencent.token.afd;
+import java.util.ArrayList;
 
 public final class Grapefruit
-  extends final
+  extends Orion
 {
-  public int a = 0;
-  public float b = 0.0F;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
+  public static ArrayList<Guava> a;
+  public long b = 0L;
+  public int c = 0;
+  public ArrayList<Guava> d = null;
   
-  public final void a(agd paramagd)
+  public final void a(afb paramafb)
   {
-    this.a = paramagd.a(this.a, 0, true);
-    this.b = paramagd.a(this.b, 1, true);
-    this.c = paramagd.a(this.c, 2, true);
-    this.d = paramagd.a(this.d, 3, false);
-    this.e = paramagd.a(this.e, 4, false);
+    this.b = paramafb.a(this.b, 0, true);
+    this.c = paramafb.a(this.c, 1, true);
+    if (a == null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      a = localArrayList;
+      localArrayList.add(new Guava());
+    }
+    this.d = ((ArrayList)paramafb.a(a, 2, true));
   }
   
-  public final void a(age paramage)
+  public final void a(afd paramafd)
   {
-    paramage.a(this.a, 0);
-    paramage.a(this.b, 1);
-    paramage.a(this.c, 2);
-    float f = this.d;
-    if (f != 0.0F) {
-      paramage.a(f, 3);
-    }
-    f = this.e;
-    if (f != 0.0F) {
-      paramage.a(f, 4);
-    }
+    paramafd.a(this.b, 0);
+    paramafd.a(this.c, 1);
+    paramafd.a(this.d, 2);
   }
 }
 

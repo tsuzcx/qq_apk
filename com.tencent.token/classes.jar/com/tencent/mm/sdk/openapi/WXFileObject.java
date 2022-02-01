@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pw;
+import com.tencent.token.qk;
 import java.io.File;
 
 public class WXFileObject
@@ -43,7 +43,7 @@ public class WXFileObject
     }
     for (;;)
     {
-      pw.a("MicroMsg.SDK.WXFileObject", (String)localObject);
+      qk.a("MicroMsg.SDK.WXFileObject", (String)localObject);
       return false;
       localObject = this.filePath;
       if (localObject != null)

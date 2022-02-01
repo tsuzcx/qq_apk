@@ -1,345 +1,870 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.content.res.ColorStateList;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
+import android.view.View.OnApplyWindowInsetsListener;
+import android.view.ViewParent;
+import android.view.WindowInsets;
+import java.lang.reflect.Field;
+import java.util.WeakHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class fo
-  implements View.OnTouchListener
+public final class fo
 {
-  private static final int r = ;
-  final a a = new a();
-  final View b;
-  boolean c;
-  boolean d;
-  boolean e;
-  private final Interpolator f = new AccelerateInterpolator();
-  private Runnable g;
-  private float[] h = { 0.0F, 0.0F };
-  private float[] i = { 3.4028235E+38F, 3.4028235E+38F };
-  private int j;
-  private int k;
-  private float[] l = { 0.0F, 0.0F };
-  private float[] m = { 0.0F, 0.0F };
-  private float[] n = { 3.4028235E+38F, 3.4028235E+38F };
-  private boolean o;
-  private boolean p;
-  private boolean q;
+  static final j a = new j();
   
-  public fo(View paramView)
+  static
   {
-    this.b = paramView;
-    paramView = Resources.getSystem().getDisplayMetrics();
-    int i1 = (int)(paramView.density * 1575.0F + 0.5F);
-    int i2 = (int)(paramView.density * 315.0F + 0.5F);
-    float f1 = i1;
-    paramView = this.n;
-    f1 /= 1000.0F;
-    paramView[0] = f1;
-    paramView[1] = f1;
-    f1 = i2;
-    paramView = this.m;
-    f1 /= 1000.0F;
-    paramView[0] = f1;
-    paramView[1] = f1;
-    this.j = 1;
-    paramView = this.i;
-    paramView[0] = 3.4028235E+38F;
-    paramView[1] = 3.4028235E+38F;
-    paramView = this.h;
-    paramView[0] = 0.2F;
-    paramView[1] = 0.2F;
-    paramView = this.l;
-    paramView[0] = 0.001F;
-    paramView[1] = 0.001F;
-    this.k = r;
-    paramView = this.a;
-    paramView.a = 500;
-    paramView.b = 500;
-  }
-  
-  private float a(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat2 == 0.0F) {
-      return 0.0F;
-    }
-    int i1 = this.j;
-    switch (i1)
+    if (Build.VERSION.SDK_INT >= 26)
     {
-    default: 
-      return 0.0F;
-    case 2: 
-      if (paramFloat1 < 0.0F) {
-        return paramFloat1 / -paramFloat2;
-      }
-      break;
-    case 0: 
-    case 1: 
-      if (paramFloat1 < paramFloat2)
-      {
-        if (paramFloat1 >= 0.0F) {
-          return 1.0F - paramFloat1 / paramFloat2;
-        }
-        if ((this.e) && (i1 == 1)) {
-          return 1.0F;
-        }
-      }
-      break;
-    }
-    return 0.0F;
-  }
-  
-  static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
-    }
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
-    }
-    return paramFloat1;
-  }
-  
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    paramFloat1 = a(paramFloat1 * paramFloat2, 0.0F, paramFloat3);
-    paramFloat3 = a(paramFloat4, paramFloat1);
-    paramFloat1 = a(paramFloat2 - paramFloat4, paramFloat1) - paramFloat3;
-    if (paramFloat1 < 0.0F)
-    {
-      paramFloat1 = -this.f.getInterpolation(-paramFloat1);
-    }
-    else
-    {
-      if (paramFloat1 <= 0.0F) {
-        break label76;
-      }
-      paramFloat1 = this.f.getInterpolation(paramFloat1);
-    }
-    return a(paramFloat1, -1.0F, 1.0F);
-    label76:
-    return 0.0F;
-  }
-  
-  private float a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    paramFloat1 = a(this.h[paramInt], paramFloat2, this.i[paramInt], paramFloat1);
-    if (paramFloat1 == 0.0F) {
-      return 0.0F;
-    }
-    float f2 = this.l[paramInt];
-    paramFloat2 = this.m[paramInt];
-    float f1 = this.n[paramInt];
-    paramFloat3 = f2 * paramFloat3;
-    if (paramFloat1 > 0.0F) {
-      return a(paramFloat1 * paramFloat3, paramFloat2, f1);
-    }
-    return -a(-paramFloat1 * paramFloat3, paramFloat2, f1);
-  }
-  
-  static int a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 < 0) {
-      return 0;
-    }
-    return paramInt1;
-  }
-  
-  private void b()
-  {
-    if (this.c)
-    {
-      this.e = false;
+      a = new i();
       return;
     }
-    this.a.a();
-  }
-  
-  public final fo a(boolean paramBoolean)
-  {
-    if ((this.p) && (!paramBoolean)) {
-      b();
-    }
-    this.p = paramBoolean;
-    return this;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  final boolean a()
-  {
-    a locala = this.a;
-    int i1 = locala.c();
-    locala.b();
-    return (i1 != 0) && (b(i1));
-  }
-  
-  public abstract boolean b(int paramInt);
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (!this.p) {
-      return false;
-    }
-    switch (paramMotionEvent.getActionMasked())
+    if (Build.VERSION.SDK_INT >= 24)
     {
-    default: 
-      break;
-    case 1: 
-    case 3: 
-      b();
-      break;
-    case 0: 
-      this.d = true;
-      this.o = false;
-    case 2: 
-      float f1 = a(0, paramMotionEvent.getX(), paramView.getWidth(), this.b.getWidth());
-      float f2 = a(1, paramMotionEvent.getY(), paramView.getHeight(), this.b.getHeight());
-      paramView = this.a;
-      paramView.c = f1;
-      paramView.d = f2;
-      if ((!this.e) && (a()))
+      a = new h();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new g();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new f();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      a = new e();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new d();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 15)
+    {
+      a = new a();
+      return;
+    }
+  }
+  
+  public static fv a(View paramView, fv paramfv)
+  {
+    return a.a(paramView, paramfv);
+  }
+  
+  public static void a(View paramView)
+  {
+    a.b(paramView);
+  }
+  
+  public static void a(View paramView, float paramFloat)
+  {
+    a.a(paramView, paramFloat);
+  }
+  
+  public static void a(View paramView, int paramInt)
+  {
+    a.a(paramView, paramInt);
+  }
+  
+  public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a.a(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public static void a(View paramView, ColorStateList paramColorStateList)
+  {
+    a.a(paramView, paramColorStateList);
+  }
+  
+  public static void a(View paramView, Paint paramPaint)
+  {
+    a.a(paramView, paramPaint);
+  }
+  
+  public static void a(View paramView, PorterDuff.Mode paramMode)
+  {
+    a.a(paramView, paramMode);
+  }
+  
+  public static void a(View paramView, Drawable paramDrawable)
+  {
+    a.a(paramView, paramDrawable);
+  }
+  
+  public static void a(View paramView, ez paramez)
+  {
+    j.a(paramView, paramez);
+  }
+  
+  public static void a(View paramView, fl paramfl)
+  {
+    a.a(paramView, paramfl);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    a.a(paramView, paramRunnable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable, long paramLong)
+  {
+    a.a(paramView, paramRunnable, paramLong);
+  }
+  
+  public static void a(View paramView, String paramString)
+  {
+    a.a(paramView, paramString);
+  }
+  
+  public static int b(View paramView)
+  {
+    return a.c(paramView);
+  }
+  
+  public static fv b(View paramView, fv paramfv)
+  {
+    return a.b(paramView, paramfv);
+  }
+  
+  public static void b(View paramView, int paramInt)
+  {
+    a.c(paramView, paramInt);
+  }
+  
+  public static int c(View paramView)
+  {
+    return a.i(paramView);
+  }
+  
+  public static void c(View paramView, int paramInt)
+  {
+    a.b(paramView, paramInt);
+  }
+  
+  public static ViewParent d(View paramView)
+  {
+    return a.d(paramView);
+  }
+  
+  public static void d(View paramView, int paramInt)
+  {
+    a.d(paramView, paramInt);
+  }
+  
+  public static int e(View paramView)
+  {
+    return a.e(paramView);
+  }
+  
+  public static fr f(View paramView)
+  {
+    j localj = a;
+    if (localj.a == null) {
+      localj.a = new WeakHashMap();
+    }
+    fr localfr2 = (fr)localj.a.get(paramView);
+    fr localfr1 = localfr2;
+    if (localfr2 == null)
+    {
+      localfr1 = new fr(paramView);
+      localj.a.put(paramView, localfr1);
+    }
+    return localfr1;
+  }
+  
+  public static float g(View paramView)
+  {
+    return a.n(paramView);
+  }
+  
+  public static String h(View paramView)
+  {
+    return a.m(paramView);
+  }
+  
+  public static int i(View paramView)
+  {
+    return a.j(paramView);
+  }
+  
+  public static void j(View paramView)
+  {
+    a.f(paramView);
+  }
+  
+  public static boolean k(View paramView)
+  {
+    return a.g(paramView);
+  }
+  
+  public static boolean l(View paramView)
+  {
+    return a.h(paramView);
+  }
+  
+  public static ColorStateList m(View paramView)
+  {
+    return a.r(paramView);
+  }
+  
+  public static PorterDuff.Mode n(View paramView)
+  {
+    return a.s(paramView);
+  }
+  
+  public static boolean o(View paramView)
+  {
+    return a.p(paramView);
+  }
+  
+  public static void p(View paramView)
+  {
+    a.q(paramView);
+  }
+  
+  public static boolean q(View paramView)
+  {
+    return a.k(paramView);
+  }
+  
+  public static float r(View paramView)
+  {
+    return a.t(paramView);
+  }
+  
+  public static boolean s(View paramView)
+  {
+    return a.l(paramView);
+  }
+  
+  public static boolean t(View paramView)
+  {
+    return a.a(paramView);
+  }
+  
+  static class a
+    extends fo.j
+  {
+    public final boolean a(View paramView)
+    {
+      return paramView.hasOnClickListeners();
+    }
+  }
+  
+  static class b
+    extends fo.a
+  {
+    public void a(View paramView, int paramInt)
+    {
+      int i = paramInt;
+      if (paramInt == 4) {
+        i = 2;
+      }
+      paramView.setImportantForAccessibility(i);
+    }
+    
+    public final void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.postInvalidateOnAnimation(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    
+    public final void a(View paramView, Drawable paramDrawable)
+    {
+      paramView.setBackground(paramDrawable);
+    }
+    
+    public final void a(View paramView, Runnable paramRunnable)
+    {
+      paramView.postOnAnimation(paramRunnable);
+    }
+    
+    public final void a(View paramView, Runnable paramRunnable, long paramLong)
+    {
+      paramView.postOnAnimationDelayed(paramRunnable, paramLong);
+    }
+    
+    public final void b(View paramView)
+    {
+      paramView.postInvalidateOnAnimation();
+    }
+    
+    public final int c(View paramView)
+    {
+      return paramView.getImportantForAccessibility();
+    }
+    
+    public final ViewParent d(View paramView)
+    {
+      return paramView.getParentForAccessibility();
+    }
+    
+    public final int e(View paramView)
+    {
+      return paramView.getMinimumHeight();
+    }
+    
+    public void f(View paramView)
+    {
+      paramView.requestFitSystemWindows();
+    }
+    
+    public final boolean g(View paramView)
+    {
+      return paramView.getFitsSystemWindows();
+    }
+    
+    public final boolean h(View paramView)
+    {
+      return paramView.hasOverlappingRendering();
+    }
+  }
+  
+  static class c
+    extends fo.b
+  {
+    public final void a(View paramView, Paint paramPaint)
+    {
+      paramView.setLayerPaint(paramPaint);
+    }
+    
+    public final int i(View paramView)
+    {
+      return paramView.getLayoutDirection();
+    }
+    
+    public final int j(View paramView)
+    {
+      return paramView.getWindowSystemUiVisibility();
+    }
+  }
+  
+  static class d
+    extends fo.c
+  {}
+  
+  static class e
+    extends fo.d
+  {
+    public final void a(View paramView, int paramInt)
+    {
+      paramView.setImportantForAccessibility(paramInt);
+    }
+    
+    public final boolean k(View paramView)
+    {
+      return paramView.isLaidOut();
+    }
+    
+    public final boolean l(View paramView)
+    {
+      return paramView.isAttachedToWindow();
+    }
+  }
+  
+  static class f
+    extends fo.e
+  {
+    private static ThreadLocal<Rect> c;
+    
+    private static Rect a()
+    {
+      if (c == null) {
+        c = new ThreadLocal();
+      }
+      Rect localRect2 = (Rect)c.get();
+      Rect localRect1 = localRect2;
+      if (localRect2 == null)
       {
-        if (this.g == null) {
-          this.g = new b();
+        localRect1 = new Rect();
+        c.set(localRect1);
+      }
+      localRect1.setEmpty();
+      return localRect1;
+    }
+    
+    public final fv a(View paramView, fv paramfv)
+    {
+      paramfv = (WindowInsets)fv.a(paramfv);
+      WindowInsets localWindowInsets = paramView.onApplyWindowInsets(paramfv);
+      paramView = paramfv;
+      if (localWindowInsets != paramfv) {
+        paramView = new WindowInsets(localWindowInsets);
+      }
+      return fv.a(paramView);
+    }
+    
+    public final void a(View paramView, float paramFloat)
+    {
+      paramView.setElevation(paramFloat);
+    }
+    
+    public final void a(View paramView, ColorStateList paramColorStateList)
+    {
+      paramView.setBackgroundTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramColorStateList = paramView.getBackground();
+        int i;
+        if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
+          i = 0;
+        } else {
+          i = 1;
         }
-        this.e = true;
-        this.c = true;
-        if (!this.o)
+        if ((paramColorStateList != null) && (i != 0))
         {
-          int i1 = this.k;
-          if (i1 > 0)
-          {
-            fa.a(this.b, this.g, i1);
-            break label214;
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramView.getDrawableState());
           }
+          paramView.setBackground(paramColorStateList);
         }
-        this.g.run();
-        label214:
-        this.o = true;
       }
-      break;
     }
-    return (this.q) && (this.e);
-  }
-  
-  static final class a
-  {
-    int a;
-    int b;
-    float c;
-    float d;
-    long e = -9223372036854775808L;
-    long f = 0L;
-    int g = 0;
-    int h = 0;
-    long i = -1L;
-    float j;
-    int k;
     
-    final float a(long paramLong)
+    public final void a(View paramView, PorterDuff.Mode paramMode)
     {
-      if (paramLong < this.e) {
-        return 0.0F;
-      }
-      long l = this.i;
-      if ((l >= 0L) && (paramLong >= l))
+      paramView.setBackgroundTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
       {
-        float f1 = this.j;
-        return 1.0F - f1 + f1 * fo.a((float)(paramLong - l) / this.k, 0.0F, 1.0F);
+        paramMode = paramView.getBackground();
+        int i;
+        if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramView.getDrawableState());
+          }
+          paramView.setBackground(paramMode);
+        }
       }
-      return fo.a((float)(paramLong - this.e) / this.a, 0.0F, 1.0F) * 0.5F;
     }
     
-    public final void a()
+    public final void a(View paramView, final fl paramfl)
     {
-      long l = AnimationUtils.currentAnimationTimeMillis();
-      this.k = fo.a((int)(l - this.e), this.b);
-      this.j = a(l);
-      this.i = l;
-    }
-    
-    public final int b()
-    {
-      float f1 = this.c;
-      return (int)(f1 / Math.abs(f1));
-    }
-    
-    public final int c()
-    {
-      float f1 = this.d;
-      return (int)(f1 / Math.abs(f1));
-    }
-  }
-  
-  final class b
-    implements Runnable
-  {
-    b() {}
-    
-    public final void run()
-    {
-      if (!fo.this.e) {
+      if (paramfl == null)
+      {
+        paramView.setOnApplyWindowInsetsListener(null);
         return;
       }
-      if (fo.this.c)
+      paramView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
       {
-        localObject = fo.this;
-        ((fo)localObject).c = false;
-        localObject = ((fo)localObject).a;
-        ((fo.a)localObject).e = AnimationUtils.currentAnimationTimeMillis();
-        ((fo.a)localObject).i = -1L;
-        ((fo.a)localObject).f = ((fo.a)localObject).e;
-        ((fo.a)localObject).j = 0.5F;
-        ((fo.a)localObject).g = 0;
-        ((fo.a)localObject).h = 0;
+        public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
+        {
+          paramAnonymousWindowInsets = fv.a(paramAnonymousWindowInsets);
+          return (WindowInsets)fv.a(paramfl.a(paramAnonymousView, paramAnonymousWindowInsets));
+        }
+      });
+    }
+    
+    public final void a(View paramView, String paramString)
+    {
+      paramView.setTransitionName(paramString);
+    }
+    
+    public final fv b(View paramView, fv paramfv)
+    {
+      paramfv = (WindowInsets)fv.a(paramfv);
+      WindowInsets localWindowInsets = paramView.dispatchApplyWindowInsets(paramfv);
+      paramView = paramfv;
+      if (localWindowInsets != paramfv) {
+        paramView = new WindowInsets(localWindowInsets);
       }
-      Object localObject = fo.this.a;
-      int i;
-      if ((((fo.a)localObject).i > 0L) && (AnimationUtils.currentAnimationTimeMillis() > ((fo.a)localObject).i + ((fo.a)localObject).k)) {
-        i = 1;
+      return fv.a(paramView);
+    }
+    
+    public void b(View paramView, int paramInt)
+    {
+      Rect localRect = a();
+      ViewParent localViewParent = paramView.getParent();
+      boolean bool;
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
+      }
+      else
+      {
+        bool = false;
+      }
+      super.b(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
+      }
+    }
+    
+    public void c(View paramView, int paramInt)
+    {
+      Rect localRect = a();
+      ViewParent localViewParent = paramView.getParent();
+      boolean bool;
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
+      }
+      else
+      {
+        bool = false;
+      }
+      super.c(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
+      }
+    }
+    
+    public final void f(View paramView)
+    {
+      paramView.requestApplyInsets();
+    }
+    
+    public final String m(View paramView)
+    {
+      return paramView.getTransitionName();
+    }
+    
+    public final float n(View paramView)
+    {
+      return paramView.getElevation();
+    }
+    
+    public final float o(View paramView)
+    {
+      return paramView.getTranslationZ();
+    }
+    
+    public final boolean p(View paramView)
+    {
+      return paramView.isNestedScrollingEnabled();
+    }
+    
+    public final void q(View paramView)
+    {
+      paramView.stopNestedScroll();
+    }
+    
+    public final ColorStateList r(View paramView)
+    {
+      return paramView.getBackgroundTintList();
+    }
+    
+    public final PorterDuff.Mode s(View paramView)
+    {
+      return paramView.getBackgroundTintMode();
+    }
+    
+    public final float t(View paramView)
+    {
+      return paramView.getZ();
+    }
+  }
+  
+  static class g
+    extends fo.f
+  {
+    public final void b(View paramView, int paramInt)
+    {
+      paramView.offsetLeftAndRight(paramInt);
+    }
+    
+    public final void c(View paramView, int paramInt)
+    {
+      paramView.offsetTopAndBottom(paramInt);
+    }
+    
+    public final void d(View paramView, int paramInt)
+    {
+      paramView.setScrollIndicators(paramInt, 3);
+    }
+  }
+  
+  static class h
+    extends fo.g
+  {}
+  
+  static final class i
+    extends fo.h
+  {}
+  
+  static class j
+  {
+    static boolean b = false;
+    private static Field c;
+    private static boolean d;
+    private static WeakHashMap<View, String> e;
+    private static final AtomicInteger f = new AtomicInteger(1);
+    WeakHashMap<View, fr> a = null;
+    
+    public static void a(View paramView, ez paramez)
+    {
+      if (paramez == null) {
+        paramez = null;
       } else {
-        i = 0;
+        paramez = paramez.a;
       }
-      if ((i == 0) && (fo.this.a()))
+      paramView.setAccessibilityDelegate(paramez);
+    }
+    
+    private static void u(View paramView)
+    {
+      float f1 = paramView.getTranslationY();
+      paramView.setTranslationY(1.0F + f1);
+      paramView.setTranslationY(f1);
+    }
+    
+    public fv a(View paramView, fv paramfv)
+    {
+      return paramfv;
+    }
+    
+    public void a(View paramView, float paramFloat) {}
+    
+    public void a(View paramView, int paramInt) {}
+    
+    public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.postInvalidate(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    
+    public void a(View paramView, ColorStateList paramColorStateList)
+    {
+      if ((paramView instanceof fn)) {
+        ((fn)paramView).setSupportBackgroundTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(View paramView, Paint paramPaint)
+    {
+      paramView.setLayerType(paramView.getLayerType(), paramPaint);
+      paramView.invalidate();
+    }
+    
+    public void a(View paramView, PorterDuff.Mode paramMode)
+    {
+      if ((paramView instanceof fn)) {
+        ((fn)paramView).setSupportBackgroundTintMode(paramMode);
+      }
+    }
+    
+    public void a(View paramView, Drawable paramDrawable)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+    }
+    
+    public void a(View paramView, fl paramfl) {}
+    
+    public void a(View paramView, Runnable paramRunnable)
+    {
+      paramView.postDelayed(paramRunnable, ValueAnimator.getFrameDelay());
+    }
+    
+    public void a(View paramView, Runnable paramRunnable, long paramLong)
+    {
+      paramView.postDelayed(paramRunnable, ValueAnimator.getFrameDelay() + paramLong);
+    }
+    
+    public void a(View paramView, String paramString)
+    {
+      if (e == null) {
+        e = new WeakHashMap();
+      }
+      e.put(paramView, paramString);
+    }
+    
+    public boolean a(View paramView)
+    {
+      return false;
+    }
+    
+    public fv b(View paramView, fv paramfv)
+    {
+      return paramfv;
+    }
+    
+    public void b(View paramView)
+    {
+      paramView.postInvalidate();
+    }
+    
+    public void b(View paramView, int paramInt)
+    {
+      paramView.offsetLeftAndRight(paramInt);
+      if (paramView.getVisibility() == 0)
       {
-        long l1;
-        if (fo.this.d)
-        {
-          fo localfo = fo.this;
-          localfo.d = false;
-          l1 = SystemClock.uptimeMillis();
-          MotionEvent localMotionEvent = MotionEvent.obtain(l1, l1, 3, 0.0F, 0.0F, 0);
-          localfo.b.onTouchEvent(localMotionEvent);
-          localMotionEvent.recycle();
+        u(paramView);
+        paramView = paramView.getParent();
+        if ((paramView instanceof View)) {
+          u((View)paramView);
         }
-        if (((fo.a)localObject).f != 0L)
-        {
-          l1 = AnimationUtils.currentAnimationTimeMillis();
-          float f = ((fo.a)localObject).a(l1);
-          long l2 = ((fo.a)localObject).f;
-          ((fo.a)localObject).f = l1;
-          f = (float)(l1 - l2) * (-4.0F * f * f + f * 4.0F);
-          ((fo.a)localObject).g = ((int)(((fo.a)localObject).c * f));
-          ((fo.a)localObject).h = ((int)(f * ((fo.a)localObject).d));
-          i = ((fo.a)localObject).h;
-          fo.this.a(i);
-          fa.a(fo.this.b, this);
-          return;
-        }
-        throw new RuntimeException("Cannot compute scroll delta before calling start()");
       }
-      fo.this.e = false;
+    }
+    
+    public int c(View paramView)
+    {
+      return 0;
+    }
+    
+    public void c(View paramView, int paramInt)
+    {
+      paramView.offsetTopAndBottom(paramInt);
+      if (paramView.getVisibility() == 0)
+      {
+        u(paramView);
+        paramView = paramView.getParent();
+        if ((paramView instanceof View)) {
+          u((View)paramView);
+        }
+      }
+    }
+    
+    public ViewParent d(View paramView)
+    {
+      return paramView.getParent();
+    }
+    
+    public void d(View paramView, int paramInt) {}
+    
+    public int e(View paramView)
+    {
+      if (!d) {}
+      try
+      {
+        Field localField = View.class.getDeclaredField("mMinHeight");
+        c = localField;
+        localField.setAccessible(true);
+        label23:
+        d = true;
+        localField = c;
+        if (localField != null) {}
+        try
+        {
+          int i = ((Integer)localField.get(paramView)).intValue();
+          return i;
+        }
+        catch (Exception paramView)
+        {
+          label49:
+          break label49;
+        }
+        return 0;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label23;
+      }
+    }
+    
+    public void f(View paramView) {}
+    
+    public boolean g(View paramView)
+    {
+      return false;
+    }
+    
+    public boolean h(View paramView)
+    {
+      return true;
+    }
+    
+    public int i(View paramView)
+    {
+      return 0;
+    }
+    
+    public int j(View paramView)
+    {
+      return 0;
+    }
+    
+    public boolean k(View paramView)
+    {
+      return (paramView.getWidth() > 0) && (paramView.getHeight() > 0);
+    }
+    
+    public boolean l(View paramView)
+    {
+      return paramView.getWindowToken() != null;
+    }
+    
+    public String m(View paramView)
+    {
+      WeakHashMap localWeakHashMap = e;
+      if (localWeakHashMap == null) {
+        return null;
+      }
+      return (String)localWeakHashMap.get(paramView);
+    }
+    
+    public float n(View paramView)
+    {
+      return 0.0F;
+    }
+    
+    public float o(View paramView)
+    {
+      return 0.0F;
+    }
+    
+    public boolean p(View paramView)
+    {
+      if ((paramView instanceof ff)) {
+        return ((ff)paramView).isNestedScrollingEnabled();
+      }
+      return false;
+    }
+    
+    public void q(View paramView)
+    {
+      if ((paramView instanceof ff)) {
+        ((ff)paramView).stopNestedScroll();
+      }
+    }
+    
+    public ColorStateList r(View paramView)
+    {
+      if ((paramView instanceof fn)) {
+        return ((fn)paramView).getSupportBackgroundTintList();
+      }
+      return null;
+    }
+    
+    public PorterDuff.Mode s(View paramView)
+    {
+      if ((paramView instanceof fn)) {
+        return ((fn)paramView).getSupportBackgroundTintMode();
+      }
+      return null;
+    }
+    
+    public float t(View paramView)
+    {
+      return o(paramView) + n(paramView);
     }
   }
 }

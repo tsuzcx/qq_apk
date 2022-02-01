@@ -1,23 +1,13 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
-import java.util.ArrayList;
 import java.util.List;
 
 public final class aoy
+  extends aou<aqi>
 {
-  public final List<aoi> a = new ArrayList();
-  public PointF b;
-  public boolean c;
-  
-  public final String toString()
+  public aoy(List<aot<aqi>> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder("ShapeData{numCurves=");
-    localStringBuilder.append(this.a.size());
-    localStringBuilder.append("closed=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    super(paramList);
   }
 }
 

@@ -15,13 +15,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.aao;
+import com.tencent.token.aay;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.si;
-import com.tencent.token.va;
-import com.tencent.token.xh;
-import com.tencent.token.xj;
+import com.tencent.token.su;
+import com.tencent.token.vm;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
 
 public class VryMobileForStrategyActivity
   extends BaseActivity
@@ -38,7 +38,7 @@ public class VryMobileForStrategyActivity
         return;
       }
       VryMobileForStrategyActivity.this.hideKeyBoard();
-      paramAnonymousView = (EditText)VryMobileForStrategyActivity.this.findViewById(2131166005);
+      paramAnonymousView = (EditText)VryMobileForStrategyActivity.this.findViewById(2131166040);
       String str = paramAnonymousView.getText().toString();
       if (paramAnonymousView != null) {
         paramAnonymousView.clearFocus();
@@ -47,10 +47,10 @@ public class VryMobileForStrategyActivity
       {
         VryMobileForStrategyActivity.this.vrySmsCode(str);
         paramAnonymousView = VryMobileForStrategyActivity.this;
-        paramAnonymousView.showProDialog(paramAnonymousView, 2131492986, 2131493441, null);
+        paramAnonymousView.showProDialog(paramAnonymousView, 2131492987, 2131493449, null);
         return;
       }
-      VryMobileForStrategyActivity.this.showToast(2131493102);
+      VryMobileForStrategyActivity.this.showToast(2131493104);
     }
   };
   private int mCGISendSMSCount = 0;
@@ -59,7 +59,7 @@ public class VryMobileForStrategyActivity
     public final void onClick(View paramAnonymousView)
     {
       paramAnonymousView = VryMobileForStrategyActivity.this;
-      aao.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493004), VryMobileForStrategyActivity.this.getResources().getString(2131493767));
+      aay.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493005), VryMobileForStrategyActivity.this.getResources().getString(2131493775));
     }
   };
   private View.OnClickListener mConfirmSendSmsListener = new View.OnClickListener()
@@ -90,7 +90,7 @@ public class VryMobileForStrategyActivity
             default: 
               localObject = new StringBuilder("unknown msg: ");
               ((StringBuilder)localObject).append(paramAnonymousMessage.what);
-              xj.c(((StringBuilder)localObject).toString());
+              xv.c(((StringBuilder)localObject).toString());
               return;
             case 3066: 
               if (paramAnonymousMessage.arg1 == 0)
@@ -100,55 +100,55 @@ public class VryMobileForStrategyActivity
                 VryMobileForStrategyActivity.this.finish();
                 return;
               }
-              paramAnonymousMessage = (xh)paramAnonymousMessage.obj;
+              paramAnonymousMessage = (xt)paramAnonymousMessage.obj;
               localObject = new StringBuilder("err ");
               ((StringBuilder)localObject).append(paramAnonymousMessage.a);
-              xj.c(((StringBuilder)localObject).toString());
-              xh.a(VryMobileForStrategyActivity.this.getResources(), paramAnonymousMessage);
+              xv.c(((StringBuilder)localObject).toString());
+              xt.a(VryMobileForStrategyActivity.this.getResources(), paramAnonymousMessage);
               localObject = new StringBuilder("query up flow failed:");
               ((StringBuilder)localObject).append(paramAnonymousMessage.a);
               ((StringBuilder)localObject).append("-");
               ((StringBuilder)localObject).append(paramAnonymousMessage.b);
               ((StringBuilder)localObject).append("-");
               ((StringBuilder)localObject).append(paramAnonymousMessage.c);
-              xj.c(((StringBuilder)localObject).toString());
+              xv.c(((StringBuilder)localObject).toString());
               VryMobileForStrategyActivity.this.showBindFailDialog(paramAnonymousMessage.c);
               return;
             }
             if (paramAnonymousMessage.arg1 != 0)
             {
               VryMobileForStrategyActivity.access$202(VryMobileForStrategyActivity.this, 0);
-              paramAnonymousMessage = (xh)paramAnonymousMessage.obj;
+              paramAnonymousMessage = (xt)paramAnonymousMessage.obj;
               localObject = new StringBuilder("err ");
               ((StringBuilder)localObject).append(paramAnonymousMessage.a);
-              xj.c(((StringBuilder)localObject).toString());
-              xh.a(VryMobileForStrategyActivity.this.getResources(), paramAnonymousMessage);
+              xv.c(((StringBuilder)localObject).toString());
+              xt.a(VryMobileForStrategyActivity.this.getResources(), paramAnonymousMessage);
               localObject = new StringBuilder("get mobile code failed:");
               ((StringBuilder)localObject).append(paramAnonymousMessage.a);
               ((StringBuilder)localObject).append("-");
               ((StringBuilder)localObject).append(paramAnonymousMessage.b);
               ((StringBuilder)localObject).append("-");
               ((StringBuilder)localObject).append(paramAnonymousMessage.c);
-              xj.c(((StringBuilder)localObject).toString());
+              xv.c(((StringBuilder)localObject).toString());
               VryMobileForStrategyActivity.this.mHandler.removeMessages(-100);
               if (124 == paramAnonymousMessage.a)
               {
-                VryMobileForStrategyActivity.this.mUpDetermin.mSmsPrefix = va.f;
+                VryMobileForStrategyActivity.this.mUpDetermin.mSmsPrefix = vm.f;
                 VryMobileForStrategyActivity.this.showMobileFreqFail(paramAnonymousMessage.c);
                 return;
               }
-              VryMobileForStrategyActivity.this.showUserDialog(2131492986, paramAnonymousMessage.c, 2131493040, null);
+              VryMobileForStrategyActivity.this.showUserDialog(2131492987, paramAnonymousMessage.c, 2131493041, null);
               return;
             }
-            VryMobileForStrategyActivity.this.mUpDetermin.mSmsPrefix = va.f;
+            VryMobileForStrategyActivity.this.mUpDetermin.mSmsPrefix = vm.f;
             VryMobileForStrategyActivity.access$902(VryMobileForStrategyActivity.this, true);
-            VryMobileForStrategyActivity.this.setContentView(2131296386);
-            VryMobileForStrategyActivity.this.setTitle(2131493767);
+            VryMobileForStrategyActivity.this.setContentView(2131296394);
+            VryMobileForStrategyActivity.this.setTitle(2131493775);
             VryMobileForStrategyActivity.this.initSMS();
             return;
           }
           paramAnonymousMessage = VryMobileForStrategyActivity.this;
-          paramAnonymousMessage.showProDialog(paramAnonymousMessage, 2131492986, 2131493441, null);
+          paramAnonymousMessage.showProDialog(paramAnonymousMessage, 2131492987, 2131493449, null);
           return;
         }
         VryMobileForStrategyActivity.this.updateIntervalTimer();
@@ -166,11 +166,11 @@ public class VryMobileForStrategyActivity
       paramAnonymousView.append(VryMobileForStrategyActivity.this.mIntervalTime);
       paramAnonymousView.append("  count: ");
       paramAnonymousView.append(VryMobileForStrategyActivity.this.mCGISendSMSCount);
-      xj.a(paramAnonymousView.toString());
+      xv.a(paramAnonymousView.toString());
       VryMobileForStrategyActivity.this.checkAndGetSMS();
     }
   };
-  private si mTokenCore = si.a();
+  private su mTokenCore = su.a();
   private UpgradeDeterminResult mUpDetermin;
   private QQUser mUser;
   private boolean nextpage = false;
@@ -181,7 +181,7 @@ public class VryMobileForStrategyActivity
     localStringBuilder.append(this.mIntervalTime);
     localStringBuilder.append("  count: ");
     localStringBuilder.append(this.mCGISendSMSCount);
-    xj.a(localStringBuilder.toString());
+    xv.a(localStringBuilder.toString());
     if (this.mIntervalTime > 0) {
       return;
     }
@@ -207,16 +207,16 @@ public class VryMobileForStrategyActivity
   
   private void init()
   {
-    setTitle(2131493767);
+    setTitle(2131493775);
     String str = this.mUpDetermin.mMobileMask;
     if ((str != null) && (str.length() != 0))
     {
-      ((Button)findViewById(2131165774)).setOnClickListener(this.mConfirmSendSmsListener);
-      Button localButton = (Button)findViewById(2131165355);
+      ((Button)findViewById(2131165791)).setOnClickListener(this.mConfirmSendSmsListener);
+      Button localButton = (Button)findViewById(2131165363);
       localButton.setOnClickListener(this.mCancelButtonListener);
-      localButton.setText(2131493651);
-      ((TextView)findViewById(2131166201)).setText(2131493760);
-      ((TextView)findViewById(2131165741)).setText(str);
+      localButton.setText(2131493659);
+      ((TextView)findViewById(2131166241)).setText(2131493768);
+      ((TextView)findViewById(2131165758)).setText(str);
       return;
     }
     finish();
@@ -224,13 +224,13 @@ public class VryMobileForStrategyActivity
   
   private void initSMS()
   {
-    Button localButton = (Button)findViewById(2131165904);
-    Object localObject1 = (EditText)findViewById(2131166005);
+    Button localButton = (Button)findViewById(2131165938);
+    Object localObject1 = (EditText)findViewById(2131166040);
     if (localObject1 != null) {
       ((EditText)localObject1).clearFocus();
     }
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(getResources().getString(2131492943));
+    ((StringBuilder)localObject1).append(getResources().getString(2131492944));
     ((StringBuilder)localObject1).append("\n(");
     Object localObject2 = ((StringBuilder)localObject1).toString();
     localObject1 = localObject2;
@@ -246,26 +246,26 @@ public class VryMobileForStrategyActivity
     ((StringBuilder)localObject2).append(this.mIntervalTime);
     ((StringBuilder)localObject2).append(")");
     localButton.setText(((StringBuilder)localObject2).toString());
-    localButton.setTextColor(getResources().getColor(2130968662));
+    localButton.setTextColor(getResources().getColor(2130968663));
     localButton.setOnClickListener(this.mReSendButtonListener);
-    findViewById(2131165310).setOnClickListener(this.mBindTokenListener);
+    findViewById(2131165317).setOnClickListener(this.mBindTokenListener);
   }
   
   private boolean setTime(long paramLong)
   {
-    Button localButton = (Button)findViewById(2131165904);
+    Button localButton = (Button)findViewById(2131165938);
     if (paramLong <= 0L)
     {
       if (localButton != null)
       {
-        localButton.setTextColor(getResources().getColor(2130968657));
-        localButton.setText(2131492943);
+        localButton.setTextColor(getResources().getColor(2130968658));
+        localButton.setText(2131492944);
         localButton.setTextSize(0, getResources().getDimensionPixelSize(2131034254));
       }
       return false;
     }
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(getResources().getString(2131492943));
+    ((StringBuilder)localObject1).append(getResources().getString(2131492944));
     ((StringBuilder)localObject1).append("\n(");
     Object localObject2 = ((StringBuilder)localObject1).toString();
     localObject1 = localObject2;
@@ -284,7 +284,7 @@ public class VryMobileForStrategyActivity
     if (localButton != null)
     {
       localButton.setText((CharSequence)localObject1);
-      localButton.setTextColor(getResources().getColor(2130968662));
+      localButton.setTextColor(getResources().getColor(2130968663));
       localButton.setTextSize(0, getResources().getDimensionPixelSize(2131034251));
     }
     return true;
@@ -292,12 +292,12 @@ public class VryMobileForStrategyActivity
   
   private void showBindFailDialog(String paramString)
   {
-    showUserDialog(2131492922, paramString, 2131493040, new DialogInterface.OnClickListener()
+    showUserDialog(2131492923, paramString, 2131493041, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        VryMobileForStrategyActivity.this.setContentView(2131296386);
-        VryMobileForStrategyActivity.this.setTitle(2131493767);
+        VryMobileForStrategyActivity.this.setContentView(2131296394);
+        VryMobileForStrategyActivity.this.setTitle(2131493775);
         VryMobileForStrategyActivity.this.initSMS();
         VryMobileForStrategyActivity.this.updateIntervalTimer();
         VryMobileForStrategyActivity.access$902(VryMobileForStrategyActivity.this, true);
@@ -307,7 +307,7 @@ public class VryMobileForStrategyActivity
   
   private void showMobileFreqFail(String paramString)
   {
-    showUserDialog(2131492986, paramString, 2131493040, new DialogInterface.OnClickListener()
+    showUserDialog(2131492987, paramString, 2131493041, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -344,7 +344,7 @@ public class VryMobileForStrategyActivity
     {
       if ((this.nextpage) && (paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        setContentView(2131296385);
+        setContentView(2131296393);
         this.mIntervalTime = 0;
         this.nextpage = false;
         init();
@@ -359,7 +359,7 @@ public class VryMobileForStrategyActivity
       StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      xj.c(localStringBuilder.toString());
+      xv.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -380,16 +380,16 @@ public class VryMobileForStrategyActivity
       com.tencent.token.global.RqdApplication.b = true;
       if (getIntent().getBooleanExtra("succ", false))
       {
-        xj.c("isshowingverifyfalse");
+        xv.c("isshowingverifyfalse");
         com.tencent.token.global.RqdApplication.b = false;
         finish();
         return;
       }
-      setContentView(2131296503);
+      setContentView(2131296516);
       init();
       return;
     }
-    xj.c("isshowingverifyfalse");
+    xv.c("isshowingverifyfalse");
     com.tencent.token.global.RqdApplication.b = false;
     finish();
   }
@@ -406,7 +406,7 @@ public class VryMobileForStrategyActivity
   protected void onPause()
   {
     super.onPause();
-    xj.a("pause");
+    xv.a("pause");
   }
   
   protected void onResume()

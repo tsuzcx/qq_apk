@@ -1,368 +1,214 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.Region;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.content.res.TypedArray;
+import android.util.Base64;
+import android.util.Xml;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-class dn
-  extends Drawable
-  implements Drawable.Callback, dl, dm
+public final class dn
 {
-  static final PorterDuff.Mode a = PorterDuff.Mode.SRC_IN;
-  a b;
-  Drawable c;
-  private int d;
-  private PorterDuff.Mode e;
-  private boolean f;
-  private boolean g;
-  
-  dn(Drawable paramDrawable)
+  public static a a(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    this.b = b();
-    a(paramDrawable);
-  }
-  
-  dn(a parama, Resources paramResources)
-  {
-    this.b = parama;
-    parama = this.b;
-    if ((parama != null) && (parama.b != null)) {
-      a(this.b.b.newDrawable(paramResources));
-    }
-  }
-  
-  private boolean a(int[] paramArrayOfInt)
-  {
-    if (!c()) {
-      return false;
-    }
-    ColorStateList localColorStateList = this.b.c;
-    PorterDuff.Mode localMode = this.b.d;
-    if ((localColorStateList != null) && (localMode != null))
-    {
-      int i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-      if ((!this.f) || (i != this.d) || (localMode != this.e))
-      {
-        setColorFilter(i, localMode);
-        this.d = i;
-        this.e = localMode;
-        this.f = true;
-        return true;
-      }
-    }
-    else
-    {
-      this.f = false;
-      clearColorFilter();
-    }
-    return false;
-  }
-  
-  public final Drawable a()
-  {
-    return this.c;
-  }
-  
-  public final void a(Drawable paramDrawable)
-  {
-    Object localObject = this.c;
-    if (localObject != null) {
-      ((Drawable)localObject).setCallback(null);
-    }
-    this.c = paramDrawable;
-    if (paramDrawable != null)
-    {
-      paramDrawable.setCallback(this);
-      setVisible(paramDrawable.isVisible(), true);
-      setState(paramDrawable.getState());
-      setLevel(paramDrawable.getLevel());
-      setBounds(paramDrawable.getBounds());
-      localObject = this.b;
-      if (localObject != null) {
-        ((a)localObject).b = paramDrawable.getConstantState();
-      }
-    }
-    invalidateSelf();
-  }
-  
-  a b()
-  {
-    return new b(this.b);
-  }
-  
-  protected boolean c()
-  {
-    return true;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.c.draw(paramCanvas);
-  }
-  
-  public int getChangingConfigurations()
-  {
-    int j = super.getChangingConfigurations();
-    a locala = this.b;
     int i;
-    if (locala != null) {
-      i = locala.getChangingConfigurations();
-    } else {
-      i = 0;
-    }
-    return j | i | this.c.getChangingConfigurations();
-  }
-  
-  public Drawable.ConstantState getConstantState()
-  {
-    a locala = this.b;
-    if (locala != null)
+    do
     {
-      int i;
-      if (locala.b != null) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        this.b.a = getChangingConfigurations();
-        return this.b;
-      }
-    }
-    return null;
-  }
-  
-  public Drawable getCurrent()
-  {
-    return this.c.getCurrent();
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.c.getIntrinsicHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.c.getIntrinsicWidth();
-  }
-  
-  public int getMinimumHeight()
-  {
-    return this.c.getMinimumHeight();
-  }
-  
-  public int getMinimumWidth()
-  {
-    return this.c.getMinimumWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return this.c.getOpacity();
-  }
-  
-  public boolean getPadding(Rect paramRect)
-  {
-    return this.c.getPadding(paramRect);
-  }
-  
-  public int[] getState()
-  {
-    return this.c.getState();
-  }
-  
-  public Region getTransparentRegion()
-  {
-    return this.c.getTransparentRegion();
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    invalidateSelf();
-  }
-  
-  public boolean isStateful()
-  {
-    if (c())
+      i = paramXmlPullParser.next();
+    } while ((i != 2) && (i != 1));
+    if (i == 2)
     {
-      localObject = this.b;
-      if (localObject != null)
-      {
-        localObject = ((a)localObject).c;
-        break label26;
+      paramXmlPullParser.require(2, null, "font-family");
+      if (paramXmlPullParser.getName().equals("font-family")) {
+        return b(paramXmlPullParser, paramResources);
       }
+      a(paramXmlPullParser);
+      return null;
     }
+    throw new XmlPullParserException("No start tag found");
+  }
+  
+  public static List<List<byte[]>> a(Resources paramResources, int paramInt)
+  {
     Object localObject = null;
-    label26:
-    return ((localObject != null) && (((ColorStateList)localObject).isStateful())) || (this.c.isStateful());
-  }
-  
-  public void jumpToCurrentState()
-  {
-    this.c.jumpToCurrentState();
-  }
-  
-  public Drawable mutate()
-  {
-    if ((!this.g) && (super.mutate() == this))
+    ArrayList localArrayList = null;
+    if (paramInt != 0)
     {
-      this.b = b();
-      Object localObject = this.c;
-      if (localObject != null) {
-        ((Drawable)localObject).mutate();
-      }
-      a locala = this.b;
-      if (locala != null)
+      TypedArray localTypedArray = paramResources.obtainTypedArray(paramInt);
+      localObject = localArrayList;
+      if (localTypedArray.length() > 0)
       {
-        localObject = this.c;
-        if (localObject != null) {
-          localObject = ((Drawable)localObject).getConstantState();
+        localArrayList = new ArrayList();
+        int i;
+        if (localTypedArray.getResourceId(0, 0) != 0) {
+          i = 1;
         } else {
-          localObject = null;
+          i = 0;
         }
-        locala.b = ((Drawable.ConstantState)localObject);
+        if (i != 0)
+        {
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = localArrayList;
+            if (paramInt >= localTypedArray.length()) {
+              break;
+            }
+            localArrayList.add(a(paramResources.getStringArray(localTypedArray.getResourceId(paramInt, 0))));
+            paramInt += 1;
+          }
+        }
+        localArrayList.add(a(paramResources.getStringArray(paramInt)));
+        localObject = localArrayList;
       }
-      this.g = true;
+      localTypedArray.recycle();
     }
-    return this;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    Drawable localDrawable = this.c;
-    if (localDrawable != null) {
-      localDrawable.setBounds(paramRect);
+    if (localObject != null) {
+      return localObject;
     }
+    return Collections.emptyList();
   }
   
-  protected boolean onLevelChange(int paramInt)
+  private static List<byte[]> a(String[] paramArrayOfString)
   {
-    return this.c.setLevel(paramInt);
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    scheduleSelf(paramRunnable, paramLong);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.c.setAlpha(paramInt);
-  }
-  
-  public void setChangingConfigurations(int paramInt)
-  {
-    this.c.setChangingConfigurations(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.c.setColorFilter(paramColorFilter);
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.c.setDither(paramBoolean);
-  }
-  
-  public void setFilterBitmap(boolean paramBoolean)
-  {
-    this.c.setFilterBitmap(paramBoolean);
-  }
-  
-  public boolean setState(int[] paramArrayOfInt)
-  {
-    boolean bool = this.c.setState(paramArrayOfInt);
-    return (a(paramArrayOfInt)) || (bool);
-  }
-  
-  public void setTint(int paramInt)
-  {
-    setTintList(ColorStateList.valueOf(paramInt));
-  }
-  
-  public void setTintList(ColorStateList paramColorStateList)
-  {
-    this.b.c = paramColorStateList;
-    a(getState());
-  }
-  
-  public void setTintMode(PorterDuff.Mode paramMode)
-  {
-    this.b.d = paramMode;
-    a(getState());
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return (super.setVisible(paramBoolean1, paramBoolean2)) || (this.c.setVisible(paramBoolean1, paramBoolean2));
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    unscheduleSelf(paramRunnable);
-  }
-  
-  public static abstract class a
-    extends Drawable.ConstantState
-  {
-    int a;
-    Drawable.ConstantState b;
-    ColorStateList c = null;
-    PorterDuff.Mode d = dn.a;
-    
-    a(a parama)
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      if (parama != null)
+      localArrayList.add(Base64.decode(paramArrayOfString[i], 0));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  private static void a(XmlPullParser paramXmlPullParser)
+  {
+    int i = 1;
+    while (i > 0) {
+      switch (paramXmlPullParser.next())
       {
-        this.a = parama.a;
-        this.b = parama.b;
-        this.c = parama.c;
-        this.d = parama.d;
+      default: 
+        break;
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        i += 1;
       }
     }
-    
-    public int getChangingConfigurations()
-    {
-      int j = this.a;
-      Drawable.ConstantState localConstantState = this.b;
-      int i;
-      if (localConstantState != null) {
-        i = localConstantState.getChangingConfigurations();
-      } else {
-        i = 0;
-      }
-      return j | i;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return newDrawable(null);
-    }
-    
-    public abstract Drawable newDrawable(Resources paramResources);
   }
   
-  static final class b
-    extends dn.a
+  private static a b(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    b(dn.a parama)
+    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), ca.b.FontFamily);
+    String str1 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderAuthority);
+    String str2 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderPackage);
+    String str3 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderQuery);
+    int i = ((TypedArray)localObject).getResourceId(ca.b.FontFamily_fontProviderCerts, 0);
+    int j = ((TypedArray)localObject).getInteger(ca.b.FontFamily_fontProviderFetchStrategy, 1);
+    int k = ((TypedArray)localObject).getInteger(ca.b.FontFamily_fontProviderFetchTimeout, 500);
+    ((TypedArray)localObject).recycle();
+    if ((str1 != null) && (str2 != null) && (str3 != null))
     {
-      super();
+      while (paramXmlPullParser.next() != 3) {
+        a(paramXmlPullParser);
+      }
+      return new d(new ej(str1, str2, str3, a(paramResources, i)), j, k);
     }
+    localObject = new ArrayList();
+    while (paramXmlPullParser.next() != 3) {
+      if (paramXmlPullParser.getEventType() == 2) {
+        if (paramXmlPullParser.getName().equals("font")) {
+          ((List)localObject).add(c(paramXmlPullParser, paramResources));
+        } else {
+          a(paramXmlPullParser);
+        }
+      }
+    }
+    if (((List)localObject).isEmpty()) {
+      return null;
+    }
+    return new b((c[])((List)localObject).toArray(new c[((List)localObject).size()]));
+  }
+  
+  private static c c(XmlPullParser paramXmlPullParser, Resources paramResources)
+  {
+    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), ca.b.FontFamilyFont);
+    if (paramResources.hasValue(ca.b.FontFamilyFont_fontWeight)) {
+      i = ca.b.FontFamilyFont_fontWeight;
+    } else {
+      i = ca.b.FontFamilyFont_android_fontWeight;
+    }
+    int j = paramResources.getInt(i, 400);
+    if (paramResources.hasValue(ca.b.FontFamilyFont_fontStyle)) {
+      i = ca.b.FontFamilyFont_fontStyle;
+    } else {
+      i = ca.b.FontFamilyFont_android_fontStyle;
+    }
+    int i = paramResources.getInt(i, 0);
+    boolean bool = true;
+    if (1 != i) {
+      bool = false;
+    }
+    if (paramResources.hasValue(ca.b.FontFamilyFont_font)) {
+      i = ca.b.FontFamilyFont_font;
+    } else {
+      i = ca.b.FontFamilyFont_android_font;
+    }
+    int k = paramResources.getResourceId(i, 0);
+    String str = paramResources.getString(i);
+    paramResources.recycle();
+    while (paramXmlPullParser.next() != 3) {
+      a(paramXmlPullParser);
+    }
+    return new c(str, j, bool, k);
+  }
+  
+  public static abstract interface a {}
+  
+  public static final class b
+    implements dn.a
+  {
+    public final dn.c[] a;
     
-    public final Drawable newDrawable(Resources paramResources)
+    public b(dn.c[] paramArrayOfc)
     {
-      return new dn(this, paramResources);
+      this.a = paramArrayOfc;
+    }
+  }
+  
+  public static final class c
+  {
+    public final String a;
+    public int b;
+    public boolean c;
+    public int d;
+    
+    public c(String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
+    {
+      this.a = paramString;
+      this.b = paramInt1;
+      this.c = paramBoolean;
+      this.d = paramInt2;
+    }
+  }
+  
+  public static final class d
+    implements dn.a
+  {
+    public final ej a;
+    public final int b;
+    public final int c;
+    
+    public d(ej paramej, int paramInt1, int paramInt2)
+    {
+      this.a = paramej;
+      this.c = paramInt1;
+      this.b = paramInt2;
     }
   }
 }

@@ -1,438 +1,158 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.app.PendingIntent;
-import android.location.Criteria;
-import android.location.GnssMeasurementsEvent.Callback;
-import android.location.GnssNavigationMessage.Callback;
-import android.location.GnssStatus.Callback;
-import android.location.GpsStatus;
-import android.location.GpsStatus.Listener;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.location.OnNmeaMessageListener;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import java.util.List;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-public class aja
-  extends ko
+public final class aja
+  extends aiw
 {
-  private LocationManager a;
-  
-  public aja(LocationManager paramLocationManager)
+  public aja(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject)
   {
-    super(paramLocationManager);
-    this.a = paramLocationManager;
+    super(paramSQLiteDatabase, paramString, paramArrayOfObject, null);
   }
   
-  @SuppressLint({"MissingPermission"})
-  public boolean addGpsStatusListener(GpsStatus.Listener paramListener)
+  /* Error */
+  public final int b()
   {
-    boolean bool = this.a.addGpsStatusListener(paramListener);
-    paramListener = new StringBuilder("addGpsStatusListener:");
-    paramListener.append(bool);
-    paramListener.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/aja:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/aiw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/aiz;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/aiw:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/aiw:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/aiw:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 46	com/tencent/token/aiz:b	(Ljava/lang/String;[Ljava/lang/Object;I)I
+    //   29: istore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   34: iload_1
+    //   35: ireturn
+    //   36: astore_2
+    //   37: goto +10 -> 47
+    //   40: astore_2
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/aja:a	()V
+    //   45: aload_2
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   51: aload_2
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	aja
+    //   29	6	1	i	int
+    //   36	1	2	localObject	Object
+    //   40	12	2	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  @SuppressLint({"MissingPermission"})
-  public boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener)
+  /* Error */
+  public final long f()
   {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.addNmeaListener(paramOnNmeaMessageListener);
-    } else {
-      bool = false;
-    }
-    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
-    paramOnNmeaMessageListener.append(bool);
-    paramOnNmeaMessageListener.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/aja:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/aiw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/aiz;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/aiw:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/aiw:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/aiw:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 55	com/tencent/token/aiz:c	(Ljava/lang/String;[Ljava/lang/Object;I)J
+    //   29: lstore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   34: lload_1
+    //   35: lreturn
+    //   36: astore_3
+    //   37: goto +10 -> 47
+    //   40: astore_3
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/aja:a	()V
+    //   45: aload_3
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   51: aload_3
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	aja
+    //   29	6	1	l	long
+    //   36	1	3	localObject	Object
+    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  @SuppressLint({"MissingPermission"})
-  public boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener, Handler paramHandler)
+  /* Error */
+  public final long g()
   {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.addNmeaListener(paramOnNmeaMessageListener, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
-    paramOnNmeaMessageListener.append(bool);
-    paramOnNmeaMessageListener.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/aja:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/aiw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/aiz;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/aiw:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/aiw:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/aiw:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 58	com/tencent/token/aiz:a	(Ljava/lang/String;[Ljava/lang/Object;I)J
+    //   29: lstore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   34: lload_1
+    //   35: lreturn
+    //   36: astore_3
+    //   37: goto +10 -> 47
+    //   40: astore_3
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/aja:a	()V
+    //   45: aload_3
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/aja:e	()V
+    //   51: aload_3
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	aja
+    //   29	6	1	l	long
+    //   36	1	3	localObject	Object
+    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  @SuppressLint({"MissingPermission"})
-  public void addProximityAlert(double paramDouble1, double paramDouble2, float paramFloat, long paramLong, PendingIntent paramPendingIntent)
+  public final String toString()
   {
-    aji.a("[API]LocationManager_");
-    this.a.addProximityAlert(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
-  }
-  
-  public void addTestProvider(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, int paramInt1, int paramInt2)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.addTestProvider(paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramBoolean7, paramInt1, paramInt2);
-  }
-  
-  public void clearTestProviderEnabled(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderEnabled:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    this.a.clearTestProviderEnabled(paramString);
-  }
-  
-  public void clearTestProviderLocation(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderLocation:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    this.a.clearTestProviderLocation(paramString);
-  }
-  
-  public void clearTestProviderStatus(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderStatus:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    this.a.clearTestProviderStatus(paramString);
-  }
-  
-  public List<String> getAllProviders()
-  {
-    aji.a("[API]LocationManager_");
-    return this.a.getAllProviders();
-  }
-  
-  public String getBestProvider(Criteria paramCriteria, boolean paramBoolean)
-  {
-    paramCriteria = this.a.getBestProvider(paramCriteria, paramBoolean);
-    StringBuilder localStringBuilder = new StringBuilder("getBestProvider, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(paramCriteria);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return paramCriteria;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public GpsStatus getGpsStatus(GpsStatus paramGpsStatus)
-  {
-    aji.a("[API]LocationManager_");
-    return this.a.getGpsStatus(paramGpsStatus);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public Location getLastKnownLocation(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getLastKnownLocation, provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return this.a.getLastKnownLocation(paramString);
-  }
-  
-  public LocationProvider getProvider(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProvider, provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return this.a.getProvider(paramString);
-  }
-  
-  public List<String> getProviders(Criteria paramCriteria, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return this.a.getProviders(paramCriteria, paramBoolean);
-  }
-  
-  public List<String> getProviders(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return this.a.getProviders(paramBoolean);
-  }
-  
-  public boolean isProviderEnabled(String paramString)
-  {
-    boolean bool = this.a.isProviderEnabled(paramString);
-    StringBuilder localStringBuilder = new StringBuilder("isProviderEnabled, provider:[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("]ret:[");
-    localStringBuilder.append(bool);
-    localStringBuilder.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssMeasurementsCallback(paramCallback);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback, Handler paramHandler)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssMeasurementsCallback(paramCallback, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  public boolean registerGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssNavigationMessageCallback(paramCallback);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssNavigationMessageCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public boolean registerGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback, Handler paramHandler)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssNavigationMessageCallback(paramCallback, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssNavigationMessageCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssStatusCallback(paramCallback);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssStatusCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback, Handler paramHandler)
-  {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.a.registerGnssStatusCallback(paramCallback, paramHandler);
-    } else {
-      bool = false;
-    }
-    paramCallback = new StringBuilder("registerGnssStatusCallback, ret:[");
-    paramCallback.append(bool);
-    paramCallback.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  public void removeGpsStatusListener(GpsStatus.Listener paramListener)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.removeGpsStatusListener(paramListener);
-  }
-  
-  public void removeNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener)
-  {
-    aji.a("[API]LocationManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      this.a.removeNmeaListener(paramOnNmeaMessageListener);
-    }
-  }
-  
-  public void removeProximityAlert(PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.removeProximityAlert(paramPendingIntent);
-  }
-  
-  public void removeTestProvider(String paramString)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.removeTestProvider(paramString);
-  }
-  
-  public void removeUpdates(PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.removeUpdates(paramPendingIntent);
-  }
-  
-  public void removeUpdates(LocationListener paramLocationListener)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.removeUpdates(paramLocationListener);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestSingleUpdate(Criteria paramCriteria, PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestSingleUpdate(paramCriteria, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestSingleUpdate(Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestSingleUpdate(paramCriteria, paramLocationListener, paramLooper);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestSingleUpdate(String paramString, PendingIntent paramPendingIntent)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestSingleUpdate(paramString, paramPendingIntent);
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public void requestSingleUpdate(String paramString, LocationListener paramLocationListener, Looper paramLooper)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.requestSingleUpdate(paramString, paramLocationListener, paramLooper);
-  }
-  
-  public boolean sendExtraCommand(String paramString1, String paramString2, Bundle paramBundle)
-  {
-    boolean bool = this.a.sendExtraCommand(paramString1, paramString2, paramBundle);
-    paramString1 = new StringBuilder("sendExtraCommand, ret:[");
-    paramString1.append(bool);
-    paramString1.append("]");
-    aji.a("[API]LocationManager_");
-    return bool;
-  }
-  
-  public void setTestProviderEnabled(String paramString, boolean paramBoolean)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.setTestProviderEnabled(paramString, paramBoolean);
-  }
-  
-  public void setTestProviderLocation(String paramString, Location paramLocation)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.setTestProviderLocation(paramString, paramLocation);
-  }
-  
-  public void setTestProviderStatus(String paramString, int paramInt, Bundle paramBundle, long paramLong)
-  {
-    aji.a("[API]LocationManager_");
-    this.a.setTestProviderStatus(paramString, paramInt, paramBundle, paramLong);
-  }
-  
-  public void unregisterGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback)
-  {
-    aji.a("[API]LocationManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      this.a.unregisterGnssMeasurementsCallback(paramCallback);
-    }
-  }
-  
-  public void unregisterGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback)
-  {
-    aji.a("[API]LocationManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      this.a.unregisterGnssNavigationMessageCallback(paramCallback);
-    }
-  }
-  
-  public void unregisterGnssStatusCallback(GnssStatus.Callback paramCallback)
-  {
-    aji.a("[API]LocationManager_");
-    if (Build.VERSION.SDK_INT >= 24) {
-      this.a.unregisterGnssStatusCallback(paramCallback);
-    }
+    StringBuilder localStringBuilder = new StringBuilder("SQLiteProgram: ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

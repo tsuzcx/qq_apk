@@ -1,27 +1,10 @@
 package com.tencent.token;
 
-import android.content.Context;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
 
-public final class afm
-  extends adk
+public abstract interface afm
 {
-  public afm(afk paramafk) {}
-  
-  public final void a()
-  {
-    this.a.g.set(true);
-    if (agm.c == null) {
-      agm.c = agm.b();
-    }
-    Context localContext = this.a.e;
-    if (agj.a == null) {
-      agj.a = agj.a(localContext);
-    }
-    adv.a(this.a.e);
-    agm.a();
-    this.a.g.set(false);
-  }
+  public abstract Map<Integer, Integer> a();
 }
 
 

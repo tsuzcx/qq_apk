@@ -1,12 +1,18 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
+import java.io.Closeable;
+import java.io.Flushable;
 
-public final class aoi
+public abstract interface aoi
+  extends Closeable, Flushable
 {
-  public final PointF a = new PointF();
-  public final PointF b = new PointF();
-  public final PointF c = new PointF();
+  public abstract aok a();
+  
+  public abstract void a_(ant paramant, long paramLong);
+  
+  public abstract void close();
+  
+  public abstract void flush();
 }
 
 

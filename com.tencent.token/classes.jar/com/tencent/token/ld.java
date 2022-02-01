@@ -1,51 +1,39 @@
 package com.tencent.token;
 
-import android.util.SparseArray;
-import java.util.concurrent.ScheduledExecutorService;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.telephony.TelephonyManager;
 
-public abstract class ld
+@SuppressLint({"MissingPermission"})
+public class ld
+  extends TelephonyManager
 {
-  private static ld a;
+  private TelephonyManager a;
   
-  public static ld a()
+  public ld(Context paramContext, TelephonyManager paramTelephonyManager)
   {
-    try
-    {
-      if (a == null) {
-        a = new a();
-      }
-      ld localld = a;
-      return localld;
-    }
-    finally {}
+    super(paramContext);
+    this.a = paramTelephonyManager;
   }
   
-  public abstract void a(Runnable paramRunnable);
-  
-  static final class a
-    extends ld
+  public String getDeviceId()
   {
-    private ScheduledExecutorService a = null;
-    private boolean b = false;
-    
-    public a()
-    {
-      new SparseArray();
-    }
-    
-    public final void a(Runnable paramRunnable)
-    {
-      try
-      {
-        this.a.execute(paramRunnable);
-        return;
-      }
-      finally
-      {
-        paramRunnable = finally;
-        throw paramRunnable;
-      }
-    }
+    return this.a.getDeviceId();
+  }
+  
+  public String getDeviceId(int paramInt)
+  {
+    return this.a.getDeviceId(paramInt);
+  }
+  
+  public String getImei()
+  {
+    return this.a.getImei();
+  }
+  
+  public String getImei(int paramInt)
+  {
+    return this.a.getImei(paramInt);
   }
 }
 

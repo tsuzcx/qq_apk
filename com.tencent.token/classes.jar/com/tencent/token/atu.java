@@ -1,8 +1,38 @@
 package com.tencent.token;
 
-public abstract interface atu
+import java.util.Iterator;
+import java.util.LinkedList;
+import tmsdk.common.d.a.c.j;
+
+public final class atu
+  implements Runnable
 {
-  public abstract void a();
+  public atu(j paramj) {}
+  
+  public final void run()
+  {
+    synchronized (j.a(this.a))
+    {
+      LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
+      ??? = new StringBuilder("copy != null ? ");
+      boolean bool;
+      if (localLinkedList != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)???).append(bool);
+      if (localLinkedList != null)
+      {
+        new StringBuilder("copy.size() : ").append(localLinkedList.size());
+        ??? = localLinkedList.iterator();
+        while (((Iterator)???).hasNext()) {
+          ((atw)((Iterator)???).next()).f();
+        }
+      }
+      return;
+    }
+  }
 }
 
 

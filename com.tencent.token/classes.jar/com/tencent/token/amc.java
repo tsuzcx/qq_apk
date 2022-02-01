@@ -1,338 +1,189 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+import java.net.ProxySelector;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.NoSuchElementException;
 
-final class amc
-  implements Closeable
+public final class amc
 {
-  private static final Logger c = Logger.getLogger(alx.class.getName());
-  int a;
-  final alw.b b;
-  private final amw d;
-  private final boolean e;
-  private final amv f;
-  private boolean g;
+  final akm a;
+  final ama b;
+  private final akq c;
+  private final ala d;
+  private List<Proxy> e = Collections.emptyList();
+  private int f;
+  private List<InetSocketAddress> g = Collections.emptyList();
+  private final List<aln> h = new ArrayList();
   
-  amc(amw paramamw, boolean paramBoolean)
+  public amc(akm paramakm, ama paramama, akq paramakq, ala paramala)
   {
-    this.d = paramamw;
-    this.e = paramBoolean;
-    this.f = new amv();
-    this.b = new alw.b(this.f);
-    this.a = 16384;
-  }
-  
-  private void a(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
-  {
-    if (c.isLoggable(Level.FINE)) {
-      c.fine(alx.a(false, paramInt1, paramInt2, paramByte1, paramByte2));
-    }
-    int i = this.a;
-    if (paramInt2 <= i)
+    this.a = paramakm;
+    this.b = paramama;
+    this.c = paramakq;
+    this.d = paramala;
+    paramama = paramakm.a;
+    paramakm = paramakm.h;
+    if (paramakm != null)
     {
-      if ((0x80000000 & paramInt1) == 0)
-      {
-        a(this.d, paramInt2);
-        this.d.h(paramByte1 & 0xFF);
-        this.d.h(paramByte2 & 0xFF);
-        this.d.f(paramInt1 & 0x7FFFFFFF);
-        return;
-      }
-      throw alx.a("reserved bit set: %s", new Object[] { Integer.valueOf(paramInt1) });
+      paramakm = Collections.singletonList(paramakm);
     }
-    throw alx.a("FRAME_SIZE_ERROR length > %d: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
-  }
-  
-  private static void a(amw paramamw, int paramInt)
-  {
-    paramamw.h(paramInt >>> 16 & 0xFF);
-    paramamw.h(paramInt >>> 8 & 0xFF);
-    paramamw.h(paramInt & 0xFF);
-  }
-  
-  private void b(int paramInt, long paramLong)
-  {
-    while (paramLong > 0L)
+    else
     {
-      int i = (int)Math.min(this.a, paramLong);
-      long l = i;
-      paramLong -= l;
-      byte b1;
-      if (paramLong == 0L) {
-        b1 = 4;
+      paramakm = this.a.g.select(paramama.a());
+      if ((paramakm != null) && (!paramakm.isEmpty())) {
+        paramakm = alr.a(paramakm);
       } else {
-        b1 = 0;
+        paramakm = alr.a(new Proxy[] { Proxy.NO_PROXY });
       }
-      a(paramInt, i, (byte)9, b1);
-      this.d.a_(this.f, l);
     }
+    this.e = paramakm;
+    this.f = 0;
   }
   
-  public final void a()
+  private void a(Proxy paramProxy)
   {
-    try
+    this.g = new ArrayList();
+    Object localObject;
+    int i;
+    if ((paramProxy.type() != Proxy.Type.DIRECT) && (paramProxy.type() != Proxy.Type.SOCKS))
     {
-      if (!this.g)
+      localObject = paramProxy.address();
+      if ((localObject instanceof InetSocketAddress))
       {
-        boolean bool = this.e;
-        if (!bool) {
-          return;
+        InetSocketAddress localInetSocketAddress = (InetSocketAddress)localObject;
+        localObject = localInetSocketAddress.getAddress();
+        if (localObject == null) {
+          localObject = localInetSocketAddress.getHostName();
+        } else {
+          localObject = ((InetAddress)localObject).getHostAddress();
         }
-        if (c.isLoggable(Level.FINE)) {
-          c.fine(akt.a(">> CONNECTION %s", new Object[] { alx.a.e() }));
-        }
-        this.d.c(alx.a.h());
-        this.d.flush();
+        i = localInetSocketAddress.getPort();
+      }
+      else
+      {
+        paramProxy = new StringBuilder("Proxy.address() is not an InetSocketAddress: ");
+        paramProxy.append(localObject.getClass());
+        throw new IllegalArgumentException(paramProxy.toString());
+      }
+    }
+    else
+    {
+      localObject = this.a.a.b;
+      i = this.a.a.c;
+    }
+    if ((i > 0) && (i <= 65535))
+    {
+      if (paramProxy.type() == Proxy.Type.SOCKS)
+      {
+        this.g.add(InetSocketAddress.createUnresolved((String)localObject, i));
         return;
       }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, long paramLong)
-  {
-    try
-    {
-      if (!this.g)
+      paramProxy = this.a.b.a((String)localObject);
+      if (!paramProxy.isEmpty())
       {
-        if ((paramLong != 0L) && (paramLong <= 2147483647L))
+        int j = 0;
+        int k = paramProxy.size();
+        while (j < k)
         {
-          a(paramInt, 4, (byte)8, (byte)0);
-          this.d.f((int)paramLong);
-          this.d.flush();
-          return;
+          localObject = (InetAddress)paramProxy.get(j);
+          this.g.add(new InetSocketAddress((InetAddress)localObject, i));
+          j += 1;
         }
-        throw alx.a("windowSizeIncrement == 0 || windowSizeIncrement > 0x7fffffffL: %s", new Object[] { Long.valueOf(paramLong) });
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, alu paramalu)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        if (paramalu.l != -1)
-        {
-          a(paramInt, 4, (byte)3, (byte)0);
-          this.d.f(paramalu.l);
-          this.d.flush();
-          return;
-        }
-        throw new IllegalArgumentException();
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, alu paramalu, byte[] paramArrayOfByte)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        if (paramalu.l != -1)
-        {
-          a(0, paramArrayOfByte.length + 8, (byte)7, (byte)0);
-          this.d.f(paramInt);
-          this.d.f(paramalu.l);
-          if (paramArrayOfByte.length > 0) {
-            this.d.c(paramArrayOfByte);
-          }
-          this.d.flush();
-          return;
-        }
-        throw alx.a("errorCode.httpCode == -1", new Object[0]);
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(amf paramamf)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        int i = this.a;
-        if ((paramamf.a & 0x20) != 0) {
-          i = paramamf.b[5];
-        }
-        this.a = i;
-        if (paramamf.a() != -1) {
-          this.b.a(paramamf.a());
-        }
-        a(0, 0, (byte)4, (byte)1);
-        this.d.flush();
         return;
       }
-      throw new IOException("closed");
+      paramProxy = new StringBuilder();
+      paramProxy.append(this.a.b);
+      paramProxy.append(" returned no addresses for ");
+      paramProxy.append((String)localObject);
+      throw new UnknownHostException(paramProxy.toString());
     }
-    finally {}
+    paramProxy = new StringBuilder("No route to ");
+    paramProxy.append((String)localObject);
+    paramProxy.append(":");
+    paramProxy.append(i);
+    paramProxy.append("; port is out of range");
+    throw new SocketException(paramProxy.toString());
   }
   
-  public final void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  private boolean c()
   {
-    for (;;)
+    return this.f < this.e.size();
+  }
+  
+  public final boolean a()
+  {
+    return (c()) || (!this.h.isEmpty());
+  }
+  
+  public final a b()
+  {
+    if (a())
     {
-      try
-      {
-        if (!this.g)
+      Object localObject1 = new ArrayList();
+      while (c()) {
+        if (c())
         {
-          if (paramBoolean)
-          {
-            b1 = 1;
-            a(0, 8, (byte)6, b1);
-            this.d.f(paramInt1);
-            this.d.f(paramInt2);
-            this.d.flush();
-          }
-        }
-        else {
-          throw new IOException("closed");
-        }
-      }
-      finally {}
-      byte b1 = 0;
-    }
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt1, amv paramamv, int paramInt2)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt, List<alv> paramList)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (!this.g)
-        {
-          if (!this.g)
-          {
-            this.b.a(paramList);
-            long l1 = this.f.b;
-            int i = (int)Math.min(this.a, l1);
-            long l2 = i;
-            if (l1 == l2)
-            {
-              b1 = 4;
-              break label139;
-              a(paramInt, i, (byte)1, b2);
-              this.d.a_(this.f, l2);
-              if (l1 > l2) {
-                b(paramInt, l1 - l2);
-              }
-            }
-          }
-          else
-          {
-            throw new IOException("closed");
-          }
-        }
-        else {
-          throw new IOException("closed");
-        }
-      }
-      finally {}
-      byte b1 = 0;
-      label139:
-      byte b2 = b1;
-      if (paramBoolean) {
-        b2 = (byte)(b1 | 0x1);
-      }
-    }
-  }
-  
-  public final void b()
-  {
-    try
-    {
-      if (!this.g)
-      {
-        this.d.flush();
-        return;
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void b(amf paramamf)
-  {
-    for (;;)
-    {
-      int j;
-      int i;
-      try
-      {
-        if (!this.g)
-        {
-          j = Integer.bitCount(paramamf.a);
+          Object localObject2 = this.e;
+          int i = this.f;
+          this.f = (i + 1);
+          localObject2 = (Proxy)((List)localObject2).get(i);
+          a((Proxy)localObject2);
           i = 0;
-          a(0, j * 6, (byte)4, (byte)0);
-          if (i < 10)
+          int j = this.g.size();
+          while (i < j)
           {
-            if (!paramamf.a(i)) {
-              break label127;
+            aln localaln = new aln(this.a, (Proxy)localObject2, (InetSocketAddress)this.g.get(i));
+            if (this.b.c(localaln)) {
+              this.h.add(localaln);
+            } else {
+              ((List)localObject1).add(localaln);
             }
-            if (i == 4)
-            {
-              j = 3;
-              this.d.g(j);
-              this.d.f(paramamf.b[i]);
-              break label127;
-            }
+            i += 1;
           }
-          else
-          {
-            this.d.flush();
+          if (!((List)localObject1).isEmpty()) {
+            break;
           }
         }
         else
         {
-          throw new IOException("closed");
+          localObject1 = new StringBuilder("No route to ");
+          ((StringBuilder)localObject1).append(this.a.a.b);
+          ((StringBuilder)localObject1).append("; exhausted proxy configurations: ");
+          ((StringBuilder)localObject1).append(this.e);
+          throw new SocketException(((StringBuilder)localObject1).toString());
         }
       }
-      finally {}
-      if (i == 7)
+      if (((List)localObject1).isEmpty())
       {
-        j = 4;
+        ((List)localObject1).addAll(this.h);
+        this.h.clear();
       }
-      else
-      {
-        j = i;
-        continue;
-        label127:
-        i += 1;
-      }
+      return new a((List)localObject1);
     }
+    throw new NoSuchElementException();
   }
   
-  public final void close()
+  public static final class a
   {
-    try
+    final List<aln> a;
+    int b = 0;
+    
+    a(List<aln> paramList)
     {
-      this.g = true;
-      this.d.close();
-      return;
+      this.a = paramList;
     }
-    finally
+    
+    public final boolean a()
     {
-      localObject = finally;
-      throw localObject;
+      return this.b < this.a.size();
     }
   }
 }

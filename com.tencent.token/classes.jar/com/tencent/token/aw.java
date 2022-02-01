@@ -1,137 +1,52 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class aw
+  extends JceStruct
 {
-  private static AtomicBoolean a = new AtomicBoolean(false);
+  static byte[] f;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  public byte[] d = null;
+  public long e = 0L;
   
-  public static void a(Context paramContext)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a.getAndSet(true)) {
-      return;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+    if (f == null)
+    {
+      byte[] arrayOfByte = (byte[])new byte[1];
+      f = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
     }
-    ((Application)paramContext.getApplicationContext()).registerActivityLifecycleCallbacks(new b());
+    this.d = ((byte[])paramJceInputStream.read(f, 3, false));
+    this.e = paramJceInputStream.read(this.e, 4, false);
   }
   
-  private static void a(ce paramce, av.b paramb)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    paramce = paramce.d();
-    if (paramce == null) {
-      return;
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    paramce = paramce.iterator();
-    while (paramce.hasNext())
-    {
-      Fragment localFragment = (Fragment)paramce.next();
-      if (localFragment != null)
-      {
-        a(localFragment, paramb);
-        int i;
-        if ((localFragment.t != null) && (localFragment.l)) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        if (i != 0) {
-          a(localFragment.e(), paramb);
-        }
-      }
+    i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-  }
-  
-  private static void a(Object paramObject, av.b paramb)
-  {
-    if ((paramObject instanceof ba)) {
-      ((ba)paramObject).a().a(paramb);
+    byte[] arrayOfByte = this.d;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
-  }
-  
-  public static final class a
-    extends Fragment
-  {
-    private void a(av.a parama)
-    {
-      aw.a(this.x, parama);
-    }
-    
-    public final void a()
-    {
-      super.a();
-      a(av.a.ON_PAUSE);
-    }
-    
-    public final void b()
-    {
-      super.b();
-      a(av.a.ON_STOP);
-    }
-    
-    public final void c()
-    {
-      super.c();
-      a(av.a.ON_DESTROY);
-    }
-  }
-  
-  static final class b
-    extends at
-  {
-    private final aw.c a = new aw.c();
-    
-    public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-    {
-      if ((paramActivity instanceof FragmentActivity)) {
-        ((FragmentActivity)paramActivity).getSupportFragmentManager().a(this.a);
-      }
-      bh.a(paramActivity);
-    }
-    
-    public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle)
-    {
-      if ((paramActivity instanceof FragmentActivity)) {
-        aw.a((FragmentActivity)paramActivity, av.b.c);
-      }
-    }
-    
-    public final void onActivityStopped(Activity paramActivity)
-    {
-      if ((paramActivity instanceof FragmentActivity)) {
-        aw.a((FragmentActivity)paramActivity, av.b.c);
-      }
-    }
-  }
-  
-  static final class c
-    extends ce.a
-  {
-    public final void a(Fragment paramFragment)
-    {
-      aw.a(paramFragment, av.a.ON_CREATE);
-      if (!(paramFragment instanceof ba)) {
-        return;
-      }
-      if (paramFragment.e().a("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag") == null) {
-        paramFragment.e().a().a(new aw.a(), "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag").b();
-      }
-    }
-    
-    public final void b(Fragment paramFragment)
-    {
-      aw.a(paramFragment, av.a.ON_START);
-    }
-    
-    public final void c(Fragment paramFragment)
-    {
-      aw.a(paramFragment, av.a.ON_RESUME);
+    long l = this.e;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 4);
     }
   }
 }

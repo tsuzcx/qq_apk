@@ -1,32 +1,20 @@
 package com.tencent.token;
 
-import java.util.concurrent.Future;
+import com.tencent.halley.downloader.c.d.a;
 
-public final class my
+public abstract interface my
 {
-  private Future a;
+  public abstract mi a(mz parammz, a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5);
   
-  public my(Future paramFuture)
-  {
-    this.a = paramFuture;
-  }
+  public abstract mx a(mz parammz);
   
-  public final boolean a()
-  {
-    Future localFuture = this.a;
-    if (localFuture != null) {
-      try
-      {
-        boolean bool = localFuture.cancel(false);
-        return bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    return false;
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(mz parammz, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
+  
+  public abstract void b(mz parammz);
+  
+  public abstract void c(mz parammz);
 }
 
 

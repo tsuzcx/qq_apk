@@ -1,15 +1,15 @@
 package com.tencent.halley.common.b;
 
-import com.tencent.token.lp;
-import com.tencent.token.lq;
+import com.tencent.token.md;
+import com.tencent.token.me;
 import java.io.Serializable;
 
 public abstract class c
   implements Serializable
 {
-  public abstract void a(lp paramlp);
+  public abstract void a(md parammd);
   
-  public abstract void a(lq paramlq);
+  public abstract void a(me paramme);
 }
 
 

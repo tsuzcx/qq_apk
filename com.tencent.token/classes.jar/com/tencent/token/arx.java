@@ -1,18 +1,40 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-final class arx
+public final class arx
 {
-  public aij a = null;
-  public JceStruct b;
-  public int c = 0;
+  private static volatile boolean a = false;
+  private static volatile String b;
+  private static volatile boolean c = false;
+  private static volatile boolean d = false;
+  private static volatile long e;
+  private static volatile long f;
+  private static Object g = new Object();
+  private static ArrayList h = new ArrayList();
   
-  public arx(int paramInt, aij paramaij, JceStruct paramJceStruct)
+  public static boolean a()
   {
-    this.a = paramaij;
-    this.b = paramJceStruct;
-    this.c = paramInt;
+    for (;;)
+    {
+      synchronized (g)
+      {
+        long l = System.currentTimeMillis();
+        if (f - l > 5184000L)
+        {
+          i = 1;
+          if (f - l < 0L) {
+            break label75;
+          }
+          j = 1;
+          return (i == 0) && (j != 0);
+        }
+      }
+      int i = 0;
+      continue;
+      label75:
+      int j = 0;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.token.abu;
+import com.tencent.token.acb;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
 import java.io.BufferedReader;
@@ -108,7 +108,7 @@ public class ShowLogActivity
     //   122: astore_3
     //   123: aload_3
     //   124: invokevirtual 150	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   127: invokestatic 155	com/tencent/token/xj:c	(Ljava/lang/String;)V
+    //   127: invokestatic 155	com/tencent/token/xv:c	(Ljava/lang/String;)V
     //   130: aload_1
     //   131: invokevirtual 147	java/io/BufferedReader:close	()V
     //   134: return
@@ -217,19 +217,19 @@ public class ShowLogActivity
   
   private void initUI()
   {
-    setContentView(2131296443);
-    this.mListView = ((PullToRefreshListView)findViewById(2131165689));
-    View localView = LayoutInflater.from(this).inflate(2131296380, this.mListView, false);
+    setContentView(2131296456);
+    this.mListView = ((PullToRefreshListView)findViewById(2131165706));
+    View localView = LayoutInflater.from(this).inflate(2131296388, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2131296377, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2131296385, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2131296376, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2131296384, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     this.mListView.setScrollingCacheEnabled(true);
-    this.mListView.a(2131493314);
+    this.mListView.a(2131493316);
   }
   
   private void loadMoreLogs()
@@ -247,7 +247,7 @@ public class ShowLogActivity
         if (((d)localObject).b + 1 >= 2) {
           return;
         }
-        BufferedReader localBufferedReader = abu.b(((d)localObject).b + 1);
+        BufferedReader localBufferedReader = acb.b(((d)localObject).b + 1);
         if (localBufferedReader != null)
         {
           addData(localBufferedReader);
@@ -363,7 +363,7 @@ public class ShowLogActivity
     protected final void onPreExecute()
     {
       ShowLogActivity localShowLogActivity = ShowLogActivity.this;
-      localShowLogActivity.showProDialog(localShowLogActivity, 2131493568, new View.OnClickListener()
+      localShowLogActivity.showProDialog(localShowLogActivity, 2131493576, new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -399,9 +399,9 @@ public class ShowLogActivity
     {
       if (paramView == null)
       {
-        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296444, null);
+        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296457, null);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.a = ((TextView)paramView.findViewById(2131165690));
+        paramViewGroup.a = ((TextView)paramView.findViewById(2131165707));
         paramView.setTag(paramViewGroup);
       }
       else

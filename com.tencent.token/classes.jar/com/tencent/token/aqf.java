@@ -1,77 +1,58 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
 
 public final class aqf
-  extends JceStruct
+  extends apz
 {
-  public int a = 2;
-  public int b = 0;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public int f = 0;
-  public int g = 0;
-  public long h = 0L;
-  public int i = 0;
-  public String j = "";
+  private final RectF g = new RectF();
+  private final Paint h = new Paint();
+  private final aqc i;
   
-  public final JceStruct newInit()
+  aqf(avt paramavt, aqc paramaqc)
   {
-    return new aqf();
+    super(paramavt, paramaqc);
+    this.i = paramaqc;
+    this.h.setAlpha(0);
+    this.h.setStyle(Paint.Style.FILL);
+    this.h.setColor(paramaqc.l);
   }
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  private void a(Matrix paramMatrix)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, false);
-    this.d = paramJceInputStream.readString(3, false);
-    this.e = paramJceInputStream.readString(4, false);
-    this.f = paramJceInputStream.read(this.f, 5, false);
-    this.g = paramJceInputStream.read(this.g, 6, false);
-    this.h = paramJceInputStream.read(this.h, 7, false);
-    this.i = paramJceInputStream.read(this.i, 8, false);
-    this.j = paramJceInputStream.readString(9, false);
+    this.g.set(0.0F, 0.0F, this.i.j, this.i.k);
+    paramMatrix.mapRect(this.g);
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final void a(RectF paramRectF, Matrix paramMatrix)
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    String str = this.c;
-    if (str != null) {
-      paramJceOutputStream.write(str, 2);
+    super.a(paramRectF, paramMatrix);
+    a(this.a);
+    paramRectF.set(this.g);
+  }
+  
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.h.setColorFilter(paramColorFilter);
+  }
+  
+  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    int j = Color.alpha(this.i.l);
+    if (j == 0) {
+      return;
     }
-    str = this.d;
-    if (str != null) {
-      paramJceOutputStream.write(str, 3);
-    }
-    str = this.e;
-    if (str != null) {
-      paramJceOutputStream.write(str, 4);
-    }
-    int k = this.f;
-    if (k != 0) {
-      paramJceOutputStream.write(k, 5);
-    }
-    k = this.g;
-    if (k != 0) {
-      paramJceOutputStream.write(k, 6);
-    }
-    long l = this.h;
-    if (l != 0L) {
-      paramJceOutputStream.write(l, 7);
-    }
-    k = this.i;
-    if (k != 0) {
-      paramJceOutputStream.write(k, 8);
-    }
-    str = this.j;
-    if (str != null) {
-      paramJceOutputStream.write(str, 9);
+    paramInt = (int)(paramInt / 255.0F * (j / 255.0F * ((Integer)this.f.a.a()).intValue() / 100.0F) * 255.0F);
+    a(paramMatrix);
+    this.h.setAlpha(paramInt);
+    if (paramInt > 0) {
+      paramCanvas.drawRect(this.g, this.h);
     }
   }
 }

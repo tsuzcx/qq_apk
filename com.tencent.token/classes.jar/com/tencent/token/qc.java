@@ -1,214 +1,296 @@
 package com.tencent.token;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.telephony.cdma.CdmaCellLocation;
-import android.telephony.gsm.GsmCellLocation;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.database.Cursor;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class qc
+public final class qc
+  implements SharedPreferences
 {
-  private static int a = 10000;
-  private static int b = 10000;
-  private TelephonyManager c;
-  private int d;
-  private PhoneStateListener e = new qd(this);
+  private final ContentResolver a;
+  private final String[] b = { "_id", "key", "type", "value" };
+  private final HashMap<String, Object> c = new HashMap();
+  private a d = null;
   
-  public static List<pz.a> a(Context paramContext)
+  public qc(Context paramContext)
   {
-    Object localObject7 = (TelephonyManager)paramContext.getSystemService("phone");
-    localLinkedList = new LinkedList();
-    Object localObject2 = "460";
-    Object localObject5 = "";
+    this.a = paramContext.getContentResolver();
+  }
+  
+  private Object a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        Cursor localCursor = this.a.query(qu.b.a, this.b, "key = ?", new String[] { paramString }, null);
+        if (localCursor == null) {
+          return null;
+        }
+        int i = localCursor.getColumnIndex("type");
+        int j = localCursor.getColumnIndex("value");
+        if (localCursor.moveToFirst())
+        {
+          paramString = qu.a.a(localCursor.getInt(i), localCursor.getString(j));
+          localCursor.close();
+          return paramString;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      paramString = null;
+    }
+  }
+  
+  public final boolean contains(String paramString)
+  {
+    return a(paramString) != null;
+  }
+  
+  public final SharedPreferences.Editor edit()
+  {
+    if (this.d == null) {
+      this.d = new a(this.a);
+    }
+    return this.d;
+  }
+  
+  public final Map<String, ?> getAll()
+  {
     try
     {
-      paramContext = ((TelephonyManager)localObject7).getNetworkOperator();
-      if ((paramContext != null) && (!paramContext.equals("")))
-      {
-        localObject1 = paramContext.substring(0, 3);
+      Object localObject1 = this.a.query(qu.b.a, this.b, null, null, null);
+      if (localObject1 == null) {
+        return null;
       }
-      else
+      int i = ((Cursor)localObject1).getColumnIndex("key");
+      int j = ((Cursor)localObject1).getColumnIndex("type");
+      int k = ((Cursor)localObject1).getColumnIndex("value");
+      while (((Cursor)localObject1).moveToNext())
       {
-        localObject6 = ((TelephonyManager)localObject7).getSimOperator();
-        localObject1 = localObject2;
-        paramContext = (Context)localObject5;
-        if (localObject6 == null) {
-          break label109;
-        }
-        localObject1 = localObject2;
-        paramContext = (Context)localObject5;
-        if (((String)localObject6).equals("")) {
-          break label109;
-        }
-        localObject1 = ((String)localObject6).substring(0, 3);
-        paramContext = (Context)localObject6;
+        Object localObject2 = qu.a.a(((Cursor)localObject1).getInt(j), ((Cursor)localObject1).getString(k));
+        this.c.put(((Cursor)localObject1).getString(i), localObject2);
       }
-      paramContext = paramContext.substring(3, 5);
-      label109:
-      if (((TelephonyManager)localObject7).getPhoneType() != 2) {}
+      ((Cursor)localObject1).close();
+      localObject1 = this.c;
+      return localObject1;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      Object localObject1;
-      Object localObject6;
-      label177:
-      Object localObject8;
-      StringBuilder localStringBuilder;
-      label319:
-      label736:
-      paramContext.printStackTrace();
-      label691:
-      label991:
-      return localLinkedList;
+      localException.printStackTrace();
     }
-    try
-    {
-      localObject5 = (CdmaCellLocation)((TelephonyManager)localObject7).getCellLocation();
-      if (localObject5 == null) {
-        break label991;
-      }
-      if (b == a)
-      {
-        localObject2 = "";
-      }
-      else
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(b);
-        localObject2 = ((StringBuilder)localObject2).toString();
-      }
+    return this.c;
+  }
+  
+  public final boolean getBoolean(String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Boolean))) {
+      return ((Boolean)paramString).booleanValue();
     }
-    catch (Exception localException3)
-    {
-      break label319;
-      break label177;
-      break label691;
+    return paramBoolean;
+  }
+  
+  public final float getFloat(String paramString, float paramFloat)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Float))) {
+      return ((Float)paramString).floatValue();
     }
-    if ((((CdmaCellLocation)localObject5).getBaseStationId() != -1) && (((CdmaCellLocation)localObject5).getNetworkId() != -1) && (((CdmaCellLocation)localObject5).getSystemId() != -1))
+    return paramFloat;
+  }
+  
+  public final int getInt(String paramString, int paramInt)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Integer))) {
+      return ((Integer)paramString).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final long getLong(String paramString, long paramLong)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Long))) {
+      return ((Long)paramString).longValue();
+    }
+    return paramLong;
+  }
+  
+  public final String getString(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1);
+    if ((paramString1 != null) && ((paramString1 instanceof String))) {
+      return (String)paramString1;
+    }
+    return paramString2;
+  }
+  
+  public final Set<String> getStringSet(String paramString, Set<String> paramSet)
+  {
+    return null;
+  }
+  
+  public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  static final class a
+    implements SharedPreferences.Editor
+  {
+    private Map<String, Object> a = new HashMap();
+    private Set<String> b = new HashSet();
+    private boolean c = false;
+    private ContentResolver d;
+    
+    public a(ContentResolver paramContentResolver)
     {
-      localObject6 = new StringBuilder();
-      ((StringBuilder)localObject6).append(((CdmaCellLocation)localObject5).getBaseStationId());
-      localObject6 = ((StringBuilder)localObject6).toString();
-      localObject8 = new StringBuilder();
-      ((StringBuilder)localObject8).append(((CdmaCellLocation)localObject5).getNetworkId());
-      localObject8 = ((StringBuilder)localObject8).toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((CdmaCellLocation)localObject5).getSystemId());
-      localObject5 = localStringBuilder.toString();
-      for (;;)
+      this.d = paramContentResolver;
+    }
+    
+    public final void apply() {}
+    
+    public final SharedPreferences.Editor clear()
+    {
+      this.c = true;
+      return this;
+    }
+    
+    public final boolean commit()
+    {
+      ContentValues localContentValues = new ContentValues();
+      if (this.c)
       {
-        try
+        this.d.delete(qu.b.a, null, null);
+        this.c = false;
+      }
+      Object localObject1 = this.b.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        this.d.delete(qu.b.a, "key = ?", new String[] { localObject2 });
+      }
+      Object localObject2 = this.a.entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+        Object localObject3 = localEntry.getValue();
+        if (localObject3 == null) {}
+        int i;
+        for (localObject1 = "unresolve failed, null value";; localObject1 = ((StringBuilder)localObject1).toString())
         {
-          localLinkedList.add(new pz.a((String)localObject1, paramContext, "", "", (String)localObject2, "cdma", (String)localObject6, (String)localObject8, (String)localObject5));
-          return localLinkedList;
-        }
-        catch (Exception localException4)
-        {
-          int i;
-          int j;
-          Object localObject3;
-          continue;
-        }
-        try
-        {
-          localObject2 = (GsmCellLocation)((TelephonyManager)localObject7).getCellLocation();
-          if (localObject2 != null)
+          qk.a("MicroMsg.SDK.PluginProvider.Resolver", (String)localObject1);
+          i = 0;
+          break;
+          if ((localObject3 instanceof Integer))
           {
-            i = ((GsmCellLocation)localObject2).getCid();
-            j = ((GsmCellLocation)localObject2).getLac();
-            if ((j < 65535) && (j != -1) && (i != -1)) {
-              localLinkedList.add(new pz.a((String)localObject1, paramContext, String.valueOf(j), String.valueOf(i), "", "gsm", "", "", ""));
-            }
+            i = 1;
+            break;
           }
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-        }
-      }
-      localObject3 = ((TelephonyManager)localObject7).getNeighboringCellInfo();
-      if ((localObject3 != null) && (((List)localObject3).size() > 0))
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject5 = (NeighboringCellInfo)((Iterator)localObject3).next();
-          if ((((NeighboringCellInfo)localObject5).getCid() != -1) && (((NeighboringCellInfo)localObject5).getLac() <= 65535) && (((NeighboringCellInfo)localObject5).getLac() != -1))
+          if ((localObject3 instanceof Long))
           {
-            localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getRssi() * 2 - 113);
-            localObject6 = ((StringBuilder)localObject6).toString();
-            localObject7 = new StringBuilder();
-            ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-            localObject7 = ((StringBuilder)localObject7).toString();
-            localObject8 = new StringBuilder();
-            ((StringBuilder)localObject8).append(((NeighboringCellInfo)localObject5).getCid());
-            localLinkedList.add(new pz.a((String)localObject1, paramContext, (String)localObject7, ((StringBuilder)localObject8).toString(), (String)localObject6, "gsm", "", "", ""));
-            continue;
-            try
-            {
-              localObject3 = (GsmCellLocation)((TelephonyManager)localObject7).getCellLocation();
-              if (localObject3 == null) {
-                break label736;
-              }
-              i = ((GsmCellLocation)localObject3).getCid();
-              j = ((GsmCellLocation)localObject3).getLac();
-              if ((j >= 65535) || (j == -1) || (i == -1)) {
-                break label736;
-              }
-              if (b == a)
-              {
-                localObject3 = "";
-              }
-              else
-              {
-                localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append(b);
-                localObject3 = ((StringBuilder)localObject3).toString();
-              }
-            }
-            catch (Exception localException2)
-            {
-              localException2.printStackTrace();
-            }
-            localLinkedList.add(new pz.a((String)localObject1, paramContext, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
-            Object localObject4 = ((TelephonyManager)localObject7).getNeighboringCellInfo();
-            if ((localObject4 != null) && (((List)localObject4).size() > 0))
-            {
-              localObject4 = ((List)localObject4).iterator();
-              while (((Iterator)localObject4).hasNext())
-              {
-                localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
-                if ((((NeighboringCellInfo)localObject5).getCid() != -1) && (((NeighboringCellInfo)localObject5).getLac() <= 65535))
-                {
-                  localObject6 = new StringBuilder();
-                  ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getRssi() * 2 - 113);
-                  localObject6 = ((StringBuilder)localObject6).toString();
-                  localObject7 = new StringBuilder("lac:");
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-                  ((StringBuilder)localObject7).append("  cid:");
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getCid());
-                  ((StringBuilder)localObject7).append(" dbm:");
-                  ((StringBuilder)localObject7).append((String)localObject6);
-                  pw.d("checked", ((StringBuilder)localObject7).toString());
-                  localObject7 = new StringBuilder();
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-                  localObject7 = ((StringBuilder)localObject7).toString();
-                  localObject8 = new StringBuilder();
-                  ((StringBuilder)localObject8).append(((NeighboringCellInfo)localObject5).getCid());
-                  localLinkedList.add(new pz.a((String)localObject1, paramContext, (String)localObject7, ((StringBuilder)localObject8).toString(), (String)localObject6, "gsm", "", "", ""));
-                }
-              }
-            }
+            i = 2;
+            break;
           }
+          if ((localObject3 instanceof String))
+          {
+            i = 3;
+            break;
+          }
+          if ((localObject3 instanceof Boolean))
+          {
+            i = 4;
+            break;
+          }
+          if ((localObject3 instanceof Float))
+          {
+            i = 5;
+            break;
+          }
+          if ((localObject3 instanceof Double))
+          {
+            i = 6;
+            break;
+          }
+          localObject1 = new StringBuilder("unresolve failed, unknown type=");
+          ((StringBuilder)localObject1).append(localObject3.getClass().toString());
+        }
+        if (i == 0)
+        {
+          i = 0;
+        }
+        else
+        {
+          localContentValues.put("type", Integer.valueOf(i));
+          localContentValues.put("value", localObject3.toString());
+          i = 1;
+        }
+        if (i != 0) {
+          this.d.update(qu.b.a, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
         }
       }
+      return true;
     }
-    return localLinkedList;
+    
+    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+    {
+      this.a.put(paramString, Boolean.valueOf(paramBoolean));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+    {
+      this.a.put(paramString, Float.valueOf(paramFloat));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
+    {
+      this.a.put(paramString, Integer.valueOf(paramInt));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
+    {
+      this.a.put(paramString, Long.valueOf(paramLong));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
+    {
+      this.a.put(paramString1, paramString2);
+      this.b.remove(paramString1);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+    {
+      return null;
+    }
+    
+    public final SharedPreferences.Editor remove(String paramString)
+    {
+      this.b.add(paramString);
+      return this;
+    }
   }
 }
 

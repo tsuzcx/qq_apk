@@ -1,61 +1,190 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import java.util.Map;
+import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
-abstract class hk<T>
-  extends hl<T>
+public class hk
+  extends Drawable
+  implements Drawable.Callback
 {
-  final Context a;
-  Map<dr, MenuItem> b;
-  Map<ds, SubMenu> c;
+  public Drawable a;
   
-  hk(Context paramContext, T paramT)
+  public hk(Drawable paramDrawable)
   {
-    super(paramT);
-    this.a = paramContext;
+    Drawable localDrawable = this.a;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
+    }
+    this.a = paramDrawable;
+    if (paramDrawable != null) {
+      paramDrawable.setCallback(this);
+    }
   }
   
-  final MenuItem a(MenuItem paramMenuItem)
+  public void draw(Canvas paramCanvas)
   {
-    if ((paramMenuItem instanceof dr))
-    {
-      dr localdr = (dr)paramMenuItem;
-      if (this.b == null) {
-        this.b = new dy();
-      }
-      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
-      paramMenuItem = localMenuItem;
-      if (localMenuItem == null)
-      {
-        paramMenuItem = hy.a(this.a, localdr);
-        this.b.put(localdr, paramMenuItem);
-      }
-      return paramMenuItem;
-    }
-    return paramMenuItem;
+    this.a.draw(paramCanvas);
   }
   
-  final SubMenu a(SubMenu paramSubMenu)
+  public int getChangingConfigurations()
   {
-    if ((paramSubMenu instanceof ds))
-    {
-      ds localds = (ds)paramSubMenu;
-      if (this.c == null) {
-        this.c = new dy();
-      }
-      SubMenu localSubMenu = (SubMenu)this.c.get(localds);
-      paramSubMenu = localSubMenu;
-      if (localSubMenu == null)
-      {
-        paramSubMenu = new id(this.a, localds);
-        this.c.put(localds, paramSubMenu);
-      }
-      return paramSubMenu;
-    }
-    return paramSubMenu;
+    return this.a.getChangingConfigurations();
+  }
+  
+  public Drawable getCurrent()
+  {
+    return this.a.getCurrent();
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getIntrinsicWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getMinimumWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return this.a.getOpacity();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    return this.a.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    return this.a.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    return this.a.getTransparentRegion();
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    invalidateSelf();
+  }
+  
+  public boolean isAutoMirrored()
+  {
+    return dy.a(this.a);
+  }
+  
+  public boolean isStateful()
+  {
+    return this.a.isStateful();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    this.a.jumpToCurrentState();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.a.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    return this.a.setLevel(paramInt);
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    scheduleSelf(paramRunnable, paramLong);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.a.setAlpha(paramInt);
+  }
+  
+  public void setAutoMirrored(boolean paramBoolean)
+  {
+    dy.a(this.a, paramBoolean);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    this.a.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.a.setColorFilter(paramColorFilter);
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.a.setDither(paramBoolean);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    this.a.setFilterBitmap(paramBoolean);
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    dy.a(this.a, paramFloat1, paramFloat2);
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    dy.a(this.a, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    return this.a.setState(paramArrayOfInt);
+  }
+  
+  public void setTint(int paramInt)
+  {
+    dy.a(this.a, paramInt);
+  }
+  
+  public void setTintList(ColorStateList paramColorStateList)
+  {
+    dy.a(this.a, paramColorStateList);
+  }
+  
+  public void setTintMode(PorterDuff.Mode paramMode)
+  {
+    dy.a(this.a, paramMode);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return (super.setVisible(paramBoolean1, paramBoolean2)) || (this.a.setVisible(paramBoolean1, paramBoolean2));
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    unscheduleSelf(paramRunnable);
   }
 }
 

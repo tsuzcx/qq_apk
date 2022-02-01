@@ -1,45 +1,73 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.turingfd.sdk.qps.Grape;
+import android.os.Build;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class afe
+  extends Thread
 {
-  public int a;
-  public long b;
-  public Context c;
-  public int d;
-  public Grape e;
-  public afa f;
+  public afe(AtomicBoolean paramAtomicBoolean, HashMap paramHashMap, aem paramaem, Object paramObject) {}
   
-  public afe(a parama)
+  public final void run()
   {
-    this.a = parama.a;
-    this.b = (parama.b * afg.a);
-    this.c = parama.c;
-    this.f = parama.d;
-    this.d = parama.e;
-    this.e = parama.f;
-  }
-  
-  public static final class a
-  {
-    public int a = 0;
-    public long b = 6L;
-    public Context c;
-    public afa d;
-    public int e = 0;
-    public Grape f = new Grape();
-    
-    public a(Context paramContext, int paramInt)
+    super.run();
+    if (this.a.get()) {
+      return;
+    }
+    for (;;)
     {
-      if (paramInt >= 0)
+      try
       {
-        this.c = paramContext.getApplicationContext();
-        this.a = paramInt;
+        HashMap localHashMap = this.b;
+        String str = this.c.a();
+        ??? = str;
+        if (str == null) {
+          ??? = "";
+        }
+        localHashMap.put("274", ???);
+        localHashMap = this.b;
+        str = this.c.b();
+        ??? = str;
+        if (str == null) {
+          ??? = "";
+        }
+        localHashMap.put("276", ???);
+        localHashMap = this.b;
+        str = this.c.c();
+        ??? = str;
+        if (str == null) {
+          ??? = "";
+        }
+        localHashMap.put("275", ???);
+        str = this.c.d();
+        ??? = str;
+        if (str == null) {
+          ??? = "";
+        }
+        if (!TextUtils.isEmpty((CharSequence)???))
+        {
+          this.b.put("264", ???);
+        }
+        else
+        {
+          ??? = this.b;
+          if (acx.c == null) {
+            acx.c = Build.MODEL;
+          }
+          ((HashMap)???).put("264", acx.c);
+        }
+      }
+      finally
+      {
+        continue;
+      }
+      synchronized (this.d)
+      {
+        this.d.notify();
         return;
       }
-      throw new IllegalArgumentException("scenes invalid: ".concat(String.valueOf(paramInt)));
     }
   }
 }

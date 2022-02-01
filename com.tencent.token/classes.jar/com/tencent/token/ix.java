@@ -1,243 +1,109 @@
 package com.tencent.token;
 
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewParent;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
+import android.widget.CompoundButton;
 
-public abstract class ix
-  implements View.OnAttachStateChangeListener, View.OnTouchListener
+public final class ix
 {
-  private final float a;
-  private final int b;
-  final View c;
-  private final int d;
-  private Runnable e;
-  private Runnable f;
-  private boolean g;
-  private int h;
-  private final int[] i = new int[2];
+  public ColorStateList a = null;
+  public PorterDuff.Mode b = null;
+  private final CompoundButton c;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f;
   
-  public ix(View paramView)
+  public ix(CompoundButton paramCompoundButton)
   {
-    this.c = paramView;
-    paramView.setLongClickable(true);
-    paramView.addOnAttachStateChangeListener(this);
-    this.a = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.b = ViewConfiguration.getTapTimeout();
-    this.d = ((this.b + ViewConfiguration.getLongPressTimeout()) / 2);
+    this.c = paramCompoundButton;
   }
   
-  private void e()
+  private void b()
   {
-    Runnable localRunnable = this.f;
-    if (localRunnable != null) {
-      this.c.removeCallbacks(localRunnable);
-    }
-    localRunnable = this.e;
-    if (localRunnable != null) {
-      this.c.removeCallbacks(localRunnable);
-    }
-  }
-  
-  public abstract ia a();
-  
-  protected boolean b()
-  {
-    ia localia = a();
-    if ((localia != null) && (!localia.d())) {
-      localia.b();
-    }
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    ia localia = a();
-    if ((localia != null) && (localia.d())) {
-      localia.c();
-    }
-    return true;
-  }
-  
-  final void d()
-  {
-    e();
-    View localView = this.c;
-    if (localView.isEnabled())
+    Drawable localDrawable = gg.a(this.c);
+    if ((localDrawable != null) && ((this.d) || (this.e)))
     {
-      if (localView.isLongClickable()) {
-        return;
+      localDrawable = dy.d(localDrawable).mutate();
+      if (this.d) {
+        dy.a(localDrawable, this.a);
       }
-      if (!b()) {
-        return;
+      if (this.e) {
+        dy.a(localDrawable, this.b);
       }
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-      localView.onTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.g = true;
+      if (localDrawable.isStateful()) {
+        localDrawable.setState(this.c.getDrawableState());
+      }
+      this.c.setButtonDrawable(localDrawable);
+    }
+  }
+  
+  public final int a(int paramInt)
+  {
+    int i = paramInt;
+    if (Build.VERSION.SDK_INT < 17)
+    {
+      Drawable localDrawable = gg.a(this.c);
+      i = paramInt;
+      if (localDrawable != null) {
+        i = paramInt + localDrawable.getIntrinsicWidth();
+      }
+    }
+    return i;
+  }
+  
+  public final void a()
+  {
+    if (this.f)
+    {
+      this.f = false;
       return;
     }
+    this.f = true;
+    b();
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void a(ColorStateList paramColorStateList)
   {
-    boolean bool3 = this.g;
-    boolean bool1;
-    int j;
-    boolean bool2;
-    if (bool3)
+    this.a = paramColorStateList;
+    this.d = true;
+    b();
+  }
+  
+  public final void a(PorterDuff.Mode paramMode)
+  {
+    this.b = paramMode;
+    this.e = true;
+    b();
+  }
+  
+  public final void a(AttributeSet paramAttributeSet, int paramInt)
+  {
+    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, hg.j.CompoundButton, paramInt, 0);
+    try
     {
-      paramView = this.c;
-      Object localObject = a();
-      if ((localObject != null) && (((ia)localObject).d()))
+      if (paramAttributeSet.hasValue(hg.j.CompoundButton_android_button))
       {
-        localObject = (iv)((ia)localObject).e();
-        if ((localObject != null) && (((iv)localObject).isShown()))
-        {
-          MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
-          int[] arrayOfInt = this.i;
-          paramView.getLocationOnScreen(arrayOfInt);
-          localMotionEvent.offsetLocation(arrayOfInt[0], arrayOfInt[1]);
-          paramView = this.i;
-          ((View)localObject).getLocationOnScreen(paramView);
-          localMotionEvent.offsetLocation(-paramView[0], -paramView[1]);
-          bool1 = ((iv)localObject).a(localMotionEvent, this.h);
-          localMotionEvent.recycle();
-          j = paramMotionEvent.getActionMasked();
-          if ((j != 1) && (j != 3)) {
-            j = 1;
-          } else {
-            j = 0;
-          }
-          if ((bool1) && (j != 0)) {
-            j = 1;
-          } else {
-            j = 0;
-          }
-        }
-        else
-        {
-          j = 0;
+        paramInt = paramAttributeSet.getResourceId(hg.j.CompoundButton_android_button, 0);
+        if (paramInt != 0) {
+          this.c.setButtonDrawable(hi.b(this.c.getContext(), paramInt));
         }
       }
-      else
-      {
-        j = 0;
+      if (paramAttributeSet.hasValue(hg.j.CompoundButton_buttonTint)) {
+        gg.a(this.c, paramAttributeSet.getColorStateList(hg.j.CompoundButton_buttonTint));
       }
-      if ((j == 0) && (c())) {
-        bool2 = false;
-      } else {
-        bool2 = true;
+      if (paramAttributeSet.hasValue(hg.j.CompoundButton_buttonTintMode)) {
+        gg.a(this.c, ji.a(paramAttributeSet.getInt(hg.j.CompoundButton_buttonTintMode, -1), null));
       }
+      return;
     }
-    else
+    finally
     {
-      paramView = this.c;
-      if (paramView.isEnabled()) {
-        switch (paramMotionEvent.getActionMasked())
-        {
-        default: 
-          break;
-        case 2: 
-          j = paramMotionEvent.findPointerIndex(this.h);
-          if (j >= 0)
-          {
-            float f1 = paramMotionEvent.getX(j);
-            float f2 = paramMotionEvent.getY(j);
-            float f3 = this.a;
-            float f4 = -f3;
-            if ((f1 >= f4) && (f2 >= f4) && (f1 < paramView.getRight() - paramView.getLeft() + f3) && (f2 < paramView.getBottom() - paramView.getTop() + f3)) {
-              j = 1;
-            } else {
-              j = 0;
-            }
-            if (j == 0)
-            {
-              e();
-              paramView.getParent().requestDisallowInterceptTouchEvent(true);
-              j = 1;
-            }
-          }
-          break;
-        case 1: 
-        case 3: 
-          e();
-          break;
-        case 0: 
-          this.h = paramMotionEvent.getPointerId(0);
-          if (this.e == null) {
-            this.e = new a();
-          }
-          paramView.postDelayed(this.e, this.b);
-          if (this.f == null) {
-            this.f = new b();
-          }
-          paramView.postDelayed(this.f, this.d);
-        }
-      }
-      j = 0;
-      if ((j != 0) && (b())) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      bool2 = bool1;
-      if (bool1)
-      {
-        long l = SystemClock.uptimeMillis();
-        paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        this.c.onTouchEvent(paramView);
-        paramView.recycle();
-        bool2 = bool1;
-      }
-    }
-    this.g = bool2;
-    if (!bool2) {
-      return bool3;
-    }
-    return true;
-  }
-  
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    this.g = false;
-    this.h = -1;
-    paramView = this.e;
-    if (paramView != null) {
-      this.c.removeCallbacks(paramView);
-    }
-  }
-  
-  final class a
-    implements Runnable
-  {
-    a() {}
-    
-    public final void run()
-    {
-      ViewParent localViewParent = ix.this.c.getParent();
-      if (localViewParent != null) {
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-      }
-    }
-  }
-  
-  final class b
-    implements Runnable
-  {
-    b() {}
-    
-    public final void run()
-    {
-      ix.this.d();
+      paramAttributeSet.recycle();
     }
   }
 }

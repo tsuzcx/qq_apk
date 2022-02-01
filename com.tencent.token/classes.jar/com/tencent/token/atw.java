@@ -1,6 +1,9 @@
 package com.tencent.token;
 
-public abstract interface atw {}
+public abstract interface atw
+{
+  public abstract void f();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -1,26 +1,12 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import java.util.List;
 
-public final class ara
+public abstract interface ara
 {
-  public SharedPreferences a;
-  private SharedPreferences.Editor b;
+  public abstract String a();
   
-  public ara(String paramString)
-  {
-    this.a = aqp.a().getSharedPreferences(paramString, 0);
-  }
-  
-  public final SharedPreferences.Editor a()
-  {
-    if (this.b == null) {
-      this.b = this.a.edit();
-    }
-    return this.b;
-  }
+  public abstract void a(List<ara> paramList);
 }
 
 

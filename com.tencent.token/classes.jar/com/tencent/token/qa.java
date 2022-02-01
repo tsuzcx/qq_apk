@@ -1,98 +1,46 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.telephony.gsm.GsmCellLocation;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
-final class qa
+public final class qa
 {
-  private static int a = 10000;
-  private static int b = 10000;
-  private TelephonyManager c;
-  private PhoneStateListener d = new qb(this);
-  
-  public static List<pz.a> a(Context paramContext)
+  public static final class a
   {
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject6 = (TelephonyManager)paramContext.getSystemService("phone");
-    Object localObject5 = ((TelephonyManager)localObject6).getNetworkOperator();
-    Object localObject3;
-    Object localObject2;
-    if (localObject5 != null)
+    public static Object a(int paramInt, String paramString)
     {
-      if (((String)localObject5).equals("")) {
-        return localLinkedList;
-      }
-      paramContext = "460";
-      localObject3 = "";
-      try
+      switch (paramInt)
       {
-        Object localObject1 = ((String)localObject5).substring(0, 3);
-        paramContext = (Context)localObject1;
-        localObject5 = ((String)localObject5).substring(3);
-        paramContext = (Context)localObject1;
-        localObject1 = localObject5;
+      default: 
+        break;
+      case 6: 
+      case 5: 
+      case 4: 
+      case 2: 
+      case 1: 
+        try
+        {
+          return Double.valueOf(paramString);
+        }
+        catch (Exception paramString)
+        {
+          new StringBuilder("resolveObj exception:").append(paramString.getMessage());
+        }
+        return Float.valueOf(paramString);
+        return Boolean.valueOf(paramString);
+        return Long.valueOf(paramString);
+        paramString = Integer.valueOf(paramString);
+        return paramString;
+        return null;
       }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        localObject2 = localObject3;
-      }
+      return paramString;
     }
-    for (;;)
-    {
-      try
-      {
-        localObject3 = (GsmCellLocation)((TelephonyManager)localObject6).getCellLocation();
-        if (localObject3 == null) {
-          break label218;
-        }
-        i = ((GsmCellLocation)localObject3).getCid();
-        j = ((GsmCellLocation)localObject3).getLac();
-        if ((j >= 65535) || (j == -1) || (i == -1)) {
-          break label218;
-        }
-        if (b == a)
-        {
-          localObject3 = "";
-        }
-        else
-        {
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(b);
-          localObject3 = ((StringBuilder)localObject3).toString();
-        }
-      }
-      catch (Exception localException2)
-      {
-        int i;
-        int j;
-        localException2.printStackTrace();
-      }
-      localLinkedList.add(new pz.a(paramContext, localObject2, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
-      label218:
-      Object localObject4 = ((TelephonyManager)localObject6).getNeighboringCellInfo();
-      if ((localObject4 != null) && (((List)localObject4).size() > 0))
-      {
-        localObject4 = ((List)localObject4).iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
-          if (((NeighboringCellInfo)localObject5).getCid() != -1)
-          {
-            localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getCid());
-            localLinkedList.add(new pz.a(paramContext, localObject2, "", ((StringBuilder)localObject6).toString(), "", "gsm", "", "", ""));
-          }
-        }
-      }
-      return localLinkedList;
-    }
+  }
+  
+  public static final class b
+    implements BaseColumns
+  {
+    public static final Uri a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
   }
 }
 

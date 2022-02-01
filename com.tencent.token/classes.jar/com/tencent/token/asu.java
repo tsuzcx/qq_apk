@@ -1,32 +1,43 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-final class asu
-  extends Handler
+public final class asu
 {
-  private WeakReference a = null;
-  
-  public asu(asq paramasq)
+  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
   {
-    super(paramasq.a.getMainLooper());
-    this.a = new WeakReference(paramasq);
+    if (paramJceStruct == null) {
+      return null;
+    }
+    paramJceStruct.recyle();
+    paramJceStruct.readFrom(b(paramArrayOfByte));
+    return paramJceStruct;
   }
   
-  public final void handleMessage(Message paramMessage)
+  public static ba a(byte[] paramArrayOfByte)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (asq)this.a.get();
-    if (paramMessage == null) {
-      return;
+    paramArrayOfByte = a(paramArrayOfByte, new ba());
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    if (paramMessage.d != null) {
-      paramMessage.d.e();
-    }
-    asp.a(paramMessage.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE", paramMessage.c);
+    return (ba)paramArrayOfByte;
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("UTF-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
+  }
+  
+  private static JceInputStream b(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+    paramArrayOfByte.setServerEncoding("UTF-8");
+    return paramArrayOfByte;
   }
 }
 

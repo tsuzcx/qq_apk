@@ -1,129 +1,45 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.IndexActivity;
-import com.tmsdk.TMSDKContext;
+import android.os.Bundle;
+import com.tencent.mm.sdk.openapi.WXMediaMessage;
+import com.tencent.mm.sdk.openapi.WXMediaMessage.a;
 
 public final class qh
-  extends qi
-  implements View.OnClickListener
 {
-  protected TextView a;
-  protected LinearLayout b;
-  protected TextView c;
-  protected ImageView d;
-  protected TextView e;
-  protected TextView f;
-  protected Button g;
-  protected ImageView h;
-  protected String i;
-  protected String j;
-  protected String k;
-  protected String l;
-  protected String m;
-  protected String n;
-  
-  protected final void a()
+  public static final class a
+    extends qf
   {
-    super.a();
-    this.t = 8000L;
-  }
-  
-  protected final View b()
-  {
-    this.l = "QQ帐号持续保护中";
-    this.m = "你的帐号今天有新的登录足迹";
-    this.k = "";
-    this.n = "查看";
-    this.j = "";
-    this.i = "";
-    if (TextUtils.isEmpty(this.l)) {
-      return null;
-    }
-    View localView = View.inflate(this.A, 2131296359, null);
-    this.a = ((TextView)localView.findViewById(2131166111));
-    this.b = ((LinearLayout)localView.findViewById(2131165545));
-    this.c = ((TextView)localView.findViewById(2131165546));
-    this.d = ((ImageView)localView.findViewById(2131165583));
-    this.e = ((TextView)localView.findViewById(2131166114));
-    this.f = ((TextView)localView.findViewById(2131166045));
-    this.g = ((Button)localView.findViewById(2131165344));
-    this.h = ((ImageView)localView.findViewById(2131165383));
-    if (!TextUtils.isEmpty(this.i))
+    public WXMediaMessage b;
+    public int c;
+    
+    public final void a(Bundle paramBundle)
     {
-      this.a.setVisibility(0);
-      this.a.setText(this.i);
-    }
-    if (!TextUtils.isEmpty(this.j))
-    {
-      this.b.setVisibility(0);
-      TextView localTextView = this.c;
-      StringBuilder localStringBuilder = new StringBuilder("·");
-      localStringBuilder.append(this.j);
-      localTextView.setText(localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(this.k))
-    {
-      this.d.setVisibility(0);
-      this.d.setImageResource(2131099894);
-    }
-    if (!TextUtils.isEmpty(this.n))
-    {
-      this.g.setVisibility(0);
-      this.g.setText(this.n);
-    }
-    this.e.setText(this.l);
-    this.f.setText(this.m);
-    localView.setOnClickListener(this);
-    this.g.setOnClickListener(this);
-    this.h.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+      super.a(paramBundle);
+      WXMediaMessage localWXMediaMessage = this.b;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_wxobject_sdkVer", localWXMediaMessage.sdkVer);
+      localBundle.putString("_wxobject_title", localWXMediaMessage.title);
+      localBundle.putString("_wxobject_description", localWXMediaMessage.description);
+      localBundle.putByteArray("_wxobject_thumbdata", localWXMediaMessage.thumbData);
+      if (localWXMediaMessage.mediaObject != null)
       {
-        qh.this.a(false);
+        localBundle.putString("_wxobject_identifier_", localWXMediaMessage.mediaObject.getClass().getName());
+        localWXMediaMessage.mediaObject.serialize(localBundle);
       }
-    });
-    TMSDKContext.saveActionData(1150174);
-    return localView;
-  }
-  
-  protected final int c()
-  {
-    return ql.a(this.A, 104.0F);
-  }
-  
-  protected final void d()
-  {
-    super.d();
-  }
-  
-  protected final void e()
-  {
-    super.e();
-  }
-  
-  protected final void f()
-  {
-    super.f();
-    Intent localIntent = new Intent(this.A, IndexActivity.class);
-    localIntent.addFlags(67108864);
-    RqdApplication.p().startActivity(localIntent);
-    TMSDKContext.saveActionData(1150175);
-  }
-  
-  public final void onClick(View paramView)
-  {
-    f();
-    a(true);
+      paramBundle.putAll(localBundle);
+      paramBundle.putInt("_wxapi_sendmessagetowx_req_scene", this.c);
+    }
+    
+    final boolean a()
+    {
+      WXMediaMessage localWXMediaMessage = this.b;
+      if (localWXMediaMessage == null)
+      {
+        qk.a("MicroMsg.SDK.SendMessageToWX.Req", "checkArgs fail ,message is null");
+        return false;
+      }
+      return localWXMediaMessage.checkArgs();
+    }
   }
 }
 

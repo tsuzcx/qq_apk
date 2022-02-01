@@ -1,25 +1,26 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-class at
-  implements Application.ActivityLifecycleCallbacks
+public final class at
+  extends JceStruct
 {
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  public String a = "";
   
-  public void onActivityDestroyed(Activity paramActivity) {}
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, false);
+  }
   
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
+    }
+  }
 }
 
 

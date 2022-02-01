@@ -1,109 +1,71 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.io.File;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
-public class zn
+public final class zn
+  extends Drawable
 {
-  private static zn c;
-  private String a;
-  private zo b;
+  private Paint a = new Paint();
+  private Bitmap b;
+  private final int c = 100;
+  private float d;
+  private int e = 0;
+  private float f;
+  private float g;
+  private float h;
   
-  public static zn e()
+  public zn(Activity paramActivity)
   {
-    if (c == null) {
-      try
-      {
-        if (c == null) {
-          c = new zn();
-        }
-      }
-      finally {}
-    }
-    return c;
+    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2131100069);
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    this.d = localDisplayMetrics.density;
+    float f1 = this.d;
+    this.f = (286.0F * f1);
+    this.g = (f1 * 442.0F);
+    this.h = (this.f / 100.0F);
+    this.a.setColor(paramActivity.getResources().getColor(2130968741));
+    this.a.setAntiAlias(true);
+    this.a.setFilterBitmap(true);
   }
   
-  private String g()
+  public final void draw(Canvas paramCanvas)
   {
-    if (TextUtils.isEmpty(this.a))
+    this.e %= 100;
+    int i = this.e;
+    if (i != 99)
     {
-      File localFile = zk.a("qqpimdownload");
-      if (localFile != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localFile.getAbsolutePath());
-        localStringBuilder.append(File.separator);
-        this.a = localStringBuilder.toString();
-      }
+      float f1 = this.h;
+      float f2 = i;
+      paramCanvas.drawBitmap(this.b, 0.0F, f1 * f2, this.a);
     }
-    return this.a;
-  }
-  
-  public final void a()
-  {
-    zo localzo = this.b;
-    if (localzo == null) {
-      return;
-    }
-    localzo.a();
-  }
-  
-  public final void a(String paramString1, String paramString2, String paramString3, zm paramzm)
-  {
-    if (TextUtils.isEmpty(null)) {
-      paramString2 = g();
-    }
-    if (TextUtils.isEmpty(null)) {
-      paramString3 = "qqpim_6.9.20.247000_106613.apk";
-    }
-    this.b = new zo(new zp(paramString1, paramString2, paramString3), paramzm);
-  }
-  
-  public final void b()
-  {
-    zo localzo = this.b;
-    if (localzo == null) {
-      return;
-    }
-    localzo.b();
-  }
-  
-  public final boolean c()
-  {
-    try
+    else
     {
-      boolean bool = new File(g(), "qqpim_6.9.20.247000_106613.apk").exists();
-      return bool;
+      Bitmap localBitmap = this.b;
+      paramCanvas.drawBitmap(localBitmap, 0.0F, this.f - localBitmap.getHeight(), this.a);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
+    this.e += 1;
+    invalidateSelf();
   }
   
-  public final String d()
+  public final int getOpacity()
   {
-    try
-    {
-      String str = new File(g(), "qqpim_6.9.20.247000_106613.apk").getAbsolutePath();
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
+    return 0;
   }
   
-  public final boolean f()
-  {
-    zo localzo = this.b;
-    if (localzo == null) {
-      return false;
-    }
-    return localzo.a;
-  }
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

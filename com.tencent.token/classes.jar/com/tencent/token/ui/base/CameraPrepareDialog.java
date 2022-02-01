@@ -26,11 +26,11 @@ public class CameraPrepareDialog
     if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296306);
+      setContentView(2131296307);
       setCanceledOnTouchOutside(false);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
-      localObject = (ViewGroup.MarginLayoutParams)findViewById(2131165354).getLayoutParams();
+      localObject = (ViewGroup.MarginLayoutParams)findViewById(2131165362).getLayoutParams();
       ((ViewGroup.MarginLayoutParams)localObject).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
       ((ViewGroup.MarginLayoutParams)localObject).height = paramBundle.getWindowManager().getDefaultDisplay().getHeight();
       return;

@@ -3,62 +3,74 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.bean.LoginProtectResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class vl
-  extends tr
+  extends ud
 {
   private long d;
-  private LoginProtectResult e;
-  private String f;
-  private int g;
+  private int e;
+  private int f;
+  private String g;
+  private int h;
+  private int i;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.f = ((String)paramabc.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramabc.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.g = ((String)paramabm.c.get("param.wtlogin.a2"));
+    this.f = ((Integer)paramabm.c.get("param.factor.type")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int j = paramJSONObject.getInt("err");
+    if (j != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(j, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xj.a("login protect: ".concat(String.valueOf(paramJSONObject)));
-      if (paramJSONObject.getInt("seq_id") != this.g)
+      j = paramJSONObject.getInt("seq_id");
+      if (j != this.e)
       {
         this.a.a(10030, null, null);
-        StringBuilder localStringBuilder = new StringBuilder("parseJSON error seq is wrong seq=");
-        localStringBuilder.append(paramJSONObject.getInt("seq_id"));
-        localStringBuilder.append(",right = ");
-        localStringBuilder.append(this.g);
-        xj.c(localStringBuilder.toString());
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(j);
+        paramJSONObject.append(",right = ");
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
         return;
       }
-      this.e = new LoginProtectResult(paramJSONObject);
+      xv.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
+      try
+      {
+        this.h = paramJSONObject.getInt("sign_status");
+        this.i = paramJSONObject.getInt("auto_melt_time");
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
       this.a.a = 0;
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
   
   public final void b()
@@ -67,7 +79,8 @@ public final class vl
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.e;
+      localMessage.arg2 = this.h;
+      localMessage.obj = Integer.valueOf(this.i);
       localMessage.sendToTarget();
       this.b.e = true;
     }

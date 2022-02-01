@@ -1,14 +1,33 @@
 package com.tencent.token;
 
-import com.tencent.jni.FaceDetector;
-import com.tencent.jni.FaceInfo;
-
 public final class rk
 {
-  public FaceDetector a;
-  public rq b;
-  public int c;
-  public FaceInfo d;
+  public auz a;
+  
+  public final avb a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public final avf a()
+  {
+    return this.a.c();
+  }
+  
+  public final avc b()
+  {
+    return this.a.d();
+  }
+  
+  public final ave c()
+  {
+    return this.a.e();
+  }
+  
+  public static final class a
+  {
+    private static final rk a = new rk((byte)0);
+  }
 }
 
 

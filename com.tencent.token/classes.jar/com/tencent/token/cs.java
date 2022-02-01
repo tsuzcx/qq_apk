@@ -1,92 +1,35 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.support.v4.app.Fragment;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
 public abstract class cs
 {
-  static int b = 1048576;
-  Matrix a;
+  public abstract Fragment a(String paramString);
   
-  static Bitmap a(Drawable paramDrawable)
-  {
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if ((i > 0) && (j > 0))
-    {
-      float f = Math.min(1.0F, b / (i * j));
-      if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-      i = (int)(i * f);
-      j = (int)(j * f);
-      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Rect localRect = paramDrawable.getBounds();
-      int k = localRect.left;
-      int m = localRect.top;
-      int n = localRect.right;
-      int i1 = localRect.bottom;
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      paramDrawable.setBounds(k, m, n, i1);
-      return localBitmap;
-    }
-    return null;
-  }
+  public abstract cv a();
   
-  public static View a(Context paramContext, Parcelable paramParcelable)
-  {
-    boolean bool = paramParcelable instanceof Bundle;
-    Object localObject = null;
-    if (bool)
-    {
-      paramParcelable = (Bundle)paramParcelable;
-      localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
-      if (localObject == null) {
-        return null;
-      }
-      paramContext = new ImageView(paramContext);
-      paramContext.setImageBitmap((Bitmap)localObject);
-      paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
-      localObject = paramContext;
-      if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
-      {
-        paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
-        localObject = new Matrix();
-        ((Matrix)localObject).setValues(paramParcelable);
-        paramContext.setImageMatrix((Matrix)localObject);
-        return paramContext;
-      }
-    }
-    else if ((paramParcelable instanceof Bitmap))
-    {
-      paramParcelable = (Bitmap)paramParcelable;
-      localObject = new ImageView(paramContext);
-      ((ImageView)localObject).setImageBitmap(paramParcelable);
-    }
-    return localObject;
-  }
+  public abstract void a(a parama);
   
-  public static void a(a parama)
-  {
-    parama.a();
-  }
+  public abstract void a(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public static abstract interface a
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract List<Fragment> d();
+  
+  public abstract boolean e();
+  
+  public static abstract class a
   {
-    public abstract void a();
+    public void a(Fragment paramFragment) {}
+    
+    public void b(Fragment paramFragment) {}
+    
+    public void c(Fragment paramFragment) {}
   }
 }
 

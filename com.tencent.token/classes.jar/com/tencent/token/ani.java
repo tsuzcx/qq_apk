@@ -1,52 +1,70 @@
 package com.tencent.token;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSocket;
 
 final class ani
+  extends anl
 {
-  @Nullable
-  static anh a;
-  static long b;
+  final Method a;
+  final Method b;
   
-  static anh a()
+  private ani(Method paramMethod1, Method paramMethod2)
+  {
+    this.a = paramMethod1;
+    this.b = paramMethod2;
+  }
+  
+  public static ani a()
   {
     try
     {
-      if (a != null)
-      {
-        anh localanh = a;
-        a = localanh.f;
-        localanh.f = null;
-        b -= 8192L;
-        return localanh;
-      }
-      return new anh();
+      ani localani = new ani(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
+      return localani;
     }
-    finally {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label37:
+      break label37;
+    }
+    return null;
   }
   
-  static void a(anh paramanh)
+  @Nullable
+  public final String a(SSLSocket paramSSLSocket)
   {
-    if ((paramanh.f == null) && (paramanh.g == null))
+    try
     {
-      if (paramanh.d) {
-        return;
-      }
-      try
+      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
+      if (paramSSLSocket != null)
       {
-        if (b + 8192L > 65536L) {
-          return;
+        boolean bool = paramSSLSocket.equals("");
+        if (!bool) {
+          return paramSSLSocket;
         }
-        b += 8192L;
-        paramanh.f = a;
-        paramanh.c = 0;
-        paramanh.b = 0;
-        a = paramanh;
-        return;
       }
-      finally {}
+      return null;
     }
-    throw new IllegalArgumentException();
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw alr.a("unable to get selected protocols", paramSSLSocket);
+  }
+  
+  public final void a(SSLSocket paramSSLSocket, String paramString, List<alh> paramList)
+  {
+    try
+    {
+      paramString = paramSSLSocket.getSSLParameters();
+      paramList = a(paramList);
+      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
+      paramSSLSocket.setSSLParameters(paramString);
+      return;
+    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw alr.a("unable to set ssl parameters", paramSSLSocket);
   }
 }
 

@@ -1,40 +1,104 @@
 package com.tencent.token;
 
+import com.tencent.turingfd.sdk.qps.synchronized;
+import java.math.BigInteger;
+
 public final class agx
+  extends ahu
 {
-  public static byte[] a;
-  public static byte[] b = { 116, 117, 114, 105, 110, 103, 109, 109 };
-  public static final String[] c = new String[0];
+  public final Object a;
   
-  public static String[] a(byte[] paramArrayOfByte)
+  public agx(Boolean paramBoolean)
   {
-    try
+    this.a = ahr.a(paramBoolean);
+  }
+  
+  public agx(Number paramNumber)
+  {
+    this.a = ahr.a(paramNumber);
+  }
+  
+  public agx(String paramString)
+  {
+    this.a = ahr.a(paramString);
+  }
+  
+  private static boolean a(agx paramagx)
+  {
+    paramagx = paramagx.a;
+    if ((paramagx instanceof Number))
     {
-      arrayOfByte = a;
-      if (arrayOfByte != null) {}
+      paramagx = (Number)paramagx;
+      return ((paramagx instanceof BigInteger)) || ((paramagx instanceof Long)) || ((paramagx instanceof Integer)) || ((paramagx instanceof Short)) || ((paramagx instanceof Byte));
     }
-    finally
+    return false;
+  }
+  
+  public final Number a()
+  {
+    Object localObject = this.a;
+    if ((localObject instanceof String)) {
+      return new synchronized((String)localObject);
+    }
+    return (Number)localObject;
+  }
+  
+  public final String b()
+  {
+    Object localObject = this.a;
+    if ((localObject instanceof Number)) {
+      return a().toString();
+    }
+    if ((localObject instanceof Boolean)) {
+      return ((Boolean)localObject).toString();
+    }
+    return (String)localObject;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject != null) && (agx.class == paramObject.getClass()))
     {
-      byte[] arrayOfByte;
-      int i;
-      label29:
-      label57:
-      break label57;
+      paramObject = (agx)paramObject;
+      if (this.a == null) {
+        return paramObject.a == null;
+      }
+      if ((a(this)) && (a(paramObject))) {
+        return a().longValue() == paramObject.a().longValue();
+      }
+      Object localObject = this.a;
+      if (((localObject instanceof Number)) && ((paramObject.a instanceof Number)))
+      {
+        double d1 = a().doubleValue();
+        double d2 = paramObject.a().doubleValue();
+        return (d1 == d2) || ((Double.isNaN(d1)) && (Double.isNaN(d2)));
+      }
+      return localObject.equals(paramObject.a);
     }
-    try
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    if (this.a == null) {
+      return 31;
+    }
+    long l;
+    if (a(this))
     {
-      arrayOfByte = b;
-      i = agc.a;
-      a = agn.c(arrayOfByte).getBytes();
+      l = a().longValue();
+      return (int)(l >>> 32 ^ l);
     }
-    catch (Exception localException)
+    Object localObject = this.a;
+    if ((localObject instanceof Number))
     {
-      break label29;
+      l = Double.doubleToLongBits(a().doubleValue());
+      return (int)(l >>> 32 ^ l);
     }
-    a = new byte[0];
-    paramArrayOfByte = new String(agn.b(paramArrayOfByte, a)).split("\\n");
-    return paramArrayOfByte;
-    return c;
+    return localObject.hashCode();
   }
 }
 

@@ -1,12 +1,8 @@
 package com.tencent.token;
 
-public abstract interface abn
+public final class abn
 {
-  public abstract int a(byte[] paramArrayOfByte);
-  
-  public abstract void a(byte paramByte);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public Object a;
 }
 
 

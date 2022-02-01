@@ -1,6 +1,6 @@
 package com.tencent.token;
 
-abstract class aup {}
+public abstract interface aup {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

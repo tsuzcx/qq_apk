@@ -1,53 +1,140 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public final class jt
-  extends JceStruct
+  extends ContextWrapper
 {
-  static byte[] h;
-  public long a = 0L;
-  public String b = "";
-  public long c = 0L;
-  public byte[] d = null;
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  private static final Object a = new Object();
+  private static ArrayList<WeakReference<jt>> b;
+  private final Resources c;
+  private final Resources.Theme d;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  private jt(Context paramContext)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.readString(1, true);
-    this.c = paramJceInputStream.read(this.c, 2, true);
-    if (h == null)
+    super(paramContext);
+    if (kb.a())
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
-      h = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      this.c = new kb(this, paramContext.getResources());
+      this.d = this.c.newTheme();
+      this.d.setTo(paramContext.getTheme());
+      return;
     }
-    this.d = ((byte[])paramJceInputStream.read(h, 3, true));
-    this.e = paramJceInputStream.readString(4, true);
-    this.f = paramJceInputStream.readString(5, false);
-    this.g = paramJceInputStream.readString(6, false);
+    this.c = new jv(this, paramContext.getResources());
+    this.d = null;
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public static Context a(Context paramContext)
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    paramJceOutputStream.write(this.d, 3);
-    paramJceOutputStream.write(this.e, 4);
-    String str = this.f;
-    if (str != null) {
-      paramJceOutputStream.write(str, 5);
+    boolean bool = paramContext instanceof jt;
+    int j = 0;
+    int i = j;
+    if (!bool)
+    {
+      i = j;
+      if (!(paramContext.getResources() instanceof jv)) {
+        if ((paramContext.getResources() instanceof kb))
+        {
+          i = j;
+        }
+        else if (Build.VERSION.SDK_INT >= 21)
+        {
+          i = j;
+          if (!kb.a()) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      }
     }
-    str = this.g;
-    if (str != null) {
-      paramJceOutputStream.write(str, 6);
+    if (i != 0) {}
+    for (;;)
+    {
+      synchronized (a)
+      {
+        if (b == null)
+        {
+          b = new ArrayList();
+        }
+        else
+        {
+          i = b.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)b.get(i);
+            if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
+              break label238;
+            }
+            b.remove(i);
+            break label238;
+          }
+          i = b.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)b.get(i);
+            if (localObject1 == null) {
+              break label245;
+            }
+            localObject1 = (jt)((WeakReference)localObject1).get();
+            if ((localObject1 == null) || (((jt)localObject1).getBaseContext() != paramContext)) {
+              break label251;
+            }
+            return localObject1;
+          }
+        }
+        paramContext = new jt(paramContext);
+        b.add(new WeakReference(paramContext));
+        return paramContext;
+      }
+      return paramContext;
+      label238:
+      i -= 1;
+      continue;
+      label245:
+      Object localObject1 = null;
+      continue;
+      label251:
+      i -= 1;
     }
+  }
+  
+  public final AssetManager getAssets()
+  {
+    return this.c.getAssets();
+  }
+  
+  public final Resources getResources()
+  {
+    return this.c;
+  }
+  
+  public final Resources.Theme getTheme()
+  {
+    Resources.Theme localTheme2 = this.d;
+    Resources.Theme localTheme1 = localTheme2;
+    if (localTheme2 == null) {
+      localTheme1 = super.getTheme();
+    }
+    return localTheme1;
+  }
+  
+  public final void setTheme(int paramInt)
+  {
+    Resources.Theme localTheme = this.d;
+    if (localTheme == null)
+    {
+      super.setTheme(paramInt);
+      return;
+    }
+    localTheme.applyStyle(paramInt, true);
   }
 }
 

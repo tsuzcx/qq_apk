@@ -1,194 +1,127 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import java.io.Closeable;
-import java.io.File;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
 public final class zo
-  extends Handler
+  extends Drawable
 {
-  public volatile boolean a = false;
-  private final int b = 4;
-  private zp c;
-  private long d;
-  private AtomicInteger e = new AtomicInteger(0);
-  private AtomicInteger f = new AtomicInteger(0);
-  private AtomicInteger g = new AtomicInteger(0);
-  private zq h;
-  private long[] i;
-  private File[] j;
-  private File k;
-  private volatile boolean l;
-  private volatile boolean m;
-  private zm n;
+  private static int g = 50;
+  private Paint a = new Paint();
+  private Bitmap b;
+  private Bitmap c;
+  private Bitmap d;
+  private int e;
+  private int f;
+  private int h;
+  private Rect i;
+  private Rect j;
+  private Rect k;
+  private Rect l;
+  private int m;
+  private int n;
+  private int o;
+  private PaintFlagsDrawFilter p;
+  private boolean q = false;
   
-  public zo(zp paramzp, zm paramzm)
+  public zo(Context paramContext, boolean paramBoolean)
   {
-    this.c = paramzp;
-    this.n = paramzm;
-    this.i = new long[4];
-    this.j = new File[4];
-    this.h = zq.a();
-  }
-  
-  private static boolean a(AtomicInteger paramAtomicInteger)
-  {
-    return paramAtomicInteger.incrementAndGet() % 4 != 0;
-  }
-  
-  private void c()
-  {
-    this.l = false;
-    this.m = false;
-    this.a = false;
-  }
-  
-  /* Error */
-  public final void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 89	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 205
-    //   8: invokespecial 94	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: astore_2
-    //   12: aload_2
-    //   13: aload_0
-    //   14: getfield 41	com/tencent/token/zo:a	Z
-    //   17: invokevirtual 208	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   20: pop
-    //   21: aload_2
-    //   22: ldc 210
-    //   24: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: pop
-    //   28: aload_2
-    //   29: aload_0
-    //   30: getfield 54	com/tencent/token/zo:c	Lcom/tencent/token/zp;
-    //   33: getfield 149	com/tencent/token/zp:b	Ljava/lang/String;
-    //   36: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: pop
-    //   40: aload_0
-    //   41: getfield 41	com/tencent/token/zo:a	Z
-    //   44: istore_1
-    //   45: iload_1
-    //   46: ifeq +6 -> 52
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: aload_0
-    //   53: iconst_1
-    //   54: putfield 41	com/tencent/token/zo:a	Z
-    //   57: aload_0
-    //   58: getfield 69	com/tencent/token/zo:h	Lcom/tencent/token/zq;
-    //   61: astore_2
-    //   62: aload_0
-    //   63: getfield 54	com/tencent/token/zo:c	Lcom/tencent/token/zp;
-    //   66: getfield 149	com/tencent/token/zp:b	Ljava/lang/String;
-    //   69: astore_3
-    //   70: new 6	com/tencent/token/zo$1
-    //   73: dup
-    //   74: aload_0
-    //   75: invokespecial 212	com/tencent/token/zo$1:<init>	(Lcom/tencent/token/zo;)V
-    //   78: astore 4
-    //   80: aload_2
-    //   81: new 154	com/tencent/token/akl$a
-    //   84: dup
-    //   85: invokespecial 155	com/tencent/token/akl$a:<init>	()V
-    //   88: aload_3
-    //   89: invokevirtual 170	com/tencent/token/akl$a:a	(Ljava/lang/String;)Lcom/tencent/token/akl$a;
-    //   92: invokevirtual 173	com/tencent/token/akl$a:a	()Lcom/tencent/token/akl;
-    //   95: aload 4
-    //   97: invokevirtual 176	com/tencent/token/zq:a	(Lcom/tencent/token/akl;Lcom/tencent/token/ajt;)V
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: return
-    //   103: astore_2
-    //   104: goto +15 -> 119
-    //   107: astore_2
-    //   108: aload_2
-    //   109: invokevirtual 185	java/io/IOException:printStackTrace	()V
-    //   112: aload_0
-    //   113: invokespecial 79	com/tencent/token/zo:c	()V
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: return
-    //   119: aload_0
-    //   120: monitorexit
-    //   121: aload_2
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	this	zo
-    //   44	2	1	bool	boolean
-    //   11	70	2	localObject1	Object
-    //   103	1	2	localObject2	Object
-    //   107	15	2	localIOException	java.io.IOException
-    //   69	20	3	str	String
-    //   78	18	4	local1	1
-    // Exception table:
-    //   from	to	target	type
-    //   2	45	103	finally
-    //   52	100	103	finally
-    //   108	116	103	finally
-    //   2	45	107	java/io/IOException
-    //   52	100	107	java/io/IOException
-  }
-  
-  public final void b()
-  {
-    this.l = true;
-    this.a = false;
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    if (this.n == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.q = paramBoolean;
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 4: 
-      if (a(this.e)) {
-        return;
-      }
-      c();
-      this.i = new long[4];
-      this.n.c();
-      return;
-    case 3: 
-      this.n.b();
-      if (a(this.f)) {
-        return;
-      }
-      c();
-      return;
-    case 2: 
-      if (a(this.g)) {
-        return;
-      }
-      this.k.renameTo(new File(this.c.c, this.c.a));
-      c();
-      this.n.a();
-      return;
+      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131100045);
+      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131100036);
+      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099945);
     }
-    long l1 = 0L;
-    int i1 = 0;
-    int i2 = this.i.length;
-    while (i1 < i2)
+    else
     {
-      l1 += this.i[i1];
-      i1 += 1;
+      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131100039);
+      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131100035);
+      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099944);
+      this.m = aay.a(paramContext, 0.0F);
+      this.n = aay.a(paramContext, 4.0F);
+      this.o = aay.a(paramContext, 30.0F);
     }
-    this.n.a((float)l1 * 1.0F / (float)this.d);
+    this.p = new PaintFlagsDrawFilter(0, 3);
   }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    try
+    {
+      int i1 = this.h % g * this.e;
+      if (this.h % g == g - 1) {
+        i1 = this.l.height();
+      }
+      this.a.setAntiAlias(true);
+      paramCanvas.setDrawFilter(this.p);
+      paramCanvas.drawBitmap(this.c, null, this.l, this.a);
+      paramCanvas.save();
+      Rect localRect = this.j;
+      int i3 = this.k.width();
+      int i4 = this.l.top;
+      int i2 = 0;
+      localRect.set(0, 0, i3, i4 + i1);
+      paramCanvas.clipRect(this.j);
+      this.a.setAlpha(255);
+      paramCanvas.drawBitmap(this.b, null, this.l, this.a);
+      if (i1 - this.d.getHeight() > 0) {
+        i2 = i1 - this.d.getHeight() + this.n;
+      }
+      this.i.set(this.l.left, this.l.top + i2, this.l.right, this.l.top + i1 + this.n);
+      if (this.h % g > g / 2)
+      {
+        i1 = this.h;
+        i2 = g;
+        i3 = this.f;
+        this.a.setAlpha(255 - (i1 % i2 * i3 & 0xFF));
+      }
+      else
+      {
+        this.a.setAlpha(255);
+      }
+      paramCanvas.drawBitmap(this.d, null, this.i, this.a);
+      paramCanvas.restore();
+      this.h += 1;
+    }
+    catch (Exception paramCanvas)
+    {
+      label321:
+      break label321;
+    }
+    invalidateSelf();
+  }
+  
+  public final int getOpacity()
+  {
+    return 0;
+  }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.k = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.i = new Rect(0, 0, this.k.width(), this.d.getHeight());
+    this.j = new Rect(0, 0, this.k.width(), this.k.height());
+    paramInt1 = this.k.width() - this.m;
+    paramInt2 = this.k.height() - this.m;
+    this.l = new Rect((this.k.width() - paramInt1) / 2, (this.k.height() - paramInt2) / 2, (this.k.width() - paramInt1) / 2 + paramInt1, (this.k.height() - paramInt2) / 2 + paramInt2);
+    paramInt1 = this.l.height();
+    paramInt2 = g;
+    this.e = (paramInt1 / paramInt2);
+    this.f = (255 / (paramInt2 / 2));
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

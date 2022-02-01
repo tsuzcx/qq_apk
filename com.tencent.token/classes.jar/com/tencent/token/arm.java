@@ -1,13 +1,30 @@
 package com.tencent.token;
 
-final class arm
-  implements Runnable
+import java.io.Serializable;
+
+public final class arm
+  implements Serializable
 {
-  arm(aso paramaso, asb paramasb) {}
+  public static final arm b = new arm(0, 0, "CT_NONE");
+  public static final arm c = new arm(1, 1, "CT_GPRS");
+  public static final arm d = new arm(2, 2, "CT_WIFI");
+  public static final arm e = new arm(3, 3, "CT_GPRS_WAP");
+  public static final arm f = new arm(4, 4, "CT_GPRS_NET");
+  public static final arm g = new arm(5, 5, "CT_3G_NET");
+  private static arm[] i = new arm[6];
+  public int a;
+  private String j = new String();
   
-  public final void run()
+  private arm(int paramInt1, int paramInt2, String paramString)
   {
-    aso.a(this.a);
+    this.j = paramString;
+    this.a = paramInt2;
+    i[paramInt1] = this;
+  }
+  
+  public final String toString()
+  {
+    return this.j;
   }
 }
 

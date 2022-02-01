@@ -1,435 +1,317 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.text.method.PasswordTransformationMethod;
-import android.util.AttributeSet;
-import android.util.TypedValue;
+import android.support.v7.widget.ListPopupWindow;
+import android.util.DisplayMetrics;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.View.OnKeyListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import java.lang.ref.WeakReference;
 
-public class ip
+final class ip
+  extends ii
+  implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener, ik
 {
-  final TextView a;
-  public final ir b;
-  int c = 0;
-  Typeface d;
-  boolean e;
-  private jg f;
-  private jg g;
-  private jg h;
-  private jg i;
-  
-  public ip(TextView paramTextView)
+  final jn a;
+  View b;
+  private final Context c;
+  private final id d;
+  private final ic f;
+  private final boolean g;
+  private final int h;
+  private final int i;
+  private final int j;
+  private final ViewTreeObserver.OnGlobalLayoutListener k = new ViewTreeObserver.OnGlobalLayoutListener()
   {
-    this.a = paramTextView;
-    this.b = new ir(this.a);
-  }
-  
-  public static ip a(TextView paramTextView)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return new iq(paramTextView);
-    }
-    return new ip(paramTextView);
-  }
-  
-  protected static jg a(Context paramContext, ik paramik, int paramInt)
-  {
-    paramContext = paramik.b(paramContext, paramInt);
-    if (paramContext != null)
+    public final void onGlobalLayout()
     {
-      paramik = new jg();
-      paramik.d = true;
-      paramik.a = paramContext;
-      return paramik;
-    }
-    return null;
-  }
-  
-  private void a(Context paramContext, ji paramji)
-  {
-    this.c = paramji.a(gs.j.TextAppearance_android_textStyle, this.c);
-    boolean bool2 = paramji.f(gs.j.TextAppearance_android_fontFamily);
-    bool1 = true;
-    if ((!bool2) && (!paramji.f(gs.j.TextAppearance_fontFamily)))
-    {
-      if (paramji.f(gs.j.TextAppearance_android_typeface))
+      if ((ip.this.d()) && (!ip.this.a.p))
       {
-        this.e = false;
-        switch (paramji.a(gs.j.TextAppearance_android_typeface, 1))
+        View localView = ip.this.b;
+        if ((localView != null) && (localView.isShown()))
         {
-        default: 
-          return;
-        case 3: 
-          this.d = Typeface.MONOSPACE;
-          return;
-        case 2: 
-          this.d = Typeface.SERIF;
+          ip.this.a.b();
           return;
         }
-        this.d = Typeface.SANS_SERIF;
+        ip.this.c();
         return;
       }
-      return;
     }
-    this.d = null;
-    int j;
-    if (paramji.f(gs.j.TextAppearance_fontFamily)) {
-      j = gs.j.TextAppearance_fontFamily;
-    } else {
-      j = gs.j.TextAppearance_android_fontFamily;
-    }
-    if (!paramContext.isRestricted()) {
-      paramContext = new da.a()
+  };
+  private final View.OnAttachStateChangeListener l = new View.OnAttachStateChangeListener()
+  {
+    public final void onViewAttachedToWindow(View paramAnonymousView) {}
+    
+    public final void onViewDetachedFromWindow(View paramAnonymousView)
+    {
+      if (ip.a(ip.this) != null)
       {
-        public final void a(Typeface paramAnonymousTypeface)
-        {
-          ip localip = ip.this;
-          Object localObject = this.a;
-          if (localip.e)
-          {
-            localip.d = paramAnonymousTypeface;
-            localObject = (TextView)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((TextView)localObject).setTypeface(paramAnonymousTypeface, localip.c);
-            }
-          }
+        if (!ip.a(ip.this).isAlive()) {
+          ip.a(ip.this, paramAnonymousView.getViewTreeObserver());
         }
-      };
-    }
-    try
-    {
-      this.d = paramji.a(j, this.c, paramContext);
-      if (this.d != null) {
-        break label242;
+        ip.a(ip.this).removeGlobalOnLayoutListener(ip.b(ip.this));
       }
+      paramAnonymousView.removeOnAttachStateChangeListener(this);
     }
-    catch (UnsupportedOperationException|Resources.NotFoundException paramContext)
-    {
-      for (;;)
-      {
-        continue;
-        bool1 = false;
-      }
-    }
-    this.e = bool1;
-    if (this.d == null)
-    {
-      paramContext = paramji.d(j);
-      if (paramContext != null) {
-        this.d = Typeface.create(paramContext, this.c);
-      }
-    }
-  }
+  };
+  private PopupWindow.OnDismissListener m;
+  private View n;
+  private ik.a o;
+  private ViewTreeObserver p;
+  private boolean q;
+  private boolean r;
+  private int s;
+  private int t = 0;
+  private boolean u;
   
-  private void b(int paramInt, float paramFloat)
+  public ip(Context paramContext, id paramid, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.b.a(paramInt, paramFloat);
-  }
-  
-  public void a()
-  {
-    if ((this.f != null) || (this.g != null) || (this.h != null) || (this.i != null))
-    {
-      Drawable[] arrayOfDrawable = this.a.getCompoundDrawables();
-      a(arrayOfDrawable[0], this.f);
-      a(arrayOfDrawable[1], this.g);
-      a(arrayOfDrawable[2], this.h);
-      a(arrayOfDrawable[3], this.i);
-    }
+    this.c = paramContext;
+    this.d = paramid;
+    this.g = paramBoolean;
+    this.f = new ic(paramid, LayoutInflater.from(paramContext), this.g);
+    this.i = paramInt1;
+    this.j = paramInt2;
+    Resources localResources = paramContext.getResources();
+    this.h = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(hg.d.abc_config_prefDialogWidth));
+    this.n = paramView;
+    this.a = new jn(this.c, this.i, this.j);
+    paramid.a(this, paramContext);
   }
   
   public final void a(int paramInt)
   {
-    this.b.a(paramInt);
+    this.t = paramInt;
   }
   
-  public final void a(int paramInt, float paramFloat)
+  public final void a(View paramView)
   {
-    if ((!fp.a) && (!this.b.d())) {
-      b(paramInt, paramFloat);
-    }
+    this.n = paramView;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void a(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.b.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.m = paramOnDismissListener;
   }
   
-  public final void a(Context paramContext, int paramInt)
+  public final void a(id paramid) {}
+  
+  public final void a(id paramid, boolean paramBoolean)
   {
-    ji localji = ji.a(paramContext, paramInt, gs.j.TextAppearance);
-    if (localji.f(gs.j.TextAppearance_textAllCaps)) {
-      a(localji.a(gs.j.TextAppearance_textAllCaps, false));
+    if (paramid != this.d) {
+      return;
     }
-    if ((Build.VERSION.SDK_INT < 23) && (localji.f(gs.j.TextAppearance_android_textColor)))
-    {
-      ColorStateList localColorStateList = localji.e(gs.j.TextAppearance_android_textColor);
-      if (localColorStateList != null) {
-        this.a.setTextColor(localColorStateList);
-      }
-    }
-    a(paramContext, localji);
-    localji.a.recycle();
-    paramContext = this.d;
-    if (paramContext != null) {
-      this.a.setTypeface(paramContext, this.c);
+    c();
+    ik.a locala = this.o;
+    if (locala != null) {
+      locala.a(paramid, paramBoolean);
     }
   }
   
-  final void a(Drawable paramDrawable, jg paramjg)
+  public final void a(ik.a parama)
   {
-    if ((paramDrawable != null) && (paramjg != null)) {
-      ik.a(paramDrawable, paramjg, this.a.getDrawableState());
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void a(AttributeSet paramAttributeSet, int paramInt)
-  {
-    Context localContext = this.a.getContext();
-    Object localObject1 = ik.a();
-    Object localObject2 = ji.a(localContext, paramAttributeSet, gs.j.AppCompatTextHelper, paramInt, 0);
-    int j = ((ji)localObject2).g(gs.j.AppCompatTextHelper_android_textAppearance, -1);
-    if (((ji)localObject2).f(gs.j.AppCompatTextHelper_android_drawableLeft)) {
-      this.f = a(localContext, (ik)localObject1, ((ji)localObject2).g(gs.j.AppCompatTextHelper_android_drawableLeft, 0));
-    }
-    if (((ji)localObject2).f(gs.j.AppCompatTextHelper_android_drawableTop)) {
-      this.g = a(localContext, (ik)localObject1, ((ji)localObject2).g(gs.j.AppCompatTextHelper_android_drawableTop, 0));
-    }
-    if (((ji)localObject2).f(gs.j.AppCompatTextHelper_android_drawableRight)) {
-      this.h = a(localContext, (ik)localObject1, ((ji)localObject2).g(gs.j.AppCompatTextHelper_android_drawableRight, 0));
-    }
-    if (((ji)localObject2).f(gs.j.AppCompatTextHelper_android_drawableBottom)) {
-      this.i = a(localContext, (ik)localObject1, ((ji)localObject2).g(gs.j.AppCompatTextHelper_android_drawableBottom, 0));
-    }
-    ((ji)localObject2).a.recycle();
-    boolean bool3 = this.a.getTransformationMethod() instanceof PasswordTransformationMethod;
-    Object localObject4 = null;
-    localObject2 = null;
-    boolean bool1;
-    Object localObject3;
-    if (j != -1)
-    {
-      localObject5 = ji.a(localContext, j, gs.j.TextAppearance);
-      if ((!bool3) && (((ji)localObject5).f(gs.j.TextAppearance_textAllCaps)))
-      {
-        bool1 = ((ji)localObject5).a(gs.j.TextAppearance_textAllCaps, false);
-        j = 1;
-      }
-      else
-      {
-        j = 0;
-        bool1 = false;
-      }
-      a(localContext, (ji)localObject5);
-      if (Build.VERSION.SDK_INT < 23)
-      {
-        if (((ji)localObject5).f(gs.j.TextAppearance_android_textColor)) {
-          localObject1 = ((ji)localObject5).e(gs.j.TextAppearance_android_textColor);
-        } else {
-          localObject1 = null;
-        }
-        if (((ji)localObject5).f(gs.j.TextAppearance_android_textColorHint)) {
-          localObject3 = ((ji)localObject5).e(gs.j.TextAppearance_android_textColorHint);
-        } else {
-          localObject3 = null;
-        }
-        if (((ji)localObject5).f(gs.j.TextAppearance_android_textColorLink))
-        {
-          localObject4 = ((ji)localObject5).e(gs.j.TextAppearance_android_textColorLink);
-          localObject2 = localObject1;
-          localObject1 = localObject4;
-          localObject4 = localObject3;
-        }
-        else
-        {
-          localObject4 = null;
-          localObject2 = localObject1;
-          localObject1 = localObject4;
-          localObject4 = localObject3;
-        }
-      }
-      else
-      {
-        localObject1 = null;
-        localObject4 = localObject1;
-      }
-      ((ji)localObject5).a.recycle();
-      localObject3 = localObject1;
-      localObject1 = localObject4;
-    }
-    else
-    {
-      localObject3 = null;
-      localObject1 = localObject3;
-      j = 0;
-      bool1 = false;
-      localObject2 = localObject4;
-    }
-    ji localji = ji.a(localContext, paramAttributeSet, gs.j.TextAppearance, paramInt, 0);
-    int k = j;
-    boolean bool2 = bool1;
-    if (!bool3)
-    {
-      k = j;
-      bool2 = bool1;
-      if (localji.f(gs.j.TextAppearance_textAllCaps))
-      {
-        bool2 = localji.a(gs.j.TextAppearance_textAllCaps, false);
-        k = 1;
-      }
-    }
-    Object localObject5 = localObject2;
-    Object localObject6 = localObject3;
-    localObject4 = localObject1;
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      if (localji.f(gs.j.TextAppearance_android_textColor)) {
-        localObject2 = localji.e(gs.j.TextAppearance_android_textColor);
-      }
-      if (localji.f(gs.j.TextAppearance_android_textColorHint)) {
-        localObject1 = localji.e(gs.j.TextAppearance_android_textColorHint);
-      }
-      localObject5 = localObject2;
-      localObject6 = localObject3;
-      localObject4 = localObject1;
-      if (localji.f(gs.j.TextAppearance_android_textColorLink))
-      {
-        localObject6 = localji.e(gs.j.TextAppearance_android_textColorLink);
-        localObject4 = localObject1;
-        localObject5 = localObject2;
-      }
-    }
-    a(localContext, localji);
-    localji.a.recycle();
-    if (localObject5 != null) {
-      this.a.setTextColor((ColorStateList)localObject5);
-    }
-    if (localObject4 != null) {
-      this.a.setHintTextColor((ColorStateList)localObject4);
-    }
-    if (localObject6 != null) {
-      this.a.setLinkTextColor((ColorStateList)localObject6);
-    }
-    if ((!bool3) && (k != 0)) {
-      a(bool2);
-    }
-    localObject1 = this.d;
-    if (localObject1 != null) {
-      this.a.setTypeface((Typeface)localObject1, this.c);
-    }
-    localObject1 = this.b;
-    paramAttributeSet = ((ir)localObject1).g.obtainStyledAttributes(paramAttributeSet, gs.j.AppCompatTextView, paramInt, 0);
-    if (paramAttributeSet.hasValue(gs.j.AppCompatTextView_autoSizeTextType)) {
-      ((ir)localObject1).a = paramAttributeSet.getInt(gs.j.AppCompatTextView_autoSizeTextType, 0);
-    }
-    float f1;
-    if (paramAttributeSet.hasValue(gs.j.AppCompatTextView_autoSizeStepGranularity)) {
-      f1 = paramAttributeSet.getDimension(gs.j.AppCompatTextView_autoSizeStepGranularity, -1.0F);
-    } else {
-      f1 = -1.0F;
-    }
-    float f2;
-    if (paramAttributeSet.hasValue(gs.j.AppCompatTextView_autoSizeMinTextSize)) {
-      f2 = paramAttributeSet.getDimension(gs.j.AppCompatTextView_autoSizeMinTextSize, -1.0F);
-    } else {
-      f2 = -1.0F;
-    }
-    float f3;
-    if (paramAttributeSet.hasValue(gs.j.AppCompatTextView_autoSizeMaxTextSize)) {
-      f3 = paramAttributeSet.getDimension(gs.j.AppCompatTextView_autoSizeMaxTextSize, -1.0F);
-    } else {
-      f3 = -1.0F;
-    }
-    if (paramAttributeSet.hasValue(gs.j.AppCompatTextView_autoSizePresetSizes))
-    {
-      paramInt = paramAttributeSet.getResourceId(gs.j.AppCompatTextView_autoSizePresetSizes, 0);
-      if (paramInt > 0)
-      {
-        localObject2 = paramAttributeSet.getResources().obtainTypedArray(paramInt);
-        j = ((TypedArray)localObject2).length();
-        localObject3 = new int[j];
-        if (j > 0)
-        {
-          paramInt = 0;
-          while (paramInt < j)
-          {
-            localObject3[paramInt] = ((TypedArray)localObject2).getDimensionPixelSize(paramInt, -1);
-            paramInt += 1;
-          }
-          ((ir)localObject1).e = ir.a((int[])localObject3);
-          ((ir)localObject1).a();
-        }
-        ((TypedArray)localObject2).recycle();
-      }
-    }
-    paramAttributeSet.recycle();
-    if (((ir)localObject1).e())
-    {
-      if (((ir)localObject1).a == 1)
-      {
-        if (!((ir)localObject1).f)
-        {
-          paramAttributeSet = ((ir)localObject1).g.getResources().getDisplayMetrics();
-          float f4 = f2;
-          if (f2 == -1.0F) {
-            f4 = TypedValue.applyDimension(2, 12.0F, paramAttributeSet);
-          }
-          f2 = f3;
-          if (f3 == -1.0F) {
-            f2 = TypedValue.applyDimension(2, 112.0F, paramAttributeSet);
-          }
-          f3 = f1;
-          if (f1 == -1.0F) {
-            f3 = 1.0F;
-          }
-          ((ir)localObject1).a(f4, f2, f3);
-        }
-        ((ir)localObject1).b();
-      }
-    }
-    else {
-      ((ir)localObject1).a = 0;
-    }
-    if ((fp.a) && (this.b.a != 0))
-    {
-      paramAttributeSet = this.b.e;
-      if (paramAttributeSet.length > 0)
-      {
-        if (this.a.getAutoSizeStepGranularity() != -1.0F)
-        {
-          this.a.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.b.c), Math.round(this.b.d), Math.round(this.b.b), 0);
-          return;
-        }
-        this.a.setAutoSizeTextTypeUniformWithPresetSizes(paramAttributeSet, 0);
-      }
-    }
+    this.o = parama;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.a.setAllCaps(paramBoolean);
+    this.f.c = paramBoolean;
   }
   
-  public final void a(int[] paramArrayOfInt, int paramInt)
+  public final boolean a()
   {
-    this.b.a(paramArrayOfInt, paramInt);
+    return false;
+  }
+  
+  public final boolean a(iq paramiq)
+  {
+    if (paramiq.hasVisibleItems())
+    {
+      Object localObject = new ij(this.c, paramiq, this.b, this.g, this.i, this.j);
+      ((ij)localObject).a(this.o);
+      ((ij)localObject).a(ii.b(paramiq));
+      ((ij)localObject).b = this.t;
+      ((ij)localObject).c = this.m;
+      this.m = null;
+      this.d.a(false);
+      int i1 = this.a.g;
+      int i2 = this.a.g();
+      if (((ij)localObject).e())
+      {
+        i1 = 1;
+      }
+      else if (((ij)localObject).a == null)
+      {
+        i1 = 0;
+      }
+      else
+      {
+        ((ij)localObject).a(i1, i2, true, true);
+        i1 = 1;
+      }
+      if (i1 != 0)
+      {
+        localObject = this.o;
+        if (localObject != null) {
+          ((ik.a)localObject).a(paramiq);
+        }
+        return true;
+      }
+    }
+    return false;
   }
   
   public final void b()
   {
-    if (!fp.a) {
-      this.b.c();
+    boolean bool = d();
+    int i2 = 1;
+    int i1;
+    if (bool)
+    {
+      i1 = i2;
     }
+    else
+    {
+      if (!this.q)
+      {
+        Object localObject1 = this.n;
+        if (localObject1 != null)
+        {
+          this.b = ((View)localObject1);
+          this.a.a(this);
+          localObject1 = this.a;
+          ((ListPopupWindow)localObject1).l = this;
+          ((jn)localObject1).f();
+          localObject1 = this.b;
+          if (this.p == null) {
+            i1 = 1;
+          } else {
+            i1 = 0;
+          }
+          this.p = ((View)localObject1).getViewTreeObserver();
+          if (i1 != 0) {
+            this.p.addOnGlobalLayoutListener(this.k);
+          }
+          ((View)localObject1).addOnAttachStateChangeListener(this.l);
+          Object localObject2 = this.a;
+          ((ListPopupWindow)localObject2).k = ((View)localObject1);
+          ((ListPopupWindow)localObject2).h = this.t;
+          if (!this.r)
+          {
+            this.s = a(this.f, null, this.c, this.h);
+            this.r = true;
+          }
+          this.a.b(this.s);
+          this.a.h();
+          this.a.o = this.e;
+          this.a.b();
+          localObject1 = this.a.e;
+          ((ListView)localObject1).setOnKeyListener(this);
+          if ((this.u) && (this.d.f != null))
+          {
+            localObject2 = (FrameLayout)LayoutInflater.from(this.c).inflate(hg.g.abc_popup_menu_header_item_layout, (ViewGroup)localObject1, false);
+            TextView localTextView = (TextView)((FrameLayout)localObject2).findViewById(16908310);
+            if (localTextView != null) {
+              localTextView.setText(this.d.f);
+            }
+            ((FrameLayout)localObject2).setEnabled(false);
+            ((ListView)localObject1).addHeaderView((View)localObject2, null, false);
+          }
+          this.a.a(this.f);
+          this.a.b();
+          i1 = i2;
+          break label334;
+        }
+      }
+      i1 = 0;
+    }
+    label334:
+    if (i1 != 0) {
+      return;
+    }
+    throw new IllegalStateException("StandardMenuPopup cannot be used without an anchor");
+  }
+  
+  public final void b(int paramInt)
+  {
+    this.a.g = paramInt;
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.r = false;
+    ic localic = this.f;
+    if (localic != null) {
+      localic.notifyDataSetChanged();
+    }
+  }
+  
+  public final void c()
+  {
+    if (d()) {
+      this.a.c();
+    }
+  }
+  
+  public final void c(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
+  
+  public final void c(boolean paramBoolean)
+  {
+    this.u = paramBoolean;
+  }
+  
+  public final boolean d()
+  {
+    return (!this.q) && (this.a.q.isShowing());
+  }
+  
+  public final ListView e()
+  {
+    return this.a.e;
+  }
+  
+  public final void onDismiss()
+  {
+    this.q = true;
+    this.d.close();
+    Object localObject = this.p;
+    if (localObject != null)
+    {
+      if (!((ViewTreeObserver)localObject).isAlive()) {
+        this.p = this.b.getViewTreeObserver();
+      }
+      this.p.removeGlobalOnLayoutListener(this.k);
+      this.p = null;
+    }
+    this.b.removeOnAttachStateChangeListener(this.l);
+    localObject = this.m;
+    if (localObject != null) {
+      ((PopupWindow.OnDismissListener)localObject).onDismiss();
+    }
+  }
+  
+  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
+    {
+      c();
+      return true;
+    }
+    return false;
   }
 }
 

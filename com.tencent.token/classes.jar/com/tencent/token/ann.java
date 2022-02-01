@@ -1,46 +1,77 @@
 package com.tencent.token;
 
-import java.nio.charset.Charset;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.security.auth.x500.X500Principal;
 
 public final class ann
+  implements anq
 {
-  public static final Charset a = Charset.forName("UTF-8");
+  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
   
-  public static int a(int paramInt)
+  public ann(X509Certificate... paramVarArgs)
   {
-    return (paramInt & 0xFF) << 24 | (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8;
-  }
-  
-  public static short a(short paramShort)
-  {
-    paramShort &= 0xFFFF;
-    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
-  }
-  
-  public static void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (((paramLong2 | paramLong3) >= 0L) && (paramLong2 <= paramLong1) && (paramLong1 - paramLong2 >= paramLong3)) {
-      return;
-    }
-    throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
-  }
-  
-  public static void a(Throwable paramThrowable)
-  {
-    throw paramThrowable;
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
-  {
+    int j = paramVarArgs.length;
     int i = 0;
-    while (i < paramInt3)
+    while (i < j)
     {
-      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
-        return false;
+      X509Certificate localX509Certificate = paramVarArgs[i];
+      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
+      Set localSet = (Set)this.a.get(localX500Principal);
+      Object localObject = localSet;
+      if (localSet == null)
+      {
+        localObject = new LinkedHashSet(1);
+        this.a.put(localX500Principal, localObject);
       }
+      ((Set)localObject).add(localX509Certificate);
       i += 1;
     }
-    return true;
+  }
+  
+  public final X509Certificate a(X509Certificate paramX509Certificate)
+  {
+    Object localObject = paramX509Certificate.getIssuerX500Principal();
+    localObject = (Set)this.a.get(localObject);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((Set)localObject).iterator();
+    for (;;)
+    {
+      X509Certificate localX509Certificate;
+      PublicKey localPublicKey;
+      if (((Iterator)localObject).hasNext())
+      {
+        localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+        localPublicKey = localX509Certificate.getPublicKey();
+      }
+      try
+      {
+        paramX509Certificate.verify(localPublicKey);
+        return localX509Certificate;
+      }
+      catch (Exception localException) {}
+      return null;
+    }
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {
+      return true;
+    }
+    return ((paramObject instanceof ann)) && (((ann)paramObject).a.equals(this.a));
+  }
+  
+  public final int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 

@@ -1,20 +1,11 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
 final class nl
-  extends BroadcastReceiver
+  implements Thread.UncaughtExceptionHandler
 {
-  nl(nj paramnj) {}
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
-    paramContext.append(System.currentTimeMillis());
-    lo.a("AccessSchedulerTrigger", paramContext.toString());
-    ld.a().a(new nj.a(this.a, (byte)0));
+    paramThrowable.printStackTrace();
   }
 }
 

@@ -8,18 +8,18 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.token.ez;
-import com.tencent.token.gd;
-import com.tencent.token.ii;
-import com.tencent.token.im;
-import com.tencent.token.jf;
+import com.tencent.token.fn;
+import com.tencent.token.gr;
+import com.tencent.token.iw;
+import com.tencent.token.ja;
+import com.tencent.token.jt;
 
 public class AppCompatImageView
   extends ImageView
-  implements ez, gd
+  implements fn, gr
 {
-  private final ii a = new ii(this);
-  private final im b;
+  private final iw a = new iw(this);
+  private final ja b;
   
   public AppCompatImageView(Context paramContext)
   {
@@ -33,9 +33,9 @@ public class AppCompatImageView
   
   public AppCompatImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jf.a(paramContext), paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
-    this.b = new im(this);
+    this.b = new ja(this);
     this.b.a(paramAttributeSet, paramInt);
   }
   
@@ -44,46 +44,46 @@ public class AppCompatImageView
     super.drawableStateChanged();
     Object localObject = this.a;
     if (localObject != null) {
-      ((ii)localObject).d();
+      ((iw)localObject).d();
     }
     localObject = this.b;
     if (localObject != null) {
-      ((im)localObject).d();
+      ((ja)localObject).d();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    ii localii = this.a;
-    if (localii != null) {
-      return localii.b();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    ii localii = this.a;
-    if (localii != null) {
-      return localii.c();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
   
   public ColorStateList getSupportImageTintList()
   {
-    im localim = this.b;
-    if (localim != null) {
-      return localim.b();
+    ja localja = this.b;
+    if (localja != null) {
+      return localja.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    im localim = this.b;
-    if (localim != null) {
-      return localim.c();
+    ja localja = this.b;
+    if (localja != null) {
+      return localja.c();
     }
     return null;
   }
@@ -105,9 +105,9 @@ public class AppCompatImageView
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    ii localii = this.a;
-    if (localii != null) {
-      localii.a(paramInt);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
@@ -131,9 +131,9 @@ public class AppCompatImageView
   
   public void setImageResource(int paramInt)
   {
-    im localim = this.b;
-    if (localim != null) {
-      localim.a(paramInt);
+    ja localja = this.b;
+    if (localja != null) {
+      localja.a(paramInt);
     }
   }
   
@@ -148,33 +148,33 @@ public class AppCompatImageView
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    ii localii = this.a;
-    if (localii != null) {
-      localii.a(paramColorStateList);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    ii localii = this.a;
-    if (localii != null) {
-      localii.a(paramMode);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
   public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    im localim = this.b;
-    if (localim != null) {
-      localim.a(paramColorStateList);
+    ja localja = this.b;
+    if (localja != null) {
+      localja.a(paramColorStateList);
     }
   }
   
   public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    im localim = this.b;
-    if (localim != null) {
-      localim.a(paramMode);
+    ja localja = this.b;
+    if (localja != null) {
+      localja.a(paramMode);
     }
   }
 }

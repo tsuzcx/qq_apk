@@ -1,8 +1,23 @@
 package com.tencent.token;
 
-public abstract interface ay
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class ay
+  extends JceStruct
 {
-  public abstract av getLifecycle();
+  public String a = "";
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, true);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+  }
 }
 
 

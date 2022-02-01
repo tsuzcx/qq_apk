@@ -8,28 +8,28 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aih;
-import com.tencent.token.aij;
-import com.tencent.token.ail;
-import com.tencent.token.aqr;
-import com.tencent.token.aqv;
-import com.tencent.token.aqx;
-import com.tencent.token.arb;
-import com.tencent.token.arc;
-import com.tencent.token.are;
-import com.tencent.token.asd;
-import com.tencent.token.asg;
-import com.tencent.token.aso;
+import com.tencent.token.ajh;
+import com.tencent.token.ajj;
+import com.tencent.token.ajl;
+import com.tencent.token.arp;
+import com.tencent.token.art;
+import com.tencent.token.arv;
+import com.tencent.token.arz;
+import com.tencent.token.asa;
+import com.tencent.token.asc;
+import com.tencent.token.atb;
 import com.tencent.token.ate;
-import com.tencent.token.jr;
-import com.tencent.token.js;
-import com.tencent.token.jt;
-import com.tencent.token.jv;
-import com.tencent.token.jw;
-import com.tencent.token.jx;
-import com.tencent.token.jy;
-import com.tencent.token.kc;
+import com.tencent.token.atm;
+import com.tencent.token.auc;
 import com.tencent.token.kf;
+import com.tencent.token.kg;
+import com.tencent.token.kh;
+import com.tencent.token.kj;
+import com.tencent.token.kk;
+import com.tencent.token.kl;
+import com.tencent.token.km;
+import com.tencent.token.kq;
+import com.tencent.token.kt;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -50,12 +50,12 @@ public class GameLogin
   long b = 10000L;
   boolean c = false;
   boolean d = false;
-  ail e = null;
+  ajl e = null;
   IGameLoginCallback f;
   o g = new o();
   AtomicInteger h = new AtomicInteger();
   Handler i = new Handler(Looper.getMainLooper());
-  aij j = new c(this);
+  ajj j = new c(this);
   private Object k = new Object();
   private long l = -1L;
   private Stack m = new Stack();
@@ -70,8 +70,8 @@ public class GameLogin
   
   public GameLogin()
   {
-    kf.a();
-    this.e = ((ail)kc.a());
+    kt.a();
+    this.e = ((ajl)kq.a());
     int i2 = (int)System.currentTimeMillis();
     int i1 = i2;
     if (i2 < 0) {
@@ -93,7 +93,7 @@ public class GameLogin
   
   private String a(int paramInt)
   {
-    switch (arb.filterNetworkCode(paramInt))
+    switch (arz.filterNetworkCode(paramInt))
     {
     default: 
       return "未知错误";
@@ -204,19 +204,19 @@ public class GameLogin
   
   void a()
   {
-    this.e.a(10051, new jy(), 1, this.j);
+    this.e.a(10051, new km(), 1, this.j);
   }
   
   void a(p paramp)
   {
-    jt localjt = (jt)paramp.c;
-    int i1 = aih.a;
-    long l1 = localjt.a;
-    l1 = localjt.c;
-    a(localjt.d);
-    String str = localjt.e;
-    str = localjt.b;
-    this.e.a(653, localjt, new jx(), 1, paramp);
+    kh localkh = (kh)paramp.c;
+    int i1 = ajh.a;
+    long l1 = localkh.a;
+    l1 = localkh.c;
+    a(localkh.d);
+    String str = localkh.e;
+    str = localkh.b;
+    this.e.a(653, localkh, new kl(), 1, paramp);
   }
   
   void b()
@@ -242,15 +242,15 @@ public class GameLogin
   
   void b(p paramp)
   {
-    jr localjr = (jr)paramp.c;
-    int i1 = aih.a;
-    long l1 = localjr.b;
-    l1 = localjr.a;
-    i1 = localjr.f;
-    String str = localjr.c;
-    a(localjr.e);
-    a(localjr.d);
-    this.e.a(654, localjr, new jv(), 1, paramp);
+    kf localkf = (kf)paramp.c;
+    int i1 = ajh.a;
+    long l1 = localkf.b;
+    l1 = localkf.a;
+    i1 = localkf.f;
+    String str = localkf.c;
+    a(localkf.e);
+    a(localkf.d);
+    this.e.a(654, localkf, new kj(), 1, paramp);
   }
   
   void c()
@@ -272,11 +272,11 @@ public class GameLogin
   
   void c(p paramp)
   {
-    js localjs = (js)paramp.c;
-    int i1 = aih.a;
-    long l1 = localjs.b;
-    l1 = localjs.a;
-    this.e.a(656, localjs, new jw(), 0, paramp);
+    kg localkg = (kg)paramp.c;
+    int i1 = ajh.a;
+    long l1 = localkg.b;
+    l1 = localkg.a;
+    this.e.a(656, localkg, new kk(), 0, paramp);
   }
   
   void d()
@@ -305,25 +305,25 @@ public class GameLogin
     if ((paramString != null) && (paramArrayOfByte != null))
     {
       int i1 = e();
-      jr localjr = new jr();
-      localjr.b = ((Long)this.m.pop()).longValue();
-      localjr.a = i1;
-      localjr.c = paramString;
-      localjr.d = paramArrayOfByte;
-      localjr.e = this.q.a();
-      localjr.f = j.d(paramInt);
-      this.g.a(localjr.a, this.b);
-      paramInt = aih.a;
-      long l1 = localjr.b;
-      l1 = localjr.a;
-      paramInt = localjr.f;
-      paramString = localjr.c;
-      a(localjr.e);
-      a(localjr.d);
-      new StringBuilder("CSConfirm confirm : ").append(localjr.f);
-      new StringBuilder("reqid : ").append(localjr.a);
-      new StringBuilder("session : ").append(a(localjr.e));
-      this.e.a(654, localjr, new jv(), 1, new g(this, localjr.a, localjr), this.b);
+      kf localkf = new kf();
+      localkf.b = ((Long)this.m.pop()).longValue();
+      localkf.a = i1;
+      localkf.c = paramString;
+      localkf.d = paramArrayOfByte;
+      localkf.e = this.q.a();
+      localkf.f = j.d(paramInt);
+      this.g.a(localkf.a, this.b);
+      paramInt = ajh.a;
+      long l1 = localkf.b;
+      l1 = localkf.a;
+      paramInt = localkf.f;
+      paramString = localkf.c;
+      a(localkf.e);
+      a(localkf.d);
+      new StringBuilder("CSConfirm confirm : ").append(localkf.f);
+      new StringBuilder("reqid : ").append(localkf.a);
+      new StringBuilder("session : ").append(a(localkf.e));
+      this.e.a(654, localkf, new kj(), 1, new g(this, localkf.a, localkf), this.b);
       return i1;
     }
     return -2;
@@ -350,30 +350,30 @@ public class GameLogin
           a();
         }
         int i1 = e();
-        ??? = new jt();
-        ((jt)???).c = this.l;
-        ((jt)???).d = paramArrayOfByte;
-        ((jt)???).b = paramString1;
-        ((jt)???).a = i1;
+        ??? = new kh();
+        ((kh)???).c = this.l;
+        ((kh)???).d = paramArrayOfByte;
+        ((kh)???).b = paramString1;
+        ((kh)???).a = i1;
         paramString1 = a(paramString2);
         if (paramString1 != null)
         {
-          ((jt)???).g = aqx.a(paramString1);
-          this.t.a(((jt)???).c, ((jt)???).g);
+          ((kh)???).g = arv.a(paramString1);
+          this.t.a(((kh)???).c, ((kh)???).g);
         }
-        paramString2 = ((jt)???).g;
+        paramString2 = ((kh)???).g;
         this.s.add(paramString2);
-        int i2 = aih.a;
-        long l1 = ((jt)???).a;
-        l1 = ((jt)???).c;
-        a(((jt)???).d);
-        paramString1 = ((jt)???).e;
-        paramString1 = ((jt)???).b;
-        this.g.a(((jt)???).a, this.b);
-        new StringBuilder("reqid : ").append(((jt)???).a);
-        new StringBuilder("picmd5 : ").append(((jt)???).g);
-        paramString1 = aqv.a();
-        paramArrayOfByte = ((jt)???).g;
+        int i2 = ajh.a;
+        long l1 = ((kh)???).a;
+        l1 = ((kh)???).c;
+        a(((kh)???).d);
+        paramString1 = ((kh)???).e;
+        paramString1 = ((kh)???).b;
+        this.g.a(((kh)???).a, this.b);
+        new StringBuilder("reqid : ").append(((kh)???).a);
+        new StringBuilder("picmd5 : ").append(((kh)???).g);
+        paramString1 = art.a();
+        paramArrayOfByte = ((kh)???).g;
         l1 = this.a;
         Object localObject2 = new e(this, paramString2);
         paramString2 = new StringBuilder("添加闹钟任务 : action : ");
@@ -390,7 +390,7 @@ public class GameLogin
         AlarmManager localAlarmManager = (AlarmManager)paramString1.a.getSystemService("alarm");
         paramString1.b.put(paramArrayOfByte, paramString2);
         localAlarmManager.set(0, System.currentTimeMillis() + l1, (PendingIntent)localObject2);
-        this.e.a(653, (JceStruct)???, new jx(), 1, new h(this, ((jt)???).a, (JceStruct)???), this.b);
+        this.e.a(653, (JceStruct)???, new kl(), 1, new h(this, ((kh)???).a, (JceStruct)???), this.b);
         return i1;
       }
     }
@@ -403,16 +403,16 @@ public class GameLogin
       return -1;
     }
     int i1 = e();
-    js localjs = new js();
-    localjs.b = paramLong;
-    localjs.a = i1;
-    new StringBuilder("appid : ").append(localjs.b);
-    new StringBuilder("reqid : ").append(localjs.a);
-    int i2 = aih.a;
-    long l1 = localjs.b;
-    l1 = localjs.a;
-    this.g.a(localjs.a, this.b);
-    this.e.a(656, localjs, new jw(), 0, new i(this, localjs.a, localjs), this.b);
+    kg localkg = new kg();
+    localkg.b = paramLong;
+    localkg.a = i1;
+    new StringBuilder("appid : ").append(localkg.b);
+    new StringBuilder("reqid : ").append(localkg.a);
+    int i2 = ajh.a;
+    long l1 = localkg.b;
+    l1 = localkg.a;
+    this.g.a(localkg.a, this.b);
+    this.e.a(656, localkg, new kk(), 0, new i(this, localkg.a, localkg), this.b);
     this.l = paramLong;
     return i1;
   }
@@ -431,15 +431,15 @@ public class GameLogin
   
   public void setTestServer(boolean paramBoolean)
   {
-    Object localObject = (asg)aqr.a(asg.class);
-    aso localaso = aso.a();
-    if (localaso.b != null) {
-      localaso.b.a(paramBoolean);
+    Object localObject = (ate)arp.a(ate.class);
+    atm localatm = atm.a();
+    if (localatm.b != null) {
+      localatm.b.a(paramBoolean);
     }
-    localObject = ((asg)localObject).a.c.a;
-    ((are)localObject).a = paramBoolean;
-    ((are)localObject).b();
-    ((are)localObject).a();
+    localObject = ((ate)localObject).a.c.a;
+    ((asc)localObject).a = paramBoolean;
+    ((asc)localObject).b();
+    ((asc)localObject).a();
   }
   
   public void setWaitPushTime(long paramLong)

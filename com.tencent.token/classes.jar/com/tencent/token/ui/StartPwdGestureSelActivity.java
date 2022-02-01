@@ -13,10 +13,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aao;
+import com.tencent.token.aay;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.sb;
-import com.tencent.token.sk;
+import com.tencent.token.so;
+import com.tencent.token.sw;
 import com.tencent.token.ui.base.SwitchButton;
 
 public class StartPwdGestureSelActivity
@@ -39,25 +39,25 @@ public class StartPwdGestureSelActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        sb.a().a(System.currentTimeMillis(), 15);
+        so.a().a(System.currentTimeMillis(), 15);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureModifyActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 258);
-        aao.a(StartPwdGestureSelActivity.this, 1);
+        aay.a(StartPwdGestureSelActivity.this, 1);
       }
     });
     this.mButtonClear.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        sb.a().a(System.currentTimeMillis(), 21);
+        so.a().a(System.currentTimeMillis(), 21);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureDeleteActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 256);
-        aao.a(StartPwdGestureSelActivity.this, 1);
+        aay.a(StartPwdGestureSelActivity.this, 1);
       }
     });
     try
     {
-      this.mSetStartPwd = RqdApplication.p().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
+      this.mSetStartPwd = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
       if (this.mSetStartPwd == 1)
       {
         this.mSwitchStartPwd.a(false, false);
@@ -82,10 +82,10 @@ public class StartPwdGestureSelActivity
         }
         try
         {
-          paramAnonymousCompoundButton = RqdApplication.p().getSharedPreferences("start_pwd_config", 0).edit();
+          paramAnonymousCompoundButton = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).edit();
           if (StartPwdGestureSelActivity.this.mSetStartPwd == 1)
           {
-            sb.a().a(System.currentTimeMillis(), 65);
+            so.a().a(System.currentTimeMillis(), 65);
             paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 0);
             StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 0);
             StartPwdGestureSelActivity.this.mSwitchStartPwd.a(true, false);
@@ -107,10 +107,10 @@ public class StartPwdGestureSelActivity
         }
       }
     });
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
     this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
-    this.mTitleText.setTextColor(getResources().getColor(2130968761));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -119,13 +119,13 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 257)
       {
-        sb.a().a(System.currentTimeMillis(), 22);
+        so.a().a(System.currentTimeMillis(), 22);
         startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
-        showOrangeToast(2131493245, 2131100171);
+        showOrangeToast(2131493247, 2131100176);
         finish();
         return;
       }
-      if (!sk.a().c()) {
+      if (!sw.a().c()) {
         finish();
       }
     }
@@ -133,11 +133,11 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 259)
       {
-        sb.a().a(System.currentTimeMillis(), 16);
-        showOrangeToast(2131493234, 2131100171);
+        so.a().a(System.currentTimeMillis(), 16);
+        showOrangeToast(2131493236, 2131100176);
         return;
       }
-      if (!sk.a().c()) {
+      if (!sw.a().c()) {
         finish();
       }
     }
@@ -146,11 +146,11 @@ public class StartPwdGestureSelActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296451);
-    this.mButtonModify = ((Button)findViewById(2131165566));
-    this.mButtonClear = ((Button)findViewById(2131165564));
-    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131165377));
-    this.mTextOpName = ((TextView)findViewById(2131166078));
+    setContentView(2131296464);
+    this.mButtonModify = ((Button)findViewById(2131165581));
+    this.mButtonClear = ((Button)findViewById(2131165579));
+    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131165386));
+    this.mTextOpName = ((TextView)findViewById(2131166118));
     initUI();
   }
 }

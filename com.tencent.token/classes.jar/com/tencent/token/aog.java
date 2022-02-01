@@ -1,8 +1,53 @@
 package com.tencent.token;
 
-public final class aog
+import javax.annotation.Nullable;
+
+final class aog
 {
-  public auw a;
+  @Nullable
+  static aof a;
+  static long b;
+  
+  static aof a()
+  {
+    try
+    {
+      if (a != null)
+      {
+        aof localaof = a;
+        a = localaof.f;
+        localaof.f = null;
+        b -= 8192L;
+        return localaof;
+      }
+      return new aof();
+    }
+    finally {}
+  }
+  
+  static void a(aof paramaof)
+  {
+    if ((paramaof.f == null) && (paramaof.g == null))
+    {
+      if (paramaof.d) {
+        return;
+      }
+      try
+      {
+        if (b + 8192L > 65536L) {
+          return;
+        }
+        b += 8192L;
+        paramaof.f = a;
+        paramaof.c = 0;
+        paramaof.b = 0;
+        a = paramaof;
+        return;
+      }
+      finally {}
+    }
+    throw new IllegalArgumentException();
+  }
 }
 
 

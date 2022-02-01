@@ -1,37 +1,22 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-
 public final class apv
 {
-  public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
-    {
-      paramT.recyle();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("UTF-8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      new StringBuilder("getJceStruct exception: ").append(paramArrayOfByte);
-    }
-    return null;
-  }
+  final int a;
+  final apm b;
+  final apj c;
   
-  public static byte[] a(JceStruct paramJceStruct)
+  public static enum a
   {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("UTF-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
+    public static final int a = 1;
+    public static final int b = 2;
+    public static final int c = 3;
+    public static final int d = 4;
+    
+    public static int[] a()
+    {
+      return (int[])e.clone();
+    }
   }
 }
 

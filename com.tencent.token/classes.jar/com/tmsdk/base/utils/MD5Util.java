@@ -1,6 +1,6 @@
 package com.tmsdk.base.utils;
 
-import com.tencent.token.auo;
+import com.tencent.token.avm;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,7 +42,7 @@ public class MD5Util
       }
       j += 1;
     }
-    return new String(auo.b(arrayOfByte, null), Charset.forName("UTF-8"));
+    return new String(avm.b(arrayOfByte, null), Charset.forName("UTF-8"));
   }
   
   public static byte[] encrypt(String paramString)

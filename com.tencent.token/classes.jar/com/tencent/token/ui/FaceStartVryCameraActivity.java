@@ -1,5 +1,6 @@
 package com.tencent.token.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,25 +25,25 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.jni.FaceData;
-import com.tencent.token.aao;
-import com.tencent.token.aap;
-import com.tencent.token.ahb;
-import com.tencent.token.ais;
+import com.tencent.token.aay;
+import com.tencent.token.aaz;
+import com.tencent.token.aia;
+import com.tencent.token.ajr;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.sb;
-import com.tencent.token.sc;
-import com.tencent.token.sc.a;
-import com.tencent.token.sg;
-import com.tencent.token.si;
-import com.tencent.token.sk;
-import com.tencent.token.sl;
-import com.tencent.token.th;
+import com.tencent.token.so;
+import com.tencent.token.sp;
+import com.tencent.token.sp.a;
+import com.tencent.token.ss;
+import com.tencent.token.su;
+import com.tencent.token.sw;
+import com.tencent.token.sx;
+import com.tencent.token.tt;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.uu;
-import com.tencent.token.xh;
-import com.tencent.token.xj;
-import com.tencent.token.yh;
+import com.tencent.token.vg;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
+import com.tencent.token.yt;
 import java.util.ArrayList;
 
 public class FaceStartVryCameraActivity
@@ -54,6 +55,7 @@ public class FaceStartVryCameraActivity
   {
     public final void handleMessage(Message paramAnonymousMessage) {}
   };
+  @SuppressLint({"HandlerLeak"})
   private Handler handler = new Handler()
   {
     private void a()
@@ -64,23 +66,23 @@ public class FaceStartVryCameraActivity
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(arrayOfByte);
-      FaceStartVryCameraActivity.access$1502(FaceStartVryCameraActivity.this, ahb.a(localArrayList));
+      FaceStartVryCameraActivity.access$1502(FaceStartVryCameraActivity.this, aia.a(localArrayList));
       if (FaceStartVryCameraActivity.this.mServerData != null)
       {
-        long l = aap.e();
+        long l = aaz.e();
         int i = FaceStartVryCameraActivity.this.getLockStatus();
         FaceStartVryCameraActivity.access$1702(FaceStartVryCameraActivity.this, true);
-        si.a().a(0L, l, FaceStartVryCameraActivity.this.mFaceOpType, FaceStartVryCameraActivity.this.mServerData, i, FaceStartVryCameraActivity.this.mFaceScene, FaceStartVryCameraActivity.this.mFaceView.getBrightModeIntValue(), FaceStartVryCameraActivity.this.handler);
+        su.a().a(0L, l, FaceStartVryCameraActivity.this.mFaceOpType, FaceStartVryCameraActivity.this.mServerData, i, FaceStartVryCameraActivity.this.mFaceScene, FaceStartVryCameraActivity.this.mFaceView.getBrightModeIntValue(), FaceStartVryCameraActivity.this.handler);
         return;
       }
-      xj.a("OPTYPE_VALIDATION serverData == null");
+      xv.a("OPTYPE_VALIDATION serverData == null");
     }
     
     public final void handleMessage(Message paramAnonymousMessage)
     {
       Object localObject1 = new StringBuilder("facepwd msg.what=");
       ((StringBuilder)localObject1).append(paramAnonymousMessage.what);
-      xj.a(((StringBuilder)localObject1).toString());
+      xv.a(((StringBuilder)localObject1).toString());
       int j = paramAnonymousMessage.what;
       if (j != 2)
       {
@@ -105,9 +107,9 @@ public class FaceStartVryCameraActivity
                         if (j != 4109) {
                           return;
                         }
-                        RqdApplication.h();
-                        RqdApplication.m();
-                        aao.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
+                        RqdApplication.g();
+                        RqdApplication.l();
+                        aay.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
                         FaceStartVryCameraActivity.this.mFaceView.setStatus(3);
                         FaceStartVryCameraActivity.this.startAnimation();
                         return;
@@ -117,13 +119,13 @@ public class FaceStartVryCameraActivity
                       {
                         localObject1 = FaceStartVryCameraActivity.this;
                         localObject2 = new StringBuilder();
-                        ((StringBuilder)localObject2).append(FaceStartVryCameraActivity.this.getResources().getString(2131493555));
+                        ((StringBuilder)localObject2).append(FaceStartVryCameraActivity.this.getResources().getString(2131493563));
                         ((StringBuilder)localObject2).append(":");
                         ((StringBuilder)localObject2).append(paramAnonymousMessage.getData().getString("exception"));
                         ((FaceStartVryCameraActivity)localObject1).showToast(((StringBuilder)localObject2).toString());
                         return;
                       }
-                      FaceStartVryCameraActivity.this.showToast(2131493555);
+                      FaceStartVryCameraActivity.this.showToast(2131493563);
                       return;
                     }
                     if (paramAnonymousMessage.arg1 != 0) {
@@ -151,37 +153,37 @@ public class FaceStartVryCameraActivity
                   }
                   localObject1 = new StringBuilder("K_MSG_POST_FACERECOGNITION = ");
                   ((StringBuilder)localObject1).append(paramAnonymousMessage.arg1);
-                  xj.c(((StringBuilder)localObject1).toString());
+                  xv.c(((StringBuilder)localObject1).toString());
                   if (paramAnonymousMessage.arg1 == 0)
                   {
-                    RqdApplication.h();
+                    RqdApplication.g();
                     i = paramAnonymousMessage.arg2;
-                    RqdApplication.m();
-                    aao.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
+                    RqdApplication.l();
+                    aay.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
                     FaceStartVryCameraActivity.this.mFaceView.setStatus(3);
                     FaceStartVryCameraActivity.this.startAnimation();
                     return;
                   }
                   FaceStartVryCameraActivity.this.mVrySucc1.setVisibility(4);
                   FaceStartVryCameraActivity.this.mVrySucc2.setVisibility(4);
-                  localObject1 = (xh)paramAnonymousMessage.obj;
-                  xh.a(FaceStartVryCameraActivity.this.getResources(), (xh)localObject1);
+                  localObject1 = (xt)paramAnonymousMessage.obj;
+                  xt.a(FaceStartVryCameraActivity.this.getResources(), (xt)localObject1);
                   paramAnonymousMessage = new StringBuilder("faceRe ret.mErrCode=");
-                  paramAnonymousMessage.append(((xh)localObject1).a);
-                  xj.c(paramAnonymousMessage.toString());
-                  j = ((xh)localObject1).a;
+                  paramAnonymousMessage.append(((xt)localObject1).a);
+                  xv.c(paramAnonymousMessage.toString());
+                  j = ((xt)localObject1).a;
                   if (j != 110)
                   {
-                    i = 2131493176;
+                    i = 2131493178;
                     switch (j)
                     {
                     default: 
-                      if (!RqdApplication.k()) {
-                        i = 2131493176;
+                      if (!RqdApplication.j()) {
+                        i = 2131493178;
                       } else {
-                        i = 2131493175;
+                        i = 2131493177;
                       }
-                      FaceStartVryCameraActivity.this.showUserDialog(2131493078, ((xh)localObject1).c, 2131493024, i, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                      FaceStartVryCameraActivity.this.showUserDialog(2131493080, ((xt)localObject1).c, 2131493025, i, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -202,22 +204,22 @@ public class FaceStartVryCameraActivity
                       });
                       return;
                     case 222: 
-                      aap.b(0L);
-                      if (!RqdApplication.k())
+                      aaz.b(0L);
+                      if (!RqdApplication.j())
                       {
-                        paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493172);
+                        paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493174);
                       }
                       else
                       {
-                        paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493171);
-                        i = 2131493175;
+                        paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493173);
+                        i = 2131493177;
                       }
                       localObject2 = FaceStartVryCameraActivity.this;
                       StringBuilder localStringBuilder = new StringBuilder();
-                      localStringBuilder.append(((xh)localObject1).c);
+                      localStringBuilder.append(((xt)localObject1).c);
                       localStringBuilder.append("，");
                       localStringBuilder.append(paramAnonymousMessage);
-                      ((FaceStartVryCameraActivity)localObject2).showUserDialog(2131493078, localStringBuilder.toString(), i, new DialogInterface.OnClickListener()
+                      ((FaceStartVryCameraActivity)localObject2).showUserDialog(2131493080, localStringBuilder.toString(), i, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -227,20 +229,20 @@ public class FaceStartVryCameraActivity
                       return;
                     }
                     FaceStartVryCameraActivity.access$1208(FaceStartVryCameraActivity.this);
-                    if (!RqdApplication.k())
+                    if (!RqdApplication.j())
                     {
-                      paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493181);
-                      i = 2131493176;
+                      paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493183);
+                      i = 2131493178;
                     }
                     else
                     {
-                      paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493180);
-                      i = 2131493175;
+                      paramAnonymousMessage = FaceStartVryCameraActivity.this.getResources().getString(2131493182);
+                      i = 2131493177;
                     }
                     if (FaceStartVryCameraActivity.this.mRetryCount < 5)
                     {
-                      aao.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, FaceStartVryCameraActivity.this.mRetryCount);
-                      FaceStartVryCameraActivity.this.showUserDialog(2131493178, ((xh)localObject1).c, 2131493177, i, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                      aay.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, FaceStartVryCameraActivity.this.mRetryCount);
+                      FaceStartVryCameraActivity.this.showUserDialog(2131493180, ((xt)localObject1).c, 2131493179, i, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                       {
                         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                         {
@@ -261,8 +263,8 @@ public class FaceStartVryCameraActivity
                       });
                       return;
                     }
-                    aao.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
-                    FaceStartVryCameraActivity.this.showUserDialog(2131493179, paramAnonymousMessage, i, new DialogInterface.OnClickListener()
+                    aay.a(FaceStartVryCameraActivity.LANUCH_RETRY_COUNT, 0);
+                    FaceStartVryCameraActivity.this.showUserDialog(2131493181, paramAnonymousMessage, i, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
@@ -272,33 +274,33 @@ public class FaceStartVryCameraActivity
                     return;
                   }
                   paramAnonymousMessage = FaceStartVryCameraActivity.this;
-                  paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493243, 2131493237);
+                  paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493245, 2131493239);
                   return;
                 }
                 if (paramAnonymousMessage.arg1 == 0)
                 {
                   FaceStartVryCameraActivity.this.dismissDialog();
-                  paramAnonymousMessage = th.a().k.b();
+                  paramAnonymousMessage = tt.a().k.b();
                   if (paramAnonymousMessage == null)
                   {
-                    sb.a().a(System.currentTimeMillis(), 23);
+                    so.a().a(System.currentTimeMillis(), 23);
                     paramAnonymousMessage = FaceStartVryCameraActivity.this;
-                    paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493242, 2131493244);
+                    paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493244, 2131493246);
                     return;
                   }
                   FaceStartVryCameraActivity.this.dismissDialog();
-                  long l2 = aap.e();
+                  long l2 = aaz.e();
                   long l1 = l2;
                   if (l2 <= 0L) {
                     l1 = paramAnonymousMessage.mRealUin;
                   }
-                  paramAnonymousMessage = sg.a(FaceStartVryCameraActivity.this.getApplicationContext());
+                  paramAnonymousMessage = ss.a(FaceStartVryCameraActivity.this.getApplicationContext());
                   localObject1 = FaceStartVryCameraActivity.this;
                   paramAnonymousMessage.a((Activity)localObject1, ((FaceStartVryCameraActivity)localObject1).handler, String.valueOf(l1));
                   return;
                 }
                 FaceStartVryCameraActivity.this.dismissDialog();
-                paramAnonymousMessage = (xh)paramAnonymousMessage.obj;
+                paramAnonymousMessage = (xt)paramAnonymousMessage.obj;
                 FaceStartVryCameraActivity.this.showUserDialog(paramAnonymousMessage.c);
                 return;
               }
@@ -319,15 +321,15 @@ public class FaceStartVryCameraActivity
             } else {
               FaceStartVryCameraActivity.this.mFaceView.setStatus(6);
             }
-            FaceStartVryCameraActivity.this.mTipTxt.setText(2131492930);
+            FaceStartVryCameraActivity.this.mTipTxt.setText(2131492931);
             a();
           }
           else
           {
-            paramAnonymousMessage = (TextView)FaceStartVryCameraActivity.this.findViewById(2131165531);
+            paramAnonymousMessage = (TextView)FaceStartVryCameraActivity.this.findViewById(2131165546);
             if (paramAnonymousMessage != null)
             {
-              paramAnonymousMessage.setText(2131493174);
+              paramAnonymousMessage.setText(2131493176);
               return;
             }
           }
@@ -357,7 +359,7 @@ public class FaceStartVryCameraActivity
           return;
         }
         FaceStartVryCameraActivity.this.mFaceView.setStatus(3);
-        FaceStartVryCameraActivity.this.mTipTxt.setText(2131492930);
+        FaceStartVryCameraActivity.this.mTipTxt.setText(2131492931);
         a();
         return;
       }
@@ -366,7 +368,7 @@ public class FaceStartVryCameraActivity
       }
       FaceStartVryCameraActivity.access$202(FaceStartVryCameraActivity.this, true);
       paramAnonymousMessage = FaceStartVryCameraActivity.this;
-      paramAnonymousMessage.showUserDialog(2131492986, paramAnonymousMessage.getResources().getString(2131493424), 2131493040, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+      paramAnonymousMessage.showUserDialog(2131492987, paramAnonymousMessage.getResources().getString(2131493427), 2131493041, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
       {
         public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
         {
@@ -426,56 +428,56 @@ public class FaceStartVryCameraActivity
   private int getLockStatus()
   {
     int i;
-    if (aap.e() != 0L)
+    if (aaz.e() != 0L)
     {
-      if ((sk.a().c()) && (sk.a().a == 2)) {
+      if ((sw.a().c()) && (sw.a().a == 2)) {
         i = 19;
       } else {
         i = 18;
       }
     }
-    else if ((sk.a().c()) && (sk.a().a == 2)) {
+    else if ((sw.a().c()) && (sw.a().a == 2)) {
       i = 17;
     } else {
       i = 16;
     }
-    xj.c("getLockStatus = ".concat(String.valueOf(i)));
+    xv.c("getLockStatus = ".concat(String.valueOf(i)));
     return i;
   }
   
   private void gotoQuickLoginWb()
   {
-    th.a().k.b();
-    if (aap.e() < 0L)
+    tt.a().k.b();
+    if (aaz.e() < 0L)
     {
-      sc.a.a().c(this.handler);
-      showProDialog(this, 2131492986, 2131493441, null);
+      sp.a.a().b(this.handler);
+      showProDialog(this, 2131492987, 2131493449, null);
       return;
     }
-    sg localsg = sg.a(getApplicationContext());
+    ss localss = ss.a(getApplicationContext());
     Handler localHandler = this.handler;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(aap.e());
-    localsg.a(this, localHandler, localStringBuilder.toString());
+    localStringBuilder.append(aaz.e());
+    localss.a(this, localHandler, localStringBuilder.toString());
   }
   
   private void init()
   {
-    this.mRetryCount = aao.j(LANUCH_RETRY_COUNT);
+    this.mRetryCount = aay.j(LANUCH_RETRY_COUNT);
     Object localObject = new StringBuilder("retryCount = ");
     ((StringBuilder)localObject).append(this.mRetryCount);
-    xj.c(((StringBuilder)localObject).toString());
+    xv.c(((StringBuilder)localObject).toString());
     if (this.mRetryCount >= 5) {
       jumpGesOrPWD();
     }
-    this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131165818));
+    this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131165845));
     this.mPreview.setVisibility(4);
-    this.mFaceView = ((FaceView)findViewById(2131165623));
-    localObject = th.a().k.b();
-    QQUser localQQUser = aap.g();
-    this.mVrySucc1 = ((ImageView)findViewById(2131166281));
-    this.mVrySucc2 = ((ImageView)findViewById(2131166282));
-    this.mTipTxt = ((TextView)findViewById(2131165677));
+    this.mFaceView = ((FaceView)findViewById(2131165640));
+    localObject = tt.a().k.b();
+    QQUser localQQUser = aaz.g();
+    this.mVrySucc1 = ((ImageView)findViewById(2131166321));
+    this.mVrySucc2 = ((ImageView)findViewById(2131166322));
+    this.mTipTxt = ((TextView)findViewById(2131165694));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTipTxt.getLayoutParams();
     int i = getResources().getDisplayMetrics().densityDpi;
     final float f = getResources().getDisplayMetrics().density;
@@ -487,8 +489,8 @@ public class FaceStartVryCameraActivity
     if ((localObject != null) && (localQQUser != null) && (localQQUser.mIsZzb))
     {
       this.mFaceView.a(true, true);
-      this.mVrySucc1.setImageResource(2131100232);
-      this.mVrySucc2.setImageResource(2131100233);
+      this.mVrySucc1.setImageResource(2131100237);
+      this.mVrySucc2.setImageResource(2131100238);
     }
     else
     {
@@ -506,13 +508,13 @@ public class FaceStartVryCameraActivity
   
   private void initValidationUI()
   {
-    this.mChangeVryTxt = ((TextView)findViewById(2131165508));
-    this.mOpenLower = findViewById(2131165796);
-    this.mOpenUper = findViewById(2131165797);
-    this.mOpenUperDoor = ((ImageView)findViewById(2131165798));
-    this.mOpenUperDoorNew = ((ImageView)findViewById(2131165800));
-    QQUser localQQUser1 = th.a().k.b();
-    QQUser localQQUser2 = aap.g();
+    this.mChangeVryTxt = ((TextView)findViewById(2131165523));
+    this.mOpenLower = findViewById(2131165813);
+    this.mOpenUper = findViewById(2131165814);
+    this.mOpenUperDoor = ((ImageView)findViewById(2131165815));
+    this.mOpenUperDoorNew = ((ImageView)findViewById(2131165817));
+    QQUser localQQUser1 = tt.a().k.b();
+    QQUser localQQUser2 = aaz.g();
     if ((localQQUser1 != null) && (localQQUser2 != null) && (localQQUser2.mIsZzb))
     {
       this.animationHandler.post(new b(this.mOpenUperDoor));
@@ -525,7 +527,7 @@ public class FaceStartVryCameraActivity
         FaceStartVryCameraActivity.this.startOpenAnimation();
       }
     }, 800L);
-    this.mBgUpper = findViewById(2131166275);
+    this.mBgUpper = findViewById(2131166315);
     this.mBgUpper.postDelayed(new Runnable()
     {
       public final void run()
@@ -538,28 +540,28 @@ public class FaceStartVryCameraActivity
         FaceStartVryCameraActivity.access$2602(localFaceStartVryCameraActivity, localFaceStartVryCameraActivity.mOpenLower.getHeight());
       }
     }, 500L);
-    this.mLogoMiddle = findViewById(2131166260);
+    this.mLogoMiddle = findViewById(2131166300);
     this.mLogoMiddle.setVisibility(4);
-    this.mBmpLogo = aap.a(getResources(), 2131100135);
-    this.mBmpLogoGreen = aap.a(getResources(), 2131100137);
+    this.mBmpLogo = aaz.a(getResources(), 2131100140);
+    this.mBmpLogoGreen = aaz.a(getResources(), 2131100142);
     if ((localQQUser1 != null) && (localQQUser2 != null) && (localQQUser2.mIsZzb))
     {
-      ((ImageView)this.mLogoMiddle).setImageDrawable(getResources().getDrawable(2131100134));
-      this.mBmpLogoGreen = aap.a(getResources(), 2131100139);
-      this.mBmpLogo = aap.a(getResources(), 2131100139);
-      this.mChangeVryTxt.setTextColor(getResources().getColor(2130968656));
+      ((ImageView)this.mLogoMiddle).setImageDrawable(getResources().getDrawable(2131100139));
+      this.mBmpLogoGreen = aaz.a(getResources(), 2131100144);
+      this.mBmpLogo = aaz.a(getResources(), 2131100144);
+      this.mChangeVryTxt.setTextColor(getResources().getColor(2130968657));
     }
     else
     {
-      this.mChangeVryTxt.setTextColor(getResources().getColor(2130968655));
+      this.mChangeVryTxt.setTextColor(getResources().getColor(2130968656));
     }
     if (this.mBmpLogo != null)
     {
-      this.mLogo = ((ImageView)findViewById(2131166261));
+      this.mLogo = ((ImageView)findViewById(2131166301));
       this.mLogo.setImageBitmap(this.mBmpLogo);
     }
-    if (!RqdApplication.k()) {
-      this.mChangeVryTxt.setText(2131493766);
+    if (!RqdApplication.j()) {
+      this.mChangeVryTxt.setText(2131493774);
     }
     this.mChangeVryTxt.setOnClickListener(new View.OnClickListener()
     {
@@ -572,7 +574,7 @@ public class FaceStartVryCameraActivity
   
   private void jumpGesOrPWD()
   {
-    if (!RqdApplication.k())
+    if (!RqdApplication.j())
     {
       gotoQuickLoginWb();
       return;
@@ -585,7 +587,7 @@ public class FaceStartVryCameraActivity
   {
     this.mPreview.a(true, false, 0, 0);
     this.mFaceView.setStatus(0);
-    this.mTipTxt.setText(2131493294);
+    this.mTipTxt.setText(2131493296);
   }
   
   private void setLiveDetectTxt(int paramInt)
@@ -595,33 +597,33 @@ public class FaceStartVryCameraActivity
     default: 
       return;
     case 6: 
-      this.mTipTxt.setText(2131493290);
+      this.mTipTxt.setText(2131493292);
       return;
     case 5: 
-      this.mTipTxt.setText(2131493289);
+      this.mTipTxt.setText(2131493291);
       return;
     case 4: 
-      this.mTipTxt.setText(2131493298);
+      this.mTipTxt.setText(2131493300);
       return;
     case 3: 
-      this.mTipTxt.setText(2131493297);
+      this.mTipTxt.setText(2131493299);
       return;
     case 2: 
-      this.mTipTxt.setText(2131493296);
+      this.mTipTxt.setText(2131493298);
       return;
     }
-    this.mTipTxt.setText(2131493295);
+    this.mTipTxt.setText(2131493297);
   }
   
   private void showNobindingAlert(final Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131492986, getString(paramInt1), paramInt2, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+      showUserDialog(2131492987, getString(paramInt1), paramInt2, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          sk.a().e();
-          RqdApplication.m();
+          sw.a().e();
+          RqdApplication.l();
           FaceStartVryCameraActivity.this.setResult(35);
           FaceStartVryCameraActivity.this.finish();
         }
@@ -629,8 +631,8 @@ public class FaceStartVryCameraActivity
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          sk.a().e();
-          RqdApplication.m();
+          sw.a().e();
+          RqdApplication.l();
           FaceStartVryCameraActivity.this.setResult(35);
           FaceStartVryCameraActivity.this.finish();
         }
@@ -644,7 +646,7 @@ public class FaceStartVryCameraActivity
     {
       if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        if (RqdApplication.j())
+        if (RqdApplication.i())
         {
           exitToken();
           return true;
@@ -671,9 +673,9 @@ public class FaceStartVryCameraActivity
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(", requestCode=");
     localStringBuilder.append(paramInt1);
-    xj.c(localStringBuilder.toString());
+    xv.c(localStringBuilder.toString());
     if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
-      sg.a(getApplicationContext()).a(paramIntent);
+      ss.a(getApplicationContext()).a(paramIntent);
     }
   }
   
@@ -686,16 +688,16 @@ public class FaceStartVryCameraActivity
     paramBundle.append(this.mFaceOpType);
     paramBundle.append(",realuin=");
     paramBundle.append(this.realNameBindUin);
-    xj.a(paramBundle.toString());
+    xv.a(paramBundle.toString());
     this.mIsh5zzb = getIntent().getBooleanExtra("ish5zzb", false);
     this.mDetectSucc = false;
     this.mIsActiveSuccess = false;
-    setContentView(2131296337);
+    setContentView(2131296342);
     hideTitle();
     initValidationUI();
     init();
-    uu.d();
-    si.a().d(aap.e(), this.mScene, this.handler);
+    vg.d();
+    su.a().d(aaz.e(), this.mScene, this.handler);
   }
   
   protected void onDestroy()
@@ -723,7 +725,7 @@ public class FaceStartVryCameraActivity
     RqdApplication.b = true;
     if (this.mPreview != null)
     {
-      yh local11 = new yh()
+      yt local11 = new yt()
       {
         public final void a()
         {
@@ -765,7 +767,7 @@ public class FaceStartVryCameraActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          xj.c("onBackPressed");
+          xv.c("onBackPressed");
           FaceStartVryCameraActivity.this.finish();
         }
       });
@@ -889,7 +891,7 @@ public class FaceStartVryCameraActivity
         {
           FaceStartVryCameraActivity.c.a(FaceStartVryCameraActivity.c.this).setVisibility(4);
           FaceStartVryCameraActivity.c.b(FaceStartVryCameraActivity.c.this).startAnimation(FaceStartVryCameraActivity.this.mAnimGoUp);
-          sl.a(RqdApplication.p()).a();
+          sx.a(RqdApplication.n()).a();
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}

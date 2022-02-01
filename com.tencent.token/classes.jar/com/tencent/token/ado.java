@@ -1,12 +1,10 @@
 package com.tencent.token;
 
+import com.tencent.turingfd.sdk.qps.Grapefruit;
+
 public abstract interface ado
 {
-  public abstract int a();
-  
-  public abstract String b();
-  
-  public abstract String c();
+  public abstract void a(String paramString, int paramInt1, int paramInt2, Grapefruit paramGrapefruit);
 }
 
 

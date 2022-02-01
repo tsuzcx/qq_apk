@@ -1,33 +1,35 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-final class arg
-  implements aii
+public final class arg
+  extends JceStruct
 {
-  int a = 0;
-  final int b = 3;
+  static ArrayList<arh> c = new ArrayList();
+  public ArrayList<arh> a = null;
+  public int b = 0;
   
-  arg(aso paramaso) {}
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
+  static
   {
-    paramJceStruct = new StringBuilder("_Cmd_SCReconnect : ");
-    paramJceStruct.append(paramInt2);
-    paramJceStruct.append("  retCode : ");
-    paramJceStruct.append(paramInt3);
-    if (paramInt3 == 0)
-    {
-      this.c.c = 0;
-      this.a = 0;
-      return;
-    }
-    this.a += 1;
-    if ((this.a < 3) && (this.c.d()))
-    {
-      this.a = 0;
-      paramJceStruct = this.c;
-      paramJceStruct.a(aso.a(paramJceStruct), 998, aso.b(this.c), 10000L);
+    arh localarh = new arh();
+    c.add(localarh);
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = ((ArrayList)paramJceInputStream.read(c, 0, true));
+    this.b = paramJceInputStream.read(this.b, 1, false);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }

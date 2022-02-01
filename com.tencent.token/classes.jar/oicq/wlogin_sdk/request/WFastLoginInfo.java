@@ -14,6 +14,7 @@ public class WFastLoginInfo
   public String adUrl = "";
   public String iconUrl = "";
   public String profileUrl = "";
+  public String userJson = "";
   
   public WFastLoginInfo()
   {

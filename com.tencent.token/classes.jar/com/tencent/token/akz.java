@@ -1,23 +1,34 @@
 package com.tencent.token;
 
-public final class akz
-  implements akg
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.List;
+
+public abstract interface akz
 {
-  public final aki a;
-  
-  public akz(aki paramaki)
+  public static final akz a = new akz()
   {
-    this.a = paramaki;
-  }
+    public final List<InetAddress> a(String paramAnonymousString)
+    {
+      if (paramAnonymousString != null) {
+        try
+        {
+          List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
+          return localList;
+        }
+        catch (NullPointerException localNullPointerException)
+        {
+          paramAnonymousString = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(String.valueOf(paramAnonymousString)));
+          paramAnonymousString.initCause(localNullPointerException);
+          throw paramAnonymousString;
+        }
+      }
+      throw new UnknownHostException("hostname == null");
+    }
+  };
   
-  public final akn a(akg.a parama)
-  {
-    alm localalm = (alm)parama;
-    akl localakl = localalm.d;
-    alf localalf = localalm.a;
-    boolean bool = localakl.b.equals("GET");
-    return localalm.a(localakl, localalf, localalf.a(this.a, parama, bool ^ true), localalf.b());
-  }
+  public abstract List<InetAddress> a(String paramString);
 }
 
 

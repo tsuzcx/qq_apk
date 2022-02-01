@@ -1,16 +1,12 @@
 package com.tencent.token;
 
-public final class adr
+import android.app.Activity;
+
+public abstract interface adr
 {
-  public static final String a;
+  public abstract void a(Activity paramActivity);
   
-  static
-  {
-    StringBuilder localStringBuilder = new StringBuilder("turingfd_protect_");
-    localStringBuilder.append(agh.a);
-    localStringBuilder.append("_61_qps");
-    a = localStringBuilder.toString();
-  }
+  public abstract void b(Activity paramActivity);
 }
 
 

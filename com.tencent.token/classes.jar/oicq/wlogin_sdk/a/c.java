@@ -1,5 +1,6 @@
 package oicq.wlogin_sdk.a;
 
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
 import oicq.wlogin_sdk.tools.util;
 
 public class c
@@ -13,12 +14,16 @@ public class c
   public byte[] a(int paramInt, byte[] paramArrayOfByte, long paramLong)
   {
     this.d = (paramArrayOfByte.length + 2 + 4);
-    byte[] arrayOfByte = new byte[this.d];
-    util.int8_to_buf(arrayOfByte, 0, paramInt);
-    util.int8_to_buf(arrayOfByte, 1, paramArrayOfByte.length);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 2, paramArrayOfByte.length);
-    util.int64_to_buf32(arrayOfByte, paramArrayOfByte.length + 2, paramLong);
-    return a(arrayOfByte);
+    byte[] arrayOfByte1 = new byte[this.d];
+    util.int8_to_buf(arrayOfByte1, 0, paramInt);
+    util.int8_to_buf(arrayOfByte1, 1, paramArrayOfByte.length);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 2, paramArrayOfByte.length);
+    util.int64_to_buf32(arrayOfByte1, paramArrayOfByte.length + 2, paramLong);
+    paramArrayOfByte = new tlv_t544().get_tlv_544("", "812_7", arrayOfByte1);
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramArrayOfByte.length];
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
+    return a(arrayOfByte2);
   }
 }
 

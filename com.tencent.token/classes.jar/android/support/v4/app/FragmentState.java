@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.token.bl;
-import com.tencent.token.cb;
-import com.tencent.token.cd;
-import com.tencent.token.cf;
-import com.tencent.token.cg;
+import com.tencent.token.bz;
+import com.tencent.token.cp;
+import com.tencent.token.cr;
+import com.tencent.token.ct;
+import com.tencent.token.cu;
 
 public final class FragmentState
   implements Parcelable
@@ -80,45 +80,45 @@ public final class FragmentState
     this.j = paramFragment.B;
   }
   
-  public final Fragment a(cd paramcd, cb paramcb, Fragment paramFragment, cg paramcg, bl parambl)
+  public final Fragment a(cr paramcr, cp paramcp, Fragment paramFragment, cu paramcu, bz parambz)
   {
     if (this.l == null)
     {
-      Context localContext = paramcd.c;
+      Context localContext = paramcr.c;
       Bundle localBundle = this.i;
       if (localBundle != null) {
         localBundle.setClassLoader(localContext.getClassLoader());
       }
-      if (paramcb != null) {
-        this.l = paramcb.a(localContext, this.a, this.i);
+      if (paramcp != null) {
+        this.l = paramcp.a(localContext, this.a, this.i);
       } else {
         this.l = Fragment.a(localContext, this.a, this.i);
       }
-      paramcb = this.k;
-      if (paramcb != null)
+      paramcp = this.k;
+      if (paramcp != null)
       {
-        paramcb.setClassLoader(localContext.getClassLoader());
+        paramcp.setClassLoader(localContext.getClassLoader());
         this.l.c = this.k;
       }
       this.l.a(this.b, paramFragment);
-      paramcb = this.l;
-      paramcb.n = this.c;
-      paramcb.p = true;
-      paramcb.y = this.d;
-      paramcb.z = this.e;
-      paramcb.A = this.f;
-      paramcb.D = this.g;
-      paramcb.C = this.h;
-      paramcb.B = this.j;
-      paramcb.s = paramcd.f;
-      if (cf.a) {
+      paramcp = this.l;
+      paramcp.n = this.c;
+      paramcp.p = true;
+      paramcp.y = this.d;
+      paramcp.z = this.e;
+      paramcp.A = this.f;
+      paramcp.D = this.g;
+      paramcp.C = this.h;
+      paramcp.B = this.j;
+      paramcp.s = paramcr.f;
+      if (ct.a) {
         new StringBuilder("Instantiated fragment ").append(this.l);
       }
     }
-    paramcd = this.l;
-    paramcd.v = paramcg;
-    paramcd.w = parambl;
-    return paramcd;
+    paramcr = this.l;
+    paramcr.v = paramcu;
+    paramcr.w = parambz;
+    return paramcr;
   }
   
   public final int describeContents()

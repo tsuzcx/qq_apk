@@ -6,13 +6,13 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class agp
 {
-  public static final String a = agg.a(agg.aE);
+  public static final String a = afz.a(afz.aE);
   
   public static String a(String paramString)
   {
     try
     {
-      Object localObject = agg.a(agg.aF);
+      Object localObject = afz.a(afz.aF);
       localCipher = Cipher.getInstance((String)localObject);
       localCipher.init(2, new SecretKeySpec(a.getBytes("UTF-8"), (String)localObject));
       if (TextUtils.isEmpty(paramString))

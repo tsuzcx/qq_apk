@@ -7,36 +7,36 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import com.tencent.token.zi;
+import com.tencent.token.zu;
 
 public class UtilsAccountLockTipDialog
   extends Dialog
 {
   private Handler a;
-  private zi b;
+  private zu b;
   private boolean c;
   
-  public UtilsAccountLockTipDialog(Context paramContext, Handler paramHandler, zi paramzi, boolean paramBoolean)
+  public UtilsAccountLockTipDialog(Context paramContext, Handler paramHandler, zu paramzu, boolean paramBoolean)
   {
     super(paramContext, 2131558791);
     this.a = paramHandler;
-    this.b = paramzi;
+    this.b = paramzu;
     this.c = paramBoolean;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296469);
+    setContentView(2131296482);
     getWindow().setBackgroundDrawableResource(2131099877);
-    findViewById(2131166219).setOnClickListener(new View.OnClickListener()
+    findViewById(2131166259).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         UtilsAccountLockTipDialog.this.dismiss();
       }
     });
-    findViewById(2131166220).setOnClickListener(new View.OnClickListener()
+    findViewById(2131166260).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {

@@ -1,622 +1,434 @@
 package com.tencent.token;
 
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.ComponentName;
-import android.content.ContentResolver;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
-import android.content.res.Resources.Theme;
-import android.database.Cursor;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.TextAppearanceSpan;
+import android.os.Build.VERSION;
+import android.text.method.PasswordTransformationMethod;
+import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.WeakHashMap;
+import java.lang.ref.WeakReference;
 
-public final class jd
-  extends ga
-  implements View.OnClickListener
+public class jd
 {
-  public int j = 1;
-  private final SearchManager k = (SearchManager)this.d.getSystemService("search");
-  private final SearchView l;
-  private final SearchableInfo m;
-  private final Context n;
-  private final WeakHashMap<String, Drawable.ConstantState> o;
-  private final int p;
-  private boolean q = false;
-  private ColorStateList r;
-  private int s = -1;
-  private int t = -1;
-  private int u = -1;
-  private int v = -1;
-  private int w = -1;
-  private int x = -1;
+  final TextView a;
+  public final jf b;
+  int c = 0;
+  Typeface d;
+  boolean e;
+  private ju f;
+  private ju g;
+  private ju h;
+  private ju i;
   
-  public jd(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
+  public jd(TextView paramTextView)
   {
-    super(paramContext, paramSearchView.getSuggestionRowLayout());
-    this.l = paramSearchView;
-    this.m = paramSearchableInfo;
-    this.p = paramSearchView.getSuggestionCommitIconResId();
-    this.n = paramContext;
-    this.o = paramWeakHashMap;
+    this.a = paramTextView;
+    this.b = new jf(this.a);
   }
   
-  private Drawable a(ComponentName paramComponentName)
+  public static jd a(TextView paramTextView)
   {
-    Object localObject = this.d.getPackageManager();
-    try
+    if (Build.VERSION.SDK_INT >= 17) {
+      return new je(paramTextView);
+    }
+    return new jd(paramTextView);
+  }
+  
+  protected static ju a(Context paramContext, iy paramiy, int paramInt)
+  {
+    paramContext = paramiy.b(paramContext, paramInt);
+    if (paramContext != null)
     {
-      ActivityInfo localActivityInfo = ((PackageManager)localObject).getActivityInfo(paramComponentName, 128);
-      int i = localActivityInfo.getIconResource();
-      if (i == 0) {
-        return null;
-      }
-      localObject = ((PackageManager)localObject).getDrawable(paramComponentName.getPackageName(), i, localActivityInfo.applicationInfo);
-      if (localObject == null)
+      paramiy = new ju();
+      paramiy.d = true;
+      paramiy.a = paramContext;
+      return paramiy;
+    }
+    return null;
+  }
+  
+  private void a(Context paramContext, jw paramjw)
+  {
+    this.c = paramjw.a(hg.j.TextAppearance_android_textStyle, this.c);
+    boolean bool2 = paramjw.f(hg.j.TextAppearance_android_fontFamily);
+    bool1 = true;
+    if ((!bool2) && (!paramjw.f(hg.j.TextAppearance_fontFamily)))
+    {
+      if (paramjw.f(hg.j.TextAppearance_android_typeface))
       {
-        localObject = new StringBuilder("Invalid icon resource ");
-        ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(" for ");
-        ((StringBuilder)localObject).append(paramComponentName.flattenToShortString());
-        return null;
+        this.e = false;
+        switch (paramjw.a(hg.j.TextAppearance_android_typeface, 1))
+        {
+        default: 
+          return;
+        case 3: 
+          this.d = Typeface.MONOSPACE;
+          return;
+        case 2: 
+          this.d = Typeface.SERIF;
+          return;
+        }
+        this.d = Typeface.SANS_SERIF;
+        return;
       }
-      return localObject;
-    }
-    catch (PackageManager.NameNotFoundException paramComponentName) {}
-    return null;
-  }
-  
-  private Drawable a(Uri paramUri)
-  {
-    try
-    {
-      boolean bool = "android.resource".equals(paramUri.getScheme());
-      if (!bool) {}
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      Object localObject1;
-      label22:
-      Drawable localDrawable;
-      label69:
-      label95:
-      localStringBuilder = new StringBuilder("Icon not found: ");
-      localStringBuilder.append(paramUri);
-      localStringBuilder.append(", ");
-      localStringBuilder.append(localFileNotFoundException.getMessage());
-      return null;
-    }
-    try
-    {
-      localObject1 = b(paramUri);
-      return localObject1;
-    }
-    catch (Resources.NotFoundException localNotFoundException)
-    {
-      break label22;
-    }
-    throw new FileNotFoundException("Resource does not exist: ".concat(String.valueOf(paramUri)));
-    localObject1 = this.n.getContentResolver().openInputStream(paramUri);
-    if (localObject1 != null) {
-      try
-      {
-        localDrawable = Drawable.createFromStream((InputStream)localObject1, null);
-      }
-      finally {}
-    }
-    try
-    {
-      ((InputStream)localObject1).close();
-      return localDrawable;
-    }
-    catch (IOException localIOException1)
-    {
-      break label69;
-    }
-    new StringBuilder("Error closing icon stream for ").append(paramUri);
-    return localDrawable;
-    try
-    {
-      ((InputStream)localObject1).close();
-    }
-    catch (IOException localIOException2)
-    {
-      StringBuilder localStringBuilder;
-      break label95;
-    }
-    new StringBuilder("Error closing icon stream for ").append(paramUri);
-    throw localObject2;
-    throw new FileNotFoundException("Failed to open ".concat(String.valueOf(paramUri)));
-  }
-  
-  private Drawable a(String paramString)
-  {
-    if ((paramString != null) && (!paramString.isEmpty())) {
-      if ("0".equals(paramString)) {
-        return null;
-      }
-    }
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      localObject = new StringBuilder("android.resource://");
-      ((StringBuilder)localObject).append(this.n.getPackageName());
-      ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(i);
-      localObject = ((StringBuilder)localObject).toString();
-      Drawable localDrawable = b((String)localObject);
-      if (localDrawable != null) {
-        return localDrawable;
-      }
-      localDrawable = cv.a(this.n, i);
-      a((String)localObject, localDrawable);
-      return localDrawable;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      Object localObject;
-      label102:
-      break label102;
-    }
-    catch (Resources.NotFoundException paramString) {}
-    localObject = b(paramString);
-    if (localObject != null) {
-      return localObject;
-    }
-    localObject = a(Uri.parse(paramString));
-    a(paramString, (Drawable)localObject);
-    return localObject;
-    return null;
-    return null;
-  }
-  
-  private static String a(Cursor paramCursor, int paramInt)
-  {
-    if (paramInt == -1) {
-      return null;
-    }
-    try
-    {
-      paramCursor = paramCursor.getString(paramInt);
-      return paramCursor;
-    }
-    catch (Exception paramCursor) {}
-    return null;
-  }
-  
-  public static String a(Cursor paramCursor, String paramString)
-  {
-    return a(paramCursor, paramCursor.getColumnIndex(paramString));
-  }
-  
-  private static void a(ImageView paramImageView, Drawable paramDrawable, int paramInt)
-  {
-    paramImageView.setImageDrawable(paramDrawable);
-    if (paramDrawable == null)
-    {
-      paramImageView.setVisibility(paramInt);
       return;
     }
-    paramImageView.setVisibility(0);
-    paramDrawable.setVisible(false, false);
-    paramDrawable.setVisible(true, false);
-  }
-  
-  private static void a(TextView paramTextView, CharSequence paramCharSequence)
-  {
-    paramTextView.setText(paramCharSequence);
-    if (TextUtils.isEmpty(paramCharSequence))
-    {
-      paramTextView.setVisibility(8);
-      return;
-    }
-    paramTextView.setVisibility(0);
-  }
-  
-  private void a(String paramString, Drawable paramDrawable)
-  {
-    if (paramDrawable != null) {
-      this.o.put(paramString, paramDrawable.getConstantState());
-    }
-  }
-  
-  private Drawable b(Uri paramUri)
-  {
-    String str = paramUri.getAuthority();
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      localResources = this.d.getPackageManager().getResourcesForApplication(str);
-      localList = paramUri.getPathSegments();
-      if (localList != null)
-      {
-        i = localList.size();
-        if (i != 1) {}
-      }
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      Resources localResources;
-      List localList;
-      int i;
-      label67:
-      break label184;
-    }
-    try
-    {
-      i = Integer.parseInt((String)localList.get(0));
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      break label67;
-    }
-    throw new FileNotFoundException("Single path segment is not a resource ID: ".concat(String.valueOf(paramUri)));
-    if (i == 2)
-    {
-      i = localResources.getIdentifier((String)localList.get(1), (String)localList.get(0), str);
-      if (i != 0) {
-        return localResources.getDrawable(i);
-      }
-      throw new FileNotFoundException("No resource found for: ".concat(String.valueOf(paramUri)));
-    }
-    throw new FileNotFoundException("More than two path segments: ".concat(String.valueOf(paramUri)));
-    throw new FileNotFoundException("No path: ".concat(String.valueOf(paramUri)));
-    label184:
-    throw new FileNotFoundException("No package found for authority: ".concat(String.valueOf(paramUri)));
-    throw new FileNotFoundException("No authority: ".concat(String.valueOf(paramUri)));
-  }
-  
-  private Drawable b(String paramString)
-  {
-    paramString = (Drawable.ConstantState)this.o.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.newDrawable();
-  }
-  
-  private static void c(Cursor paramCursor)
-  {
-    if (paramCursor != null) {
-      paramCursor = paramCursor.getExtras();
+    this.d = null;
+    int j;
+    if (paramjw.f(hg.j.TextAppearance_fontFamily)) {
+      j = hg.j.TextAppearance_fontFamily;
     } else {
-      paramCursor = null;
+      j = hg.j.TextAppearance_android_fontFamily;
     }
-    if ((paramCursor != null) && (paramCursor.getBoolean("in_progress"))) {}
-  }
-  
-  public final Cursor a(CharSequence paramCharSequence)
-  {
-    if (paramCharSequence == null) {
-      paramCharSequence = "";
-    } else {
-      paramCharSequence = paramCharSequence.toString();
-    }
-    if (this.l.getVisibility() == 0) {
-      if (this.l.getWindowVisibility() != 0) {
-        return null;
-      }
+    if (!paramContext.isRestricted()) {
+      paramContext = new do.a()
+      {
+        public final void a(Typeface paramAnonymousTypeface)
+        {
+          jd localjd = jd.this;
+          Object localObject = this.a;
+          if (localjd.e)
+          {
+            localjd.d = paramAnonymousTypeface;
+            localObject = (TextView)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((TextView)localObject).setTypeface(paramAnonymousTypeface, localjd.c);
+            }
+          }
+        }
+      };
     }
     try
     {
-      Object localObject2 = this.m;
-      if (localObject2 == null)
+      this.d = paramjw.a(j, this.c, paramContext);
+      if (this.d != null) {
+        break label242;
+      }
+    }
+    catch (UnsupportedOperationException|Resources.NotFoundException paramContext)
+    {
+      for (;;)
       {
-        paramCharSequence = null;
+        continue;
+        bool1 = false;
+      }
+    }
+    this.e = bool1;
+    if (this.d == null)
+    {
+      paramContext = paramjw.d(j);
+      if (paramContext != null) {
+        this.d = Typeface.create(paramContext, this.c);
+      }
+    }
+  }
+  
+  private void b(int paramInt, float paramFloat)
+  {
+    this.b.a(paramInt, paramFloat);
+  }
+  
+  public void a()
+  {
+    if ((this.f != null) || (this.g != null) || (this.h != null) || (this.i != null))
+    {
+      Drawable[] arrayOfDrawable = this.a.getCompoundDrawables();
+      a(arrayOfDrawable[0], this.f);
+      a(arrayOfDrawable[1], this.g);
+      a(arrayOfDrawable[2], this.h);
+      a(arrayOfDrawable[3], this.i);
+    }
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.b.a(paramInt);
+  }
+  
+  public final void a(int paramInt, float paramFloat)
+  {
+    if ((!gd.a) && (!this.b.d())) {
+      b(paramInt, paramFloat);
+    }
+  }
+  
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.b.a(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public final void a(Context paramContext, int paramInt)
+  {
+    jw localjw = jw.a(paramContext, paramInt, hg.j.TextAppearance);
+    if (localjw.f(hg.j.TextAppearance_textAllCaps)) {
+      a(localjw.a(hg.j.TextAppearance_textAllCaps, false));
+    }
+    if ((Build.VERSION.SDK_INT < 23) && (localjw.f(hg.j.TextAppearance_android_textColor)))
+    {
+      ColorStateList localColorStateList = localjw.e(hg.j.TextAppearance_android_textColor);
+      if (localColorStateList != null) {
+        this.a.setTextColor(localColorStateList);
+      }
+    }
+    a(paramContext, localjw);
+    localjw.a.recycle();
+    paramContext = this.d;
+    if (paramContext != null) {
+      this.a.setTypeface(paramContext, this.c);
+    }
+  }
+  
+  final void a(Drawable paramDrawable, ju paramju)
+  {
+    if ((paramDrawable != null) && (paramju != null)) {
+      iy.a(paramDrawable, paramju, this.a.getDrawableState());
+    }
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void a(AttributeSet paramAttributeSet, int paramInt)
+  {
+    Context localContext = this.a.getContext();
+    Object localObject1 = iy.a();
+    Object localObject2 = jw.a(localContext, paramAttributeSet, hg.j.AppCompatTextHelper, paramInt, 0);
+    int j = ((jw)localObject2).g(hg.j.AppCompatTextHelper_android_textAppearance, -1);
+    if (((jw)localObject2).f(hg.j.AppCompatTextHelper_android_drawableLeft)) {
+      this.f = a(localContext, (iy)localObject1, ((jw)localObject2).g(hg.j.AppCompatTextHelper_android_drawableLeft, 0));
+    }
+    if (((jw)localObject2).f(hg.j.AppCompatTextHelper_android_drawableTop)) {
+      this.g = a(localContext, (iy)localObject1, ((jw)localObject2).g(hg.j.AppCompatTextHelper_android_drawableTop, 0));
+    }
+    if (((jw)localObject2).f(hg.j.AppCompatTextHelper_android_drawableRight)) {
+      this.h = a(localContext, (iy)localObject1, ((jw)localObject2).g(hg.j.AppCompatTextHelper_android_drawableRight, 0));
+    }
+    if (((jw)localObject2).f(hg.j.AppCompatTextHelper_android_drawableBottom)) {
+      this.i = a(localContext, (iy)localObject1, ((jw)localObject2).g(hg.j.AppCompatTextHelper_android_drawableBottom, 0));
+    }
+    ((jw)localObject2).a.recycle();
+    boolean bool3 = this.a.getTransformationMethod() instanceof PasswordTransformationMethod;
+    Object localObject4 = null;
+    localObject2 = null;
+    boolean bool1;
+    Object localObject3;
+    if (j != -1)
+    {
+      localObject5 = jw.a(localContext, j, hg.j.TextAppearance);
+      if ((!bool3) && (((jw)localObject5).f(hg.j.TextAppearance_textAllCaps)))
+      {
+        bool1 = ((jw)localObject5).a(hg.j.TextAppearance_textAllCaps, false);
+        j = 1;
       }
       else
       {
-        Object localObject1 = ((SearchableInfo)localObject2).getSuggestAuthority();
-        if (localObject1 == null)
+        j = 0;
+        bool1 = false;
+      }
+      a(localContext, (jw)localObject5);
+      if (Build.VERSION.SDK_INT < 23)
+      {
+        if (((jw)localObject5).f(hg.j.TextAppearance_android_textColor)) {
+          localObject1 = ((jw)localObject5).e(hg.j.TextAppearance_android_textColor);
+        } else {
+          localObject1 = null;
+        }
+        if (((jw)localObject5).f(hg.j.TextAppearance_android_textColorHint)) {
+          localObject3 = ((jw)localObject5).e(hg.j.TextAppearance_android_textColorHint);
+        } else {
+          localObject3 = null;
+        }
+        if (((jw)localObject5).f(hg.j.TextAppearance_android_textColorLink))
         {
-          paramCharSequence = null;
+          localObject4 = ((jw)localObject5).e(hg.j.TextAppearance_android_textColorLink);
+          localObject2 = localObject1;
+          localObject1 = localObject4;
+          localObject4 = localObject3;
         }
         else
         {
-          localObject1 = new Uri.Builder().scheme("content").authority((String)localObject1).query("").fragment("");
-          String str = ((SearchableInfo)localObject2).getSuggestPath();
-          if (str != null) {
-            ((Uri.Builder)localObject1).appendEncodedPath(str);
-          }
-          ((Uri.Builder)localObject1).appendPath("search_suggest_query");
-          localObject2 = ((SearchableInfo)localObject2).getSuggestSelection();
-          if (localObject2 != null)
-          {
-            paramCharSequence = new String[] { paramCharSequence };
-          }
-          else
-          {
-            ((Uri.Builder)localObject1).appendPath(paramCharSequence);
-            paramCharSequence = null;
-          }
-          ((Uri.Builder)localObject1).appendQueryParameter("limit", "50");
-          localObject1 = ((Uri.Builder)localObject1).build();
-          paramCharSequence = this.d.getContentResolver().query((Uri)localObject1, null, (String)localObject2, paramCharSequence, null);
+          localObject4 = null;
+          localObject2 = localObject1;
+          localObject1 = localObject4;
+          localObject4 = localObject3;
         }
       }
-      if (paramCharSequence != null)
+      else
       {
-        paramCharSequence.getCount();
-        return paramCharSequence;
+        localObject1 = null;
+        localObject4 = localObject1;
       }
-      return null;
+      ((jw)localObject5).a.recycle();
+      localObject3 = localObject1;
+      localObject1 = localObject4;
     }
-    catch (RuntimeException paramCharSequence) {}
-    return null;
-    return null;
-  }
-  
-  public final View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
-  {
-    paramContext = super.a(paramContext, paramCursor, paramViewGroup);
-    paramContext.setTag(new a(paramContext));
-    ((ImageView)paramContext.findViewById(gs.f.edit_query)).setImageResource(this.p);
-    return paramContext;
-  }
-  
-  public final void a(Cursor paramCursor)
-  {
-    if (this.q)
+    else
     {
-      if (paramCursor != null) {
-        paramCursor.close();
-      }
-      return;
+      localObject3 = null;
+      localObject1 = localObject3;
+      j = 0;
+      bool1 = false;
+      localObject2 = localObject4;
     }
-    try
+    jw localjw = jw.a(localContext, paramAttributeSet, hg.j.TextAppearance, paramInt, 0);
+    int k = j;
+    boolean bool2 = bool1;
+    if (!bool3)
     {
-      super.a(paramCursor);
-      if (paramCursor != null)
+      k = j;
+      bool2 = bool1;
+      if (localjw.f(hg.j.TextAppearance_textAllCaps))
       {
-        this.s = paramCursor.getColumnIndex("suggest_text_1");
-        this.t = paramCursor.getColumnIndex("suggest_text_2");
-        this.u = paramCursor.getColumnIndex("suggest_text_2_url");
-        this.v = paramCursor.getColumnIndex("suggest_icon_1");
-        this.w = paramCursor.getColumnIndex("suggest_icon_2");
-        this.x = paramCursor.getColumnIndex("suggest_flags");
+        bool2 = localjw.a(hg.j.TextAppearance_textAllCaps, false);
+        k = 1;
       }
-      return;
     }
-    catch (Exception paramCursor) {}
-  }
-  
-  public final void a(View paramView, Cursor paramCursor)
-  {
-    a locala = (a)paramView.getTag();
-    int i = this.x;
-    if (i != -1) {
-      i = paramCursor.getInt(i);
+    Object localObject5 = localObject2;
+    Object localObject6 = localObject3;
+    localObject4 = localObject1;
+    if (Build.VERSION.SDK_INT < 23)
+    {
+      if (localjw.f(hg.j.TextAppearance_android_textColor)) {
+        localObject2 = localjw.e(hg.j.TextAppearance_android_textColor);
+      }
+      if (localjw.f(hg.j.TextAppearance_android_textColorHint)) {
+        localObject1 = localjw.e(hg.j.TextAppearance_android_textColorHint);
+      }
+      localObject5 = localObject2;
+      localObject6 = localObject3;
+      localObject4 = localObject1;
+      if (localjw.f(hg.j.TextAppearance_android_textColorLink))
+      {
+        localObject6 = localjw.e(hg.j.TextAppearance_android_textColorLink);
+        localObject4 = localObject1;
+        localObject5 = localObject2;
+      }
+    }
+    a(localContext, localjw);
+    localjw.a.recycle();
+    if (localObject5 != null) {
+      this.a.setTextColor((ColorStateList)localObject5);
+    }
+    if (localObject4 != null) {
+      this.a.setHintTextColor((ColorStateList)localObject4);
+    }
+    if (localObject6 != null) {
+      this.a.setLinkTextColor((ColorStateList)localObject6);
+    }
+    if ((!bool3) && (k != 0)) {
+      a(bool2);
+    }
+    localObject1 = this.d;
+    if (localObject1 != null) {
+      this.a.setTypeface((Typeface)localObject1, this.c);
+    }
+    localObject1 = this.b;
+    paramAttributeSet = ((jf)localObject1).g.obtainStyledAttributes(paramAttributeSet, hg.j.AppCompatTextView, paramInt, 0);
+    if (paramAttributeSet.hasValue(hg.j.AppCompatTextView_autoSizeTextType)) {
+      ((jf)localObject1).a = paramAttributeSet.getInt(hg.j.AppCompatTextView_autoSizeTextType, 0);
+    }
+    float f1;
+    if (paramAttributeSet.hasValue(hg.j.AppCompatTextView_autoSizeStepGranularity)) {
+      f1 = paramAttributeSet.getDimension(hg.j.AppCompatTextView_autoSizeStepGranularity, -1.0F);
     } else {
-      i = 0;
+      f1 = -1.0F;
     }
-    if (locala.a != null)
-    {
-      paramView = a(paramCursor, this.s);
-      a(locala.a, paramView);
+    float f2;
+    if (paramAttributeSet.hasValue(hg.j.AppCompatTextView_autoSizeMinTextSize)) {
+      f2 = paramAttributeSet.getDimension(hg.j.AppCompatTextView_autoSizeMinTextSize, -1.0F);
+    } else {
+      f2 = -1.0F;
     }
-    if (locala.b != null)
-    {
-      str1 = a(paramCursor, this.u);
-      if (str1 != null)
-      {
-        if (this.r == null)
-        {
-          paramView = new TypedValue();
-          this.d.getTheme().resolveAttribute(gs.a.textColorSearchUrl, paramView, true);
-          this.r = this.d.getResources().getColorStateList(paramView.resourceId);
-        }
-        paramView = new SpannableString(str1);
-        paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.r, null), 0, str1.length(), 33);
-      }
-      else
-      {
-        paramView = a(paramCursor, this.t);
-      }
-      if (TextUtils.isEmpty(paramView))
-      {
-        if (locala.a != null)
-        {
-          locala.a.setSingleLine(false);
-          locala.a.setMaxLines(2);
-        }
-      }
-      else if (locala.a != null)
-      {
-        locala.a.setSingleLine(true);
-        locala.a.setMaxLines(1);
-      }
-      a(locala.b, paramView);
+    float f3;
+    if (paramAttributeSet.hasValue(hg.j.AppCompatTextView_autoSizeMaxTextSize)) {
+      f3 = paramAttributeSet.getDimension(hg.j.AppCompatTextView_autoSizeMaxTextSize, -1.0F);
+    } else {
+      f3 = -1.0F;
     }
-    paramView = locala.c;
-    String str1 = null;
-    Object localObject;
-    if (paramView != null)
+    if (paramAttributeSet.hasValue(hg.j.AppCompatTextView_autoSizePresetSizes))
     {
-      ImageView localImageView = locala.c;
-      i1 = this.v;
-      if (i1 == -1)
+      paramInt = paramAttributeSet.getResourceId(hg.j.AppCompatTextView_autoSizePresetSizes, 0);
+      if (paramInt > 0)
       {
-        paramView = null;
-      }
-      else
-      {
-        paramView = a(paramCursor.getString(i1));
-        if (paramView == null)
+        localObject2 = paramAttributeSet.getResources().obtainTypedArray(paramInt);
+        j = ((TypedArray)localObject2).length();
+        localObject3 = new int[j];
+        if (j > 0)
         {
-          paramView = this.m.getSearchActivity();
-          String str2 = paramView.flattenToShortString();
-          if (this.o.containsKey(str2))
+          paramInt = 0;
+          while (paramInt < j)
           {
-            paramView = (Drawable.ConstantState)this.o.get(str2);
-            if (paramView == null) {
-              paramView = null;
-            } else {
-              paramView = paramView.newDrawable(this.n.getResources());
-            }
+            localObject3[paramInt] = ((TypedArray)localObject2).getDimensionPixelSize(paramInt, -1);
+            paramInt += 1;
           }
-          else
-          {
-            localObject = a(paramView);
-            if (localObject == null) {
-              paramView = null;
-            } else {
-              paramView = ((Drawable)localObject).getConstantState();
-            }
-            this.o.put(str2, paramView);
-            paramView = (View)localObject;
-          }
-          if (paramView == null) {
-            paramView = this.d.getPackageManager().getDefaultActivityIcon();
-          }
+          ((jf)localObject1).e = jf.a((int[])localObject3);
+          ((jf)localObject1).a();
         }
-      }
-      a(localImageView, paramView, 4);
-    }
-    if (locala.d != null)
-    {
-      localObject = locala.d;
-      i1 = this.w;
-      if (i1 == -1) {
-        paramView = str1;
-      } else {
-        paramView = a(paramCursor.getString(i1));
-      }
-      a((ImageView)localObject, paramView, 8);
-    }
-    int i1 = this.j;
-    if ((i1 != 2) && ((i1 != 1) || ((i & 0x1) == 0)))
-    {
-      locala.e.setVisibility(8);
-      return;
-    }
-    locala.e.setVisibility(0);
-    locala.e.setTag(locala.a.getText());
-    locala.e.setOnClickListener(this);
-  }
-  
-  public final CharSequence b(Cursor paramCursor)
-  {
-    if (paramCursor == null) {
-      return null;
-    }
-    String str = a(paramCursor, "suggest_intent_query");
-    if (str != null) {
-      return str;
-    }
-    if (this.m.shouldRewriteQueryFromData())
-    {
-      str = a(paramCursor, "suggest_intent_data");
-      if (str != null) {
-        return str;
+        ((TypedArray)localObject2).recycle();
       }
     }
-    if (this.m.shouldRewriteQueryFromText())
+    paramAttributeSet.recycle();
+    if (((jf)localObject1).e())
     {
-      paramCursor = a(paramCursor, "suggest_text_1");
-      if (paramCursor != null) {
-        return paramCursor;
+      if (((jf)localObject1).a == 1)
+      {
+        if (!((jf)localObject1).f)
+        {
+          paramAttributeSet = ((jf)localObject1).g.getResources().getDisplayMetrics();
+          float f4 = f2;
+          if (f2 == -1.0F) {
+            f4 = TypedValue.applyDimension(2, 12.0F, paramAttributeSet);
+          }
+          f2 = f3;
+          if (f3 == -1.0F) {
+            f2 = TypedValue.applyDimension(2, 112.0F, paramAttributeSet);
+          }
+          f3 = f1;
+          if (f1 == -1.0F) {
+            f3 = 1.0F;
+          }
+          ((jf)localObject1).a(f4, f2, f3);
+        }
+        ((jf)localObject1).b();
       }
     }
-    return null;
-  }
-  
-  public final View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    try
-    {
-      paramView = super.getDropDownView(paramInt, paramView, paramViewGroup);
-      return paramView;
+    else {
+      ((jf)localObject1).a = 0;
     }
-    catch (RuntimeException paramView)
+    if ((gd.a) && (this.b.a != 0))
     {
-      paramViewGroup = b(this.d, this.c, paramViewGroup);
-      if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).a.setText(paramView.toString());
+      paramAttributeSet = this.b.e;
+      if (paramAttributeSet.length > 0)
+      {
+        if (this.a.getAutoSizeStepGranularity() != -1.0F)
+        {
+          this.a.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.b.c), Math.round(this.b.d), Math.round(this.b.b), 0);
+          return;
+        }
+        this.a.setAutoSizeTextTypeUniformWithPresetSizes(paramAttributeSet, 0);
       }
     }
-    return paramViewGroup;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final void a(boolean paramBoolean)
   {
-    try
-    {
-      paramView = super.getView(paramInt, paramView, paramViewGroup);
-      return paramView;
-    }
-    catch (RuntimeException paramView)
-    {
-      paramViewGroup = a(this.d, this.c, paramViewGroup);
-      if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).a.setText(paramView.toString());
-      }
-    }
-    return paramViewGroup;
+    this.a.setAllCaps(paramBoolean);
   }
   
-  public final boolean hasStableIds()
+  public final void a(int[] paramArrayOfInt, int paramInt)
   {
-    return false;
+    this.b.a(paramArrayOfInt, paramInt);
   }
   
-  public final void notifyDataSetChanged()
+  public final void b()
   {
-    super.notifyDataSetChanged();
-    c(a());
-  }
-  
-  public final void notifyDataSetInvalidated()
-  {
-    super.notifyDataSetInvalidated();
-    c(a());
-  }
-  
-  public final void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    if ((paramView instanceof CharSequence)) {
-      this.l.setQuery((CharSequence)paramView);
-    }
-  }
-  
-  static final class a
-  {
-    public final TextView a;
-    public final TextView b;
-    public final ImageView c;
-    public final ImageView d;
-    public final ImageView e;
-    
-    public a(View paramView)
-    {
-      this.a = ((TextView)paramView.findViewById(16908308));
-      this.b = ((TextView)paramView.findViewById(16908309));
-      this.c = ((ImageView)paramView.findViewById(16908295));
-      this.d = ((ImageView)paramView.findViewById(16908296));
-      this.e = ((ImageView)paramView.findViewById(gs.f.edit_query));
+    if (!gd.a) {
+      this.b.c();
     }
   }
 }

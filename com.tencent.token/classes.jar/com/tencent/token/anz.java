@@ -1,20 +1,60 @@
 package com.tencent.token;
 
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public final class anz
-  extends anw<PointF>
+  extends aok
 {
-  private final PointF c = new PointF();
-  private final float[] d = new float[2];
-  private any e;
-  private PathMeasure f;
+  public aok a;
   
-  public anz(List<? extends anv<PointF>> paramList)
+  public anz(aok paramaok)
   {
-    super(paramList);
+    if (paramaok != null)
+    {
+      this.a = paramaok;
+      return;
+    }
+    throw new IllegalArgumentException("delegate == null");
+  }
+  
+  public final aok a(long paramLong)
+  {
+    return this.a.a(paramLong);
+  }
+  
+  public final aok a(long paramLong, TimeUnit paramTimeUnit)
+  {
+    return this.a.a(paramLong, paramTimeUnit);
+  }
+  
+  public final long c()
+  {
+    return this.a.c();
+  }
+  
+  public final aok d()
+  {
+    return this.a.d();
+  }
+  
+  public final long e_()
+  {
+    return this.a.e_();
+  }
+  
+  public final void f()
+  {
+    this.a.f();
+  }
+  
+  public final boolean f_()
+  {
+    return this.a.f_();
+  }
+  
+  public final aok g_()
+  {
+    return this.a.g_();
   }
 }
 

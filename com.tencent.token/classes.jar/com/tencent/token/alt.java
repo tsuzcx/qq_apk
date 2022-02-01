@@ -1,10 +1,9 @@
 package com.tencent.token;
 
-import java.io.IOException;
-
-public final class alt
-  extends IOException
-{}
+public abstract interface alt
+{
+  public abstract aoi a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

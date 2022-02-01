@@ -1,278 +1,88 @@
 package com.tencent.token;
 
 import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewParent;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import java.lang.reflect.Field;
 
 public final class fc
 {
-  static final c a = new c();
+  static final b a = new b();
+  private static Field b;
+  private static boolean c;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
-    {
-      a = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
     {
       a = new a();
       return;
     }
   }
   
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt)
+  static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if ((paramViewParent instanceof ev))
+    if (!c) {}
+    try
     {
-      ((ev)paramViewParent).c(paramInt);
+      localObject = LayoutInflater.class.getDeclaredField("mFactory2");
+      b = (Field)localObject;
+      ((Field)localObject).setAccessible(true);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      Object localObject;
+      label26:
+      break label26;
+    }
+    localObject = new StringBuilder("forceSetFactory2 Could not find field 'mFactory2' on class ");
+    ((StringBuilder)localObject).append(LayoutInflater.class.getName());
+    ((StringBuilder)localObject).append("; inflation may have unexpected results.");
+    c = true;
+    localObject = b;
+    if (localObject != null) {}
+    try
+    {
+      ((Field)localObject).set(paramLayoutInflater, paramFactory2);
       return;
     }
-    if (paramInt == 0) {
-      a.a(paramViewParent, paramView);
-    }
-  }
-  
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    if ((paramViewParent instanceof ev))
+    catch (IllegalAccessException paramFactory2)
     {
-      ((ev)paramViewParent).d(paramInt5);
-      return;
+      label72:
+      break label72;
     }
-    if (paramInt5 == 0) {
-      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
+    paramFactory2 = new StringBuilder("forceSetFactory2 could not set the Factory2 on LayoutInflater ");
+    paramFactory2.append(paramLayoutInflater);
+    paramFactory2.append("; inflation may have unexpected results.");
   }
   
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public static void b(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if ((paramViewParent instanceof ev))
+    a.a(paramLayoutInflater, paramFactory2);
+  }
+  
+  static final class a
+    extends fc.b
+  {
+    public final void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
     {
-      ((ev)paramViewParent).a(paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      return;
-    }
-    if (paramInt3 == 0) {
-      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramArrayOfInt);
+      paramLayoutInflater.setFactory2(paramFactory2);
     }
   }
   
-  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
+  static class b
   {
-    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2);
-  }
-  
-  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2, paramBoolean);
-  }
-  
-  public static boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
-  {
-    if ((paramViewParent instanceof ev)) {
-      return ((ev)paramViewParent).b(paramInt2);
-    }
-    if (paramInt2 == 0) {
-      return a.a(paramViewParent, paramView1, paramView2, paramInt1);
-    }
-    return false;
-  }
-  
-  public static void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
-  {
-    if ((paramViewParent instanceof ev))
+    public void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
     {
-      ((ev)paramViewParent).a(paramView2, paramInt1);
-      return;
-    }
-    if (paramInt2 == 0) {
-      a.b(paramViewParent, paramView1, paramView2, paramInt1);
-    }
-  }
-  
-  static class a
-    extends fc.c
-  {}
-  
-  static final class b
-    extends fc.a
-  {
-    public final void a(ViewParent paramViewParent, View paramView)
-    {
-      try
+      paramLayoutInflater.setFactory2(paramFactory2);
+      LayoutInflater.Factory localFactory = paramLayoutInflater.getFactory();
+      if ((localFactory instanceof LayoutInflater.Factory2))
       {
-        paramViewParent.onStopNestedScroll(paramView);
+        fc.a(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
         return;
       }
-      catch (AbstractMethodError paramView)
-      {
-        label8:
-        break label8;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onStopNestedScroll");
-    }
-    
-    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      try
-      {
-        paramViewParent.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-        return;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label15:
-        break label15;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedScroll");
-    }
-    
-    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
-    {
-      try
-      {
-        paramViewParent.onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
-        return;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label13:
-        break label13;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedPreScroll");
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
-    {
-      try
-      {
-        boolean bool = paramViewParent.onNestedPreFling(paramView, paramFloat1, paramFloat2);
-        return bool;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label15:
-        break label15;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedPreFling");
-      return false;
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-    {
-      try
-      {
-        paramBoolean = paramViewParent.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-        return paramBoolean;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label17:
-        break label17;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedFling");
-      return false;
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      try
-      {
-        boolean bool = paramViewParent.onStartNestedScroll(paramView1, paramView2, paramInt);
-        return bool;
-      }
-      catch (AbstractMethodError paramView1)
-      {
-        label15:
-        break label15;
-      }
-      paramView1 = new StringBuilder("ViewParent ");
-      paramView1.append(paramViewParent);
-      paramView1.append(" does not implement interface method onStartNestedScroll");
-      return false;
-    }
-    
-    public final void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      try
-      {
-        paramViewParent.onNestedScrollAccepted(paramView1, paramView2, paramInt);
-        return;
-      }
-      catch (AbstractMethodError paramView1)
-      {
-        label11:
-        break label11;
-      }
-      paramView1 = new StringBuilder("ViewParent ");
-      paramView1.append(paramViewParent);
-      paramView1.append(" does not implement interface method onNestedScrollAccepted");
-    }
-  }
-  
-  static class c
-  {
-    public void a(ViewParent paramViewParent, View paramView)
-    {
-      if ((paramViewParent instanceof eu)) {
-        ((eu)paramViewParent).onStopNestedScroll(paramView);
-      }
-    }
-    
-    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      if ((paramViewParent instanceof eu)) {
-        ((eu)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      }
-    }
-    
-    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
-    {
-      if ((paramViewParent instanceof eu)) {
-        ((eu)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
-      }
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
-    {
-      if ((paramViewParent instanceof eu)) {
-        return ((eu)paramViewParent).onNestedPreFling(paramView, paramFloat1, paramFloat2);
-      }
-      return false;
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-    {
-      if ((paramViewParent instanceof eu)) {
-        return ((eu)paramViewParent).onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-      }
-      return false;
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      if ((paramViewParent instanceof eu)) {
-        return ((eu)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt);
-      }
-      return false;
-    }
-    
-    public void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      if ((paramViewParent instanceof eu)) {
-        ((eu)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt);
-      }
+      fc.a(paramLayoutInflater, paramFactory2);
     }
   }
 }

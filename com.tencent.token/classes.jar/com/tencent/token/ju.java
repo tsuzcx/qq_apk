@@ -1,33 +1,21 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-public final class ju
-  extends JceStruct
+final class ju
 {
-  public long a = 0L;
-  public long b = 0L;
+  public ColorStateList a;
+  public PorterDuff.Mode b;
+  public boolean c;
+  public boolean d;
   
-  public ju() {}
-  
-  public ju(long paramLong1, long paramLong2)
+  final void a()
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public final void readFrom(JceInputStream paramJceInputStream)
-  {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-  }
-  
-  public final void writeTo(JceOutputStream paramJceOutputStream)
-  {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
+    this.a = null;
+    this.d = false;
+    this.b = null;
+    this.c = false;
   }
 }
 

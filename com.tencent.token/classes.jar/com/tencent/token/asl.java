@@ -3,11 +3,11 @@ package com.tencent.token;
 final class asl
   implements Runnable
 {
-  asl(asj paramasj, asi paramasi, Integer paramInteger1, Integer paramInteger2) {}
+  asl(atm paramatm, ata paramata) {}
   
   public final void run()
   {
-    this.a.f.a(this.a.g, this.a.b, this.b.intValue(), this.c.intValue(), this.a.d);
+    atm.a(this.b, this.a);
   }
 }
 

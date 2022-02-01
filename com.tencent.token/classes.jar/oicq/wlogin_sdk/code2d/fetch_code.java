@@ -1,12 +1,12 @@
 package oicq.wlogin_sdk.code2d;
 
 import java.util.ArrayList;
-import oicq.wlogin_sdk.request.t;
+import oicq.wlogin_sdk.request.u;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.util;
 
 public class fetch_code
-  extends b
+  extends c
 {
   public fetch_code()
   {
@@ -60,36 +60,36 @@ public class fetch_code
                   if (i == 53)
                   {
                     localObject1 = new byte[4];
-                    util.int32_to_buf((byte[])localObject1, 0, t.au);
+                    util.int32_to_buf((byte[])localObject1, 0, u.aA);
                     i = 4;
                     break label633;
                   }
                 }
                 else
                 {
-                  localObject1 = (byte[])t.A.clone();
+                  localObject1 = (byte[])u.B.clone();
                   i = localObject1.length;
                   break label633;
                 }
               }
               else
               {
-                i = t.K.length + 3 + 2 + t.J.length + 2 + 2 + t.C.length + 2 + 0 + 2 + t.F.length;
+                i = u.L.length + 3 + 2 + u.K.length + 2 + 2 + u.D.length + 2 + 0 + 2 + u.G.length;
                 localObject1 = new byte[i];
                 localObject2 = new StringBuilder("os ");
-                ((StringBuilder)localObject2).append(new String(t.K));
+                ((StringBuilder)localObject2).append(new String(u.L));
                 ((StringBuilder)localObject2).append(" sim info ");
-                ((StringBuilder)localObject2).append(new String(t.C));
+                ((StringBuilder)localObject2).append(new String(u.D));
                 ((StringBuilder)localObject2).append(" apn ");
-                ((StringBuilder)localObject2).append(new String(t.F));
+                ((StringBuilder)localObject2).append(new String(u.G));
                 util.LOGI(((StringBuilder)localObject2).toString(), "");
-                util.int8_to_buf((byte[])localObject1, 0, t.Z);
-                int m = fill_staff((byte[])localObject1, t.K, 1);
-                m = fill_staff((byte[])localObject1, t.J, m);
-                util.int16_to_buf((byte[])localObject1, m, t.D);
-                m = fill_staff((byte[])localObject1, t.C, m + 2);
+                util.int8_to_buf((byte[])localObject1, 0, u.ab);
+                int m = fill_staff((byte[])localObject1, u.L, 1);
+                m = fill_staff((byte[])localObject1, u.K, m);
+                util.int16_to_buf((byte[])localObject1, m, u.E);
+                m = fill_staff((byte[])localObject1, u.D, m + 2);
                 m = fill_staff((byte[])localObject1, new byte[0], m);
-                fill_staff((byte[])localObject1, t.F, m);
+                fill_staff((byte[])localObject1, u.G, m);
                 break label633;
               }
             }
@@ -182,8 +182,8 @@ public class fetch_code
         return _status.b;
       }
       int i = util.buf_to_int16(paramArrayOfByte, 7);
-      c.i = new byte[i];
-      System.arraycopy(paramArrayOfByte, 9, c.i, 0, i);
+      d.i = new byte[i];
+      System.arraycopy(paramArrayOfByte, 9, d.i, 0, i);
       i += 9;
       int k = util.buf_to_int16(paramArrayOfByte, i);
       i += 2;

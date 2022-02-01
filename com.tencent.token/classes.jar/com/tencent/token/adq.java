@@ -1,8 +1,10 @@
 package com.tencent.token;
 
+import android.view.View;
+
 public abstract interface adq
 {
-  public abstract boolean a();
+  public abstract void a(String paramString, View paramView);
 }
 
 

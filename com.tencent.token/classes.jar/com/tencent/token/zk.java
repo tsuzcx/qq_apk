@@ -1,118 +1,88 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.token.global.RqdApplication;
-import java.io.File;
+import android.app.Dialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.FacePwdIndexActivity;
+import java.util.List;
 
-public class zk
+public final class zk
+  extends BaseAdapter
 {
-  private static zk c;
-  public zo a;
-  private String b;
+  private List<QQUser> a;
+  private Dialog b;
+  private LayoutInflater c;
+  private FacePwdIndexActivity d;
   
-  public static File a(String paramString)
+  public zk(FacePwdIndexActivity paramFacePwdIndexActivity, Dialog paramDialog, List<QQUser> paramList)
   {
-    File localFile = RqdApplication.b().getExternalFilesDir(null);
-    if (localFile != null)
-    {
-      paramString = new File(localFile, paramString);
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return paramString;
+    this.c = LayoutInflater.from(paramFacePwdIndexActivity);
+    this.b = paramDialog;
+    this.a = paramList;
+    this.d = paramFacePwdIndexActivity;
+  }
+  
+  public final int getCount()
+  {
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
     }
+    return localList.size();
+  }
+  
+  public final Object getItem(int paramInt)
+  {
     return null;
   }
   
-  public static String b()
+  public final long getItemId(int paramInt)
   {
-    return "gallerymanager_102322.apk";
+    return 0L;
   }
   
-  public static zk g()
+  public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
   {
-    if (c == null) {
-      try
-      {
-        if (c == null) {
-          c = new zk();
-        }
-      }
-      finally {}
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.c.inflate(2131296338, paramViewGroup, false);
     }
-    return c;
-  }
-  
-  public final void a()
-  {
-    zo localzo = this.a;
-    if (localzo == null) {
-      return;
+    paramView = localView.findViewById(2131165460);
+    if (paramInt == getCount() - 1) {
+      paramView.setVisibility(4);
+    } else {
+      paramView.setVisibility(0);
     }
-    localzo.a();
-  }
-  
-  public final void c()
-  {
-    zo localzo = this.a;
-    if (localzo == null) {
-      return;
-    }
-    localzo.b();
-  }
-  
-  public final boolean d()
-  {
-    try
+    paramView = (TextView)localView.findViewById(2131166115);
+    paramViewGroup = this.a;
+    if (paramViewGroup != null)
     {
-      boolean bool = new File(f(), "gallerymanager_102322.apk").exists();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public final String e()
-  {
-    try
-    {
-      String str = new File(f(), "gallerymanager_102322.apk").getAbsolutePath();
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
-  }
-  
-  public final String f()
-  {
-    if (TextUtils.isEmpty(this.b))
-    {
-      File localFile = a("gallerymanager");
-      if (localFile != null)
+      paramViewGroup = (QQUser)paramViewGroup.get(paramInt);
+      if (paramViewGroup != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localFile.getAbsolutePath());
-        localStringBuilder.append(File.separator);
-        this.b = localStringBuilder.toString();
+        localStringBuilder.append(paramViewGroup.mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(aay.e(paramViewGroup.mRealUin));
+        localStringBuilder.append(")");
+        paramView.setText(localStringBuilder.toString());
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            aaz.b(paramViewGroup.mRealUin);
+            zk.a(zk.this).dismiss();
+            zk.b(zk.this).refreshList();
+          }
+        });
       }
     }
-    return this.b;
-  }
-  
-  public final boolean h()
-  {
-    zo localzo = this.a;
-    if (localzo == null) {
-      return false;
-    }
-    return localzo.a;
+    return localView;
   }
 }
 

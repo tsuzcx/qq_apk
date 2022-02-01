@@ -1,27 +1,30 @@
 package com.tencent.token;
 
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-
 public final class akh
 {
-  private static final Pattern a = Pattern.compile("([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)/([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)");
-  private static final Pattern b = Pattern.compile(";\\s*(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)=(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)|\"([^\"]*)\"))?");
-  private final String c;
+  private static aki a;
   
-  public final boolean equals(@Nullable Object paramObject)
+  public static aki a()
   {
-    return ((paramObject instanceof akh)) && (((akh)paramObject).c.equals(this.c));
-  }
-  
-  public final int hashCode()
-  {
-    return this.c.hashCode();
-  }
-  
-  public final String toString()
-  {
-    return this.c;
+    if (a == null)
+    {
+      aki localaki = new aki();
+      a = localaki;
+      int i;
+      if ((!localaki.d) && (!localaki.c))
+      {
+        localaki.c = true;
+        i = 0;
+      }
+      while (i < localaki.b)
+      {
+        localaki.a[i].start();
+        i += 1;
+        continue;
+        throw new IllegalStateException("HttpCommunicator already in using or disposed!");
+      }
+    }
+    return a;
   }
 }
 

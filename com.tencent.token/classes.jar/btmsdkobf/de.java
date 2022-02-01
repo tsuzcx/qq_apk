@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
-import com.tencent.token.aqo;
+import com.tencent.token.arm;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -317,7 +317,7 @@ public class de
       return true;
     }
     boolean bool1;
-    if ((!((v)localObject).aQ) && (aqo.d != NetworkUtil.getNetworkType()))
+    if ((!((v)localObject).aQ) && (arm.d != NetworkUtil.getNetworkType()))
     {
       eh.i("SharkTcpControler", "[tcp_control][shark_conf] shouldKeepAlive(), not allow in none wifi! timing: ".concat(String.valueOf(paramString)));
       bool1 = false;

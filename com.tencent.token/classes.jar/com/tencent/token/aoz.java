@@ -1,33 +1,17 @@
 package com.tencent.token;
 
-import java.util.Arrays;
+import android.graphics.Path;
 import java.util.List;
 
 public final class aoz
-  implements aov
+  extends aoq<apw, Path>
 {
-  final String a;
-  final List<aov> b;
+  private final apw c = new apw();
+  private final Path d = new Path();
   
-  public aoz(String paramString, List<aov> paramList)
+  public aoz(List<aot<apw>> paramList)
   {
-    this.a = paramString;
-    this.b = paramList;
-  }
-  
-  public final aqc a(auv paramauv, apb paramapb)
-  {
-    return new aqd(paramauv, paramapb, this);
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("ShapeGroup{name='");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append("' Shapes: ");
-    localStringBuilder.append(Arrays.toString(this.b.toArray()));
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    super(paramList);
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.wcdb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.token.ahm;
+import com.tencent.token.aim;
 
 public final class BulkCursorDescriptor
   implements Parcelable
 {
   public static final Parcelable.Creator<BulkCursorDescriptor> CREATOR = new Parcelable.Creator() {};
-  public ahm a;
+  public aim a;
   public String[] b;
   public boolean c;
   public int d;

@@ -1,31 +1,23 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import java.util.List;
 
 public final class aqh
-  extends JceStruct
 {
-  public String a = "";
-  public String b = "";
-  public int c = 0;
-  public int d = 0;
+  final List<apx> a;
+  final double b;
+  private final char c;
+  private final String d;
+  private final String e;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public static int a(char paramChar, String paramString1, String paramString2)
   {
-    this.a = paramJceInputStream.readString(0, true);
-    this.b = paramJceInputStream.readString(1, true);
-    this.c = paramJceInputStream.read(this.c, 2, true);
-    this.d = paramJceInputStream.read(this.d, 3, true);
+    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final int hashCode()
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    paramJceOutputStream.write(this.d, 3);
+    return a(this.c, this.e, this.d);
   }
 }
 

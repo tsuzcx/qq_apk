@@ -1,55 +1,181 @@
 package com.tencent.token;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Region.Op;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class aqa
+  extends apz
 {
-  public static void a(String paramString1, String paramString2)
+  private final aou<Float> g;
+  private final List<apz> h = new ArrayList();
+  private final RectF i = new RectF();
+  private final Rect j = new Rect();
+  private final RectF k = new RectF();
+  
+  public aqa(avt paramavt, aqc paramaqc, List<aqc> paramList, avq paramavq)
   {
-    paramString1 = new ZipFile(paramString1);
-    Enumeration localEnumeration = paramString1.entries();
-    byte[] arrayOfByte = new byte[1024];
-    while (localEnumeration.hasMoreElements())
+    super(paramavt, paramaqc);
+    paramaqc = paramaqc.s;
+    if (paramaqc != null)
     {
-      Object localObject1 = (ZipEntry)localEnumeration.nextElement();
-      if (!((ZipEntry)localObject1).getName().contains("../")) {
-        if (((ZipEntry)localObject1).isDirectory())
+      this.g = paramaqc.a();
+      a(this.g);
+      this.g.a(this);
+    }
+    else
+    {
+      this.g = null;
+    }
+    HashMap localHashMap = new HashMap(paramavq.e.size());
+    int m = paramList.size() - 1;
+    Object localObject1;
+    for (Object localObject2 = null; m >= 0; localObject2 = localObject1)
+    {
+      aqc localaqc = (aqc)paramList.get(m);
+      switch (apz.2.a[localaqc.e.ordinal()])
+      {
+      default: 
+        new StringBuilder("Unknown layer type ").append(localaqc.e);
+        paramaqc = null;
+        break;
+      case 6: 
+        paramaqc = new aqg(paramavt, localaqc);
+        break;
+      case 5: 
+        paramaqc = new aqd(paramavt, localaqc);
+        break;
+      case 4: 
+        paramaqc = new aqb(paramavt, localaqc, paramavq.i);
+        break;
+      case 3: 
+        paramaqc = new aqf(paramavt, localaqc);
+        break;
+      case 2: 
+        paramaqc = localaqc.g;
+        paramaqc = new aqa(paramavt, localaqc, (List)paramavq.a.get(paramaqc), paramavq);
+        break;
+      case 1: 
+        paramaqc = new aqe(paramavt, localaqc);
+      }
+      localObject1 = localObject2;
+      if (paramaqc != null)
+      {
+        localHashMap.put(Long.valueOf(paramaqc.c.d), paramaqc);
+        if (localObject2 != null)
         {
-          new File(paramString2, ((ZipEntry)localObject1).getName()).mkdirs();
+          localObject2.d = paramaqc;
+          localObject1 = null;
         }
         else
         {
-          BufferedInputStream localBufferedInputStream = new BufferedInputStream(paramString1.getInputStream((ZipEntry)localObject1));
-          localObject1 = new File(paramString2, ((ZipEntry)localObject1).getName());
-          Object localObject2 = ((File)localObject1).getParentFile();
-          if ((localObject2 != null) && (!((File)localObject2).exists())) {
-            ((File)localObject2).mkdirs();
-          }
-          localObject1 = new FileOutputStream((File)localObject1);
-          localObject2 = new BufferedOutputStream((OutputStream)localObject1, 1024);
-          for (;;)
+          this.h.add(0, paramaqc);
+          switch (1.a[(localaqc.u - 1)])
           {
-            int i = localBufferedInputStream.read(arrayOfByte, 0, 1024);
-            if (i == -1) {
-              break;
-            }
-            ((FileOutputStream)localObject1).write(arrayOfByte, 0, i);
+          default: 
+            localObject1 = localObject2;
+            break;
+          case 1: 
+          case 2: 
+            localObject1 = paramaqc;
           }
-          ((BufferedOutputStream)localObject2).flush();
-          ((BufferedOutputStream)localObject2).close();
-          ((FileOutputStream)localObject1).close();
-          localBufferedInputStream.close();
         }
       }
+      m -= 1;
     }
-    paramString1.close();
+    paramavt = localHashMap.keySet().iterator();
+    while (paramavt.hasNext())
+    {
+      paramaqc = (apz)localHashMap.get(paramavt.next());
+      paramList = (apz)localHashMap.get(Long.valueOf(paramaqc.c.f));
+      if (paramList != null) {
+        paramaqc.e = paramList;
+      }
+    }
+  }
+  
+  public final void a(float paramFloat)
+  {
+    super.a(paramFloat);
+    float f = paramFloat;
+    if (this.c.m != 0.0F) {
+      f = paramFloat / this.c.m;
+    }
+    paramFloat = this.c.n;
+    int m = this.h.size() - 1;
+    while (m >= 0)
+    {
+      ((apz)this.h.get(m)).a(f - paramFloat);
+      m -= 1;
+    }
+  }
+  
+  public final void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    this.i.set(0.0F, 0.0F, 0.0F, 0.0F);
+    int m = this.h.size() - 1;
+    while (m >= 0)
+    {
+      ((apz)this.h.get(m)).a(this.i, this.a);
+      if (paramRectF.isEmpty()) {
+        paramRectF.set(this.i);
+      } else {
+        paramRectF.set(Math.min(paramRectF.left, this.i.left), Math.min(paramRectF.top, this.i.top), Math.max(paramRectF.right, this.i.right), Math.max(paramRectF.bottom, this.i.bottom));
+      }
+      m -= 1;
+    }
+  }
+  
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    int m = 0;
+    while (m < this.h.size())
+    {
+      apz localapz = (apz)this.h.get(m);
+      String str = localapz.c.c;
+      if (paramString1 == null) {
+        localapz.a(null, null, paramColorFilter);
+      } else if (str.equals(paramString1)) {
+        localapz.a(paramString1, paramString2, paramColorFilter);
+      }
+      m += 1;
+    }
+  }
+  
+  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    avv.a("CompositionLayer#draw");
+    paramCanvas.getClipBounds(this.j);
+    this.k.set(0.0F, 0.0F, this.c.o, this.c.p);
+    paramMatrix.mapRect(this.k);
+    int m = this.h.size() - 1;
+    while (m >= 0)
+    {
+      boolean bool;
+      if (!this.k.isEmpty()) {
+        bool = paramCanvas.clipRect(this.k);
+      } else {
+        bool = true;
+      }
+      if (bool) {
+        ((apz)this.h.get(m)).a(paramCanvas, paramMatrix, paramInt);
+      }
+      m -= 1;
+    }
+    if (!this.j.isEmpty()) {
+      paramCanvas.clipRect(this.j, Region.Op.REPLACE);
+    }
+    avv.b("CompositionLayer#draw");
   }
 }
 

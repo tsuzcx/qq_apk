@@ -1,77 +1,127 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import android.view.View;
+import java.util.Collection;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public abstract class em
+public class em<K, V>
+  extends ex<K, V>
+  implements Map<K, V>
 {
-  public a a;
-  public b b;
-  private final Context c;
+  et<K, V> a;
   
-  public em(Context paramContext)
+  private et<K, V> a()
   {
-    this.c = paramContext;
+    if (this.a == null) {
+      this.a = new et()
+      {
+        protected final int a()
+        {
+          return em.this.h;
+        }
+        
+        protected final int a(Object paramAnonymousObject)
+        {
+          return em.this.a(paramAnonymousObject);
+        }
+        
+        protected final Object a(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return em.this.g[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+        }
+        
+        protected final V a(int paramAnonymousInt, V paramAnonymousV)
+        {
+          em localem = em.this;
+          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
+          Object localObject = localem.g[paramAnonymousInt];
+          localem.g[paramAnonymousInt] = paramAnonymousV;
+          return localObject;
+        }
+        
+        protected final void a(int paramAnonymousInt)
+        {
+          em.this.d(paramAnonymousInt);
+        }
+        
+        protected final void a(K paramAnonymousK, V paramAnonymousV)
+        {
+          em.this.put(paramAnonymousK, paramAnonymousV);
+        }
+        
+        protected final int b(Object paramAnonymousObject)
+        {
+          return em.this.b(paramAnonymousObject);
+        }
+        
+        protected final Map<K, V> b()
+        {
+          return em.this;
+        }
+        
+        protected final void c()
+        {
+          em.this.clear();
+        }
+      };
+    }
+    return this.a;
   }
   
-  public abstract View a();
-  
-  public View a(MenuItem paramMenuItem)
+  public Set<Map.Entry<K, V>> entrySet()
   {
-    return a();
+    et localet = a();
+    if (localet.b == null) {
+      localet.b = new et.b(localet);
+    }
+    return localet.b;
   }
   
-  public void a(SubMenu paramSubMenu) {}
-  
-  public void a(b paramb)
+  public Set<K> keySet()
   {
-    if (this.b != null)
+    return a().d();
+  }
+  
+  public void putAll(Map<? extends K, ? extends V> paramMap)
+  {
+    int i = this.h + paramMap.size();
+    int j = this.h;
+    Object localObject;
+    if (this.f.length < i)
     {
-      StringBuilder localStringBuilder = new StringBuilder("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ");
-      localStringBuilder.append(getClass().getSimpleName());
-      localStringBuilder.append(" instance while it is still in use somewhere else?");
+      localObject = this.f;
+      Object[] arrayOfObject = this.g;
+      super.a(i);
+      if (this.h > 0)
+      {
+        System.arraycopy(localObject, 0, this.f, 0, j);
+        System.arraycopy(arrayOfObject, 0, this.g, 0, j << 1);
+      }
+      ex.a((int[])localObject, arrayOfObject, j);
     }
-    this.b = paramb;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    a locala = this.a;
-    if (locala != null) {
-      locala.a(paramBoolean);
+    if (this.h == j)
+    {
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        localObject = (Map.Entry)paramMap.next();
+        put(((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+      }
+      return;
     }
+    throw new ConcurrentModificationException();
   }
   
-  public boolean b()
+  public Collection<V> values()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(boolean paramBoolean);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a();
+    et localet = a();
+    if (localet.d == null) {
+      localet.d = new et.e(localet);
+    }
+    return localet.d;
   }
 }
 

@@ -1,15 +1,38 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.os.Bundle;
 
 public final class ph
 {
-  public static pf a(Context paramContext, String paramString)
+  public static final class a
+    extends pb
   {
-    StringBuilder localStringBuilder = new StringBuilder("createWXAPI, appId = ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", checkSignature = true");
-    return new pj(paramContext, paramString);
+    public String c;
+    
+    public final int a()
+    {
+      return 21;
+    }
+    
+    public final void a(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      paramBundle.putString("_wxapi_nontax_pay_req_url", this.c);
+    }
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getString("_wxapi_nontax_pay_req_url");
+    }
+    
+    public final boolean b()
+    {
+      if (qb.a(this.c)) {
+        return false;
+      }
+      return this.c.length() <= 10240;
+    }
   }
 }
 

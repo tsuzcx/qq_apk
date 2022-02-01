@@ -1,22 +1,13 @@
 package com.tencent.token;
 
-import android.graphics.Path;
+import java.util.List;
 
 public final class aoo
-  extends aot<aoy, Path>
+  extends aou<Integer>
 {
-  private final Path c;
-  
-  public final ans<?, Path> c()
+  public aoo(List<aot<Integer>> paramList)
   {
-    if (!super.b())
-    {
-      aoy localaoy = (aoy)this.b;
-      this.c.reset();
-      avd.a(localaoy, this.c);
-      return new aod(this.c);
-    }
-    return new aob(this.a);
+    super(paramList);
   }
 }
 

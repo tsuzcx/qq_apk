@@ -1,11 +1,37 @@
 package com.tencent.token;
 
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public final class wy
-  extends ww
+  extends ud
 {
-  byte[] m;
-  long n;
-  byte[] o;
+  private JSONArray d;
+  
+  public final String a()
+  {
+    st.a();
+    this.a.a(104, null, null);
+    return null;
+  }
+  
+  public final void a(abm paramabm)
+  {
+    this.d = ((JSONArray)paramabm.c.get("param.reportdns.domain"));
+  }
+  
+  public final void a(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
+    {
+      a(i, paramJSONObject.getString("info"));
+      return;
+    }
+    aaz.a(System.currentTimeMillis() / 1000L);
+    this.a.a = 0;
+  }
 }
 
 

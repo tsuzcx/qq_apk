@@ -1,132 +1,44 @@
 package com.tencent.token;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
-
 public final class and
-  implements anl
 {
-  private final amx a;
-  private final Inflater b;
-  private int c;
-  private boolean d;
+  int a;
+  final int[] b = new int[10];
   
-  and(amx paramamx, Inflater paramInflater)
+  final int a()
   {
-    if (paramamx != null)
+    if ((this.a & 0x2) != 0) {
+      return this.b[1];
+    }
+    return -1;
+  }
+  
+  final and a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 >= 0)
     {
-      if (paramInflater != null)
-      {
-        this.a = paramamx;
-        this.b = paramInflater;
-        return;
+      int[] arrayOfInt = this.b;
+      if (paramInt1 >= arrayOfInt.length) {
+        return this;
       }
-      throw new IllegalArgumentException("inflater == null");
+      this.a = (1 << paramInt1 | this.a);
+      arrayOfInt[paramInt1] = paramInt2;
+      return this;
     }
-    throw new IllegalArgumentException("source == null");
+    return this;
   }
   
-  private void b()
+  final boolean a(int paramInt)
   {
-    int i = this.c;
-    if (i == 0) {
-      return;
-    }
-    i -= this.b.getRemaining();
-    this.c -= i;
-    this.a.g(i);
+    return (1 << paramInt & this.a) != 0;
   }
   
-  public final long a(amv paramamv, long paramLong)
+  final int b()
   {
-    if (paramLong >= 0L) {
-      if (!this.d) {
-        if (paramLong == 0L) {
-          return 0L;
-        }
-      }
+    if ((this.a & 0x80) != 0) {
+      return this.b[7];
     }
-    label285:
-    for (;;)
-    {
-      boolean bool = this.b.needsInput();
-      int i = 0;
-      anh localanh;
-      if (bool)
-      {
-        b();
-        if (this.b.getRemaining() != 0) {
-          break label285;
-        }
-        if (this.a.c())
-        {
-          i = 1;
-        }
-        else
-        {
-          localanh = this.a.b().a;
-          this.c = (localanh.c - localanh.b);
-          this.b.setInput(localanh.a, localanh.b, this.c);
-        }
-      }
-      label240:
-      do
-      {
-        try
-        {
-          localanh = paramamv.e(1);
-          int j = (int)Math.min(paramLong, 8192 - localanh.c);
-          j = this.b.inflate(localanh.a, localanh.c, j);
-          if (j > 0)
-          {
-            localanh.c += j;
-            paramLong = paramamv.b;
-            long l = j;
-            paramamv.b = (paramLong + l);
-            return l;
-          }
-          if (!this.b.finished())
-          {
-            if (!this.b.needsDictionary()) {
-              continue;
-            }
-            break label240;
-            throw new EOFException("source exhausted prematurely");
-          }
-          b();
-          if (localanh.b == localanh.c)
-          {
-            paramamv.a = localanh.b();
-            ani.a(localanh);
-          }
-          return -1L;
-        }
-        catch (DataFormatException paramamv)
-        {
-          throw new IOException(paramamv);
-        }
-        throw new IllegalStateException("?");
-        throw new IllegalStateException("closed");
-        throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-      } while (i != 0);
-    }
-  }
-  
-  public final anm a()
-  {
-    return this.a.a();
-  }
-  
-  public final void close()
-  {
-    if (this.d) {
-      return;
-    }
-    this.b.end();
-    this.d = true;
-    this.a.close();
+    return 65535;
   }
 }
 

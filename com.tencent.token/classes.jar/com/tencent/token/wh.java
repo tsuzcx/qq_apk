@@ -1,78 +1,71 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.RealNameQueryResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wh
-  extends tr
+  extends ud
 {
-  RealNameQueryResult d;
-  private long e;
-  private int f;
+  private long d;
+  private int e;
+  private tu f;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.f = paramabc.j;
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    xj.c("ProtoQueryRealName parseJSON errCode: ".concat(String.valueOf(i)));
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(i, null);
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
+      if (i != this.e)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.f);
-        xj.c(paramJSONObject.toString());
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
         return;
       }
-      this.d = new RealNameQueryResult(paramJSONObject);
-      paramJSONObject = new StringBuilder("result rebind_type: ");
-      paramJSONObject.append(this.d.zzb_rebind_type);
-      xj.c(paramJSONObject.toString());
+      long l = paramJSONObject.getLong("uin");
+      if (l != this.d)
+      {
+        paramJSONObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder("uin not match=");
+        localStringBuilder.append(l);
+        localStringBuilder.append(":");
+        localStringBuilder.append(this.d);
+        paramJSONObject.a(10000, localStringBuilder.toString(), null);
+        return;
+      }
+      paramJSONObject = paramJSONObject.getJSONArray("result");
+      this.f.d(paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

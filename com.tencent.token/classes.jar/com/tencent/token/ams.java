@@ -1,10 +1,29 @@
 package com.tencent.token;
 
-import java.security.cert.X509Certificate;
-
-public abstract interface ams
+public enum ams
 {
-  public abstract X509Certificate a(X509Certificate paramX509Certificate);
+  public final int l;
+  
+  private ams(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public static ams a(int paramInt)
+  {
+    ams[] arrayOfams = values();
+    int i1 = arrayOfams.length;
+    int n = 0;
+    while (n < i1)
+    {
+      ams localams = arrayOfams[n];
+      if (localams.l == paramInt) {
+        return localams;
+      }
+      n += 1;
+    }
+    return null;
+  }
 }
 
 

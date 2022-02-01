@@ -1,153 +1,157 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.Display;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.KeyEvent;
+import android.view.KeyboardShortcutGroup;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.Window.Callback;
+import android.view.WindowManager.LayoutParams;
+import android.view.accessibility.AccessibilityEvent;
+import java.util.List;
 
 public class hv
+  implements Window.Callback
 {
-  protected View a;
-  protected int b = 8388611;
-  PopupWindow.OnDismissListener c;
-  private final Context d;
-  private final hp e;
-  private final boolean f;
-  private final int g;
-  private final int h;
-  private boolean i;
-  private hw.a j;
-  private hu k;
-  private final PopupWindow.OnDismissListener l = new PopupWindow.OnDismissListener()
+  final Window.Callback e;
+  
+  public hv(Window.Callback paramCallback)
   {
-    public final void onDismiss()
+    if (paramCallback != null)
     {
-      hv.this.d();
+      this.e = paramCallback;
+      return;
     }
-  };
-  
-  public hv(Context paramContext, hp paramhp, View paramView, boolean paramBoolean, int paramInt)
-  {
-    this(paramContext, paramhp, paramView, paramBoolean, paramInt, 0);
+    throw new IllegalArgumentException("Window callback may not be null");
   }
   
-  public hv(Context paramContext, hp paramhp, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
+  public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    this.d = paramContext;
-    this.e = paramhp;
-    this.a = paramView;
-    this.f = paramBoolean;
-    this.g = paramInt1;
-    this.h = paramInt2;
+    return this.e.dispatchGenericMotionEvent(paramMotionEvent);
   }
   
-  public final hu a()
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if (this.k == null)
-    {
-      Object localObject = ((WindowManager)this.d.getSystemService("window")).getDefaultDisplay();
-      Point localPoint = new Point();
-      if (Build.VERSION.SDK_INT >= 17) {
-        ((Display)localObject).getRealSize(localPoint);
-      } else {
-        ((Display)localObject).getSize(localPoint);
-      }
-      int m;
-      if (Math.min(localPoint.x, localPoint.y) >= this.d.getResources().getDimensionPixelSize(gs.d.abc_cascading_menus_min_smallest_width)) {
-        m = 1;
-      } else {
-        m = 0;
-      }
-      if (m != 0) {
-        localObject = new hm(this.d, this.a, this.g, this.h, this.f);
-      } else {
-        localObject = new ib(this.d, this.e, this.a, this.g, this.h, this.f);
-      }
-      ((hu)localObject).a(this.e);
-      ((hu)localObject).a(this.l);
-      ((hu)localObject).a(this.a);
-      ((hu)localObject).a(this.j);
-      ((hu)localObject).a(this.i);
-      ((hu)localObject).a(this.b);
-      this.k = ((hu)localObject);
-    }
-    return this.k;
+    return this.e.dispatchKeyEvent(paramKeyEvent);
   }
   
-  final void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
   {
-    hu localhu = a();
-    localhu.c(paramBoolean2);
-    if (paramBoolean1)
-    {
-      int m = paramInt1;
-      if ((en.a(this.b, fa.c(this.a)) & 0x7) == 5) {
-        m = paramInt1 + this.a.getWidth();
-      }
-      localhu.b(m);
-      localhu.c(paramInt2);
-      paramInt1 = (int)(this.d.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localhu.e = new Rect(m - paramInt1, paramInt2 - paramInt1, m + paramInt1, paramInt2 + paramInt1);
-    }
-    localhu.b();
+    return this.e.dispatchKeyShortcutEvent(paramKeyEvent);
   }
   
-  public final void a(hw.a parama)
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
-    this.j = parama;
-    hu localhu = this.k;
-    if (localhu != null) {
-      localhu.a(parama);
-    }
+    return this.e.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
   }
   
-  public final void a(boolean paramBoolean)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.i = paramBoolean;
-    hu localhu = this.k;
-    if (localhu != null) {
-      localhu.a(paramBoolean);
-    }
+    return this.e.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public final boolean b()
+  public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
   {
-    if (e()) {
-      return true;
-    }
-    if (this.a == null) {
-      return false;
-    }
-    a(0, 0, false, false);
-    return true;
+    return this.e.dispatchTrackballEvent(paramMotionEvent);
   }
   
-  public final void c()
+  public void onActionModeFinished(ActionMode paramActionMode)
   {
-    if (e()) {
-      this.k.c();
-    }
+    this.e.onActionModeFinished(paramActionMode);
   }
   
-  protected void d()
+  public void onActionModeStarted(ActionMode paramActionMode)
   {
-    this.k = null;
-    PopupWindow.OnDismissListener localOnDismissListener = this.c;
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss();
-    }
+    this.e.onActionModeStarted(paramActionMode);
   }
   
-  public final boolean e()
+  public void onAttachedToWindow()
   {
-    hu localhu = this.k;
-    return (localhu != null) && (localhu.d());
+    this.e.onAttachedToWindow();
+  }
+  
+  public void onContentChanged()
+  {
+    this.e.onContentChanged();
+  }
+  
+  public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+  {
+    return this.e.onCreatePanelMenu(paramInt, paramMenu);
+  }
+  
+  public View onCreatePanelView(int paramInt)
+  {
+    return this.e.onCreatePanelView(paramInt);
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    this.e.onDetachedFromWindow();
+  }
+  
+  public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
+  {
+    return this.e.onMenuItemSelected(paramInt, paramMenuItem);
+  }
+  
+  public boolean onMenuOpened(int paramInt, Menu paramMenu)
+  {
+    return this.e.onMenuOpened(paramInt, paramMenu);
+  }
+  
+  public void onPanelClosed(int paramInt, Menu paramMenu)
+  {
+    this.e.onPanelClosed(paramInt, paramMenu);
+  }
+  
+  public void onPointerCaptureChanged(boolean paramBoolean)
+  {
+    this.e.onPointerCaptureChanged(paramBoolean);
+  }
+  
+  public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+  {
+    return this.e.onPreparePanel(paramInt, paramView, paramMenu);
+  }
+  
+  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+  {
+    this.e.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+  }
+  
+  public boolean onSearchRequested()
+  {
+    return this.e.onSearchRequested();
+  }
+  
+  public boolean onSearchRequested(SearchEvent paramSearchEvent)
+  {
+    return this.e.onSearchRequested(paramSearchEvent);
+  }
+  
+  public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
+  {
+    this.e.onWindowAttributesChanged(paramLayoutParams);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    this.e.onWindowFocusChanged(paramBoolean);
+  }
+  
+  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+  {
+    return this.e.onWindowStartingActionMode(paramCallback);
+  }
+  
+  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+  {
+    return this.e.onWindowStartingActionMode(paramCallback, paramInt);
   }
 }
 

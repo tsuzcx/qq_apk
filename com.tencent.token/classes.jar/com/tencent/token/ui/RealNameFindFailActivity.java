@@ -18,13 +18,13 @@ public class RealNameFindFailActivity
   private void initView()
   {
     this.mBackArrow.setVisibility(4);
-    TextView localTextView = (TextView)findViewById(2131165912);
-    Object localObject = (TextView)findViewById(2131165907);
-    Button localButton = (Button)findViewById(2131165906);
+    TextView localTextView = (TextView)findViewById(2131165946);
+    Object localObject = (TextView)findViewById(2131165941);
+    Button localButton = (Button)findViewById(2131165940);
     if (this.mSourceId == 1) {
-      ((TextView)localObject).setText(2131493508);
+      ((TextView)localObject).setText(2131493516);
     } else {
-      ((TextView)localObject).setText(2131493507);
+      ((TextView)localObject).setText(2131493515);
     }
     localObject = this.mErrInfoString;
     if ((localObject != null) && (((String)localObject).length() > 0)) {
@@ -52,7 +52,7 @@ public class RealNameFindFailActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296309);
+    setContentView(2131296311);
     setNeverShowLockVerifyView();
     this.mSourceId = getIntent().getIntExtra("source_id", 0);
     this.mRealUin = getIntent().getLongExtra("real_uin", 0L);

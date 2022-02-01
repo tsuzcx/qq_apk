@@ -1,76 +1,75 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.core.bean.FreezeStatusResult;
 import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wr
-  extends tr
+  extends ud
 {
-  public static String d = "";
-  public static String e = "";
-  public static long f;
-  public static long g;
-  public static int h;
-  private static int i;
+  private long d;
+  private int e;
+  private FreezeStatusResult f;
   
   public final String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(xf.e());
-    localStringBuilder.append("/cn/mbtoken3/mbtoken3_realname_check");
-    return localStringBuilder.toString();
+    st.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  public final void a(abc paramabc) {}
+  public final void a(abm paramabm)
+  {
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j == 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      paramJSONObject = aao.d(paramJSONObject.getString("data"));
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = new JSONObject(new String(paramJSONObject));
-        StringBuilder localStringBuilder = new StringBuilder("parseJSON  decodeData=");
-        localStringBuilder.append(paramJSONObject.toString());
-        xj.c(localStringBuilder.toString());
-        int k = i;
-        if (k == 1)
-        {
-          if (paramJSONObject.getInt("live_result") == 0) {
-            a(j, paramJSONObject.getString("info"));
-          } else {
-            this.a.a = 0;
-          }
-        }
-        else
-        {
-          if (k == 2)
-          {
-            d = paramJSONObject.getString("ocr_name");
-            e = paramJSONObject.getString("ocr_card");
-          }
-          else if (k == 5)
-          {
-            f = paramJSONObject.getLong("submit_time");
-            g = paramJSONObject.getLong("complete_time");
-            h = paramJSONObject.getInt("time_left");
-          }
-          this.a.a = 0;
-        }
-      }
-      else
-      {
-        xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-        a(10022, RqdApplication.p().getString(2131493068));
-      }
-      xj.a("ProtoUploadRealNameFile upload success");
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    a(j, paramJSONObject.getString("info"));
-    xj.a("ProtoUploadRealNameFile upload fail errCode=".concat(String.valueOf(j)));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        su.a();
+        paramJSONObject.append(su.b());
+        xv.c(paramJSONObject.toString());
+        return;
+      }
+      xv.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
+      this.f = new FreezeStatusResult(paramJSONObject);
+      this.a.a = 0;
+      return;
+    }
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.f;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

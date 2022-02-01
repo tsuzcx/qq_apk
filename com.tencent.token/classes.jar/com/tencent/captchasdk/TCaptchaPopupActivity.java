@@ -9,24 +9,24 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import com.tencent.token.kr.a;
-import com.tencent.token.kr.b;
-import com.tencent.token.ks;
-import com.tencent.token.kt;
-import com.tencent.token.ku;
-import com.tencent.token.ku.a;
+import com.tencent.token.lf.a;
+import com.tencent.token.lf.b;
+import com.tencent.token.lg;
+import com.tencent.token.lh;
+import com.tencent.token.li;
+import com.tencent.token.li.a;
 import org.json.JSONObject;
 
 public class TCaptchaPopupActivity
   extends Activity
 {
-  private ks a;
+  private lg a;
   private RelativeLayout b;
   private float c;
   private String d;
-  private ku e;
+  private li e;
   private String f;
-  private ku.a g = new ku.a()
+  private li.a g = new li.a()
   {
     public final void a(int paramAnonymousInt1, int paramAnonymousInt2)
     {
@@ -72,14 +72,14 @@ public class TCaptchaPopupActivity
     requestWindowFeature(1);
     this.d = getIntent().getStringExtra("appid");
     this.f = getIntent().getStringExtra("map");
-    setContentView(kr.b.tcaptcha_popup);
+    setContentView(lf.b.tcaptcha_popup);
     this.c = getResources().getDisplayMetrics().density;
-    paramBundle = (RelativeLayout)findViewById(kr.a.tcaptcha_container);
-    this.a = new ks(this);
+    paramBundle = (RelativeLayout)findViewById(lf.a.tcaptcha_container);
+    this.a = new lg(this);
     this.a.setLayerType(1, null);
-    this.b = ((RelativeLayout)findViewById(kr.a.tcaptcha_indicator_layout));
-    kt.a(this, getWindow(), paramBundle, this.b, this.a);
-    this.e = new ku(this, this.g, this.d, this.a, this.f);
+    this.b = ((RelativeLayout)findViewById(lf.a.tcaptcha_indicator_layout));
+    lh.a(this, getWindow(), paramBundle, this.b, this.a);
+    this.e = new li(this, this.g, this.d, this.a, this.f);
   }
   
   protected void onDestroy()

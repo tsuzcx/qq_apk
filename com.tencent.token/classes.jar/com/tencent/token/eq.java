@@ -1,154 +1,50 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
-import android.os.Build.VERSION;
-import android.view.MenuItem;
+import java.io.Writer;
 
 public final class eq
+  extends Writer
 {
-  static final c a = new b();
+  private final String a;
+  private StringBuilder b = new StringBuilder(128);
   
-  static
+  public eq(String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 26)
+    this.a = paramString;
+  }
+  
+  private void a()
+  {
+    if (this.b.length() > 0)
     {
-      a = new a();
-      return;
+      StringBuilder localStringBuilder = this.b;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
   }
   
-  public static MenuItem a(MenuItem paramMenuItem, em paramem)
+  public final void close()
   {
-    if ((paramMenuItem instanceof dr)) {
-      return ((dr)paramMenuItem).a(paramem);
-    }
-    return paramMenuItem;
+    a();
   }
   
-  public static void a(MenuItem paramMenuItem, char paramChar, int paramInt)
+  public final void flush()
   {
-    if ((paramMenuItem instanceof dr))
-    {
-      ((dr)paramMenuItem).setNumericShortcut(paramChar, paramInt);
-      return;
-    }
-    a.b(paramMenuItem, paramChar, paramInt);
+    a();
   }
   
-  public static void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
+  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if ((paramMenuItem instanceof dr))
+    int i = 0;
+    while (i < paramInt2)
     {
-      ((dr)paramMenuItem).setIconTintList(paramColorStateList);
-      return;
+      char c = paramArrayOfChar[(paramInt1 + i)];
+      if (c == '\n') {
+        a();
+      } else {
+        this.b.append(c);
+      }
+      i += 1;
     }
-    a.a(paramMenuItem, paramColorStateList);
-  }
-  
-  public static void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
-  {
-    if ((paramMenuItem instanceof dr))
-    {
-      ((dr)paramMenuItem).setIconTintMode(paramMode);
-      return;
-    }
-    a.a(paramMenuItem, paramMode);
-  }
-  
-  public static void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
-  {
-    if ((paramMenuItem instanceof dr))
-    {
-      ((dr)paramMenuItem).a(paramCharSequence);
-      return;
-    }
-    a.a(paramMenuItem, paramCharSequence);
-  }
-  
-  public static void b(MenuItem paramMenuItem, char paramChar, int paramInt)
-  {
-    if ((paramMenuItem instanceof dr))
-    {
-      ((dr)paramMenuItem).setAlphabeticShortcut(paramChar, paramInt);
-      return;
-    }
-    a.a(paramMenuItem, paramChar, paramInt);
-  }
-  
-  public static void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
-  {
-    if ((paramMenuItem instanceof dr))
-    {
-      ((dr)paramMenuItem).b(paramCharSequence);
-      return;
-    }
-    a.b(paramMenuItem, paramCharSequence);
-  }
-  
-  static final class a
-    extends eq.b
-  {
-    public final void a(MenuItem paramMenuItem, char paramChar, int paramInt)
-    {
-      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
-    }
-    
-    public final void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
-    {
-      paramMenuItem.setIconTintList(paramColorStateList);
-    }
-    
-    public final void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
-    {
-      paramMenuItem.setIconTintMode(paramMode);
-    }
-    
-    public final void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
-    {
-      paramMenuItem.setContentDescription(paramCharSequence);
-    }
-    
-    public final void b(MenuItem paramMenuItem, char paramChar, int paramInt)
-    {
-      paramMenuItem.setNumericShortcut(paramChar, paramInt);
-    }
-    
-    public final void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
-    {
-      paramMenuItem.setTooltipText(paramCharSequence);
-    }
-  }
-  
-  static class b
-    implements eq.c
-  {
-    public void a(MenuItem paramMenuItem, char paramChar, int paramInt) {}
-    
-    public void a(MenuItem paramMenuItem, ColorStateList paramColorStateList) {}
-    
-    public void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode) {}
-    
-    public void a(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
-    
-    public void b(MenuItem paramMenuItem, char paramChar, int paramInt) {}
-    
-    public void b(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
-  }
-  
-  static abstract interface c
-  {
-    public abstract void a(MenuItem paramMenuItem, char paramChar, int paramInt);
-    
-    public abstract void a(MenuItem paramMenuItem, ColorStateList paramColorStateList);
-    
-    public abstract void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode);
-    
-    public abstract void a(MenuItem paramMenuItem, CharSequence paramCharSequence);
-    
-    public abstract void b(MenuItem paramMenuItem, char paramChar, int paramInt);
-    
-    public abstract void b(MenuItem paramMenuItem, CharSequence paramCharSequence);
   }
 }
 

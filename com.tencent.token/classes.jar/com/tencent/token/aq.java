@@ -1,37 +1,32 @@
 package com.tencent.token;
 
-import java.util.HashMap;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-public final class aq<K, V>
-  extends ar<K, V>
+public final class aq
+  extends JceStruct
 {
-  public HashMap<K, ar.c<K, V>> a = new HashMap();
+  static byte[] c;
+  public int a = 0;
+  public byte[] b = null;
   
-  protected final ar.c<K, V> a(K paramK)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    return (ar.c)this.a.get(paramK);
-  }
-  
-  public final V a(K paramK, V paramV)
-  {
-    ar.c localc = a(paramK);
-    if (localc != null) {
-      return localc.b;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    if (c == null)
+    {
+      byte[] arrayOfByte = (byte[])new byte[1];
+      c = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
     }
-    this.a.put(paramK, b(paramK, paramV));
-    return null;
+    this.b = ((byte[])paramJceInputStream.read(c, 1, true));
   }
   
-  public final V b(K paramK)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    Object localObject = super.b(paramK);
-    this.a.remove(paramK);
-    return localObject;
-  }
-  
-  public final boolean c(K paramK)
-  {
-    return this.a.containsKey(paramK);
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
   }
 }
 

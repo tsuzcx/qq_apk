@@ -10,8 +10,8 @@ public class ScanLoginSuccActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296431);
-    findViewById(2131165406).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296444);
+    findViewById(2131165418).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {

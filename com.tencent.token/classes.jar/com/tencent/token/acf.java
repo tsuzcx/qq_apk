@@ -1,10 +1,23 @@
 package com.tencent.token;
 
-import android.view.View;
-
 public abstract interface acf
 {
-  public abstract void a(String paramString, View paramView);
+  public static final class a
+  {
+    public final int a;
+    public final byte[] b;
+    
+    private a(int paramInt, byte[] paramArrayOfByte)
+    {
+      this.a = paramInt;
+      this.b = paramArrayOfByte;
+    }
+    
+    public static a a(int paramInt, byte[] paramArrayOfByte)
+    {
+      return new a(paramInt, paramArrayOfByte);
+    }
+  }
 }
 
 

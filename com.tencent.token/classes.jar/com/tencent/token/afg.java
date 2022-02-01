@@ -1,20 +1,20 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
-
 public final class afg
 {
-  public static final long a;
-  public static final long b;
-  public static final int c;
+  public static final byte[] a = new byte[0];
+  public int b;
+  public byte[] c;
   
-  static
+  public afg(int paramInt, byte[] paramArrayOfByte)
   {
-    long l1 = TimeUnit.SECONDS.toMillis(1L);
-    a = l1;
-    long l2 = TimeUnit.MILLISECONDS.toMillis(50L);
-    b = l2;
-    c = (int)(l1 / l2);
+    this.b = paramInt;
+    this.c = paramArrayOfByte;
+  }
+  
+  public static afg a(int paramInt)
+  {
+    return new afg(paramInt, a);
   }
 }
 

@@ -1,24 +1,92 @@
 package com.tencent.token;
 
-public abstract interface sv
+import com.tmsdk.common.util.TmsLog;
+
+public final class sv
 {
-  public abstract void a();
+  private static sv b;
+  private static String c = "";
+  private static String d = "https://aq.qq.com";
+  public to a = null;
   
-  public abstract void a(int paramInt);
+  static
+  {
+    if (aaw.c == 0) {
+      d = "http://test.aq.qq.com";
+    }
+  }
   
-  public abstract void a(int paramInt, String paramString);
+  public static String a()
+  {
+    return c;
+  }
   
-  public abstract void a(String paramString);
+  public static void a(long paramLong)
+  {
+    if (paramLong * 1000L > 0L)
+    {
+      System.currentTimeMillis();
+      b();
+      b();
+      b();
+    }
+  }
   
-  public abstract void b();
+  public static void a(String paramString)
+  {
+    d = paramString;
+  }
   
-  public abstract void b(int paramInt, String paramString);
+  public static void a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("recv initCode, hexStr: ");
+    localStringBuilder.append(aay.a(paramArrayOfByte));
+    TmsLog.i("mod_seed", localStringBuilder.toString());
+    if (paramArrayOfByte != null) {
+      wn.a(false);
+    }
+  }
   
-  public abstract void b(String paramString);
+  public static sv b()
+  {
+    if (b == null) {
+      b = new sv();
+    }
+    return b;
+  }
   
-  public abstract void c();
+  public static void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString.length() > 15) {
+      str = paramString.substring(0, 15);
+    }
+    c = abt.b(abt.a(str.getBytes()));
+  }
   
-  public abstract void c(String paramString);
+  public static String c()
+  {
+    String str2 = "0000";
+    String str3 = rt.a().e();
+    String str1 = str2;
+    if (str3 != null)
+    {
+      str1 = str2;
+      if (str3.length() != 0)
+      {
+        str1 = str2;
+        if (str3.length() >= 4) {
+          str1 = str3.substring(0, 4);
+        }
+      }
+    }
+    return str1;
+  }
+  
+  public static long d()
+  {
+    return 30000L - (System.currentTimeMillis() + rt.a().g()) % 30000L;
+  }
 }
 
 

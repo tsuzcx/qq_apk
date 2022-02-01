@@ -3,35 +3,51 @@ package com.tencent.token;
 import android.os.Bundle;
 
 public final class pc
-  implements pa.b
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public final int a()
+  public static final class a
+    extends pb
   {
-    return 5;
-  }
-  
-  public final void a(Bundle paramBundle)
-  {
-    paramBundle.putString("_wxwebpageobject_extInfo", this.b);
-    paramBundle.putString("_wxwebpageobject_webpageUrl", this.a);
-    paramBundle.putString("_wxwebpageobject_canvaspagexml", this.c);
-  }
-  
-  public final void b(Bundle paramBundle)
-  {
-    this.b = paramBundle.getString("_wxwebpageobject_extInfo");
-    this.a = paramBundle.getString("_wxwebpageobject_webpageUrl");
-    this.c = paramBundle.getString("_wxwebpageobject_canvaspagexml");
-  }
-  
-  public final boolean b()
-  {
-    String str = this.a;
-    return (str != null) && (str.length() != 0) && (this.a.length() <= 10240);
+    public int c;
+    public String d;
+    public String e;
+    
+    public final int a()
+    {
+      return 18;
+    }
+    
+    public final void a(Bundle paramBundle)
+    {
+      super.a(paramBundle);
+      paramBundle.putInt("_wxapi_subscribemessage_req_scene", this.c);
+      paramBundle.putString("_wxapi_subscribemessage_req_templateid", this.d);
+      paramBundle.putString("_wxapi_subscribemessage_req_reserved", this.e);
+    }
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getInt("_wxapi_subscribemessage_req_scene");
+      this.d = paramBundle.getString("_wxapi_subscribemessage_req_templateid");
+      this.e = paramBundle.getString("_wxapi_subscribemessage_req_reserved");
+    }
+    
+    public final boolean b()
+    {
+      String str = this.d;
+      if (str != null)
+      {
+        if (str.length() == 0) {
+          return false;
+        }
+        if (this.d.length() > 1024) {
+          return false;
+        }
+        str = this.e;
+        return (str == null) || (str.length() <= 1024);
+      }
+      return false;
+    }
   }
 }
 

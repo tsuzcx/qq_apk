@@ -1,20 +1,17 @@
 package com.tencent.token;
 
-public abstract interface akg
+public final class akg
 {
-  public abstract akn a(a parama);
+  public static boolean a = true;
   
-  public static abstract interface a
+  public static void a(String paramString)
   {
-    public abstract akl a();
-    
-    public abstract akn a(akl paramakl);
-    
-    public abstract int b();
-    
-    public abstract int c();
-    
-    public abstract int d();
+    if (a)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("EP_SP_");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_[System]");
+    }
   }
 }
 

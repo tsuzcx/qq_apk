@@ -1,17 +1,20 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import android.content.Context;
 
-public final class la
+public abstract interface la
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public ArrayList<String> h;
+  public abstract void a(a parama);
+  
+  public static abstract interface a
+  {
+    public abstract void a(String paramString, la.b paramb);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract Object a(Context paramContext);
+  }
 }
 
 

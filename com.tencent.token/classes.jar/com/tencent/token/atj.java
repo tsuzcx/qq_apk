@@ -1,9 +1,14 @@
 package com.tencent.token;
 
-abstract class atj
+final class atj
+  implements Runnable
 {
-  public byte[] a;
-  public int b;
+  atj(ath paramath, atg paramatg, Integer paramInteger1, Integer paramInteger2) {}
+  
+  public final void run()
+  {
+    this.a.f.a(this.a.g, this.a.b, this.b.intValue(), this.c.intValue(), this.a.d);
+  }
 }
 
 

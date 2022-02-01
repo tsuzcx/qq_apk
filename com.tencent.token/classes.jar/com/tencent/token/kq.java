@@ -1,23 +1,21 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-
-public class kq
-  extends WifiManager
+public final class kq
 {
-  private WifiManager a;
+  private static Object a = new Object();
+  private static ku b;
   
-  public kq(WifiManager paramWifiManager)
+  public static Object a()
   {
-    this.a = paramWifiManager;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public WifiInfo getConnectionInfo()
-  {
-    return this.a.getConnectionInfo();
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new ku();
+        }
+      }
+    }
+    return b;
   }
 }
 

@@ -2,8 +2,7 @@ package com.tencent.token;
 
 public final class xp
 {
-  public static boolean a = false;
-  public static boolean b = false;
+  public static final byte[] a = { 114, 101, 97, 108 };
 }
 
 

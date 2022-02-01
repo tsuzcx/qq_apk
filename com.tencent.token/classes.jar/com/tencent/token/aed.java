@@ -1,21 +1,26 @@
 package com.tencent.token;
 
-public final class aed
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+
+public abstract class aed
+  implements Application.ActivityLifecycleCallbacks
 {
-  public static final byte[] a = new byte[0];
-  public int b;
-  public byte[] c;
+  public abstract void a(Activity paramActivity);
   
-  public aed(int paramInt, byte[] paramArrayOfByte)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
   {
-    this.b = paramInt;
-    this.c = paramArrayOfByte;
+    a(paramActivity);
   }
   
-  public static aed a(int paramInt)
-  {
-    return new aed(paramInt, a);
-  }
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

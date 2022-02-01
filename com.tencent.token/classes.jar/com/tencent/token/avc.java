@@ -1,21 +1,10 @@
 package com.tencent.token;
 
-public final class avc
+import java.util.ArrayList;
+
+public abstract interface avc
 {
-  private float a;
-  private int b;
-  
-  public final void a(float paramFloat)
-  {
-    this.a += paramFloat;
-    this.b += 1;
-    int i = this.b;
-    if (i == 2147483647)
-    {
-      this.a /= 2.0F;
-      this.b = (i / 2);
-    }
-  }
+  public abstract void a(int paramInt, ArrayList<String> paramArrayList);
 }
 
 

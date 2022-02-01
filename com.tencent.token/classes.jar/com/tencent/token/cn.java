@@ -1,328 +1,52 @@
 package com.tencent.token;
 
-import android.app.Notification;
-import android.app.Notification.Builder;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.widget.RemoteViews;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.support.v4.app.SupportActivity;
+import android.util.AttributeSet;
+import android.view.View;
 
-public final class cn
+public abstract class cn
+  extends SupportActivity
 {
-  public static Bundle a(Notification paramNotification)
+  protected boolean mStartedIntentSenderFromFragment;
+  
+  protected static void checkForValidRequestCode(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramNotification.extras;
+    if ((paramInt & 0xFFFF0000) == 0) {
+      return;
     }
-    if (Build.VERSION.SDK_INT >= 16) {
-      return cp.a(paramNotification);
-    }
-    return null;
+    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
   }
   
-  public static final class a
+  protected abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    final Bundle a;
-    final cr[] b;
-    final cr[] c;
-    boolean d;
-    public int e = 2131099914;
-    public CharSequence f;
-    public PendingIntent g;
-    
-    public a(CharSequence paramCharSequence, PendingIntent paramPendingIntent)
-    {
-      this(paramCharSequence, paramPendingIntent, new Bundle());
+    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
     }
-    
-    private a(CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle)
-    {
-      this.f = cn.b.c(paramCharSequence);
-      this.g = paramPendingIntent;
-      this.a = paramBundle;
-      this.b = null;
-      this.c = null;
-      this.d = true;
-    }
+    return localView;
   }
   
-  public static final class b
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    Bundle A;
-    int B = 0;
-    int C = 0;
-    Notification D;
-    RemoteViews E;
-    RemoteViews F;
-    RemoteViews G;
-    String H;
-    int I = 0;
-    String J;
-    long K;
-    int L = 0;
-    Notification M = new Notification();
-    @Deprecated
-    public ArrayList<String> N;
-    public Context a;
-    public ArrayList<cn.a> b = new ArrayList();
-    CharSequence c;
-    CharSequence d;
-    public PendingIntent e;
-    PendingIntent f;
-    RemoteViews g;
-    Bitmap h;
-    CharSequence i;
-    int j;
-    int k;
-    boolean l = true;
-    boolean m;
-    cn.c n;
-    CharSequence o;
-    CharSequence[] p;
-    int q;
-    int r;
-    boolean s;
-    String t;
-    boolean u;
-    String v;
-    boolean w = false;
-    boolean x;
-    boolean y;
-    String z;
-    
-    private b(Context paramContext)
-    {
-      this.a = paramContext;
-      this.H = null;
-      this.M.when = System.currentTimeMillis();
-      this.M.audioStreamType = -1;
-      this.k = 0;
-      this.N = new ArrayList();
+    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramString, paramContext, paramAttributeSet);
     }
-    
-    @Deprecated
-    public b(Context paramContext, byte paramByte)
-    {
-      this(paramContext);
-    }
-    
-    protected static CharSequence c(CharSequence paramCharSequence)
-    {
-      if (paramCharSequence == null) {
-        return paramCharSequence;
-      }
-      CharSequence localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() > 5120) {
-        localCharSequence = paramCharSequence.subSequence(0, 5120);
-      }
-      return localCharSequence;
-    }
-    
-    public final b a()
-    {
-      this.M.icon = 2131099914;
-      return this;
-    }
-    
-    public final b a(CharSequence paramCharSequence)
-    {
-      this.c = c(paramCharSequence);
-      return this;
-    }
-    
-    public final b b()
-    {
-      Notification localNotification = this.M;
-      localNotification.flags |= 0x10;
-      return this;
-    }
-    
-    public final b b(CharSequence paramCharSequence)
-    {
-      this.d = c(paramCharSequence);
-      return this;
-    }
-    
-    public final b c()
-    {
-      this.M.defaults = 1;
-      return this;
-    }
-    
-    public final Notification d()
-    {
-      co localco = new co(this);
-      cn.c localc = localco.b.n;
-      Object localObject;
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        localObject = localco.a.build();
-      }
-      else
-      {
-        Notification localNotification;
-        if (Build.VERSION.SDK_INT >= 24)
-        {
-          localNotification = localco.a.build();
-          localObject = localNotification;
-          if (localco.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localco.g == 2)) {
-              co.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localco.g == 1)
-                {
-                  co.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 21)
-        {
-          localco.a.setExtras(localco.f);
-          localNotification = localco.a.build();
-          if (localco.c != null) {
-            localNotification.contentView = localco.c;
-          }
-          if (localco.d != null) {
-            localNotification.bigContentView = localco.d;
-          }
-          if (localco.h != null) {
-            localNotification.headsUpContentView = localco.h;
-          }
-          localObject = localNotification;
-          if (localco.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localco.g == 2)) {
-              co.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localco.g == 1)
-                {
-                  co.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 20)
-        {
-          localco.a.setExtras(localco.f);
-          localNotification = localco.a.build();
-          if (localco.c != null) {
-            localNotification.contentView = localco.c;
-          }
-          if (localco.d != null) {
-            localNotification.bigContentView = localco.d;
-          }
-          localObject = localNotification;
-          if (localco.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localco.g == 2)) {
-              co.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localco.g == 1)
-                {
-                  co.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 19)
-        {
-          localObject = cp.a(localco.e);
-          if (localObject != null) {
-            localco.f.putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
-          }
-          localco.a.setExtras(localco.f);
-          localNotification = localco.a.build();
-          if (localco.c != null) {
-            localNotification.contentView = localco.c;
-          }
-          localObject = localNotification;
-          if (localco.d != null)
-          {
-            localNotification.bigContentView = localco.d;
-            localObject = localNotification;
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 16)
-        {
-          localNotification = localco.a.build();
-          localObject = cn.a(localNotification);
-          Bundle localBundle = new Bundle(localco.f);
-          Iterator localIterator = localco.f.keySet().iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            if (((Bundle)localObject).containsKey(str)) {
-              localBundle.remove(str);
-            }
-          }
-          ((Bundle)localObject).putAll(localBundle);
-          localObject = cp.a(localco.e);
-          if (localObject != null) {
-            cn.a(localNotification).putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
-          }
-          if (localco.c != null) {
-            localNotification.contentView = localco.c;
-          }
-          localObject = localNotification;
-          if (localco.d != null)
-          {
-            localNotification.bigContentView = localco.d;
-            localObject = localNotification;
-          }
-        }
-        else
-        {
-          localObject = localco.a.getNotification();
-        }
-      }
-      if (localco.b.E != null) {
-        ((Notification)localObject).contentView = localco.b.E;
-      }
-      int i1 = Build.VERSION.SDK_INT;
-      i1 = Build.VERSION.SDK_INT;
-      if ((Build.VERSION.SDK_INT >= 16) && (localc != null)) {
-        cn.a((Notification)localObject);
-      }
-      return localObject;
-    }
+    return localView;
   }
   
-  public static abstract class c {}
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
+    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+  }
 }
 
 

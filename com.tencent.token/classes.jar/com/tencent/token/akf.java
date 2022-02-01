@@ -1,929 +1,1611 @@
 package com.tencent.token;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.annotation.SuppressLint;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.location.Criteria;
+import android.location.GnssMeasurementsEvent.Callback;
+import android.location.GnssNavigationMessage.Callback;
+import android.location.GnssStatus.Callback;
+import android.location.GpsStatus;
+import android.location.GpsStatus.Listener;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.location.OnNmeaMessageListener;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.LocalOnlyHotspotCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.telephony.CellInfo;
+import android.telephony.CellLocation;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
+import android.telephony.TelephonyManager;
+import com.oasisfeng.condom.OutboundJudge;
+import com.oasisfeng.condom.OutboundType;
+import com.oasisfeng.condom.PackageManagerWrapper;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public final class akf
 {
-  private static final char[] e = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  public final String a;
-  public final String b;
-  public final int c;
-  @Nullable
-  public final List<String> d;
-  private final String f;
-  private final String g;
-  private final List<String> h;
-  @Nullable
-  private final String i;
-  private final String j;
+  public lk a = null;
+  private Context b;
   
-  akf(a parama)
+  /* Error */
+  public final Context a(Context paramContext, long paramLong)
   {
-    this.a = parama.a;
-    this.f = a(parama.b, false);
-    this.g = a(parama.c, false);
-    this.b = parama.d;
-    this.c = parama.a();
-    this.h = a(parama.f, false);
-    Object localObject1 = parama.g;
-    Object localObject2 = null;
-    if (localObject1 != null) {
-      localObject1 = a(parama.g, true);
-    } else {
-      localObject1 = null;
-    }
-    this.d = ((List)localObject1);
-    localObject1 = localObject2;
-    if (parama.h != null) {
-      localObject1 = a(parama.h, false);
-    }
-    this.i = ((String)localObject1);
-    this.j = parama.toString();
+    // Byte code:
+    //   0: new 47	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc 49
+    //   6: invokespecial 52	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   9: astore 4
+    //   11: aload 4
+    //   13: lload_2
+    //   14: invokevirtual 56	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   17: pop
+    //   18: aload 4
+    //   20: ldc 58
+    //   22: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: pop
+    //   26: aload_1
+    //   27: ifnonnull +5 -> 32
+    //   30: aconst_null
+    //   31: areturn
+    //   32: new 63	com/oasisfeng/condom/CondomOptions
+    //   35: dup
+    //   36: invokespecial 64	com/oasisfeng/condom/CondomOptions:<init>	()V
+    //   39: astore 4
+    //   41: aload 4
+    //   43: iconst_0
+    //   44: invokevirtual 68	com/oasisfeng/condom/CondomOptions:preventBroadcastToBackgroundPackages	(Z)Lcom/oasisfeng/condom/CondomOptions;
+    //   47: pop
+    //   48: aload 4
+    //   50: iconst_0
+    //   51: invokevirtual 71	com/oasisfeng/condom/CondomOptions:preventServiceInBackgroundPackages	(Z)Lcom/oasisfeng/condom/CondomOptions;
+    //   54: pop
+    //   55: aload 4
+    //   57: new 6	com/tencent/token/akf$a
+    //   60: dup
+    //   61: aload_0
+    //   62: invokespecial 74	com/tencent/token/akf$a:<init>	(Lcom/tencent/token/akf;)V
+    //   65: invokevirtual 78	com/oasisfeng/condom/CondomOptions:setOutboundJudge	(Lcom/oasisfeng/condom/OutboundJudge;)Lcom/oasisfeng/condom/CondomOptions;
+    //   68: pop
+    //   69: ldc2_w 79
+    //   72: lload_2
+    //   73: land
+    //   74: lconst_0
+    //   75: lcmp
+    //   76: ifeq +17 -> 93
+    //   79: aload 4
+    //   81: new 8	com/tencent/token/akf$b
+    //   84: dup
+    //   85: aload_0
+    //   86: invokespecial 81	com/tencent/token/akf$b:<init>	(Lcom/tencent/token/akf;)V
+    //   89: invokevirtual 85	com/oasisfeng/condom/CondomOptions:setPackageManagerFactory	(Lcom/tencent/token/ajv;)Lcom/oasisfeng/condom/CondomOptions;
+    //   92: pop
+    //   93: ldc2_w 86
+    //   96: lload_2
+    //   97: land
+    //   98: lconst_0
+    //   99: lcmp
+    //   100: ifeq +17 -> 117
+    //   103: aload 4
+    //   105: new 12	com/tencent/token/akf$c
+    //   108: dup
+    //   109: aload_0
+    //   110: invokespecial 88	com/tencent/token/akf$c:<init>	(Lcom/tencent/token/akf;)V
+    //   113: invokevirtual 92	com/oasisfeng/condom/CondomOptions:addKit	(Lcom/tencent/token/la;)Lcom/oasisfeng/condom/CondomOptions;
+    //   116: pop
+    //   117: ldc2_w 93
+    //   120: lload_2
+    //   121: land
+    //   122: lconst_0
+    //   123: lcmp
+    //   124: ifeq +17 -> 141
+    //   127: aload 4
+    //   129: new 18	com/tencent/token/akf$d
+    //   132: dup
+    //   133: aload_0
+    //   134: invokespecial 95	com/tencent/token/akf$d:<init>	(Lcom/tencent/token/akf;)V
+    //   137: invokevirtual 92	com/oasisfeng/condom/CondomOptions:addKit	(Lcom/tencent/token/la;)Lcom/oasisfeng/condom/CondomOptions;
+    //   140: pop
+    //   141: ldc2_w 96
+    //   144: lload_2
+    //   145: land
+    //   146: lconst_0
+    //   147: lcmp
+    //   148: ifeq +17 -> 165
+    //   151: aload 4
+    //   153: new 24	com/tencent/token/akf$e
+    //   156: dup
+    //   157: aload_0
+    //   158: invokespecial 98	com/tencent/token/akf$e:<init>	(Lcom/tencent/token/akf;)V
+    //   161: invokevirtual 92	com/oasisfeng/condom/CondomOptions:addKit	(Lcom/tencent/token/la;)Lcom/oasisfeng/condom/CondomOptions;
+    //   164: pop
+    //   165: aload_0
+    //   166: new 100	com/tencent/token/ajw
+    //   169: dup
+    //   170: aload_1
+    //   171: aload_1
+    //   172: ldc 102
+    //   174: aload 4
+    //   176: invokestatic 108	com/oasisfeng/condom/CondomContext:wrap	(Landroid/content/Context;Ljava/lang/String;Lcom/oasisfeng/condom/CondomOptions;)Lcom/oasisfeng/condom/CondomContext;
+    //   179: lload_2
+    //   180: invokespecial 111	com/tencent/token/ajw:<init>	(Landroid/content/Context;Lcom/oasisfeng/condom/CondomContext;J)V
+    //   183: putfield 113	com/tencent/token/akf:b	Landroid/content/Context;
+    //   186: goto +35 -> 221
+    //   189: astore 4
+    //   191: new 47	java/lang/StringBuilder
+    //   194: dup
+    //   195: ldc 115
+    //   197: invokespecial 52	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   200: astore 5
+    //   202: aload 5
+    //   204: aload 4
+    //   206: invokevirtual 121	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   209: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: pop
+    //   213: aload 5
+    //   215: ldc 58
+    //   217: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload_0
+    //   222: getfield 113	com/tencent/token/akf:b	Landroid/content/Context;
+    //   225: astore 4
+    //   227: aload 4
+    //   229: ifnonnull +5 -> 234
+    //   232: aload_1
+    //   233: areturn
+    //   234: aload 4
+    //   236: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	237	0	this	akf
+    //   0	237	1	paramContext	Context
+    //   0	237	2	paramLong	long
+    //   9	166	4	localObject1	Object
+    //   189	16	4	localObject2	Object
+    //   225	10	4	localContext	Context
+    //   200	14	5	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   165	186	189	finally
   }
   
-  public static int a(String paramString)
+  final class a
+    implements OutboundJudge
   {
-    if (paramString.equals("http")) {
-      return 80;
-    }
-    if (paramString.equals("https")) {
-      return 443;
-    }
-    return -1;
-  }
-  
-  static String a(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    int k = paramInt1;
-    while (k < paramInt2)
+    a() {}
+    
+    public final boolean shouldAllow(OutboundType paramOutboundType, Intent paramIntent, String paramString)
     {
-      int m = paramString1.codePointAt(k);
-      if ((m >= 32) && (m != 127) && ((m < 128) || (!paramBoolean4)) && (paramString2.indexOf(m) == -1) && ((m != 37) || ((paramBoolean1) && ((!paramBoolean2) || (a(paramString1, k, paramInt2))))) && ((m != 43) || (!paramBoolean3)))
+      return true;
+    }
+  }
+  
+  final class b
+    implements ajv
+  {
+    b() {}
+    
+    public final PackageManagerWrapper a(Context paramContext)
+    {
+      ajz.a = paramContext.getPackageManager();
+      return new a(ajz.a);
+    }
+    
+    final class a
+      extends aka
+    {
+      a(PackageManager paramPackageManager)
       {
-        k += Character.charCount(m);
+        super();
       }
-      else
+      
+      public final List<ApplicationInfo> getInstalledApplications(int paramInt)
       {
-        amv localamv = new amv();
-        localamv.a(paramString1, paramInt1, k);
-        Object localObject3;
-        for (Object localObject1 = null; k < paramInt2; localObject1 = localObject3)
+        Object localObject = new StringBuilder("getInstalledApplications, flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
         {
-          paramInt1 = paramString1.codePointAt(k);
-          if (paramBoolean1)
+          localObject = akf.this.a;
+          if (localObject != null)
           {
-            localObject3 = localObject1;
-            if (paramInt1 != 9)
+            localObject = ((lk)localObject).a("getInstalledApplications");
+            if (localObject == null) {
+              return ajz.b(paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.b(paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.b(paramInt);
+      }
+      
+      public final List<PackageInfo> getInstalledPackages(int paramInt)
+      {
+        Object localObject = new StringBuilder("getInstalledPackages, flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
+        {
+          localObject = akf.this.a;
+          if (localObject != null)
+          {
+            localObject = ((lk)localObject).a("getInstalledPackages");
+            if (localObject == null) {
+              return ajz.a(paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.a(paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.a(paramInt);
+      }
+      
+      public final List<ResolveInfo> queryBroadcastReceivers(Intent paramIntent, int paramInt)
+      {
+        Object localObject = new StringBuilder("queryBroadcastReceivers, flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
+        {
+          localObject = akf.this.a;
+          if (localObject != null)
+          {
+            localObject = ((lk)localObject).a("queryBroadcastReceivers");
+            if (localObject == null) {
+              return ajz.a(paramIntent, paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.a(paramIntent, paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.a(paramIntent, paramInt);
+      }
+      
+      public final List<ResolveInfo> queryIntentActivities(Intent paramIntent, int paramInt)
+      {
+        Object localObject = new StringBuilder("queryIntentActivities, flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
+        {
+          localObject = akf.this.a;
+          if (localObject != null)
+          {
+            localObject = ((lk)localObject).a("queryIntentActivities");
+            if (localObject == null) {
+              return ajz.c(paramIntent, paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.c(paramIntent, paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.c(paramIntent, paramInt);
+      }
+      
+      public final List<ResolveInfo> queryIntentActivityOptions(ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt)
+      {
+        Object localObject = new StringBuilder("queryIntentActivityOptions, caller:[");
+        ((StringBuilder)localObject).append(paramComponentName);
+        ((StringBuilder)localObject).append("]flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
+        {
+          localObject = akf.this.a;
+          if (localObject != null)
+          {
+            localObject = ((lk)localObject).a("queryIntentActivityOptions");
+            if (localObject == null) {
+              return ajz.a(paramComponentName, paramArrayOfIntent, paramIntent, paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.a(paramComponentName, paramArrayOfIntent, paramIntent, paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.a(paramComponentName, paramArrayOfIntent, paramIntent, paramInt);
+      }
+      
+      public final List<ResolveInfo> queryIntentServices(Intent paramIntent, int paramInt)
+      {
+        Object localObject = new StringBuilder("queryIntentServices, flags:[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("]");
+        if (ll.a())
+        {
+          localObject = akf.this.a;
+          if (localObject != null)
+          {
+            localObject = ((lk)localObject).a("queryIntentServices");
+            if (localObject == null) {
+              return ajz.b(paramIntent, paramInt);
+            }
+            if (((ll.a)localObject).b) {
+              return (List)((ll.a)localObject).a;
+            }
+            ((ll.a)localObject).a = ajz.b(paramIntent, paramInt);
+            return (List)((ll.a)localObject).a;
+          }
+        }
+        return ajz.b(paramIntent, paramInt);
+      }
+    }
+  }
+  
+  final class c
+    implements la
+  {
+    c() {}
+    
+    public final void a(la.a parama)
+    {
+      parama.a("phone", new a());
+    }
+    
+    final class a
+      implements la.b
+    {
+      a() {}
+      
+      public final Object a(Context paramContext)
+      {
+        TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
+        akb.a = localTelephonyManager;
+        try
+        {
+          paramContext = new a(paramContext, localTelephonyManager);
+          return paramContext;
+        }
+        finally
+        {
+          StringBuilder localStringBuilder = new StringBuilder("e:[");
+          localStringBuilder.append(paramContext.getMessage());
+          localStringBuilder.append("]");
+        }
+        return localTelephonyManager;
+      }
+      
+      final class a
+        extends akc
+      {
+        a(Context paramContext, TelephonyManager paramTelephonyManager)
+        {
+          super(paramTelephonyManager);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final List<CellInfo> getAllCellInfo()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
             {
-              localObject3 = localObject1;
-              if (paramInt1 != 10)
+              localObject = ((lk)localObject).a("getAllCellInfo");
+              if (localObject == null) {
+                return akb.b();
+              }
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.b();
+              return (List)((ll.a)localObject).a;
+            }
+          }
+          return akb.b();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final CellLocation getCellLocation()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getCellLocation");
+              if (localObject == null) {
+                return akb.a();
+              }
+              if (((ll.a)localObject).b) {
+                return (CellLocation)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.a();
+              return (CellLocation)((ll.a)localObject).a;
+            }
+          }
+          return akb.a();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getDeviceId()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getDeviceId");
+              if (localObject == null) {
+                return akb.c();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.c();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.c();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getDeviceId(int paramInt)
+        {
+          Object localObject = new StringBuilder("getDeviceId, slot:[");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getDeviceId");
+              if (localObject == null) {
+                return akb.a(paramInt);
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.a(paramInt);
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.a(paramInt);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getImei()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getImei");
+              if (localObject == null) {
+                return akb.d();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.d();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.d();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getImei(int paramInt)
+        {
+          Object localObject = new StringBuilder("getImei, slot:[");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getImei");
+              if (localObject == null) {
+                return akb.b(paramInt);
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.b(paramInt);
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.b(paramInt);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getLine1Number()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getLine1Number");
+              if (localObject == null) {
+                return akb.h();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.h();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.h();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getMeid()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getMeid");
+              if (localObject == null) {
+                return akb.f();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.f();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.f();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getMeid(int paramInt)
+        {
+          Object localObject = new StringBuilder("getMeid, slot:[");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getMeid");
+              if (localObject == null) {
+                return akb.c(paramInt);
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.c(paramInt);
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.c(paramInt);
+        }
+        
+        @SuppressLint({"MissingPermission", "NewApi"})
+        public final ServiceState getServiceState()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getServiceState");
+              if (localObject == null) {
+                return akb.i();
+              }
+              if (((ll.a)localObject).b) {
+                return (ServiceState)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.i();
+              return (ServiceState)((ll.a)localObject).a;
+            }
+          }
+          return akb.i();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getSimSerialNumber()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getSimSerialNumber");
+              if (localObject == null) {
+                return akb.g();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.g();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.g();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final String getSubscriberId()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getSubscriberId");
+              if (localObject == null) {
+                return akb.e();
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akb.e();
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return akb.e();
+        }
+        
+        public final void listen(PhoneStateListener paramPhoneStateListener, int paramInt)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("listen");
+              if (localObject == null)
               {
-                localObject3 = localObject1;
-                if (paramInt1 != 12)
-                {
-                  localObject3 = localObject1;
-                  if (paramInt1 == 13) {}
-                }
+                akb.a(paramPhoneStateListener, paramInt);
+                return;
               }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              akb.a(paramPhoneStateListener, ((Integer)((ll.a)localObject).a).intValue());
+              return;
             }
           }
-          else
+          akb.a(paramPhoneStateListener, paramInt);
+        }
+      }
+    }
+  }
+  
+  final class d
+    implements la
+  {
+    d() {}
+    
+    public final void a(la.a parama)
+    {
+      parama.a("wifi", new a());
+    }
+    
+    final class a
+      implements la.b
+    {
+      a() {}
+      
+      public final Object a(Context paramContext)
+      {
+        paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+        akd.a = paramContext;
+        try
+        {
+          a locala = new a(paramContext);
+          return locala;
+        }
+        finally
+        {
+          StringBuilder localStringBuilder = new StringBuilder("e:[");
+          localStringBuilder.append(localObject.getMessage());
+          localStringBuilder.append("]");
+        }
+        return paramContext;
+      }
+      
+      final class a
+        extends ake
+      {
+        a(WifiManager paramWifiManager)
+        {
+          super();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final List<WifiConfiguration> getConfiguredNetworks()
+        {
+          if (ll.a())
           {
-            Object localObject2;
-            if ((paramInt1 == 43) && (paramBoolean3))
+            Object localObject = akf.this.a;
+            if (localObject != null)
             {
-              if (paramBoolean1) {
-                localObject2 = "+";
-              } else {
-                localObject2 = "%2B";
+              localObject = ((lk)localObject).a("getConfiguredNetworks");
+              if (localObject == null) {
+                return akd.c();
               }
-              localamv.a((String)localObject2);
-              localObject3 = localObject1;
-            }
-            else if ((paramInt1 >= 32) && (paramInt1 != 127) && ((paramInt1 < 128) || (!paramBoolean4)) && (paramString2.indexOf(paramInt1) == -1) && ((paramInt1 != 37) || ((paramBoolean1) && ((!paramBoolean2) || (a(paramString1, k, paramInt2))))))
-            {
-              localamv.a(paramInt1);
-              localObject3 = localObject1;
-            }
-            else
-            {
-              localObject2 = localObject1;
-              if (localObject1 == null) {
-                localObject2 = new amv();
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
               }
-              ((amv)localObject2).a(paramInt1);
-              for (;;)
+              ((ll.a)localObject).a = akd.c();
+              return (List)((ll.a)localObject).a;
+            }
+          }
+          return akd.c();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final WifiInfo getConnectionInfo()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getConnectionInfo");
+              if (localObject == null) {
+                return akd.a();
+              }
+              if (((ll.a)localObject).b) {
+                return (WifiInfo)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akd.a();
+              return (WifiInfo)((ll.a)localObject).a;
+            }
+          }
+          return akd.a();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final List<ScanResult> getScanResults()
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getScanResults");
+              if (localObject == null) {
+                return akd.b();
+              }
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = akd.b();
+              return (List)((ll.a)localObject).a;
+            }
+          }
+          return akd.b();
+        }
+        
+        public final void startLocalOnlyHotspot(WifiManager.LocalOnlyHotspotCallback paramLocalOnlyHotspotCallback, Handler paramHandler)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("startLocalOnlyHotspot");
+              if (localObject == null)
               {
-                localObject3 = localObject2;
-                if (((amv)localObject2).c()) {
-                  break;
-                }
-                m = ((amv)localObject2).f() & 0xFF;
-                localamv.b(37);
-                localamv.b(e[(m >> 4 & 0xF)]);
-                localamv.b(e[(m & 0xF)]);
+                akd.a(paramLocalOnlyHotspotCallback, paramHandler);
+                return;
               }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              akd.a(paramLocalOnlyHotspotCallback, paramHandler);
+              return;
             }
           }
-          k += Character.charCount(paramInt1);
+          akd.a(paramLocalOnlyHotspotCallback, paramHandler);
         }
-        return localamv.m();
-      }
-    }
-    return paramString1.substring(paramInt1, paramInt2);
-  }
-  
-  static String a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    int k = paramInt1;
-    while (k < paramInt2)
-    {
-      int m = paramString.charAt(k);
-      if ((m != 37) && ((m != 43) || (!paramBoolean)))
-      {
-        k += 1;
-      }
-      else
-      {
-        amv localamv = new amv();
-        localamv.a(paramString, paramInt1, k);
-        a(localamv, paramString, k, paramInt2, paramBoolean);
-        return localamv.m();
-      }
-    }
-    return paramString.substring(paramInt1, paramInt2);
-  }
-  
-  static String a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    return a(paramString1, 0, paramString1.length(), paramString2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4);
-  }
-  
-  private static String a(String paramString, boolean paramBoolean)
-  {
-    return a(paramString, 0, paramString.length(), paramBoolean);
-  }
-  
-  private static List<String> a(List<String> paramList, boolean paramBoolean)
-  {
-    int m = paramList.size();
-    ArrayList localArrayList = new ArrayList(m);
-    int k = 0;
-    while (k < m)
-    {
-      String str = (String)paramList.get(k);
-      if (str != null) {
-        str = a(str, paramBoolean);
-      } else {
-        str = null;
-      }
-      localArrayList.add(str);
-      k += 1;
-    }
-    return Collections.unmodifiableList(localArrayList);
-  }
-  
-  private static void a(amv paramamv, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    while (paramInt1 < paramInt2)
-    {
-      int m = paramString.codePointAt(paramInt1);
-      if (m == 37)
-      {
-        int k = paramInt1 + 2;
-        if (k < paramInt2)
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean startScan()
         {
-          int n = akt.a(paramString.charAt(paramInt1 + 1));
-          int i1 = akt.a(paramString.charAt(k));
-          if ((n == -1) || (i1 == -1)) {
-            break label105;
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("startScan");
+              if (localObject == null) {
+                return akd.d();
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(akd.d());
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
           }
-          paramamv.b((n << 4) + i1);
-          paramInt1 = k;
-          break label112;
+          return akd.d();
         }
       }
-      if ((m == 43) && (paramBoolean)) {
-        paramamv.b(32);
-      } else {
-        label105:
-        paramamv.a(m);
-      }
-      label112:
-      paramInt1 += Character.charCount(m);
     }
   }
   
-  static void a(StringBuilder paramStringBuilder, List<String> paramList)
+  final class e
+    implements la
   {
-    int m = paramList.size();
-    int k = 0;
-    while (k < m)
-    {
-      paramStringBuilder.append('/');
-      paramStringBuilder.append((String)paramList.get(k));
-      k += 1;
-    }
-  }
-  
-  private static boolean a(String paramString, int paramInt1, int paramInt2)
-  {
-    int k = paramInt1 + 2;
-    return (k < paramInt2) && (paramString.charAt(paramInt1) == '%') && (akt.a(paramString.charAt(paramInt1 + 1)) != -1) && (akt.a(paramString.charAt(k)) != -1);
-  }
-  
-  static List<String> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int m;
-    for (int k = 0; k <= paramString.length(); k = m + 1)
-    {
-      int n = paramString.indexOf('&', k);
-      m = n;
-      if (n == -1) {
-        m = paramString.length();
-      }
-      n = paramString.indexOf('=', k);
-      if ((n != -1) && (n <= m))
-      {
-        localArrayList.add(paramString.substring(k, n));
-        localArrayList.add(paramString.substring(n + 1, m));
-      }
-      else
-      {
-        localArrayList.add(paramString.substring(k, m));
-        localArrayList.add(null);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void b(StringBuilder paramStringBuilder, List<String> paramList)
-  {
-    int m = paramList.size();
-    int k = 0;
-    while (k < m)
-    {
-      String str1 = (String)paramList.get(k);
-      String str2 = (String)paramList.get(k + 1);
-      if (k > 0) {
-        paramStringBuilder.append('&');
-      }
-      paramStringBuilder.append(str1);
-      if (str2 != null)
-      {
-        paramStringBuilder.append('=');
-        paramStringBuilder.append(str2);
-      }
-      k += 2;
-    }
-  }
-  
-  public static akf d(String paramString)
-  {
-    return new a().a(null, paramString).b();
-  }
-  
-  public final URI a()
-  {
-    Object localObject2 = new a();
-    ((a)localObject2).a = this.a;
-    ((a)localObject2).b = c();
-    ((a)localObject2).c = d();
-    ((a)localObject2).d = this.b;
-    if (this.c != a(this.a)) {
-      k = this.c;
-    } else {
-      k = -1;
-    }
-    ((a)localObject2).e = k;
-    ((a)localObject2).f.clear();
-    ((a)localObject2).f.addAll(f());
-    ((a)localObject2).a(g());
-    Object localObject1;
-    if (this.i == null)
-    {
-      localObject1 = null;
-    }
-    else
-    {
-      k = this.j.indexOf('#');
-      localObject1 = this.j.substring(k + 1);
-    }
-    ((a)localObject2).h = ((String)localObject1);
-    int n = ((a)localObject2).f.size();
-    int m = 0;
-    int k = 0;
-    while (k < n)
-    {
-      localObject1 = (String)((a)localObject2).f.get(k);
-      ((a)localObject2).f.set(k, a((String)localObject1, "[]", true, true, false, true));
-      k += 1;
-    }
-    if (((a)localObject2).g != null)
-    {
-      n = ((a)localObject2).g.size();
-      k = m;
-      while (k < n)
-      {
-        localObject1 = (String)((a)localObject2).g.get(k);
-        if (localObject1 != null) {
-          ((a)localObject2).g.set(k, a((String)localObject1, "\\^`{|}", true, true, true, true));
-        }
-        k += 1;
-      }
-    }
-    if (((a)localObject2).h != null) {
-      ((a)localObject2).h = a(((a)localObject2).h, " \"#<>\\^`{|}", true, true, false, false);
-    }
-    localObject2 = ((a)localObject2).toString();
-    try
-    {
-      localObject1 = new URI((String)localObject2);
-      return localObject1;
-    }
-    catch (URISyntaxException localURISyntaxException) {}
-    try
-    {
-      localObject2 = URI.create(((String)localObject2).replaceAll("[\\u0000-\\u001F\\u007F-\\u009F\\p{javaWhitespace}]", ""));
-      return localObject2;
-    }
-    catch (Exception localException)
-    {
-      label366:
-      break label366;
-    }
-    throw new RuntimeException(localURISyntaxException);
-  }
-  
-  public final boolean b()
-  {
-    return this.a.equals("https");
-  }
-  
-  @Nullable
-  public final a c(String paramString)
-  {
-    try
-    {
-      paramString = new a().a(this, paramString);
-      return paramString;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      label15:
-      break label15;
-    }
-    return null;
-  }
-  
-  public final String c()
-  {
-    if (this.f.isEmpty()) {
-      return "";
-    }
-    int k = this.a.length() + 3;
-    String str = this.j;
-    int m = akt.a(str, k, str.length(), ":@");
-    return this.j.substring(k, m);
-  }
-  
-  public final String d()
-  {
-    if (this.g.isEmpty()) {
-      return "";
-    }
-    int k = this.j.indexOf(':', this.a.length() + 3);
-    int m = this.j.indexOf('@');
-    return this.j.substring(k + 1, m);
-  }
-  
-  public final String e()
-  {
-    int k = this.j.indexOf('/', this.a.length() + 3);
-    String str = this.j;
-    int m = akt.a(str, k, str.length(), "?#");
-    return this.j.substring(k, m);
-  }
-  
-  public final boolean equals(@Nullable Object paramObject)
-  {
-    return ((paramObject instanceof akf)) && (((akf)paramObject).j.equals(this.j));
-  }
-  
-  public final List<String> f()
-  {
-    int k = this.j.indexOf('/', this.a.length() + 3);
-    Object localObject = this.j;
-    int m = akt.a((String)localObject, k, ((String)localObject).length(), "?#");
-    localObject = new ArrayList();
-    while (k < m)
-    {
-      int n = k + 1;
-      k = akt.a(this.j, n, m, '/');
-      ((List)localObject).add(this.j.substring(n, k));
-    }
-    return localObject;
-  }
-  
-  @Nullable
-  public final String g()
-  {
-    if (this.d == null) {
-      return null;
-    }
-    int k = this.j.indexOf('?') + 1;
-    String str = this.j;
-    int m = akt.a(str, k, str.length(), '#');
-    return this.j.substring(k, m);
-  }
-  
-  public final int hashCode()
-  {
-    return this.j.hashCode();
-  }
-  
-  public final String toString()
-  {
-    return this.j;
-  }
-  
-  public static final class a
-  {
-    @Nullable
-    String a;
-    String b = "";
-    String c = "";
-    @Nullable
-    String d;
-    int e = -1;
-    final List<String> f = new ArrayList();
-    @Nullable
-    List<String> g;
-    @Nullable
-    String h;
+    e() {}
     
-    public a()
+    public final void a(la.a parama)
     {
-      this.f.add("");
+      parama.a("location", new a());
     }
     
-    static String a(String paramString, int paramInt1, int paramInt2)
+    final class a
+      implements la.b
     {
-      return akt.a(akf.a(paramString, paramInt1, paramInt2, false));
-    }
-    
-    private void b(String paramString, int paramInt1, int paramInt2)
-    {
-      if (paramInt1 == paramInt2) {
-        return;
-      }
-      int i = paramString.charAt(paramInt1);
-      Object localObject;
-      if ((i != 47) && (i != 92))
+      a() {}
+      
+      public final Object a(Context paramContext)
       {
-        localObject = this.f;
-        ((List)localObject).set(((List)localObject).size() - 1, "");
-      }
-      else
-      {
-        this.f.clear();
-        this.f.add("");
-        paramInt1 += 1;
-      }
-      while (paramInt1 < paramInt2)
-      {
-        int j = akt.a(paramString, paramInt1, paramInt2, "/\\");
-        int k = 0;
-        if (j < paramInt2) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        localObject = akf.a(paramString, paramInt1, j, " \"<>^`{}|/\\?#", true, false, false, true);
-        if ((!((String)localObject).equals(".")) && (!((String)localObject).equalsIgnoreCase("%2e"))) {
-          paramInt1 = 0;
-        } else {
-          paramInt1 = 1;
-        }
-        if (paramInt1 == 0)
+        paramContext = (LocationManager)paramContext.getApplicationContext().getSystemService("location");
+        try
         {
-          if ((!((String)localObject).equals("..")) && (!((String)localObject).equalsIgnoreCase("%2e.")) && (!((String)localObject).equalsIgnoreCase(".%2e")))
-          {
-            paramInt1 = k;
-            if (!((String)localObject).equalsIgnoreCase("%2e%2e")) {}
-          }
-          else
-          {
-            paramInt1 = 1;
-          }
-          if (paramInt1 != 0)
-          {
-            localObject = this.f;
-            if ((((String)((List)localObject).remove(((List)localObject).size() - 1)).isEmpty()) && (!this.f.isEmpty()))
-            {
-              localObject = this.f;
-              ((List)localObject).set(((List)localObject).size() - 1, "");
-            }
-            else
-            {
-              this.f.add("");
-            }
-          }
-          else
-          {
-            List localList = this.f;
-            if (((String)localList.get(localList.size() - 1)).isEmpty())
-            {
-              localList = this.f;
-              localList.set(localList.size() - 1, localObject);
-            }
-            else
-            {
-              this.f.add(localObject);
-            }
-            if (i != 0) {
-              this.f.add("");
-            }
-          }
+          ajx.a = paramContext;
+          a locala = new a(paramContext);
+          return locala;
         }
-        paramInt1 = j;
-        if (i != 0) {
-          paramInt1 = j + 1;
-        }
-      }
-    }
-    
-    private static int c(String paramString, int paramInt1, int paramInt2)
-    {
-      if (paramInt2 - paramInt1 < 2) {
-        return -1;
-      }
-      int j = paramString.charAt(paramInt1);
-      int i;
-      if (j >= 97)
-      {
-        i = paramInt1;
-        if (j <= 122) {}
-      }
-      else
-      {
-        if (j < 65) {
-          break label154;
-        }
-        i = paramInt1;
-        if (j > 90) {
-          return -1;
-        }
-      }
-      do
-      {
-        do
+        finally
         {
-          do
+          StringBuilder localStringBuilder = new StringBuilder("e:[");
+          localStringBuilder.append(localObject.getMessage());
+          localStringBuilder.append("]");
+        }
+        return paramContext;
+      }
+      
+      final class a
+        extends ajy
+      {
+        a(LocationManager paramLocationManager)
+        {
+          super();
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean addGpsStatusListener(GpsStatus.Listener paramListener)
+        {
+          if (ll.a())
           {
-            do
+            Object localObject = akf.this.a;
+            if (localObject != null)
             {
-              do
+              localObject = ((lk)localObject).a("addGpsStatusListener");
+              if (localObject == null) {
+                return ajx.a(paramListener);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramListener));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramListener);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("addNmeaListener");
+              if (localObject == null) {
+                return ajx.a(paramOnNmeaMessageListener);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramOnNmeaMessageListener));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramOnNmeaMessageListener);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener, Handler paramHandler)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("addNmeaListener");
+              if (localObject == null) {
+                return ajx.a(paramOnNmeaMessageListener, paramHandler);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramOnNmeaMessageListener, paramHandler));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramOnNmeaMessageListener, paramHandler);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final void addProximityAlert(double paramDouble1, double paramDouble2, float paramFloat, long paramLong, PendingIntent paramPendingIntent)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("addProximityAlert");
+              if (localObject == null)
               {
-                do
-                {
-                  paramInt1 = i + 1;
-                  if (paramInt1 >= paramInt2) {
-                    break label152;
-                  }
-                  j = paramString.charAt(paramInt1);
-                  if (j < 97) {
-                    break;
-                  }
-                  i = paramInt1;
-                } while (j <= 122);
-                if (j < 65) {
-                  break;
-                }
-                i = paramInt1;
-              } while (j <= 90);
-              if (j < 48) {
-                break;
+                ajx.a(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
+                return;
               }
-              i = paramInt1;
-            } while (j <= 57);
-            i = paramInt1;
-          } while (j == 43);
-          i = paramInt1;
-        } while (j == 45);
-        i = paramInt1;
-      } while (j == 46);
-      if (j == 58) {
-        return paramInt1;
-      }
-      return -1;
-      label152:
-      return -1;
-      label154:
-      return -1;
-    }
-    
-    private static int d(String paramString, int paramInt1, int paramInt2)
-    {
-      int i = 0;
-      while (paramInt1 < paramInt2)
-      {
-        int j = paramString.charAt(paramInt1);
-        if ((j != 92) && (j != 47)) {
-          break;
-        }
-        i += 1;
-        paramInt1 += 1;
-      }
-      return i;
-    }
-    
-    private static int e(String paramString, int paramInt1, int paramInt2)
-    {
-      while (paramInt1 < paramInt2)
-      {
-        int j = paramString.charAt(paramInt1);
-        if (j != 58)
-        {
-          int i = paramInt1;
-          if (j != 91)
-          {
-            i = paramInt1;
-          }
-          else
-          {
-            do
-            {
-              paramInt1 = i + 1;
-              i = paramInt1;
-              if (paramInt1 >= paramInt2) {
-                break;
+              if (((ll.a)localObject).b) {
+                return;
               }
-              i = paramInt1;
-            } while (paramString.charAt(paramInt1) != ']');
-            i = paramInt1;
-          }
-          paramInt1 = i + 1;
-        }
-        else
-        {
-          return paramInt1;
-        }
-      }
-      return paramInt2;
-    }
-    
-    private static int f(String paramString, int paramInt1, int paramInt2)
-    {
-      try
-      {
-        paramInt1 = Integer.parseInt(akf.a(paramString, paramInt1, paramInt2, "", false, false, false, true));
-        if ((paramInt1 > 0) && (paramInt1 <= 65535)) {
-          return paramInt1;
-        }
-        return -1;
-      }
-      catch (NumberFormatException paramString) {}
-      return -1;
-    }
-    
-    final int a()
-    {
-      int i = this.e;
-      if (i != -1) {
-        return i;
-      }
-      return akf.a(this.a);
-    }
-    
-    final a a(@Nullable akf paramakf, String paramString)
-    {
-      int i = akt.a(paramString, 0, paramString.length());
-      int i1 = akt.b(paramString, i, paramString.length());
-      int j = c(paramString, i, i1);
-      if (j != -1)
-      {
-        if (paramString.regionMatches(true, i, "https:", 0, 6))
-        {
-          this.a = "https";
-          i += 6;
-        }
-        else if (paramString.regionMatches(true, i, "http:", 0, 5))
-        {
-          this.a = "http";
-          i += 5;
-        }
-        else
-        {
-          paramakf = new StringBuilder("Expected URL scheme 'http' or 'https' but was '");
-          paramakf.append(paramString.substring(0, j));
-          paramakf.append("'");
-          throw new IllegalArgumentException(paramakf.toString());
-        }
-      }
-      else
-      {
-        if (paramakf == null) {
-          break label829;
-        }
-        this.a = paramakf.a;
-      }
-      j = d(paramString, i, i1);
-      if ((j < 2) && (paramakf != null) && (paramakf.a.equals(this.a)))
-      {
-        this.b = paramakf.c();
-        this.c = paramakf.d();
-        this.d = paramakf.b;
-        this.e = paramakf.c;
-        this.f.clear();
-        this.f.addAll(paramakf.f());
-        if (i != i1)
-        {
-          j = i;
-          if (paramString.charAt(i) != '#') {}
-        }
-        else
-        {
-          a(paramakf.g());
-          j = i;
-        }
-      }
-      else
-      {
-        k = i + j;
-        i = 0;
-        int m = 0;
-        for (;;)
-        {
-          j = akt.a(paramString, k, i1, "@/\\?#");
-          int n;
-          if (j != i1) {
-            n = paramString.charAt(j);
-          } else {
-            n = -1;
-          }
-          if ((n == -1) || (n == 35) || (n == 47) || (n == 92)) {
-            break;
-          }
-          switch (n)
-          {
-          default: 
-            break;
-          case 64: 
-            if (i == 0)
-            {
-              int i2 = akt.a(paramString, k, j, ':');
-              n = j;
-              String str = akf.a(paramString, k, i2, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
-              paramakf = str;
-              if (m != 0)
-              {
-                paramakf = new StringBuilder();
-                paramakf.append(this.b);
-                paramakf.append("%40");
-                paramakf.append(str);
-                paramakf = paramakf.toString();
-              }
-              this.b = paramakf;
-              if (i2 != n)
-              {
-                this.c = akf.a(paramString, i2 + 1, n, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
-                i = 1;
-              }
-              m = 1;
+              ajx.a(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
+              return;
             }
-            else
-            {
-              paramakf = new StringBuilder();
-              paramakf.append(this.c);
-              paramakf.append("%40");
-              paramakf.append(akf.a(paramString, k, j, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true));
-              this.c = paramakf.toString();
-            }
-            k = j + 1;
           }
+          ajx.a(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
         }
-        i = e(paramString, k, j);
-        m = i + 1;
-        if (m < j)
+        
+        public final List<String> getAllProviders()
         {
-          this.d = a(paramString, k, i);
-          this.e = f(paramString, m, j);
-          if (this.e == -1)
+          if (ll.a())
           {
-            paramakf = new StringBuilder("Invalid URL port: \"");
-            paramakf.append(paramString.substring(m, j));
-            paramakf.append('"');
-            throw new IllegalArgumentException(paramakf.toString());
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getAllProviders");
+              if (localObject == null) {
+                return ajx.a();
+              }
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.a();
+              return (List)((ll.a)localObject).a;
+            }
           }
+          return ajx.a();
         }
-        else
+        
+        public final String getBestProvider(Criteria paramCriteria, boolean paramBoolean)
         {
-          this.d = a(paramString, k, i);
-          this.e = akf.a(this.a);
+          Object localObject = new StringBuilder("getBestProvider, enabledOnly:[");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getBestProvider");
+              if (localObject == null) {
+                return ajx.b(paramCriteria, paramBoolean);
+              }
+              if (((ll.a)localObject).b) {
+                return (String)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.b(paramCriteria, paramBoolean);
+              return (String)((ll.a)localObject).a;
+            }
+          }
+          return ajx.b(paramCriteria, paramBoolean);
         }
-        if (this.d == null) {
-          break label788;
-        }
-      }
-      int k = akt.a(paramString, j, i1, "?#");
-      b(paramString, j, k);
-      i = k;
-      if (k < i1)
-      {
-        i = k;
-        if (paramString.charAt(k) == '?')
+        
+        @SuppressLint({"MissingPermission"})
+        public final GpsStatus getGpsStatus(GpsStatus paramGpsStatus)
         {
-          i = akt.a(paramString, k, i1, '#');
-          this.g = akf.b(akf.a(paramString, k + 1, i, " \"'<>#", true, false, true, true));
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getGpsStatus");
+              if (localObject == null) {
+                return ajx.a(paramGpsStatus);
+              }
+              if (((ll.a)localObject).b) {
+                return (GpsStatus)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.a(paramGpsStatus);
+              return (GpsStatus)((ll.a)localObject).a;
+            }
+          }
+          return ajx.a(paramGpsStatus);
         }
-      }
-      if ((i < i1) && (paramString.charAt(i) == '#')) {
-        this.h = akf.a(paramString, 1 + i, i1, "", true, false, false, false);
-      }
-      return this;
-      label788:
-      paramakf = new StringBuilder("Invalid URL host: \"");
-      paramakf.append(paramString.substring(k, i));
-      paramakf.append('"');
-      throw new IllegalArgumentException(paramakf.toString());
-      label829:
-      throw new IllegalArgumentException("Expected URL scheme 'http' or 'https' but no colon was found");
-    }
-    
-    public final a a(@Nullable String paramString)
-    {
-      if (paramString != null) {
-        paramString = akf.b(akf.a(paramString, " \"'<>#", true, false, true, true));
-      } else {
-        paramString = null;
-      }
-      this.g = paramString;
-      return this;
-    }
-    
-    public final akf b()
-    {
-      if (this.a != null)
-      {
-        if (this.d != null) {
-          return new akf(this);
-        }
-        throw new IllegalStateException("host == null");
-      }
-      throw new IllegalStateException("scheme == null");
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a);
-      localStringBuilder.append("://");
-      if ((!this.b.isEmpty()) || (!this.c.isEmpty()))
-      {
-        localStringBuilder.append(this.b);
-        if (!this.c.isEmpty())
+        
+        @SuppressLint({"MissingPermission"})
+        public final Location getLastKnownLocation(String paramString)
         {
-          localStringBuilder.append(':');
-          localStringBuilder.append(this.c);
+          Object localObject = new StringBuilder("getLastKnownLocation, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getLastKnownLocation");
+              if (localObject == null) {
+                return ajx.c(paramString);
+              }
+              if (((ll.a)localObject).b) {
+                return (Location)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.c(paramString);
+              return (Location)((ll.a)localObject).a;
+            }
+          }
+          return ajx.c(paramString);
         }
-        localStringBuilder.append('@');
+        
+        public final LocationProvider getProvider(String paramString)
+        {
+          Object localObject = new StringBuilder("getProvider, name:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getProvider");
+              if (localObject == null) {
+                return ajx.b(paramString);
+              }
+              if (((ll.a)localObject).b) {
+                return (LocationProvider)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.b(paramString);
+              return (LocationProvider)((ll.a)localObject).a;
+            }
+          }
+          return ajx.b(paramString);
+        }
+        
+        public final List<String> getProviders(Criteria paramCriteria, boolean paramBoolean)
+        {
+          Object localObject = new StringBuilder("getProviders, enabledOnly:[");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getProviders");
+              if (localObject == null) {
+                return ajx.a(paramCriteria, paramBoolean);
+              }
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.a(paramCriteria, paramBoolean);
+              return (List)((ll.a)localObject).a;
+            }
+          }
+          return ajx.a(paramCriteria, paramBoolean);
+        }
+        
+        public final List<String> getProviders(boolean paramBoolean)
+        {
+          Object localObject = new StringBuilder("getProviders, enabledOnly:[");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("getProviders");
+              if (localObject == null) {
+                return ajx.a(paramBoolean);
+              }
+              if (((ll.a)localObject).b) {
+                return (List)((ll.a)localObject).a;
+              }
+              ((ll.a)localObject).a = ajx.a(paramBoolean);
+              return (List)((ll.a)localObject).a;
+            }
+          }
+          return ajx.a(paramBoolean);
+        }
+        
+        public final boolean isProviderEnabled(String paramString)
+        {
+          Object localObject = new StringBuilder("isProviderEnabled, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("isProviderEnabled");
+              if (localObject == null) {
+                return ajx.a(paramString);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramString));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramString);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("registerGnssMeasurementsCallback");
+              if (localObject == null) {
+                return ajx.a(paramCallback);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramCallback));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramCallback);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback, Handler paramHandler)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("registerGnssMeasurementsCallback");
+              if (localObject == null) {
+                return ajx.a(paramCallback, paramHandler);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramCallback, paramHandler));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramCallback, paramHandler);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean registerGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback, Handler paramHandler)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("registerGnssNavigationMessageCallback");
+              if (localObject == null) {
+                return ajx.a(paramCallback, paramHandler);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramCallback, paramHandler));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramCallback, paramHandler);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("registerGnssStatusCallback");
+              if (localObject == null) {
+                return ajx.a(paramCallback);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramCallback));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramCallback);
+        }
+        
+        @SuppressLint({"MissingPermission"})
+        public final boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback, Handler paramHandler)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("registerGnssStatusCallback");
+              if (localObject == null) {
+                return ajx.a(paramCallback, paramHandler);
+              }
+              if (((ll.a)localObject).b) {
+                return ((Boolean)((ll.a)localObject).a).booleanValue();
+              }
+              ((ll.a)localObject).a = Boolean.valueOf(ajx.a(paramCallback, paramHandler));
+              return ((Boolean)((ll.a)localObject).a).booleanValue();
+            }
+          }
+          return ajx.a(paramCallback, paramHandler);
+        }
+        
+        public final void removeGpsStatusListener(GpsStatus.Listener paramListener)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("removeGpsStatusListener");
+              if (localObject == null)
+              {
+                ajx.b(paramListener);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.b(paramListener);
+              return;
+            }
+          }
+          ajx.b(paramListener);
+        }
+        
+        public final void removeUpdates(PendingIntent paramPendingIntent)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("removeUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramPendingIntent);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramPendingIntent);
+              return;
+            }
+          }
+          ajx.a(paramPendingIntent);
+        }
+        
+        public final void removeUpdates(LocationListener paramLocationListener)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("removeUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramLocationListener);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramLocationListener);
+              return;
+            }
+          }
+          ajx.a(paramLocationListener);
+        }
+        
+        public final void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, PendingIntent paramPendingIntent)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestLocationUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramLong, paramFloat, paramCriteria, paramPendingIntent);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramLong, paramFloat, paramCriteria, paramPendingIntent);
+              return;
+            }
+          }
+          ajx.a(paramLong, paramFloat, paramCriteria, paramPendingIntent);
+        }
+        
+        public final void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestLocationUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
+              return;
+            }
+          }
+          ajx.a(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
+        }
+        
+        public final void requestLocationUpdates(String paramString, long paramLong, float paramFloat, PendingIntent paramPendingIntent)
+        {
+          Object localObject = new StringBuilder("requestLocationUpdates, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestLocationUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramString, paramLong, paramFloat, paramPendingIntent);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramString, paramLong, paramFloat, paramPendingIntent);
+              return;
+            }
+          }
+          ajx.a(paramString, paramLong, paramFloat, paramPendingIntent);
+        }
+        
+        public final void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener)
+        {
+          Object localObject = new StringBuilder("requestLocationUpdates, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestLocationUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramString, paramLong, paramFloat, paramLocationListener);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramString, paramLong, paramFloat, paramLocationListener);
+              return;
+            }
+          }
+          ajx.a(paramString, paramLong, paramFloat, paramLocationListener);
+        }
+        
+        public final void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener, Looper paramLooper)
+        {
+          Object localObject = new StringBuilder("requestLocationUpdates, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestLocationUpdates");
+              if (localObject == null)
+              {
+                ajx.a(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
+              return;
+            }
+          }
+          ajx.a(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
+        }
+        
+        public final void requestSingleUpdate(Criteria paramCriteria, PendingIntent paramPendingIntent)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestSingleUpdate");
+              if (localObject == null)
+              {
+                ajx.a(paramCriteria, paramPendingIntent);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramCriteria, paramPendingIntent);
+              return;
+            }
+          }
+          ajx.a(paramCriteria, paramPendingIntent);
+        }
+        
+        public final void requestSingleUpdate(Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestSingleUpdate");
+              if (localObject == null)
+              {
+                ajx.a(paramCriteria, paramLocationListener, paramLooper);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramCriteria, paramLocationListener, paramLooper);
+              return;
+            }
+          }
+          ajx.a(paramCriteria, paramLocationListener, paramLooper);
+        }
+        
+        public final void requestSingleUpdate(String paramString, PendingIntent paramPendingIntent)
+        {
+          Object localObject = new StringBuilder("requestSingleUpdate, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestSingleUpdate");
+              if (localObject == null)
+              {
+                ajx.a(paramString, paramPendingIntent);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramString, paramPendingIntent);
+              return;
+            }
+          }
+          ajx.a(paramString, paramPendingIntent);
+        }
+        
+        public final void requestSingleUpdate(String paramString, LocationListener paramLocationListener, Looper paramLooper)
+        {
+          Object localObject = new StringBuilder("requestSingleUpdate, provider:[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          if (ll.a())
+          {
+            localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("requestSingleUpdate");
+              if (localObject == null)
+              {
+                ajx.a(paramString, paramLocationListener, paramLooper);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.a(paramString, paramLocationListener, paramLooper);
+              return;
+            }
+          }
+          ajx.a(paramString, paramLocationListener, paramLooper);
+        }
+        
+        public final void unregisterGnssStatusCallback(GnssStatus.Callback paramCallback)
+        {
+          if (ll.a())
+          {
+            Object localObject = akf.this.a;
+            if (localObject != null)
+            {
+              localObject = ((lk)localObject).a("unregisterGnssStatusCallback");
+              if (localObject == null)
+              {
+                ajx.b(paramCallback);
+                return;
+              }
+              if (((ll.a)localObject).b) {
+                return;
+              }
+              ajx.b(paramCallback);
+              return;
+            }
+          }
+          ajx.b(paramCallback);
+        }
       }
-      if (this.d.indexOf(':') != -1)
-      {
-        localStringBuilder.append('[');
-        localStringBuilder.append(this.d);
-        localStringBuilder.append(']');
-      }
-      else
-      {
-        localStringBuilder.append(this.d);
-      }
-      int i = a();
-      if (i != akf.a(this.a))
-      {
-        localStringBuilder.append(':');
-        localStringBuilder.append(i);
-      }
-      akf.a(localStringBuilder, this.f);
-      if (this.g != null)
-      {
-        localStringBuilder.append('?');
-        akf.b(localStringBuilder, this.g);
-      }
-      if (this.h != null)
-      {
-        localStringBuilder.append('#');
-        localStringBuilder.append(this.h);
-      }
-      return localStringBuilder.toString();
     }
+  }
+  
+  public static final class f
+  {
+    public static akf a = new akf((byte)0);
   }
 }
 

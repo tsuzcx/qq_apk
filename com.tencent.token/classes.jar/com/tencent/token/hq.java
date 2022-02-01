@@ -1,103 +1,107 @@
 package com.tencent.token;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.DialogInterface.OnKeyListener;
-import android.support.v7.app.AlertDialog;
-import android.view.KeyEvent;
-import android.view.KeyEvent.DispatcherState;
-import android.view.View;
-import android.view.Window;
-import android.widget.ListAdapter;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 
-final class hq
-  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, hw.a
+public final class hq
+  extends ContextWrapper
 {
-  hp a;
-  AlertDialog b;
-  hn c;
-  private hw.a d;
+  public int a;
+  private Resources.Theme b;
+  private LayoutInflater c;
+  private Configuration d;
+  private Resources e;
   
-  public hq(hp paramhp)
+  public hq()
   {
-    this.a = paramhp;
+    super(null);
   }
   
-  public final void a(hp paramhp, boolean paramBoolean)
+  public hq(Context paramContext, int paramInt)
   {
-    if ((paramBoolean) || (paramhp == this.a))
+    super(paramContext);
+    this.a = paramInt;
+  }
+  
+  private void a()
+  {
+    int i;
+    if (this.b == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      localObject = this.b;
-      if (localObject != null) {
-        ((AlertDialog)localObject).dismiss();
+      this.b = getResources().newTheme();
+      Resources.Theme localTheme = getBaseContext().getTheme();
+      if (localTheme != null) {
+        this.b.setTo(localTheme);
       }
     }
-    Object localObject = this.d;
-    if (localObject != null) {
-      ((hw.a)localObject).a(paramhp, paramBoolean);
-    }
+    this.b.applyStyle(this.a, true);
   }
   
-  public final boolean a(hp paramhp)
+  protected final void attachBaseContext(Context paramContext)
   {
-    hw.a locala = this.d;
-    if (locala != null) {
-      return locala.a(paramhp);
-    }
-    return false;
+    super.attachBaseContext(paramContext);
   }
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final AssetManager getAssets()
   {
-    this.a.a((hr)this.c.b().getItem(paramInt), null, 0);
+    return getResources().getAssets();
   }
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public final Resources getResources()
   {
-    this.c.a(this.a, true);
-  }
-  
-  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 82) || (paramInt == 4)) {
-      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
-      {
-        paramDialogInterface = this.b.getWindow();
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface = paramDialogInterface.getDecorView();
-          if (paramDialogInterface != null)
-          {
-            paramDialogInterface = paramDialogInterface.getKeyDispatcherState();
-            if (paramDialogInterface != null)
-            {
-              paramDialogInterface.startTracking(paramKeyEvent, this);
-              return true;
-            }
-          }
-        }
-      }
-      else if ((paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-      {
-        Object localObject = this.b.getWindow();
-        if (localObject != null)
-        {
-          localObject = ((Window)localObject).getDecorView();
-          if (localObject != null)
-          {
-            localObject = ((View)localObject).getKeyDispatcherState();
-            if ((localObject != null) && (((KeyEvent.DispatcherState)localObject).isTracking(paramKeyEvent)))
-            {
-              this.a.a(true);
-              paramDialogInterface.dismiss();
-              return true;
-            }
-          }
-        }
+    if (this.e == null) {
+      if (this.d == null) {
+        this.e = super.getResources();
+      } else if (Build.VERSION.SDK_INT >= 17) {
+        this.e = createConfigurationContext(this.d).getResources();
       }
     }
-    return this.a.performShortcut(paramInt, paramKeyEvent, 0);
+    return this.e;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    if ("layout_inflater".equals(paramString))
+    {
+      if (this.c == null) {
+        this.c = LayoutInflater.from(getBaseContext()).cloneInContext(this);
+      }
+      return this.c;
+    }
+    return getBaseContext().getSystemService(paramString);
+  }
+  
+  public final Resources.Theme getTheme()
+  {
+    Resources.Theme localTheme = this.b;
+    if (localTheme != null) {
+      return localTheme;
+    }
+    if (this.a == 0) {
+      this.a = hg.i.Theme_AppCompat_Light;
+    }
+    a();
+    return this.b;
+  }
+  
+  public final void setTheme(int paramInt)
+  {
+    if (this.a != paramInt)
+    {
+      this.a = paramInt;
+      a();
+    }
   }
 }
 

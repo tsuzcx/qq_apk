@@ -1,47 +1,135 @@
 package com.tencent.token;
 
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.TypedValue;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
-class do
-  extends dn
+public final class do
 {
-  do(Drawable paramDrawable)
+  public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama)
   {
-    super(paramDrawable);
-  }
-  
-  do(dn.a parama, Resources paramResources)
-  {
-    super(parama, paramResources);
-  }
-  
-  dn.a b()
-  {
-    return new a(this.b);
-  }
-  
-  public boolean isAutoMirrored()
-  {
-    return this.c.isAutoMirrored();
-  }
-  
-  public void setAutoMirrored(boolean paramBoolean)
-  {
-    this.c.setAutoMirrored(paramBoolean);
-  }
-  
-  static final class a
-    extends dn.a
-  {
-    a(dn.a parama)
+    if (paramContext.isRestricted()) {
+      return null;
+    }
+    Resources localResources = paramContext.getResources();
+    localResources.getValue(paramInt1, paramTypedValue, true);
+    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama);
+    if (paramContext == null)
     {
-      super();
+      if (parama != null) {
+        return paramContext;
+      }
+      paramContext = new StringBuilder("Font resource ID #0x");
+      paramContext.append(Integer.toHexString(paramInt1));
+      paramContext.append(" could not be retrieved.");
+      throw new Resources.NotFoundException(paramContext.toString());
+    }
+    return paramContext;
+  }
+  
+  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
+  {
+    if (paramTypedValue.string != null)
+    {
+      paramTypedValue = paramTypedValue.string.toString();
+      if (!paramTypedValue.startsWith("res/"))
+      {
+        if (parama != null) {
+          parama.a(-3, null);
+        }
+        return null;
+      }
+      Typeface localTypeface = ds.a(paramResources, paramInt1, paramInt2);
+      if (localTypeface != null)
+      {
+        if (parama != null) {
+          parama.a(localTypeface, null);
+        }
+        return localTypeface;
+      }
+    }
+    try
+    {
+      if (paramTypedValue.toLowerCase().endsWith(".xml"))
+      {
+        paramTypedValue = dn.a(paramResources.getXml(paramInt1), paramResources);
+        if (paramTypedValue == null)
+        {
+          if (parama == null) {
+            break label242;
+          }
+          parama.a(-3, null);
+          return null;
+        }
+        return ds.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
+      }
+      paramContext = ds.a(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
+      if (parama != null)
+      {
+        if (paramContext != null)
+        {
+          parama.a(paramContext, null);
+          return paramContext;
+        }
+        parama.a(-3, null);
+      }
+      return paramContext;
+    }
+    catch (XmlPullParserException|IOException paramContext)
+    {
+      label162:
+      break label162;
+    }
+    if (parama != null) {
+      parama.a(-3, null);
+    }
+    return null;
+    paramContext = new StringBuilder("Resource \"");
+    paramContext.append(paramResources.getResourceName(paramInt1));
+    paramContext.append("\" (");
+    paramContext.append(Integer.toHexString(paramInt1));
+    paramContext.append(") is not a Font: ");
+    paramContext.append(paramTypedValue);
+    throw new Resources.NotFoundException(paramContext.toString());
+    label242:
+    return null;
+  }
+  
+  public static abstract class a
+  {
+    public final void a(final int paramInt, Handler paramHandler)
+    {
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public final void run() {}
+      });
     }
     
-    public final Drawable newDrawable(Resources paramResources)
+    public abstract void a(Typeface paramTypeface);
+    
+    public final void a(final Typeface paramTypeface, Handler paramHandler)
     {
-      return new do(this, paramResources);
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          do.a.this.a(paramTypeface);
+        }
+      });
     }
   }
 }

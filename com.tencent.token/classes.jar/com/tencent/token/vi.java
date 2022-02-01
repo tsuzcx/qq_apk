@@ -3,27 +3,31 @@ package com.tencent.token;
 import android.content.Context;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class vi
-  extends tr
+  extends ud
 {
   private long d;
-  private byte e;
+  private int e;
   private int f;
+  private boolean g;
+  private String h;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.e = ((Byte)paramabc.c.get("param.msg.source")).byteValue();
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramabm.c.get("param.scene_id")).intValue();
+    this.g = ((Boolean)paramabm.c.get("param.verifyonoff")).booleanValue();
+    this.h = ((String)paramabm.c.get("param.wtlogin.a2"));
+    this.e = paramabm.j;
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -34,37 +38,27 @@ public final class vi
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
+      xv.a("mbtoken3_general_verify_mobile_code ret: ".concat(String.valueOf(paramJSONObject)));
       i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
+      if (i != this.e)
       {
-        this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        si.a();
-        paramJSONObject.append(si.b());
-        xj.c(paramJSONObject.toString());
+        paramJSONObject.append(this.e);
+        xv.c(paramJSONObject.toString());
+        this.a.a(10030, null, null);
         return;
       }
-      paramJSONObject = paramJSONObject.getJSONArray("msgs");
-      if (!tf.a().a(paramJSONObject, this.d))
-      {
-        xh localxh = this.a;
-        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
-        localStringBuilder.append(paramJSONObject.toString());
-        localxh.a(10000, localStringBuilder.toString(), null);
-        return;
-      }
-      th.a().g();
       this.a.a = 0;
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

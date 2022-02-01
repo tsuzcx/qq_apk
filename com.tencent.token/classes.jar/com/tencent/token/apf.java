@@ -1,24 +1,60 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable.Callback;
+import android.text.TextUtils;
+import android.view.View;
+import java.util.HashMap;
+import java.util.Map;
 
-final class apf
-  extends apb
+public final class apf
 {
-  apf(auv paramauv, ape paramape)
+  public avr a;
+  private final Context b;
+  private String c;
+  private final Map<String, Object> d;
+  
+  public apf(Drawable.Callback paramCallback, String paramString, avr paramavr, Map<String, Object> paramMap)
   {
-    super(paramauv, paramape);
+    this.c = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = this.c;
+      if (paramString.charAt(paramString.length() - 1) != '/')
+      {
+        paramString = new StringBuilder();
+        paramString.append(this.c);
+        paramString.append('/');
+        this.c = paramString.toString();
+      }
+    }
+    if (!(paramCallback instanceof View))
+    {
+      this.d = new HashMap();
+      this.b = null;
+      return;
+    }
+    this.b = ((View)paramCallback).getContext();
+    this.d = paramMap;
+    this.a = paramavr;
   }
   
-  public final void a(RectF paramRectF, Matrix paramMatrix)
+  public final Bitmap a(String paramString)
   {
-    super.a(paramRectF, paramMatrix);
-    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    if ((this.a != null) && (this.d.get(paramString) != null))
+    {
+      avr localavr = this.a;
+      this.d.get(paramString);
+      return localavr.a();
+    }
+    return null;
   }
   
-  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt) {}
+  public final boolean a(Context paramContext)
+  {
+    return ((paramContext == null) && (this.b == null)) || ((paramContext != null) && (this.b.equals(paramContext)));
+  }
 }
 
 

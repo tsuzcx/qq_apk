@@ -1,326 +1,627 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.text.format.Time;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
+import android.provider.Settings.System;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.util.Locale;
+import java.util.TimeZone;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class aag
-  extends abw
-  implements Handler.Callback
 {
-  aah a;
-  private FileOutputStream d;
-  private File e;
-  private char[] f;
-  private volatile abt g;
-  private volatile abt h;
-  private volatile abt i;
-  private volatile abt j;
-  private volatile boolean k = false;
-  private HandlerThread l;
-  private Handler m;
+  public static boolean a = true;
+  public static long b;
+  public static long c;
   
-  private aag(int paramInt, abv paramabv, aah paramaah)
+  public static String A()
   {
-    super(paramInt, paramabv);
-    this.a = paramaah;
-    this.g = new abt();
-    this.h = new abt();
-    this.i = this.g;
-    this.j = this.h;
-    this.f = new char[paramaah.c];
-    b();
-    this.l = new HandlerThread(paramaah.b, paramaah.f);
-    paramabv = this.l;
-    if (paramabv != null) {
-      paramabv.start();
-    }
-    if (this.l.isAlive()) {
-      this.m = new Handler(this.l.getLooper(), this);
-    }
-    a();
-    this.m.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        aah localaah = aag.this.a;
-        if (localaah.e != null)
-        {
-          File[] arrayOfFile = localaah.e.listFiles(aah.a);
-          if (arrayOfFile != null)
-          {
-            int j = arrayOfFile.length;
-            int i = 0;
-            while (i < j)
-            {
-              File localFile = arrayOfFile[i];
-              long l = aah.a(localFile);
-              if (System.currentTimeMillis() - l > localaah.h) {
-                aai.a(localFile);
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-    }, 15000L);
+    return Build.TAGS;
   }
   
-  public aag(aah paramaah)
+  public static JSONArray B()
   {
-    this(xf.a.h, abv.a, paramaah);
-  }
-  
-  private void a()
-  {
-    this.m.sendEmptyMessageDelayed(1024, this.a.d);
-  }
-  
-  private FileOutputStream b()
-  {
-    File localFile1 = this.a.a(System.currentTimeMillis());
-    File localFile2 = this.e;
-    int n;
-    if ((localFile2 != null) && ((!localFile2.exists()) || (!this.e.canWrite()))) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    if ((n != 0) || ((localFile1 != null) && (!localFile1.equals(this.e))))
-    {
-      this.e = localFile1;
-      try
-      {
-        if (this.d != null)
-        {
-          this.d.flush();
-          this.d.close();
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    JSONArray localJSONArray = new JSONArray();
     try
     {
-      this.d = new FileOutputStream(this.e, true);
-      return this.d;
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        String[] arrayOfString = Build.SUPPORTED_ABIS;
+        if ((arrayOfString != null) && (arrayOfString.length > 0))
+        {
+          int j = arrayOfString.length;
+          int i = 0;
+          while (i < j)
+          {
+            String str = arrayOfString[i];
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("name", str);
+            localJSONArray.put(localJSONObject);
+            i += 1;
+          }
+          return localJSONArray;
+        }
+      }
     }
-    catch (IOException localIOException)
+    catch (Exception localException)
     {
-      label118:
-      break label118;
+      localException.printStackTrace();
     }
-    return null;
+    return localJSONArray;
   }
   
-  public final void a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2)
+  public static long a()
   {
-    long l1 = paramLong % 1000L;
-    Time localTime = new Time();
-    localTime.set(paramLong);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(abv.a(paramInt));
-    localStringBuilder.append('/');
-    localStringBuilder.append(localTime.format("%Y-%m-%d %H:%M:%S"));
-    localStringBuilder.append('.');
-    if (l1 < 10L) {
-      localStringBuilder.append("00");
-    } else if (l1 < 100L) {
-      localStringBuilder.append('0');
-    }
-    localStringBuilder.append(l1);
-    localStringBuilder.append(' ');
-    localStringBuilder.append('[');
-    if (paramThread == null) {
-      localStringBuilder.append("N/A");
-    } else {
-      localStringBuilder.append(paramThread.getName());
-    }
-    localStringBuilder.append(']');
-    localStringBuilder.append('[');
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(']');
-    localStringBuilder.append(' ');
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append('\n');
-    paramThread = localStringBuilder.toString();
-    paramString1 = this.i;
-    paramInt = paramThread.length();
-    paramString1.a.add(paramThread);
-    paramString1.b.addAndGet(paramInt);
-    if (this.i.b.get() >= this.a.c)
+    a = false;
+    return c - b;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    String str = aah.a;
+    try
     {
-      if (this.m.hasMessages(1024)) {
-        this.m.removeMessages(1024);
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext.getMacAddress() != null)
+      {
+        paramContext = paramContext.getMacAddress();
+        return paramContext;
       }
-      this.m.sendEmptyMessage(1024);
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return str;
+  }
+  
+  public static String b()
+  {
+    String str = "";
+    Object localObject1;
+    try
+    {
+      Object localObject2 = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/class/power_supply/Battery/capacity" }).start().getInputStream();
+      localObject1 = new byte[24];
+      Object localObject3;
+      while (((InputStream)localObject2).read((byte[])localObject1) != -1)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(str);
+        ((StringBuilder)localObject3).append(new String((byte[])localObject1));
+        str = ((StringBuilder)localObject3).toString();
+      }
+      localObject1 = str;
+      if (str.length() == 0)
+      {
+        localObject3 = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/class/power_supply/battery/capacity" }).start().getInputStream();
+        byte[] arrayOfByte = new byte[24];
+        for (;;)
+        {
+          localObject1 = str;
+          localObject2 = localObject3;
+          if (((InputStream)localObject3).read(arrayOfByte) == -1) {
+            break;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(str);
+          ((StringBuilder)localObject1).append(new String(arrayOfByte));
+          str = ((StringBuilder)localObject1).toString();
+        }
+      }
+      ((InputStream)localObject2).close();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      localObject1 = aah.a;
+    }
+    return ((String)localObject1).trim();
+  }
+  
+  public static String b(Context paramContext)
+  {
+    try
+    {
+      paramContext = Settings.System.getString(paramContext.getContentResolver(), "android_id");
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return aah.a;
+  }
+  
+  public static int c(Context paramContext)
+  {
+    int i;
+    try
+    {
+      i = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED")).getIntExtra("plugged", -1);
+      if ((i != 1) && (i != 2)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      i = 0;
+    }
+    if (i != 0) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static String c()
+  {
+    String str = aah.a;
+    try
+    {
+      Object localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "ro.serialno" });
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return str;
+  }
+  
+  public static String d()
+  {
+    return aah.a;
+  }
+  
+  public static String e()
+  {
+    return aah.a;
+  }
+  
+  public static String f()
+  {
+    return aah.a;
   }
   
   /* Error */
-  public final boolean handleMessage(android.os.Message paramMessage)
+  public static String g()
   {
     // Byte code:
-    //   0: aload_1
-    //   1: getfield 258	android/os/Message:what	I
-    //   4: sipush 1024
-    //   7: if_icmpeq +5 -> 12
-    //   10: iconst_1
-    //   11: ireturn
-    //   12: invokestatic 262	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   15: aload_0
-    //   16: getfield 73	com/tencent/token/aag:l	Landroid/os/HandlerThread;
-    //   19: if_acmpne +192 -> 211
-    //   22: aload_0
-    //   23: getfield 34	com/tencent/token/aag:k	Z
-    //   26: ifne +185 -> 211
-    //   29: aload_0
-    //   30: iconst_1
-    //   31: putfield 34	com/tencent/token/aag:k	Z
-    //   34: aconst_null
-    //   35: astore 4
-    //   37: aconst_null
-    //   38: astore 5
-    //   40: aconst_null
-    //   41: astore_2
-    //   42: aload_0
-    //   43: monitorenter
-    //   44: aload_0
-    //   45: getfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
-    //   48: aload_0
-    //   49: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
-    //   52: if_acmpne +22 -> 74
+    //   0: getstatic 67	com/tencent/token/aah:a	Ljava/lang/String;
+    //   3: astore 5
+    //   5: new 200	java/io/FileInputStream
+    //   8: dup
+    //   9: ldc 202
+    //   11: invokespecial 203	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: new 205	java/io/BufferedReader
+    //   18: dup
+    //   19: new 207	java/io/InputStreamReader
+    //   22: dup
+    //   23: aload_0
+    //   24: invokespecial 210	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   27: sipush 8192
+    //   30: invokespecial 213	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   33: astore 6
+    //   35: ldc 88
+    //   37: astore_3
+    //   38: aload_0
+    //   39: astore_1
+    //   40: aload 6
+    //   42: astore_2
+    //   43: aload 6
+    //   45: invokevirtual 216	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   48: astore 4
+    //   50: aload 4
+    //   52: ifnull +56 -> 108
     //   55: aload_0
-    //   56: aload_0
-    //   57: getfield 45	com/tencent/token/aag:h	Lcom/tencent/token/abt;
-    //   60: putfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
-    //   63: aload_0
-    //   64: aload_0
-    //   65: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
-    //   68: putfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
-    //   71: goto +19 -> 90
-    //   74: aload_0
-    //   75: aload_0
-    //   76: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
-    //   79: putfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
-    //   82: aload_0
-    //   83: aload_0
-    //   84: getfield 45	com/tencent/token/aag:h	Lcom/tencent/token/abt;
-    //   87: putfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: aload 4
-    //   94: astore_3
-    //   95: aload 5
-    //   97: astore_1
-    //   98: aload_0
-    //   99: invokespecial 61	com/tencent/token/aag:b	()Ljava/io/FileOutputStream;
-    //   102: astore 6
-    //   104: aload 6
-    //   106: ifnull +50 -> 156
-    //   109: aload 4
-    //   111: astore_3
-    //   112: aload 5
-    //   114: astore_1
-    //   115: aload 6
-    //   117: invokevirtual 266	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   120: invokevirtual 272	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
-    //   123: astore_2
-    //   124: aload_2
-    //   125: astore_3
-    //   126: aload_2
-    //   127: astore_1
-    //   128: new 274	java/io/OutputStreamWriter
-    //   131: dup
-    //   132: aload 6
-    //   134: invokespecial 277	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   137: astore 4
-    //   139: aload_2
-    //   140: astore_3
-    //   141: aload_2
-    //   142: astore_1
-    //   143: aload_0
-    //   144: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
-    //   147: aload 4
-    //   149: aload_0
-    //   150: getfield 57	com/tencent/token/aag:f	[C
-    //   153: invokevirtual 280	com/tencent/token/abt:a	(Ljava/io/Writer;[C)V
-    //   156: aload_2
-    //   157: ifnull +34 -> 191
-    //   160: aload_2
-    //   161: astore_1
-    //   162: goto +25 -> 187
-    //   165: astore_1
-    //   166: aload_3
-    //   167: ifnull +7 -> 174
-    //   170: aload_3
-    //   171: invokevirtual 285	java/nio/channels/FileLock:release	()V
-    //   174: aload_0
-    //   175: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
-    //   178: invokevirtual 286	com/tencent/token/abt:a	()V
-    //   181: aload_1
-    //   182: athrow
-    //   183: aload_1
-    //   184: ifnull +7 -> 191
-    //   187: aload_1
-    //   188: invokevirtual 285	java/nio/channels/FileLock:release	()V
-    //   191: aload_0
-    //   192: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
-    //   195: invokevirtual 286	com/tencent/token/abt:a	()V
-    //   198: aload_0
-    //   199: iconst_0
-    //   200: putfield 34	com/tencent/token/aag:k	Z
-    //   203: goto +8 -> 211
-    //   206: astore_1
+    //   56: astore_1
+    //   57: aload 6
+    //   59: astore_2
+    //   60: new 117	java/lang/StringBuilder
+    //   63: dup
+    //   64: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   67: astore 7
+    //   69: aload_0
+    //   70: astore_1
+    //   71: aload 6
+    //   73: astore_2
+    //   74: aload 7
+    //   76: aload_3
+    //   77: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: aload_0
+    //   82: astore_1
+    //   83: aload 6
+    //   85: astore_2
+    //   86: aload 7
+    //   88: aload 4
+    //   90: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload_0
+    //   95: astore_1
+    //   96: aload 6
+    //   98: astore_2
+    //   99: aload 7
+    //   101: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: astore_3
+    //   105: goto -67 -> 38
+    //   108: aload 5
+    //   110: astore_1
+    //   111: aload_3
+    //   112: ldc 88
+    //   114: if_acmpeq +41 -> 155
+    //   117: aload_0
+    //   118: astore_1
+    //   119: aload 6
+    //   121: astore_2
+    //   122: aload_3
+    //   123: aload_3
+    //   124: ldc 218
+    //   126: invokevirtual 222	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   129: bipush 8
+    //   131: iadd
+    //   132: invokevirtual 226	java/lang/String:substring	(I)Ljava/lang/String;
+    //   135: astore_3
+    //   136: aload_0
+    //   137: astore_1
+    //   138: aload 6
+    //   140: astore_2
+    //   141: aload_3
+    //   142: iconst_0
+    //   143: aload_3
+    //   144: ldc 228
+    //   146: invokevirtual 222	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   149: invokevirtual 231	java/lang/String:substring	(II)Ljava/lang/String;
+    //   152: astore_3
+    //   153: aload_3
+    //   154: astore_1
+    //   155: aload_1
+    //   156: astore_2
+    //   157: aload 6
+    //   159: invokevirtual 232	java/io/BufferedReader:close	()V
+    //   162: aload_1
+    //   163: astore_2
+    //   164: aload_0
+    //   165: invokevirtual 137	java/io/InputStream:close	()V
+    //   168: aload_1
+    //   169: areturn
+    //   170: astore_0
+    //   171: aload_0
+    //   172: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   175: aload_2
+    //   176: areturn
+    //   177: astore 4
+    //   179: aload_0
+    //   180: astore_3
+    //   181: aload 6
+    //   183: astore_0
+    //   184: goto +34 -> 218
+    //   187: astore_1
+    //   188: aconst_null
+    //   189: astore_2
+    //   190: goto +67 -> 257
+    //   193: astore 4
+    //   195: aconst_null
+    //   196: astore_1
+    //   197: aload_0
+    //   198: astore_3
+    //   199: aload_1
+    //   200: astore_0
+    //   201: goto +17 -> 218
+    //   204: astore_1
+    //   205: aconst_null
+    //   206: astore_0
     //   207: aload_0
-    //   208: monitorexit
-    //   209: aload_1
-    //   210: athrow
-    //   211: aload_0
-    //   212: invokespecial 93	com/tencent/token/aag:a	()V
-    //   215: iconst_1
-    //   216: ireturn
-    //   217: astore_2
-    //   218: goto -35 -> 183
+    //   208: astore_2
+    //   209: goto +48 -> 257
+    //   212: astore 4
+    //   214: aconst_null
+    //   215: astore_0
+    //   216: aload_0
+    //   217: astore_3
+    //   218: aload_3
+    //   219: astore_1
+    //   220: aload_0
     //   221: astore_2
-    //   222: goto -48 -> 174
-    //   225: astore_1
-    //   226: goto -35 -> 191
+    //   222: aload 4
+    //   224: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   227: aload_0
+    //   228: ifnull +10 -> 238
+    //   231: aload 5
+    //   233: astore_2
+    //   234: aload_0
+    //   235: invokevirtual 232	java/io/BufferedReader:close	()V
+    //   238: aload_3
+    //   239: ifnull +10 -> 249
+    //   242: aload 5
+    //   244: astore_2
+    //   245: aload_3
+    //   246: invokevirtual 137	java/io/InputStream:close	()V
+    //   249: aload 5
+    //   251: areturn
+    //   252: astore_3
+    //   253: aload_1
+    //   254: astore_0
+    //   255: aload_3
+    //   256: astore_1
+    //   257: aload_2
+    //   258: ifnull +10 -> 268
+    //   261: aload_2
+    //   262: invokevirtual 232	java/io/BufferedReader:close	()V
+    //   265: goto +3 -> 268
+    //   268: aload_0
+    //   269: ifnull +14 -> 283
+    //   272: aload_0
+    //   273: invokevirtual 137	java/io/InputStream:close	()V
+    //   276: goto +7 -> 283
+    //   279: aload_0
+    //   280: invokevirtual 55	java/lang/Exception:printStackTrace	()V
+    //   283: aload_1
+    //   284: athrow
+    //   285: astore_0
+    //   286: goto -7 -> 279
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	229	0	this	aag
-    //   0	229	1	paramMessage	android.os.Message
-    //   41	120	2	localFileLock	java.nio.channels.FileLock
-    //   217	1	2	localException1	Exception
-    //   221	1	2	localException2	Exception
-    //   94	77	3	localObject1	Object
-    //   35	113	4	localOutputStreamWriter	java.io.OutputStreamWriter
-    //   38	75	5	localObject2	Object
-    //   102	31	6	localFileOutputStream	FileOutputStream
+    //   14	151	0	localFileInputStream	java.io.FileInputStream
+    //   170	10	0	localException1	Exception
+    //   183	97	0	localObject1	Object
+    //   285	1	0	localException2	Exception
+    //   39	130	1	localObject2	Object
+    //   187	1	1	localObject3	Object
+    //   196	4	1	localObject4	Object
+    //   204	1	1	localObject5	Object
+    //   219	65	1	localObject6	Object
+    //   42	220	2	localObject7	Object
+    //   37	209	3	localObject8	Object
+    //   252	4	3	localObject9	Object
+    //   48	41	4	str1	String
+    //   177	1	4	localException3	Exception
+    //   193	1	4	localException4	Exception
+    //   212	11	4	localException5	Exception
+    //   3	247	5	str2	String
+    //   33	149	6	localBufferedReader	java.io.BufferedReader
+    //   67	33	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   98	104	165	finally
-    //   115	124	165	finally
-    //   128	139	165	finally
-    //   143	156	165	finally
-    //   44	71	206	finally
-    //   74	90	206	finally
-    //   90	92	206	finally
-    //   207	209	206	finally
-    //   98	104	217	java/lang/Exception
-    //   115	124	217	java/lang/Exception
-    //   128	139	217	java/lang/Exception
-    //   143	156	217	java/lang/Exception
-    //   170	174	221	java/lang/Exception
-    //   187	191	225	java/lang/Exception
+    //   157	162	170	java/lang/Exception
+    //   164	168	170	java/lang/Exception
+    //   234	238	170	java/lang/Exception
+    //   245	249	170	java/lang/Exception
+    //   43	50	177	java/lang/Exception
+    //   60	69	177	java/lang/Exception
+    //   74	81	177	java/lang/Exception
+    //   86	94	177	java/lang/Exception
+    //   99	105	177	java/lang/Exception
+    //   122	136	177	java/lang/Exception
+    //   141	153	177	java/lang/Exception
+    //   15	35	187	finally
+    //   15	35	193	java/lang/Exception
+    //   5	15	204	finally
+    //   5	15	212	java/lang/Exception
+    //   43	50	252	finally
+    //   60	69	252	finally
+    //   74	81	252	finally
+    //   86	94	252	finally
+    //   99	105	252	finally
+    //   122	136	252	finally
+    //   141	153	252	finally
+    //   222	227	252	finally
+    //   261	265	285	java/lang/Exception
+    //   272	276	285	java/lang/Exception
+  }
+  
+  public static long h()
+  {
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = SystemClock.elapsedRealtime();
+      return l1 - l2;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return aah.b;
+  }
+  
+  public static long i()
+  {
+    try
+    {
+      long l = SystemClock.elapsedRealtime();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return aah.b;
+  }
+  
+  public static int j()
+  {
+    int j = 0;
+    int i = 0;
+    for (;;)
+    {
+      int k = i;
+      if (j < 8) {
+        try
+        {
+          String str = new String[] { "/system/bin/", "/system/xbin/", "/sbin/", "/system/sd/xbin/", "/system/bin/failsafe/", "/data/local/xbin/", "/data/local/bin/", "/data/local/" }[j];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("su");
+          boolean bool = new File(localStringBuilder.toString()).exists();
+          if (bool) {
+            i = 1;
+          }
+          j += 1;
+        }
+        catch (Exception localException)
+        {
+          break label131;
+        }
+      }
+    }
+  }
+  
+  public static String k()
+  {
+    String str = aah.a;
+    try
+    {
+      Object localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "ro.kernel.qemu" });
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return str;
+  }
+  
+  public static int l()
+  {
+    int i;
+    try
+    {
+      if ((!Build.FINGERPRINT.startsWith("generic")) && (!Build.FINGERPRINT.startsWith("unknown")) && (!yd.a.contains("google_sdk")) && (!yd.a.contains("Emulator")) && (!yd.a.contains("Android SDK built for x86")) && (!Build.MANUFACTURER.contains("Genymotion")) && ((!Build.BRAND.startsWith("generic")) || (!Build.DEVICE.startsWith("generic"))))
+      {
+        boolean bool = "google_sdk".equals(Build.PRODUCT);
+        if (!bool)
+        {
+          i = 0;
+          break label130;
+        }
+      }
+      i = 1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      i = 0;
+    }
+    label130:
+    if (i != 0) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static String m()
+  {
+    try
+    {
+      String str = Locale.getDefault().getLanguage();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return aah.a;
+  }
+  
+  public static String n()
+  {
+    try
+    {
+      String str = TimeZone.getDefault().getDisplayName();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return aah.a;
+  }
+  
+  public static String o()
+  {
+    try
+    {
+      String str = System.getProperty("os.name");
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return aah.a;
+  }
+  
+  public static String p()
+  {
+    return Build.VERSION.INCREMENTAL;
+  }
+  
+  public static String q()
+  {
+    return Build.VERSION.RELEASE;
+  }
+  
+  public static String r()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    return localStringBuilder.toString();
+  }
+  
+  public static String s()
+  {
+    return Build.BOARD;
+  }
+  
+  public static String t()
+  {
+    return Build.BRAND;
+  }
+  
+  public static String u()
+  {
+    return Build.DEVICE;
+  }
+  
+  public static String v()
+  {
+    return Build.MANUFACTURER;
+  }
+  
+  public static String w()
+  {
+    return yd.a;
+  }
+  
+  public static String x()
+  {
+    return Build.PRODUCT;
+  }
+  
+  public static String y()
+  {
+    return Build.DISPLAY;
+  }
+  
+  public static String z()
+  {
+    return Build.ID;
   }
 }
 

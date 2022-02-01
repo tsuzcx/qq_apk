@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.token.gh;
-import com.tencent.token.gi;
-import com.tencent.token.ha;
-import com.tencent.token.ha.a;
+import com.tencent.token.gv;
+import com.tencent.token.gw;
+import com.tencent.token.ho;
+import com.tencent.token.ho.a;
 
 public class AppCompatDialog
   extends Dialog
-  implements gh
+  implements gv
 {
-  private gi a;
+  private gw a;
   
   public AppCompatDialog(Context paramContext, int paramInt)
   {
@@ -24,10 +24,10 @@ public class AppCompatDialog
     a().k();
   }
   
-  public final gi a()
+  public final gw a()
   {
     if (this.a == null) {
-      this.a = gi.a(this, this);
+      this.a = gw.a(this, this);
     }
     return this.a;
   }
@@ -60,11 +60,11 @@ public class AppCompatDialog
     a().e();
   }
   
-  public void onSupportActionModeFinished(ha paramha) {}
+  public void onSupportActionModeFinished(ho paramho) {}
   
-  public void onSupportActionModeStarted(ha paramha) {}
+  public void onSupportActionModeStarted(ho paramho) {}
   
-  public ha onWindowStartingSupportActionMode(ha.a parama)
+  public ho onWindowStartingSupportActionMode(ho.a parama)
   {
     return null;
   }

@@ -1,22 +1,47 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.Flushable;
+import android.content.ContentValues;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-public final class ajq
-  implements Closeable, Flushable
+public class ajq
+  implements aju
 {
-  final aky a;
-  final akx b;
+  public String a;
+  public String b;
   
-  public final void close()
+  public final aju a(aii paramaii)
   {
-    this.b.close();
+    ajq localajq = new ajq();
+    localajq.a = paramaii.getString(paramaii.getColumnIndex("uinhash"));
+    localajq.b = paramaii.getString(paramaii.getColumnIndex("filename"));
+    return localajq;
   }
   
-  public final void flush()
+  public final String a()
   {
-    this.b.flush();
+    return "qqface";
+  }
+  
+  public final void a(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+  }
+  
+  public final long b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return paramSQLiteDatabase.a("qqface", localContentValues);
+  }
+  
+  public final ContentValues b()
+  {
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return localContentValues;
   }
 }
 

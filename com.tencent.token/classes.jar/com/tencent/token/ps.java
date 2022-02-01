@@ -1,14 +1,25 @@
 package com.tencent.token;
 
-public abstract interface ps
+import java.util.concurrent.CountDownLatch;
+
+final class ps
+  implements Runnable
 {
-  public abstract boolean a();
+  ps(pr parampr, CountDownLatch paramCountDownLatch) {}
   
-  public abstract boolean a(pr parampr);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
+  public final void run()
+  {
+    try
+    {
+      pu localpu = new pu(this.b.a);
+      pr.a(this.b, localpu.getInt("_build_info_sdk_int_", 0));
+    }
+    catch (Exception localException)
+    {
+      localException.getMessage();
+    }
+    this.a.countDown();
+  }
 }
 
 

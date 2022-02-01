@@ -8,38 +8,46 @@ import java.util.ArrayList;
 public final class am
   extends JceStruct
 {
-  static ArrayList d;
+  static ArrayList f;
+  static ArrayList g;
+  static ArrayList h;
   public int a = 0;
   public int b = 0;
   public ArrayList c = null;
+  public ArrayList d = null;
+  public ArrayList e = null;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramJceInputStream.read(this.a, 0, false);
-    this.b = paramJceInputStream.read(this.b, 1, false);
-    if (d == null)
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, true);
+    if (f == null)
     {
-      d = new ArrayList();
-      al localal = new al();
-      d.add(localal);
+      f = new ArrayList();
+      f.add("");
     }
-    this.c = ((ArrayList)paramJceInputStream.read(d, 2, false));
+    this.c = ((ArrayList)paramJceInputStream.read(f, 2, true));
+    if (g == null)
+    {
+      g = new ArrayList();
+      g.add("");
+    }
+    this.d = ((ArrayList)paramJceInputStream.read(g, 3, true));
+    if (h == null)
+    {
+      h = new ArrayList();
+      h.add("");
+    }
+    this.e = ((ArrayList)paramJceInputStream.read(h, 4, true));
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    int i = this.a;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 0);
-    }
-    i = this.b;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 1);
-    }
-    ArrayList localArrayList = this.c;
-    if (localArrayList != null) {
-      paramJceOutputStream.write(localArrayList, 2);
-    }
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
+    paramJceOutputStream.write(this.e, 4);
   }
 }
 

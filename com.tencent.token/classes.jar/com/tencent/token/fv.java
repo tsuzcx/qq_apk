@@ -1,60 +1,108 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.os.Build.VERSION;
+import android.view.WindowInsets;
 
-public final class fv<T>
+public final class fv
 {
-  public final eh.a<ArrayList<T>> a = new eh.b(10);
-  public final ej<T, ArrayList<T>> b = new ej();
-  private final ArrayList<T> c = new ArrayList();
-  private final HashSet<T> d = new HashSet();
+  private final Object a;
   
-  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
+  private fv(Object paramObject)
   {
-    if (paramArrayList.contains(paramT)) {
-      return;
+    this.a = paramObject;
+  }
+  
+  static fv a(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
     }
-    if (!paramHashSet.contains(paramT))
+    return new fv(paramObject);
+  }
+  
+  static Object a(fv paramfv)
+  {
+    if (paramfv == null) {
+      return null;
+    }
+    return paramfv.a;
+  }
+  
+  public final int a()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetLeft();
+    }
+    return 0;
+  }
+  
+  public final fv a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return new fv(((WindowInsets)this.a).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+    }
+    return null;
+  }
+  
+  public final int b()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetTop();
+    }
+    return 0;
+  }
+  
+  public final int c()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetRight();
+    }
+    return 0;
+  }
+  
+  public final int d()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetBottom();
+    }
+    return 0;
+  }
+  
+  public final boolean e()
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return ((WindowInsets)this.a).isConsumed();
+    }
+    return false;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
     {
-      paramHashSet.add(paramT);
-      ArrayList localArrayList = (ArrayList)this.b.get(paramT);
-      if (localArrayList != null)
-      {
-        int i = 0;
-        int j = localArrayList.size();
-        while (i < j)
-        {
-          a(localArrayList.get(i), paramArrayList, paramHashSet);
-          i += 1;
-        }
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
-      paramHashSet.remove(paramT);
-      paramArrayList.add(paramT);
-      return;
+      paramObject = (fv)paramObject;
+      Object localObject = this.a;
+      if (localObject == null) {
+        return paramObject.a == null;
+      }
+      return localObject.equals(paramObject.a);
     }
-    throw new RuntimeException("This graph contains cyclic dependencies");
+    return false;
   }
   
-  public final ArrayList<T> a()
+  public final int hashCode()
   {
-    this.c.clear();
-    this.d.clear();
-    int j = this.b.size();
-    int i = 0;
-    while (i < j)
-    {
-      a(this.b.b(i), this.c, this.d);
-      i += 1;
+    Object localObject = this.a;
+    if (localObject == null) {
+      return 0;
     }
-    return this.c;
-  }
-  
-  public final void a(T paramT)
-  {
-    if (!this.b.containsKey(paramT)) {
-      this.b.put(paramT, null);
-    }
+    return localObject.hashCode();
   }
 }
 

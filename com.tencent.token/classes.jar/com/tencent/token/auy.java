@@ -1,36 +1,14 @@
 package com.tencent.token;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
 
-public final class auy
+public abstract interface auy
 {
-  boolean a;
-  private final List<Object> b;
-  private Map<String, avc> c;
+  public abstract int a(Context paramContext);
   
-  public final void a(String paramString, float paramFloat)
-  {
-    if (!this.a) {
-      return;
-    }
-    avc localavc2 = (avc)this.c.get(paramString);
-    avc localavc1 = localavc2;
-    if (localavc2 == null)
-    {
-      localavc1 = new avc();
-      this.c.put(paramString, localavc1);
-    }
-    localavc1.a(paramFloat);
-    if (paramString.equals("root"))
-    {
-      paramString = this.b.iterator();
-      while (paramString.hasNext()) {
-        paramString.next();
-      }
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, apa paramapa, aqz.a parama);
 }
 
 

@@ -1,12 +1,17 @@
 package com.tencent.token;
 
-public abstract interface ly
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+final class ly
+  extends BroadcastReceiver
 {
-  public abstract lz a(String paramString1, String paramString2, String paramString3, String paramString4, ma paramma);
-  
-  public abstract void a(lz paramlz);
-  
-  public abstract void b(lz paramlz);
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    lx.b();
+    lx.g();
+  }
 }
 
 

@@ -1,60 +1,106 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import com.tmsdk.common.util.TmsLog;
 import org.json.JSONObject;
 
 public final class wk
-  extends tr
+  extends ud
 {
-  private long d;
-  private int e;
-  private String f;
-  private long g;
+  tt d;
   
   public final String a()
   {
-    sh.a();
+    tt.n();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
-  {
-    this.g = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.e = paramabc.j;
-    this.f = ((String)paramabc.c.get("param.idnumber"));
-  }
+  public final void a(abm paramabm) {}
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    Object localObject1;
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject1 = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((xt)localObject1).a(i, localStringBuilder.toString(), paramJSONObject);
+      TmsLog.i("mod_seed", "@getuin failed, errcode: ".concat(String.valueOf(i)));
+      if ((i == 122) || (i == 205)) {
+        wn.a(true);
+      }
+      tt.a().h();
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    paramJSONObject = aay.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (i != this.e)
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      localObject1 = new StringBuilder("parseJSON =");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      xv.c(((StringBuilder)localObject1).toString());
+      try
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.e);
-        xj.c(paramJSONObject.toString());
+        long l = paramJSONObject.getLong("seed_expire_time");
+        sv.b();
+        TmsLog.i("mod_seed", "@getuin seed_expire_time:".concat(String.valueOf(l)));
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+      try
+      {
+        Object localObject2 = paramJSONObject.getString("seed");
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = aay.e((String)localObject2);
+          if (localObject2 != null)
+          {
+            sv.b();
+            sv.b();
+            sv.a((byte[])localObject2);
+            sv.b();
+            sv.b();
+            wn.a(false);
+            sp.a.a().b();
+          }
+          TmsLog.i("mod_seed", "decode seed & compute seed @getuin sucess.");
+        }
+      }
+      catch (Exception localException2)
+      {
+        TmsLog.e("mod_seed", "decode seed & compute seed @getuin failed: ", localException2);
+        localException2.printStackTrace();
+      }
+      paramJSONObject = this.d.a(paramJSONObject.getJSONArray("uinlist"));
+      if (paramJSONObject.b())
+      {
+        paramJSONObject = this.d;
+        paramJSONObject.j = true;
+        if (paramJSONObject.o != 0L)
+        {
+          paramJSONObject = this.d;
+          paramJSONObject.b(paramJSONObject.o);
+          this.d.o = 0L;
+        }
+        this.a.a = 0;
         return;
       }
-      this.a.a = 0;
+      this.a.a(paramJSONObject);
       return;
     }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
+    xv.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493069));
   }
 }
 

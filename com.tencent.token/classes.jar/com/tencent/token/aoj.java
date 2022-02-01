@@ -1,23 +1,15 @@
 package com.tencent.token;
 
-public final class aoj
-  extends aot<Integer, Integer>
+import java.io.Closeable;
+
+public abstract interface aoj
+  extends Closeable
 {
-  public final anw<Integer> a()
-  {
-    if (!super.b()) {
-      return new aod(this.b);
-    }
-    return new ant(this.a);
-  }
+  public abstract long a(ant paramant, long paramLong);
   
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AnimatableColorValue{initialValue=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
-  }
+  public abstract aok a();
+  
+  public abstract void close();
 }
 
 

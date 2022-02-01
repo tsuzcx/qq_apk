@@ -21,6 +21,7 @@ public class DevlockInfo
   public int MbGuideType;
   public int MbItemSmsCodeStatus;
   public String Mobile;
+  public String OtherDevLockVerifyUrl;
   public String ProtectIntro;
   public int TimeLimit;
   public byte[] TransferInfo;
@@ -77,6 +78,7 @@ public class DevlockInfo
       this.TransferInfo = new byte[i];
       paramParcel.readByteArray(this.TransferInfo);
     }
+    this.OtherDevLockVerifyUrl = paramParcel.readString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -107,9 +109,12 @@ public class DevlockInfo
     {
       paramParcel.writeInt(arrayOfByte.length);
       paramParcel.writeByteArray(this.TransferInfo);
-      return;
     }
-    paramParcel.writeInt(0);
+    else
+    {
+      paramParcel.writeInt(0);
+    }
+    paramParcel.writeString(this.OtherDevLockVerifyUrl);
   }
 }
 

@@ -1,191 +1,94 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.Region;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 
-public class gw
-  extends Drawable
-  implements Drawable.Callback
+public abstract class gw
 {
-  public Drawable a;
+  static int a = -1;
+  private static boolean b = false;
   
-  public gw(Drawable paramDrawable)
+  public static gw a(Activity paramActivity, gv paramgv)
   {
-    Drawable localDrawable = this.a;
-    if (localDrawable != null) {
-      localDrawable.setCallback(null);
+    return a(paramActivity, paramActivity.getWindow(), paramgv);
+  }
+  
+  public static gw a(Dialog paramDialog, gv paramgv)
+  {
+    return a(paramDialog.getContext(), paramDialog.getWindow(), paramgv);
+  }
+  
+  private static gw a(Context paramContext, Window paramWindow, gv paramgv)
+  {
+    if (Build.VERSION.SDK_INT >= 24) {
+      return new gy(paramContext, paramWindow, paramgv);
     }
-    this.a = paramDrawable;
-    if (paramDrawable != null) {
-      paramDrawable.setCallback(this);
+    if (Build.VERSION.SDK_INT >= 23) {
+      return new ha(paramContext, paramWindow, paramgv);
     }
+    return new gz(paramContext, paramWindow, paramgv);
   }
   
-  public void draw(Canvas paramCanvas)
+  public static boolean l()
   {
-    this.a.draw(paramCanvas);
+    return b;
   }
   
-  public int getChangingConfigurations()
-  {
-    return this.a.getChangingConfigurations();
-  }
+  public abstract ActionBar a();
   
-  public Drawable getCurrent()
-  {
-    return this.a.getCurrent();
-  }
+  public abstract <T extends View> T a(int paramInt);
   
-  public int getIntrinsicHeight()
-  {
-    return this.a.getIntrinsicHeight();
-  }
+  public abstract ho a(ho.a parama);
   
-  public int getIntrinsicWidth()
-  {
-    return this.a.getIntrinsicWidth();
-  }
+  public abstract void a(Configuration paramConfiguration);
   
-  public int getMinimumHeight()
-  {
-    return this.a.getMinimumHeight();
-  }
+  public abstract void a(Bundle paramBundle);
   
-  public int getMinimumWidth()
-  {
-    return this.a.getMinimumWidth();
-  }
+  public abstract void a(Toolbar paramToolbar);
   
-  public int getOpacity()
-  {
-    return this.a.getOpacity();
-  }
+  public abstract void a(View paramView);
   
-  public boolean getPadding(Rect paramRect)
-  {
-    return this.a.getPadding(paramRect);
-  }
+  public abstract void a(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
-  public int[] getState()
-  {
-    return this.a.getState();
-  }
+  public abstract void a(CharSequence paramCharSequence);
   
-  public Region getTransparentRegion()
-  {
-    return this.a.getTransparentRegion();
-  }
+  public abstract MenuInflater b();
   
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    invalidateSelf();
-  }
+  public abstract void b(int paramInt);
   
-  public boolean isAutoMirrored()
-  {
-    return dk.a(this.a);
-  }
+  public abstract void b(Bundle paramBundle);
   
-  public boolean isStateful()
-  {
-    return this.a.isStateful();
-  }
+  public abstract void b(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
-  public void jumpToCurrentState()
-  {
-    this.a.jumpToCurrentState();
-  }
+  public abstract void c();
   
-  protected void onBoundsChange(Rect paramRect)
-  {
-    this.a.setBounds(paramRect);
-  }
+  public abstract boolean c(int paramInt);
   
-  protected boolean onLevelChange(int paramInt)
-  {
-    return this.a.setLevel(paramInt);
-  }
+  public abstract void d();
   
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    scheduleSelf(paramRunnable, paramLong);
-  }
+  public abstract void e();
   
-  public void setAlpha(int paramInt)
-  {
-    this.a.setAlpha(paramInt);
-  }
+  public abstract void f();
   
-  public void setAutoMirrored(boolean paramBoolean)
-  {
-    dk.a(this.a, paramBoolean);
-  }
+  public abstract void g();
   
-  public void setChangingConfigurations(int paramInt)
-  {
-    this.a.setChangingConfigurations(paramInt);
-  }
+  public abstract void h();
   
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.a.setColorFilter(paramColorFilter);
-  }
+  public abstract gu.a i();
   
-  public void setDither(boolean paramBoolean)
-  {
-    this.a.setDither(paramBoolean);
-  }
+  public abstract void j();
   
-  public void setFilterBitmap(boolean paramBoolean)
-  {
-    this.a.setFilterBitmap(paramBoolean);
-  }
-  
-  public void setHotspot(float paramFloat1, float paramFloat2)
-  {
-    dk.a(this.a, paramFloat1, paramFloat2);
-  }
-  
-  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    dk.a(this.a, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean setState(int[] paramArrayOfInt)
-  {
-    return this.a.setState(paramArrayOfInt);
-  }
-  
-  public void setTint(int paramInt)
-  {
-    dk.a(this.a, paramInt);
-  }
-  
-  public void setTintList(ColorStateList paramColorStateList)
-  {
-    dk.a(this.a, paramColorStateList);
-  }
-  
-  public void setTintMode(PorterDuff.Mode paramMode)
-  {
-    dk.a(this.a, paramMode);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return (super.setVisible(paramBoolean1, paramBoolean2)) || (this.a.setVisible(paramBoolean1, paramBoolean2));
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    unscheduleSelf(paramRunnable);
-  }
+  public abstract boolean k();
 }
 
 

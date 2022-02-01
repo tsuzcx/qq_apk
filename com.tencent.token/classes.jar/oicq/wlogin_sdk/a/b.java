@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import oicq.wlogin_sdk.request.t;
+import oicq.wlogin_sdk.request.u;
 import oicq.wlogin_sdk.tlv_type.RegTLV;
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
@@ -20,156 +21,206 @@ public class b
     this.b = 6;
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean, byte[] paramArrayOfByte7, long paramLong, byte[] paramArrayOfByte8, int paramInt2, Map<Integer, RegTLV> paramMap)
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean, byte[] paramArrayOfByte7, long paramLong, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, int paramInt2, byte[] paramArrayOfByte10, Map<Integer, RegTLV> paramMap)
   {
-    byte[] arrayOfByte1;
+    int k = 0;
     if (paramArrayOfByte6 == null) {
-      arrayOfByte1 = new byte[0];
-    } else {
-      arrayOfByte1 = paramArrayOfByte6;
+      paramArrayOfByte6 = new byte[0];
     }
-    byte[] arrayOfByte2;
     if (paramArrayOfByte4 == null) {
-      arrayOfByte2 = new byte[0];
-    } else {
-      arrayOfByte2 = paramArrayOfByte4;
+      paramArrayOfByte4 = new byte[0];
     }
     if (paramArrayOfByte7 == null) {
-      paramArrayOfByte4 = new byte[0];
-    } else {
-      paramArrayOfByte4 = paramArrayOfByte7;
+      paramArrayOfByte7 = new byte[0];
     }
+    byte[] arrayOfByte1;
+    if (paramArrayOfByte10 == null) {
+      arrayOfByte1 = new byte[0];
+    } else {
+      arrayOfByte1 = paramArrayOfByte10;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("reg_request_get_account");
     if (paramBoolean)
     {
-      paramArrayOfByte6 = new int[11];
-      byte[] tmp64_62 = paramArrayOfByte6;
-      tmp64_62[0] = 1;
-      byte[] tmp68_64 = tmp64_62;
-      tmp68_64[1] = 5;
-      byte[] tmp72_68 = tmp68_64;
-      tmp72_68[2] = 6;
-      byte[] tmp77_72 = tmp72_68;
-      tmp77_72[3] = 8;
-      byte[] tmp82_77 = tmp77_72;
-      tmp82_77[4] = 15;
-      byte[] tmp87_82 = tmp82_77;
-      tmp87_82[5] = 37;
-      byte[] tmp92_87 = tmp87_82;
-      tmp92_87[6] = 9;
-      byte[] tmp98_92 = tmp92_87;
-      tmp98_92[7] = 10;
-      byte[] tmp104_98 = tmp98_92;
-      tmp104_98[8] = 11;
-      byte[] tmp110_104 = tmp104_98;
-      tmp110_104[9] = 13;
-      byte[] tmp116_110 = tmp110_104;
-      tmp116_110[10] = 14;
-      tmp116_110;
+      paramArrayOfByte10 = new int[14];
+      byte[] tmp83_81 = paramArrayOfByte10;
+      tmp83_81[0] = 1;
+      byte[] tmp87_83 = tmp83_81;
+      tmp87_83[1] = 5;
+      byte[] tmp91_87 = tmp87_83;
+      tmp91_87[2] = 6;
+      byte[] tmp96_91 = tmp91_87;
+      tmp96_91[3] = 8;
+      byte[] tmp101_96 = tmp96_91;
+      tmp101_96[4] = 15;
+      byte[] tmp106_101 = tmp101_96;
+      tmp106_101[5] = 37;
+      byte[] tmp111_106 = tmp106_101;
+      tmp111_106[6] = 9;
+      byte[] tmp117_111 = tmp111_106;
+      tmp117_111[7] = 10;
+      byte[] tmp123_117 = tmp117_111;
+      tmp123_117[8] = 11;
+      byte[] tmp129_123 = tmp123_117;
+      tmp129_123[9] = 13;
+      byte[] tmp135_129 = tmp129_123;
+      tmp135_129[10] = 14;
+      byte[] tmp141_135 = tmp135_129;
+      tmp141_135[11] = 18;
+      byte[] tmp147_141 = tmp141_135;
+      tmp147_141[12] = 56;
+      byte[] tmp153_147 = tmp147_141;
+      tmp153_147[13] = 544;
+      tmp153_147;
     }
     else
     {
-      paramArrayOfByte6 = new int[9];
-      byte[] tmp134_132 = paramArrayOfByte6;
-      tmp134_132[0] = 1;
-      byte[] tmp138_134 = tmp134_132;
-      tmp138_134[1] = 5;
-      byte[] tmp142_138 = tmp138_134;
-      tmp142_138[2] = 6;
-      byte[] tmp147_142 = tmp142_138;
-      tmp147_142[3] = 8;
-      byte[] tmp152_147 = tmp147_142;
-      tmp152_147[4] = 15;
-      byte[] tmp157_152 = tmp152_147;
-      tmp157_152[5] = 37;
-      byte[] tmp162_157 = tmp157_152;
-      tmp162_157[6] = 10;
-      byte[] tmp168_162 = tmp162_157;
-      tmp168_162[7] = 13;
-      byte[] tmp174_168 = tmp168_162;
-      tmp174_168[8] = 14;
-      tmp174_168;
+      paramArrayOfByte10 = new int[12];
+      byte[] tmp172_170 = paramArrayOfByte10;
+      tmp172_170[0] = 1;
+      byte[] tmp176_172 = tmp172_170;
+      tmp176_172[1] = 5;
+      byte[] tmp180_176 = tmp176_172;
+      tmp180_176[2] = 6;
+      byte[] tmp185_180 = tmp180_176;
+      tmp185_180[3] = 8;
+      byte[] tmp190_185 = tmp185_180;
+      tmp190_185[4] = 15;
+      byte[] tmp195_190 = tmp190_185;
+      tmp195_190[5] = 37;
+      byte[] tmp200_195 = tmp195_190;
+      tmp200_195[6] = 10;
+      byte[] tmp206_200 = tmp200_195;
+      tmp206_200[7] = 13;
+      byte[] tmp212_206 = tmp206_200;
+      tmp212_206[8] = 14;
+      byte[] tmp218_212 = tmp212_206;
+      tmp218_212[9] = 18;
+      byte[] tmp224_218 = tmp218_212;
+      tmp224_218[10] = 56;
+      byte[] tmp230_224 = tmp224_218;
+      tmp230_224[11] = 544;
+      tmp230_224;
     }
     ArrayList localArrayList = new ArrayList();
-    int m = paramArrayOfByte6.length;
-    int j = 0;
+    int j = paramArrayOfByte10.length;
     int i = 0;
-    paramArrayOfByte7 = paramArrayOfByte6;
-    paramArrayOfByte6 = paramArrayOfByte4;
+    byte[] arrayOfByte2 = paramArrayOfByte10;
+    paramArrayOfByte10 = paramArrayOfByte7;
+    paramArrayOfByte7 = paramArrayOfByte4;
     for (;;)
     {
       paramArrayOfByte4 = paramArrayOfByte8;
-      if (j >= m) {
+      if (k >= j) {
         break;
       }
-      int k = paramArrayOfByte7[j];
-      if (k != 1)
+      int m = arrayOfByte2[k];
+      if (m != 1)
       {
-        if (k != 37)
+        if (m != 18)
         {
-          switch (k)
+          if (m != 37)
           {
-          default: 
-            switch (k)
+            if (m != 56)
             {
-            default: 
-              switch (k)
+              Object localObject;
+              if (m != 544)
               {
-              default: 
-                paramArrayOfByte4 = new byte[0];
-                break;
-              case 15: 
-                paramArrayOfByte4 = new RegTLV(15);
-                paramArrayOfByte4.setInt(paramInt2);
-                paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-                break;
-              case 14: 
-                RegTLV localRegTLV = new RegTLV(14);
-                localRegTLV.setData(paramArrayOfByte4, paramArrayOfByte4.length);
-                paramArrayOfByte4 = localRegTLV.getBuf();
-                break;
-              case 13: 
-                paramArrayOfByte4 = new RegTLV(13);
-                paramArrayOfByte4.setInt((int)paramLong);
-                paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                switch (m)
+                {
+                default: 
+                  switch (m)
+                  {
+                  default: 
+                    switch (m)
+                    {
+                    default: 
+                      paramArrayOfByte4 = new byte[0];
+                      break;
+                    case 15: 
+                      paramArrayOfByte4 = new RegTLV(15);
+                      paramArrayOfByte4.setInt(paramInt2);
+                      paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                      break;
+                    case 14: 
+                      localObject = new RegTLV(14);
+                      ((RegTLV)localObject).setData(paramArrayOfByte4, paramArrayOfByte4.length);
+                      paramArrayOfByte4 = ((RegTLV)localObject).getBuf();
+                      break;
+                    case 13: 
+                      paramArrayOfByte4 = new RegTLV(13);
+                      paramArrayOfByte4.setInt((int)paramLong);
+                      paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                    }
+                    break;
+                  case 11: 
+                    paramArrayOfByte4 = new RegTLV(11);
+                    paramArrayOfByte4.setData(paramArrayOfByte3, paramArrayOfByte3.length);
+                    paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                    break;
+                  case 10: 
+                    paramArrayOfByte4 = new RegTLV(10);
+                    paramArrayOfByte4.setData(paramArrayOfByte10, paramArrayOfByte10.length);
+                    paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                    break;
+                  case 9: 
+                    paramArrayOfByte4 = new RegTLV(9);
+                    paramArrayOfByte4.setByte((byte)1);
+                    paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                    break;
+                  case 8: 
+                    paramArrayOfByte4 = new RegTLV(8);
+                    paramArrayOfByte4.setByte((byte)1);
+                    paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                  }
+                  break;
+                case 6: 
+                  paramArrayOfByte4 = new RegTLV(6);
+                  paramArrayOfByte4.setData(paramArrayOfByte7, paramArrayOfByte7.length);
+                  paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                  break;
+                case 5: 
+                  paramArrayOfByte4 = new RegTLV(5);
+                  paramArrayOfByte4.setData(paramArrayOfByte6, paramArrayOfByte6.length);
+                  paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+                  break;
+                }
               }
-              break;
-            case 11: 
-              paramArrayOfByte4 = new RegTLV(11);
-              paramArrayOfByte4.setData(paramArrayOfByte3, paramArrayOfByte3.length);
-              paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-              break;
-            case 10: 
-              paramArrayOfByte4 = new RegTLV(10);
-              paramArrayOfByte4.setData(paramArrayOfByte6, paramArrayOfByte6.length);
-              paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-              break;
-            case 9: 
-              paramArrayOfByte4 = new RegTLV(9);
-              paramArrayOfByte4.setByte((byte)1);
-              paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-              break;
-            case 8: 
-              paramArrayOfByte4 = new RegTLV(8);
-              paramArrayOfByte4.setByte((byte)1);
+              else
+              {
+                paramArrayOfByte4 = MD5.toMD5Byte(paramArrayOfByte1);
+                localObject = MD5.toMD5Byte(paramArrayOfByte3);
+                byte[] arrayOfByte3 = new byte[paramArrayOfByte4.length + paramArrayOfByte5.length + localObject.length + 6];
+                util.int16_to_buf(arrayOfByte3, 0, paramArrayOfByte4.length);
+                System.arraycopy(paramArrayOfByte4, 0, arrayOfByte3, 0, paramArrayOfByte4.length);
+                m = paramArrayOfByte4.length + 2;
+                util.int16_to_buf(arrayOfByte3, m, paramArrayOfByte5.length);
+                m += 2;
+                System.arraycopy(paramArrayOfByte5, 0, arrayOfByte3, m, paramArrayOfByte5.length);
+                m += paramArrayOfByte5.length;
+                util.int16_to_buf(arrayOfByte3, m, localObject.length);
+                System.arraycopy(localObject, 0, arrayOfByte3, m + 2, localObject.length);
+                paramArrayOfByte4 = new tlv_t544().get_tlv_544("", "812_6", arrayOfByte3);
+              }
+            }
+            else
+            {
+              paramArrayOfByte4 = new RegTLV(56);
+              paramArrayOfByte4.setData(arrayOfByte1, arrayOfByte1.length);
               paramArrayOfByte4 = paramArrayOfByte4.getBuf();
             }
-            break;
-          case 6: 
-            paramArrayOfByte4 = new RegTLV(6);
-            paramArrayOfByte4.setData(arrayOfByte2, arrayOfByte2.length);
+          }
+          else
+          {
+            paramArrayOfByte4 = new RegTLV(37);
+            paramArrayOfByte4.setShort(u.aA);
             paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-            break;
-          case 5: 
-            paramArrayOfByte4 = new RegTLV(5);
-            paramArrayOfByte4.setData(arrayOfByte1, arrayOfByte1.length);
-            paramArrayOfByte4 = paramArrayOfByte4.getBuf();
-            break;
           }
         }
         else
         {
-          paramArrayOfByte4 = new RegTLV(37);
-          paramArrayOfByte4.setShort(t.au);
+          paramArrayOfByte4 = new RegTLV(18);
+          paramArrayOfByte4.setData(paramArrayOfByte9, paramArrayOfByte9.length);
           paramArrayOfByte4 = paramArrayOfByte4.getBuf();
         }
       }
@@ -179,26 +230,33 @@ public class b
         paramArrayOfByte4.setData(paramArrayOfByte5, paramArrayOfByte5.length);
         paramArrayOfByte4 = paramArrayOfByte4.getBuf();
       }
-      k = i;
+      m = i;
       if (paramArrayOfByte4.length >= 2)
       {
-        k = i + paramArrayOfByte4.length;
+        m = i + paramArrayOfByte4.length;
         localArrayList.add(paramArrayOfByte4);
       }
-      j += 1;
-      i = k;
+      k += 1;
+      i = m;
     }
     paramArrayOfByte4 = paramMap.keySet().iterator();
     while (paramArrayOfByte4.hasNext())
     {
-      paramArrayOfByte5 = ((RegTLV)paramMap.get((Integer)paramArrayOfByte4.next())).getBuf();
-      localArrayList.add(paramArrayOfByte5);
-      i += paramArrayOfByte5.length;
+      paramArrayOfByte5 = (Integer)paramArrayOfByte4.next();
+      paramArrayOfByte6 = ((RegTLV)paramMap.get(paramArrayOfByte5)).getBuf();
+      localArrayList.add(paramArrayOfByte6);
+      i += paramArrayOfByte6.length;
+      localStringBuilder.append(",key=");
+      localStringBuilder.append(paramArrayOfByte5);
+      localStringBuilder.append(",value=");
+      localStringBuilder.append(paramArrayOfByte6.length);
     }
     j = localArrayList.size();
     paramArrayOfByte4 = new byte[i + 2];
     util.int16_to_buf(paramArrayOfByte4, 0, (byte)j);
-    util.LOGI("tlv cnt ".concat(String.valueOf(j)), "");
+    localStringBuilder.append(",tlv cnt=");
+    localStringBuilder.append(j);
+    util.LOGI(localStringBuilder.toString(), "");
     paramInt2 = 0;
     i = 2;
     while (paramInt2 < j)
@@ -229,7 +287,7 @@ public class b
       else
       {
         util.LOGI("msgchk is null or length is 0", "");
-        paramArrayOfByte2 = h.a.getBytes();
+        paramArrayOfByte2 = i.a.getBytes();
       }
       paramArrayOfByte2 = cryptor.encrypt(paramArrayOfByte3, 0, paramArrayOfByte3.length, paramArrayOfByte2);
       this.d = (paramArrayOfByte1.length + 1 + 2 + paramArrayOfByte2.length);

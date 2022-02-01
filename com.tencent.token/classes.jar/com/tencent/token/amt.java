@@ -1,192 +1,52 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nullable;
-
-public class amt
-  extends anm
+public final class amt
 {
-  private static final long a = TimeUnit.SECONDS.toMillis(60L);
-  @Nullable
-  static amt b;
-  private static final long d = TimeUnit.MILLISECONDS.toNanos(a);
-  private boolean e;
-  @Nullable
-  private amt f;
-  private long g;
+  public static final anw a = anw.a(":");
+  public static final anw b = anw.a(":status");
+  public static final anw c = anw.a(":method");
+  public static final anw d = anw.a(":path");
+  public static final anw e = anw.a(":scheme");
+  public static final anw f = anw.a(":authority");
+  public final anw g;
+  public final anw h;
+  final int i;
   
-  private static void a(amt paramamt, long paramLong, boolean paramBoolean)
+  public amt(anw paramanw1, anw paramanw2)
   {
-    try
-    {
-      if (b == null)
-      {
-        b = new amt();
-        new a().start();
-      }
-      long l = System.nanoTime();
-      if ((paramLong != 0L) && (paramBoolean))
-      {
-        paramamt.g = (Math.min(paramLong, paramamt.c() - l) + l);
-      }
-      else if (paramLong != 0L)
-      {
-        paramamt.g = (paramLong + l);
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label180;
-        }
-        paramamt.g = paramamt.c();
-      }
-      paramLong = paramamt.g;
-      for (amt localamt = b; (localamt.f != null) && (paramLong - l >= localamt.f.g - l); localamt = localamt.f) {}
-      paramamt.f = localamt.f;
-      localamt.f = paramamt;
-      if (localamt == b)
-      {
-        amt.class.notify();
-        return;
-      }
-      return;
-      label180:
-      throw new AssertionError();
-    }
-    finally {}
+    this.g = paramanw1;
+    this.h = paramanw2;
+    this.i = (paramanw1.g() + 32 + paramanw2.g());
   }
   
-  private static boolean a(amt paramamt)
+  public amt(anw paramanw, String paramString)
   {
-    try
-    {
-      for (amt localamt = b; localamt != null; localamt = localamt.f) {
-        if (localamt.f == paramamt)
-        {
-          localamt.f = paramamt.f;
-          paramamt.f = null;
-          return false;
-        }
-      }
-      return true;
-    }
-    finally {}
+    this(paramanw, anw.a(paramString));
   }
   
-  @Nullable
-  static amt e()
+  public amt(String paramString1, String paramString2)
   {
-    amt localamt = b.f;
-    if (localamt == null)
-    {
-      l1 = System.nanoTime();
-      amt.class.wait(a);
-      if ((b.f == null) && (System.nanoTime() - l1 >= d)) {
-        return b;
-      }
-      return null;
-    }
-    long l1 = System.nanoTime();
-    l1 = localamt.g - l1;
-    if (l1 > 0L)
-    {
-      long l2 = l1 / 1000000L;
-      amt.class.wait(l2, (int)(l1 - 1000000L * l2));
-      return null;
-    }
-    b.f = localamt.f;
-    localamt.f = null;
-    return localamt;
+    this(anw.a(paramString1), anw.a(paramString2));
   }
   
-  protected IOException a(@Nullable IOException paramIOException)
+  public final boolean equals(Object paramObject)
   {
-    InterruptedIOException localInterruptedIOException = new InterruptedIOException("timeout");
-    if (paramIOException != null) {
-      localInterruptedIOException.initCause(paramIOException);
-    }
-    return localInterruptedIOException;
-  }
-  
-  protected void a() {}
-  
-  final void a(boolean paramBoolean)
-  {
-    if (d_())
+    if ((paramObject instanceof amt))
     {
-      if (!paramBoolean) {
-        return;
-      }
-      throw a(null);
+      paramObject = (amt)paramObject;
+      return (this.g.equals(paramObject.g)) && (this.h.equals(paramObject.h));
     }
+    return false;
   }
   
-  final IOException b(IOException paramIOException)
+  public final int hashCode()
   {
-    if (!d_()) {
-      return paramIOException;
-    }
-    return a(paramIOException);
+    return (this.g.hashCode() + 527) * 31 + this.h.hashCode();
   }
   
-  public final void c_()
+  public final String toString()
   {
-    if (!this.e)
-    {
-      long l = e_();
-      boolean bool = f_();
-      if ((l == 0L) && (!bool)) {
-        return;
-      }
-      this.e = true;
-      a(this, l, bool);
-      return;
-    }
-    throw new IllegalStateException("Unbalanced enter/exit");
-  }
-  
-  public final boolean d_()
-  {
-    if (!this.e) {
-      return false;
-    }
-    this.e = false;
-    return a(this);
-  }
-  
-  static final class a
-    extends Thread
-  {
-    a()
-    {
-      super();
-      setDaemon(true);
-    }
-    
-    public final void run()
-    {
-      try
-      {
-        for (;;)
-        {
-          try
-          {
-            amt localamt = amt.e();
-            if (localamt == null) {}
-            if (localamt == amt.b)
-            {
-              amt.b = null;
-              return;
-            }
-            localamt.a();
-          }
-          finally {}
-        }
-      }
-      catch (InterruptedException localInterruptedException) {}
-    }
+    return alr.a("%s: %s", new Object[] { this.g.a(), this.h.a() });
   }
 }
 

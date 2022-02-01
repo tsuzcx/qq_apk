@@ -1,16 +1,9 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public final class aex
-  extends Thread
+  implements afk
 {
-  public aex(aey.a parama, Context paramContext) {}
-  
-  public final void run()
-  {
-    this.a.a.b(this.b);
-  }
+  public aex(afc paramafc) {}
 }
 
 

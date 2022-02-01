@@ -1,62 +1,50 @@
 package oicq.wlogin_sdk.request;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
+import oicq.wlogin_sdk.tlv_type.tlv_t105;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
-import oicq.wlogin_sdk.tlv_type.tlv_t174;
-import oicq.wlogin_sdk.tlv_type.tlv_t17c;
-import oicq.wlogin_sdk.tlv_type.tlv_t401;
-import oicq.wlogin_sdk.tlv_type.tlv_t402;
-import oicq.wlogin_sdk.tlv_type.tlv_t403;
+import oicq.wlogin_sdk.tlv_type.tlv_t193;
+import oicq.wlogin_sdk.tlv_type.tlv_t2;
+import oicq.wlogin_sdk.tlv_type.tlv_t547;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
 public class p
   extends oicq_request
 {
-  public p(t paramt)
+  public static boolean K = false;
+  
+  public p(u paramu)
   {
     this.t = 2064;
-    this.u = 7;
+    this.u = 2;
     this.v = "wtlogin.login";
-    this.x = paramt;
+    this.x = paramu;
     this.x.m = 0;
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
-    Object localObject3 = t.b(this.x.h);
-    tlv_t104 localtlv_t104 = ((async_context)localObject3)._t104;
+    int j = u.x;
+    Object localObject1 = u.b(this.x.h);
+    tlv_t104 localtlv_t104 = ((async_context)localObject1)._t104;
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
     }
-    tlv_t174 localtlv_t174 = ((async_context)localObject3)._t174;
-    if (localtlv_t174 == null) {
-      localtlv_t174 = new tlv_t174();
+    localObject1 = ((async_context)localObject1)._t105;
+    if (localObject1 == null) {
+      localObject1 = new tlv_t105();
     }
-    Object localObject2 = ((async_context)localObject3)._t402;
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new tlv_t402();
-    }
-    tlv_t403 localtlv_t403 = ((async_context)localObject3)._t403;
-    localObject2 = localtlv_t403;
-    if (localtlv_t403 == null) {
-      localObject2 = new tlv_t403();
-    }
-    ((async_context)localObject3)._dpwd = util.get_mpasswd().getBytes();
-    ((async_context)localObject3)._G = c(t.A, ((async_context)localObject3)._dpwd, ((tlv_t402)localObject1).get_data());
-    if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
-      ((async_context)localObject3)._sec_guid_flag = true;
-    }
+    byte[] arrayOfByte = u.an;
     int i = 0;
-    localObject1 = localObject3;
     for (;;)
     {
       int k = i;
-      localObject2 = a(localtlv_t104.get_data(), paramArrayOfByte, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, ((async_context)localObject1)._G);
+      Object localObject2 = a(localtlv_t104.get_data(), paramArrayOfByte, ((tlv_t105)localObject1).get_sign(), paramInt1, paramInt2, paramArrayOfLong, arrayOfByte, paramWUserSigInfo);
       a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject2);
       int m = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       i = m;
@@ -69,9 +57,9 @@ public class p
       ((StringBuilder)localObject2).append(" ret:");
       ((StringBuilder)localObject2).append(m);
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(this.x.f);
-      util.LOGI((String)localObject2, ((StringBuilder)localObject3).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.x.f);
+      util.LOGI((String)localObject2, localStringBuilder.toString());
       i = m;
       if (m != 180) {
         break;
@@ -84,77 +72,59 @@ public class p
     return i;
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4)
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4, WUserSigInfo paramWUserSigInfo)
   {
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int k;
-    for (int i = 0; j < 7; i = k)
-    {
-      Object localObject = null;
-      k = new int[] { 8, 260, 278, 372, 380, 1025, 408 }[j];
-      if (k != 8)
-      {
-        if (k != 260)
-        {
-          if (k != 278)
-          {
-            if (k != 372)
-            {
-              if (k != 380)
-              {
-                if (k != 408)
-                {
-                  if (k == 1025) {
-                    localObject = new tlv_t401().get_tlv_401(paramArrayOfByte4);
-                  }
-                }
-                else
-                {
-                  localObject = new tlv_t(408);
-                  ((tlv_t)localObject).set_data(new byte[] { (byte)s.I }, 1);
-                  localObject = ((tlv_t)localObject).get_buf();
-                }
-              }
-              else {
-                localObject = new tlv_t17c().get_tlv_17c(paramArrayOfByte2);
-              }
-            }
-            else {
-              localObject = new tlv_t174().get_tlv_174(paramArrayOfByte3);
-            }
-          }
-          else {
-            localObject = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
-          }
-        }
-        else {
-          localObject = new tlv_t104().get_tlv_104(paramArrayOfByte1);
-        }
-      }
-      else {
-        localObject = new tlv_t8().get_tlv_8(0, t.u, 0);
-      }
-      k = i;
-      if (localObject != null)
-      {
-        localArrayList.add(localObject);
-        k = i + localObject.length;
-      }
-      j += 1;
+    Object localObject3 = new tlv_t2();
+    Object localObject1 = new tlv_t8();
+    Object localObject2 = new tlv_t104();
+    tlv_t116 localtlv_t116 = new tlv_t116();
+    Object localObject4 = new tlv_t193();
+    tlv_t547 localtlv_t547 = new tlv_t547();
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, u.v, 0);
+    localObject2 = ((tlv_t104)localObject2).get_tlv_104(paramArrayOfByte1);
+    paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
+    paramArrayOfByte4 = localtlv_t547.get_tlv_547(paramArrayOfByte4);
+    if (K) {
+      paramArrayOfByte1 = ((tlv_t193)localObject4).get_tlv_193(paramArrayOfByte2);
+    } else {
+      paramArrayOfByte1 = ((tlv_t2)localObject3).get_tlv_2(paramArrayOfByte2, paramArrayOfByte3);
     }
-    j = localArrayList.size();
-    paramArrayOfByte1 = new byte[i];
-    paramInt1 = 0;
-    paramInt2 = 0;
-    while (paramInt1 < j)
+    paramInt1 = paramArrayOfByte1.length + localObject1.length + localObject2.length + paramArrayOfLong.length + paramArrayOfByte4.length;
+    paramArrayOfByte2 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
+    while (paramArrayOfByte2.hasNext())
     {
-      paramArrayOfByte2 = (byte[])localArrayList.get(paramInt1);
-      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, paramInt2, paramArrayOfByte2.length);
-      paramInt2 += paramArrayOfByte2.length;
+      paramArrayOfByte3 = (Integer)paramArrayOfByte2.next();
+      localObject3 = ((tlv_t)paramWUserSigInfo.extraLoginTLVMap.get(paramArrayOfByte3)).get_buf();
+      paramInt1 += localObject3.length;
+      localObject4 = new StringBuilder("Extra Tlv key：0x");
+      ((StringBuilder)localObject4).append(paramArrayOfByte3);
+      ((StringBuilder)localObject4).append(" len:");
+      ((StringBuilder)localObject4).append(localObject3.length);
+      util.LOGI(((StringBuilder)localObject4).toString(), "");
+    }
+    paramArrayOfByte2 = new byte[paramInt1];
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 0, paramArrayOfByte1.length);
+    paramInt1 = paramArrayOfByte1.length + 0;
+    System.arraycopy(localObject1, 0, paramArrayOfByte2, paramInt1, localObject1.length);
+    paramInt1 += localObject1.length;
+    System.arraycopy(localObject2, 0, paramArrayOfByte2, paramInt1, localObject2.length);
+    paramInt1 += localObject2.length;
+    System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte2, paramInt1, paramArrayOfLong.length);
+    paramInt1 += paramArrayOfLong.length;
+    System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte2, paramInt1, paramArrayOfByte4.length);
+    paramInt2 = paramInt1 + paramArrayOfByte4.length;
+    paramInt1 = 5;
+    paramArrayOfByte1 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
+    while (paramArrayOfByte1.hasNext())
+    {
+      paramArrayOfByte3 = (Integer)paramArrayOfByte1.next();
+      paramArrayOfLong = ((tlv_t)paramWUserSigInfo.extraLoginTLVMap.get(paramArrayOfByte3)).get_buf();
+      System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte2, paramInt2, paramArrayOfLong.length);
+      paramInt2 += paramArrayOfLong.length;
       paramInt1 += 1;
+      util.LOGI("Extra Tlv from user：0x".concat(String.valueOf(paramArrayOfByte3)));
     }
-    return b(paramArrayOfByte1, this.u, j);
+    return b(paramArrayOfByte2, this.u, paramInt1);
   }
 }
 

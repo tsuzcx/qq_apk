@@ -1,8 +1,6 @@
 package com.tencent.token;
 
-final class aur
-  extends aup
-{}
+public abstract interface aur {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -1,251 +1,385 @@
 package com.tencent.token;
 
-public final class ek<E>
-  implements Cloneable
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ProviderInfo;
+import android.content.pm.Signature;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
+
+public final class ek
 {
-  private static final Object e = new Object();
-  public boolean a = false;
-  public int[] b;
-  public Object[] c;
-  public int d;
+  private static final es<String, Typeface> a = new es(16);
+  private static final el b = new el("fonts");
+  private static final Object c = new Object();
+  private static final ex<String, ArrayList<el.a<c>>> d = new ex();
+  private static final Comparator<byte[]> e = new Comparator() {};
   
-  public ek()
+  public static Typeface a(Context paramContext, final ej paramej, do.a arg2, boolean paramBoolean, int paramInt1, final int paramInt2)
   {
-    this(10);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramej.f);
+    ((StringBuilder)localObject1).append("-");
+    ((StringBuilder)localObject1).append(paramInt2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = (Typeface)a.a(localObject1);
+    if (localObject2 != null)
+    {
+      if (??? != null) {
+        ???.a((Typeface)localObject2);
+      }
+      return localObject2;
+    }
+    if ((paramBoolean) && (paramInt1 == -1))
+    {
+      paramContext = b(paramContext, paramej, paramInt2);
+      if (??? != null) {
+        if (paramContext.b == 0) {
+          ???.a(paramContext.a, null);
+        } else {
+          ???.a(paramContext.b, null);
+        }
+      }
+      return paramContext.a;
+    }
+    paramej = new Callable() {};
+    if (paramBoolean) {}
+    try
+    {
+      paramContext = ((c)b.a(paramej, paramInt1)).a;
+      return paramContext;
+    }
+    catch (InterruptedException paramContext) {}
+    if (??? == null) {
+      paramContext = null;
+    } else {
+      paramContext = new el.a() {};
+    }
+    synchronized (c)
+    {
+      if (d.containsKey(localObject1))
+      {
+        if (paramContext != null) {
+          ((ArrayList)d.get(localObject1)).add(paramContext);
+        }
+        return null;
+      }
+      if (paramContext != null)
+      {
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(paramContext);
+        d.put(localObject1, localObject2);
+      }
+      paramContext = b;
+      ??? = new el.a() {};
+      paramContext.a(new el.2(paramContext, paramej, new Handler(), ???));
+      return null;
+    }
+    return null;
   }
   
-  public ek(int paramInt)
+  private static List<byte[]> a(Signature[] paramArrayOfSignature)
   {
-    if (paramInt == 0)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfSignature.length)
     {
-      this.b = ea.a;
-      this.c = ea.c;
+      localArrayList.add(paramArrayOfSignature[i].toByteArray());
+      i += 1;
     }
-    else
-    {
-      paramInt = ea.a(paramInt);
-      this.b = new int[paramInt];
-      this.c = new Object[paramInt];
-    }
-    this.d = 0;
+    return localArrayList;
   }
   
-  private ek<E> c()
+  public static Map<Uri, ByteBuffer> a(Context paramContext, b[] paramArrayOfb)
   {
+    HashMap localHashMap = new HashMap();
+    int j = paramArrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = paramArrayOfb[i];
+      if (((b)localObject).e == 0)
+      {
+        localObject = ((b)localObject).a;
+        if (!localHashMap.containsKey(localObject)) {
+          localHashMap.put(localObject, dx.a(paramContext, (Uri)localObject));
+        }
+      }
+      i += 1;
+    }
+    return Collections.unmodifiableMap(localHashMap);
+  }
+  
+  private static boolean a(List<byte[]> paramList1, List<byte[]> paramList2)
+  {
+    if (paramList1.size() != paramList2.size()) {
+      return false;
+    }
+    int i = 0;
+    while (i < paramList1.size())
+    {
+      if (!Arrays.equals((byte[])paramList1.get(i), (byte[])paramList2.get(i))) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private static b[] a(Context paramContext, ej paramej, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Uri localUri1 = new Uri.Builder().scheme("content").authority(paramString).build();
+    Uri localUri2 = new Uri.Builder().scheme("content").authority(paramString).appendPath("file").build();
+    Object localObject = null;
+    paramString = localObject;
     for (;;)
     {
       try
       {
-        localek = (ek)super.clone();
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException1)
-      {
-        ek localek;
-        continue;
-        return localCloneNotSupportedException1;
-      }
-      try
-      {
-        localek.b = ((int[])this.b.clone());
-        localek.c = ((Object[])this.c.clone());
-        return localek;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-    }
-    return null;
-  }
-  
-  public final E a(int paramInt)
-  {
-    paramInt = ea.a(this.b, this.d, paramInt);
-    if (paramInt >= 0)
-    {
-      Object[] arrayOfObject = this.c;
-      if (arrayOfObject[paramInt] != e) {
-        return arrayOfObject[paramInt];
-      }
-    }
-    return null;
-  }
-  
-  public final void a()
-  {
-    int m = this.d;
-    int[] arrayOfInt = this.b;
-    Object[] arrayOfObject = this.c;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      Object localObject = arrayOfObject[i];
-      k = j;
-      if (localObject != e)
-      {
-        if (i != j)
+        if (Build.VERSION.SDK_INT > 16)
         {
-          arrayOfInt[j] = arrayOfInt[i];
-          arrayOfObject[j] = localObject;
-          arrayOfObject[i] = null;
+          paramString = localObject;
+          paramContext = paramContext.getContentResolver();
+          paramString = localObject;
+          paramej = paramej.c;
+          paramString = localObject;
+          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramej }, null, null);
         }
-        k = j + 1;
+        else
+        {
+          paramString = localObject;
+          paramContext = paramContext.getContentResolver();
+          paramString = localObject;
+          paramej = paramej.c;
+          paramString = localObject;
+          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramej }, null);
+        }
+        paramej = localArrayList;
+        if (paramContext != null)
+        {
+          paramej = localArrayList;
+          paramString = paramContext;
+          if (paramContext.getCount() > 0)
+          {
+            paramString = paramContext;
+            int m = paramContext.getColumnIndex("result_code");
+            paramString = paramContext;
+            localArrayList = new ArrayList();
+            paramString = paramContext;
+            int n = paramContext.getColumnIndex("_id");
+            paramString = paramContext;
+            int i1 = paramContext.getColumnIndex("file_id");
+            paramString = paramContext;
+            int i2 = paramContext.getColumnIndex("font_ttc_index");
+            paramString = paramContext;
+            int i3 = paramContext.getColumnIndex("font_weight");
+            paramString = paramContext;
+            int i4 = paramContext.getColumnIndex("font_italic");
+            paramej = localArrayList;
+            paramString = paramContext;
+            if (paramContext.moveToNext())
+            {
+              if (m == -1) {
+                break label543;
+              }
+              paramString = paramContext;
+              i = paramContext.getInt(m);
+              if (i2 == -1) {
+                break label548;
+              }
+              paramString = paramContext;
+              j = paramContext.getInt(i2);
+              if (i1 == -1)
+              {
+                paramString = paramContext;
+                paramej = ContentUris.withAppendedId(localUri1, paramContext.getLong(n));
+              }
+              else
+              {
+                paramString = paramContext;
+                paramej = ContentUris.withAppendedId(localUri2, paramContext.getLong(i1));
+              }
+              if (i3 == -1) {
+                break label554;
+              }
+              paramString = paramContext;
+              k = paramContext.getInt(i3);
+              if (i4 == -1) {
+                break label562;
+              }
+              paramString = paramContext;
+              if (paramContext.getInt(i4) != 1) {
+                break label562;
+              }
+              bool = true;
+              paramString = paramContext;
+              localArrayList.add(new b(paramej, j, k, bool, i));
+              continue;
+            }
+          }
+        }
+        if (paramContext != null) {
+          paramContext.close();
+        }
+        return (b[])paramej.toArray(new b[0]);
       }
-      i += 1;
-    }
-    this.a = false;
-    this.d = j;
-  }
-  
-  public final void a(int paramInt, E paramE)
-  {
-    int i = ea.a(this.b, this.d, paramInt);
-    if (i >= 0)
-    {
-      this.c[i] = paramE;
-      return;
-    }
-    int j = i ^ 0xFFFFFFFF;
-    Object localObject1;
-    if (j < this.d)
-    {
-      localObject1 = this.c;
-      if (localObject1[j] == e)
+      finally
       {
-        this.b[j] = paramInt;
-        localObject1[j] = paramE;
-        return;
+        if (paramString != null) {
+          paramString.close();
+        }
       }
+      label543:
+      int i = 0;
+      continue;
+      label548:
+      int j = 0;
+      continue;
+      label554:
+      int k = 400;
+      continue;
+      label562:
+      boolean bool = false;
     }
-    i = j;
-    if (this.a)
+  }
+  
+  private static c b(Context paramContext, ej paramej, int paramInt)
+  {
+    try
     {
-      i = j;
-      if (this.d >= this.b.length)
-      {
-        a();
-        i = ea.a(this.b, this.d, paramInt) ^ 0xFFFFFFFF;
+      localObject3 = paramContext.getPackageManager();
+      localObject1 = paramContext.getResources();
+      localObject2 = paramej.a;
+      localProviderInfo = ((PackageManager)localObject3).resolveContentProvider((String)localObject2, 0);
+      if (localProviderInfo == null) {
+        break label307;
       }
-    }
-    j = this.d;
-    if (j >= this.b.length)
-    {
-      j = ea.a(j + 1);
-      localObject1 = new int[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject2 = this.b;
-      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
-      localObject2 = this.c;
-      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
-      this.b = ((int[])localObject1);
-      this.c = arrayOfObject;
-    }
-    j = this.d;
-    if (j - i != 0)
-    {
-      localObject1 = this.b;
-      int k = i + 1;
-      System.arraycopy(localObject1, i, localObject1, k, j - i);
-      localObject1 = this.c;
-      System.arraycopy(localObject1, i, localObject1, k, this.d - i);
-    }
-    this.b[i] = paramInt;
-    this.c[i] = paramE;
-    this.d += 1;
-  }
-  
-  public final int b()
-  {
-    if (this.a) {
-      a();
-    }
-    return this.d;
-  }
-  
-  public final void b(int paramInt)
-  {
-    paramInt = ea.a(this.b, this.d, paramInt);
-    if (paramInt >= 0)
-    {
-      Object[] arrayOfObject = this.c;
-      Object localObject1 = arrayOfObject[paramInt];
-      Object localObject2 = e;
-      if (localObject1 != localObject2)
-      {
-        arrayOfObject[paramInt] = localObject2;
-        this.a = true;
+      if (!localProviderInfo.packageName.equals(paramej.b)) {
+        break label260;
       }
-    }
-  }
-  
-  public final void b(int paramInt, E paramE)
-  {
-    int i = this.d;
-    if ((i != 0) && (paramInt <= this.b[(i - 1)]))
-    {
-      a(paramInt, paramE);
-      return;
-    }
-    if ((this.a) && (this.d >= this.b.length)) {
-      a();
-    }
-    i = this.d;
-    if (i >= this.b.length)
-    {
-      int j = ea.a(i + 1);
-      int[] arrayOfInt = new int[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject = this.b;
-      System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
-      localObject = this.c;
-      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
-      this.b = arrayOfInt;
-      this.c = arrayOfObject;
-    }
-    this.b[i] = paramInt;
-    this.c[i] = paramE;
-    this.d = (i + 1);
-  }
-  
-  public final int c(int paramInt)
-  {
-    if (this.a) {
-      a();
-    }
-    return this.b[paramInt];
-  }
-  
-  public final E d(int paramInt)
-  {
-    if (this.a) {
-      a();
-    }
-    return this.c[paramInt];
-  }
-  
-  public final String toString()
-  {
-    if (b() <= 0) {
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(this.d * 28);
-    localStringBuilder.append('{');
-    int i = 0;
-    while (i < this.d)
-    {
-      if (i > 0) {
-        localStringBuilder.append(", ");
-      }
-      localStringBuilder.append(c(i));
-      localStringBuilder.append('=');
-      Object localObject = d(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
+      localObject2 = a(((PackageManager)localObject3).getPackageInfo(localProviderInfo.packageName, 64).signatures);
+      Collections.sort((List)localObject2, e);
+      if (paramej.d != null) {
+        localObject1 = paramej.d;
       } else {
-        localStringBuilder.append("(this Map)");
+        localObject1 = dn.a((Resources)localObject1, paramej.e);
       }
-      i += 1;
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        Object localObject2;
+        ProviderInfo localProviderInfo;
+        int j;
+        label260:
+        label307:
+        continue;
+        int i = 0;
+        continue;
+        i += 1;
+        continue;
+        Object localObject1 = null;
+      }
+    }
+    if (i < ((List)localObject1).size())
+    {
+      localObject3 = new ArrayList((Collection)((List)localObject1).get(i));
+      Collections.sort((List)localObject3, e);
+      if (a((List)localObject2, (List)localObject3))
+      {
+        localObject1 = localProviderInfo;
+        if (localObject1 == null) {
+          paramej = new a(1, null);
+        } else {
+          paramej = new a(0, a(paramContext, paramej, ((ProviderInfo)localObject1).authority));
+        }
+        j = paramej.a;
+        i = -3;
+        if (j == 0)
+        {
+          paramContext = ds.a(paramContext, paramej.b, paramInt);
+          if (paramContext != null) {
+            i = 0;
+          }
+          return new c(paramContext, i);
+        }
+        if (paramej.a == 1) {
+          i = -2;
+        }
+        return new c(null, i);
+        paramContext = new StringBuilder("Found content provider ");
+        paramContext.append((String)localObject2);
+        paramContext.append(", but package was not ");
+        paramContext.append(paramej.b);
+        throw new PackageManager.NameNotFoundException(paramContext.toString());
+        throw new PackageManager.NameNotFoundException("No package found for authority: ".concat(String.valueOf(localObject2)));
+        return new c(null, -1);
+      }
+    }
+  }
+  
+  public static final class a
+  {
+    final int a;
+    final ek.b[] b;
+    
+    public a(int paramInt, ek.b[] paramArrayOfb)
+    {
+      this.a = paramInt;
+      this.b = paramArrayOfb;
+    }
+  }
+  
+  public static final class b
+  {
+    public final Uri a;
+    public final int b;
+    public final int c;
+    public final boolean d;
+    final int e;
+    
+    public b(Uri paramUri, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+    {
+      this.a = ((Uri)ew.a(paramUri));
+      this.b = paramInt1;
+      this.c = paramInt2;
+      this.d = paramBoolean;
+      this.e = paramInt3;
+    }
+  }
+  
+  static final class c
+  {
+    final Typeface a;
+    final int b;
+    
+    c(Typeface paramTypeface, int paramInt)
+    {
+      this.a = paramTypeface;
+      this.b = paramInt;
+    }
   }
 }
 

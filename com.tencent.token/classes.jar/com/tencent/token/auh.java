@@ -1,10 +1,9 @@
 package com.tencent.token;
 
-public abstract interface auh
+abstract class auh
 {
-  public abstract void a(Runnable paramRunnable, String paramString);
-  
-  public abstract void b(Runnable paramRunnable, String paramString);
+  public byte[] a;
+  public int b;
 }
 
 

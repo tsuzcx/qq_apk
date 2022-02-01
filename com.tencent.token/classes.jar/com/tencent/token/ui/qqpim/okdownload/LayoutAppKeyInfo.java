@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.token.aao;
+import com.tencent.token.aay;
 import com.tencent.token.ui.ImageActivity;
 
 public class LayoutAppKeyInfo
@@ -30,12 +30,12 @@ public class LayoutAppKeyInfo
   {
     super(paramContext, paramAttributeSet);
     this.f = paramContext;
-    paramContext = (LinearLayout)View.inflate(paramContext, 2131296301, null);
-    this.a = ((TextView)paramContext.findViewById(2131166163));
-    this.b = ((TextView)paramContext.findViewById(2131166192));
-    this.c = ((TextView)paramContext.findViewById(2131166180));
-    this.d = ((TextView)paramContext.findViewById(2131166181));
-    this.e = ((TextView)paramContext.findViewById(2131166164));
+    paramContext = (LinearLayout)View.inflate(paramContext, 2131296302, null);
+    this.a = ((TextView)paramContext.findViewById(2131166203));
+    this.b = ((TextView)paramContext.findViewById(2131166232));
+    this.c = ((TextView)paramContext.findViewById(2131166220));
+    this.d = ((TextView)paramContext.findViewById(2131166221));
+    this.e = ((TextView)paramContext.findViewById(2131166204));
     setGravity(1);
     addView(paramContext);
   }
@@ -82,7 +82,7 @@ public class LayoutAppKeyInfo
     {
       public final void onClick(View paramAnonymousView)
       {
-        aao.b(paramActivity, paramString4, "应用权限");
+        aay.b(paramActivity, paramString4, "应用权限");
       }
     });
     paramString1 = new SpannableStringBuilder("隐私政策");
@@ -99,7 +99,7 @@ public class LayoutAppKeyInfo
         paramAnonymousView = paramString5.toLowerCase();
         if ((!paramAnonymousView.endsWith("png")) && (!paramAnonymousView.endsWith("jpg")) && (!paramAnonymousView.endsWith("jpeg")))
         {
-          aao.b(paramActivity, paramString5, "隐私政策");
+          aay.b(paramActivity, paramString5, "隐私政策");
           return;
         }
         paramAnonymousView = new Intent(paramActivity, ImageActivity.class);

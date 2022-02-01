@@ -1,496 +1,243 @@
 package com.tencent.token;
 
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.token.core.bean.OnlineDeviceResult;
-import com.tencent.token.core.bean.OnlineDeviceResult.a;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.ui.LoginMsgActivity;
-import com.tencent.token.ui.OpMsgDisplayActivity;
-import com.tmsdk.TMSDKContext;
-import java.util.ArrayList;
-import oicq.wlogin_sdk.request.WtloginHelper;
+import java.util.Random;
 
 public final class yr
-  extends BaseAdapter
+  extends View
 {
-  public final int a = 15;
-  View.OnClickListener b = null;
-  public View c;
-  public View d;
-  public View e;
-  public int f = 1;
-  private final int g = 1;
-  private final int h = 2;
-  private final int i = 3;
-  private final int j = 4;
-  private LoginMsgActivity k = null;
-  private LayoutInflater l = null;
-  private aay m;
-  private OnlineDeviceResult n;
-  
-  public yr(LoginMsgActivity paramLoginMsgActivity)
+  public static int a = 40;
+  public static int b = 70;
+  public static int c = 86;
+  public static int d = 100;
+  private static float w = 15.0F;
+  private Paint A;
+  private Paint B;
+  private float C;
+  private Context D;
+  private float E;
+  private float F;
+  private float G = 0.0F;
+  private float H = 0.0F;
+  private Animation I;
+  private Animation J;
+  private LinearInterpolator K = new LinearInterpolator();
+  private RectF L = new RectF();
+  private Rect M = new Rect();
+  private Random N = new Random();
+  private Handler O = new Handler()
   {
-    this.k = paramLoginMsgActivity;
-    this.l = LayoutInflater.from(paramLoginMsgActivity);
+    public final void handleMessage(Message paramAnonymousMessage)
+    {
+      if (paramAnonymousMessage.what != 0) {
+        return;
+      }
+      postDelayed(yr.a(yr.this), 50L);
+    }
+  };
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public int p = 0;
+  public ImageView q;
+  public ImageView r;
+  public boolean s = false;
+  public int t = 0;
+  public int u = 0;
+  public Runnable v = new Runnable()
+  {
+    public final void run()
+    {
+      yr.this.postInvalidate();
+      yr.b(yr.this).postDelayed(yr.a(yr.this), 50L);
+    }
+  };
+  private final float x = 15.0F;
+  private final int y = 0;
+  private Paint z;
+  
+  public yr(Context paramContext, ImageView paramImageView1, ImageView paramImageView2)
+  {
+    super(paramContext);
+    this.D = paramContext;
+    this.q = paramImageView1;
+    this.r = paramImageView2;
+    this.z = new Paint();
+    this.z.setColor(this.D.getResources().getColor(2130968659));
+    this.z.setAntiAlias(true);
+    this.z.setStrokeWidth(3.0F);
+    this.z.setStyle(Paint.Style.STROKE);
+    this.A = new Paint();
+    this.A.setColor(this.D.getResources().getColor(2130968659));
+    this.A.setAntiAlias(true);
+    this.A.setStrokeWidth(3.0F);
+    this.A.setStyle(Paint.Style.STROKE);
+    this.B = new Paint();
+    this.B.setColor(this.D.getResources().getColor(2130968659));
+    this.B.setAntiAlias(true);
+    this.B.setStrokeWidth(1.0F);
+    this.B.setStyle(Paint.Style.FILL);
+    this.C = (BitmapFactory.decodeResource(getResources(), 2131099792).getWidth() / 2);
+    this.I = AnimationUtils.loadAnimation(this.D, 2130771982);
+    this.J = AnimationUtils.loadAnimation(this.D, 2130771981);
   }
   
-  public final void a()
+  protected final void onDraw(Canvas paramCanvas)
   {
-    aay localaay = this.m;
-    if (localaay == null) {
-      return;
-    }
-    int i1 = localaay.a(this.f * 15);
-    if (i1 <= 0)
+    super.onDraw(paramCanvas);
+    if (aay.a())
     {
-      b();
-      f();
-      d();
-    }
-    else if (i1 >= this.f * 15)
-    {
-      c();
-      f();
+      this.t += 3;
     }
     else
     {
-      d();
-      e();
+      this.u += 1;
+      if (this.u % 4 == 0) {
+        this.t += 1;
+      }
     }
-    xj.a("query login msg=".concat(String.valueOf(i1)));
-    notifyDataSetChanged();
-    this.k.checkTimeZoneFlag();
-  }
-  
-  public final void a(aay paramaay, OnlineDeviceResult paramOnlineDeviceResult)
-  {
-    this.m = paramaay;
-    this.n = paramOnlineDeviceResult;
-  }
-  
-  public final boolean areAllItemsEnabled()
-  {
-    return true;
-  }
-  
-  public final void b()
-  {
-    TextView localTextView = (TextView)this.c.findViewById(2131166096);
-    localTextView.setVisibility(0);
-    ImageView localImageView = (ImageView)this.c.findViewById(2131165599);
-    OnlineDeviceResult localOnlineDeviceResult = this.n;
-    if ((localOnlineDeviceResult != null) && (localOnlineDeviceResult.mDevicesList != null) && (this.n.mDevicesList.size() > 0))
+    int i1 = this.t;
+    int i2 = c;
+    if (i1 > i2) {
+      this.t = i2;
+    }
+    i1 = this.t;
+    if (this.p < i1)
     {
-      localTextView.setVisibility(8);
-      localImageView.setVisibility(8);
+      i2 = this.N.nextInt(5);
+      this.p += i2 + 1;
+      if (this.p > i1) {
+        this.p = i1;
+      }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append("%");
+    localObject = ((StringBuilder)localObject).toString();
+    this.B.setTextAlign(Paint.Align.CENTER);
+    this.B.setTextSize(45.0F);
+    this.B.getTextBounds((String)localObject, 0, ((String)localObject).length(), this.M);
+    i1 = this.M.bottom;
+    i2 = this.M.top;
+    paramCanvas.drawText((String)localObject, this.E, this.F + (i1 - i2) / 2, this.B);
+    float f1 = this.i;
+    float f2 = this.e;
+    float f4 = f2 / 2.0F;
+    float f3 = this.C;
+    if (f1 > f4 + f3)
+    {
+      f4 = w;
+      this.i = (f1 - f4);
+      this.j += f4;
+      if (this.i < f2 / 2.0F + f3) {
+        this.i = (f2 / 2.0F + f3);
+      }
+      f1 = this.j;
+      f2 = this.e;
+      f3 = f2 / 2.0F;
+      f4 = this.C;
+      if (f1 > f3 - f4) {
+        this.j = (f2 / 2.0F - f4);
+      }
+      f1 = this.e;
+      f2 = this.f;
+      paramCanvas.drawLine(f1, f2 / 2.0F, this.i, f2 / 2.0F, this.A);
+      f1 = this.f;
+      paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
       return;
     }
-    localTextView.setText(2131493413);
-    localTextView.setVisibility(0);
-    localImageView.setVisibility(0);
-  }
-  
-  public final void c()
-  {
-    this.d.findViewById(2131165751).setVisibility(0);
-  }
-  
-  public final void d()
-  {
-    this.d.findViewById(2131165751).setVisibility(8);
-  }
-  
-  public final void e()
-  {
-    this.e.setVisibility(0);
-  }
-  
-  public final void f()
-  {
-    this.e.setVisibility(8);
-  }
-  
-  public final int getCount()
-  {
-    Object localObject = this.n;
-    if (localObject != null) {
-      localObject = ((OnlineDeviceResult)localObject).mDevicesList;
-    } else {
-      localObject = null;
-    }
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-      return ((ArrayList)localObject).size() + this.m.e();
-    }
-    localObject = this.m;
-    if (localObject == null) {
-      return 0;
-    }
-    return ((aay)localObject).e();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = this.l.inflate(2131296366, paramViewGroup, false);
-    }
-    Object localObject1 = this.n;
-    int i1;
-    if ((localObject1 != null) && (((OnlineDeviceResult)localObject1).mDevicesList != null)) {
-      i1 = this.n.mDevicesList.size();
-    } else {
-      i1 = 0;
-    }
-    localObject1 = this.n;
-    Object localObject3;
-    Object localObject4;
-    Object localObject5;
-    TextView localTextView1;
-    if ((localObject1 != null) && (((OnlineDeviceResult)localObject1).mDevicesList != null) && (i1 > paramInt))
+    f3 = this.f;
+    paramCanvas.drawLine(f2, f3 / 2.0F, f1, f3 / 2.0F, this.A);
+    f1 = this.f;
+    paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
+    f1 = this.o;
+    if (f1 > -90.0F)
     {
-      localObject1 = (OnlineDeviceResult.a)this.n.mDevicesList.get(paramInt);
-      paramView = this.l.inflate(2131296366, paramViewGroup, false);
-      paramViewGroup = (RelativeLayout)paramView.findViewById(2131165789);
-      localObject2 = (RelativeLayout)paramView.findViewById(2131165699);
-      localObject3 = (RelativeLayout)paramView.findViewById(2131165700);
-      localObject4 = (RelativeLayout)paramView.findViewById(2131165697);
-      localObject5 = (RelativeLayout)paramView.findViewById(2131165698);
-      localTextView1 = (TextView)paramView.findViewById(2131165788);
-      paramViewGroup.setVisibility(0);
-      ((RelativeLayout)localObject2).setVisibility(8);
-      ((RelativeLayout)localObject3).setVisibility(8);
-      ((RelativeLayout)localObject4).setVisibility(8);
-      ((RelativeLayout)localObject5).setVisibility(8);
-      if (paramInt == 0)
+      this.o = (f1 - 15.0F);
+      this.n -= 15.0F;
+      if (this.o < -90.0F)
       {
-        localTextView1.setVisibility(0);
-        localTextView1.setText(2131493420);
+        this.o = -90.0F;
+        this.n = -90.0F;
       }
-      else
-      {
-        localTextView1.setVisibility(8);
-      }
-      paramViewGroup = (ImageView)paramView.findViewById(2131165790);
-      localObject2 = (TextView)paramView.findViewById(2131165787);
-      localObject3 = (TextView)paramView.findViewById(2131165786);
-      localObject4 = (Button)paramView.findViewById(2131165352);
-      localObject5 = (ProgressBar)paramView.findViewById(2131165791);
-      ((Button)localObject4).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          paramAnonymousView = si.a();
-          Object localObject = this.a.a;
-          String str1 = this.a.d;
-          int i = this.a.e;
-          int j = this.a.f;
-          String str2 = this.a.g;
-          String str3 = aao.a(sg.a(RqdApplication.p()).a.GetGuid());
-          yr.a(yr.this);
-          String str4 = LoginMsgActivity.mSkey;
-          Handler localHandler = yr.a(yr.this).mHandler;
-          QQUser localQQUser = th.a().k.b();
-          if (localQQUser == null)
-          {
-            paramAnonymousView = localHandler.obtainMessage(3056);
-            localObject = new xh();
-            ((xh)localObject).a(110, null, null);
-            paramAnonymousView.arg1 = ((xh)localObject).a;
-            paramAnonymousView.obj = localObject;
-            paramAnonymousView.sendToTarget();
-          }
-          else
-          {
-            long l = localQQUser.mUin;
-            rf.a().a(l, (String)localObject, str1, i, str2, str3, "com.tencent.token", str4, new si.31(paramAnonymousView, l, i, j, str2, (String)localObject, localHandler));
-          }
-          this.b.setVisibility(0);
-          TMSDKContext.saveActionData(1150063);
-        }
-      });
-      ((ProgressBar)localObject5).setVisibility(8);
-      ((TextView)localObject2).setText(((OnlineDeviceResult.a)localObject1).b);
-      ((TextView)localObject3).setText(((OnlineDeviceResult.a)localObject1).c);
-      if (((OnlineDeviceResult.a)localObject1).h == 4) {
-        paramViewGroup.setImageResource(2131099900);
-      } else if (((OnlineDeviceResult.a)localObject1).h == 3) {
-        paramViewGroup.setImageResource(2131099927);
-      } else {
-        paramViewGroup.setImageResource(2131099916);
-      }
-      paramViewGroup = (ImageView)paramView.findViewById(2131165448);
-      localObject1 = (ImageView)paramView.findViewById(2131165449);
-      localObject2 = (ImageView)paramView.findViewById(2131165450);
-      if (paramInt == 0) {
-        paramViewGroup.setVisibility(0);
-      } else {
-        paramViewGroup.setVisibility(8);
-      }
-      if ((this.n.mDevicesList != null) && (paramInt == this.n.mDevicesList.size() - 1))
-      {
-        ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject2).setVisibility(8);
-        return paramView;
-      }
-      ((ImageView)localObject1).setVisibility(8);
-      ((ImageView)localObject2).setVisibility(0);
-      return paramView;
     }
-    paramViewGroup = this.m;
-    if (paramViewGroup == null) {
-      return null;
-    }
-    int i2 = paramInt - i1;
-    Object localObject2 = paramViewGroup.b(i2);
-    if (localObject2 != null)
+    else
     {
-      if ((((SafeMsgItem)localObject2).mFlag & 0x4) == 4) {
-        paramInt = 1;
-      } else {
-        paramInt = 0;
-      }
-      paramView.setOnClickListener(new a((SafeMsgItem)localObject2, i2));
-      if (paramInt != 0) {
-        paramView.setOnTouchListener(new b(true, ((SafeMsgItem)localObject2).c()));
-      } else {
-        paramView.setOnTouchListener(new b(false, ((SafeMsgItem)localObject2).c()));
-      }
-      paramViewGroup = (TextView)paramView.findViewById(2131165788);
-      if (i2 == 0)
+      this.q.setVisibility(0);
+      this.r.setVisibility(0);
+      this.o -= 15.0F;
+      this.n -= 15.0F;
+      if (this.o < -180.0F)
       {
-        paramViewGroup.setVisibility(0);
-        paramViewGroup.setText(2131493311);
+        this.o = -180.0F;
+        this.n = -180.0F;
       }
-      else
+      if (!this.s)
       {
-        paramViewGroup.setVisibility(8);
-      }
-      paramViewGroup = (RelativeLayout)paramView.findViewById(2131165789);
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165699);
-      localObject3 = (RelativeLayout)paramView.findViewById(2131165700);
-      localObject4 = (RelativeLayout)paramView.findViewById(2131165697);
-      localObject5 = (RelativeLayout)paramView.findViewById(2131165698);
-      paramViewGroup.setVisibility(8);
-      ((RelativeLayout)localObject3).setVisibility(0);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131166078);
-      TextView localTextView4 = (TextView)paramView.findViewById(2131166077);
-      TextView localTextView5 = (TextView)paramView.findViewById(2131165759);
-      localTextView1 = (TextView)paramView.findViewById(2131165693);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131165694);
-      ImageView localImageView1 = (ImageView)paramView.findViewById(2131165695);
-      ImageView localImageView2 = (ImageView)paramView.findViewById(2131165696);
-      ImageView localImageView3 = (ImageView)paramView.findViewById(2131165703);
-      localObject1 = (ImageView)paramView.findViewById(2131165704);
-      ImageView localImageView4 = (ImageView)paramView.findViewById(2131165705);
-      paramViewGroup = (ImageView)paramView.findViewById(2131165706);
-      if (i2 == 0)
-      {
-        localRelativeLayout.setVisibility(0);
-        ((ViewGroup.MarginLayoutParams)localRelativeLayout.getLayoutParams()).topMargin = ((int)(10.0F * IndexActivity.S_DENSITY));
-      }
-      else
-      {
-        SafeMsgItem localSafeMsgItem = this.m.b(i2 - 1);
-        if ((localSafeMsgItem != null) && (!aao.a(localSafeMsgItem.mTime * 1000L, ((SafeMsgItem)localObject2).mTime * 1000L)))
-        {
-          localRelativeLayout.setVisibility(0);
-          ((ViewGroup.MarginLayoutParams)localRelativeLayout.getLayoutParams()).topMargin = 0;
-        }
-        else
-        {
-          localRelativeLayout.setVisibility(8);
-        }
-      }
-      if ((paramInt == 0) && (!((SafeMsgItem)localObject2).d()))
-      {
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099949);
-        localTextView3.setTextAppearance(this.k, 2131558772);
-        localTextView4.setTextAppearance(this.k, 2131558771);
-        ((RelativeLayout)localObject4).setVisibility(0);
-        ((RelativeLayout)localObject5).setVisibility(4);
-        localImageView3.setBackgroundResource(2131099944);
-        if (i2 == getCount() - 1 - i1) {
-          localImageView4.setVisibility(4);
-        } else {
-          localImageView4.setVisibility(0);
-        }
-      }
-      else if ((!((SafeMsgItem)localObject2).c()) && (!((SafeMsgItem)localObject2).d()))
-      {
-        ((ImageView)localObject1).setBackgroundResource(2131099946);
-        if (i2 == getCount() - 1 - i1) {
-          paramViewGroup.setVisibility(4);
-        } else {
-          paramViewGroup.setVisibility(0);
-        }
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099948);
-        localTextView3.setTextAppearance(this.k, 2131558768);
-        localTextView4.setTextAppearance(this.k, 2131558767);
-        ((RelativeLayout)localObject4).setVisibility(4);
-        ((RelativeLayout)localObject5).setVisibility(0);
-      }
-      else
-      {
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099949);
-        localTextView3.setTextAppearance(this.k, 2131558772);
-        localTextView4.setTextAppearance(this.k, 2131558771);
-        ((RelativeLayout)localObject4).setVisibility(4);
-        ((RelativeLayout)localObject5).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundResource(2131099945);
-        if (i2 == getCount() - 1 - i1) {
-          paramViewGroup.setVisibility(4);
-        } else {
-          paramViewGroup.setVisibility(0);
-        }
-      }
-      localTextView3.setText(((SafeMsgItem)localObject2).mTitle);
-      paramInt = ((SafeMsgItem)localObject2).mContent.indexOf('|');
-      if (paramInt != -1) {
-        localTextView4.setText(((SafeMsgItem)localObject2).mContent.substring(0, paramInt));
-      } else {
-        localTextView4.setText(((SafeMsgItem)localObject2).mContent);
-      }
-      localTextView5.setText(aao.d(((SafeMsgItem)localObject2).mTime * 1000L));
-      paramViewGroup = aao.b(((SafeMsgItem)localObject2).mTime * 1000L);
-      if (paramViewGroup.length() > 2)
-      {
-        localTextView1.setVisibility(8);
-        localTextView2.setVisibility(0);
-        localTextView2.setText(paramViewGroup);
-        localImageView1.setVisibility(4);
-        localImageView2.setVisibility(0);
-      }
-      else
-      {
-        localTextView2.setVisibility(8);
-        localTextView1.setVisibility(0);
-        localTextView1.setText(paramViewGroup);
-        localImageView1.setVisibility(0);
-        localImageView2.setVisibility(4);
+        this.r.setVisibility(0);
+        this.q.setVisibility(0);
+        this.I.setInterpolator(this.K);
+        this.q.startAnimation(this.I);
+        this.J.setInterpolator(this.K);
+        this.r.startAnimation(this.J);
+        this.s = true;
       }
     }
-    return paramView;
+    paramCanvas.drawArc(this.L, this.m, this.o, false, this.A);
+    paramCanvas.drawArc(this.L, this.l, this.n, false, this.z);
   }
   
-  public final int getViewTypeCount()
+  protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    return 1;
-  }
-  
-  final class a
-    implements View.OnClickListener
-  {
-    int a;
-    SafeMsgItem b;
-    
-    public a(SafeMsgItem paramSafeMsgItem, int paramInt)
-    {
-      this.a = paramInt;
-      this.b = paramSafeMsgItem;
-    }
-    
-    public final void onClick(View paramView)
-    {
-      paramView = new Intent(yr.a(yr.this), OpMsgDisplayActivity.class);
-      paramView.putExtra("position", this.a);
-      paramView.putExtra("type", 1);
-      paramView.putExtra("ipcmsg", this.b.b());
-      StringBuilder localStringBuilder = new StringBuilder("ipsmsg = ");
-      localStringBuilder.append(this.b.b());
-      xj.c(localStringBuilder.toString());
-      yr.a(yr.this).startActivity(paramView);
-      TMSDKContext.SaveStringData(1150064, "");
-    }
-  }
-  
-  final class b
-    implements View.OnTouchListener
-  {
-    private boolean b;
-    private boolean c;
-    
-    public b(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      this.b = paramBoolean1;
-      this.c = paramBoolean2;
-    }
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      TextView localTextView1 = (TextView)paramView.findViewById(2131166078);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131166077);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131165759);
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165700);
-      int i = yr.a(yr.this).getResources().getColor(2130968665);
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        break;
-      case 2: 
-        if (paramView.isPressed())
-        {
-          localTextView1.setTextColor(i);
-          localTextView2.setTextColor(i);
-          localTextView3.setTextColor(i);
-          localRelativeLayout.setBackgroundResource(2131099950);
-        }
-        break;
-      case 1: 
-      case 3: 
-        if ((this.b) && (!this.c))
-        {
-          localRelativeLayout.setBackgroundResource(2131099948);
-          localTextView1.setTextAppearance(yr.a(yr.this), 2131558768);
-          localTextView2.setTextAppearance(yr.a(yr.this), 2131558767);
-        }
-        else
-        {
-          localRelativeLayout.setBackgroundResource(2131099949);
-          localTextView1.setTextAppearance(yr.a(yr.this), 2131558772);
-          localTextView2.setTextAppearance(yr.a(yr.this), 2131558771);
-        }
-        localTextView3.setTextAppearance(yr.a(yr.this), 2131558783);
-        break;
-      }
-      localTextView1.setTextColor(i);
-      localTextView2.setTextColor(i);
-      localTextView3.setTextColor(i);
-      localRelativeLayout.setBackgroundResource(2131099950);
-      return false;
-    }
+    super.onMeasure(paramInt1, paramInt2);
+    this.f = getMeasuredHeight();
+    this.e = getMeasuredWidth();
+    float f1 = this.e;
+    this.E = (f1 / 2.0F);
+    float f2 = this.f;
+    this.F = (f2 / 2.0F);
+    this.j = 0.0F;
+    this.g = f1;
+    this.i = f1;
+    this.h = (f2 / 2.0F);
+    this.k = (f2 / 2.0F);
+    this.m = 0.0F;
+    this.l = 180.0F;
+    this.n = 0.0F;
+    this.o = 0.0F;
+    RectF localRectF = this.L;
+    f1 = this.E;
+    f2 = this.C;
+    localRectF.left = (f1 - f2);
+    float f3 = this.F;
+    localRectF.top = (f3 - f2);
+    localRectF.right = (f1 + f2);
+    localRectF.bottom = (f3 + f2);
+    w = (f1 - f2) / 6.0F;
   }
 }
 

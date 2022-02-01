@@ -34,9 +34,9 @@ public class ProDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296399);
+      setContentView(2131296412);
       getWindow().setBackgroundDrawableResource(2131099877);
-      ((ImageView)findViewById(2131165824)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      ((ImageView)findViewById(2131165857)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
       setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)

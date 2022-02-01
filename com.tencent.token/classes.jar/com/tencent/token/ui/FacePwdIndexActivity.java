@@ -9,21 +9,21 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.aap;
-import com.tencent.token.ais;
+import com.tencent.token.aaz;
+import com.tencent.token.ajr;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.sk;
-import com.tencent.token.th;
+import com.tencent.token.sw;
+import com.tencent.token.tt;
 import com.tencent.token.ui.base.FacePwdVerifySelDialog;
 import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.yi;
+import com.tencent.token.yu;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FacePwdIndexActivity
   extends BaseActivity
 {
-  private yi mAdapter;
+  private yu mAdapter;
   private View mDivider;
   private TextView mFacePwdVerifyTipTextView;
   private boolean mIsChecked = false;
@@ -33,26 +33,26 @@ public class FacePwdIndexActivity
   
   private void initView()
   {
-    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165486));
-    this.mDivider = findViewById(2131165447);
-    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165376));
-    Object localObject2 = th.a();
+    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165501));
+    this.mDivider = findViewById(2131165460);
+    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165384));
+    Object localObject2 = tt.a();
     Object localObject1 = this.mRegisterFacePwdUserList;
-    localObject2 = ((th)localObject2).k;
-    if ((((ais)localObject2).a != null) && (localObject1 != null))
+    localObject2 = ((tt)localObject2).k;
+    if ((((ajr)localObject2).a != null) && (localObject1 != null))
     {
       int i = 0;
-      while (i < ((ais)localObject2).a.size())
+      while (i < ((ajr)localObject2).a.size())
       {
-        if (((QQUser)((ais)localObject2).a.get(i)).mIsRegisterFacePwd) {
-          ((List)localObject1).add(((ais)localObject2).a.get(i));
+        if (((QQUser)((ajr)localObject2).a.get(i)).mIsRegisterFacePwd) {
+          ((List)localObject1).add(((ajr)localObject2).a.get(i));
         }
         i += 1;
       }
     }
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
-      localObject1 = aap.f();
+      localObject1 = aaz.f();
       if ((localObject1 != null) && (((QQUser)localObject1).mIsRegisterFacePwd))
       {
         this.mSwitchVerifySet.a(false, false);
@@ -80,7 +80,7 @@ public class FacePwdIndexActivity
         {
           FacePwdIndexActivity.this.mSwitchVerifySet.a(true, false);
           FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, false);
-          aap.b(0L);
+          aaz.b(0L);
           FacePwdIndexActivity.this.mListView.setVisibility(4);
           FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(4);
           FacePwdIndexActivity.this.mDivider.setVisibility(4);
@@ -95,7 +95,7 @@ public class FacePwdIndexActivity
           {
             FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, true);
             FacePwdIndexActivity.this.mSwitchVerifySet.a(false, false);
-            aap.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
+            aaz.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
             FacePwdIndexActivity.this.refreshList();
             return;
           }
@@ -112,8 +112,8 @@ public class FacePwdIndexActivity
         FacePwdIndexActivity.this.finish();
       }
     });
-    this.mListView = ((ListView)findViewById(2131165485));
-    this.mAdapter = new yi(this, this.mRegisterFacePwdUserList);
+    this.mListView = ((ListView)findViewById(2131165500));
+    this.mAdapter = new yu(this, this.mRegisterFacePwdUserList);
     this.mListView.setAdapter(this.mAdapter);
     if (this.mIsChecked)
     {
@@ -129,8 +129,8 @@ public class FacePwdIndexActivity
   
   private void showGesturePwdDialog()
   {
-    if (!sk.a().c()) {
-      showUserDialog(2131493137, getString(2131493134), 2131493136, 2131493135, new DialogInterface.OnClickListener()
+    if (!sw.a().c()) {
+      showUserDialog(2131493139, getString(2131493136), 2131493138, 2131493137, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -144,7 +144,7 @@ public class FacePwdIndexActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296330);
+    setContentView(2131296335);
     initView();
   }
   

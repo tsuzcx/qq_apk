@@ -11,8 +11,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.ry.a;
-import com.tencent.token.xj;
+import com.tencent.token.sl.a;
+import com.tencent.token.xv;
 
 public class RecommendView
   extends View
@@ -23,7 +23,7 @@ public class RecommendView
   {
     public final void run()
     {
-      xj.c("stopBlink");
+      xv.c("stopBlink");
       RecommendView localRecommendView = RecommendView.this;
       localRecommendView.a = false;
       localRecommendView.postInvalidate();
@@ -51,7 +51,7 @@ public class RecommendView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.h.setStyle(Paint.Style.FILL);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, ry.a.RecommendView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, sl.a.RecommendView, 0, 0);
     try
     {
       this.e = paramContext.getDimension(2, this.d);

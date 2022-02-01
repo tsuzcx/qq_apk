@@ -1,173 +1,65 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.ui.UtilsGameLockActivity;
-import com.tencent.token.ui.base.SwitchButton;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.token.global.taiji.CSReportProfile;
+import com.tencent.token.global.taiji.KeyValueProfile;
+import com.tencent.token.global.taiji.SCReportProfile;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class yk
-  extends BaseAdapter
+  implements ava
 {
-  public static boolean h = false;
-  public UtilsGameLockActivity a;
-  public boolean b;
-  public ss c;
-  public zi d;
-  public Handler e;
-  public boolean f = true;
-  public View g;
-  a i = new a();
-  private LayoutInflater j;
-  private ListView k;
-  
-  public yk(UtilsGameLockActivity paramUtilsGameLockActivity, ListView paramListView, Handler paramHandler)
+  public final void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final ava.a parama)
   {
-    this.a = paramUtilsGameLockActivity;
-    this.j = LayoutInflater.from(paramUtilsGameLockActivity);
-    this.k = paramListView;
-    this.e = paramHandler;
-  }
-  
-  public static void a()
-  {
-    int n = ti.a().c.a();
-    int m = 0;
-    while (m < n)
+    CSReportProfile localCSReportProfile = new CSReportProfile();
+    localCSReportProfile.profileID = 4;
+    localCSReportProfile.actionID = 0;
+    localCSReportProfile.param = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      ss localss = ti.a().a(m);
-      if (localss != null) {
-        localss.e = false;
-      }
-      m += 1;
-    }
-  }
-  
-  public final void a(zi paramzi, boolean paramBoolean)
-  {
-    if ((paramzi != null) && (paramzi.h != null))
-    {
-      Object localObject = this.a;
-      if (localObject != null)
+      localObject1 = paramHashMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        if (((UtilsGameLockActivity)localObject).isFinishing()) {
-          return;
-        }
-        localObject = paramzi.h;
-        TextView localTextView = paramzi.b;
-        SwitchButton localSwitchButton = paramzi.d;
-        ProgressBar localProgressBar = paramzi.c;
-        paramzi = paramzi.e;
-        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramzi != null))
-        {
-          if (localObject == null) {
-            return;
-          }
-          if ((paramBoolean) && (!((ss)localObject).b.equals(localTextView.getText()))) {
-            return;
-          }
-          if (((ss)localObject).f) {
-            paramzi.setVisibility(0);
-          } else {
-            paramzi.setVisibility(4);
-          }
-          if ((!((ss)localObject).e) && (ti.a().c()))
-          {
-            localProgressBar.setVisibility(4);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(true);
-            localSwitchButton.a(true ^ ((ss)localObject).c, false);
-          }
-          else
-          {
-            localProgressBar.setVisibility(0);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(false);
-          }
-          if (!ti.a().c()) {
-            this.a.queryGameLockStatus();
-          }
-          localTextView.setText(((ss)localObject).b);
-          return;
-        }
-        return;
+        localObject2 = (Integer)((Iterator)localObject1).next();
+        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
+        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
+        localKeyValueProfile.valueType = 3;
+        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
+        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
       }
     }
-  }
-  
-  public final int getCount()
-  {
-    if (this.f) {
-      return ti.a().c.b();
-    }
-    return ti.a().c.a();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.j.inflate(2131296472, paramViewGroup, false);
-    }
-    paramView = new zi(localView, ti.a().a(paramInt));
-    paramView.d.setTag(paramView);
-    paramView.d.setOnCheckedChangeListener(this.i);
-    a(paramView, false);
-    return localView;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    a() {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
     {
-      paramCompoundButton = (zi)paramCompoundButton.getTag();
-      if (paramCompoundButton == null) {
-        return;
-      }
-      ss localss = paramCompoundButton.h;
-      if ((localss != null) && (paramCompoundButton.a != null) && (ti.a().c()))
+      paramHashMap = paramHashMap1.keySet().iterator();
+      while (paramHashMap.hasNext())
       {
-        if (paramBoolean != localss.c) {
-          return;
-        }
-        if (!localss.e)
-        {
-          if (yk.a(yk.this)) {
-            return;
-          }
-          yk.a(yk.this, localss);
-          yk.a(yk.this, paramCompoundButton);
-          localss.e = true;
-          yk.b(yk.this);
-          yk.this.a(paramCompoundButton, false);
-          tm.a().a(3, yk.c(yk.this).getHandler());
-          return;
-        }
-        return;
+        localObject1 = (Integer)paramHashMap.next();
+        localObject2 = new KeyValueProfile();
+        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
+        ((KeyValueProfile)localObject2).valueType = 1;
+        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
+        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
       }
     }
+    ym.a.a().a(1053, localCSReportProfile, new SCReportProfile(), 18, new avg()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt2 == 0) && (paramAnonymousInt3 == 0)) {
+          parama.a();
+        }
+      }
+    });
+  }
+  
+  static final class a
+  {
+    private static final yk a = new yk();
   }
 }
 

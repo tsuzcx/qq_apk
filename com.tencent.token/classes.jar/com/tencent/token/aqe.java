@@ -4,15 +4,38 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import java.util.Collections;
 
-public abstract interface aqe
-  extends aqc
+public final class aqe
+  extends apz
 {
-  public abstract void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt);
+  private final arb g;
   
-  public abstract void a(RectF paramRectF, Matrix paramMatrix);
+  aqe(avt paramavt, aqc paramaqc)
+  {
+    super(paramavt, paramaqc);
+    this.g = new arb(paramavt, this, new apx(paramaqc.c, paramaqc.a));
+    paramavt = this.g;
+    paramaqc = Collections.emptyList();
+    Collections.emptyList();
+    paramavt.a(paramaqc);
+  }
   
-  public abstract void a(String paramString1, String paramString2, ColorFilter paramColorFilter);
+  public final void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    this.g.a(paramRectF, this.a);
+  }
+  
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.g.a(paramString1, paramString2, paramColorFilter);
+  }
+  
+  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    this.g.a(paramCanvas, paramMatrix, paramInt);
+  }
 }
 
 

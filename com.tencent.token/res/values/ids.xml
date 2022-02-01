@@ -29,6 +29,10 @@
     <item type="id" name="account_bind_qqface_right" />
     <item type="id" name="account_bind_qqnick" />
     <item type="id" name="account_head" />
+    <item type="id" name="account_info1" />
+    <item type="id" name="account_info2" />
+    <item type="id" name="account_info3" />
+    <item type="id" name="account_list" />
     <item type="id" name="account_loading" />
     <item type="id" name="account_loading_result" />
     <item type="id" name="account_loading_zzb" />
@@ -41,6 +45,7 @@
     <item type="id" name="account_lock_tip" />
     <item type="id" name="account_menu_page" />
     <item type="id" name="account_pull_refresh_head" />
+    <item type="id" name="account_sub_info" />
     <item type="id" name="account_tip_close" />
     <item type="id" name="accountcenter" />
     <item type="id" name="accountleft" />
@@ -85,6 +90,7 @@
     <item type="id" name="add_uin" />
     <item type="id" name="alertTitle" />
     <item type="id" name="alpha" />
+    <item type="id" name="android_id_value" />
     <item type="id" name="anim_layout" />
     <item type="id" name="answer_1" />
     <item type="id" name="answer_2" />
@@ -94,6 +100,7 @@
     <item type="id" name="arc_iv" />
     <item type="id" name="arrow" />
     <item type="id" name="arrow_view" />
+    <item type="id" name="avatar" />
     <item type="id" name="backlayout" />
     <item type="id" name="backtext" />
     <item type="id" name="banner" />
@@ -127,6 +134,7 @@
     <item type="id" name="bottom_margin_view" />
     <item type="id" name="bottomiv" />
     <item type="id" name="bright_layout" />
+    <item type="id" name="btn" />
     <item type="id" name="btn_complete" />
     <item type="id" name="btn_deal" />
     <item type="id" name="btn_dialog_sms_cancel" />
@@ -177,10 +185,14 @@
     <item type="id" name="change_pwd_title" />
     <item type="id" name="change_verify_type" />
     <item type="id" name="check_face_pwd" />
+    <item type="id" name="check_layout" />
     <item type="id" name="check_start_pwd" />
     <item type="id" name="checkbox" />
+    <item type="id" name="child_privacy" />
     <item type="id" name="chronometer" />
     <item type="id" name="close" />
+    <item type="id" name="close_account_checkbox" />
+    <item type="id" name="close_account_text" />
     <item type="id" name="close_iv" />
     <item type="id" name="closeiv" />
     <item type="id" name="closetext" />
@@ -234,6 +246,7 @@
     <item type="id" name="desc_tip" />
     <item type="id" name="detail_msg" />
     <item type="id" name="detailbt" />
+    <item type="id" name="device_info" />
     <item type="id" name="dialog_sms_content" />
     <item type="id" name="dialog_sms_content_content" />
     <item type="id" name="dialog_sms_content_title" />
@@ -252,7 +265,9 @@
     <item type="id" name="divider_line" />
     <item type="id" name="dividertitle" />
     <item type="id" name="do_freeze" />
+    <item type="id" name="download_user_info" />
     <item type="id" name="edit_query" />
+    <item type="id" name="empty_page" />
     <item type="id" name="emptydevices" />
     <item type="id" name="enjoy_protect_days" />
     <item type="id" name="enjoy_protect_layout" />
@@ -359,6 +374,7 @@
     <item type="id" name="gesture_icon" />
     <item type="id" name="gesture_modify" />
     <item type="id" name="gobt" />
+    <item type="id" name="guid_id_value" />
     <item type="id" name="guide_btn" />
     <item type="id" name="guide_qqpimsecure_tips" />
     <item type="id" name="have_changed_mobile" />
@@ -373,6 +389,7 @@
     <item type="id" name="help_title_5" />
     <item type="id" name="home" />
     <item type="id" name="hour" />
+    <item type="id" name="ic_close" />
     <item type="id" name="icon" />
     <item type="id" name="icon_group" />
     <item type="id" name="id" />
@@ -591,15 +608,31 @@
     <item type="id" name="page_bg_upper_back" />
     <item type="id" name="page_title" />
     <item type="id" name="parentPanel" />
+    <item type="id" name="parentView" />
     <item type="id" name="pb_id" />
+    <item type="id" name="permission_detail" />
     <item type="id" name="permission_one_layout" />
+    <item type="id" name="permission_page" />
+    <item type="id" name="permission_page_subtext" />
+    <item type="id" name="permission_sdcard_toggle" />
     <item type="id" name="permission_two_layout" />
+    <item type="id" name="person_info_collect_claim" />
+    <item type="id" name="personal_info_collect_claim" />
+    <item type="id" name="personal_info_download" />
+    <item type="id" name="personal_information_manager" />
+    <item type="id" name="phone_type" />
     <item type="id" name="pic_visiable_set" />
     <item type="id" name="pointlayout" />
     <item type="id" name="prepare_progress" />
     <item type="id" name="prepare_tip" />
     <item type="id" name="preview_view" />
     <item type="id" name="previewimg" />
+    <item type="id" name="privacy_checkbox" />
+    <item type="id" name="privacy_detail" />
+    <item type="id" name="privacy_page" />
+    <item type="id" name="privacy_page_subtext" />
+    <item type="id" name="privacy_protect_guid" />
+    <item type="id" name="privacy_text" />
     <item type="id" name="private_ip_all" />
     <item type="id" name="private_ip_desc" />
     <item type="id" name="private_ip_not_all" />
@@ -614,6 +647,7 @@
     <item type="id" name="progress_horizontal" />
     <item type="id" name="progress_loading" />
     <item type="id" name="protect_line_grid_view" />
+    <item type="id" name="psifc_page_subtext" />
     <item type="id" name="psw_button" />
     <item type="id" name="psw_img" />
     <item type="id" name="psw_tip" />
@@ -735,6 +769,7 @@
     <item type="id" name="scrollIndicatorUp" />
     <item type="id" name="scrollView" />
     <item type="id" name="scrollview" />
+    <item type="id" name="sdcard_size" />
     <item type="id" name="search_badge" />
     <item type="id" name="search_bar" />
     <item type="id" name="search_button" />
@@ -786,6 +821,7 @@
     <item type="id" name="sms_content_layout" />
     <item type="id" name="sms_frame" />
     <item type="id" name="soft_detail_layout" />
+    <item type="id" name="software_agreement" />
     <item type="id" name="spacer" />
     <item type="id" name="split_action_bar" />
     <item type="id" name="sr_iv_logincity" />
@@ -809,6 +845,7 @@
     <item type="id" name="start_scan_btn" />
     <item type="id" name="start_upper_bug" />
     <item type="id" name="startup_img" />
+    <item type="id" name="status_wording" />
     <item type="id" name="step2_view" />
     <item type="id" name="step2_view_btn" />
     <item type="id" name="step2_view_mobile_text" />
@@ -817,6 +854,7 @@
     <item type="id" name="step3_view_btn" />
     <item type="id" name="step3_view_succ_desc" />
     <item type="id" name="step3_view_succ_title" />
+    <item type="id" name="storage_icon" />
     <item type="id" name="sub_title" />
     <item type="id" name="sub_txt" />
     <item type="id" name="sublayout" />
@@ -826,6 +864,8 @@
     <item type="id" name="succ_img" />
     <item type="id" name="succ_mobile" />
     <item type="id" name="succ_title" />
+    <item type="id" name="system_name" />
+    <item type="id" name="system_ver" />
     <item type="id" name="tab_account_tip" />
     <item type="id" name="tab_util_tip" />
     <item type="id" name="table_1" />
@@ -1103,7 +1143,6 @@
     <item type="id" name="wording1" />
     <item type="id" name="wording2" />
     <item type="id" name="wording3" />
-    <item type="id" name="wtlogin_find_psw" />
     <item type="id" name="zzb_delete_safe_mode" />
     <item type="id" name="zzb_detail_msg" />
     <item type="id" name="zzb_recommend" />

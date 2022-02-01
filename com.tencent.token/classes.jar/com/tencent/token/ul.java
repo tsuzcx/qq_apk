@@ -1,25 +1,26 @@
 package com.tencent.token;
 
+import android.os.Handler;
+import android.os.Message;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ul
-  extends tr
+  extends ud
 {
-  private String d;
-  private long e;
+  private long d;
+  private int e;
   
   public final String a()
   {
-    sh.a();
+    st.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.e = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramabc.c.get("param.feedback.comment"));
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -30,7 +31,30 @@ public final class ul
       a(i, paramJSONObject.getString("info"));
       return;
     }
+    i = paramJSONObject.getInt("seq_id");
+    if (i != this.e)
+    {
+      this.a.a(10030, null, null);
+      paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+      paramJSONObject.append(i);
+      paramJSONObject.append(",right = ");
+      su.a();
+      paramJSONObject.append(su.b());
+      xv.c(paramJSONObject.toString());
+      return;
+    }
     this.a.a = 0;
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

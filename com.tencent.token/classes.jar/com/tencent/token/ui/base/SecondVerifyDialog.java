@@ -15,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.tm;
+import com.tencent.token.ty;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.xh;
+import com.tencent.token.xt;
 
 public class SecondVerifyDialog
   extends Dialog
@@ -47,24 +47,24 @@ public class SecondVerifyDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296432);
+      setContentView(2131296445);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
-      ((ViewGroup.MarginLayoutParams)findViewById(2131165969).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-      paramBundle = tm.a();
-      this.b = ((TextView)findViewById(2131165973));
+      ((ViewGroup.MarginLayoutParams)findViewById(2131166004).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      paramBundle = ty.a();
+      this.b = ((TextView)findViewById(2131166008));
       if ((paramBundle.c != null) && (paramBundle.c.length() > 0)) {
         this.b.setText(paramBundle.c);
       } else {
-        this.b.setText(this.d.getResources().getString(2131492986));
+        this.b.setText(this.d.getResources().getString(2131492987));
       }
-      this.c = ((TextView)findViewById(2131165971));
+      this.c = ((TextView)findViewById(2131166006));
       if ((paramBundle.b != null) && (paramBundle.b.length() > 0)) {
         this.c.setText(paramBundle.b);
       }
-      this.e = ((EditText)findViewById(2131165970));
+      this.e = ((EditText)findViewById(2131166005));
       this.e.clearFocus();
-      this.f = ((Button)findViewById(2131165968));
+      this.f = ((Button)findViewById(2131166003));
       this.f.setText(paramBundle.e);
       this.f.setOnClickListener(new View.OnClickListener()
       {
@@ -83,12 +83,12 @@ public class SecondVerifyDialog
             SecondVerifyDialog.this.a = null;
           }
           paramAnonymousView = SecondVerifyDialog.this;
-          paramAnonymousView.a = new ProDialog(SecondVerifyDialog.c(paramAnonymousView), SecondVerifyDialog.c(SecondVerifyDialog.this).getResources().getString(2131493536));
+          paramAnonymousView.a = new ProDialog(SecondVerifyDialog.c(paramAnonymousView), SecondVerifyDialog.c(SecondVerifyDialog.this).getResources().getString(2131493544));
           SecondVerifyDialog.this.a.show();
           new UserTask() {}.a(new String[] { "" });
         }
       });
-      this.g = ((Button)findViewById(2131165967));
+      this.g = ((Button)findViewById(2131166002));
       this.g.setText(paramBundle.d);
       this.g.setOnClickListener(new View.OnClickListener()
       {

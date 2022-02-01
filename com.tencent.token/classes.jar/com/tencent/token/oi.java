@@ -1,78 +1,65 @@
 package com.tencent.token;
 
-import java.security.MessageDigest;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public final class oi
 {
-  public static final String a(byte[] paramArrayOfByte)
+  private static oi d;
+  public ok a;
+  public ol b = new ol();
+  public oj c;
+  
+  private oi()
   {
-    char[] arrayOfChar = new char[16];
-    char[] tmp8_6 = arrayOfChar;
-    tmp8_6[0] = 48;
-    char[] tmp13_8 = tmp8_6;
-    tmp13_8[1] = 49;
-    char[] tmp18_13 = tmp13_8;
-    tmp18_13[2] = 50;
-    char[] tmp23_18 = tmp18_13;
-    tmp23_18[3] = 51;
-    char[] tmp28_23 = tmp23_18;
-    tmp28_23[4] = 52;
-    char[] tmp33_28 = tmp28_23;
-    tmp33_28[5] = 53;
-    char[] tmp38_33 = tmp33_28;
-    tmp38_33[6] = 54;
-    char[] tmp44_38 = tmp38_33;
-    tmp44_38[7] = 55;
-    char[] tmp50_44 = tmp44_38;
-    tmp50_44[8] = 56;
-    char[] tmp56_50 = tmp50_44;
-    tmp56_50[9] = 57;
-    char[] tmp62_56 = tmp56_50;
-    tmp62_56[10] = 97;
-    char[] tmp68_62 = tmp62_56;
-    tmp68_62[11] = 98;
-    char[] tmp74_68 = tmp68_62;
-    tmp74_68[12] = 99;
-    char[] tmp80_74 = tmp74_68;
-    tmp80_74[13] = 100;
-    char[] tmp86_80 = tmp80_74;
-    tmp86_80[14] = 101;
-    char[] tmp92_86 = tmp86_80;
-    tmp92_86[15] = 102;
-    tmp92_86;
-    for (;;)
+    this.b.a();
+    this.a = new ok();
+    this.a.a();
+    this.c = new oj();
+    oj localoj = this.c;
+    SharedPreferences localSharedPreferences = mj.a().getSharedPreferences("Access_Preferences", 0);
+    localoj.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
+    localoj.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
+  }
+  
+  public static oi a()
+  {
+    try
     {
-      Object localObject;
-      int k;
-      int i;
-      int j;
-      try
-      {
-        localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).update(paramArrayOfByte);
-        paramArrayOfByte = ((MessageDigest)localObject).digest();
-        k = paramArrayOfByte.length;
-        localObject = new char[k * 2];
-        i = 0;
-        j = 0;
+      if (d == null) {
+        d = new oi();
       }
-      catch (Exception paramArrayOfByte)
-      {
-        continue;
-      }
-      paramArrayOfByte = new String((char[])localObject);
-      return paramArrayOfByte;
-      return null;
-      while (i < k)
-      {
-        int m = paramArrayOfByte[i];
-        int n = j + 1;
-        localObject[j] = arrayOfChar[(m >>> 4 & 0xF)];
-        j = n + 1;
-        localObject[n] = arrayOfChar[(m & 0xF)];
-        i += 1;
-      }
+      oi localoi = d;
+      return localoi;
     }
+    finally {}
+  }
+  
+  public final void a(ol paramol)
+  {
+    if (paramol == null) {
+      return;
+    }
+    mc.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:".concat(String.valueOf(paramol)));
+    StringBuilder localStringBuilder;
+    if ((paramol.a < 2000) || (paramol.a > 60000))
+    {
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
+      localStringBuilder.append(paramol.a);
+      localStringBuilder.append(" is checked to 20s");
+      mc.c("AccessSchedulerConfiguration", localStringBuilder.toString());
+      paramol.a = 20000;
+    }
+    if ((paramol.b < 2000) || (paramol.b > 60000))
+    {
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
+      localStringBuilder.append(paramol.b);
+      localStringBuilder.append(" is checked to 20s");
+      mc.c("AccessSchedulerConfiguration", localStringBuilder.toString());
+      paramol.b = 20000;
+    }
+    this.b = paramol;
+    this.b.b();
   }
 }
 

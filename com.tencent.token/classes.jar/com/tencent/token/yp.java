@@ -1,105 +1,16 @@
 package com.tencent.token;
 
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
-import com.tencent.token.ui.UtilsMbInfoActivity;
-import com.tencent.token.ui.UtilsMbInfoItemActivity;
-import com.tencent.token.ui.UtilsModSetMobileStep1Activity;
-import java.util.ArrayList;
-
 public final class yp
-  extends BaseAdapter
 {
-  private UtilsMbInfoActivity a;
-  private LayoutInflater b;
+  public float a;
+  public float b;
+  public float c;
   
-  public yp(UtilsMbInfoActivity paramUtilsMbInfoActivity)
+  public yp(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = paramUtilsMbInfoActivity;
-    this.b = LayoutInflater.from(paramUtilsMbInfoActivity);
-  }
-  
-  public final int getCount()
-  {
-    MbInfoResult localMbInfoResult = aax.a().c();
-    if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
-      return localMbInfoResult.mMbInfoItems.size();
-    }
-    return 0;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(final int paramInt, final View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.b.inflate(2131296488, paramViewGroup, false);
-    }
-    paramView = aax.a().c();
-    if ((paramView == null) && (!this.a.mIsIniting))
-    {
-      this.a.getMbInfo();
-      return localView;
-    }
-    if ((paramView != null) && (paramView.mMbInfoItems != null))
-    {
-      if (paramView.mMbInfoItems.size() <= paramInt) {
-        return localView;
-      }
-      paramView = (MbInfoResult.MbInfoItem)paramView.mMbInfoItems.get(paramInt);
-      paramViewGroup = (TextView)localView.findViewById(2131166239);
-      TextView localTextView1 = (TextView)localView.findViewById(2131166238);
-      TextView localTextView2 = (TextView)localView.findViewById(2131166240);
-      if (paramView.mName != null) {
-        paramViewGroup.setText(paramView.mName);
-      }
-      if (paramView.mDesc != null) {
-        localTextView1.setText(paramView.mDesc);
-      }
-      if (paramView.mOpName != null) {
-        localTextView2.setText(paramView.mOpName);
-      }
-      localView.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          if ((paramView.mId == 51) && (paramView.mDetail.mBtnType == 1))
-          {
-            paramAnonymousView = new Intent(yp.a(yp.this), UtilsModSetMobileStep1Activity.class);
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(yp.a(yp.this).getResources().getString(2131493573));
-            localStringBuilder.append(paramView.mName);
-            paramAnonymousView.putExtra("title", localStringBuilder.toString());
-            paramAnonymousView.putExtra("op_type", 1);
-            paramAnonymousView.putExtra("position", paramInt);
-            yp.a(yp.this).startActivity(paramAnonymousView);
-            return;
-          }
-          paramAnonymousView = new Intent(yp.a(yp.this), UtilsMbInfoItemActivity.class);
-          paramAnonymousView.putExtra("position", paramInt);
-          yp.a(yp.this).startActivity(paramAnonymousView);
-        }
-      });
-    }
-    return localView;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

@@ -2,9 +2,13 @@ package com.tencent.token;
 
 public abstract interface nn
 {
-  public abstract void a(nf paramnf);
+  public abstract nm a(Runnable paramRunnable);
   
-  public abstract void b(nf paramnf);
+  public abstract nm b(Runnable paramRunnable);
+  
+  public abstract nm c(Runnable paramRunnable);
+  
+  public abstract nm d(Runnable paramRunnable);
 }
 
 

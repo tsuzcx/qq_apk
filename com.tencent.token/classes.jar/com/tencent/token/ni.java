@@ -1,12 +1,11 @@
 package com.tencent.token;
 
-public final class ni
+final class ni
+  implements Thread.UncaughtExceptionHandler
 {
-  boolean a;
-  
-  public ni(boolean paramBoolean)
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    this.a = paramBoolean;
+    paramThrowable.printStackTrace();
   }
 }
 

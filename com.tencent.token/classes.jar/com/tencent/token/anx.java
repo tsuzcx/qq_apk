@@ -1,28 +1,48 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-import java.util.ArrayList;
-import java.util.List;
-
-public final class anx
+public abstract class anx
+  implements aoi
 {
-  final List<ans<?, Path>> a;
-  final List<anw<Integer>> b;
-  final List<aox> c;
+  private final aoi a;
   
-  public anx(List<aox> paramList)
+  public anx(aoi paramaoi)
   {
-    this.c = paramList;
-    this.a = new ArrayList(paramList.size());
-    this.b = new ArrayList(paramList.size());
-    int i = 0;
-    while (i < paramList.size())
+    if (paramaoi != null)
     {
-      this.a.add(((aox)paramList.get(i)).b.c());
-      aol localaol = ((aox)paramList.get(i)).c;
-      this.b.add(localaol.a());
-      i += 1;
+      this.a = paramaoi;
+      return;
     }
+    throw new IllegalArgumentException("delegate == null");
+  }
+  
+  public final aok a()
+  {
+    return this.a.a();
+  }
+  
+  public void a_(ant paramant, long paramLong)
+  {
+    this.a.a_(paramant, paramLong);
+  }
+  
+  public void close()
+  {
+    this.a.close();
+  }
+  
+  public void flush()
+  {
+    this.a.flush();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

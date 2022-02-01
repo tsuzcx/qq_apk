@@ -3,23 +3,32 @@ package com.tencent.token;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public final class aqj
   extends JceStruct
 {
-  static byte[] g;
-  public int a = 0;
-  public byte[] b = null;
-  public int c = 0;
+  static ArrayList<String> l = new ArrayList();
+  static ArrayList<apu> m;
+  public String a = "";
+  public int b = 3;
+  public ArrayList<String> c = null;
   public int d = 0;
-  public int e = 0;
-  public int f = 0;
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public ArrayList<apu> j = null;
+  public int k = 0;
   
   static
   {
-    byte[] arrayOfByte = (byte[])new byte[1];
-    g = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
+    l.add("");
+    m = new ArrayList();
+    apu localapu = new apu();
+    m.add(localapu);
   }
   
   public final JceStruct newInit()
@@ -29,30 +38,64 @@ public final class aqj
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = ((byte[])paramJceInputStream.read(g, 1, true));
-    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = ((ArrayList)paramJceInputStream.read(l, 2, false));
     this.d = paramJceInputStream.read(this.d, 3, false);
-    this.e = paramJceInputStream.read(this.e, 4, false);
-    this.f = paramJceInputStream.read(this.f, 5, false);
+    this.e = paramJceInputStream.readString(4, false);
+    this.f = paramJceInputStream.readString(5, false);
+    this.g = paramJceInputStream.readString(6, false);
+    this.h = paramJceInputStream.readString(7, false);
+    this.i = paramJceInputStream.readString(8, false);
+    this.j = ((ArrayList)paramJceInputStream.read(m, 9, false));
+    this.k = paramJceInputStream.read(this.k, 10, false);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    int i = this.d;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 3);
+    Object localObject = this.a;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    i = this.e;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 4);
+    int n = this.b;
+    if (3 != n) {
+      paramJceOutputStream.write(n, 1);
     }
-    i = this.f;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 5);
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
+    }
+    n = this.d;
+    if (n != 0) {
+      paramJceOutputStream.write(n, 3);
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
+    }
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
+    }
+    localObject = this.i;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
+    }
+    localObject = this.j;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
+    }
+    n = this.k;
+    if (n != 0) {
+      paramJceOutputStream.write(n, 10);
     }
   }
 }

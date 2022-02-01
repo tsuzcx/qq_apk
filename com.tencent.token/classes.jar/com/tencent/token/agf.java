@@ -1,41 +1,164 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.text.TextUtils;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.turingfd.sdk.qps.Tangerine;
 
-public final class agf
+public abstract interface agf
+  extends IInterface
 {
-  public static int a(Context paramContext)
+  public abstract int a();
+  
+  public abstract Tangerine b();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public static abstract class a
+    extends Binder
+    implements agf
   {
-    try
+    public static final String a = afz.a(afz.aN);
+    
+    public static final class a
+      implements agf
     {
-      paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-      if (paramContext == null) {
-        return -1;
+      public IBinder a;
+      
+      public a(IBinder paramIBinder)
+      {
+        this.a = paramIBinder;
       }
-      if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
-        return -1;
+      
+      public final int a()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(agf.a.a);
+          localParcel1.writeInt(2000);
+          if (!this.a.transact(1, localParcel1, localParcel2, 0)) {
+            String str = agf.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
       }
-      int i = paramContext.getIntExtra("level", 0);
-      int j = paramContext.getIntExtra("scale", 100);
-      if (j == 0) {
-        return -1;
+      
+      public final IBinder asBinder()
+      {
+        return this.a;
       }
-      j = i * 100 / j;
-      i = j;
-      if (j < 0) {
-        i = 0;
+      
+      public final Tangerine b()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(agf.a.a);
+          localParcel1.writeInt(2000);
+          Object localObject1;
+          if (!this.a.transact(2, localParcel1, localParcel2, 0)) {
+            localObject1 = agf.a.a;
+          }
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0) {
+            localObject1 = new Tangerine(localParcel2);
+          } else {
+            localObject1 = null;
+          }
+          return localObject1;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
       }
-      j = i;
-      if (i > 100) {
-        j = 100;
+      
+      public final boolean c()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(agf.a.a);
+          localParcel1.writeInt(2000);
+          Object localObject1 = this.a;
+          boolean bool = false;
+          if (!((IBinder)localObject1).transact(3, localParcel1, localParcel2, 0)) {
+            localObject1 = agf.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
       }
-      return j;
+      
+      public final int d()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(agf.a.a);
+          localParcel1.writeInt(2000);
+          if (!this.a.transact(7, localParcel1, localParcel2, 0)) {
+            String str = agf.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final int e()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(agf.a.a);
+          if (!this.a.transact(12, localParcel1, localParcel2, 0)) {
+            String str = agf.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
     }
-    finally {}
-    return -1;
   }
 }
 

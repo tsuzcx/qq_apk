@@ -1,308 +1,182 @@
 package com.tencent.token;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.core.bean.LoginProtectResult;
-import com.tencent.token.core.bean.LoginProtectResult.a;
-import com.tencent.token.ui.PCMobileQQVerifyedDevicesActivity;
-import com.tencent.token.ui.UtilsLoginProtectActivity;
-import com.tencent.token.ui.base.SwitchButton;
-import com.tmsdk.TMSDKContext;
+import com.tencent.token.core.bean.AbnormalLoginMsgResult;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.ui.AbnormalLoginActivity;
+import com.tencent.token.ui.IndexActivity;
 import java.util.List;
 
 public final class yo
   extends BaseAdapter
 {
-  private UtilsLoginProtectActivity a;
-  private LayoutInflater b;
-  private b c;
-  private b d;
-  private View.OnClickListener e = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      TMSDKContext.saveActionData(1150079);
-      paramAnonymousView = new Intent(yo.a(yo.this), PCMobileQQVerifyedDevicesActivity.class);
-      yo.a(yo.this).startActivity(paramAnonymousView);
-    }
-  };
-  private a f = new a();
+  private AbnormalLoginActivity a = null;
+  private AbnormalLoginMsgResult b;
+  private LayoutInflater c = null;
   
-  public yo(UtilsLoginProtectActivity paramUtilsLoginProtectActivity)
+  public yo(AbnormalLoginActivity paramAbnormalLoginActivity)
   {
-    this.a = paramUtilsLoginProtectActivity;
-    this.b = LayoutInflater.from(paramUtilsLoginProtectActivity);
+    this.b = ((AbnormalLoginMsgResult)paramAbnormalLoginActivity.getIntent().getExtras().get("msgs"));
+    this.a = paramAbnormalLoginActivity;
+    this.c = LayoutInflater.from(paramAbnormalLoginActivity);
   }
   
-  private void a(b paramb)
+  public final boolean areAllItemsEnabled()
   {
-    Object localObject = paramb.f;
-    if (localObject != null)
-    {
-      if (paramb.a == null) {
-        return;
-      }
-      paramb.e.setVisibility(0);
-      if (((LoginProtectResult.a)localObject).d)
-      {
-        paramb.d.setVisibility(0);
-        paramb.e.setEnabled(false);
-      }
-      else
-      {
-        paramb.d.setVisibility(4);
-        paramb.e.setEnabled(true);
-      }
-      paramb.b.setText(((LoginProtectResult.a)localObject).b);
-      int i = ((LoginProtectResult.a)localObject).a;
-      if (i != 80)
-      {
-        if (i != 82) {
-          return;
-        }
-        this.d = paramb;
-        if (((LoginProtectResult.a)localObject).c) {
-          paramb.e.a(false, false);
-        } else {
-          paramb.e.a(true, false);
-        }
-        paramb.e.setOnCheckedChangeListener(this.f);
-        paramb.c.setText(2131493757);
-        return;
-      }
-      this.c = paramb;
-      if (((LoginProtectResult.a)localObject).e) {
-        paramb.e.a(false, false);
-      } else {
-        paramb.e.a(true, false);
-      }
-      paramb.c.setOnClickListener(this.e);
-      paramb.e.setOnCheckedChangeListener(this.f);
-      localObject = new SpannableString(this.a.getString(2131493740));
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(this.a.getResources().getColor(2130968627)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length(), 33);
-      paramb.c.setText((CharSequence)localObject);
-      return;
-    }
-  }
-  
-  public final void a(xh paramxh, int[] paramArrayOfInt)
-  {
-    if (paramxh.b())
-    {
-      com.tencent.token.ui.AccountPageActivity.mNeedRefreshEval = true;
-      int i = 0;
-      while (i < paramArrayOfInt.length)
-      {
-        int j = paramArrayOfInt[i];
-        if (j != 71)
-        {
-          if (j == 82)
-          {
-            this.d.f.d = false;
-            this.d.f.c ^= true;
-            a(this.d);
-          }
-        }
-        else
-        {
-          this.c.f.d = false;
-          this.c.f.e ^= true;
-          a(this.c);
-        }
-        i += 1;
-      }
-      return;
-    }
-    xh.a(this.a.getResources(), paramxh);
-    this.a.showTipDialog(2131493534, paramxh.c);
-    this.d.f.d = false;
-    this.c.f.d = false;
-    a(this.c);
-    a(this.d);
+    return true;
   }
   
   public final int getCount()
   {
-    if ((this.a.mLoginProtectResult != null) && (this.a.mLoginProtectResult.mLists.size() != 0)) {
-      return this.a.mLoginProtectResult.mLists.size();
+    AbnormalLoginMsgResult localAbnormalLoginMsgResult = this.b;
+    if ((localAbnormalLoginMsgResult != null) && (localAbnormalLoginMsgResult.mCnt != 0)) {
+      return this.b.mCnt + 2;
     }
     return 0;
   }
   
   public final Object getItem(int paramInt)
   {
-    return null;
+    return Integer.valueOf(paramInt);
   }
   
   public final long getItemId(int paramInt)
   {
-    return 0L;
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = paramView;
     if (paramView == null) {
-      localView = this.b.inflate(2131296481, paramViewGroup, false);
+      paramView = this.c.inflate(2131296284, paramViewGroup, false);
     }
-    if ((localView != null) && (this.a.mLoginProtectResult.mLists != null) && (this.a.mLoginProtectResult.mLists.size() != 0))
+    if ((this.b.mCnt > 0) && (paramInt >= this.b.mCnt))
     {
-      if (paramInt >= this.a.mLoginProtectResult.mLists.size()) {
-        return localView;
+      paramView.setVisibility(4);
+      return paramView;
+    }
+    SafeMsgItem localSafeMsgItem1 = (SafeMsgItem)this.b.mMsgList.get(paramInt);
+    if (localSafeMsgItem1 != null)
+    {
+      int i;
+      if ((localSafeMsgItem1.mFlag & 0x4) == 4) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      paramView = new b(localView, (LoginProtectResult.a)this.a.mLoginProtectResult.mLists.get(paramInt));
-      paramView.e.setTag(paramView);
-      a(paramView);
-      return localView;
-    }
-    return localView;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    private yo.b b;
-    
-    a() {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      paramCompoundButton = (yo.b)paramCompoundButton.getTag();
-      if ((paramCompoundButton != null) && (paramCompoundButton.f != null))
+      RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165716);
+      RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165714);
+      RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165715);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131166118);
+      TextView localTextView4 = (TextView)paramView.findViewById(2131166117);
+      TextView localTextView5 = (TextView)paramView.findViewById(2131165776);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131165710);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131165711);
+      ImageView localImageView2 = (ImageView)paramView.findViewById(2131165712);
+      ImageView localImageView3 = (ImageView)paramView.findViewById(2131165713);
+      ImageView localImageView4 = (ImageView)paramView.findViewById(2131165720);
+      ImageView localImageView5 = (ImageView)paramView.findViewById(2131165721);
+      paramViewGroup = (ImageView)paramView.findViewById(2131165722);
+      ImageView localImageView1 = (ImageView)paramView.findViewById(2131165723);
+      if (paramInt == 0)
       {
-        if (paramCompoundButton.a == null) {
-          return;
-        }
-        this.b = paramCompoundButton;
-        if (paramCompoundButton.f.d) {
-          return;
-        }
-        int i = paramCompoundButton.f.a;
-        if (i != 80)
+        localRelativeLayout3.setVisibility(0);
+        ((ViewGroup.MarginLayoutParams)localRelativeLayout3.getLayoutParams()).topMargin = ((int)(10.0F * IndexActivity.S_DENSITY));
+      }
+      else
+      {
+        SafeMsgItem localSafeMsgItem2 = (SafeMsgItem)this.b.mMsgList.get(paramInt - 1);
+        if ((localSafeMsgItem2 != null) && (!aay.a(localSafeMsgItem2.mTime * 1000L, localSafeMsgItem1.mTime * 1000L)))
         {
-          if (i != 82) {
-            return;
-          }
-          if (paramBoolean != paramCompoundButton.f.c) {
-            return;
-          }
-          paramCompoundButton.f.d = true;
-          yo.a(yo.this, paramCompoundButton);
-          localObject = yo.a(yo.this).getItem(80);
-          if ((!paramCompoundButton.f.c) && (!((LoginProtectResult.a)localObject).e))
-          {
-            yo.a(yo.this).showUserDialog(2131492986, yo.a(yo.this).getResources().getString(2131493703), 2131493702, 2131493029, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-            {
-              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-              {
-                yo.c(yo.this).f.d = true;
-                yo.a(yo.this, yo.c(yo.this));
-                paramAnonymousInt = yo.a.a(yo.a.this).f.a;
-                boolean bool = yo.a.a(yo.a.this).f.c;
-                paramAnonymousDialogInterface = si.a();
-                String str = yo.a(yo.this).mA2;
-                Handler localHandler = yo.a(yo.this).mHandler;
-                paramAnonymousDialogInterface.a(0L, new int[] { paramAnonymousInt, 71 }, new int[] { bool ^ true, 1 }, str, localHandler);
-              }
-            }, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-              {
-                yo.a.a(yo.a.this).f.d = false;
-                yo.a(yo.this, yo.a.a(yo.a.this));
-              }
-            });
-            return;
-          }
-          i = paramCompoundButton.f.a;
-          paramBoolean = paramCompoundButton.f.c;
-          paramCompoundButton = si.a();
-          localObject = yo.a(yo.this).mA2;
-          localHandler = yo.a(yo.this).mHandler;
-          paramCompoundButton.a(0L, new int[] { i }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
-          return;
+          localRelativeLayout3.setVisibility(0);
+          ((ViewGroup.MarginLayoutParams)localRelativeLayout3.getLayoutParams()).topMargin = 0;
         }
-        if (paramBoolean != paramCompoundButton.f.e) {
-          return;
+        else
+        {
+          localRelativeLayout3.setVisibility(8);
         }
-        if (!paramBoolean) {
-          TMSDKContext.saveActionData(1150077);
+      }
+      if ((i == 0) && (!localSafeMsgItem1.d()))
+      {
+        localTextView3.setTextAppearance(this.a, 2131558772);
+        localTextView4.setTextAppearance(this.a, 2131558771);
+        localRelativeLayout1.setVisibility(0);
+        localRelativeLayout2.setVisibility(4);
+        localImageView4.setBackgroundResource(2131099949);
+        if (paramInt == getCount() - 3) {
+          paramViewGroup.setVisibility(4);
         } else {
-          TMSDKContext.saveActionData(1150078);
+          paramViewGroup.setVisibility(0);
         }
-        paramCompoundButton.f.d = true;
-        yo.a(yo.this, paramCompoundButton);
-        Object localObject = yo.a(yo.this).getItem(82);
-        if ((paramCompoundButton.f.e) && (((LoginProtectResult.a)localObject).c))
-        {
-          yo.a(yo.this).showUserDialog(2131492986, yo.a(yo.this).getResources().getString(2131493684), 2131493702, 2131493029, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              yo.b(yo.this).f.d = true;
-              yo.a(yo.this, yo.b(yo.this));
-              boolean bool = yo.a.a(yo.a.this).f.e;
-              paramAnonymousDialogInterface = si.a();
-              String str = yo.a(yo.this).mA2;
-              Handler localHandler = yo.a(yo.this).mHandler;
-              paramAnonymousDialogInterface.a(0L, new int[] { 71, 82 }, new int[] { bool ^ true, 0 }, str, localHandler);
-            }
-          }, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              yo.a.a(yo.a.this).f.d = false;
-              yo.a(yo.this, yo.a.a(yo.a.this));
-            }
-          });
-          return;
+      }
+      else if ((!localSafeMsgItem1.c()) && (!localSafeMsgItem1.d()))
+      {
+        localImageView5.setBackgroundResource(2131099951);
+        if (paramInt == getCount() - 3) {
+          localImageView1.setVisibility(4);
+        } else {
+          localImageView1.setVisibility(0);
         }
-        paramBoolean = paramCompoundButton.f.e;
-        paramCompoundButton = si.a();
-        localObject = yo.a(yo.this).mA2;
-        Handler localHandler = yo.a(yo.this).mHandler;
-        paramCompoundButton.a(0L, new int[] { 71 }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
-        return;
+        localTextView3.setTextAppearance(this.a, 2131558768);
+        localTextView4.setTextAppearance(this.a, 2131558767);
+        localRelativeLayout1.setVisibility(4);
+        localRelativeLayout2.setVisibility(0);
+      }
+      else
+      {
+        localTextView3.setTextAppearance(this.a, 2131558772);
+        localTextView4.setTextAppearance(this.a, 2131558771);
+        localRelativeLayout1.setVisibility(4);
+        localRelativeLayout2.setVisibility(0);
+        localImageView5.setBackgroundResource(2131099950);
+        if (paramInt == getCount() - 3) {
+          localImageView1.setVisibility(4);
+        } else {
+          localImageView1.setVisibility(0);
+        }
+      }
+      localTextView3.setText(localSafeMsgItem1.mTitle);
+      paramInt = localSafeMsgItem1.mContent.indexOf('|');
+      if (paramInt != -1) {
+        localTextView4.setText(localSafeMsgItem1.mContent.substring(0, paramInt));
+      } else {
+        localTextView4.setText(localSafeMsgItem1.mContent);
+      }
+      localTextView5.setText(aay.d(localSafeMsgItem1.mTime * 1000L));
+      paramViewGroup = aay.b(localSafeMsgItem1.mTime * 1000L);
+      if (paramViewGroup.length() > 2)
+      {
+        localTextView1.setVisibility(8);
+        localTextView2.setVisibility(0);
+        localTextView2.setText(paramViewGroup);
+        localImageView2.setVisibility(4);
+        localImageView3.setVisibility(0);
+      }
+      else
+      {
+        localTextView2.setVisibility(8);
+        localTextView1.setVisibility(0);
+        localTextView1.setText(paramViewGroup);
+        localImageView2.setVisibility(0);
+        localImageView3.setVisibility(4);
       }
     }
+    paramView.setVisibility(0);
+    return paramView;
   }
   
-  final class b
+  public final boolean isEnabled(int paramInt)
   {
-    public View a;
-    public TextView b;
-    public TextView c;
-    public ProgressBar d;
-    public SwitchButton e;
-    public LoginProtectResult.a f;
-    
-    b(View paramView, LoginProtectResult.a parama)
-    {
-      this.a = paramView;
-      this$1 = this.a;
-      if (yo.this == null) {
-        return;
-      }
-      this.f = parama;
-      this.b = ((TextView)yo.this.findViewById(2131165711));
-      this.c = ((TextView)this.a.findViewById(2131165434));
-      this.e = ((SwitchButton)this.a.findViewById(2131165709));
-      this.d = ((ProgressBar)this.a.findViewById(2131165691));
-    }
+    return false;
   }
 }
 

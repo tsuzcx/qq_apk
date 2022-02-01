@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/privacy_protect_guid" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="隐私保护指引" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:id="@id/about_divider_1" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/software_agreement" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="软件许可协议" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/child_privacy" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="儿童隐私保护声明" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/person_info_collect_claim" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="收集个人信息明示清单" style="@style/text_view" />
+        <View android:layout_gravity="bottom" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </FrameLayout>
+</LinearLayout>

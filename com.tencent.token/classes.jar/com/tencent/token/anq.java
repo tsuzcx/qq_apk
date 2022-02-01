@@ -1,14 +1,10 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.security.cert.X509Certificate;
 
-public final class anq
-  extends anw<Integer>
+public abstract interface anq
 {
-  public anq(List<anv<Integer>> paramList)
-  {
-    super(paramList);
-  }
+  public abstract X509Certificate a(X509Certificate paramX509Certificate);
 }
 
 

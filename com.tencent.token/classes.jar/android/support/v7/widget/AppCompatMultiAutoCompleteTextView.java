@@ -9,39 +9,39 @@ import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.MultiAutoCompleteTextView;
-import com.tencent.token.ez;
-import com.tencent.token.gs.a;
-import com.tencent.token.gu;
-import com.tencent.token.ii;
-import com.tencent.token.il;
-import com.tencent.token.ip;
-import com.tencent.token.jf;
-import com.tencent.token.ji;
+import com.tencent.token.fn;
+import com.tencent.token.hg.a;
+import com.tencent.token.hi;
+import com.tencent.token.iw;
+import com.tencent.token.iz;
+import com.tencent.token.jd;
+import com.tencent.token.jt;
+import com.tencent.token.jw;
 
 public class AppCompatMultiAutoCompleteTextView
   extends MultiAutoCompleteTextView
-  implements ez
+  implements fn
 {
   private static final int[] a = { 16843126 };
-  private final ii b;
-  private final ip c;
+  private final iw b;
+  private final jd c;
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gs.a.autoCompleteTextViewStyle);
+    this(paramContext, paramAttributeSet, hg.a.autoCompleteTextViewStyle);
   }
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jf.a(paramContext), paramAttributeSet, paramInt);
-    paramContext = ji.a(getContext(), paramAttributeSet, a, paramInt, 0);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
+    paramContext = jw.a(getContext(), paramAttributeSet, a, paramInt, 0);
     if (paramContext.f(0)) {
       setDropDownBackgroundDrawable(paramContext.a(0));
     }
     paramContext.a.recycle();
-    this.b = new ii(this);
+    this.b = new iw(this);
     this.b.a(paramAttributeSet, paramInt);
-    this.c = ip.a(this);
+    this.c = jd.a(this);
     this.c.a(paramAttributeSet, paramInt);
     this.c.a();
   }
@@ -51,35 +51,35 @@ public class AppCompatMultiAutoCompleteTextView
     super.drawableStateChanged();
     Object localObject = this.b;
     if (localObject != null) {
-      ((ii)localObject).d();
+      ((iw)localObject).d();
     }
     localObject = this.c;
     if (localObject != null) {
-      ((ip)localObject).a();
+      ((jd)localObject).a();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.b();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    ii localii = this.b;
-    if (localii != null) {
-      return localii.c();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return il.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return iz.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
@@ -94,39 +94,39 @@ public class AppCompatMultiAutoCompleteTextView
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramInt);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
   public void setDropDownBackgroundResource(int paramInt)
   {
-    setDropDownBackgroundDrawable(gu.b(getContext(), paramInt));
+    setDropDownBackgroundDrawable(hi.b(getContext(), paramInt));
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramColorStateList);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    ii localii = this.b;
-    if (localii != null) {
-      localii.a(paramMode);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    ip localip = this.c;
-    if (localip != null) {
-      localip.a(paramContext, paramInt);
+    jd localjd = this.c;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
 }

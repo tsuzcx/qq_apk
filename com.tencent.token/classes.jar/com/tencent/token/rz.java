@@ -1,6 +1,9 @@
 package com.tencent.token;
 
-public class rz {}
+public abstract interface rz
+{
+  public abstract void a(rx paramrx);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

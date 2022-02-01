@@ -1,8 +1,14 @@
 package com.tencent.token;
 
-public abstract interface aos<O>
+import java.util.List;
+
+public final class aos
+  extends aou<Float>
 {
-  public abstract ans<?, O> c();
+  public aos(List<aot<Float>> paramList)
+  {
+    super(paramList);
+  }
 }
 
 

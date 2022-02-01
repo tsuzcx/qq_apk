@@ -16,25 +16,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
-import com.tencent.token.gs.j;
-import com.tencent.token.hp;
-import com.tencent.token.hp.b;
-import com.tencent.token.hr;
-import com.tencent.token.hx.a;
-import com.tencent.token.ia;
-import com.tencent.token.ix;
-import com.tencent.token.jk;
+import com.tencent.token.hg.j;
+import com.tencent.token.id;
+import com.tencent.token.id.b;
+import com.tencent.token.if;
+import com.tencent.token.il.a;
+import com.tencent.token.io;
+import com.tencent.token.jl;
+import com.tencent.token.jy;
 
 public class ActionMenuItemView
   extends AppCompatTextView
-  implements ActionMenuView.a, View.OnClickListener, hx.a
+  implements ActionMenuView.a, View.OnClickListener, il.a
 {
-  hr b;
-  hp.b c;
+  if b;
+  id.b c;
   b d;
   private CharSequence e;
   private Drawable f;
-  private ix g;
+  private jl g;
   private boolean h;
   private boolean i;
   private int j;
@@ -51,8 +51,8 @@ public class ActionMenuItemView
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = paramContext.getResources();
     this.h = e();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gs.j.ActionMenuItemView, paramInt, 0);
-    this.j = paramContext.getDimensionPixelSize(gs.j.ActionMenuItemView_android_minWidth, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, hg.j.ActionMenuItemView, paramInt, 0);
+    this.j = paramContext.getDimensionPixelSize(hg.j.ActionMenuItemView_android_minWidth, 0);
     paramContext.recycle();
     this.l = ((int)(localResources.getDisplayMetrics().density * 32.0F + 0.5F));
     setOnClickListener(this);
@@ -120,27 +120,27 @@ public class ActionMenuItemView
       } else {
         localObject1 = this.b.getTitle();
       }
-      jk.a(this, (CharSequence)localObject1);
+      jy.a(this, (CharSequence)localObject1);
       return;
     }
-    jk.a(this, (CharSequence)localObject1);
+    jy.a(this, (CharSequence)localObject1);
   }
   
-  public final void a(hr paramhr)
+  public final void a(if paramif)
   {
-    this.b = paramhr;
-    setIcon(paramhr.getIcon());
-    setTitle(paramhr.a(this));
-    setId(paramhr.getItemId());
+    this.b = paramif;
+    setIcon(paramif.getIcon());
+    setTitle(paramif.a(this));
+    setId(paramif.getItemId());
     int m;
-    if (paramhr.isVisible()) {
+    if (paramif.isVisible()) {
       m = 0;
     } else {
       m = 8;
     }
     setVisibility(m);
-    setEnabled(paramhr.isEnabled());
-    if ((paramhr.hasSubMenu()) && (this.g == null)) {
+    setEnabled(paramif.isEnabled());
+    if ((paramif.hasSubMenu()) && (this.g == null)) {
       this.g = new a();
     }
   }
@@ -165,7 +165,7 @@ public class ActionMenuItemView
     return b();
   }
   
-  public hr getItemData()
+  public if getItemData()
   {
     return this.b;
   }
@@ -221,8 +221,8 @@ public class ActionMenuItemView
   {
     if (this.b.hasSubMenu())
     {
-      ix localix = this.g;
-      if ((localix != null) && (localix.onTouch(this, paramMotionEvent))) {
+      jl localjl = this.g;
+      if ((localjl != null) && (localjl.onTouch(this, paramMotionEvent))) {
         return true;
       }
     }
@@ -238,9 +238,9 @@ public class ActionMenuItemView
     if (this.i != paramBoolean)
     {
       this.i = paramBoolean;
-      hr localhr = this.b;
-      if (localhr != null) {
-        localhr.b.g();
+      if localif = this.b;
+      if (localif != null) {
+        localif.b.g();
       }
     }
   }
@@ -277,7 +277,7 @@ public class ActionMenuItemView
     f();
   }
   
-  public void setItemInvoker(hp.b paramb)
+  public void setItemInvoker(id.b paramb)
   {
     this.c = paramb;
   }
@@ -300,14 +300,14 @@ public class ActionMenuItemView
   }
   
   final class a
-    extends ix
+    extends jl
   {
     public a()
     {
       super();
     }
     
-    public final ia a()
+    public final io a()
     {
       if (ActionMenuItemView.this.d != null) {
         return ActionMenuItemView.this.d.a();
@@ -319,8 +319,8 @@ public class ActionMenuItemView
     {
       if ((ActionMenuItemView.this.c != null) && (ActionMenuItemView.this.c.a(ActionMenuItemView.this.b)))
       {
-        ia localia = a();
-        return (localia != null) && (localia.d());
+        io localio = a();
+        return (localio != null) && (localio.d());
       }
       return false;
     }
@@ -328,7 +328,7 @@ public class ActionMenuItemView
   
   public static abstract class b
   {
-    public abstract ia a();
+    public abstract io a();
   }
 }
 

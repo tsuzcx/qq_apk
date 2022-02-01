@@ -1,22 +1,31 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.view.Menu;
+import android.view.Window.Callback;
 
-final class jg
+public abstract interface jg
 {
-  public ColorStateList a;
-  public PorterDuff.Mode b;
-  public boolean c;
-  public boolean d;
+  public abstract void a(int paramInt);
   
-  final void a()
-  {
-    this.a = null;
-    this.d = false;
-    this.b = null;
-    this.c = false;
-  }
+  public abstract void a(Menu paramMenu, ik.a parama);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract boolean e();
+  
+  public abstract boolean f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void setWindowCallback(Window.Callback paramCallback);
+  
+  public abstract void setWindowTitle(CharSequence paramCharSequence);
 }
 
 

@@ -1,10 +1,4 @@
-package com.tencent.token;
-
-public abstract class bj
-{
-  protected void a() {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar
  * Qualified Name:     com.tencent.token.bj

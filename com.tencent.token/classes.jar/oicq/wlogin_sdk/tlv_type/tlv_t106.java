@@ -7,7 +7,7 @@ import oicq.wlogin_sdk.tools.util;
 public class tlv_t106
   extends tlv_t
 {
-  int _SSoVer = 5;
+  int _SSoVer = 18;
   int _TGTGTVer = 4;
   int _t106_body_len = 98;
   

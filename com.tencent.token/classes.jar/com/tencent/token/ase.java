@@ -1,24 +1,33 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
+import com.qq.taf.jce.JceStruct;
 
-public final class ase
-  implements Runnable
+final class ase
+  implements aji
 {
-  public ase(asd paramasd) {}
+  int a = 0;
+  final int b = 3;
   
-  public final void run()
+  ase(atm paramatm) {}
+  
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    ArrayList localArrayList = new ArrayList();
-    AtomicReference localAtomicReference = new AtomicReference();
-    int i = this.a.a(null, localArrayList, localAtomicReference);
-    if (-10 != i)
+    paramJceStruct = new StringBuilder("_Cmd_SCReconnect : ");
+    paramJceStruct.append(paramInt2);
+    paramJceStruct.append("  retCode : ");
+    paramJceStruct.append(paramInt3);
+    if (paramInt3 == 0)
     {
-      if (i == 0) {
-        return;
-      }
+      this.c.c = 0;
+      this.a = 0;
       return;
+    }
+    this.a += 1;
+    if ((this.a < 3) && (this.c.d()))
+    {
+      this.a = 0;
+      paramJceStruct = this.c;
+      paramJceStruct.a(atm.a(paramJceStruct), 998, atm.b(this.c), 10000L);
     }
   }
 }

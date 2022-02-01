@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pw;
+import com.tencent.token.qk;
 import java.io.File;
 
 public class WXEmojiObject
@@ -43,7 +43,7 @@ public class WXEmojiObject
     }
     for (;;)
     {
-      pw.a("MicroMsg.SDK.WXEmojiObject", (String)localObject);
+      qk.a("MicroMsg.SDK.WXEmojiObject", (String)localObject);
       return false;
       localObject = this.emojiPath;
       if (localObject != null)

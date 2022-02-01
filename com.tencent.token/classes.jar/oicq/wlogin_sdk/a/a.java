@@ -5,8 +5,8 @@ import java.io.DataInputStream;
 import java.util.HashMap;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.MD5;
-import oicq.wlogin_sdk.tools.c;
 import oicq.wlogin_sdk.tools.cryptor;
+import oicq.wlogin_sdk.tools.g;
 import oicq.wlogin_sdk.tools.util;
 
 public class a
@@ -17,7 +17,7 @@ public class a
   public int d = 0;
   protected int e = 3;
   
-  public static int a(int paramInt, byte[] paramArrayOfByte, h paramh)
+  public static int a(int paramInt, byte[] paramArrayOfByte, i parami)
   {
     Object localObject = b(paramArrayOfByte);
     int j = localObject[0];
@@ -29,7 +29,7 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.d = (util.buf_to_int16(paramArrayOfByte, i) & 0xFFFF);
+    parami.d = (util.buf_to_int16(paramArrayOfByte, i) & 0xFFFF);
     i = k + 2;
     if (i > paramArrayOfByte.length) {
       return -1009;
@@ -50,8 +50,8 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.e = new byte[m];
-    System.arraycopy(paramArrayOfByte, i, paramh.e, 0, m);
+    parami.e = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, parami.e, 0, m);
     i = k + 2;
     if (i > paramArrayOfByte.length) {
       return -1009;
@@ -61,8 +61,8 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.f = new byte[m];
-    System.arraycopy(paramArrayOfByte, i, paramh.f, 0, m);
+    parami.f = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, parami.f, 0, m);
     i = j;
     if (paramInt == 3)
     {
@@ -75,50 +75,65 @@ public class a
         localStringBuilder.append(i);
         localStringBuilder.append(" tlv");
         util.LOGI(localStringBuilder.toString());
-        i = c.a(i, paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt, paramh.B);
+        i = g.a(i, paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt, parami.C);
         if (i != 0)
         {
           util.LOGI("parser tlv failed ".concat(String.valueOf(i)), "");
           return -1009;
         }
         paramArrayOfByte = new StringBuilder("reg cmd 0x3 tlv map size ");
-        paramArrayOfByte.append(paramh.B.size());
+        paramArrayOfByte.append(parami.C.size());
         util.LOGI(paramArrayOfByte.toString());
       }
     }
     if (localObject.length <= 0) {
       return i;
     }
-    paramInt = paramh.d;
+    paramInt = parami.d;
     if (paramInt != 0)
     {
       if (paramInt != 31)
       {
-        if (paramInt != 44) {
+        if ((paramInt != 44) && (paramInt != 51)) {
           switch (paramInt)
           {
           default: 
-            util.LOGW("unhandle return code int parse_checkvalid_rsp", "", "");
-            return i;
+            switch (paramInt)
+            {
+            default: 
+              util.LOGW("unhandle return code int parse_checkvalid_rsp", "", "");
+              return i;
+            case 59: 
+              if (2 > localObject.length) {
+                return -1009;
+              }
+              paramInt = util.buf_to_int16((byte[])localObject, 0);
+              if (paramInt + 2 > localObject.length) {
+                return -1009;
+              }
+              parami.s = new byte[paramInt];
+              System.arraycopy(localObject, 2, parami.s, 0, paramInt);
+              return i;
+            }
           case 5: 
             if (2 > localObject.length) {
               return -1009;
             }
-            paramh.s = util.buf_to_int16((byte[])localObject, 0);
+            parami.t = util.buf_to_int16((byte[])localObject, 0);
             if (4 > localObject.length) {
               return -1009;
             }
-            paramh.t = util.buf_to_int16((byte[])localObject, 2);
+            parami.u = util.buf_to_int16((byte[])localObject, 2);
             return i;
           case 4: 
             if (2 > localObject.length) {
               return -1009;
             }
-            paramh.s = util.buf_to_int16((byte[])localObject, 0);
+            parami.t = util.buf_to_int16((byte[])localObject, 0);
             if (4 > localObject.length) {
               return -1009;
             }
-            paramh.t = util.buf_to_int16((byte[])localObject, 2);
+            parami.u = util.buf_to_int16((byte[])localObject, 2);
             return i;
           case 2: 
             if (1 > localObject.length) {
@@ -129,23 +144,23 @@ public class a
             if (j > localObject.length) {
               return -1009;
             }
-            paramh.o = new byte[paramInt];
-            System.arraycopy(localObject, 1, paramh.o, 0, paramInt);
+            parami.o = new byte[paramInt];
+            System.arraycopy(localObject, 1, parami.o, 0, paramInt);
             paramInt = j + 1;
             k = util.buf_to_int8((byte[])localObject, j);
             j = paramInt + k;
             if (j > localObject.length) {
               return -1009;
             }
-            paramh.p = new byte[k];
-            System.arraycopy(localObject, paramInt, paramh.p, 0, k);
+            parami.p = new byte[k];
+            System.arraycopy(localObject, paramInt, parami.p, 0, k);
             paramInt = util.buf_to_int16((byte[])localObject, j);
             j += 2;
             if (j + paramInt > localObject.length) {
               return -1009;
             }
-            paramh.q = new byte[paramInt];
-            System.arraycopy(localObject, j, paramh.q, 0, paramInt);
+            parami.q = new byte[paramInt];
+            System.arraycopy(localObject, j, parami.q, 0, paramInt);
             return i;
           }
         }
@@ -156,18 +171,18 @@ public class a
         if (paramInt + 2 > localObject.length) {
           return -1009;
         }
-        paramh.r = new byte[paramInt];
-        System.arraycopy(localObject, 2, paramh.r, 0, paramInt);
+        parami.r = new byte[paramInt];
+        System.arraycopy(localObject, 2, parami.r, 0, paramInt);
         return i;
       }
-      paramh.s = 0;
-      paramh.t = 0;
+      parami.t = 0;
+      parami.u = 0;
       return i;
     }
     if (4 > localObject.length) {
       return -1009;
     }
-    paramh.m = util.buf_to_int32((byte[])localObject, 0);
+    parami.m = util.buf_to_int32((byte[])localObject, 0);
     if (5 > localObject.length) {
       return -1009;
     }
@@ -175,17 +190,17 @@ public class a
     if (paramInt + 5 > localObject.length) {
       return -1009;
     }
-    paramh.n = new byte[paramInt];
-    System.arraycopy(localObject, 5, paramh.n, 0, paramInt);
+    parami.n = new byte[paramInt];
+    System.arraycopy(localObject, 5, parami.n, 0, paramInt);
     return i;
   }
   
-  public static int a(byte[] paramArrayOfByte, h paramh)
+  public static int a(byte[] paramArrayOfByte, i parami)
   {
-    return a(0, paramArrayOfByte, paramh);
+    return a(0, paramArrayOfByte, parami);
   }
   
-  public static int b(byte[] paramArrayOfByte, h paramh)
+  public static int b(byte[] paramArrayOfByte, i parami)
   {
     int[] arrayOfInt = b(paramArrayOfByte);
     int j = arrayOfInt[0];
@@ -197,7 +212,7 @@ public class a
     if (j > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.d = util.buf_to_int16(paramArrayOfByte, i);
+    parami.d = util.buf_to_int16(paramArrayOfByte, i);
     i = j + 1;
     if (i > paramArrayOfByte.length) {
       return -1009;
@@ -207,8 +222,8 @@ public class a
     if (j > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.e = new byte[k];
-    System.arraycopy(paramArrayOfByte, i, paramh.e, 0, k);
+    parami.e = new byte[k];
+    System.arraycopy(paramArrayOfByte, i, parami.e, 0, k);
     i = j + 2;
     if (i > paramArrayOfByte.length) {
       return -1009;
@@ -218,13 +233,13 @@ public class a
     if (j > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.f = new byte[k];
-    System.arraycopy(paramArrayOfByte, i, paramh.f, 0, k);
+    parami.f = new byte[k];
+    System.arraycopy(paramArrayOfByte, i, parami.f, 0, k);
     i = j + 2;
     if (i > paramArrayOfByte.length) {
       return 0;
     }
-    i = c.a(util.buf_to_int16(paramArrayOfByte, j), paramArrayOfByte, i, paramArrayOfByte.length - i, paramh.B);
+    i = g.a(util.buf_to_int16(paramArrayOfByte, j), paramArrayOfByte, i, paramArrayOfByte.length - i, parami.C);
     if (i != 0)
     {
       util.LOGI("parser tlv failed ".concat(String.valueOf(i)), "");
@@ -257,7 +272,7 @@ public class a
     return new int[] { 0, i };
   }
   
-  public static int c(byte[] paramArrayOfByte, h paramh)
+  public static int c(byte[] paramArrayOfByte, i parami)
   {
     Object localObject = b(paramArrayOfByte);
     int i = localObject[0];
@@ -269,7 +284,7 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.d = util.buf_to_int16(paramArrayOfByte, j);
+    parami.d = util.buf_to_int16(paramArrayOfByte, j);
     j = k + 2;
     if (j > paramArrayOfByte.length) {
       return -1009;
@@ -281,12 +296,12 @@ public class a
     }
     byte[] arrayOfByte = new byte[m];
     System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, m);
-    if (paramh.d == 0)
+    if (parami.d == 0)
     {
-      if ((paramh.j != null) && (paramh.j.length > 0)) {
-        localObject = MD5.toMD5Byte(paramh.j);
+      if ((parami.j != null) && (parami.j.length > 0)) {
+        localObject = MD5.toMD5Byte(parami.j);
       } else {
-        localObject = h.a.getBytes();
+        localObject = i.a.getBytes();
       }
       localObject = cryptor.decrypt(arrayOfByte, 0, m, (byte[])localObject);
       if (localObject == null) {
@@ -303,7 +318,7 @@ public class a
       if (j > localObject.length) {
         return -1009;
       }
-      paramh.u = util.buf_to_int64((byte[])localObject, i);
+      parami.v = util.buf_to_int64((byte[])localObject, i);
       i = j + 2;
       if (i > localObject.length) {
         return -1009;
@@ -313,27 +328,27 @@ public class a
       if (j > localObject.length) {
         return -1009;
       }
-      paramh.v = new byte[m];
-      System.arraycopy(localObject, i, paramh.v, 0, m);
+      parami.w = new byte[m];
+      System.arraycopy(localObject, i, parami.w, 0, m);
       i = j + 2;
       if (i > localObject.length) {
         return -1009;
       }
-      j = c.a(util.buf_to_int16((byte[])localObject, j), (byte[])localObject, i, localObject.length - i, paramh.B);
+      j = g.a(util.buf_to_int16((byte[])localObject, j), (byte[])localObject, i, localObject.length - i, parami.C);
       if (j != 0)
       {
         util.LOGI("parse tlv failed ".concat(String.valueOf(j)), "");
         return -1009;
       }
-      localObject = (tlv_t)paramh.B.get(Integer.valueOf(7));
+      localObject = (tlv_t)parami.C.get(Integer.valueOf(7));
       if (localObject != null) {
-        paramh.w = ((tlv_t)localObject).get_data();
+        parami.x = ((tlv_t)localObject).get_data();
       }
-      localObject = (tlv_t)paramh.B.get(Integer.valueOf(12));
+      localObject = (tlv_t)parami.C.get(Integer.valueOf(12));
       i = j;
       if (localObject != null)
       {
-        h.y = util.buf_to_int64(((tlv_t)localObject).get_data(), 0);
+        i.z = util.buf_to_int64(((tlv_t)localObject).get_data(), 0);
         i = j;
       }
     }
@@ -346,8 +361,8 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.e = new byte[m];
-    System.arraycopy(paramArrayOfByte, j, paramh.e, 0, m);
+    parami.e = new byte[m];
+    System.arraycopy(paramArrayOfByte, j, parami.e, 0, m);
     j = k + 2;
     if (j > paramArrayOfByte.length) {
       return -1009;
@@ -356,12 +371,12 @@ public class a
     if (j + k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.f = new byte[k];
-    System.arraycopy(paramArrayOfByte, j, paramh.f, 0, k);
+    parami.f = new byte[k];
+    System.arraycopy(paramArrayOfByte, j, parami.f, 0, k);
     return i;
   }
   
-  public static int d(byte[] paramArrayOfByte, h paramh)
+  public static int d(byte[] paramArrayOfByte, i parami)
   {
     Object localObject = b(paramArrayOfByte);
     int i = localObject[0];
@@ -373,7 +388,7 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.d = util.buf_to_int16(paramArrayOfByte, j);
+    parami.d = util.buf_to_int16(paramArrayOfByte, j);
     j = k + 2;
     if (j > paramArrayOfByte.length) {
       return -1009;
@@ -383,8 +398,8 @@ public class a
     if (k > paramArrayOfByte.length) {
       return -1009;
     }
-    paramh.f = new byte[m];
-    System.arraycopy(paramArrayOfByte, j, paramh.f, 0, m);
+    parami.f = new byte[m];
+    System.arraycopy(paramArrayOfByte, j, parami.f, 0, m);
     j = k + 2;
     if (j <= paramArrayOfByte.length)
     {
@@ -398,17 +413,17 @@ public class a
         System.arraycopy(paramArrayOfByte, j, localObject, 1, k);
         localObject[0] = 40;
         localObject[(k + 1)] = 41;
-        paramArrayOfByte = new String(paramh.f);
+        paramArrayOfByte = new String(parami.f);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(new String((byte[])localObject));
         localStringBuilder.append("。");
-        paramh.f = paramArrayOfByte.replace("。", localStringBuilder.toString()).getBytes();
+        parami.f = paramArrayOfByte.replace("。", localStringBuilder.toString()).getBytes();
       }
     }
     return i;
   }
   
-  public static int e(byte[] paramArrayOfByte, h paramh)
+  public static int e(byte[] paramArrayOfByte, i parami)
   {
     Object localObject = b(paramArrayOfByte);
     int i = localObject[0];
@@ -421,32 +436,32 @@ public class a
     try
     {
       ((DataInputStream)localObject).readByte();
-      paramh.d = ((DataInputStream)localObject).readShort();
+      parami.d = ((DataInputStream)localObject).readShort();
       i = ((DataInputStream)localObject).readShort();
       if (i != 0)
       {
         byte[] arrayOfByte = new byte[i];
         ((DataInputStream)localObject).read(arrayOfByte);
-        arrayOfByte = cryptor.decrypt(arrayOfByte, 0, i, paramh.l);
+        arrayOfByte = cryptor.decrypt(arrayOfByte, 0, i, parami.l);
         if (arrayOfByte == null)
         {
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = c.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramh.B);
+        i = g.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, parami.C);
         if (i != 0)
         {
           util.LOGI("parser tlv failed ".concat(String.valueOf(i)), "");
           return -1009;
         }
       }
-      paramh.e = new byte[((DataInputStream)localObject).readByte()];
-      ((DataInputStream)localObject).read(paramh.e);
+      parami.e = new byte[((DataInputStream)localObject).readByte()];
+      ((DataInputStream)localObject).read(parami.e);
       i = ((DataInputStream)localObject).readShort();
       if (i != 0)
       {
-        paramh.f = new byte[i];
-        if (((DataInputStream)localObject).read(paramh.f) != i)
+        parami.f = new byte[i];
+        if (((DataInputStream)localObject).read(parami.f) != i)
         {
           paramArrayOfByte = new StringBuilder("msg len ");
           paramArrayOfByte.append(i);
@@ -460,14 +475,14 @@ public class a
     }
     catch (Exception paramArrayOfByte)
     {
-      paramh = new StringBuilder("parse0x10Rsp failed ");
-      paramh.append(paramArrayOfByte.getMessage());
-      util.LOGI(paramh.toString(), "");
+      parami = new StringBuilder("parse0x10Rsp failed ");
+      parami.append(paramArrayOfByte.getMessage());
+      util.LOGI(parami.toString(), "");
     }
     return -1009;
   }
   
-  public static int f(byte[] paramArrayOfByte, h paramh)
+  public static int f(byte[] paramArrayOfByte, i parami)
   {
     Object localObject = b(paramArrayOfByte);
     int i = localObject[0];
@@ -480,32 +495,32 @@ public class a
     try
     {
       ((DataInputStream)localObject).readByte();
-      paramh.d = ((DataInputStream)localObject).readShort();
+      parami.d = ((DataInputStream)localObject).readShort();
       i = ((DataInputStream)localObject).readShort();
       if (i != 0)
       {
         byte[] arrayOfByte = new byte[i];
         ((DataInputStream)localObject).read(arrayOfByte);
-        arrayOfByte = cryptor.decrypt(arrayOfByte, 0, i, paramh.l);
+        arrayOfByte = cryptor.decrypt(arrayOfByte, 0, i, parami.l);
         if (arrayOfByte == null)
         {
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = c.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramh.B);
+        i = g.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, parami.C);
         if (i != 0)
         {
           util.LOGI("parser tlv failed ".concat(String.valueOf(i)), "");
           return -1009;
         }
       }
-      paramh.e = new byte[((DataInputStream)localObject).readByte()];
-      ((DataInputStream)localObject).read(paramh.e);
+      parami.e = new byte[((DataInputStream)localObject).readByte()];
+      ((DataInputStream)localObject).read(parami.e);
       i = ((DataInputStream)localObject).readShort();
       if (i != 0)
       {
-        paramh.f = new byte[i];
-        if (((DataInputStream)localObject).read(paramh.f) != i)
+        parami.f = new byte[i];
+        if (((DataInputStream)localObject).read(parami.f) != i)
         {
           paramArrayOfByte = new StringBuilder("msg len ");
           paramArrayOfByte.append(i);
@@ -519,9 +534,9 @@ public class a
     }
     catch (Exception paramArrayOfByte)
     {
-      paramh = new StringBuilder("parse0x11Rsp failed ");
-      paramh.append(paramArrayOfByte.getMessage());
-      util.LOGI(paramh.toString(), "");
+      parami = new StringBuilder("parse0x11Rsp failed ");
+      parami.append(paramArrayOfByte.getMessage());
+      util.LOGI(parami.toString(), "");
     }
     return -1009;
   }

@@ -7,8 +7,8 @@
         <Button android:gravity="center" android:id="@id/quick_login_btn" android:background="@drawable/wifi_blue_btn" android:layout_width="fill_parent" android:layout_height="45.0dip" />
         <TextView android:gravity="center" android:layout_gravity="center" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/quick_login" android:drawableLeft="@drawable/qqicon" android:drawablePadding="10.0dip" style="@style/text_view_white" />
     </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="36.0dip" android:layout_below="@id/quick_login_layout">
-        <Button android:gravity="center" android:id="@id/wtlogin_find_psw" android:background="@drawable/forget_password_btn" android:layout_width="fill_parent" android:layout_height="45.0dip" />
-        <TextView android:gravity="center" android:layout_gravity="center" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_drop_menu_forget_pwd" android:drawableLeft="@drawable/forgeticon" android:drawablePadding="10.0dip" style="@style/text_view_blue" />
-    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/check_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="36.0dip" android:layout_below="@id/quick_login_layout">
+        <CheckBox android:id="@id/privacy_checkbox" android:layout_width="20.0dip" android:layout_height="20.0dip" android:button="@drawable/ic_checkbox_light_bg" />
+        <TextView android:id="@id/privacy_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="同意《QQ安全中心帐号注销协议》" style="@style/text_view_small" />
+    </LinearLayout>
 </RelativeLayout>

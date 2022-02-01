@@ -1,225 +1,103 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.support.v7.widget.ActionMenuPresenter;
-import android.support.v7.widget.ActionMenuView;
-import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.ContextThemeWrapper;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
+import android.view.KeyEvent.DispatcherState;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ListAdapter;
 
-public abstract class ie
-  extends ViewGroup
+final class ie
+  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, ik.a
 {
-  protected final a a = new a();
-  protected final Context b;
-  protected ActionMenuView c;
-  protected ActionMenuPresenter d;
-  protected int e;
-  protected fd f;
-  private boolean g;
-  private boolean h;
+  id a;
+  AlertDialog b;
+  ib c;
+  private ik.a d;
   
-  ie(Context paramContext, AttributeSet paramAttributeSet)
+  public ie(id paramid)
   {
-    this(paramContext, paramAttributeSet, 0);
+    this.a = paramid;
   }
   
-  protected ie(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public final void a(id paramid, boolean paramBoolean)
   {
-    super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = new TypedValue();
-    if ((paramContext.getTheme().resolveAttribute(gs.a.actionBarPopupTheme, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
+    if ((paramBoolean) || (paramid == this.a))
     {
-      this.b = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
-      return;
-    }
-    this.b = paramContext;
-  }
-  
-  protected static int a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return paramInt1 - paramInt2;
-    }
-    return paramInt1 + paramInt2;
-  }
-  
-  protected static int a(View paramView, int paramInt1, int paramInt2)
-  {
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648), paramInt2);
-    return Math.max(0, paramInt1 - paramView.getMeasuredWidth() - 0);
-  }
-  
-  protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    int i = paramView.getMeasuredWidth();
-    int j = paramView.getMeasuredHeight();
-    paramInt2 += (paramInt3 - j) / 2;
-    if (paramBoolean) {
-      paramView.layout(paramInt1 - i, paramInt2, paramInt1, j + paramInt2);
-    } else {
-      paramView.layout(paramInt1, paramInt2, paramInt1 + i, j + paramInt2);
-    }
-    if (paramBoolean) {
-      return -i;
-    }
-    return i;
-  }
-  
-  public fd a(int paramInt, long paramLong)
-  {
-    fd localfd = this.f;
-    if (localfd != null) {
-      localfd.b();
-    }
-    if (paramInt == 0)
-    {
-      if (getVisibility() != 0) {
-        setAlpha(0.0F);
+      localObject = this.b;
+      if (localObject != null) {
+        ((AlertDialog)localObject).dismiss();
       }
-      localfd = fa.f(this).a(1.0F);
-      localfd.a(paramLong);
-      localfd.a(this.a.a(localfd, paramInt));
-      return localfd;
     }
-    localfd = fa.f(this).a(0.0F);
-    localfd.a(paramLong);
-    localfd.a(this.a.a(localfd, paramInt));
-    return localfd;
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((ik.a)localObject).a(paramid, paramBoolean);
+    }
   }
   
-  public boolean a()
+  public final boolean a(id paramid)
   {
-    ActionMenuPresenter localActionMenuPresenter = this.d;
-    if (localActionMenuPresenter != null) {
-      return localActionMenuPresenter.d();
+    ik.a locala = this.d;
+    if (locala != null) {
+      return locala.a(paramid);
     }
     return false;
   }
   
-  public int getAnimatedVisibility()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.f != null) {
-      return this.a.a;
-    }
-    return getVisibility();
+    this.a.a((if)this.c.b().getItem(paramInt), null, 0);
   }
   
-  public int getContentHeight()
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    return this.e;
+    this.c.a(this.a, true);
   }
   
-  protected void onConfigurationChanged(Configuration paramConfiguration)
+  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = getContext().obtainStyledAttributes(null, gs.j.ActionBar, gs.a.actionBarStyle, 0);
-    setContentHeight(paramConfiguration.getLayoutDimension(gs.j.ActionBar_height, 0));
-    paramConfiguration.recycle();
-    paramConfiguration = this.d;
-    if (paramConfiguration != null) {
-      paramConfiguration.b();
-    }
-  }
-  
-  public boolean onHoverEvent(MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if (i == 9) {
-      this.h = false;
-    }
-    if (!this.h)
-    {
-      boolean bool = super.onHoverEvent(paramMotionEvent);
-      if ((i == 9) && (!bool)) {
-        this.h = true;
+    if ((paramInt == 82) || (paramInt == 4)) {
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
+      {
+        paramDialogInterface = this.b.getWindow();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface = paramDialogInterface.getDecorView();
+          if (paramDialogInterface != null)
+          {
+            paramDialogInterface = paramDialogInterface.getKeyDispatcherState();
+            if (paramDialogInterface != null)
+            {
+              paramDialogInterface.startTracking(paramKeyEvent, this);
+              return true;
+            }
+          }
+        }
+      }
+      else if ((paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+      {
+        Object localObject = this.b.getWindow();
+        if (localObject != null)
+        {
+          localObject = ((Window)localObject).getDecorView();
+          if (localObject != null)
+          {
+            localObject = ((View)localObject).getKeyDispatcherState();
+            if ((localObject != null) && (((KeyEvent.DispatcherState)localObject).isTracking(paramKeyEvent)))
+            {
+              this.a.a(true);
+              paramDialogInterface.dismiss();
+              return true;
+            }
+          }
+        }
       }
     }
-    if ((i == 10) || (i == 3)) {
-      this.h = false;
-    }
-    return true;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if (i == 0) {
-      this.g = false;
-    }
-    if (!this.g)
-    {
-      boolean bool = super.onTouchEvent(paramMotionEvent);
-      if ((i == 0) && (!bool)) {
-        this.g = true;
-      }
-    }
-    if ((i == 1) || (i == 3)) {
-      this.g = false;
-    }
-    return true;
-  }
-  
-  public void setContentHeight(int paramInt)
-  {
-    this.e = paramInt;
-    requestLayout();
-  }
-  
-  public void setVisibility(int paramInt)
-  {
-    if (paramInt != getVisibility())
-    {
-      fd localfd = this.f;
-      if (localfd != null) {
-        localfd.b();
-      }
-      super.setVisibility(paramInt);
-    }
-  }
-  
-  public final class a
-    implements fe
-  {
-    int a;
-    private boolean c = false;
-    
-    protected a() {}
-    
-    public final a a(fd paramfd, int paramInt)
-    {
-      ie.this.f = paramfd;
-      this.a = paramInt;
-      return this;
-    }
-    
-    public final void a(View paramView)
-    {
-      ie.a(ie.this);
-      this.c = false;
-    }
-    
-    public final void b(View paramView)
-    {
-      if (this.c) {
-        return;
-      }
-      paramView = ie.this;
-      paramView.f = null;
-      ie.a(paramView, this.a);
-    }
-    
-    public final void c(View paramView)
-    {
-      this.c = true;
-    }
+    return this.a.performShortcut(paramInt, paramKeyEvent, 0);
   }
 }
 

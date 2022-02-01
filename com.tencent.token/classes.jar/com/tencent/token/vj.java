@@ -1,39 +1,25 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.EvalAccountResult;
-import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vj
-  extends tr
+  extends ud
 {
-  EvalAccountResult d;
+  private long d;
   private long e;
-  private int f;
   
   public final String a()
   {
-    sh.a();
-    StringBuilder localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xj.c(localStringBuilder.toString());
+    st.a();
     this.a.a(104, null, null);
-    localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xj.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.e = ((Long)paramabc.c.get("param.uinhash")).longValue();
-    paramabc = new StringBuilder("account page ProtoGetEvalAccountResult unpacketParams: user =");
-    paramabc.append(this.e);
-    xj.c(paramabc.toString());
+    this.d = ((Long)paramabm.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramabm.c.get("param.feedback.msgid")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -44,40 +30,7 @@ public final class vj
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aao.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        si.a();
-        paramJSONObject.append(si.b());
-        xj.c(paramJSONObject.toString());
-        return;
-      }
-      this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
-      this.a.a = 0;
-      return;
-    }
-    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.p().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    this.a.a = 0;
   }
 }
 

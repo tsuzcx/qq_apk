@@ -1,83 +1,78 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import tmsdk.common.d.a.c.j;
+import com.qq.taf.jce.JceDisplayer;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import com.qq.taf.jce.JceUtil;
+import java.util.ArrayList;
 
-final class arl
-  extends Handler
+public final class arl
+  extends JceStruct
+  implements Cloneable
 {
-  private boolean b = false;
+  static ArrayList<ark> b;
+  public ArrayList<ark> a = null;
   
-  arl(aso paramaso, Looper paramLooper)
+  public final Object clone()
   {
-    super(paramLooper);
+    try
+    {
+      Object localObject = super.clone();
+      return localObject;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label7:
+      break label7;
+    }
+    if (c) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
-  public final void handleMessage(Message paramMessage)
+  public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    if (aso.c(this.a).a()) {
-      return;
+    new JceDisplayer(paramStringBuilder, paramInt).display(this.a, "vctCommList");
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {
+      return false;
     }
-    paramMessage = (ary)aso.c(this.a).c();
-    if (paramMessage == null) {
-      return;
-    }
-    if (!aso.d(this.a).c())
+    paramObject = (arl)paramObject;
+    return JceUtil.equals(this.a, paramObject.a);
+  }
+  
+  public final int hashCode()
+  {
+    try
     {
-      aso.f(this.a).a(aso.e(this.a));
-      localObject = aso.d(this.a);
-      boolean bool;
-      if (aqz.a()) {
-        bool = false;
-      } else {
-        bool = ((ate)localObject).b.a(((ate)localObject).c, ((ate)localObject).d);
-      }
-      if (!bool)
-      {
-        aso.a(this.a, paramMessage, -2);
-        return;
-      }
+      throw new Exception("Need define key first!");
     }
-    this.b = paramMessage.d;
-    Object localObject = paramMessage.e;
-    aj localaj = aso.a(this.a, paramMessage.b);
-    if (localaj == null)
+    catch (Exception localException)
     {
-      aso.a(this.a, paramMessage, -609);
-      return;
+      localException.printStackTrace();
     }
-    localaj.b = paramMessage.a;
-    int i;
-    if (localObject == null)
+    return 0;
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    if (b == null)
     {
-      i = aso.d(this.a).a(localaj);
+      b = new ArrayList();
+      ark localark = new ark();
+      b.add(localark);
     }
-    else
-    {
-      ((aik)localObject).a(1);
-      if (((aik)localObject).a) {
-        return;
-      }
-      i = aso.d(this.a).a(localaj);
-      ((aik)localObject).a(2);
-    }
-    if (i != 0)
-    {
-      aso.a(this.a, paramMessage, i - 3);
-      return;
-    }
-    if (!this.b)
-    {
-      paramMessage = aso.d(this.a);
-      if (paramMessage.f)
-      {
-        paramMessage = paramMessage.g;
-        asp.a(paramMessage.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE");
-        asp.a(paramMessage.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE", paramMessage.c);
-      }
-    }
+    this.a = ((ArrayList)paramJceInputStream.read(b, 0, true));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
   }
 }
 

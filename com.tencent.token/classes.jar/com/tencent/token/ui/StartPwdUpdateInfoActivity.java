@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.sk;
+import com.tencent.token.sw;
 
 public class StartPwdUpdateInfoActivity
   extends BaseActivity
@@ -37,17 +37,17 @@ public class StartPwdUpdateInfoActivity
       }
     });
     this.mButtonSkip.setVisibility(4);
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
     this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
-    this.mTitleText.setTextColor(getResources().getColor(2130968761));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sk.a().d())))
+    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sw.a().d())))
     {
-      showOrangeToast(2131493236, 2131100171);
+      showOrangeToast(2131493238, 2131100176);
       setResult(259);
       startActivity(new Intent(this, StartPwdGestureSelActivity.class));
       finish();
@@ -58,10 +58,10 @@ public class StartPwdUpdateInfoActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2131296453);
+    setContentView(2131296466);
     this.source = getIntent().getIntExtra(SOURCE_TO_START_PSW, -1);
-    this.mButtonCreate = ((Button)findViewById(2131166209));
-    this.mButtonSkip = ((Button)findViewById(2131166213));
+    this.mButtonCreate = ((Button)findViewById(2131166249));
+    this.mButtonSkip = ((Button)findViewById(2131166253));
     initUI();
   }
 }

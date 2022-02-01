@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/parentView" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <RelativeLayout android:orientation="vertical" android:background="#aa000000" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="end" android:id="@id/close" android:padding="5.0dip" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/common_icon_close" android:layout_alignParentRight="true" />
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip" android:layout_marginTop="13.5dip" android:text="温馨提示" />
+        <TextView android:textSize="16.0sp" android:textColor="@android:color/white" android:id="@id/msg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip" android:layout_marginTop="8.0dip" android:layout_marginRight="17.5dip" android:layout_marginBottom="8.5dip" android:text="为了确保服务正常运行，保障帐号安全，为您提供应用文件下载、存储服务，我们需要访问您的SD卡权限。" android:layout_below="@id/title" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff657fff" android:id="@id/btn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip" android:layout_marginRight="17.5dip" android:layout_marginBottom="16.5dip" android:layout_below="@id/msg" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>

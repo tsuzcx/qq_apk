@@ -1,211 +1,467 @@
 package com.tencent.token;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import btmsdkobf.ai;
+import btmsdkobf.aj;
+import btmsdkobf.z;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+import com.tencent.service.update.CSDCheckData;
+import com.tencent.service.update.ProductVersion;
+import com.tencent.service.update.SCDCheckRes;
+import com.tencent.service.update.SilentDownloadInfo;
+import com.tencent.service.update.SoftUpdateInfo;
+import com.tencent.service.update.UpdateDownloadDialog;
 import com.tencent.token.global.RqdApplication;
+import com.tmsdk.ConchPushInfoUtil;
+import com.tmsdk.JceStructUtil;
+import com.tmsdk.TMSDKContext;
+import com.tmsdk.base.ISharkCallBackOut;
+import com.tmsdk.base.conch.ConchService.ConchPushInfo;
+import com.tmsdk.base.conch.ConchService.IConchPushListener;
+import com.tmsdk.base.conch.ConchServiceProxy;
+import com.tmsdk.base.utils.NetworkUtil;
+import com.tmsdk.base.utils.PhoneInfoFetcher;
+import com.tmsdk.base.utils.PhoneInfoFetcher.SizeInfo;
+import java.util.Calendar;
 
 public final class sk
 {
-  private static sk b;
-  public int a = 0;
-  private Context c = null;
-  private String d = null;
+  private static sk d;
+  boolean a;
+  public Activity b;
+  public sj c = sj.a();
+  private boolean e;
+  private sg f = new sg("com.tencent.token");
+  private boolean g = false;
+  private byte[] h = new byte[0];
+  private BroadcastReceiver i = new BroadcastReceiver()
+  {
+    public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+    {
+      if (("android.net.conn.CONNECTIVITY_CHANGE".equals(paramAnonymousIntent.getAction())) && (NetworkUtil.getNetworkType().a == 2)) {
+        sk.this.a(false);
+      }
+    }
+  };
   
   public static sk a()
   {
-    if (b == null) {
-      b = new sk();
-    }
-    sk localsk = b;
-    Object localObject = RqdApplication.p();
-    if (localsk.c != localObject)
+    try
     {
-      localsk.c = ((Context)localObject);
-      boolean bool;
-      if (localObject != null) {
-        bool = true;
-      } else {
-        bool = false;
+      if (d == null) {
+        d = new sk();
       }
-      xj.a(bool);
-      localObject = g();
-      if (localObject != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      xj.a(bool);
-      localsk.a = ((SharedPreferences)localObject).getInt("pwd_type", 0);
-      if (localsk.a == 2) {
-        localsk.d = ((SharedPreferences)localObject).getString("pwd3g", null);
-      } else {
-        localsk.d = ((SharedPreferences)localObject).getString("pwd", null);
-      }
-      if (localsk.a == 0)
-      {
-        localsk.b(localsk.d);
-        localsk.a = 1;
-      }
+      sk localsk = d;
+      return localsk;
     }
-    return b;
+    finally {}
   }
   
-  public static void a(int paramInt)
+  private static boolean a(int paramInt)
   {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("lock_time", paramInt);
-    ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public static void b()
-  {
-    b = null;
-  }
-  
-  public static void d(String paramString)
-  {
-    SharedPreferences.Editor localEditor = RqdApplication.p().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
-    localEditor.putBoolean(paramString, false);
-    localEditor.commit();
-  }
-  
-  public static int f()
-  {
-    SharedPreferences localSharedPreferences = g();
-    boolean bool;
-    if (localSharedPreferences != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    return localSharedPreferences.getInt("lock_time", 0);
-  }
-  
-  public static SharedPreferences g()
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.p().getSharedPreferences("token_pwd_file", 0);
-    case 3: 
-      return RqdApplication.p().getSharedPreferences("token_pwd_file_gray", 0);
-    case 2: 
-      return RqdApplication.p().getSharedPreferences("token_pwd_file_exp", 0);
-    case 1: 
-      return RqdApplication.p().getSharedPreferences("token_pwd_file", 0);
-    }
-    return RqdApplication.p().getSharedPreferences("token_pwd_file_test", 0);
-  }
-  
-  public final boolean a(String paramString)
-  {
-    if (paramString != null)
-    {
-      String str = this.d;
-      if (str == null) {
-        return false;
-      }
-      if (this.a > 0) {
-        return str.equals(abj.b(abj.a(paramString)));
-      }
+    if (paramInt <= 0) {
       return false;
+    }
+    int j = aaw.a;
+    try
+    {
+      j = Integer.valueOf(String.valueOf(j)).intValue();
+      if (j < paramInt) {
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
     return false;
   }
   
-  public final boolean b(String paramString)
+  public static void b()
   {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      this.d = abj.b(abj.a(paramString));
-      ((SharedPreferences.Editor)localObject).putString("pwd", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 1);
-      this.a = 1;
-    }
-    else
-    {
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd");
-    }
-    ((SharedPreferences.Editor)localObject).commit();
-    return true;
+    ConchServiceProxy.getInstance().unRegisterConchPush(200);
   }
   
-  public final boolean c()
+  public static void d()
   {
-    String str = this.d;
-    return (str != null) && (str.length() > 0);
+    ConchServiceProxy.getInstance();
   }
   
-  public final boolean c(String paramString)
+  private boolean i()
   {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xj.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    if ((paramString != null) && (paramString.length() > 0))
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).setTimeInMillis(System.currentTimeMillis());
+    int m = ((Calendar)localObject1).get(11);
+    for (;;)
     {
-      if (this.a == 1) {
-        b(null);
+      try
+      {
+        localObject1 = this.c.a.a("silent_download_time_control", "0;19,23,100");
+        if (TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          j = -1;
+        }
+        else
+        {
+          localObject1 = ((String)localObject1).split(";");
+          if (localObject1 != null)
+          {
+            if (localObject1.length > 1) {
+              break label413;
+            }
+            continue;
+            if (j < localObject1.length)
+            {
+              Object localObject2 = localObject1[j];
+              if (TextUtils.isEmpty((CharSequence)localObject2))
+              {
+                j = -1;
+                break label301;
+              }
+              localObject2 = ((String)localObject2).split(",");
+              if ((localObject2 != null) && (localObject2.length == 3))
+              {
+                int n = Integer.valueOf(localObject2[0]).intValue();
+                int i1 = Integer.valueOf(localObject2[1]).intValue();
+                k = Integer.valueOf(localObject2[2]).intValue();
+                if ((n >= 0) && (n <= 23))
+                {
+                  if ((i1 > 0) && (i1 <= 24))
+                  {
+                    if (i1 <= n)
+                    {
+                      j = -1;
+                      break label301;
+                    }
+                    if ((k >= 0) && (k <= 100))
+                    {
+                      if ((m >= n) && (m < i1))
+                      {
+                        j = k;
+                        break label301;
+                      }
+                      j += 1;
+                      continue;
+                    }
+                    j = -1;
+                    break label301;
+                  }
+                  j = -1;
+                  break label301;
+                }
+                j = -1;
+                break label301;
+              }
+              j = -1;
+              break label301;
+            }
+            j = 0;
+            break label301;
+          }
+          j = -1;
+        }
       }
-      this.d = abj.b(abj.a(paramString));
-      this.a = 2;
-      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        j = -1;
+      }
+      label301:
+      int k = j;
+      if (j == -1) {
+        if ((m >= 19) && (m < 23)) {
+          k = 100;
+        } else {
+          k = 0;
+        }
+      }
+      if (k == 0) {
+        return true;
+      }
+      if (k == 100) {
+        return false;
+      }
+      double d1 = k;
+      Double.isNaN(d1);
+      d1 /= 100.0D;
+      double d2 = Math.random();
+      StringBuilder localStringBuilder = new StringBuilder("配置文件中设置的过滤比例=");
+      localStringBuilder.append(d1);
+      localStringBuilder.append(",生成的随机数=");
+      localStringBuilder.append(d2);
+      return d2 >= d1;
+      label413:
+      int j = 1;
     }
-    else
+  }
+  
+  private boolean j()
+  {
+    synchronized (this.h)
     {
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd3g");
+      return (this.f != null) && (this.f.c != null) && ((this.f.c.f == DownloaderTaskStatus.STARTED) || (this.f.c.f == DownloaderTaskStatus.DOWNLOADING));
     }
-    ((SharedPreferences.Editor)localObject).commit();
+  }
+  
+  public final void a(final si paramsi)
+  {
+    CSDCheckData localCSDCheckData = new CSDCheckData();
+    localCSDCheckData.taskNo = this.c.i();
+    new StringBuilder("DoubleCheck TaskNo : ").append(this.c.i());
+    if (localCSDCheckData.taskNo == 0L)
+    {
+      paramsi.b();
+      return;
+    }
+    TMSDKContext.sendShark(3150, localCSDCheckData, new SCDCheckRes(), new ISharkCallBackOut()
+    {
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        if (paramAnonymousInt3 == 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder("DoubleCheck : ");
+          localStringBuilder.append(paramAnonymousInt1);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt2);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt4);
+          if (paramAnonymousInt2 == 13150) {
+            try
+            {
+              paramAnonymousJceStruct = (SCDCheckRes)paramAnonymousJceStruct;
+              localStringBuilder = new StringBuilder("DoubleCheck : ");
+              localStringBuilder.append(paramAnonymousJceStruct.retCode);
+              localStringBuilder.append("|");
+              localStringBuilder.append(paramAnonymousJceStruct.res);
+              if (paramAnonymousJceStruct.retCode == 0)
+              {
+                if (paramAnonymousJceStruct.res == 0)
+                {
+                  paramsi.b();
+                  return;
+                }
+                if (paramAnonymousJceStruct.res == 1) {
+                  paramsi.a();
+                }
+              }
+              return;
+            }
+            catch (Exception paramAnonymousJceStruct)
+            {
+              paramAnonymousJceStruct.printStackTrace();
+            }
+          }
+        }
+      }
+    });
+  }
+  
+  final boolean a(boolean paramBoolean)
+  {
+    if (!i()) {
+      return false;
+    }
+    if (this.g) {
+      return false;
+    }
+    if (this.a) {
+      return false;
+    }
+    if (j())
+    {
+      if (this.e)
+      {
+        RqdApplication.n().unregisterReceiver(this.i);
+        this.e = false;
+      }
+      return false;
+    }
+    int j;
+    if ((this.c.a.a("meri_silent_update_switch_cloud", true)) && (this.c.a.a("meri_silent_update", false)) && (e())) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (j == 0) {
+      return false;
+    }
+    Object localObject1 = NetworkUtil.getNetworkType();
+    Object localObject2;
+    if (paramBoolean) {
+      localObject2 = arm.d;
+    }
+    if ((this.c.a.a("meri_silent_update_switch_user", true)) && (localObject1 == arm.d))
+    {
+      localObject1 = new PhoneInfoFetcher.SizeInfo();
+      PhoneInfoFetcher.getStorageCardSize((PhoneInfoFetcher.SizeInfo)localObject1);
+      localObject2 = new StringBuilder("hasEnoughStorage info.availdSize :");
+      ((StringBuilder)localObject2).append(((PhoneInfoFetcher.SizeInfo)localObject1).availdSize);
+      ((StringBuilder)localObject2).append(" info.percent:");
+      ((StringBuilder)localObject2).append(((PhoneInfoFetcher.SizeInfo)localObject1).percent());
+      if ((((PhoneInfoFetcher.SizeInfo)localObject1).availdSize < 524288000L) && (((PhoneInfoFetcher.SizeInfo)localObject1).percent() >= 90L)) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      if (j != 0) {
+        return true;
+      }
+    }
+    if ((!this.e) && (!this.c.l()))
+    {
+      if (this.c.a.a("meri_silent_update_show_insatll_notice", false)) {
+        return false;
+      }
+      localObject1 = new IntentFilter();
+      ((IntentFilter)localObject1).addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      ((IntentFilter)localObject1).addAction("android.net.wifi.WIFI_STATE_CHANGED");
+      ((IntentFilter)localObject1).addAction("android.net.wifi.STATE_CHANGE");
+      RqdApplication.n().registerReceiver(this.i, (IntentFilter)localObject1);
+      this.e = true;
+    }
+    return false;
+  }
+  
+  public final void c()
+  {
+    synchronized (this.h)
+    {
+      long l = this.c.i();
+      if (l > 0L) {
+        this.c.a.b("conch_update_cloud_task_for_active", l);
+      }
+      this.c.a(0L, 0L, 0, 0);
+      sj localsj = this.c;
+      localsj.a.a();
+      localsj.h(0);
+      localsj.d("");
+      localsj.a.b("meri_update_start_time", 0L);
+      localsj.a(0L);
+      localsj.b(0);
+      localsj.c(0);
+      localsj.d(0);
+      localsj.e(0);
+      localsj.f(0);
+      localsj.b("");
+      localsj.c("");
+      localsj.a(0);
+      localsj.a("");
+      localsj.a.b("meri_patch_url", "");
+      localsj.g(0);
+      localsj.b(0L);
+      localsj.c(0L);
+      localsj.a.b("meri_update_show_dialog_count", 0);
+      localsj.b(false);
+      localsj.e("");
+      localsj.f("");
+      localsj.g("");
+      localsj.i(0);
+      localsj.j(0);
+      localsj.a.b("has_click_update_tip_in_main_page", false);
+      localsj.a.b();
+      this.c.k(0);
+      this.c.a.b("meri_need_show_update_dialog", false);
+      this.c.k();
+      this.c.m();
+      this.c.c(false);
+      if (this.f != null)
+      {
+        this.f.a();
+        this.f.c = null;
+      }
+      return;
+    }
+  }
+  
+  public final boolean e()
+  {
+    long l = this.c.c();
+    if (l < System.currentTimeMillis())
+    {
+      if (l > 0L) {
+        c();
+      }
+      return false;
+    }
+    if (!a(this.c.g()))
+    {
+      if (this.c.g() > 0) {
+        c();
+      }
+      return false;
+    }
     return true;
   }
   
-  public final boolean d()
+  public final void f()
   {
-    String str = this.d;
-    return (str != null) && (str.length() > 0) && (this.a == 2);
+    final rw.a locala = a().g();
+    if (locala == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new Runnable()
+    {
+      public final void run()
+      {
+        if (sk.a(sk.this) != null)
+        {
+          new UpdateDownloadDialog(sk.a(sk.this), locala).show();
+          sk.d();
+          sk.b(sk.this).c(System.currentTimeMillis() + sk.b(sk.this).n());
+        }
+      }
+    });
   }
   
-  public final void e()
+  public final rw.a g()
   {
-    c(null);
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
+    for (;;)
+    {
+      synchronized (this.h)
+      {
+        if (this.f != null)
+        {
+          rw.a locala = this.f.a();
+          return locala;
+        }
+      }
+      Object localObject2 = null;
     }
-    xj.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("last_lock", 0L);
-    ((SharedPreferences.Editor)localObject).commit();
+  }
+  
+  public final void h()
+  {
+    a(new si()
+    {
+      public final void a()
+      {
+        int i = sk.b(sk.this).a.a("meri_update_msg_type");
+        if ((i != 0) && (i != 6)) {
+          return;
+        }
+        sk localsk = sk.this;
+        rw.a locala = sk.a().g();
+        if ((locala != null) && (localsk.b != null)) {
+          new Handler(Looper.getMainLooper()).post(new sk.3(localsk, locala));
+        }
+      }
+      
+      public final void b()
+      {
+        sk.this.c();
+      }
+    });
   }
 }
 

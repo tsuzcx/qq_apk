@@ -1,8 +1,29 @@
 package com.tencent.token;
 
-public abstract interface ajp
+import android.content.Context;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
+
+public final class ajp
+  extends aiv
 {
-  public static final ajp a = new ajp() {};
+  Context a;
+  
+  ajp(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
+  {
+    super(paramContext, str, paramString.getBytes(), paramSQLiteCipherSpec, new ajo());
+    this.a = paramContext;
+  }
+  
+  protected final void finalize()
+  {
+    try
+    {
+      b();
+      return;
+    }
+    catch (Exception localException) {}
+    return;
+  }
 }
 
 

@@ -1,38 +1,38 @@
 package com.tencent.token;
 
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.CommonImgResult;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vp
-  extends tr
+  extends ud
 {
-  private long d;
-  private String e;
+  private String d;
+  private CommonImgResult e;
   
   public final String a()
   {
-    sh.a();
-    this.a.a(104, null, null);
-    return null;
+    return this.d;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramabm.c.get("param.common.img.url"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    paramJSONObject = (Bitmap)paramJSONObject.get("img");
+    if ((paramJSONObject != null) && (paramJSONObject.getWidth() != 0) && (paramJSONObject.getHeight() != 0))
     {
-      a(i, null);
+      this.a.a = 0;
+      this.e = new CommonImgResult(this.d, paramJSONObject);
       return;
     }
-    this.e = paramJSONObject.getString("ads_info");
-    this.a.a = 0;
+    this.a.a(104, null, null);
   }
   
   public final void b()

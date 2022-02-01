@@ -1,22 +1,65 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import java.nio.ByteOrder;
 
 public final class z
-  extends JceStruct
 {
-  public int a = 0;
+  public final byte[] a;
+  public final int b;
+  public final ByteOrder c;
+  public int d;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public z(byte[] paramArrayOfByte, ByteOrder paramByteOrder)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.a = paramArrayOfByte;
+    this.b = 0;
+    this.c = paramByteOrder;
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public final int a()
   {
-    paramJceOutputStream.write(this.a, 0);
+    byte[] arrayOfByte = this.a;
+    int j = this.b + this.d;
+    int i;
+    int k;
+    if (this.c == ByteOrder.BIG_ENDIAN)
+    {
+      i = j + 1;
+      j = arrayOfByte[j];
+      k = i + 1;
+      j = (j & 0xFF) << 24 | (arrayOfByte[i] & 0xFF) << 16 | (arrayOfByte[k] & 0xFF) << 8;
+      i = (arrayOfByte[(k + 1)] & 0xFF) << 0;
+    }
+    else
+    {
+      i = j + 1;
+      j = arrayOfByte[j];
+      k = i + 1;
+      j = (j & 0xFF) << 0 | (arrayOfByte[i] & 0xFF) << 8 | (arrayOfByte[k] & 0xFF) << 16;
+      i = (arrayOfByte[(k + 1)] & 0xFF) << 24;
+    }
+    this.d += 4;
+    return i | j;
+  }
+  
+  public final short b()
+  {
+    byte[] arrayOfByte = this.a;
+    int i = this.b + this.d;
+    int j;
+    if (this.c == ByteOrder.BIG_ENDIAN)
+    {
+      j = arrayOfByte[i] << 8;
+      i = arrayOfByte[(i + 1)];
+    }
+    else
+    {
+      j = arrayOfByte[(i + 1)] << 8;
+      i = arrayOfByte[i];
+    }
+    short s = (short)(i & 0xFF | j);
+    this.d += 2;
+    return s;
   }
 }
 

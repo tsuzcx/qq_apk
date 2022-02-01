@@ -1,9 +1,28 @@
 package com.tencent.token;
 
-public final class aeh
-  implements afa
+import java.lang.reflect.AccessibleObject;
+
+public abstract class aeh
 {
-  public aeh(aeq paramaeq) {}
+  public static final aeh a;
+  
+  static
+  {
+    Object localObject;
+    if (ahi.a < 9) {
+      localObject = new aeb();
+    } else {
+      localObject = new aei();
+    }
+    a = (aeh)localObject;
+  }
+  
+  public static aeh a()
+  {
+    return a;
+  }
+  
+  public abstract void a(AccessibleObject paramAccessibleObject);
 }
 
 

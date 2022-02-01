@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.token.xj;
+import com.tencent.token.xv;
 
 public class RecordTextView
   extends TextView
@@ -51,7 +51,7 @@ public class RecordTextView
       }
       if (RecordTextView.g(RecordTextView.this) != null)
       {
-        xj.c("onAniEnd");
+        xv.c("onAniEnd");
         RecordTextView.g(RecordTextView.this);
         RecordTextView.h(RecordTextView.this);
       }
@@ -62,9 +62,9 @@ public class RecordTextView
   {
     super(paramContext, paramAttributeSet);
     this.b.setAntiAlias(true);
-    this.h = paramContext.getResources().getColor(2130968742);
-    this.i = paramContext.getResources().getColor(2130968743);
-    this.j = paramContext.getResources().getColor(2130968744);
+    this.h = paramContext.getResources().getColor(2130968743);
+    this.i = paramContext.getResources().getColor(2130968744);
+    this.j = paramContext.getResources().getColor(2130968745);
   }
   
   public void onDraw(Canvas paramCanvas)

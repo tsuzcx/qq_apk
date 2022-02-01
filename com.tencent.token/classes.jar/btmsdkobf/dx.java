@@ -1,7 +1,7 @@
 package btmsdkobf;
 
 import android.text.TextUtils;
-import com.tencent.token.auo;
+import com.tencent.token.avm;
 import java.io.UnsupportedEncodingException;
 
 public class dx
@@ -16,7 +16,7 @@ public class dx
     String str;
     try
     {
-      paramString = auo.a(paramString.getBytes("gbk"), null);
+      paramString = avm.a(paramString.getBytes("gbk"), null);
       if (paramString == null) {
         break label63;
       }
@@ -46,7 +46,7 @@ public class dx
     String str;
     try
     {
-      paramString = auo.b(dw.decode(paramString, 0), null);
+      paramString = avm.b(dw.decode(paramString, 0), null);
       if (paramString == null) {
         break label67;
       }

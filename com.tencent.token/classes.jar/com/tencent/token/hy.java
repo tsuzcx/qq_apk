@@ -1,23 +1,61 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
+import java.util.Map;
 
-public final class hy
+abstract class hy<T>
+  extends hz<T>
 {
-  public static Menu a(Context paramContext, dq paramdq)
+  final Context a;
+  Map<ef, MenuItem> b;
+  Map<eg, SubMenu> c;
+  
+  hy(Context paramContext, T paramT)
   {
-    return new hz(paramContext, paramdq);
+    super(paramT);
+    this.a = paramContext;
   }
   
-  public static MenuItem a(Context paramContext, dr paramdr)
+  final MenuItem a(MenuItem paramMenuItem)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      return new ht(paramContext, paramdr);
+    if ((paramMenuItem instanceof ef))
+    {
+      ef localef = (ef)paramMenuItem;
+      if (this.b == null) {
+        this.b = new em();
+      }
+      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
+      paramMenuItem = localMenuItem;
+      if (localMenuItem == null)
+      {
+        paramMenuItem = im.a(this.a, localef);
+        this.b.put(localef, paramMenuItem);
+      }
+      return paramMenuItem;
     }
-    return new hs(paramContext, paramdr);
+    return paramMenuItem;
+  }
+  
+  final SubMenu a(SubMenu paramSubMenu)
+  {
+    if ((paramSubMenu instanceof eg))
+    {
+      eg localeg = (eg)paramSubMenu;
+      if (this.c == null) {
+        this.c = new em();
+      }
+      SubMenu localSubMenu = (SubMenu)this.c.get(localeg);
+      paramSubMenu = localSubMenu;
+      if (localSubMenu == null)
+      {
+        paramSubMenu = new ir(this.a, localeg);
+        this.c.put(localeg, paramSubMenu);
+      }
+      return paramSubMenu;
+    }
+    return paramSubMenu;
   }
 }
 

@@ -1,39 +1,12 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.telephony.TelephonyManager;
-
-@SuppressLint({"MissingPermission"})
-public class kp
-  extends TelephonyManager
+public final class kp
 {
-  private TelephonyManager a;
+  public int a;
   
-  public kp(Context paramContext, TelephonyManager paramTelephonyManager)
+  public kp(int paramInt)
   {
-    super(paramContext);
-    this.a = paramTelephonyManager;
-  }
-  
-  public String getDeviceId()
-  {
-    return this.a.getDeviceId();
-  }
-  
-  public String getDeviceId(int paramInt)
-  {
-    return this.a.getDeviceId(paramInt);
-  }
-  
-  public String getImei()
-  {
-    return this.a.getImei();
-  }
-  
-  public String getImei(int paramInt)
-  {
-    return this.a.getImei(paramInt);
+    this.a = paramInt;
   }
 }
 

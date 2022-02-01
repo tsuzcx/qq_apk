@@ -14,13 +14,17 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings.Secure;
+import android.os.Process;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +35,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Array;
+import java.lang.reflect.Method;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -49,7 +54,10 @@ import java.util.regex.Pattern;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 import javax.crypto.Cipher;
-import oicq.wlogin_sdk.request.t;
+import oicq.wlogin_sdk.listener.PrivacyListener;
+import oicq.wlogin_sdk.listener.QimeiListener;
+import oicq.wlogin_sdk.pb.device_report.DeviceReport;
+import oicq.wlogin_sdk.request.u;
 
 public class util
 {
@@ -59,6 +67,8 @@ public class util
   public static final int ASYN_GET_A1_WITH_A1 = 6;
   public static final int ASYN_GET_ST_WITHOUT_PWD = 5;
   public static final int ASYN_GET_ST_WITH_PWD = 0;
+  public static final int ASYN_QUICKLOG_BY_GATEWAY = 19;
+  public static final int ASYN_QUICKLOG_BY_WECHAT = 18;
   public static final int ASYN_QUICKLOG_WITH_PTSIG = 16;
   public static final int ASYN_QUICKLOG_WITH_QQSIG = 15;
   public static final int ASYN_QUICKLOG_WITH_QRSIG = 17;
@@ -71,17 +81,23 @@ public class util
   public static final int ASYN_SMSLOGIN_VERIFY = 13;
   public static final int ASYN_TRANSPORT = 9;
   public static final int ASYN_TRANSPORT_MSF = 10;
-  public static final long BUILD_TIME = 1502965326L;
+  public static final long BUILD_TIME = 1630563984L;
+  public static final int BUSINESS_TYPE_LOGIN_GATEWAY = 2;
+  public static final int BUSINESS_TYPE_LOGIN_SMS = 3;
+  public static final int BUSINESS_TYPE_NULL = 0;
   public static final int D = 2;
   private static SimpleDateFormat DAYFORMAT;
   public static final int E_A1_DECRYPT = -1014;
   public static final int E_A1_FORMAT = -1016;
+  public static final int E_A1_SEQ_ERROR = 20;
   public static final int E_ADVANCE_NOTICE = 257;
   public static final int E_APK_CHK_ERR = -1021;
   public static final int E_BUFFER_OVERFLOW = -1023;
   public static final int E_DECRYPT = -1002;
   public static final int E_ENCODING = -1013;
   public static final int E_ENCRYPTION_METHOD = -1024;
+  public static final int E_GATEWAY_LOGIN_FAILED = -2005;
+  public static final int E_GATEWAY_LOGIN_NUM_FAILED = -2004;
   public static final int E_INPUT = -1017;
   public static final int E_LOGIN_THROUGH_QQ = -2001;
   public static final int E_LOGIN_THROUGH_WEB = -2000;
@@ -93,6 +109,7 @@ public class util
   public static final int E_NO_RET = -1000;
   public static final int E_NO_TGTKEY = -1006;
   public static final int E_NO_UIN = -1003;
+  public static final int E_OTHER_EXCEPTION = -2006;
   public static final int E_PENDING = -1001;
   public static final int E_PK_LEN = -1009;
   public static final int E_PUSH_REG = -1011;
@@ -104,38 +121,56 @@ public class util
   public static final int E_SYSTEM = -1012;
   public static final int E_TLV_DECRYPT = -1015;
   public static final int E_TLV_VERIFY = -1005;
+  public static final int E_WXLOGIN_NO_REGISTER = 230;
+  public static final int E_WXLOGIN_NUM_FAILED = -2003;
+  public static final int E_WXLOGIN_TOKEN_FAILED = -2002;
   public static final String FILE_DIR = "wtlogin";
+  public static int GUID_DELAY_HOUR = 360;
   private static int HONEYCOMB = 11;
   public static final int I = 1;
+  public static final int KEY_TLV543_IN_TLV199 = 1676611;
   public static LogCallBack LCB;
   public static boolean LOGCAT_OUT = false;
   public static final String LOG_DIR = "tencent/wtlogin";
   public static int LOG_LEVEL = 1;
+  public static String LOG_TAG_EVENT_REPORT = "event_report";
+  public static String LOG_TAG_GATEWAY_LOGIN_NEW_DOV = "gateway_login_new_dov";
+  public static String LOG_TAG_POW = "pow";
+  public static String LOG_TAG_PRIVACY = "privacy";
+  public static String LOG_TAG_QIMEI = "qimei";
   public static int MAX_APPID = 65535;
-  public static final int MAX_CONTENT_SIZE = 20480;
+  public static final int MAX_CONTENT_SIZE = 40960;
   public static final int MAX_FILE_SIZE = 524288;
+  public static final int MAX_INIT_KEY_TIME = 3;
   public static int MAX_NAME_LEN = 128;
   @SuppressLint({"NewApi"})
   private static int MODE_MULTI_PROCESS = 0;
-  public static final String SDK_VERSION = "6.0.0.2202";
-  public static final int SSO_VERSION = 5;
-  public static final long SVN_VER = 2202L;
+  public static final int QQ_APP_ID = 16;
+  public static final int REG_CHECK_ERROR_FACE = 59;
+  public static final String SDK_VERSION = "6.0.0.2484";
+  public static final int SSO_VERSION = 18;
+  public static final long SVN_VER = 2484L;
   public static final int S_BABYLH_EXPIRED = 116;
   public static final int S_GET_IMAGE = 2;
   public static final int S_GET_SMS = 160;
+  public static final int S_GET_SMS_TOKEN = 239;
   public static final int S_LH_EXPIRED = 41;
   public static final int S_PWD_WRONG = 1;
   public static final int S_ROLL_BACK = 180;
   public static final int S_SEC_GUID = 204;
   public static final int S_SUCCESS = 0;
   public static final String TAG = "wlogin_sdk";
+  public static final int TLV542 = 1346;
   public static final int W = 0;
+  public static final String WT_LOGIN_URL_HOST = "txz.qq.com";
   static final char[] base64_encode_chars = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
   static final char base64_pad_url = '_';
   static final short[] base64_reverse_table_url = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 63, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
   private static boolean libwtecdh_loaded = false;
   public static boolean loadEncryptSo = true;
   public static String logContent = "";
+  public static PrivacyListener privacyListener;
+  public static QimeiListener qimeiListener;
   
   static
   {
@@ -229,7 +264,7 @@ public class util
         } else if (LOGCAT_OUT) {
           new StringBuilder("wlogin_sdk").append(getLineInfo(2));
         }
-        d.a(paramString1, paramString2);
+        b.a(u.u, paramString2, paramString1);
       }
       return;
     }
@@ -274,16 +309,17 @@ public class util
         else if (LOGCAT_OUT)
         {
           new StringBuilder("wlogin_sdk").append(getLineInfo(2));
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramString1);
-          localStringBuilder.append(":");
-          localStringBuilder.append(paramString2);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append(paramString2);
         }
+        Object localObject = u.u;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString1);
         localStringBuilder.append(":");
         localStringBuilder.append(paramString2);
-        d.a(localStringBuilder.toString(), paramString3);
+        b.a((Context)localObject, paramString3, localStringBuilder.toString());
       }
       return;
     }
@@ -292,11 +328,7 @@ public class util
   
   public static byte[] RSADecrypt(byte[] paramArrayOfByte, Key paramKey)
   {
-    if (paramArrayOfByte != null) {
-      if (paramKey == null) {
-        return null;
-      }
-    }
+    if ((paramArrayOfByte != null) && (paramKey != null)) {}
     for (;;)
     {
       int i;
@@ -308,8 +340,9 @@ public class util
         k = paramArrayOfByte.length;
         paramKey = new byte[k];
         if (k % 128 == 0) {
-          break label129;
+          break label175;
         }
+        LOGI("len not match block size", "");
         return null;
       }
       catch (Exception paramArrayOfByte)
@@ -317,6 +350,9 @@ public class util
         Cipher localCipher;
         int k;
         byte[] arrayOfByte;
+        paramKey = new StringBuilder("descypt exception:");
+        paramKey.append(paramArrayOfByte.toString());
+        LOGI(paramKey.toString(), "");
         return null;
       }
       if (i < k / 128)
@@ -333,8 +369,9 @@ public class util
         paramArrayOfByte = new byte[j];
         System.arraycopy(paramKey, 0, paramArrayOfByte, 0, j);
         return paramArrayOfByte;
+        LOGI("data or key is null", "");
         return null;
-        label129:
+        label175:
         i = 0;
         j = 0;
       }
@@ -398,57 +435,57 @@ public class util
     byte[] arrayOfByte1 = new byte[26];
     byte[] tmp12_11 = arrayOfByte1;
     tmp12_11[0] = 48;
-    byte[] tmp17_12 = tmp12_11;
-    tmp17_12[1] = -126;
-    byte[] tmp23_17 = tmp17_12;
-    tmp23_17[2] = 2;
-    byte[] tmp28_23 = tmp23_17;
-    tmp28_23[3] = 117;
-    byte[] tmp33_28 = tmp28_23;
-    tmp33_28[4] = 2;
-    byte[] tmp38_33 = tmp33_28;
-    tmp38_33[5] = 1;
-    byte[] tmp43_38 = tmp38_33;
-    tmp43_38[6] = 0;
-    byte[] tmp49_43 = tmp43_38;
-    tmp49_43[7] = 48;
-    byte[] tmp55_49 = tmp49_43;
-    tmp55_49[8] = 13;
-    byte[] tmp61_55 = tmp55_49;
-    tmp61_55[9] = 6;
-    byte[] tmp67_61 = tmp61_55;
-    tmp67_61[10] = 9;
-    byte[] tmp73_67 = tmp67_61;
-    tmp73_67[11] = 42;
-    byte[] tmp80_73 = tmp73_67;
-    tmp80_73[12] = -122;
-    byte[] tmp87_80 = tmp80_73;
-    tmp87_80[13] = 72;
-    byte[] tmp93_87 = tmp87_80;
-    tmp93_87[14] = -122;
-    byte[] tmp100_93 = tmp93_87;
-    tmp100_93[15] = -9;
-    byte[] tmp107_100 = tmp100_93;
-    tmp107_100[16] = 13;
-    byte[] tmp113_107 = tmp107_100;
-    tmp113_107[17] = 1;
-    byte[] tmp119_113 = tmp113_107;
-    tmp119_113[18] = 1;
-    byte[] tmp125_119 = tmp119_113;
-    tmp125_119[19] = 1;
-    byte[] tmp131_125 = tmp125_119;
-    tmp131_125[20] = 5;
-    byte[] tmp137_131 = tmp131_125;
-    tmp137_131[21] = 0;
-    byte[] tmp143_137 = tmp137_131;
-    tmp143_137[22] = 4;
-    byte[] tmp149_143 = tmp143_137;
-    tmp149_143[23] = -126;
-    byte[] tmp156_149 = tmp149_143;
-    tmp156_149[24] = 2;
-    byte[] tmp162_156 = tmp156_149;
-    tmp162_156[25] = 95;
-    tmp162_156;
+    byte[] tmp18_12 = tmp12_11;
+    tmp18_12[1] = -126;
+    byte[] tmp24_18 = tmp18_12;
+    tmp24_18[2] = 2;
+    byte[] tmp29_24 = tmp24_18;
+    tmp29_24[3] = 117;
+    byte[] tmp35_29 = tmp29_24;
+    tmp35_29[4] = 2;
+    byte[] tmp40_35 = tmp35_29;
+    tmp40_35[5] = 1;
+    byte[] tmp45_40 = tmp40_35;
+    tmp45_40[6] = 0;
+    byte[] tmp51_45 = tmp45_40;
+    tmp51_45[7] = 48;
+    byte[] tmp58_51 = tmp51_45;
+    tmp58_51[8] = 13;
+    byte[] tmp64_58 = tmp58_51;
+    tmp64_58[9] = 6;
+    byte[] tmp70_64 = tmp64_58;
+    tmp70_64[10] = 9;
+    byte[] tmp76_70 = tmp70_64;
+    tmp76_70[11] = 42;
+    byte[] tmp83_76 = tmp76_70;
+    tmp83_76[12] = -122;
+    byte[] tmp90_83 = tmp83_76;
+    tmp90_83[13] = 72;
+    byte[] tmp96_90 = tmp90_83;
+    tmp96_90[14] = -122;
+    byte[] tmp103_96 = tmp96_90;
+    tmp103_96[15] = -9;
+    byte[] tmp110_103 = tmp103_96;
+    tmp110_103[16] = 13;
+    byte[] tmp116_110 = tmp110_103;
+    tmp116_110[17] = 1;
+    byte[] tmp122_116 = tmp116_110;
+    tmp122_116[18] = 1;
+    byte[] tmp128_122 = tmp122_116;
+    tmp128_122[19] = 1;
+    byte[] tmp134_128 = tmp128_122;
+    tmp134_128[20] = 5;
+    byte[] tmp140_134 = tmp134_128;
+    tmp140_134[21] = 0;
+    byte[] tmp146_140 = tmp140_134;
+    tmp146_140[22] = 4;
+    byte[] tmp152_146 = tmp146_140;
+    tmp152_146[23] = -126;
+    byte[] tmp159_152 = tmp152_146;
+    tmp159_152[24] = 2;
+    byte[] tmp165_159 = tmp159_152;
+    tmp165_159[25] = 95;
+    tmp165_159;
     int i = paramArrayOfByte.length - 607;
     arrayOfByte1[3] = ((byte)(arrayOfByte1[3] + i));
     arrayOfByte1[25] = ((byte)(arrayOfByte1[25] + i));
@@ -860,7 +897,7 @@ public class util
       paramString = new File(paramString);
       if (paramString.isDirectory())
       {
-        paramString = paramString.listFiles(new e());
+        paramString = paramString.listFiles(new h());
         if (paramString != null)
         {
           int j = paramString.length;
@@ -887,14 +924,14 @@ public class util
     }
     try
     {
-      if ((t.at != null) && (t.at.length() != 0))
+      if ((u.az != null) && (u.az.length() != 0))
       {
-        deleteExpireFile(t.at, 691200);
+        deleteExpireFile(u.az, 691200);
         return;
       }
       if (ExistSDCard())
       {
-        localObject = Environment.getExternalStorageDirectory();
+        localObject = paramContext.getExternalCacheDir();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(((File)localObject).getAbsolutePath());
         localStringBuilder.append("/tencent/wtlogin/");
@@ -938,65 +975,37 @@ public class util
   
   public static byte[] generateGuid(Context paramContext)
   {
-    if ((t.ai != null) && (t.ai.length != 0))
+    if ((u.al != null) && (u.al.length != 0))
     {
       LOGI("generate guid from customer guid");
-      return t.ai;
+      return u.al;
     }
     LOGI("generate guid temporarily");
-    try
-    {
-      localObject1 = (TelephonyManager)paramContext.getSystemService("phone");
-      localObject3 = null;
-      if (localObject1 == null) {
-        break label210;
-      }
-      localObject2 = ((TelephonyManager)localObject1).getDeviceId();
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        Object localObject3;
-        continue;
-        Object localObject2 = null;
-      }
-    }
-    LOGI("imei ".concat(String.valueOf(localObject2)), "");
-    paramContext = (WifiManager)paramContext.getSystemService("wifi");
-    localObject1 = localObject3;
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getConnectionInfo();
-      localObject1 = localObject3;
-      if (paramContext != null) {
-        localObject1 = paramContext.getMacAddress();
-      }
-    }
-    LOGI("mac ".concat(String.valueOf(localObject1)), "");
-    paramContext = "";
-    if (localObject2 != null)
-    {
-      paramContext = new StringBuilder();
-      paramContext.append("");
-      paramContext.append((String)localObject2);
-      paramContext = paramContext.toString();
-    }
-    localObject2 = paramContext;
+    Object localObject1 = privacyListener;
+    Object localObject2 = null;
     if (localObject1 != null)
     {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramContext);
-      ((StringBuilder)localObject2).append((String)localObject1);
-      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject2 = ((PrivacyListener)localObject1).getMac(paramContext);
+      localObject1 = privacyListener.getAndroidID(paramContext);
     }
-    if (((String)localObject2).length() <= 0) {
-      return new byte[0];
+    else
+    {
+      localObject1 = null;
     }
-    paramContext = MD5.toMD5Byte(((String)localObject2).getBytes());
-    return paramContext;
-    return new byte[0];
+    Object localObject3 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject3 = "02:00:00:00:00:00";
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = getRandomAndroidId(paramContext);
+    }
+    LOGI("android_id ".concat(String.valueOf(localObject2)), "");
+    LOGI("mac ".concat(String.valueOf(localObject3)), "");
+    paramContext = new StringBuilder();
+    paramContext.append((String)localObject2);
+    paramContext.append((String)localObject3);
+    return MD5.toMD5Byte(paramContext.toString().getBytes());
   }
   
   public static KeyPair generateRSAKeyPair()
@@ -1037,6 +1046,154 @@ public class util
       break label42;
     }
     return new byte[0];
+  }
+  
+  public static String getBaseband()
+  {
+    try
+    {
+      Object localObject1 = Class.forName("android.os.SystemProperties");
+      Object localObject2 = ((Class)localObject1).newInstance();
+      localObject1 = (String)((Class)localObject1).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject2, new Object[] { "gsm.version.baseband", "no message" });
+      return localObject1;
+    }
+    catch (Exception localException) {}
+    return "";
+  }
+  
+  /* Error */
+  public static String getBootId()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_3
+    //   4: aconst_null
+    //   5: astore_0
+    //   6: new 819	java/io/FileReader
+    //   9: dup
+    //   10: ldc_w 821
+    //   13: invokespecial 822	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   16: astore_1
+    //   17: new 824	java/io/BufferedReader
+    //   20: dup
+    //   21: aload_1
+    //   22: invokespecial 827	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: invokevirtual 830	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   28: astore_0
+    //   29: aload_0
+    //   30: ifnull +16 -> 46
+    //   33: aload_1
+    //   34: invokevirtual 831	java/io/FileReader:close	()V
+    //   37: aload_0
+    //   38: areturn
+    //   39: astore_1
+    //   40: aload_1
+    //   41: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   44: aload_0
+    //   45: areturn
+    //   46: aload_1
+    //   47: invokevirtual 831	java/io/FileReader:close	()V
+    //   50: goto +68 -> 118
+    //   53: astore_0
+    //   54: goto +67 -> 121
+    //   57: goto +14 -> 71
+    //   60: goto +32 -> 92
+    //   63: astore_2
+    //   64: aload_0
+    //   65: astore_1
+    //   66: aload_2
+    //   67: astore_0
+    //   68: goto +53 -> 121
+    //   71: aload_1
+    //   72: astore_0
+    //   73: ldc_w 836
+    //   76: ldc 223
+    //   78: invokestatic 838	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: aload_1
+    //   82: ifnull +36 -> 118
+    //   85: aload_1
+    //   86: invokevirtual 831	java/io/FileReader:close	()V
+    //   89: goto +29 -> 118
+    //   92: aload_1
+    //   93: astore_0
+    //   94: ldc_w 840
+    //   97: ldc 223
+    //   99: invokestatic 838	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;Ljava/lang/String;)V
+    //   102: aload_1
+    //   103: ifnull +15 -> 118
+    //   106: aload_1
+    //   107: invokevirtual 831	java/io/FileReader:close	()V
+    //   110: goto +8 -> 118
+    //   113: astore_0
+    //   114: aload_0
+    //   115: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   118: ldc 223
+    //   120: areturn
+    //   121: aload_1
+    //   122: ifnull +15 -> 137
+    //   125: aload_1
+    //   126: invokevirtual 831	java/io/FileReader:close	()V
+    //   129: goto +8 -> 137
+    //   132: astore_1
+    //   133: aload_1
+    //   134: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   137: aload_0
+    //   138: athrow
+    //   139: astore_0
+    //   140: aload_3
+    //   141: astore_1
+    //   142: goto -50 -> 92
+    //   145: astore_0
+    //   146: aload_2
+    //   147: astore_1
+    //   148: goto -77 -> 71
+    //   151: astore_0
+    //   152: goto -92 -> 60
+    //   155: astore_0
+    //   156: goto -99 -> 57
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   5	40	0	str	String
+    //   53	12	0	localObject1	Object
+    //   67	27	0	localObject2	Object
+    //   113	25	0	localIOException1	IOException
+    //   139	1	0	localFileNotFoundException1	java.io.FileNotFoundException
+    //   145	1	0	localIOException2	IOException
+    //   151	1	0	localFileNotFoundException2	java.io.FileNotFoundException
+    //   155	1	0	localIOException3	IOException
+    //   16	18	1	localFileReader	java.io.FileReader
+    //   39	8	1	localIOException4	IOException
+    //   65	61	1	localObject3	Object
+    //   132	2	1	localIOException5	IOException
+    //   141	7	1	localObject4	Object
+    //   1	1	2	localObject5	Object
+    //   63	84	2	localObject6	Object
+    //   3	138	3	localObject7	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	37	39	java/io/IOException
+    //   17	29	53	finally
+    //   6	17	63	finally
+    //   73	81	63	finally
+    //   94	102	63	finally
+    //   46	50	113	java/io/IOException
+    //   85	89	113	java/io/IOException
+    //   106	110	113	java/io/IOException
+    //   125	129	132	java/io/IOException
+    //   6	17	139	java/io/FileNotFoundException
+    //   6	17	145	java/io/IOException
+    //   17	29	151	java/io/FileNotFoundException
+    //   17	29	155	java/io/IOException
+  }
+  
+  public static int getByteLength(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return 0;
+    }
+    return paramArrayOfByte.length;
   }
   
   public static String getChannelId(Context paramContext, String paramString)
@@ -1175,6 +1332,14 @@ public class util
     return null;
   }
   
+  public static String getCurrentPid()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
+  }
+  
   public static String getDate()
   {
     try
@@ -1240,19 +1405,19 @@ public class util
   public static byte[] getGuidFromFile(Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 648	oicq/wlogin_sdk/request/t:ai	[B
+    //   0: getstatic 713	oicq/wlogin_sdk/request/u:al	[B
     //   3: ifnull +22 -> 25
-    //   6: getstatic 648	oicq/wlogin_sdk/request/t:ai	[B
+    //   6: getstatic 713	oicq/wlogin_sdk/request/u:al	[B
     //   9: arraylength
     //   10: ifeq +15 -> 25
-    //   13: ldc_w 825
-    //   16: ldc 169
-    //   18: invokestatic 667	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: getstatic 648	oicq/wlogin_sdk/request/t:ai	[B
+    //   13: ldc_w 950
+    //   16: ldc 223
+    //   18: invokestatic 423	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: getstatic 713	oicq/wlogin_sdk/request/u:al	[B
     //   24: areturn
-    //   25: ldc_w 827
-    //   28: ldc 169
-    //   30: invokestatic 667	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: ldc_w 952
+    //   28: ldc 223
+    //   30: invokestatic 423	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aconst_null
     //   34: astore 7
     //   36: aconst_null
@@ -1266,48 +1431,48 @@ public class util
     //   47: astore_3
     //   48: aload_2
     //   49: astore 5
-    //   51: new 318	java/lang/StringBuilder
+    //   51: new 372	java/lang/StringBuilder
     //   54: dup
-    //   55: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   55: invokespecial 386	java/lang/StringBuilder:<init>	()V
     //   58: astore 4
     //   60: aload_2
     //   61: astore 5
     //   63: aload 4
     //   65: aload_0
-    //   66: invokevirtual 632	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   69: invokevirtual 622	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   72: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 699	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   69: invokevirtual 691	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   72: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: pop
     //   76: aload_2
     //   77: astore 5
     //   79: aload 4
-    //   81: ldc_w 829
-    //   84: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: ldc_w 954
+    //   84: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: pop
     //   88: aload_2
     //   89: astore 5
-    //   91: new 582	java/io/File
+    //   91: new 651	java/io/File
     //   94: dup
     //   95: aload 4
-    //   97: invokevirtual 345	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
+    //   97: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokespecial 652	java/io/File:<init>	(Ljava/lang/String;)V
     //   103: astore 4
     //   105: aload_2
     //   106: astore 5
     //   108: aload 4
-    //   110: invokevirtual 815	java/io/File:exists	()Z
+    //   110: invokevirtual 940	java/io/File:exists	()Z
     //   113: ifeq +77 -> 190
     //   116: aload_2
     //   117: astore 5
-    //   119: new 747	java/io/FileInputStream
+    //   119: new 866	java/io/FileInputStream
     //   122: dup
     //   123: aload 4
-    //   125: invokespecial 832	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   125: invokespecial 957	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   128: astore 4
     //   130: aload_3
     //   131: astore_2
     //   132: aload 4
-    //   134: invokevirtual 751	java/io/FileInputStream:available	()I
+    //   134: invokevirtual 870	java/io/FileInputStream:available	()I
     //   137: istore_1
     //   138: aload_3
     //   139: astore_2
@@ -1325,7 +1490,7 @@ public class util
     //   158: astore_2
     //   159: aload 4
     //   161: aload_3
-    //   162: invokevirtual 758	java/io/FileInputStream:read	([B)I
+    //   162: invokevirtual 877	java/io/FileInputStream:read	([B)I
     //   165: pop
     //   166: aload_3
     //   167: astore_2
@@ -1351,14 +1516,14 @@ public class util
     //   202: aload_2
     //   203: astore_3
     //   204: aload 5
-    //   206: invokevirtual 759	java/io/FileInputStream:close	()V
+    //   206: invokevirtual 878	java/io/FileInputStream:close	()V
     //   209: aload_2
     //   210: astore_3
     //   211: goto +66 -> 277
     //   214: astore_2
     //   215: aload_2
-    //   216: ldc 169
-    //   218: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   216: ldc 223
+    //   218: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   221: goto +56 -> 277
     //   224: astore_0
     //   225: goto +86 -> 311
@@ -1369,15 +1534,15 @@ public class util
     //   234: astore 4
     //   236: aload 4
     //   238: astore 5
-    //   240: getstatic 835	oicq/wlogin_sdk/request/t:Y	I
-    //   243: ldc_w 836
+    //   240: getstatic 960	oicq/wlogin_sdk/request/u:aa	I
+    //   243: ldc_w 961
     //   246: ior
-    //   247: putstatic 835	oicq/wlogin_sdk/request/t:Y	I
+    //   247: putstatic 960	oicq/wlogin_sdk/request/u:aa	I
     //   250: aload 4
     //   252: astore 5
     //   254: aload 6
-    //   256: ldc 169
-    //   258: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   256: ldc 223
+    //   258: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   261: aload_2
     //   262: astore_3
     //   263: aload 4
@@ -1385,7 +1550,7 @@ public class util
     //   268: aload_2
     //   269: astore_3
     //   270: aload 4
-    //   272: invokevirtual 759	java/io/FileInputStream:close	()V
+    //   272: invokevirtual 878	java/io/FileInputStream:close	()V
     //   275: aload_2
     //   276: astore_3
     //   277: aload_3
@@ -1394,7 +1559,7 @@ public class util
     //   280: arraylength
     //   281: ifgt +28 -> 309
     //   284: aload_0
-    //   285: invokestatic 839	oicq/wlogin_sdk/tools/util:get_saved_imei	(Landroid/content/Context;)[B
+    //   285: invokestatic 964	oicq/wlogin_sdk/tools/util:get_saved_android_id	(Landroid/content/Context;)[B
     //   288: astore_3
     //   289: aload_3
     //   290: astore_2
@@ -1407,7 +1572,7 @@ public class util
     //   299: ifle +10 -> 309
     //   302: aload_0
     //   303: aload_3
-    //   304: invokestatic 843	oicq/wlogin_sdk/tools/util:saveGuidToFile	(Landroid/content/Context;[B)V
+    //   304: invokestatic 968	oicq/wlogin_sdk/tools/util:saveGuidToFile	(Landroid/content/Context;[B)V
     //   307: aload_3
     //   308: astore_2
     //   309: aload_2
@@ -1415,12 +1580,12 @@ public class util
     //   311: aload 5
     //   313: ifnull +18 -> 331
     //   316: aload 5
-    //   318: invokevirtual 759	java/io/FileInputStream:close	()V
+    //   318: invokevirtual 878	java/io/FileInputStream:close	()V
     //   321: goto +10 -> 331
     //   324: astore_2
     //   325: aload_2
-    //   326: ldc 169
-    //   328: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   326: ldc 223
+    //   328: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   331: aload_0
     //   332: athrow
     // Local variable table:
@@ -1466,6 +1631,57 @@ public class util
     //   316	321	324	java/io/IOException
   }
   
+  public static byte[] getIccid(Context paramContext)
+  {
+    try
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getSimSerialNumber();
+        if (paramContext != null)
+        {
+          paramContext = paramContext.getBytes();
+          return paramContext;
+        }
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      label31:
+      break label31;
+    }
+    return new byte[0];
+  }
+  
+  public static int getInitKeyTime(Context paramContext)
+  {
+    if (paramContext != null) {}
+    for (;;)
+    {
+      try
+      {
+        i = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", MODE_MULTI_PROCESS).getInt("InitKeyTime", 0);
+        LOGI("getInitKeyTime ".concat(String.valueOf(i)), "");
+        return i;
+      }
+      catch (Throwable paramContext)
+      {
+        printThrowable(paramContext, "getReqTimeFromSp");
+        return 0;
+      }
+      int i = 0;
+    }
+  }
+  
+  public static String getInnerVersion()
+  {
+    if (Build.DISPLAY.contains(Build.VERSION.INCREMENTAL)) {
+      return Build.DISPLAY;
+    }
+    return Build.VERSION.INCREMENTAL;
+  }
+  
   public static String getLanguage(Context paramContext)
   {
     paramContext = paramContext.getResources().getConfiguration().locale.getCountry();
@@ -1504,31 +1720,30 @@ public class util
   
   public static String getLogDir(Context paramContext)
   {
-    if ((t.at != null) && (t.at.length() != 0)) {
-      return t.at;
+    if ((u.az != null) && (u.az.length() != 0)) {
+      return u.az;
     }
     try
     {
       if (ExistSDCard())
       {
-        localObject = Environment.getExternalStorageDirectory();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((File)localObject).getAbsolutePath());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramContext.getExternalCacheDir().getAbsolutePath());
         localStringBuilder.append("/tencent/wtlogin/");
         localStringBuilder.append(paramContext.getPackageName());
         return localStringBuilder.toString();
       }
       paramContext = paramContext.getFilesDir().getPath();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramContext);
-      ((StringBuilder)localObject).append("/tencent/wtlogin");
-      paramContext = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("/tencent/wtlogin");
+      paramContext = localStringBuilder.toString();
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      label105:
-      break label105;
+      label104:
+      break label104;
     }
     return "";
   }
@@ -1602,16 +1817,151 @@ public class util
     return new byte[0];
   }
   
+  /* Error */
+  public static String getProcVersion()
+  {
+    // Byte code:
+    //   0: new 819	java/io/FileReader
+    //   3: dup
+    //   4: ldc_w 1094
+    //   7: invokespecial 822	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   10: astore_1
+    //   11: aload_1
+    //   12: astore_0
+    //   13: new 824	java/io/BufferedReader
+    //   16: dup
+    //   17: aload_1
+    //   18: invokespecial 827	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   21: invokevirtual 830	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   24: astore_2
+    //   25: aload_2
+    //   26: ifnull +16 -> 42
+    //   29: aload_1
+    //   30: invokevirtual 831	java/io/FileReader:close	()V
+    //   33: aload_2
+    //   34: areturn
+    //   35: astore_0
+    //   36: aload_0
+    //   37: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   40: aload_2
+    //   41: areturn
+    //   42: aload_1
+    //   43: invokevirtual 831	java/io/FileReader:close	()V
+    //   46: goto +67 -> 113
+    //   49: astore_0
+    //   50: aload_0
+    //   51: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   54: goto +59 -> 113
+    //   57: astore_2
+    //   58: goto +12 -> 70
+    //   61: astore_0
+    //   62: aconst_null
+    //   63: astore_1
+    //   64: goto +57 -> 121
+    //   67: astore_2
+    //   68: aconst_null
+    //   69: astore_1
+    //   70: aload_1
+    //   71: astore_0
+    //   72: new 372	java/lang/StringBuilder
+    //   75: dup
+    //   76: ldc_w 1096
+    //   79: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   82: astore_3
+    //   83: aload_1
+    //   84: astore_0
+    //   85: aload_3
+    //   86: aload_2
+    //   87: invokevirtual 436	java/lang/Exception:toString	()Ljava/lang/String;
+    //   90: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload_1
+    //   95: astore_0
+    //   96: aload_3
+    //   97: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: ldc 223
+    //   102: invokestatic 838	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: aload_1
+    //   106: ifnull +7 -> 113
+    //   109: aload_1
+    //   110: invokevirtual 831	java/io/FileReader:close	()V
+    //   113: ldc 223
+    //   115: areturn
+    //   116: astore_2
+    //   117: aload_0
+    //   118: astore_1
+    //   119: aload_2
+    //   120: astore_0
+    //   121: aload_1
+    //   122: ifnull +15 -> 137
+    //   125: aload_1
+    //   126: invokevirtual 831	java/io/FileReader:close	()V
+    //   129: goto +8 -> 137
+    //   132: astore_1
+    //   133: aload_1
+    //   134: invokevirtual 834	java/io/IOException:printStackTrace	()V
+    //   137: aload_0
+    //   138: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	1	0	localObject1	Object
+    //   35	2	0	localIOException1	IOException
+    //   49	2	0	localIOException2	IOException
+    //   61	1	0	localObject2	Object
+    //   71	67	0	localObject3	Object
+    //   10	116	1	localObject4	Object
+    //   132	2	1	localIOException3	IOException
+    //   24	17	2	str	String
+    //   57	1	2	localException1	Exception
+    //   67	20	2	localException2	Exception
+    //   116	4	2	localObject5	Object
+    //   82	15	3	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   29	33	35	java/io/IOException
+    //   42	46	49	java/io/IOException
+    //   109	113	49	java/io/IOException
+    //   13	25	57	java/lang/Exception
+    //   0	11	61	finally
+    //   0	11	67	java/lang/Exception
+    //   13	25	116	finally
+    //   72	83	116	finally
+    //   85	94	116	finally
+    //   96	105	116	finally
+    //   125	129	132	java/io/IOException
+  }
+  
+  public static String getRandomAndroidId(Context paramContext)
+  {
+    paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 4);
+    Object localObject = paramContext.getString("random_AndroidId", null);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return localObject;
+    }
+    localObject = new StringBuffer();
+    int i = 0;
+    while (i < 15)
+    {
+      ((StringBuffer)localObject).append(new Random().nextInt(10));
+      i += 1;
+    }
+    localObject = ((StringBuffer)localObject).toString();
+    paramContext = paramContext.edit();
+    paramContext.putString("random_AndroidId", (String)localObject);
+    paramContext.commit();
+    return localObject;
+  }
+  
   public static byte[] getRequestInitTime()
   {
     byte[] arrayOfByte = new byte[4];
-    int64_to_buf32(arrayOfByte, 0, System.currentTimeMillis() / 1000L + t.ac);
+    int64_to_buf32(arrayOfByte, 0, System.currentTimeMillis() / 1000L + u.af);
     return arrayOfByte;
   }
   
-  public static String getSdkVersion()
+  public static String getSvnVersion()
   {
-    return "[5]";
+    return "[2484]";
   }
   
   public static String getThreadId()
@@ -1620,6 +1970,16 @@ public class util
     localStringBuilder.append(Thread.currentThread().getId());
     localStringBuilder.append("]");
     return localStringBuilder.toString();
+  }
+  
+  public static String getThrowableInfo(Throwable paramThrowable)
+  {
+    StringWriter localStringWriter = new StringWriter();
+    PrintWriter localPrintWriter = new PrintWriter(localStringWriter, true);
+    paramThrowable.printStackTrace(localPrintWriter);
+    localPrintWriter.flush();
+    localStringWriter.flush();
+    return localStringWriter.toString();
   }
   
   public static String getUser(String paramString)
@@ -1636,43 +1996,139 @@ public class util
   
   public static byte[] get_IMSI(Context paramContext)
   {
-    try
+    PrivacyListener localPrivacyListener = privacyListener;
+    if (localPrivacyListener != null)
     {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getSubscriberId();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getBytes();
-          return paramContext;
-        }
+      paramContext = localPrivacyListener.getImsi(paramContext);
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext.getBytes();
       }
-    }
-    catch (Throwable paramContext)
-    {
-      label31:
-      break label31;
     }
     return new byte[0];
   }
   
-  @SuppressLint({"NewApi"})
-  public static byte[] get_android_id(Context paramContext)
+  public static byte[] get_android_dev_info(Context paramContext)
   {
+    Object localObject2 = new byte[0];
+    String str1 = null;
+    Object localObject1 = localObject2;
     try
     {
-      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
-      if (paramContext != null)
+      if (privacyListener != null)
       {
-        paramContext = paramContext.getBytes();
-        return paramContext;
+        localObject1 = localObject2;
+        str1 = privacyListener.getAndroidID(paramContext);
       }
+      localObject1 = localObject2;
+      String str2 = Build.BOOTLOADER;
+      localObject1 = localObject2;
+      String str3 = getProcVersion();
+      localObject1 = localObject2;
+      String str4 = Build.VERSION.CODENAME;
+      localObject1 = localObject2;
+      String str5 = Build.VERSION.INCREMENTAL;
+      localObject1 = localObject2;
+      String str6 = Build.FINGERPRINT;
+      localObject1 = localObject2;
+      String str7 = getBootId();
+      localObject1 = localObject2;
+      String str8 = getBaseband();
+      localObject1 = localObject2;
+      String str9 = getInnerVersion();
+      localObject1 = localObject2;
+      paramContext = new device_report.DeviceReport();
+      localObject1 = localObject2;
+      paramContext.bytes_bootloader.set(ByteStringMicro.copyFromUtf8(str2));
+      localObject1 = localObject2;
+      paramContext.bytes_version.set(ByteStringMicro.copyFromUtf8(str3));
+      localObject1 = localObject2;
+      paramContext.bytes_codename.set(ByteStringMicro.copyFromUtf8(str4));
+      localObject1 = localObject2;
+      paramContext.bytes_incremental.set(ByteStringMicro.copyFromUtf8(str5));
+      localObject1 = localObject2;
+      paramContext.bytes_fingerprint.set(ByteStringMicro.copyFromUtf8(str6));
+      localObject1 = localObject2;
+      paramContext.bytes_boot_id.set(ByteStringMicro.copyFromUtf8(str7));
+      localObject1 = localObject2;
+      paramContext.bytes_android_id.set(ByteStringMicro.copyFromUtf8(str1));
+      localObject1 = localObject2;
+      paramContext.bytes_baseband.set(ByteStringMicro.copyFromUtf8(str8));
+      localObject1 = localObject2;
+      paramContext.bytes_inner_ver.set(ByteStringMicro.copyFromUtf8(str9));
+      localObject1 = localObject2;
+      paramContext = paramContext.toByteArray();
+      localObject1 = paramContext;
+      localObject2 = new StringBuilder(300);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str2);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str3);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str4);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str5);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str6);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str7);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str1);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str8);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append(str9);
+      localObject1 = paramContext;
+      ((StringBuilder)localObject2).append("\n");
+      localObject1 = paramContext;
+      LOGI(((StringBuilder)localObject2).toString(), "");
+      localObject1 = paramContext;
     }
     catch (Throwable paramContext)
     {
-      label22:
-      break label22;
+      label420:
+      break label420;
+    }
+    if (localObject1 != null)
+    {
+      paramContext = (Context)localObject1;
+      if (localObject1.length > 0) {}
+    }
+    else
+    {
+      paramContext = new byte[0];
+    }
+    return paramContext;
+  }
+  
+  public static byte[] get_android_id(Context paramContext)
+  {
+    Object localObject = privacyListener;
+    if (localObject != null)
+    {
+      localObject = ((PrivacyListener)localObject).getAndroidID(paramContext);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return ((String)localObject).getBytes();
+      }
+    }
+    paramContext = getRandomAndroidId(paramContext);
+    if (!TextUtils.isEmpty(paramContext)) {
+      return paramContext.getBytes();
     }
     return new byte[0];
   }
@@ -1734,27 +2190,13 @@ public class util
   
   public static byte[] get_bssid_addr(Context paramContext)
   {
-    try
+    PrivacyListener localPrivacyListener = privacyListener;
+    if (localPrivacyListener != null)
     {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getBSSID();
-          if (paramContext != null)
-          {
-            paramContext = paramContext.toLowerCase().getBytes();
-            return paramContext;
-          }
-        }
+      paramContext = localPrivacyListener.getBssid(paramContext);
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext.toLowerCase().getBytes();
       }
-    }
-    catch (Throwable paramContext)
-    {
-      label43:
-      break label43;
     }
     return new byte[0];
   }
@@ -1773,6 +2215,32 @@ public class util
     return 0;
   }
   
+  public static String get_cost_time(Context paramContext)
+  {
+    String str = "";
+    if (paramContext != null) {}
+    try
+    {
+      str = paramContext.getSharedPreferences("WLOGIN_COST", 4).getString("costTime", "");
+      return str;
+    }
+    catch (Throwable paramContext) {}
+    return "";
+  }
+  
+  public static String get_cost_trace(Context paramContext)
+  {
+    String str = "";
+    if (paramContext != null) {}
+    try
+    {
+      str = paramContext.getSharedPreferences("WLOGIN_COST", 4).getString("costTrace", "");
+      return str;
+    }
+    catch (Throwable paramContext) {}
+    return "";
+  }
+  
   /* Error */
   public static byte[] get_cp_pubkey(Context paramContext, long paramLong1, long paramLong2)
   {
@@ -1783,24 +2251,24 @@ public class util
     //   5: newarray byte
     //   7: areturn
     //   8: aload_0
-    //   9: invokevirtual 953	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   9: invokevirtual 1284	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   12: astore 6
-    //   14: new 318	java/lang/StringBuilder
+    //   14: new 372	java/lang/StringBuilder
     //   17: dup
-    //   18: ldc_w 997
-    //   21: invokespecial 320	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   18: ldc_w 1286
+    //   21: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   24: astore_0
     //   25: aload_0
-    //   26: ldc_w 999
-    //   29: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc_w 1288
+    //   29: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload_0
-    //   34: ldc_w 1001
-    //   37: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc_w 1290
+    //   37: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload_0
-    //   42: invokevirtual 345	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 1007	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   42: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 1296	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   48: astore 7
     //   50: aconst_null
     //   51: astore_0
@@ -1809,42 +2277,42 @@ public class util
     //   55: aload 6
     //   57: aload 7
     //   59: iconst_5
-    //   60: anewarray 297	java/lang/String
+    //   60: anewarray 351	java/lang/String
     //   63: dup
     //   64: iconst_0
-    //   65: ldc_w 1009
+    //   65: ldc_w 1298
     //   68: aastore
     //   69: dup
     //   70: iconst_1
-    //   71: ldc_w 1011
+    //   71: ldc_w 1300
     //   74: aastore
     //   75: dup
     //   76: iconst_2
-    //   77: ldc_w 1013
+    //   77: ldc_w 1302
     //   80: aastore
     //   81: dup
     //   82: iconst_3
-    //   83: ldc_w 1015
+    //   83: ldc_w 1304
     //   86: aastore
     //   87: dup
     //   88: iconst_4
-    //   89: ldc_w 1017
+    //   89: ldc_w 1306
     //   92: aastore
-    //   93: ldc_w 1019
+    //   93: ldc_w 1308
     //   96: iconst_2
-    //   97: anewarray 297	java/lang/String
+    //   97: anewarray 351	java/lang/String
     //   100: dup
     //   101: iconst_0
     //   102: lload_1
-    //   103: invokestatic 1022	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   103: invokestatic 1311	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   106: aastore
     //   107: dup
     //   108: iconst_1
     //   109: lload_3
-    //   110: invokestatic 1022	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   110: invokestatic 1311	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   113: aastore
     //   114: aconst_null
-    //   115: invokevirtual 1028	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   115: invokevirtual 1317	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   118: astore 6
     //   120: aload 6
     //   122: ifnull +121 -> 243
@@ -1853,7 +2321,7 @@ public class util
     //   129: aload 6
     //   131: astore_0
     //   132: aload 6
-    //   134: invokeinterface 1033 1 0
+    //   134: invokeinterface 1322 1 0
     //   139: ifeq +104 -> 243
     //   142: aload 6
     //   144: astore 5
@@ -1861,9 +2329,9 @@ public class util
     //   148: astore_0
     //   149: aload 6
     //   151: aload 6
-    //   153: ldc_w 1015
-    //   156: invokeinterface 1036 2 0
-    //   161: invokeinterface 1038 2 0
+    //   153: ldc_w 1304
+    //   156: invokeinterface 1325 2 0
+    //   161: invokeinterface 1327 2 0
     //   166: astore 7
     //   168: aload 6
     //   170: astore 5
@@ -1871,30 +2339,30 @@ public class util
     //   174: astore_0
     //   175: aload 6
     //   177: aload 6
-    //   179: ldc_w 1017
-    //   182: invokeinterface 1036 2 0
-    //   187: invokeinterface 1038 2 0
+    //   179: ldc_w 1306
+    //   182: invokeinterface 1325 2 0
+    //   187: invokeinterface 1327 2 0
     //   192: astore 8
     //   194: aload 6
     //   196: astore 5
     //   198: aload 6
     //   200: astore_0
     //   201: aload 7
-    //   203: invokestatic 1041	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   203: invokestatic 1330	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
     //   206: aload 8
-    //   208: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   208: invokevirtual 355	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   211: ifeq +32 -> 243
     //   214: aload 6
     //   216: astore 5
     //   218: aload 6
     //   220: astore_0
     //   221: aload 7
-    //   223: invokestatic 1045	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
+    //   223: invokestatic 1334	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
     //   226: astore 7
     //   228: aload 6
     //   230: ifnull +10 -> 240
     //   233: aload 6
-    //   235: invokeinterface 1046 1 0
+    //   235: invokeinterface 1335 1 0
     //   240: aload 7
     //   242: areturn
     //   243: aload 6
@@ -1908,19 +2376,19 @@ public class util
     //   260: aload_0
     //   261: astore 5
     //   263: aload 6
-    //   265: ldc 169
-    //   267: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   265: ldc 223
+    //   267: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   270: aload_0
     //   271: ifnull +9 -> 280
     //   274: aload_0
-    //   275: invokeinterface 1046 1 0
-    //   280: ldc_w 1048
-    //   283: invokestatic 1045	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
+    //   275: invokeinterface 1335 1 0
+    //   280: ldc_w 1337
+    //   283: invokestatic 1334	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
     //   286: areturn
     //   287: aload 5
     //   289: ifnull +10 -> 299
     //   292: aload 5
-    //   294: invokeinterface 1046 1 0
+    //   294: invokeinterface 1335 1 0
     //   299: aload_0
     //   300: athrow
     // Local variable table:
@@ -1950,35 +2418,25 @@ public class util
     //   221	228	258	java/lang/Exception
   }
   
+  public static String get_device_model()
+  {
+    Object localObject = privacyListener;
+    if (localObject != null)
+    {
+      localObject = ((PrivacyListener)localObject).getDeviceModel();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return localObject;
+      }
+    }
+    return Build.MODEL;
+  }
+  
   public static String get_error_msg(int paramInt)
   {
     if (paramInt != -1000) {
       return InternationMsg.a(InternationMsg.MSG_TYPE.MSG_3);
     }
     return InternationMsg.a(InternationMsg.MSG_TYPE.MSG_4);
-  }
-  
-  public static byte[] get_imei_id(Context paramContext)
-  {
-    try
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getDeviceId();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getBytes();
-          return paramContext;
-        }
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      label31:
-      break label31;
-    }
-    return new byte[0];
   }
   
   public static byte[] get_ksid(Context paramContext)
@@ -1992,23 +2450,12 @@ public class util
     return new byte[0];
   }
   
-  public static int get_last_flag(Context paramContext)
-  {
-    try
-    {
-      int i = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getInt("last_flag", 0);
-      return i;
-    }
-    catch (Throwable paramContext) {}
-    return 0;
-  }
-  
-  public static byte[] get_last_guid(Context paramContext)
+  public static byte[] get_last_android_id(Context paramContext)
   {
     Object localObject = new byte[0];
     try
     {
-      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("last_guid", new String("")));
+      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("last_android_id", new String("")));
       if (paramContext != null)
       {
         localObject = paramContext;
@@ -2029,12 +2476,23 @@ public class util
     }
   }
   
-  public static byte[] get_last_imei(Context paramContext)
+  public static int get_last_flag(Context paramContext)
+  {
+    try
+    {
+      int i = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getInt("last_flag", 0);
+      return i;
+    }
+    catch (Throwable paramContext) {}
+    return 0;
+  }
+  
+  public static byte[] get_last_guid(Context paramContext)
   {
     Object localObject = new byte[0];
     try
     {
-      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("last_imei", new String("")));
+      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("last_guid", new String("")));
       if (paramContext != null)
       {
         localObject = paramContext;
@@ -2083,29 +2541,15 @@ public class util
   
   public static byte[] get_mac_addr(Context paramContext)
   {
-    try
+    PrivacyListener localPrivacyListener = privacyListener;
+    if (localPrivacyListener != null)
     {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getMacAddress();
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getBytes();
-            return paramContext;
-          }
-        }
+      paramContext = localPrivacyListener.getMac(paramContext);
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext.getBytes();
       }
     }
-    catch (Throwable paramContext)
-    {
-      label40:
-      break label40;
-    }
-    return new byte[0];
+    return "02:00:00:00:00:00".getBytes();
   }
   
   public static String get_mpasswd()
@@ -2190,6 +2634,33 @@ public class util
     return Build.VERSION.RELEASE.getBytes();
   }
   
+  public static boolean get_pow_test(Context paramContext)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramContext != null) {
+      try
+      {
+        bool1 = paramContext.getSharedPreferences("WLOGIN_COST", 4).getBoolean("powTestNew", true);
+      }
+      catch (Throwable paramContext)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(LOG_TAG_POW);
+        localStringBuilder.append("get_pow_test ");
+        localStringBuilder.append(Log.getStackTraceString(paramContext));
+        LOGI(localStringBuilder.toString(), "");
+        bool1 = bool2;
+      }
+    }
+    paramContext = new StringBuilder();
+    paramContext.append(LOG_TAG_POW);
+    paramContext.append("get_pow_test ");
+    paramContext.append(bool1);
+    LOGI(paramContext.toString(), "");
+    return bool1;
+  }
+  
   public static byte[] get_prand_16byte()
   {
     try
@@ -2239,6 +2710,34 @@ public class util
     return -1;
   }
   
+  public static byte[] get_qimei(Context paramContext)
+  {
+    Object localObject = qimeiListener;
+    if (localObject == null)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(LOG_TAG_QIMEI);
+      paramContext.append("get listener = null");
+      LOGI(paramContext.toString(), "");
+      return new byte[0];
+    }
+    paramContext = ((QimeiListener)localObject).getQimei(paramContext);
+    if (TextUtils.isEmpty(paramContext))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(LOG_TAG_QIMEI);
+      paramContext.append("get isEmpty");
+      LOGI(paramContext.toString(), "");
+      return new byte[0];
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(LOG_TAG_QIMEI);
+    ((StringBuilder)localObject).append("get length = ");
+    ((StringBuilder)localObject).append(paramContext.length());
+    LOGI(((StringBuilder)localObject).toString(), "");
+    return paramContext.getBytes();
+  }
+  
   public static byte[] get_rand_16byte(SecureRandom paramSecureRandom)
   {
     try
@@ -2281,7 +2780,7 @@ public class util
   
   public static String get_release_time()
   {
-    return "2017/08/17 18:22:06";
+    return "2021/09/02 14:26:24";
   }
   
   public static byte[] get_rsa_privkey(Context paramContext)
@@ -2336,11 +2835,11 @@ public class util
     }
   }
   
-  public static byte[] get_saved_imei(Context paramContext)
+  public static byte[] get_saved_android_id(Context paramContext)
   {
     try
     {
-      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("imei", new String("")));
+      paramContext = string_to_buf(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("android_id", new String("")));
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -2363,7 +2862,7 @@ public class util
   
   public static long get_server_cur_time()
   {
-    return t.g();
+    return u.g();
   }
   
   public static byte[] get_server_host1(Context paramContext)
@@ -2396,6 +2895,36 @@ public class util
     return new byte[0];
   }
   
+  public static byte[] get_server_ipv6_host1(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("ipv6_host1", "").getBytes();
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label24:
+      break label24;
+    }
+    return new byte[0];
+  }
+  
+  public static byte[] get_server_ipv6_host2(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("ipv6_host2", "").getBytes();
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label24:
+      break label24;
+    }
+    return new byte[0];
+  }
+  
   public static byte[] get_sim_operator_name(Context paramContext)
   {
     try
@@ -2417,27 +2946,13 @@ public class util
   
   public static byte[] get_ssid_addr(Context paramContext)
   {
-    try
+    PrivacyListener localPrivacyListener = privacyListener;
+    if (localPrivacyListener != null)
     {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getSSID();
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getBytes();
-            return paramContext;
-          }
-        }
+      paramContext = localPrivacyListener.getSsid(paramContext);
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext.getBytes();
       }
-    }
-    catch (Throwable paramContext)
-    {
-      label40:
-      break label40;
     }
     return new byte[0];
   }
@@ -2462,6 +2977,36 @@ public class util
     try
     {
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("wap-host2", "").getBytes();
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label24:
+      break label24;
+    }
+    return new byte[0];
+  }
+  
+  public static byte[] get_wap_server_ipv6_host1(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("wap-ipv6_host1", "").getBytes();
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label24:
+      break label24;
+    }
+    return new byte[0];
+  }
+  
+  public static byte[] get_wap_server_ipv6_host2(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("wap-ipv6_host2", "").getBytes();
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -2569,6 +3114,47 @@ public class util
     }
     catch (Exception paramContext) {}
     return false;
+  }
+  
+  @Deprecated
+  public static boolean isWtLoginUrlV1(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    int i = paramString.indexOf("?k=");
+    if (i != -1)
+    {
+      i += 3;
+      int j = i + 32;
+      if (j > paramString.length()) {
+        return false;
+      }
+      paramString = paramString.substring(i, j);
+      return base64_decode_url(paramString.getBytes(), paramString.length()) != null;
+    }
+    return false;
+  }
+  
+  public static boolean isWtLoginUrlV2(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    Object localObject = null;
+    try
+    {
+      String str = Uri.parse(paramString).getHost();
+      localObject = str;
+    }
+    catch (Exception localException)
+    {
+      printException(localException);
+    }
+    if (!"txz.qq.com".equals(localObject)) {
+      return false;
+    }
+    return isWtLoginUrlV1(paramString);
   }
   
   public static boolean is_wap_proxy_retry(Context paramContext)
@@ -2703,6 +3289,45 @@ public class util
     return false;
   }
   
+  public static boolean needChangeGuid(Context paramContext)
+  {
+    paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0);
+    long l2 = paramContext.getLong("change_guid_time", 0L);
+    long l1 = u.f();
+    StringBuilder localStringBuilder = new StringBuilder("needChangeGuid delay:");
+    localStringBuilder.append(l2);
+    localStringBuilder.append(" now:");
+    localStringBuilder.append(l1);
+    LOGI(localStringBuilder.toString(), "");
+    if (l2 == 0L)
+    {
+      l2 = new Random().nextInt(GUID_DELAY_HOUR) * 60 * 60 * 1000;
+      paramContext.edit().putLong("change_guid_time", l1 + l2).commit();
+      return false;
+    }
+    if (l2 >= l1)
+    {
+      paramContext.edit().putLong("change_guid_time", 0L).commit();
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean need_pow_test(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      LOGI("need_pow_test false because not null");
+      return false;
+    }
+    paramArrayOfByte = u.m();
+    if ((!TextUtils.isEmpty(paramArrayOfByte)) && (paramArrayOfByte.endsWith(":MSF"))) {
+      return get_pow_test(u.u);
+    }
+    LOGI("need_pow_test false because not msf");
+    return false;
+  }
+  
   public static Bundle packBundle(byte[][] paramArrayOfByte)
   {
     Bundle localBundle = new Bundle();
@@ -2720,6 +3345,14 @@ public class util
       return null;
     }
     return localBundle;
+  }
+  
+  public static String printByte(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return "null";
+    }
+    return String.valueOf(paramArrayOfByte.length);
   }
   
   public static void printException(Exception paramException)
@@ -2799,189 +3432,262 @@ public class util
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +265 -> 266
+    //   1: ifnull +294 -> 295
     //   4: aload_1
-    //   5: ifnull +261 -> 266
+    //   5: ifnull +290 -> 295
     //   8: aload_1
     //   9: arraylength
-    //   10: ifle +256 -> 266
-    //   13: aconst_null
-    //   14: astore 6
-    //   16: aconst_null
-    //   17: astore 7
-    //   19: aconst_null
-    //   20: astore 5
-    //   22: aload 6
-    //   24: astore_2
-    //   25: aload 7
-    //   27: astore 4
-    //   29: new 318	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   36: astore_3
-    //   37: aload 6
-    //   39: astore_2
-    //   40: aload 7
-    //   42: astore 4
-    //   44: aload_3
-    //   45: aload_0
-    //   46: invokevirtual 632	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   49: invokevirtual 622	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   52: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: pop
-    //   56: aload 6
-    //   58: astore_2
-    //   59: aload 7
-    //   61: astore 4
-    //   63: aload_3
-    //   64: ldc_w 829
-    //   67: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: aload 6
-    //   73: astore_2
-    //   74: aload 7
-    //   76: astore 4
-    //   78: new 582	java/io/File
-    //   81: dup
-    //   82: aload_3
-    //   83: invokevirtual 345	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokespecial 583	java/io/File:<init>	(Ljava/lang/String;)V
-    //   89: astore 8
-    //   91: aload 6
-    //   93: astore_2
-    //   94: aload 7
-    //   96: astore 4
-    //   98: aload 8
-    //   100: invokevirtual 815	java/io/File:exists	()Z
-    //   103: ifne +16 -> 119
-    //   106: aload 6
-    //   108: astore_2
-    //   109: aload 7
-    //   111: astore 4
-    //   113: aload 8
-    //   115: invokevirtual 1336	java/io/File:createNewFile	()Z
-    //   118: pop
-    //   119: aload 5
-    //   121: astore_3
-    //   122: aload 6
-    //   124: astore_2
-    //   125: aload 7
-    //   127: astore 4
-    //   129: aload 8
-    //   131: invokevirtual 815	java/io/File:exists	()Z
-    //   134: ifeq +60 -> 194
-    //   137: aload 5
-    //   139: astore_3
-    //   140: aload 6
-    //   142: astore_2
-    //   143: aload 7
-    //   145: astore 4
-    //   147: aload 8
-    //   149: invokevirtual 1339	java/io/File:canWrite	()Z
-    //   152: ifeq +42 -> 194
-    //   155: aload 6
-    //   157: astore_2
-    //   158: aload 7
-    //   160: astore 4
-    //   162: new 1341	java/io/FileOutputStream
-    //   165: dup
-    //   166: aload 8
-    //   168: iconst_0
-    //   169: invokespecial 1344	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   172: astore_3
-    //   173: aload_3
-    //   174: aload_1
-    //   175: invokevirtual 1345	java/io/FileOutputStream:write	([B)V
-    //   178: goto +16 -> 194
-    //   181: astore_0
-    //   182: aload_3
-    //   183: astore_2
-    //   184: goto +62 -> 246
-    //   187: astore_0
-    //   188: aload_3
+    //   10: ifle +285 -> 295
+    //   13: new 372	java/lang/StringBuilder
+    //   16: dup
+    //   17: ldc_w 1684
+    //   20: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   23: astore_2
+    //   24: aload_2
+    //   25: aload_1
+    //   26: invokestatic 1686	oicq/wlogin_sdk/tools/util:buf_to_string	([B)Ljava/lang/String;
+    //   29: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: pop
+    //   33: aload_2
+    //   34: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: ldc 223
+    //   39: invokestatic 423	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   42: aconst_null
+    //   43: astore 6
+    //   45: aconst_null
+    //   46: astore 7
+    //   48: aconst_null
+    //   49: astore 5
+    //   51: aload 6
+    //   53: astore_2
+    //   54: aload 7
+    //   56: astore 4
+    //   58: new 372	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 386	java/lang/StringBuilder:<init>	()V
+    //   65: astore_3
+    //   66: aload 6
+    //   68: astore_2
+    //   69: aload 7
+    //   71: astore 4
+    //   73: aload_3
+    //   74: aload_0
+    //   75: invokevirtual 699	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   78: invokevirtual 691	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   81: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload 6
+    //   87: astore_2
+    //   88: aload 7
+    //   90: astore 4
+    //   92: aload_3
+    //   93: ldc_w 954
+    //   96: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: aload 6
+    //   102: astore_2
+    //   103: aload 7
+    //   105: astore 4
+    //   107: new 651	java/io/File
+    //   110: dup
+    //   111: aload_3
+    //   112: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokespecial 652	java/io/File:<init>	(Ljava/lang/String;)V
+    //   118: astore 8
+    //   120: aload 6
+    //   122: astore_2
+    //   123: aload 7
+    //   125: astore 4
+    //   127: aload 8
+    //   129: invokevirtual 940	java/io/File:exists	()Z
+    //   132: ifne +16 -> 148
+    //   135: aload 6
+    //   137: astore_2
+    //   138: aload 7
+    //   140: astore 4
+    //   142: aload 8
+    //   144: invokevirtual 1689	java/io/File:createNewFile	()Z
+    //   147: pop
+    //   148: aload 5
+    //   150: astore_3
+    //   151: aload 6
+    //   153: astore_2
+    //   154: aload 7
+    //   156: astore 4
+    //   158: aload 8
+    //   160: invokevirtual 940	java/io/File:exists	()Z
+    //   163: ifeq +60 -> 223
+    //   166: aload 5
+    //   168: astore_3
+    //   169: aload 6
+    //   171: astore_2
+    //   172: aload 7
+    //   174: astore 4
+    //   176: aload 8
+    //   178: invokevirtual 1692	java/io/File:canWrite	()Z
+    //   181: ifeq +42 -> 223
+    //   184: aload 6
+    //   186: astore_2
+    //   187: aload 7
     //   189: astore 4
-    //   191: goto +35 -> 226
-    //   194: aload_3
-    //   195: astore_2
-    //   196: aload_3
-    //   197: astore 4
-    //   199: aload_0
-    //   200: aload_1
-    //   201: invokestatic 1348	oicq/wlogin_sdk/tools/util:save_imei	(Landroid/content/Context;[B)V
-    //   204: aload_3
-    //   205: ifnull +61 -> 266
-    //   208: aload_3
-    //   209: invokevirtual 1349	java/io/FileOutputStream:close	()V
-    //   212: return
-    //   213: astore_0
-    //   214: aload_0
-    //   215: ldc 169
-    //   217: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   220: return
-    //   221: astore_0
-    //   222: goto +24 -> 246
-    //   225: astore_0
-    //   226: aload 4
-    //   228: astore_2
-    //   229: aload_0
-    //   230: ldc 169
-    //   232: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   235: aload 4
-    //   237: ifnull +29 -> 266
-    //   240: aload 4
-    //   242: invokevirtual 1349	java/io/FileOutputStream:close	()V
-    //   245: return
-    //   246: aload_2
-    //   247: ifnull +17 -> 264
-    //   250: aload_2
-    //   251: invokevirtual 1349	java/io/FileOutputStream:close	()V
-    //   254: goto +10 -> 264
-    //   257: astore_1
-    //   258: aload_1
-    //   259: ldc 169
-    //   261: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   264: aload_0
-    //   265: athrow
-    //   266: return
+    //   191: new 1694	java/io/FileOutputStream
+    //   194: dup
+    //   195: aload 8
+    //   197: iconst_0
+    //   198: invokespecial 1697	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   201: astore_3
+    //   202: aload_3
+    //   203: aload_1
+    //   204: invokevirtual 1698	java/io/FileOutputStream:write	([B)V
+    //   207: goto +16 -> 223
+    //   210: astore_0
+    //   211: aload_3
+    //   212: astore_2
+    //   213: goto +62 -> 275
+    //   216: astore_0
+    //   217: aload_3
+    //   218: astore 4
+    //   220: goto +35 -> 255
+    //   223: aload_3
+    //   224: astore_2
+    //   225: aload_3
+    //   226: astore 4
+    //   228: aload_0
+    //   229: aload_1
+    //   230: invokestatic 1701	oicq/wlogin_sdk/tools/util:save_android_id	(Landroid/content/Context;[B)V
+    //   233: aload_3
+    //   234: ifnull +61 -> 295
+    //   237: aload_3
+    //   238: invokevirtual 1702	java/io/FileOutputStream:close	()V
+    //   241: return
+    //   242: astore_0
+    //   243: aload_0
+    //   244: ldc 223
+    //   246: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   249: return
+    //   250: astore_0
+    //   251: goto +24 -> 275
+    //   254: astore_0
+    //   255: aload 4
+    //   257: astore_2
+    //   258: aload_0
+    //   259: ldc 223
+    //   261: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   264: aload 4
+    //   266: ifnull +29 -> 295
+    //   269: aload 4
+    //   271: invokevirtual 1702	java/io/FileOutputStream:close	()V
+    //   274: return
+    //   275: aload_2
+    //   276: ifnull +17 -> 293
+    //   279: aload_2
+    //   280: invokevirtual 1702	java/io/FileOutputStream:close	()V
+    //   283: goto +10 -> 293
+    //   286: astore_1
+    //   287: aload_1
+    //   288: ldc 223
+    //   290: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   293: aload_0
+    //   294: athrow
+    //   295: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	267	0	paramContext	Context
-    //   0	267	1	paramArrayOfByte	byte[]
-    //   24	227	2	localObject1	Object
-    //   36	173	3	localObject2	Object
-    //   27	214	4	localObject3	Object
-    //   20	118	5	localObject4	Object
-    //   14	142	6	localObject5	Object
-    //   17	142	7	localObject6	Object
-    //   89	78	8	localFile	File
+    //   0	296	0	paramContext	Context
+    //   0	296	1	paramArrayOfByte	byte[]
+    //   23	257	2	localObject1	Object
+    //   65	173	3	localObject2	Object
+    //   56	214	4	localObject3	Object
+    //   49	118	5	localObject4	Object
+    //   43	142	6	localObject5	Object
+    //   46	142	7	localObject6	Object
+    //   118	78	8	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   173	178	181	finally
-    //   173	178	187	java/lang/Exception
-    //   208	212	213	java/io/IOException
-    //   240	245	213	java/io/IOException
-    //   29	37	221	finally
-    //   44	56	221	finally
-    //   63	71	221	finally
-    //   78	91	221	finally
-    //   98	106	221	finally
-    //   113	119	221	finally
-    //   129	137	221	finally
-    //   147	155	221	finally
-    //   162	173	221	finally
-    //   199	204	221	finally
-    //   229	235	221	finally
-    //   29	37	225	java/lang/Exception
-    //   44	56	225	java/lang/Exception
-    //   63	71	225	java/lang/Exception
-    //   78	91	225	java/lang/Exception
-    //   98	106	225	java/lang/Exception
-    //   113	119	225	java/lang/Exception
-    //   129	137	225	java/lang/Exception
-    //   147	155	225	java/lang/Exception
-    //   162	173	225	java/lang/Exception
-    //   199	204	225	java/lang/Exception
-    //   250	254	257	java/io/IOException
+    //   202	207	210	finally
+    //   202	207	216	java/lang/Exception
+    //   237	241	242	java/io/IOException
+    //   269	274	242	java/io/IOException
+    //   58	66	250	finally
+    //   73	85	250	finally
+    //   92	100	250	finally
+    //   107	120	250	finally
+    //   127	135	250	finally
+    //   142	148	250	finally
+    //   158	166	250	finally
+    //   176	184	250	finally
+    //   191	202	250	finally
+    //   228	233	250	finally
+    //   258	264	250	finally
+    //   58	66	254	java/lang/Exception
+    //   73	85	254	java/lang/Exception
+    //   92	100	254	java/lang/Exception
+    //   107	120	254	java/lang/Exception
+    //   127	135	254	java/lang/Exception
+    //   142	148	254	java/lang/Exception
+    //   158	166	254	java/lang/Exception
+    //   176	184	254	java/lang/Exception
+    //   191	202	254	java/lang/Exception
+    //   228	233	254	java/lang/Exception
+    //   279	283	286	java/io/IOException
+  }
+  
+  public static void saveInitKeyTime(Context paramContext, int paramInt)
+  {
+    if (paramContext != null) {
+      try
+      {
+        paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", MODE_MULTI_PROCESS).edit();
+        paramContext.putInt("InitKeyTime", paramInt);
+        paramContext.commit();
+        LOGI("saveInitKeyTime time:".concat(String.valueOf(paramInt)), "");
+        return;
+      }
+      catch (Throwable paramContext)
+      {
+        printThrowable(paramContext, "saveReqTimeToSp");
+        return;
+      }
+    }
+  }
+  
+  public static void save_android_id(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("android_id", buf_to_string(paramArrayOfByte));
+      paramContext.commit();
+    }
+  }
+  
+  public static void save_cost_time(Context paramContext, String paramString)
+  {
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_COST", 4).edit();
+      paramContext.putString("costTime", paramString);
+      paramContext.commit();
+    }
+  }
+  
+  public static void save_cost_trace(Context paramContext, String paramString)
+  {
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_COST", 4).edit();
+      paramContext.putString("costTrace", paramString);
+      paramContext.commit();
+    }
+  }
+  
+  public static void save_cur_android_id(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("last_android_id", buf_to_string(paramArrayOfByte));
+      paramContext.commit();
+    }
   }
   
   public static void save_cur_flag(Context paramContext, int paramInt)
@@ -3004,32 +3710,12 @@ public class util
     }
   }
   
-  public static void save_cur_imei(Context paramContext, byte[] paramArrayOfByte)
-  {
-    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-    {
-      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
-      paramContext.putString("last_imei", buf_to_string(paramArrayOfByte));
-      paramContext.commit();
-    }
-  }
-  
   public static void save_cur_mac(Context paramContext, byte[] paramArrayOfByte)
   {
     if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
       paramContext.putString("last_mac", buf_to_string(paramArrayOfByte));
-      paramContext.commit();
-    }
-  }
-  
-  public static void save_imei(Context paramContext, byte[] paramArrayOfByte)
-  {
-    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-    {
-      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
-      paramContext.putString("imei", buf_to_string(paramArrayOfByte));
       paramContext.commit();
     }
   }
@@ -3041,6 +3727,17 @@ public class util
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
       paramContext.putInt("network_type", paramInt);
       paramContext.commit();
+    }
+  }
+  
+  public static void save_pow_test(Context paramContext, boolean paramBoolean)
+  {
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_COST", 4).edit();
+      paramContext.putBoolean("powTestNew", paramBoolean);
+      paramContext.commit();
+      LOGI("save_pow_test ".concat(String.valueOf(paramBoolean)), "");
     }
   }
   
@@ -3073,28 +3770,28 @@ public class util
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_0
-    //   7: invokevirtual 953	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   7: invokevirtual 1284	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore 9
-    //   12: new 318	java/lang/StringBuilder
+    //   12: new 372	java/lang/StringBuilder
     //   15: dup
-    //   16: ldc_w 997
-    //   19: invokespecial 320	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   16: ldc_w 1286
+    //   19: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   22: astore 6
     //   24: aload 6
-    //   26: ldc_w 999
-    //   29: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc_w 1288
+    //   29: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload 6
-    //   35: ldc_w 1001
-    //   38: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: ldc_w 1290
+    //   38: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload 6
-    //   44: invokevirtual 345	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 1007	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   44: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 1296	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   50: astore 10
     //   52: aload 10
-    //   54: invokevirtual 1377	android/net/Uri:toString	()Ljava/lang/String;
-    //   57: invokestatic 543	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;)V
+    //   54: invokevirtual 1734	android/net/Uri:toString	()Ljava/lang/String;
+    //   57: invokestatic 612	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;)V
     //   60: aconst_null
     //   61: astore 7
     //   63: aconst_null
@@ -3102,49 +3799,49 @@ public class util
     //   66: aload 9
     //   68: aload 10
     //   70: iconst_5
-    //   71: anewarray 297	java/lang/String
+    //   71: anewarray 351	java/lang/String
     //   74: dup
     //   75: iconst_0
-    //   76: ldc_w 1009
+    //   76: ldc_w 1298
     //   79: aastore
     //   80: dup
     //   81: iconst_1
-    //   82: ldc_w 1011
+    //   82: ldc_w 1300
     //   85: aastore
     //   86: dup
     //   87: iconst_2
-    //   88: ldc_w 1013
+    //   88: ldc_w 1302
     //   91: aastore
     //   92: dup
     //   93: iconst_3
-    //   94: ldc_w 1015
+    //   94: ldc_w 1304
     //   97: aastore
     //   98: dup
     //   99: iconst_4
-    //   100: ldc_w 1017
+    //   100: ldc_w 1306
     //   103: aastore
-    //   104: ldc_w 1019
+    //   104: ldc_w 1308
     //   107: iconst_2
-    //   108: anewarray 297	java/lang/String
+    //   108: anewarray 351	java/lang/String
     //   111: dup
     //   112: iconst_0
     //   113: lload_1
-    //   114: invokestatic 1022	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   114: invokestatic 1311	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   117: aastore
     //   118: dup
     //   119: iconst_1
     //   120: lload_3
-    //   121: invokestatic 1022	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   121: invokestatic 1311	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   124: aastore
     //   125: aconst_null
-    //   126: invokevirtual 1028	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   126: invokevirtual 1317	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   129: astore 8
     //   131: aload 8
     //   133: ifnonnull +17 -> 150
     //   136: aload 8
     //   138: ifnull +10 -> 148
     //   141: aload 8
-    //   143: invokeinterface 1046 1 0
+    //   143: invokeinterface 1335 1 0
     //   148: iconst_0
     //   149: ireturn
     //   150: aload 8
@@ -3152,22 +3849,22 @@ public class util
     //   154: aload 8
     //   156: astore 7
     //   158: aload_0
-    //   159: invokestatic 1379	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
-    //   162: invokestatic 1365	oicq/wlogin_sdk/tools/util:buf_to_string	([B)Ljava/lang/String;
+    //   159: invokestatic 1736	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
+    //   162: invokestatic 1686	oicq/wlogin_sdk/tools/util:buf_to_string	([B)Ljava/lang/String;
     //   165: astore_0
     //   166: aload 8
     //   168: astore 6
     //   170: aload 8
     //   172: astore 7
     //   174: aload_0
-    //   175: invokevirtual 575	java/lang/String:length	()I
+    //   175: invokevirtual 644	java/lang/String:length	()I
     //   178: istore 5
     //   180: iload 5
     //   182: ifne +17 -> 199
     //   185: aload 8
     //   187: ifnull +10 -> 197
     //   190: aload 8
-    //   192: invokeinterface 1046 1 0
+    //   192: invokeinterface 1335 1 0
     //   197: iconst_0
     //   198: ireturn
     //   199: aload 8
@@ -3175,89 +3872,89 @@ public class util
     //   203: aload 8
     //   205: astore 7
     //   207: aload_0
-    //   208: invokestatic 1041	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   208: invokestatic 1330	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
     //   211: astore 11
     //   213: aload 8
     //   215: astore 6
     //   217: aload 8
     //   219: astore 7
     //   221: aload 8
-    //   223: invokeinterface 1382 1 0
+    //   223: invokeinterface 1739 1 0
     //   228: ifle +74 -> 302
     //   231: aload 8
     //   233: astore 6
     //   235: aload 8
     //   237: astore 7
-    //   239: new 1384	android/content/ContentValues
+    //   239: new 1741	android/content/ContentValues
     //   242: dup
-    //   243: invokespecial 1385	android/content/ContentValues:<init>	()V
+    //   243: invokespecial 1742	android/content/ContentValues:<init>	()V
     //   246: astore 9
     //   248: aload 8
     //   250: astore 6
     //   252: aload 8
     //   254: astore 7
     //   256: aload 9
-    //   258: ldc_w 1015
+    //   258: ldc_w 1304
     //   261: aload_0
-    //   262: invokevirtual 1388	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   262: invokevirtual 1745	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   265: aload 8
     //   267: astore 6
     //   269: aload 8
     //   271: astore 7
     //   273: aload 9
-    //   275: ldc_w 1017
+    //   275: ldc_w 1306
     //   278: aload 11
-    //   280: invokevirtual 1388	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   280: invokevirtual 1745	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   283: aload 8
     //   285: astore 6
     //   287: aload 8
     //   289: astore 7
     //   291: aload 8
-    //   293: invokeinterface 1033 1 0
+    //   293: invokeinterface 1322 1 0
     //   298: pop
     //   299: goto +228 -> 527
     //   302: aload 8
     //   304: astore 6
     //   306: aload 8
     //   308: astore 7
-    //   310: new 1384	android/content/ContentValues
+    //   310: new 1741	android/content/ContentValues
     //   313: dup
-    //   314: invokespecial 1385	android/content/ContentValues:<init>	()V
+    //   314: invokespecial 1742	android/content/ContentValues:<init>	()V
     //   317: astore 12
     //   319: aload 8
     //   321: astore 6
     //   323: aload 8
     //   325: astore 7
     //   327: aload 12
-    //   329: ldc_w 1011
+    //   329: ldc_w 1300
     //   332: lload_1
-    //   333: invokestatic 1391	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   336: invokevirtual 1394	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   333: invokestatic 1748	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   336: invokevirtual 1751	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   339: aload 8
     //   341: astore 6
     //   343: aload 8
     //   345: astore 7
     //   347: aload 12
-    //   349: ldc_w 1013
+    //   349: ldc_w 1302
     //   352: lload_3
-    //   353: invokestatic 1391	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   356: invokevirtual 1394	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   353: invokestatic 1748	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   356: invokevirtual 1751	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   359: aload 8
     //   361: astore 6
     //   363: aload 8
     //   365: astore 7
     //   367: aload 12
-    //   369: ldc_w 1015
+    //   369: ldc_w 1304
     //   372: aload_0
-    //   373: invokevirtual 1388	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   373: invokevirtual 1745	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   376: aload 8
     //   378: astore 6
     //   380: aload 8
     //   382: astore 7
     //   384: aload 12
-    //   386: ldc_w 1017
+    //   386: ldc_w 1306
     //   389: aload 11
-    //   391: invokevirtual 1388	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   391: invokevirtual 1745	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   394: aload 8
     //   396: astore 6
     //   398: aload 8
@@ -3265,16 +3962,16 @@ public class util
     //   402: aload 9
     //   404: aload 10
     //   406: aload 12
-    //   408: invokevirtual 1398	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   408: invokevirtual 1755	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
     //   411: astore_0
     //   412: aload 8
     //   414: astore 6
     //   416: aload 8
     //   418: astore 7
-    //   420: new 318	java/lang/StringBuilder
+    //   420: new 372	java/lang/StringBuilder
     //   423: dup
-    //   424: ldc_w 1400
-    //   427: invokespecial 320	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   424: ldc_w 1757
+    //   427: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   430: astore 9
     //   432: aload 8
     //   434: astore 6
@@ -3282,15 +3979,15 @@ public class util
     //   438: astore 7
     //   440: aload 9
     //   442: aload_0
-    //   443: invokevirtual 1403	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   443: invokevirtual 1760	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   446: pop
     //   447: aload 8
     //   449: astore 6
     //   451: aload 8
     //   453: astore 7
     //   455: aload 9
-    //   457: ldc_w 1405
-    //   460: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: ldc_w 1762
+    //   460: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   463: pop
     //   464: aload 8
     //   466: astore 6
@@ -3298,15 +3995,15 @@ public class util
     //   470: astore 7
     //   472: aload 9
     //   474: lload_1
-    //   475: invokevirtual 809	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   475: invokevirtual 936	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   478: pop
     //   479: aload 8
     //   481: astore 6
     //   483: aload 8
     //   485: astore 7
     //   487: aload 9
-    //   489: ldc_w 1407
-    //   492: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: ldc_w 1764
+    //   492: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   495: pop
     //   496: aload 8
     //   498: astore 6
@@ -3314,19 +4011,19 @@ public class util
     //   502: astore 7
     //   504: aload 9
     //   506: lload_3
-    //   507: invokevirtual 809	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   507: invokevirtual 936	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   510: pop
     //   511: aload 8
     //   513: astore 6
     //   515: aload 8
     //   517: astore 7
     //   519: aload 9
-    //   521: invokevirtual 345	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   524: invokestatic 1409	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;)V
+    //   521: invokevirtual 405	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   524: invokestatic 1766	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;)V
     //   527: aload 8
     //   529: ifnull +10 -> 539
     //   532: aload 8
-    //   534: invokeinterface 1046 1 0
+    //   534: invokeinterface 1335 1 0
     //   539: iconst_1
     //   540: ireturn
     //   541: astore_0
@@ -3335,18 +4032,18 @@ public class util
     //   546: aload 7
     //   548: astore 6
     //   550: aload_0
-    //   551: ldc 169
-    //   553: invokestatic 409	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   551: ldc 223
+    //   553: invokestatic 478	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   556: aload 7
     //   558: ifnull +10 -> 568
     //   561: aload 7
-    //   563: invokeinterface 1046 1 0
+    //   563: invokeinterface 1335 1 0
     //   568: iconst_0
     //   569: ireturn
     //   570: aload 6
     //   572: ifnull +10 -> 582
     //   575: aload 6
-    //   577: invokeinterface 1046 1 0
+    //   577: invokeinterface 1335 1 0
     //   582: aload_0
     //   583: athrow
     // Local variable table:
@@ -3359,7 +4056,7 @@ public class util
     //   61	501	7	localObject2	Object
     //   129	404	8	localCursor	android.database.Cursor
     //   10	510	9	localObject3	Object
-    //   50	355	10	localUri	android.net.Uri
+    //   50	355	10	localUri	Uri
     //   211	179	11	str	String
     //   317	90	12	localContentValues	android.content.ContentValues
     // Exception table:
@@ -3455,6 +4152,26 @@ public class util
     }
   }
   
+  public static void set_server_ipv6_host1(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("ipv6_host1", new String(paramArrayOfByte));
+      paramContext.commit();
+    }
+  }
+  
+  public static void set_server_ipv6_host2(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("ipv6_host2", new String(paramArrayOfByte));
+      paramContext.commit();
+    }
+  }
+  
   public static void set_wap_server_host1(Context paramContext, byte[] paramArrayOfByte)
   {
     if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
@@ -3471,6 +4188,26 @@ public class util
     {
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
       paramContext.putString("wap-host2", new String(paramArrayOfByte));
+      paramContext.commit();
+    }
+  }
+  
+  public static void set_wap_server_ipv6_host1(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("wap-ipv6_host1", new String(paramArrayOfByte));
+      paramContext.commit();
+    }
+  }
+  
+  public static void set_wap_server_ipv6_host2(Context paramContext, byte[] paramArrayOfByte)
+  {
+    if ((paramContext != null) && (paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
+      paramContext.putString("wap-ipv6_host2", new String(paramArrayOfByte));
       paramContext.commit();
     }
   }
@@ -3519,10 +4256,8 @@ public class util
   
   public static void writeFile(String paramString, byte[] paramArrayOfByte)
   {
-    if (paramString != null)
-    {
-      File localFile1;
-      label104:
+    if (paramString != null) {
+      label91:
       try
       {
         int i = paramString.length();
@@ -3532,15 +4267,15 @@ public class util
     }
     try
     {
-      localFile1 = new File(paramString);
-      if (!localFile1.exists())
+      paramString = new File(paramString);
+      if (!paramString.exists())
       {
-        File localFile2 = localFile1.getParentFile();
-        if (localFile2 != null)
+        File localFile = paramString.getParentFile();
+        if (localFile != null)
         {
-          if (!localFile2.mkdirs())
+          if (!localFile.mkdirs())
           {
-            boolean bool = localFile2.isDirectory();
+            boolean bool = localFile.isDirectory();
             if (bool) {}
           }
         }
@@ -3548,19 +4283,39 @@ public class util
           return;
         }
       }
-      if (getFileSize(paramString) < 524288)
-      {
-        paramString = new FileOutputStream(localFile1, true);
-        paramString.write(paramArrayOfByte);
-        paramString.close();
-      }
+      paramString = new FileOutputStream(paramString, true);
+      paramString.write(paramArrayOfByte);
+      paramString.close();
       return;
     }
     catch (Exception paramString)
     {
-      break label104;
+      break label91;
     }
     return;
+  }
+  
+  public static class a
+  {
+    public static String a(Context paramContext, String paramString)
+    {
+      try
+      {
+        paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
+        paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { new String(paramString) });
+        return paramContext;
+      }
+      catch (IllegalArgumentException paramContext)
+      {
+        throw paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        label50:
+        break label50;
+      }
+      return "";
+    }
   }
 }
 

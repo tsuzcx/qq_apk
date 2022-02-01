@@ -21,27 +21,27 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.aap;
-import com.tencent.token.ais;
+import com.tencent.token.aaz;
+import com.tencent.token.ajr;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.rf;
-import com.tencent.token.sc;
-import com.tencent.token.sc.a;
-import com.tencent.token.si;
-import com.tencent.token.sj;
-import com.tencent.token.th;
+import com.tencent.token.rt;
+import com.tencent.token.sp;
+import com.tencent.token.sp.a;
+import com.tencent.token.su;
+import com.tencent.token.sv;
+import com.tencent.token.tt;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.xf;
-import com.tencent.token.xh;
-import com.tencent.token.xj;
-import com.tencent.token.zd;
-import com.tencent.token.zd.a;
+import com.tencent.token.xr;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
+import com.tencent.token.zp;
+import com.tencent.token.zp.a;
 
 public class WelcomeActivity
   extends Activity
-  implements zd.a
+  implements zp.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
@@ -51,7 +51,7 @@ public class WelcomeActivity
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private UserTask<String, String, xh> mActiveTask = null;
+  private UserTask<String, String, xt> mActiveTask = null;
   private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
   {
     public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
@@ -67,7 +67,7 @@ public class WelcomeActivity
         {
           if (WelcomeActivity.this.mLevel < WelcomeActivity.IMAGE_LEVEL_COUNT - 1)
           {
-            paramAnonymousMotionEvent1 = aap.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+            paramAnonymousMotionEvent1 = aaz.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
             if (paramAnonymousMotionEvent1 == null)
             {
               WelcomeActivity.this.doOutOfMemory();
@@ -83,7 +83,7 @@ public class WelcomeActivity
         }
         else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (WelcomeActivity.this.mLevel > 0))
         {
-          paramAnonymousMotionEvent1 = aap.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+          paramAnonymousMotionEvent1 = aaz.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             WelcomeActivity.this.doOutOfMemory();
@@ -161,9 +161,9 @@ public class WelcomeActivity
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private zd mPageCurlView;
+  private zp mPageCurlView;
   private ProDialogWithShutDown mProDialog;
-  private UserTask<String, String, xh> mSyncInitTask = null;
+  private UserTask<String, String, xt> mSyncInitTask = null;
   private int mWidth;
   
   private void doOutOfMemory()
@@ -180,7 +180,7 @@ public class WelcomeActivity
     this.mDotFull = null;
     localObject = this.mPageCurlView;
     if (localObject != null) {
-      ((zd)localObject).b();
+      ((zp)localObject).b();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -211,7 +211,7 @@ public class WelcomeActivity
   @SuppressLint({"ClickableViewAccessibility"})
   private void init()
   {
-    sj.b(xf.h());
+    sv.b(xr.h());
     try
     {
       StringBuilder localStringBuilder = new StringBuilder("totalMemory:");
@@ -220,8 +220,8 @@ public class WelcomeActivity
       localStringBuilder.append(Runtime.getRuntime().freeMemory());
       localStringBuilder.append(" maxMemory:");
       localStringBuilder.append(Runtime.getRuntime().maxMemory());
-      xj.b(localStringBuilder.toString());
-      aap.b();
+      xv.b(localStringBuilder.toString());
+      aaz.b();
       nextActivity();
       return;
     }
@@ -244,9 +244,9 @@ public class WelcomeActivity
     if ((localObject != null) && (((UserTask)localObject).e != UserTask.Status.FINISHED)) {
       this.mActiveTask.c();
     }
-    if (!rf.a().d())
+    if (!rt.a().d())
     {
-      if (th.a().k.a() == 0)
+      if (tt.a().k.a() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -256,7 +256,7 @@ public class WelcomeActivity
       }
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall) {
-        if (th.a().k.b() != null) {
+        if (tt.a().k.b() != null) {
           ((Intent)localObject).putExtra("index_from", 17);
         } else {
           ((Intent)localObject).putExtra("index_from", 16);
@@ -274,7 +274,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    sc.a.a().a(this.mHandler);
+    sp.a.a().a(this.mHandler);
   }
   
   public void dismissDialog()
@@ -298,7 +298,7 @@ public class WelcomeActivity
     }
     catch (Exception localException)
     {
-      xj.b(localException.toString());
+      xv.b(localException.toString());
     }
   }
   
@@ -320,7 +320,7 @@ public class WelcomeActivity
       StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      xj.c(localStringBuilder.toString());
+      xv.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -337,23 +337,23 @@ public class WelcomeActivity
     paramBundle.append(this);
     paramBundle.append(",task");
     paramBundle.append(getTaskId());
-    xj.b(paramBundle.toString());
+    xv.b(paramBundle.toString());
     paramBundle = new StringBuilder("width = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getWidth());
     paramBundle.append(", height = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getHeight());
-    xj.a(paramBundle.toString());
+    xv.a(paramBundle.toString());
     init();
   }
   
   protected void onDestroy()
   {
-    zd localzd = this.mPageCurlView;
-    if (localzd != null) {
-      localzd.b();
+    zp localzp = this.mPageCurlView;
+    if (localzp != null) {
+      localzp.b();
     }
     this.mPageCurlView = null;
-    si.a().a(getClass().getName());
+    su.a().a(getClass().getName());
     super.onDestroy();
   }
   

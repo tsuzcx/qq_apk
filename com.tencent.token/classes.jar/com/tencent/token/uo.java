@@ -4,38 +4,32 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class uo
-  extends tr
+  extends ud
 {
-  private long d;
-  private int e;
-  private int f;
+  private String d;
   
   public final String a()
   {
-    sh.a();
+    st.a();
+    aay.a(new Object[] { "uin", this.d });
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(abc paramabc)
+  public final void a(abm paramabm)
   {
-    this.d = ((Long)paramabc.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramabc.c.get("param.unbind.type")).intValue();
-    this.f = paramabc.j;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramabm.c.get("param.realuin"));
+    this.d = localStringBuilder.toString();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    xv.a("ProtoDelUnverifyUin:errCode".concat(String.valueOf(i)));
     if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      xh localxh = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      localxh.a(i, localStringBuilder.toString(), paramJSONObject);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
     this.a.a = 0;

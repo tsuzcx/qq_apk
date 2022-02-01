@@ -1,86 +1,56 @@
 package com.tencent.token;
 
-import btmsdkobf.bx;
-import com.qq.taf.jce.JceStruct;
-import com.tmsdk.TMSDKContext;
-import com.tmsdk.base.ISharkCallBackOut;
-import java.util.ArrayList;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public final class zr
+  extends Animation
 {
-  public static void a(final String paramString, final a parama)
+  private final float a;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
+  private final boolean f;
+  private Camera g;
+  
+  public zr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    l locall = new l();
-    locall.a = new ArrayList();
-    t localt = new t();
-    localt.a = paramString;
-    localt.h = 2110015L;
-    locall.a.add(localt);
-    bx.ar().getGuid();
-    yb.a.a().a(new Runnable()
-    {
-      public final void run()
-      {
-        TMSDKContext.sendShark(2237, this.a, new o(), new ISharkCallBackOut()
-        {
-          public final void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct)
-          {
-            if (paramAnonymous2Int3 != 0) {
-              return;
-            }
-            if (!(paramAnonymous2JceStruct instanceof o)) {
-              return;
-            }
-            paramAnonymous2JceStruct = (o)paramAnonymous2JceStruct;
-            if (paramAnonymous2JceStruct.a != 0) {
-              return;
-            }
-            paramAnonymous2JceStruct = paramAnonymous2JceStruct.b;
-            if (paramAnonymous2JceStruct != null)
-            {
-              if (paramAnonymous2JceStruct.size() <= 0) {
-                return;
-              }
-              if (zr.1.this.b != null)
-              {
-                zr.a locala = zr.1.this.b;
-                r localr = (r)paramAnonymous2JceStruct.get(0);
-                String str = zr.1.this.c;
-                if (localr == null)
-                {
-                  paramAnonymous2JceStruct = null;
-                }
-                else
-                {
-                  paramAnonymous2JceStruct = localr;
-                  if (str.equals("com.tencent.qqpimsecure"))
-                  {
-                    str = localr.r.toLowerCase();
-                    if ((!str.endsWith("png")) && (!str.endsWith("jpg")))
-                    {
-                      paramAnonymous2JceStruct = localr;
-                      if (!str.endsWith("jpeg")) {}
-                    }
-                    else
-                    {
-                      localr.r = "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11";
-                      paramAnonymous2JceStruct = localr;
-                    }
-                  }
-                }
-                locala.a(paramAnonymous2JceStruct);
-              }
-              return;
-            }
-          }
-        });
-      }
-    }, "fetchSoftwareDetail");
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = 310.0F;
+    this.f = paramBoolean;
   }
   
-  public static abstract interface a
+  protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    public abstract void a(r paramr);
+    float f1 = this.a;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.g;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.f) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
+    } else {
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
+    }
+    localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+    localCamera.getMatrix(paramTransformation);
+    localCamera.restore();
+    paramTransformation.preTranslate(-f3, -f4);
+    paramTransformation.postTranslate(f3, f4);
+  }
+  
+  public final void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.g = new Camera();
   }
 }
 

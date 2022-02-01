@@ -1,14 +1,8 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public abstract interface aua
 {
-  public abstract int a(Context paramContext);
-  
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, aoc paramaoc, aqb.a parama);
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

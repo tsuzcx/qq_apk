@@ -12,7 +12,7 @@ import android.os.StatFs;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import com.tencent.feedback.proguard.a;
-import com.tencent.token.xr;
+import com.tencent.token.yd;
 import java.io.File;
 import java.util.Locale;
 
@@ -67,7 +67,7 @@ public final class d
   {
     try
     {
-      String str = xr.a;
+      String str = yd.a;
       return str;
     }
     catch (Throwable localThrowable)

@@ -4,17 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Map<Ljava.lang.String;[B>;
 import java.util.Set;
+import oicq.wlogin_sdk.report.event.b;
+import oicq.wlogin_sdk.report.event.c;
 import oicq.wlogin_sdk.tools.util;
 
 public class Ticket
   implements Parcelable
 {
-  public static final Parcelable.Creator<Ticket> CREATOR = new Ticket.1();
+  public static final Parcelable.Creator<Ticket> CREATOR = new Ticket.2();
   private static final int EXPIRE_FIELD = 65535;
+  private static final int MAX_PSKEY_SIZE = 200;
   public long _create_time;
   public long _expire_time;
   public Map<String, Long> _pskey_expire = new HashMap();
@@ -63,7 +71,7 @@ public class Ticket
     this._sig_key = paramArrayOfByte1;
     this._create_time = paramLong;
     this._expire_time = (paramLong + 86400L);
-    parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire);
+    parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire, true);
   }
   
   public Ticket(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
@@ -83,8 +91,8 @@ public class Ticket
     this._sig_key = paramArrayOfByte1;
     this._create_time = paramLong;
     this._expire_time = (paramLong + 86400L);
-    parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire);
-    parsePsBuf(paramArrayOfByte4, this._create_time, this._pt4token_map, this._pt4token_expire);
+    parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire, true);
+    parsePsBuf(paramArrayOfByte4, this._create_time, this._pt4token_map, this._pt4token_expire, false);
   }
   
   private Ticket(Parcel paramParcel)
@@ -113,7 +121,7 @@ public class Ticket
     if (paramMap1 != null)
     {
       localObject1 = (Long)paramMap1.get(paramString);
-      if ((localObject1 != null) && (((Long)localObject1).longValue() <= t.f()))
+      if ((localObject1 != null) && (((Long)localObject1).longValue() <= u.f()))
       {
         localObject2 = new StringBuilder("__getPskey delete domain ");
         ((StringBuilder)localObject2).append(paramString);
@@ -136,6 +144,16 @@ public class Ticket
     paramMap1.append(paramMap.substring(paramMap.length() - 5, paramMap.length()));
     util.LOGI(paramMap1.toString(), "");
     return paramMap;
+  }
+  
+  protected static int calPsBufLength(Map<String, byte[]> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    Map.Entry localEntry;
+    for (int i = 2; paramMap.hasNext(); i = i + 2 + ((String)localEntry.getKey()).length() + 2 + ((byte[])localEntry.getValue()).length + 2 + 8) {
+      localEntry = (Map.Entry)paramMap.next();
+    }
+    return i;
   }
   
   private String getPskeyOrPt4tokenContent()
@@ -163,7 +181,7 @@ public class Ticket
   
   public static boolean isPskeyStorageExpired(long paramLong)
   {
-    long l = t.f();
+    long l = u.f();
     StringBuilder localStringBuilder = new StringBuilder("isPskeyStorageExpired expireTime:");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("|current: ");
@@ -184,7 +202,7 @@ public class Ticket
   
   public static boolean isTicketExpired(long paramLong)
   {
-    long l = t.f();
+    long l = u.f();
     if (l > paramLong) {
       return true;
     }
@@ -200,12 +218,64 @@ public class Ticket
     return false;
   }
   
-  protected static byte[] packPsBuf(Map<String, byte[]> paramMap, long paramLong, Map<String, Long> paramMap1)
+  public static void limitMapSize(int paramInt1, Map<String, byte[]> paramMap, Map<String, Long> paramMap1, int paramInt2)
   {
-    Object localObject1 = new StringBuilder("pskeyMap ");
+    if (paramInt1 > paramInt2)
+    {
+      paramMap1 = new b("wtlogin_alarm", "pskey_net_to_much", "").a("size", String.valueOf(paramInt1));
+      util.LOGI("limitMapSize net domainCnt=".concat(String.valueOf(paramInt1)), "");
+      paramMap.clear();
+      paramMap = paramMap1;
+    }
+    else if (paramMap.size() + paramInt1 > paramInt2)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramMap.size());
+      localObject = new b("wtlogin_alarm", "pskey_mix_to_much", ((StringBuilder)localObject).toString()).a("size", String.valueOf(paramMap.size() + paramInt1));
+      StringBuilder localStringBuilder = new StringBuilder("limitMapSize mix  domainCnt=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",localKeyMap=");
+      localStringBuilder.append(paramMap.size());
+      paramMap1 = new ArrayList(paramMap1.entrySet());
+      Collections.sort(paramMap1, new Ticket.1());
+      paramMap1 = paramMap1.iterator();
+      do
+      {
+        if (!paramMap1.hasNext()) {
+          break;
+        }
+        Map.Entry localEntry = (Map.Entry)paramMap1.next();
+        localStringBuilder.append(",rm key=");
+        localStringBuilder.append((String)localEntry.getKey());
+        localStringBuilder.append(",expire=");
+        localStringBuilder.append(localEntry.getValue());
+        paramMap.remove(localEntry.getKey());
+      } while (paramMap.size() > paramInt2 - paramInt1);
+      util.LOGI(localStringBuilder.toString(), "");
+      paramMap = (Map<String, byte[]>)localObject;
+    }
+    else
+    {
+      paramMap = null;
+    }
+    if (paramMap != null)
+    {
+      paramMap.a(true).b(true);
+      c.a(paramMap);
+    }
+  }
+  
+  public static byte[] packPsBuf(Map<String, byte[]> paramMap, long paramLong, Map<String, Long> paramMap1)
+  {
+    int i = Math.max(calPsBufLength(paramMap), 4096);
+    Object localObject1 = new StringBuilder("packPsBuf mapSize=");
     ((StringBuilder)localObject1).append(paramMap.size());
+    ((StringBuilder)localObject1).append(",bufLen=");
+    ((StringBuilder)localObject1).append(i);
     util.LOGI(((StringBuilder)localObject1).toString(), "");
-    localObject1 = ByteBuffer.allocate(4096);
+    localObject1 = ByteBuffer.allocate(i);
     ((ByteBuffer)localObject1).putShort((short)paramMap.size());
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
@@ -230,7 +300,7 @@ public class Ticket
     return paramMap;
   }
   
-  protected static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1)
+  public static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1, boolean paramBoolean)
   {
     Object localObject2 = new StringBuilder("ps_buf ");
     Object localObject1;
@@ -246,7 +316,7 @@ public class Ticket
       if (paramArrayOfByte.length <= 2) {
         return;
       }
-      long l2 = t.f();
+      long l2 = u.f();
       int k = util.buf_to_int16(paramArrayOfByte, 0);
       util.LOGI("domainCnt ".concat(String.valueOf(k)), "");
       int j = 0;
@@ -297,9 +367,13 @@ public class Ticket
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(" pskey or pt4token:");
+        if (paramBoolean) {
+          ((StringBuilder)localObject2).append(" pskey:");
+        } else {
+          ((StringBuilder)localObject2).append(" pt4Token:");
+        }
         ((StringBuilder)localObject2).append(m);
-        ((StringBuilder)localObject2).append(" expire: ");
+        ((StringBuilder)localObject2).append(",expire: ");
         ((StringBuilder)localObject2).append(l1);
         util.LOGI(((StringBuilder)localObject2).toString(), "");
         j += 1;
@@ -310,13 +384,13 @@ public class Ticket
   
   protected static void parseSvrPs(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap1, Map<String, Long> paramMap2, Map<String, byte[]> paramMap3, Map<String, Long> paramMap4)
   {
-    Object localObject1 = new StringBuilder("pskeyMap ");
-    ((StringBuilder)localObject1).append(paramMap1.size());
-    ((StringBuilder)localObject1).append(", tokenMap ");
-    ((StringBuilder)localObject1).append(paramMap3.size());
-    ((StringBuilder)localObject1).append(" create time:");
-    ((StringBuilder)localObject1).append(paramLong);
-    util.LOGI(((StringBuilder)localObject1).toString(), "");
+    StringBuilder localStringBuilder1 = new StringBuilder("pskeyMap ");
+    localStringBuilder1.append(paramMap1.size());
+    localStringBuilder1.append(", tokenMap ");
+    localStringBuilder1.append(paramMap3.size());
+    localStringBuilder1.append(" create time:");
+    localStringBuilder1.append(paramLong);
+    util.LOGI(localStringBuilder1.toString(), "");
     if (paramArrayOfByte != null)
     {
       if (paramArrayOfByte.length <= 2) {
@@ -324,10 +398,19 @@ public class Ticket
       }
       paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
       int j = paramArrayOfByte.getShort();
+      try
+      {
+        limitMapSize(j, paramMap1, paramMap2, 200);
+        limitMapSize(j, paramMap3, paramMap4, 200);
+      }
+      catch (Exception localException)
+      {
+        util.printException(localException, "");
+      }
       int i = 0;
       while (i < j)
       {
-        localObject1 = new byte[paramArrayOfByte.getShort()];
+        Object localObject1 = new byte[paramArrayOfByte.getShort()];
         paramArrayOfByte.get((byte[])localObject1);
         localObject1 = new String((byte[])localObject1);
         byte[] arrayOfByte1 = new byte[paramArrayOfByte.getShort()];
@@ -350,17 +433,17 @@ public class Ticket
         if (arrayOfByte2.length > 0)
         {
           localObject2 = new String(arrayOfByte2);
-          StringBuilder localStringBuilder = new StringBuilder("parseSvrPs add domain ");
-          localStringBuilder.append((String)localObject1);
-          localStringBuilder.append(" pt4token len ");
-          localStringBuilder.append(arrayOfByte2.length);
-          localStringBuilder.append(" ");
-          localStringBuilder.append(l);
-          localStringBuilder.append(" ");
-          localStringBuilder.append(((String)localObject2).substring(0, 5));
-          localStringBuilder.append("***");
-          localStringBuilder.append(((String)localObject2).substring(((String)localObject2).length() - 5));
-          util.LOGI(localStringBuilder.toString(), "");
+          StringBuilder localStringBuilder2 = new StringBuilder("parseSvrPs add domain ");
+          localStringBuilder2.append((String)localObject1);
+          localStringBuilder2.append(" pt4token len ");
+          localStringBuilder2.append(arrayOfByte2.length);
+          localStringBuilder2.append(" ");
+          localStringBuilder2.append(l);
+          localStringBuilder2.append(" ");
+          localStringBuilder2.append(((String)localObject2).substring(0, 5));
+          localStringBuilder2.append("***");
+          localStringBuilder2.append(((String)localObject2).substring(((String)localObject2).length() - 5));
+          util.LOGI(localStringBuilder2.toString(), "");
           paramMap3.put(localObject1, arrayOfByte2);
           paramMap4.put(localObject1, Long.valueOf(l));
         }

@@ -1,127 +1,184 @@
 package com.tencent.token;
 
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.util.AttributeSet;
-import android.widget.ProgressBar;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public class in
+class in
+  extends hy<ee>
+  implements Menu
 {
-  private static final int[] b = { 16843067, 16843068 };
-  public Bitmap a;
-  private final ProgressBar c;
-  
-  public in(ProgressBar paramProgressBar)
+  in(Context paramContext, ee paramee)
   {
-    this.c = paramProgressBar;
+    super(paramContext, paramee);
   }
   
-  private Drawable a(Drawable paramDrawable, boolean paramBoolean)
+  public MenuItem add(int paramInt)
   {
-    Object localObject1;
-    Object localObject2;
-    if ((paramDrawable instanceof dm))
-    {
-      localObject1 = (dm)paramDrawable;
-      localObject2 = ((dm)localObject1).a();
-      if (localObject2 != null)
-      {
-        ((dm)localObject1).a(a((Drawable)localObject2, paramBoolean));
-        return paramDrawable;
-      }
-    }
-    else
-    {
-      if ((paramDrawable instanceof LayerDrawable))
-      {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int k = paramDrawable.getNumberOfLayers();
-        localObject1 = new Drawable[k];
-        int j = 0;
-        int i = 0;
-        while (i < k)
-        {
-          int m = paramDrawable.getId(i);
-          localObject2 = paramDrawable.getDrawable(i);
-          if ((m != 16908301) && (m != 16908303)) {
-            paramBoolean = false;
-          } else {
-            paramBoolean = true;
-          }
-          localObject1[i] = a((Drawable)localObject2, paramBoolean);
-          i += 1;
-        }
-        localObject1 = new LayerDrawable((Drawable[])localObject1);
-        i = j;
-        while (i < k)
-        {
-          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
-          i += 1;
-        }
-        return localObject1;
-      }
-      if ((paramDrawable instanceof BitmapDrawable))
-      {
-        paramDrawable = (BitmapDrawable)paramDrawable;
-        localObject2 = paramDrawable.getBitmap();
-        if (this.a == null) {
-          this.a = ((Bitmap)localObject2);
-        }
-        localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
-        localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-        ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
-        ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
-        if (paramBoolean) {
-          return new ClipDrawable((Drawable)localObject1, 3, 1);
-        }
-        return localObject1;
-      }
-    }
-    return paramDrawable;
+    return a(((ee)this.d).add(paramInt));
   }
   
-  public void a(AttributeSet paramAttributeSet, int paramInt)
+  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ji localji = ji.a(this.c.getContext(), paramAttributeSet, b, paramInt, 0);
-    Object localObject = localji.b(0);
-    if (localObject != null)
+    return a(((ee)this.d).add(paramInt1, paramInt2, paramInt3, paramInt4));
+  }
+  
+  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  {
+    return a(((ee)this.d).add(paramInt1, paramInt2, paramInt3, paramCharSequence));
+  }
+  
+  public MenuItem add(CharSequence paramCharSequence)
+  {
+    return a(((ee)this.d).add(paramCharSequence));
+  }
+  
+  public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
+  {
+    MenuItem[] arrayOfMenuItem;
+    if (paramArrayOfMenuItem != null) {
+      arrayOfMenuItem = new MenuItem[paramArrayOfMenuItem.length];
+    } else {
+      arrayOfMenuItem = null;
+    }
+    paramInt2 = ((ee)this.d).addIntentOptions(paramInt1, paramInt2, paramInt3, paramComponentName, paramArrayOfIntent, paramIntent, paramInt4, arrayOfMenuItem);
+    if (arrayOfMenuItem != null)
     {
-      ProgressBar localProgressBar = this.c;
-      paramAttributeSet = (AttributeSet)localObject;
-      if ((localObject instanceof AnimationDrawable))
+      paramInt1 = 0;
+      paramInt3 = arrayOfMenuItem.length;
+      while (paramInt1 < paramInt3)
       {
-        localObject = (AnimationDrawable)localObject;
-        int i = ((AnimationDrawable)localObject).getNumberOfFrames();
-        paramAttributeSet = new AnimationDrawable();
-        paramAttributeSet.setOneShot(((AnimationDrawable)localObject).isOneShot());
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Drawable localDrawable = a(((AnimationDrawable)localObject).getFrame(paramInt), true);
-          localDrawable.setLevel(10000);
-          paramAttributeSet.addFrame(localDrawable, ((AnimationDrawable)localObject).getDuration(paramInt));
-          paramInt += 1;
-        }
-        paramAttributeSet.setLevel(10000);
+        paramArrayOfMenuItem[paramInt1] = a(arrayOfMenuItem[paramInt1]);
+        paramInt1 += 1;
       }
-      localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    paramAttributeSet = localji.b(1);
-    if (paramAttributeSet != null) {
-      this.c.setProgressDrawable(a(paramAttributeSet, false));
+    return paramInt2;
+  }
+  
+  public SubMenu addSubMenu(int paramInt)
+  {
+    return a(((ee)this.d).addSubMenu(paramInt));
+  }
+  
+  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    return a(((ee)this.d).addSubMenu(paramInt1, paramInt2, paramInt3, paramInt4));
+  }
+  
+  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  {
+    return a(((ee)this.d).addSubMenu(paramInt1, paramInt2, paramInt3, paramCharSequence));
+  }
+  
+  public SubMenu addSubMenu(CharSequence paramCharSequence)
+  {
+    return a(((ee)this.d).addSubMenu(paramCharSequence));
+  }
+  
+  public void clear()
+  {
+    if (this.b != null) {
+      this.b.clear();
     }
-    localji.a.recycle();
+    if (this.c != null) {
+      this.c.clear();
+    }
+    ((ee)this.d).clear();
+  }
+  
+  public void close()
+  {
+    ((ee)this.d).close();
+  }
+  
+  public MenuItem findItem(int paramInt)
+  {
+    return a(((ee)this.d).findItem(paramInt));
+  }
+  
+  public MenuItem getItem(int paramInt)
+  {
+    return a(((ee)this.d).getItem(paramInt));
+  }
+  
+  public boolean hasVisibleItems()
+  {
+    return ((ee)this.d).hasVisibleItems();
+  }
+  
+  public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return ((ee)this.d).isShortcutKey(paramInt, paramKeyEvent);
+  }
+  
+  public boolean performIdentifierAction(int paramInt1, int paramInt2)
+  {
+    return ((ee)this.d).performIdentifierAction(paramInt1, paramInt2);
+  }
+  
+  public boolean performShortcut(int paramInt1, KeyEvent paramKeyEvent, int paramInt2)
+  {
+    return ((ee)this.d).performShortcut(paramInt1, paramKeyEvent, paramInt2);
+  }
+  
+  public void removeGroup(int paramInt)
+  {
+    if (this.b != null)
+    {
+      Iterator localIterator = this.b.keySet().iterator();
+      while (localIterator.hasNext()) {
+        if (paramInt == ((MenuItem)localIterator.next()).getGroupId()) {
+          localIterator.remove();
+        }
+      }
+    }
+    ((ee)this.d).removeGroup(paramInt);
+  }
+  
+  public void removeItem(int paramInt)
+  {
+    if (this.b != null)
+    {
+      Iterator localIterator = this.b.keySet().iterator();
+      while (localIterator.hasNext()) {
+        if (paramInt == ((MenuItem)localIterator.next()).getItemId()) {
+          localIterator.remove();
+        }
+      }
+    }
+    ((ee)this.d).removeItem(paramInt);
+  }
+  
+  public void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ((ee)this.d).setGroupCheckable(paramInt, paramBoolean1, paramBoolean2);
+  }
+  
+  public void setGroupEnabled(int paramInt, boolean paramBoolean)
+  {
+    ((ee)this.d).setGroupEnabled(paramInt, paramBoolean);
+  }
+  
+  public void setGroupVisible(int paramInt, boolean paramBoolean)
+  {
+    ((ee)this.d).setGroupVisible(paramInt, paramBoolean);
+  }
+  
+  public void setQwertyMode(boolean paramBoolean)
+  {
+    ((ee)this.d).setQwertyMode(paramBoolean);
+  }
+  
+  public int size()
+  {
+    return ((ee)this.d).size();
   }
 }
 
